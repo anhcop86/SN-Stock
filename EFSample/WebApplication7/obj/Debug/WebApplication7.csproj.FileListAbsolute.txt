@@ -1,0 +1,73 @@
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\WebApplication7.dll.config
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\WebApplication7.dll
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\WebApplication7.pdb
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\Antlr3.Runtime.dll
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\EntityFramework.dll
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\EntityFramework.SqlServer.dll
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\Newtonsoft.Json.dll
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\PagedList.dll
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\PagedList.Mvc.dll
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\System.Web.Helpers.dll
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\System.Web.Mvc.dll
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\System.Web.Optimization.dll
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\System.Web.Razor.dll
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\System.Web.WebPages.Deployment.dll
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\System.Web.WebPages.dll
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\System.Web.WebPages.Razor.dll
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\WebGrease.dll
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\EntityFramework.xml
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\EntityFramework.SqlServer.xml
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\PagedList.xml
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\PagedList.Mvc.xml
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\System.Web.Helpers.xml
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\System.Web.Mvc.xml
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\System.Web.Optimization.xml
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\System.Web.Razor.xml
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\System.Web.WebPages.xml
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\System.Web.WebPages.Deployment.xml
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\System.Web.WebPages.Razor.xml
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\Newtonsoft.Json.xml
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\bin\Antlr3.Runtime.pdb
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\obj\Debug\WebApplication7.Migrations.InitialCreate.resources
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\obj\Debug\WebApplication7.csproj.GenerateResource.Cache
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\obj\Debug\WebApplication7.dll
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\obj\Debug\WebApplication7.pdb
+C:\Users\hieu.nguyen\Documents\Visual Studio 2013\Projects\WebApplication7\WebApplication7\obj\Debug\WebApplication7.csprojResolveAssemblyReference.cache
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\WebApplication7.dll.config
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\WebApplication7.dll
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\WebApplication7.pdb
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\Antlr3.Runtime.dll
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\EntityFramework.dll
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\EntityFramework.SqlServer.dll
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\Microsoft.Web.Infrastructure.dll
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\Newtonsoft.Json.dll
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\PagedList.dll
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\PagedList.Mvc.dll
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\System.Web.Helpers.dll
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\System.Web.Mvc.dll
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\System.Web.Optimization.dll
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\System.Web.Razor.dll
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\System.Web.WebPages.Deployment.dll
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\System.Web.WebPages.dll
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\System.Web.WebPages.Razor.dll
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\WebGrease.dll
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\EntityFramework.xml
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\EntityFramework.SqlServer.xml
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\PagedList.xml
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\PagedList.Mvc.xml
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\System.Web.Helpers.xml
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\System.Web.Mvc.xml
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\System.Web.Optimization.xml
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\System.Web.Razor.xml
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\System.Web.WebPages.xml
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\System.Web.WebPages.Deployment.xml
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\System.Web.WebPages.Razor.xml
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\Newtonsoft.Json.xml
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\bin\Antlr3.Runtime.pdb
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\obj\Debug\WebApplication7.csprojResolveAssemblyReference.cache
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\obj\Debug\WebApplication7.Migrations.InitialCreate.resources
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\obj\Debug\WebApplication7.csproj.GenerateResource.Cache
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\obj\Debug\WebApplication7.dll
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\obj\Debug\WebApplication7.pdb
+E:\Working\FrontEnd_PhimHang\StockVN-NS\EFSample\WebApplication7\obj\Debug\WebApplication7.Migrations.Birthdate.resources
