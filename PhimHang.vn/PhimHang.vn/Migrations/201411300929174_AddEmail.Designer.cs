@@ -7,13 +7,13 @@ namespace PhimHang.vn.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.0.0-20911")]
-    public sealed partial class BirthdayandavataImage : IMigrationMetadata
+    public sealed partial class AddEmail : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(BirthdayandavataImage));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddEmail));
         
         string IMigrationMetadata.Id
         {
-            get { return "201411291758276_Birthday and avataImage"; }
+            get { return "201411300929174_AddEmail"; }
         }
         
         string IMigrationMetadata.Source

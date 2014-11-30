@@ -46,18 +46,46 @@ namespace PhimHang.vn.Models
     public class RegisterViewModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "Tên đầy đủ")]
+        [StringLength(64, ErrorMessage = "Tên đầy đủ từ {2} đến {1} ký tự.", MinimumLength = 6)]
+        public string FullName { get; set; }
+
+        [Required]
+        [Display(Name = "Tên đăng nhập")]
+        [StringLength(64, ErrorMessage = "Tên đăng nhập từ {2} đến {1} ký tự.", MinimumLength = 6)]
         public string UserName { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Mật khẩu")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
+        [Display(Name = "Nhập lại mật khẩu")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+    }
+
+    public class ProfileUserViewModel
+    {
+
+        [Display(Name = "Tên đăng nhập")]
+        public string UserName { get; set; }
+
+        [Required]
+        [StringLength(256, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Display(Name = "Tên đầy đủ")]
+        public string FullName { get; set; }
+
+        [Display(Name = "Email")]
+        [StringLength(256, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        public string Email { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:MM-dd-yyyy}", ApplyFormatInEditMode = true)]
+
+        [Display(Name = "Ngày sinh")]
+        public System.Nullable<System.DateTime> BirthDay { get; set; }
     }
 }

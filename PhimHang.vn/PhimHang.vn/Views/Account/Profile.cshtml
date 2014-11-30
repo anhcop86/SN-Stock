@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Profile";
+}
+
+<ul style="margin:20px">
+    <li>@Html.ActionLink("Đổi mật khẩu", "Manage", "Account")</li>
+    <li>@Html.ActionLink("Cập nhật thông tin", "Profile", "Account")</li>
+
+</ul>
+
+<link href="~/Content/Profile.css" rel="stylesheet" />
+<table class="form-table">
+    <tbody>
+        <tr>
+            <th>
+                <label for="user_avatar">Avatar:</label>
+            </th>
+            <td>
+                <img alt="Default_avatar_medium" src="~/@ViewBag.ImageUrl">
+                
+                <br>
+                <input id="user_avatar" name="user[avatar]" type="file">
+                <br>
+                <span class="hint">Maximum size of 700 kb. JPG, GIF, or PNG.</span>
+                <span class="hint">Images will automatically be cropped to a square.</span>
+            </td>
+        </tr>
+        <tr>
+            <th></th>
+            <td><input class="btn btn-default" name="commit" style="margin-bottom: 0;" type="submit" value="Upload"></td>
+        </tr>
+
+    </tbody>
+</table>
+
+@Html.Partial("_UpdateProfile")
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

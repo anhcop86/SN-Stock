@@ -180,9 +180,17 @@
     <Compile Include="Migrations\201411291740313_InitialCreate.Designer.cs">
       <DependentUpon>201411291740313_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201411291758276_Birthday and avataImage.cs" />
-    <Compile Include="Migrations\201411291758276_Birthday and avataImage.Designer.cs">
-      <DependentUpon>201411291758276_Birthday and avataImage.cs</DependentUpon>
+    <Compile Include="Migrations\201411300351543_Add Birtday and avata.cs" />
+    <Compile Include="Migrations\201411300351543_Add Birtday and avata.Designer.cs">
+      <DependentUpon>201411300351543_Add Birtday and avata.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411300900381_Add Full Name.cs" />
+    <Compile Include="Migrations\201411300900381_Add Full Name.Designer.cs">
+      <DependentUpon>201411300900381_Add Full Name.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411300929174_AddEmail.cs" />
+    <Compile Include="Migrations\201411300929174_AddEmail.Designer.cs">
+      <DependentUpon>201411300929174_AddEmail.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -193,10 +201,13 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Profile.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\avatar\default_avatar_medium.jpg" />
+    <Content Include="images\avatar\03df8469-81be-4322-accc-659ffe92e14a.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -211,7 +222,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -236,9 +249,13 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\Profile.cshtml" />
+    <Content Include="Views\Account\_UpdateProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="images\chart\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -251,8 +268,14 @@
     <EmbeddedResource Include="Migrations\201411291740313_InitialCreate.resx">
       <DependentUpon>201411291740313_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201411291758276_Birthday and avataImage.resx">
-      <DependentUpon>201411291758276_Birthday and avataImage.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201411300351543_Add Birtday and avata.resx">
+      <DependentUpon>201411300351543_Add Birtday and avata.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411300900381_Add Full Name.resx">
+      <DependentUpon>201411300900381_Add Full Name.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411300929174_AddEmail.resx">
+      <DependentUpon>201411300929174_AddEmail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -15,6 +15,7 @@ namespace PhimHang.vn.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private const string ImageURLAvata = "images/avatar/";
         public AccountController()
             : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
@@ -49,7 +50,9 @@ namespace PhimHang.vn.Controllers
                 if (user != null)
                 {
                     await SignInAsync(user, model.RememberMe);
-                    return RedirectToLocal(returnUrl);
+                    //return RedirectToLocal(returnUrl); // Returun URL
+                    return RedirectToAction(""); // Hieu
+
                 }
                 else
                 {
@@ -78,7 +81,9 @@ namespace PhimHang.vn.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.UserName };
+                var user = new ApplicationUser() { UserName = model.UserName,
+                                                    AvataImage = "default_avatar_medium.jpg",
+                                                     FullName = model.FullName};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -113,8 +118,67 @@ namespace PhimHang.vn.Controllers
             }
             return RedirectToAction("Manage", new { Message = message });
         }
+        // GET: /Account
+        public ActionResult Index()
+        {
 
-        //
+            return View();
+        }
+
+        // GET: /Profile
+        public ActionResult Profile(ManageMessageId? message)
+        {
+
+            ViewBag.StatusMessage =
+               message == ManageMessageId.UpdateSucess ? "Cập nhật tài khoản thành công."               
+               : "";
+            ProfileUserViewModel profile = new ProfileUserViewModel();
+            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+            if (user == null) // if session of user has expire
+            {
+                return RedirectToAction("Login");
+            }
+            else // user not null
+            {
+                profile.UserName = user.UserName;
+                profile.FullName = user.FullName;
+                profile.Email = user.Email;
+                profile.BirthDay = user.BirthDate;
+
+            }
+            ViewBag.ImageUrl = ImageURLAvata + user.AvataImage;
+            return View(profile);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Profile(ProfileUserViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+                if(user !=null)
+                {
+                    user.FullName = model.FullName;
+                    user.Email = model.Email;
+                    user.BirthDate = model.BirthDay;
+                }
+                else
+                {
+                    return RedirectToAction("Login");
+                }
+                IdentityResult result = await UserManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Profile", new { Message = ManageMessageId.UpdateSucess });
+                }
+                else
+                {
+                    AddErrors(result);
+                }
+            }
+            return View(model);
+        }
         // GET: /Account/Manage
         public ActionResult Manage(ManageMessageId? message)
         {
@@ -361,7 +425,8 @@ namespace PhimHang.vn.Controllers
             ChangePasswordSuccess,
             SetPasswordSuccess,
             RemoveLoginSuccess,
-            Error
+            Error,
+            UpdateSucess
         }
 
         private ActionResult RedirectToLocal(string returnUrl)

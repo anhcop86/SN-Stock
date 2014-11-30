@@ -3,7 +3,7 @@ namespace PhimHang.vn.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class BirthdayandavataImage : DbMigration
+    public partial class AddBirtdayandavata : DbMigration
     {
         public override void Up()
         {
