@@ -1,0 +1,6 @@
+
+	ALTER TABLE [dbo].[AspNetUsers]
+	Add [BirthDate] [datetime] NULL,
+	[AvataImage] [nvarchar](256) NULL,
+	[FullName] [nvarchar](256) NULL,
+	[Email] [nvarchar](256) NULL
