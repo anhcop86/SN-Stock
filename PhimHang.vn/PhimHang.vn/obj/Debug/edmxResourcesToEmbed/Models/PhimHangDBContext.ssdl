@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="phimhang.vnModelContext.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar(max)" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="BirthDate" Type="datetime" />
+    <Property Name="AvataImage" Type="nvarchar" MaxLength="256" />
+    <Property Name="AvataCover" Type="nvarchar" MaxLength="256" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="256" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="Verify" Type="int" />
+    <Property Name="Discriminator" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'phimhang.vn123.dbo.Posts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Posts">
+    <Key>
+      <PropertyRef Name="PostId" />
+      <PropertyRef Name="Message" />
+      <PropertyRef Name="PostedBy" />
+      <PropertyRef Name="PostedDate" />
+    </Key>
+    <Property Name="PostId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Message" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="PostedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="PostedDate" Type="datetime2" Precision="7" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Posts_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="Posts" Type="Self.Posts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Posts">
+        <PropertyRef Name="PostedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="phimhangvnModelContextStoreContainer">
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Posts" EntityType="Self.Posts" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Posts].[PostId] AS [PostId], 
+    [Posts].[Message] AS [Message], 
+    [Posts].[PostedBy] AS [PostedBy], 
+    [Posts].[PostedDate] AS [PostedDate]
+    FROM [dbo].[Posts] AS [Posts]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Posts_AspNetUsers" Association="Self.FK_Posts_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Posts" EntitySet="Posts" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

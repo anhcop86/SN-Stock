@@ -121,12 +121,6 @@ E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\bin\Microsoft.Owin.Security.Twitter.
 E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.vn.dll
 E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.vn.pdb
-E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.vn.Migrations.InitialCreate.resources
-E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.vn.csproj.GenerateResource.Cache
-E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.vn.Migrations.AddBirtdayandavata.resources
-E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.vn.Migrations.AddFullName.resources
-E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.vn.Migrations.AddEmail.resources
-E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.vn.csprojResolveAssemblyReference.cache
 E:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\PhimHang.vn.dll.config
 E:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\PhimHang.vn.dll
 E:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\PhimHang.vn.pdb

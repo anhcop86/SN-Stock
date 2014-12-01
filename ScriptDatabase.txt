@@ -1,6 +1,14 @@
+CREATE TABLE [dbo].[Posts](
+	[PostId] bigint IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	[Message] nvarchar(256) NOT NULL,
+	[PostedBy] nvarchar(128) NOT NULL,
+	[PostedDate] [datetime2](7) NOT NULL
+)
 
-	ALTER TABLE [dbo].[AspNetUsers]
-	Add [BirthDate] [datetime] NULL,
-	[AvataImage] [nvarchar](256) NULL,
-	[FullName] [nvarchar](256) NULL,
-	[Email] [nvarchar](256) NULL
+ALTER TABLE [dbo].[Posts]  WITH CHECK ADD  CONSTRAINT [FK_Posts_AspNetUsers] FOREIGN KEY([PostedBy])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+GO
+
+ALTER TABLE [dbo].[Posts]
+Add ChartImageURL nvarchar(128),
+NhanDinh int
