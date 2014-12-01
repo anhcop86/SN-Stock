@@ -196,3 +196,5 @@ E:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.vn.M
 E:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.vn.csproj.GenerateResource.Cache
 E:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.vn.dll
 E:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.vn.pdb
+E:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.vn.csprojResolveAssemblyReference.cache
+E:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.vn.Migrations.InitialMigrations.resources

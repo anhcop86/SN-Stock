@@ -208,6 +208,10 @@
     <Compile Include="Migrations\201412010543006_AddAvataCover.Designer.cs">
       <DependentUpon>201412010543006_AddAvataCover.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412011140525_InitialMigrations.cs" />
+    <Compile Include="Migrations\201412011140525_InitialMigrations.Designer.cs">
+      <DependentUpon>201412011140525_InitialMigrations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -314,6 +318,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412010543006_AddAvataCover.resx">
       <DependentUpon>201412010543006_AddAvataCover.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412011140525_InitialMigrations.resx">
+      <DependentUpon>201412011140525_InitialMigrations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
