@@ -87,5 +87,12 @@ namespace PhimHang.vn.Models
 
         [Display(Name = "Ngày sinh")]
         public System.Nullable<System.DateTime> BirthDay { get; set; }
+
+        
+        [Display(Name = "Ngày tham gia")]
+        public string CreatedDate { get; set; }
+
+        [Display(Name = "Xác thực user")]
+        public Verify Verify { get; set; }
     }
 }

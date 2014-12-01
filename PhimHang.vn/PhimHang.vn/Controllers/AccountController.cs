@@ -16,6 +16,7 @@ namespace PhimHang.vn.Controllers
     public class AccountController : Controller
     {
         private const string ImageURLAvata = "images/avatar/";
+        private const string ImageURLCover = "images/cover/";
         public AccountController()
             : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
@@ -83,7 +84,9 @@ namespace PhimHang.vn.Controllers
             {
                 var user = new ApplicationUser() { UserName = model.UserName,
                                                     AvataImage = "default_avatar_medium.jpg",
-                                                     FullName = model.FullName};
+                                                     FullName = model.FullName,
+                                                        CreatedDate = DateTime.Now,
+                                                        Verify = Verify.NO};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -144,9 +147,11 @@ namespace PhimHang.vn.Controllers
                 profile.FullName = user.FullName;
                 profile.Email = user.Email;
                 profile.BirthDay = user.BirthDate;
-
+                profile.CreatedDate = user.CreatedDate.ToString("dd/MM/yyyy");
+                profile.Verify = user.Verify ;//== null? Verify.NO: Verify.YES;
             }
             ViewBag.ImageUrl = ImageURLAvata + user.AvataImage;
+            ViewBag.ImageUrlCover = ImageURLCover + user.AvataCover;
             return View(profile);
         }
 

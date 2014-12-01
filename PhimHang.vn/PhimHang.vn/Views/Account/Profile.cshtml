@@ -17,7 +17,7 @@
                 <label for="user_avatar">Avatar:</label>
             </th>
             <td>
-                <img alt="Default_avatar_medium" src="~/@ViewBag.ImageUrl">
+                <img alt="Default_avatar_medium" src="~/@ViewBag.ImageUrl" height="100" width="100">
                 
                 <br>
                 <input id="user_avatar" name="user[avatar]" type="file">
@@ -28,7 +28,31 @@
         </tr>
         <tr>
             <th></th>
-            <td><input class="btn btn-default" name="commit" style="margin-bottom: 0;" type="submit" value="Upload"></td>
+            <td><input class="btn btn-default" name="commit" style="margin-bottom: 0;" type="submit" value="Upload avata"></td>
+        </tr>
+
+    </tbody>
+</table>
+<hr />
+<table class="form-table">
+    <tbody>
+        <tr>
+            <th>
+                <label for="user_avatar">Cover:</label>
+            </th>
+            <td>
+                <img alt="Default_avatar_medium" src="~/@ViewBag.ImageUrlCover" height="200" width="800">
+
+                <br>
+                <input id="user_avatar" name="user[avatar]" type="file">
+                <br>
+                <span class="hint">Maximum size of 700 kb. JPG, GIF, or PNG.</span>
+                <span class="hint">Images will automatically be cropped to a square.</span>
+            </td>
+        </tr>
+        <tr>
+            <th></th>
+            <td><input class="btn btn-default" name="commit" style="margin-bottom: 0;" type="submit" value="Upload cover"></td>
         </tr>
 
     </tbody>

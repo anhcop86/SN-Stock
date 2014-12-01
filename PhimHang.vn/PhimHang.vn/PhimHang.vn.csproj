@@ -192,6 +192,22 @@
     <Compile Include="Migrations\201411300929174_AddEmail.Designer.cs">
       <DependentUpon>201411300929174_AddEmail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412010504378_addCreateDate.cs" />
+    <Compile Include="Migrations\201412010504378_addCreateDate.Designer.cs">
+      <DependentUpon>201412010504378_addCreateDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412010510174_changeCreate.cs" />
+    <Compile Include="Migrations\201412010510174_changeCreate.Designer.cs">
+      <DependentUpon>201412010510174_changeCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412010521239_addverify.cs" />
+    <Compile Include="Migrations\201412010521239_addverify.Designer.cs">
+      <DependentUpon>201412010521239_addverify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412010543006_AddAvataCover.cs" />
+    <Compile Include="Migrations\201412010543006_AddAvataCover.Designer.cs">
+      <DependentUpon>201412010543006_AddAvataCover.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -208,6 +224,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="images\avatar\default_avatar_medium.jpg" />
     <Content Include="images\avatar\03df8469-81be-4322-accc-659ffe92e14a.png" />
+    <Content Include="images\cover\cover-defaut.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -276,6 +293,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411300929174_AddEmail.resx">
       <DependentUpon>201411300929174_AddEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412010504378_addCreateDate.resx">
+      <DependentUpon>201412010504378_addCreateDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412010510174_changeCreate.resx">
+      <DependentUpon>201412010510174_changeCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412010521239_addverify.resx">
+      <DependentUpon>201412010521239_addverify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412010543006_AddAvataCover.resx">
+      <DependentUpon>201412010543006_AddAvataCover.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -10,7 +10,6 @@ namespace PhimHang.vn.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "PhimHang.vn.Models.ApplicationDbContext";
         }
 
         protected override void Seed(PhimHang.vn.Models.ApplicationDbContext context)
