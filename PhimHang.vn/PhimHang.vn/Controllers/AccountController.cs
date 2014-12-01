@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using PhimHang.vn.Models;
 using System.IO;
+using System.Drawing;
 
 namespace PhimHang.vn.Controllers
 {
@@ -188,25 +189,32 @@ namespace PhimHang.vn.Controllers
             {
                 //save file
                 #region get directory
+
                 ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
                 var uploadDir = "~/" + ImageURLAvata;
-                string timeupload = DateTime.Now.ToString("HHmmss");
-                var imagePath = Path.Combine(Server.MapPath(uploadDir), user.Id + timeupload + "_avata" + Path.GetExtension(uploadfileid_avata.FileName));
-                var imageUrl = ImageURLAvata + user.Id + timeupload + "_avata" + Path.GetExtension(uploadfileid_avata.FileName);
+                string NameFiletimeupload = user.Id + DateTime.Now.ToString("HHmmss") + "_avata";
+                var imagePath = Path.Combine(Server.MapPath(uploadDir), NameFiletimeupload + Path.GetExtension(uploadfileid_avata.FileName));
+                var imageUrl = ImageURLAvata + NameFiletimeupload + Path.GetExtension(uploadfileid_avata.FileName);
                 uploadfileid_avata.SaveAs(imagePath);
+
+                
+               
                 #endregion
                 //delete old avata image
 
                 #region delete old avata image
+
                 string fullPath = Server.MapPath(uploadDir) + user.AvataImage;
                 if (System.IO.File.Exists(fullPath))
                 {
                     System.IO.File.Delete(fullPath);
                 }
+
                 #endregion
                 //
                 #region update new avata on server
-                user.AvataImage = user.Id + timeupload + "_avata" + Path.GetExtension(uploadfileid_avata.FileName);
+
+                user.AvataImage = NameFiletimeupload + Path.GetExtension(uploadfileid_avata.FileName);
                 IdentityResult result = await UserManager.UpdateAsync(user);
                 if (result.Succeeded)
                 {

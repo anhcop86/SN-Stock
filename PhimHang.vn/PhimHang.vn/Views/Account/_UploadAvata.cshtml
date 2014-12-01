@@ -1,4 +1,5 @@
-﻿<script src="~/Scripts/jquery.form.js"></script>
+﻿@using ImageResizer;
+<script src="~/Scripts/jquery.form.js"></script>
 @using (Html.BeginForm("AvataUpload", "Account", FormMethod.Post, new { id = "SubmitformUploadImageAvata", enctype = "multipart/form-data" })) // upload hình phải có thuộc tính này, enctype = "multipart/form-data"
 {
     <table class="form-table">
@@ -8,7 +9,7 @@
                     <label for="user_avatar">Avatar:</label>
                 </th>
                 <td>
-                    <img id="imgFileName" alt="Default_avatar_medium" src="~/@ViewBag.ImageUrl" height="100" width="100">                    
+                    <img id="imgFileName" alt="Default_avatar_medium" src="~/@ViewBag.ImageUrl?width=120&height=120&mode=crop">                    
                     <br>
                     <br>
                     <input id="uploadfileid_avata" name="uploadfileid_avata" type="file">
@@ -62,7 +63,7 @@
                     $("#bar").width('100%');
                     $("#percent").html('100%');
                     $("#message").html("<font color='green'>" + "Cập nhật Avata thành công" + "</font>");
-                    $("#imgFileName").attr("src", "../" +  response.responseText.replace("YES|",""));
+                    $("#imgFileName").attr("src", "../" + response.responseText.replace("YES|", "") + "?width=120&height=120&mode=crop");
                     //$("#imgFileName").attr("src", "../images/avatar/011bcd97-e612-422f-971f-46bb35086ae9_avata.png");
 
                 }

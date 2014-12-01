@@ -11,4 +11,8 @@ GO
 
 ALTER TABLE [dbo].[Posts]
 Add ChartImageURL nvarchar(128),
-NhanDinh int
+NhanDinh int, --/// 0: Binh thuong, 1: bull market,2 : bear market
+Vir bit --/// 0: Web, 1: mobile,2 : order
+
+
+
