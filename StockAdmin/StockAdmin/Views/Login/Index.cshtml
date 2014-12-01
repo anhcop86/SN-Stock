@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<link href="~/CSS_Script/style.css" rel="stylesheet" />
+@using (Html.BeginForm("didLogin", "Login", FormMethod.Post))
+{
+    <div class="mainView">
+        <div class="topLogin"></div>
+        <div class="holder">
+            <input type="text" placeholder="Tài Khoản" name="txtUserName" class="formLoginText"/>
+        </div>
+        <div class="holder">
+            <input type="password" placeholder="Mật Khẩu" name="txtPassword" class="formLoginText"/>
+        </div>
+        <div class="holder">
+            <input id="buttonLogin" type="submit" name="btnLogin" value="Đăng Nhập" />
+        </div>
+    </div>
+}

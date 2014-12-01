@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/CSS_Script/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="mainTop">
+    </div>
+    <div class="blackWhite">
+    </div>
+    <div class="mainView">
+        <div class="mainMenu">
+            <ul>
+                <li><a href="#">Thống Kê Nhanh</a></li>
+                <li><a href="#">Người Dùng</a></li>
+                <li><a href="#">Diễn Đàn</a></li>
+                <li><a href="#">Cổ Phiếu</a></li>
+                <li><a href="#">Hộp Thư</a></li>
+            </ul>
+        </div>
+        <div class="rightContent">
+            <div class="shareInfoPart">
+            </div>
+            <div>
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</body>
+</html>

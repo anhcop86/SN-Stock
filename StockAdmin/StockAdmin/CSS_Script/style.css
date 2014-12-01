@@ -1,0 +1,109 @@
+
+/*
+    CSS is used in all layout
+    */
+*
+{
+    background-color:#00609c;
+    font-family:Tahoma;
+    margin: 0 auto;
+}
+
+.mainView
+{
+    width:1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+/*
+    CSS is used in login page
+    */
+.topLogin
+{
+    height:250px;
+}
+
+.holder
+{
+    height:40px;
+    text-align:center;
+}
+
+.formLoginText
+{
+    background-color:white;
+    width:250px;
+    height:35px;
+    border-radius: 10px;
+    border: 0px solid #979696;
+    padding:10px;
+    font-size:14px;
+    outline: 0;
+}
+
+.formLoginText:focus{
+   border: 1px solid green;
+   box-shadow:inset 0 0 5px green;
+}
+
+#buttonLogin
+{
+    background-color:green;
+    width:250px;
+    height:35px;
+    border-radius: 10px;
+    border: 0px solid #979696;
+    font-size:20px;
+    color: white;
+}
+
+/*
+    CSS is used in master page
+    */
+
+.mainTop
+{
+    height:50px;
+    background-color:green;
+}
+
+.blackWhite
+{
+     height:1px;
+    background-color:white;
+}
+
+.mainMenu
+{
+    background-color:white;
+    
+}
+
+.mainMenu ul
+{
+    list-style: none; 
+    margin:0;
+}
+
+.mainMenu  li
+{
+    display: inline;
+    
+}
+
+.mainMenu a{
+    color:white;
+    text-decoration: none;
+     padding: 8px 8px 8px 15px;
+     background-color:green;
+     border-radius: 5px;
+     
+}
+
+.rightContent
+{
+   
+}
