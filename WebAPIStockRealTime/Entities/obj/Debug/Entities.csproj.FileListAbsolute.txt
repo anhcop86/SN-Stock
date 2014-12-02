@@ -1,0 +1,17 @@
+E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Entities\bin\Debug\Entities.dll
+E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Entities\bin\Debug\Entities.pdb
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\Portfolio Stock Manager\Entities\bin\Debug\Entities.dll
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\Portfolio Stock Manager\Entities\bin\Debug\Entities.pdb
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\Portfolio Stock Manager\Entities\obj\Debug\Entities.csprojResolveAssemblyReference.cache
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\Portfolio Stock Manager\Entities\obj\Debug\Entities.dll
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\Portfolio Stock Manager\Entities\obj\Debug\Entities.pdb
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Entities\bin\Debug\Entities.dll
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Entities\bin\Debug\Entities.pdb
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Component\Entities.dll
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Component\Entities.pdb
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Entities\obj\Debug\Entities.dll
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Entities\obj\Debug\Entities.pdb
+E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Component\Entities.dll
+E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Component\Entities.pdb
+E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Entities\obj\Debug\Entities.dll
+E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Entities\obj\Debug\Entities.pdb

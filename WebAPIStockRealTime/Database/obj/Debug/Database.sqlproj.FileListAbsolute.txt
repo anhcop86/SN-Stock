@@ -1,0 +1,19 @@
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\Portfolio Stock Manager\Database\bin\Debug\Database.dacpac
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\Portfolio Stock Manager\Database\bin\Debug\Database.dll
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\Portfolio Stock Manager\Database\bin\Debug\Database.pdb
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\Portfolio Stock Manager\Database\obj\Debug\Model.xml
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\Portfolio Stock Manager\Database\obj\Debug\refactor.xml
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\Portfolio Stock Manager\Database\obj\Debug\postdeploy.sql
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\Portfolio Stock Manager\Database\obj\Debug\predeploy.sql
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\Portfolio Stock Manager\Database\obj\Debug\Database.dll
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\Portfolio Stock Manager\Database\obj\Debug\Database.pdb
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Database\bin\Debug\Database.dacpac
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Database\bin\Debug\Database.dll
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Database\bin\Debug\Database.pdb
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Database\obj\Debug\Database.dll
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Database\obj\Debug\Database.pdb
+E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Database\bin\Debug\Database.dacpac
+E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Database\bin\Debug\Database.dll
+E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Database\bin\Debug\Database.pdb
+E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Database\obj\Debug\Database.dll
+E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Database\obj\Debug\Database.pdb

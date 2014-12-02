@@ -1,0 +1,23 @@
+E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Data\bin\Debug\Data.dll
+E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Data\bin\Debug\Data.pdb
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\Portfolio Stock Manager\Data\bin\Debug\Data.dll
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\Portfolio Stock Manager\Data\bin\Debug\Data.pdb
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\Portfolio Stock Manager\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\Portfolio Stock Manager\Data\obj\Debug\Data.dll
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\Portfolio Stock Manager\Data\obj\Debug\Data.pdb
+E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Data\bin\Debug\Entities.dll
+E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Data\bin\Debug\Entities.pdb
+E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Data\bin\Debug\log4net.dll
+E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Data\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Data\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Data.dll
+E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Data\bin\Debug\Microsoft.Practices.ObjectBuilder.dll
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Component\Data.dll
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Component\Data.pdb
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Data\obj\Debug\Data.dll
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Data\obj\Debug\Data.pdb
+C:\Users\WIKI\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
+E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Component\Data.dll
+E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Component\Data.pdb
+E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Data\obj\Debug\Data.dll
+E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Data\obj\Debug\Data.pdb
+E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
