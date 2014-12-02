@@ -12,7 +12,7 @@ namespace PhimHang.vn.Models
         {
             //this.Verify = Verify.;
         }
-
+        
         public Nullable<DateTime> BirthDate { get; set; }
 
         [StringLength(256)]
@@ -34,6 +34,12 @@ namespace PhimHang.vn.Models
         public AccountType AccountType { get; set; }
 
          
+    }
+    public class MyUserInfo
+    {
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
