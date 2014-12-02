@@ -47,3 +47,26 @@
         top: 3px;
         left: 48%;
     }
+
+    #progress_cover {
+        position: relative;
+        width: 400px;
+        border: 1px solid #ddd;
+        padding: 1px;
+        border-radius: 3px;
+    }
+
+    #bar_cover {
+        background-color: #B4F5B4;
+        width: 0%;
+        height: 20px;
+        border-radius: 3px;
+    }
+
+    #percent_cover {
+        position: absolute;
+        display: inline-block;
+        top: 3px;
+        left: 48%;
+    }
+

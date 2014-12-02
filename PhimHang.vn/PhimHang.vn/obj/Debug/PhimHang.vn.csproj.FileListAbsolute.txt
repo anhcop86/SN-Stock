@@ -119,19 +119,9 @@ E:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\Microsoft.Owin.Secu
 E:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\Microsoft.Owin.Security.Google.xml
 E:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\Microsoft.Owin.Security.Twitter.xml
 E:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-E:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.vn.Migrations.InitialCreate.resources
-E:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.vn.Migrations.AddBirtdayandavata.resources
-E:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.vn.Migrations.AddFullName.resources
-E:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.vn.Migrations.AddEmail.resources
-E:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.vn.Migrations.addCreateDate.resources
-E:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.vn.Migrations.changeCreate.resources
-E:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.vn.Migrations.addverify.resources
-E:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.vn.Migrations.AddAvataCover.resources
-E:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.vn.csproj.GenerateResource.Cache
 E:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.vn.dll
 E:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.vn.pdb
 E:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.vn.csprojResolveAssemblyReference.cache
-E:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.vn.Migrations.InitialMigrations.resources
 E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\bin\PhimHang.vn.dll.config
 E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\bin\PhimHang.vn.dll
 E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\bin\PhimHang.vn.pdb
@@ -197,3 +187,7 @@ E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.vn.pdb
 E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\bin\ImageResizer.xml
 E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\bin\ImageResizer.Mvc.xml
 E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.vn.csprojResolveAssemblyReference.cache
+E:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\ImageResizer.dll
+E:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\ImageResizer.Mvc.dll
+E:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\ImageResizer.xml
+E:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\ImageResizer.Mvc.xml

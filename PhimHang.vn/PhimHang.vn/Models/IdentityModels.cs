@@ -30,6 +30,10 @@ namespace PhimHang.vn.Models
         public DateTime CreatedDate { get; set; }
                 
         public Verify Verify { get; set; }
+
+        public AccountType AccountType { get; set; }
+
+         
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -43,5 +47,10 @@ namespace PhimHang.vn.Models
     public enum Verify
     {
         NO,YES
+    }
+
+    public enum AccountType
+    {
+        Customer, Broker, Analyser
     }
 }

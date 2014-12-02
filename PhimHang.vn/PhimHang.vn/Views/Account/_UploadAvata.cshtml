@@ -9,8 +9,7 @@
                     <label for="user_avatar">Avatar:</label>
                 </th>
                 <td>
-                    <img id="imgFileName" alt="Default_avatar_medium" src="~/@ViewBag.ImageUrl?width=120&height=120&mode=crop">                    
-                    <br>
+                    <img id="imgFileName" alt="Default_avatar_medium" src="~/@ViewBag.ImageUrl?width=120&height=120&mode=crop">                                        
                     <br>
                     <input id="uploadfileid_avata" name="uploadfileid_avata" type="file">
                     <br>
@@ -21,7 +20,7 @@
             <tr>
                 <th></th>
                 @*<td><input class="btn btn-default" name="uploadAvataSubmit" style="margin-bottom: 0;" type="submit" value="Upload avata"></td>*@
-                <td><a href="#" class="btn btn-default" id="uploadAvataSubmit" style="margin-bottom: 0;">Upload Avata</a></td>
+                <td><a href="javascript:void(0)" class="btn btn-default" id="uploadAvataSubmit" style="margin-bottom: 0;">Upload Avata</a></td>
             </tr>
             
 
@@ -58,13 +57,12 @@
 
             },
             complete: function (response) {
-                if (response.responseText.indexOf('YES') != -1) {
-                    alert(response.responseText);
+                if (response.responseText.indexOf('YES') != -1) {                    
                     $("#bar").width('100%');
                     $("#percent").html('100%');
                     $("#message").html("<font color='green'>" + "Cập nhật Avata thành công" + "</font>");
                     $("#imgFileName").attr("src", "../" + response.responseText.replace("YES|", "") + "?width=120&height=120&mode=crop");
-                    //$("#imgFileName").attr("src", "../images/avatar/011bcd97-e612-422f-971f-46bb35086ae9_avata.png");
+                                        
 
                 }
                 else {

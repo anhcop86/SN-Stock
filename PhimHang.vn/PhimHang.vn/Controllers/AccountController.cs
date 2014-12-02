@@ -163,6 +163,7 @@ namespace PhimHang.vn.Controllers
         {
 
             #region check valid file
+
             var validImageTypes = new string[]
                                                 {
                                                     "image/gif",
@@ -184,6 +185,7 @@ namespace PhimHang.vn.Controllers
             {
                 return "File's very larg: File must be less than 700KB";
             }
+
             #endregion
             else
             {
@@ -215,6 +217,81 @@ namespace PhimHang.vn.Controllers
                 #region update new avata on server
 
                 user.AvataImage = NameFiletimeupload + Path.GetExtension(uploadfileid_avata.FileName);
+                IdentityResult result = await UserManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    //ViewBag.imageUrlAvata = imageUrl;
+                    return "YES|" + imageUrl;
+                }
+                else
+                {
+                    return "Cập nhật dữ liệu thất bại";
+                }
+                #endregion
+
+            }
+
+        }
+
+        [HttpPost]
+        public async Task<string> CoverUpload(HttpPostedFileBase uploadfileid_cover)
+        {
+
+            #region check valid file
+
+            var validImageTypes = new string[]
+                                                {
+                                                    "image/gif",
+                                                    "image/jpeg",
+                                                    "image/pjpeg",
+                                                    "image/png"
+                                                };
+            if (uploadfileid_cover == null || uploadfileid_cover.ContentLength == 0) // check file null or file corrupt
+            {
+                return "Chưa chọn file upload";
+            }
+
+            if (!validImageTypes.Contains(uploadfileid_cover.ContentType)) // check file type
+            {
+                return "Please choose either a GIF, JPG or PNG image.";
+            }
+
+            if (uploadfileid_cover.ContentLength > 716800) // check file size
+            {
+                return "File's very large: File must be less than 700KB";
+            }
+
+            #endregion
+            else
+            {
+                //save file
+                #region get directory
+
+                ApplicationUser user = UserManager.FindById(User.Identity.GetUserId()); // get user's logging
+                var uploadDir = "~/" + ImageURLCover;
+                string NameFiletimeupload = user.Id + DateTime.Now.ToString("HHmmss") + "_cover";
+                var imagePath = Path.Combine(Server.MapPath(uploadDir), NameFiletimeupload + Path.GetExtension(uploadfileid_cover.FileName));
+                var imageUrl = ImageURLCover + NameFiletimeupload + Path.GetExtension(uploadfileid_cover.FileName);
+                uploadfileid_cover.SaveAs(imagePath);
+
+
+
+                #endregion
+                //delete old avata image
+
+                #region delete old avata image
+
+                string fullPath = Server.MapPath(uploadDir) + user.AvataCover;
+                if (System.IO.File.Exists(fullPath))
+                {
+                    System.IO.File.Delete(fullPath);
+                }
+
+                #endregion
+                //
+                #region update new avata on server
+
+                user.AvataCover = NameFiletimeupload + Path.GetExtension(uploadfileid_cover.FileName);
                 IdentityResult result = await UserManager.UpdateAsync(user);
                 if (result.Succeeded)
                 {
