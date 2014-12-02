@@ -1,0 +1,184 @@
+body{
+	background-color:#A8DEFF;	
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	color:#666;
+	background-color:#f9f9f9;
+}
+
+#wrapper{
+		background-color:#fff;
+		width:1200px;
+		min-height:1200px;
+		margin:0 auto;
+		position:relative;
+}
+
+#banner{
+		width:100%;
+		height:100px;
+		background-color:#00609c;
+		float:left;
+}
+
+#banner img{
+		float:left;	
+		margin:5px 40px;
+}
+
+.box-border{
+			width:400px;
+			height:31px;
+			background-color:#fff;
+			float:left;
+			border-radius:5px;
+			margin:35px 40px 30px 210px;
+			padding:0;
+}
+
+.box-border #txt1{
+			float:left;
+			margin:1px 10px 0;
+			height:25px;
+			width:345px;
+			padding:0;
+			
+}
+.box-border #img{
+			float:left;	
+			width:24px;
+			height:24px;	
+			margin:5px 0;
+			background:url(images/moi.png) no-repeat top left;
+}
+
+.btn1{
+			background:#FFF;
+			width:100px;
+			height:31px;
+			-webkit-border-radius: 5px;
+			border-radius: 5px;
+			margin:35px 40px 0 0;
+			float:left;
+			font-weight:bold;
+}
+
+.btn2{
+			background:#FFF;
+			width:100px;
+			height:31px;
+			-webkit-border-radius: 5px;
+			border-radius: 5px;
+			margin:35px 40px 0 0;
+			float:left;
+			font-weight:bold;			
+}
+
+
+#banner #img1{
+		float:left;
+		width:50px;
+		height:50px;
+		background:url(images/hinh.png) no-repeat top left;
+		margin-right:40px;
+		margin-top:50px;
+
+}
+
+#menu-bar{
+		width:100%;
+		height:30px;
+		float:left;
+		
+}
+#menu-bar p{
+		color:#0081b0;
+		font-weight:bold;
+		margin: 6px 20px 6px 10px;
+		float:left;
+		
+		
+}
+#menu-bar ul{
+		margin:0;
+		padding:0;
+		float:left;
+		list-style-type:none;
+}
+#menu-bar ul li{
+		float:left;
+		display:block;
+		margin:6px 20px 6px 0;
+
+}
+#menu-bar li a{
+		text-decoration:none;
+		color:#666;
+}
+#menu-bar li a:hover{
+		color:#F00;
+}
+#menu-bar #chiso{
+		float:left;
+		width:658px;
+		height:100%;
+		background-color:#EBEBEB;
+}
+#menu-bar #chiso span{
+		color:#0F0;	
+		font-weight:bold;
+}
+.clear{
+		clear:both;	
+}
+#iphone{
+		float:left;
+		width:100%;
+		height:600px;
+		margin-top:100px;
+}
+#iphone img{
+		float:left;	
+}
+#iphone-content{
+	width:550px;
+	float:left;
+	margin-left:50px;
+}
+#iphone-content h1{
+		font-size:3.5em;
+	
+}
+#iphone-content p{
+		font-size:18px;
+		font-weight:bold;
+}
+#iphone-content #txt2{
+			width:400px;
+			height:30px;
+			color:#00609c;
+			
+}
+
+#iphone-content .btn3{
+			float:left;
+			width:160px;
+			height:40px;
+			background-color:#00BAFF;
+			-webkit-border-radius: 20px;
+			border-radius: 20px;	
+			border:none;
+			margin:30px 0;
+			color:#FFF;
+			font-size:18px;
+			font-weight:bold;
+}
+#iphone-content #anh{
+		float:left;	
+		width:400px;
+		
+		
+}
+#iphone-content img{
+		margin-right:30px;	
+}

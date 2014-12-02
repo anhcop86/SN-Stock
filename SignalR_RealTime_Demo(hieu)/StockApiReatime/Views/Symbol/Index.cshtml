@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = ViewBag.StockCode;
+}
+<style>
+    body {
+        font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+        font-size: 16px;
+    }
+
+    #stockTable table {
+        border-collapse: collapse;
+    }
+
+        #stockTable table th, #stockTable table td {
+            padding: 2px 6px;
+        }
+
+        #stockTable table td {
+            text-align: right;
+        }
+
+    #stockTable .loading td {
+        text-align: left;
+    }
+</style>
+
+<h2>Index</h2>
+
+<h3 id="stockcode">@ViewBag.StockCode</h3>
+
+<h1>ASP.net signal stock price board</h1>
+
+<h2>Live stock table</h2>
+<div id="stockTable">
+    <table border="1">
+        <thead>
+            <tr>
+                <td>symbol</td>
+                <td>price</td>
+                <td>Change</td>
+                <td>Tổng khối lượng</td>
+                <td>%</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="loading">
+                <td colspan="5">loading....</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+    if (!String.prototype.supplant) {
+        String.prototype.supplant = function (o) {
+            return this.replace(/{([^{}]*)}/g,
+                function (a, b) {
+                    var r = o[b];
+                    return typeof r === 'string' || typeof r === 'number' ? r : a;
+                }
+                );
+        };
+    }
+
+    $(function () {
+        var ticker = $.connection.StockPriceTicker;        
+
+        up = '▲';
+        down = '▼';
+
+        $stockTable = $('#stockTable');
+        $stockTableBody = $stockTable.find('tbody');
+        rowTemplate = '<tr data-symbol="{CompanyID}"><td>{CompanyID}</td><td>{FinishPrice}</td><td>{Direction}{Diff}</td><td> {TotalAmount}</td><td>{PercentChange}</td></tr>';
+
+        function formatStock(stock) {
+            return $.extend(stock, {                
+                PercentChange: (((stock.FinishPrice - stock.RefPrice) / stock.FinishPrice) * 100).toFixed(2),
+                Direction: stock.Diff === 0 ? '' : stock.Diff >= 0 ? up : down
+            });
+        }
+
+        function init() {
+            ticker.server.getAllStocks($('#stockcode').html().toUpperCase()).done(function (stock) {                
+                $stockTableBody.empty();
+                //$.each(stocks, function () {
+                    var stock = formatStock(stock);
+                    $stockTableBody.append(rowTemplate.supplant(stock));
+                //});
+            });
+            ticker.server.joinRoom($('#stockcode').html().toUpperCase());
+
+        }
+
+        ticker.client.updateStockPrice = function (stock) {        
+            var displaystock = formatStock(stock);
+            //alert(stock.CompanyID);
+            $row = $(rowTemplate.supplant(displaystock));
+    
+            $stockTableBody.find('tr[data-symbol=' + $('#stockcode').html().toUpperCase() + ']').replaceWith($row);
+        }
+
+        $.connection.hub.start().done(init);
+    });
+</script>
