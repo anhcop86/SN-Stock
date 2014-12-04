@@ -10,7 +10,7 @@ namespace PorfolioInvesment.Controllers
 {
     public class StoxDataController : ApiController
     {
-        StoxDataEntities db = new StoxDataEntities(); 
+        StoxDataEntities db ; 
         // GET api/stoxdata
         public IEnumerable<string> Get()
         {
@@ -55,21 +55,40 @@ namespace PorfolioInvesment.Controllers
             {
                 using (db = new StoxDataEntities())
                 {
-                    var history = from h in db.stox_tb_HOSE_Trading
-                                  where h.DateReport >= new DateTime(2014, 11, 02) && h.DateReport <= new DateTime(2014, 12, 02)
-                                  select new StockHis
-                                  {
-                                      CeilingPrice = h.Ceiling,
-                                      ClosePrice = h.Last,
-                                      Code = h.StockSymbol,
-                                      DiffPrice = h.PriorClosePrice,
-                                      FloorPrice = h.Floor,
-                                      HighPrice = h.Highest,
-                                      LowPrice = h.Lowest,
-                                      OpenPrice = h.OpenPrice,
-                                      TradingDate = h.DateReport
-                                  };
-                    return history.ToList();
+                    var historyHOSE = (from h in db.stox_tb_HOSE_Trading
+                                   where h.DateReport >= new DateTime(2014, 11, 02) && h.DateReport <= new DateTime(2014, 12, 02)
+                                   select new StockHis
+                                   {
+                                       CeilingPrice = h.Ceiling,
+                                       ClosePrice = h.Last,
+                                       Code = h.StockSymbol,
+                                       DiffPrice = h.PriorClosePrice,
+                                       FloorPrice = h.Floor,
+                                       HighPrice = h.Highest,
+                                       LowPrice = h.Lowest,
+                                       OpenPrice = h.OpenPrice,
+                                       TradingDate = h.DateReport
+                                   });
+                    var historyHNX = (from h in db.stox_tb_StocksInfo
+                                      where h.trading_date >= new DateTime(2014, 11, 02) && h.trading_date <= new DateTime(2014, 12, 02)
+                                   select new StockHis
+                                   {
+                                       CeilingPrice = h.ceiling_price,
+                                       ClosePrice = h.close_price,
+                                       Code = h.code,
+                                       DiffPrice = h.basic_price,
+                                       FloorPrice = h.floor_price,
+                                       HighPrice = h.highest_price,
+                                       LowPrice = h.lowest_price,
+                                       OpenPrice = h.open_price,
+                                       TradingDate = h.trading_date
+                                   });
+                    
+                    var count = historyHOSE.ToList().Count;
+
+                    historyHOSE.Union(historyHNX);
+                    var countUnion = historyHOSE.ToList().Count;
+                    return historyHOSE.ToList();
                 }
             }
             else
