@@ -1,0 +1,18 @@
+*Goi API lay gia realtime 
+
+http://localhost:9999/api/stockrealtime
+
+Content-type: application/json
+{"PI_tickerList":"KEYSECRET"}
+
+
+* Goi API lay thong tin co phieu
+
+http://localhost:9999/api/stoxdata
+
+Content-type: application/json
+{"PI_tickerList":"KEYSECRET"}
+
+
+goi API lay gia co phieu de ve bieu do
+http://localhost:9999/api/stoxdata/getHistory
