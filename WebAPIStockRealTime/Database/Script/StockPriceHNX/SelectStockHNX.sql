@@ -43,3 +43,5 @@ FROM  #TempStock AS tblTemp  JOIN dbo.[dnn_AGStock_HASTC_SessionCompany] AS Stoc
 
 
 GO
+
+-- Database SVR-16

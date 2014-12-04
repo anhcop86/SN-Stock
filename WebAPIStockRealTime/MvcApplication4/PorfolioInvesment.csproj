@@ -48,6 +48,13 @@
     <Reference Include="Entities">
       <HintPath>..\Component\Entities.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp">
       <Private>True</Private>
     </Reference>
@@ -57,12 +64,11 @@
     <Reference Include="System.Data">
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Data.Entity">
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Drawing">
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Entity">
       <Private>True</Private>
     </Reference>
@@ -104,9 +110,6 @@
     </Reference>
     <Reference Include="System.Configuration">
       <Private>True</Private>
-    </Reference>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -214,7 +217,9 @@
     <Compile Include="Controllers\IndexsController.cs" />
     <Compile Include="Controllers\IPProxysController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\StockRealTimeController.cs" />
     <Compile Include="Controllers\StocksController.cs" />
+    <Compile Include="Controllers\StoxDataController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -226,6 +231,31 @@
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\ParaProxy.cs" />
     <Compile Include="Models\ParaStock.cs" />
+    <Compile Include="Models\StockHis.cs" />
+    <Compile Include="Models\StoxDBContext.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StoxDBContext.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StoxDBContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StoxDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StoxDBContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StoxDBContext.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\stox_tb_Company.cs">
+      <DependentUpon>StoxDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\stox_tb_HOSE_Trading.cs">
+      <DependentUpon>StoxDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\stox_tb_StocksInfo.cs">
+      <DependentUpon>StoxDBContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -297,6 +327,23 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <EntityDeploy Include="Models\StoxDBContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>StoxDBContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\StoxDBContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StoxDBContext.edmx</DependentUpon>
+      <LastGenOutput>StoxDBContext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\StoxDBContext.edmx.diagram">
+      <DependentUpon>StoxDBContext.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\StoxDBContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StoxDBContext.edmx</DependentUpon>
+      <LastGenOutput>StoxDBContext.cs</LastGenOutput>
+    </Content>
     <None Include="Properties\PublishProfiles\HIEU.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
@@ -348,6 +395,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

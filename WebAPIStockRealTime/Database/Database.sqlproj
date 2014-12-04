@@ -90,6 +90,7 @@
     <None Include="Script\StockPriceHSX\SELECTINDEX.sql" />
     <None Include="Script\StockPriceHSX\SelectStockHSX.sql" />
     <None Include="Script\IPProxy\_PR_IPProxy_SelectAll_.sql" />
+    <None Include="Script\StockPriceHSX\APIPhimhangvnGetPriceRealTime_HSX.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Script\StockPriceHNX\SELECTINDEXHNX.sql" />
@@ -99,5 +100,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Script\IPProxy\_PR_IPProxy_Insert_.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Script\StockPriceHNX\APIPhimhangvnGetPriceRealTime_HNX.sql" />
   </ItemGroup>
 </Project>

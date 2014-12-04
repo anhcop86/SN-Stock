@@ -18,3 +18,7 @@ E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Component\Bus
 E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Business\obj\Debug\Business.csprojResolveAssemblyReference.cache
 E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Business\obj\Debug\Business.dll
 E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Business\obj\Debug\Business.pdb
+E:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Component\Business.dll
+E:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Component\Business.pdb
+E:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Business\obj\Debug\Business.dll
+E:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Business\obj\Debug\Business.pdb

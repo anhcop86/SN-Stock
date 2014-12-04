@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StoxDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="stox_tb_Company">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ticker" Type="nvarchar" MaxLength="255" />
+    <Property Name="ShortName" Type="nvarchar" MaxLength="500" />
+    <Property Name="TypeID" Type="smallint" />
+    <Property Name="EnglishName" Type="nvarchar" MaxLength="500" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" />
+    <Property Name="CompanyTypeBeforeListed" Type="nvarchar" MaxLength="255" />
+    <Property Name="IndustryParent" Type="nvarchar" MaxLength="255" />
+    <Property Name="IndustryID" Type="nvarchar" MaxLength="500" />
+    <Property Name="PrimaryProduct" Type="nvarchar" MaxLength="2000" />
+    <Property Name="ExchangeID" Type="smallint" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="Index" Type="nvarchar" MaxLength="255" />
+    <Property Name="ShareType" Type="nvarchar" MaxLength="255" />
+    <Property Name="ShareCirculate" Type="float" />
+    <Property Name="FirstListingDate" Type="datetime" />
+    <Property Name="ShareIssue" Type="float" />
+    <Property Name="CapitalFund" Type="float" />
+    <Property Name="ParValue" Type="float" />
+    <Property Name="PriceListed" Type="float" />
+    <Property Name="CTCKID" Type="nvarchar" MaxLength="255" />
+    <Property Name="NumberOfCDPT" Type="float" />
+    <Property Name="NumberOfEmployees" Type="float" />
+    <Property Name="WebsiteHomepage" Type="nvarchar" MaxLength="500" />
+    <Property Name="WebsiteCorporateAction" Type="nvarchar" MaxLength="500" />
+    <Property Name="WebsiteAboutCompany" Type="nvarchar" MaxLength="500" />
+    <Property Name="WebsiteInvesterRelation" Type="nvarchar" MaxLength="500" />
+    <Property Name="WebsiteProductServices" Type="nvarchar" MaxLength="500" />
+    <Property Name="WebsiteJobHunter" Type="nvarchar" MaxLength="500" />
+    <Property Name="RegistedOffice" Type="nvarchar" MaxLength="500" />
+    <Property Name="DistrictID" Type="nvarchar" MaxLength="255" />
+    <Property Name="CityID" Type="nvarchar" MaxLength="255" />
+    <Property Name="Telephone_CC" Type="nvarchar" MaxLength="255" />
+    <Property Name="Telephone_AC" Type="nvarchar" MaxLength="255" />
+    <Property Name="Telephone_Number" Type="nvarchar" MaxLength="255" />
+    <Property Name="Fax_CC" Type="nvarchar" MaxLength="255" />
+    <Property Name="Fax_AC" Type="nvarchar" MaxLength="255" />
+    <Property Name="Fax_Number" Type="nvarchar" MaxLength="255" />
+    <Property Name="NumberOfATM" Type="nvarchar" MaxLength="255" />
+    <Property Name="NumberOfSub1" Type="nvarchar" MaxLength="255" />
+    <Property Name="NumberOfTradeStation" Type="nvarchar" MaxLength="255" />
+    <Property Name="HistoryDev" Type="ntext" />
+    <Property Name="BusinessStrategies" Type="ntext" />
+    <Property Name="KeyDevelopments" Type="ntext" />
+    <Property Name="PosCompany" Type="ntext" />
+    <Property Name="CompanyProfile" Type="ntext" />
+    <Property Name="LargeInvestProject" Type="ntext" />
+    <Property Name="CompanyPromise" Type="ntext" />
+    <Property Name="BusinessRisk" Type="ntext" />
+    <Property Name="ePrimaryProduct" Type="nvarchar" MaxLength="2000" />
+    <Property Name="eRegistedOffice" Type="nvarchar" MaxLength="500" />
+    <Property Name="eDistrictID" Type="nvarchar" MaxLength="255" />
+    <Property Name="eCityID" Type="nvarchar" MaxLength="255" />
+    <Property Name="eHistoryDev" Type="ntext" />
+    <Property Name="eBusinessStrategies" Type="ntext" />
+    <Property Name="eKeyDevelopments" Type="ntext" />
+    <Property Name="ePosCompany" Type="ntext" />
+    <Property Name="eCompanyProfile" Type="ntext" />
+    <Property Name="eLargeInvestProject" Type="ntext" />
+    <Property Name="eCompanyPromise" Type="ntext" />
+    <Property Name="eBusinessRisk" Type="ntext" />
+    <Property Name="freefloat" Type="float" />
+  </EntityType>
+  <EntityType Name="stox_tb_HOSE_Trading">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StockNo" Type="int" />
+    <Property Name="StockSymbol" Type="nchar" MaxLength="8" Nullable="false" />
+    <Property Name="StockType" Type="nchar" MaxLength="1" />
+    <Property Name="Ceiling" Type="money" />
+    <Property Name="Floor" Type="money" />
+    <Property Name="BigLotValue" Type="float" />
+    <Property Name="SecurityName" Type="nvarchar" MaxLength="25" />
+    <Property Name="SectorNo" Type="nchar" MaxLength="1" />
+    <Property Name="Designated" Type="nchar" MaxLength="1" />
+    <Property Name="Suspension" Type="nchar" MaxLength="1" />
+    <Property Name="Delist" Type="nchar" MaxLength="1" />
+    <Property Name="HaltResumeFlag" Type="nchar" MaxLength="1" />
+    <Property Name="Split" Type="nchar" MaxLength="1" />
+    <Property Name="Benefit" Type="nchar" MaxLength="1" />
+    <Property Name="Meeting" Type="nchar" MaxLength="1" />
+    <Property Name="Notice" Type="nchar" MaxLength="1" />
+    <Property Name="ClientIDRequest" Type="nchar" MaxLength="1" />
+    <Property Name="CouponRate" Type="int" />
+    <Property Name="IssueDate" Type="nchar" MaxLength="10" />
+    <Property Name="MatureDate" Type="nchar" MaxLength="10" />
+    <Property Name="AvrPrice" Type="money" />
+    <Property Name="ParValue" Type="int" />
+    <Property Name="SDCFlag" Type="nchar" MaxLength="1" />
+    <Property Name="PriorClosePrice" Type="money" />
+    <Property Name="PriorCloseDate" Type="nchar" MaxLength="10" />
+    <Property Name="ProjectOpen" Type="money" />
+    <Property Name="OpenPrice" Type="money" />
+    <Property Name="Last" Type="money" />
+    <Property Name="LastVol" Type="money" />
+    <Property Name="LastVal" Type="float" />
+    <Property Name="Highest" Type="money" />
+    <Property Name="Lowest" Type="money" />
+    <Property Name="Totalshare" Type="float" />
+    <Property Name="TotalValue" Type="float" />
+    <Property Name="AccumulateDeal" Type="int" />
+    <Property Name="BigDeal" Type="int" />
+    <Property Name="BigVol" Type="money" />
+    <Property Name="BigVal" Type="float" />
+    <Property Name="OddDeal" Type="int" />
+    <Property Name="OddVol" Type="money" />
+    <Property Name="OddVal" Type="float" />
+    <Property Name="Best1Bid" Type="money" />
+    <Property Name="Best1BidVolume" Type="money" />
+    <Property Name="Best2Bid" Type="money" />
+    <Property Name="Best2BidVolume" Type="money" />
+    <Property Name="Best3Bid" Type="money" />
+    <Property Name="Best3BidVolume" Type="money" />
+    <Property Name="Best1Offer" Type="money" />
+    <Property Name="Best1OfferVolume" Type="money" />
+    <Property Name="Best2Offer" Type="money" />
+    <Property Name="Best2OfferVolume" Type="money" />
+    <Property Name="Best3Offer" Type="money" />
+    <Property Name="Best3OfferVolume" Type="money" />
+    <Property Name="DateReport" Type="datetime" />
+    <Property Name="CurrentRoom" Type="money" />
+    <Property Name="TotalRoom" Type="money" />
+    <Property Name="Match1" Type="money" />
+    <Property Name="MatchVolume1" Type="money" />
+    <Property Name="Match2" Type="money" />
+    <Property Name="MatchVolume2" Type="money" />
+    <Property Name="Other_room" Type="money" />
+    <Property Name="Room" Type="money" />
+    <Property Name="SellPrice3" Type="money" />
+    <Property Name="SellPrice2" Type="money" />
+    <Property Name="SellPrice1" Type="money" />
+    <Property Name="BuyPrice3" Type="money" />
+    <Property Name="BuyPrice2" Type="money" />
+    <Property Name="BuyPrice1" Type="money" />
+    <Property Name="SellQtty3" Type="int" />
+    <Property Name="SellQtty2" Type="int" />
+    <Property Name="SellQtty1" Type="int" />
+    <Property Name="BuyQtty3" Type="int" />
+    <Property Name="BuyQtty2" Type="int" />
+    <Property Name="BuyQtty1" Type="int" />
+    <Property Name="ChangePrice" Type="money" />
+    <Property Name="ClosePrice_Adjusted" Type="money" />
+    <Property Name="Rate_Adjusted" Type="float" />
+    <Property Name="Highest_Adjusted" Type="float" />
+    <Property Name="Lowest_Adjusted" Type="float" />
+    <Property Name="KLGD_ThoaThuan" Type="float" />
+    <Property Name="GTGD_ThoaThuan" Type="float" />
+    <Property Name="OpenPrice_Adjusted" Type="float" />
+  </EntityType>
+  <EntityType Name="stox_tb_StocksInfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="stock_info_id" Type="int" />
+    <Property Name="trading_date" Type="datetime" Nullable="false" />
+    <Property Name="time" Type="nvarchar" MaxLength="8" />
+    <Property Name="stock_id" Type="int" />
+    <Property Name="code" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="stock_type" Type="tinyint" Nullable="false" />
+    <Property Name="total_listing_qtty" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="trading_unit" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="listting_status" Type="tinyint" />
+    <Property Name="adjust_qtty" Type="decimal" Precision="19" Scale="0" />
+    <Property Name="reference_status" Type="tinyint" />
+    <Property Name="adjust_rate" Type="float" />
+    <Property Name="divident_rate" Type="float" />
+    <Property Name="status" Type="tinyint" />
+    <Property Name="total_room" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="current_room" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="basic_price" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="open_price" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="close_price" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="current_price" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="current_qtty" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="highest_price" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="lowest_price" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="best_offer_price" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="best_bid_price" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="ceiling_price" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="floor_price" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="total_offer_qtty" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="total_bid_qtty" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="best_offer_qtty" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="best_bid_qtty" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="prior_price" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="prior_close_price" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="match_price" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="match_qtty" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="deleted" Type="tinyint" />
+    <Property Name="date_created" Type="datetime" />
+    <Property Name="date_modified" Type="datetime" />
+    <Property Name="modified_by" Type="nvarchar" MaxLength="20" />
+    <Property Name="created_by" Type="nvarchar" MaxLength="20" />
+    <Property Name="name" Type="nvarchar" MaxLength="100" />
+    <Property Name="parvalue" Type="int" />
+    <Property Name="floor_code" Type="int" />
+    <Property Name="match_value" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="is_calcindex" Type="tinyint" />
+    <Property Name="is_determinecl" Type="tinyint" />
+    <Property Name="date_no" Type="int" />
+    <Property Name="offer_count" Type="int" />
+    <Property Name="bid_count" Type="int" />
+    <Property Name="average_price" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="index_price" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="prev_prior_price" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="yieldmat" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="prev_prior_close_price" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="nm_total_traded_qtty" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="nm_total_traded_value" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="pt_match_qtty" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="pt_match_price" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="pt_total_traded_qtty" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="pt_total_traded_value" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="total_buy_trading_qtty" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="buy_count" Type="int" />
+    <Property Name="total_buy_trading_value" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="total_sell_trading_qtty" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="sell_count" Type="int" />
+    <Property Name="total_sell_trading_value" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="total_trading_qtty" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="total_trading_value" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="buy_foreign_qtty" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="buy_foreign_value" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="sell_foreign_qtty" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="sell_foreign_value" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="remain_foreign_qtty" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="pt_yieldmat" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="dateReport" Type="datetime" />
+    <Property Name="ClosePrice_Adjusted" Type="float" />
+    <Property Name="Rate_Adjusted" Type="float" />
+    <Property Name="Highest_Adjusted" Type="float" />
+    <Property Name="Lowest_Adjusted" Type="float" />
+    <Property Name="OpenPrice_Adjusted" Type="float" />
+  </EntityType>
+  <EntityContainer Name="StoxDataModelStoreContainer">
+    <EntitySet Name="stox_tb_Company" EntityType="Self.stox_tb_Company" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="stox_tb_HOSE_Trading" EntityType="Self.stox_tb_HOSE_Trading" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="stox_tb_StocksInfo" EntityType="Self.stox_tb_StocksInfo" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

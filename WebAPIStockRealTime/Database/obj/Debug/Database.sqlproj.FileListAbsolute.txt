@@ -17,3 +17,8 @@ E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Database\bin\
 E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Database\bin\Debug\Database.pdb
 E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Database\obj\Debug\Database.dll
 E:\DropBoxData\Dropbox\work\Portfolio invesment\C#\MvcApplication4\Database\obj\Debug\Database.pdb
+E:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Database\bin\Debug\Database.dacpac
+E:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Database\bin\Debug\Database.dll
+E:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Database\bin\Debug\Database.pdb
+E:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Database\obj\Debug\Database.dll
+E:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Database\obj\Debug\Database.pdb

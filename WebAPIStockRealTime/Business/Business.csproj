@@ -49,6 +49,7 @@
     <Compile Include="INDEXServices.cs" />
     <Compile Include="IPProxyServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StockRealTimeServices.cs" />
     <Compile Include="StockServices.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

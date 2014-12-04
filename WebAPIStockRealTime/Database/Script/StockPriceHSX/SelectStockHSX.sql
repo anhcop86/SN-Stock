@@ -44,3 +44,5 @@ FROM  #TempStock AS tblTemp  JOIN dbo.dnn_AGStock_SessionCompany AS Stock ON
 
 
 GO
+
+-- Database SVR-05

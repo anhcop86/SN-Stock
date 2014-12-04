@@ -37,3 +37,5 @@ WHERE cast(LastUpdate as date) = cast(getdate() as date)
 
 
 GO
+
+-- Database SVR-05
