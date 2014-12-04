@@ -250,7 +250,13 @@
     <Compile Include="Models\stox_tb_Company.cs">
       <DependentUpon>StoxDBContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\stox_tb_HOSE_TotalTrading.cs">
+      <DependentUpon>StoxDBContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\stox_tb_HOSE_Trading.cs">
+      <DependentUpon>StoxDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Stox_tb_MarketInfo.cs">
       <DependentUpon>StoxDBContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\stox_tb_StocksInfo.cs">

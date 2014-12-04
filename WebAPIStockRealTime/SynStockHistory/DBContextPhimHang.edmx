@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="testModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="testModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="StockCode">
           <Key>
             <PropertyRef Name="Id" />
@@ -14,11 +14,26 @@
           <Property Name="ShortName" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="LongName" Type="nvarchar" MaxLength="256" />
         </EntityType>
+        <EntityType Name="StockPrice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="char" MaxLength="16" Nullable="false" />
+          <Property Name="CeilingPrice" Type="money" />
+          <Property Name="FloorPrice" Type="money" />
+          <Property Name="DiffPrice" Type="money" />
+          <Property Name="OpenPrice" Type="money" />
+          <Property Name="HighPrice" Type="money" />
+          <Property Name="LowPrice" Type="money" />
+          <Property Name="ClosePrice" Type="money" />
+          <Property Name="TradingDate" Type="datetime2" Precision="7" />
+        </EntityType>
         <EntityContainer Name="testModelStoreContainer">
           <EntitySet Name="StockCode" EntityType="Self.StockCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StockPrice" EntityType="Self.StockPrice" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="testModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -33,7 +48,23 @@
         </EntityType>
         <EntityContainer Name="testEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="StockCodes" EntityType="Self.StockCode" />
+          <EntitySet Name="StockPrices" EntityType="testModel.StockPrice" />
         </EntityContainer>
+        <EntityType Name="StockPrice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="16" FixedLength="true" Unicode="false" />
+          <Property Name="CeilingPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="FloorPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DiffPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="OpenPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="HighPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="LowPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ClosePrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TradingDate" Type="DateTime" Precision="7" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -47,6 +78,22 @@
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="ShortName" ColumnName="ShortName" />
                 <ScalarProperty Name="LongName" ColumnName="LongName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockPrices">
+            <EntityTypeMapping TypeName="testModel.StockPrice">
+              <MappingFragment StoreEntitySet="StockPrice">
+                <ScalarProperty Name="TradingDate" ColumnName="TradingDate" />
+                <ScalarProperty Name="ClosePrice" ColumnName="ClosePrice" />
+                <ScalarProperty Name="LowPrice" ColumnName="LowPrice" />
+                <ScalarProperty Name="HighPrice" ColumnName="HighPrice" />
+                <ScalarProperty Name="OpenPrice" ColumnName="OpenPrice" />
+                <ScalarProperty Name="DiffPrice" ColumnName="DiffPrice" />
+                <ScalarProperty Name="FloorPrice" ColumnName="FloorPrice" />
+                <ScalarProperty Name="CeilingPrice" ColumnName="CeilingPrice" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -62,8 +62,44 @@ namespace SynStockHistory
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private async void button2_Click(object sender, EventArgs e)
         {
+            Uri uri = new Uri("http://localhost:9999/api/stoxdata/getHistory");
+
+            ParaStock para = new ParaStock { PI_tickerList = "KEYSECRET" };
+            var company = new List<StockPrice>();
+            using (var client = new HttpClient())
+            {
+                var serializedProduct = JsonConvert.SerializeObject(para);
+                var content = new StringContent(serializedProduct, Encoding.UTF8, "application/json");
+
+                var respone = await client.PostAsync(uri, content);
+                if (respone.IsSuccessStatusCode)
+                {
+                    var productJsonString = await respone.Content.ReadAsStringAsync();
+                    company = JsonConvert.DeserializeObject<List<StockPrice>>(productJsonString).ToList();
+                }
+
+            }
+
+            using (db = new testEntities())
+            {
+                //var AllListStockPrice = db.StockPrices;
+                foreach (var item in company)
+                {
+
+                    bool stockExists = db.StockPrices.Any(m => m.Code == item.Code && m.TradingDate == item.TradingDate);
+                    if (!stockExists)
+                    {
+                        db.StockPrices.Add(item);
+                    }
+
+                }
+
+                await db.SaveChangesAsync();
+            }
+           
+            
 
         }
 

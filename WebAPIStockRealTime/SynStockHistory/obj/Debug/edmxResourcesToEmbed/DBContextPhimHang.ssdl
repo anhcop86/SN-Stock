@@ -9,7 +9,23 @@
     <Property Name="ShortName" Type="nvarchar" MaxLength="256" Nullable="false" />
     <Property Name="LongName" Type="nvarchar" MaxLength="256" />
   </EntityType>
+  <EntityType Name="StockPrice">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="char" MaxLength="16" Nullable="false" />
+    <Property Name="CeilingPrice" Type="money" />
+    <Property Name="FloorPrice" Type="money" />
+    <Property Name="DiffPrice" Type="money" />
+    <Property Name="OpenPrice" Type="money" />
+    <Property Name="HighPrice" Type="money" />
+    <Property Name="LowPrice" Type="money" />
+    <Property Name="ClosePrice" Type="money" />
+    <Property Name="TradingDate" Type="datetime2" Precision="7" />
+  </EntityType>
   <EntityContainer Name="testModelStoreContainer">
     <EntitySet Name="StockCode" EntityType="Self.StockCode" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StockPrice" EntityType="Self.StockPrice" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

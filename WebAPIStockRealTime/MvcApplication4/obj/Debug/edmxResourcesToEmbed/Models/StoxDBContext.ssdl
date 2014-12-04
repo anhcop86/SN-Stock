@@ -67,6 +67,33 @@
     <Property Name="eBusinessRisk" Type="ntext" />
     <Property Name="freefloat" Type="float" />
   </EntityType>
+  <EntityType Name="stox_tb_HOSE_TotalTrading">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VNIndex" Type="money" />
+    <Property Name="TotalTrade" Type="money" />
+    <Property Name="TotalShares" Type="float" />
+    <Property Name="TotalValues" Type="float" />
+    <Property Name="UpVolume" Type="float" />
+    <Property Name="DownVolume" Type="float" />
+    <Property Name="NoChangeVolume" Type="float" />
+    <Property Name="Advances" Type="int" />
+    <Property Name="Declines" Type="int" />
+    <Property Name="NoChange" Type="int" />
+    <Property Name="VN50Index" Type="money" />
+    <Property Name="MarketID" Type="nchar" MaxLength="1" />
+    <Property Name="Filter" Type="nchar" MaxLength="1" />
+    <Property Name="Time" Type="int" />
+    <Property Name="DateReport" Type="datetime" />
+    <Property Name="PreVNIndex" Type="money" />
+    <Property Name="IndexChange" Type="money" />
+    <Property Name="LiveID" Type="int" />
+    <Property Name="Lowest" Type="money" />
+    <Property Name="Hightest" Type="money" />
+    <Property Name="OpenIndex" Type="money" />
+  </EntityType>
   <EntityType Name="stox_tb_HOSE_Trading">
     <Key>
       <PropertyRef Name="ID" />
@@ -154,6 +181,42 @@
     <Property Name="KLGD_ThoaThuan" Type="float" />
     <Property Name="GTGD_ThoaThuan" Type="float" />
     <Property Name="OpenPrice_Adjusted" Type="float" />
+  </EntityType>
+  <EntityType Name="Stox_tb_MarketInfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FLOOR_CODE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DATE_NO" Type="int" />
+    <Property Name="TRADING_DATE" Type="datetime" Nullable="false" />
+    <Property Name="CURRENT_STATUS" Type="int" />
+    <Property Name="TIME" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="TOTAL_TRADE" Type="int" />
+    <Property Name="TOTAL_STOCK" Type="int" />
+    <Property Name="TOTAL_QTTY" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TOTAL_VALUE" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ADVANCES" Type="int" />
+    <Property Name="NOCHANGE" Type="int" />
+    <Property Name="DECLINES" Type="int" />
+    <Property Name="PRIOR_MARKET_INDEX" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CHG_INDEX" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PCT_INDEX" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CURRENT_INDEX" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="MARKET_INDEX" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="SESSION_NO" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PRV_PRIOR_MARKET_INDEX" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="AVR_MARKET_INDEX" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="AVR_PRIOR_MARKET_INDEX" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="AVR_CHG_INDEX" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="AVR_PCT_INDEX" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PT_TOTAL_QTTY" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PT_TOTAL_VALUE" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PT_TOTAL_TRADE" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DATE_REPORT" Type="datetime" />
+    <Property Name="LOWEST" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="HIGHTEST" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="OPEN_INDEX" Type="decimal" Precision="18" Scale="2" />
   </EntityType>
   <EntityType Name="stox_tb_StocksInfo">
     <Key>
@@ -243,7 +306,9 @@
   </EntityType>
   <EntityContainer Name="StoxDataModelStoreContainer">
     <EntitySet Name="stox_tb_Company" EntityType="Self.stox_tb_Company" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="stox_tb_HOSE_TotalTrading" EntityType="Self.stox_tb_HOSE_TotalTrading" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="stox_tb_HOSE_Trading" EntityType="Self.stox_tb_HOSE_Trading" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Stox_tb_MarketInfo" EntityType="Self.Stox_tb_MarketInfo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="stox_tb_StocksInfo" EntityType="Self.stox_tb_StocksInfo" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

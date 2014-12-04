@@ -19,3 +19,7 @@ E:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Component\Entities.dll
 E:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Component\Entities.pdb
 E:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Entities\obj\Debug\Entities.dll
 E:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Entities\obj\Debug\Entities.pdb
+E:\Working\SN-Stock\WebAPIStockRealTime\Component\Entities.dll
+E:\Working\SN-Stock\WebAPIStockRealTime\Component\Entities.pdb
+E:\Working\SN-Stock\WebAPIStockRealTime\Entities\obj\Debug\Entities.dll
+E:\Working\SN-Stock\WebAPIStockRealTime\Entities\obj\Debug\Entities.pdb

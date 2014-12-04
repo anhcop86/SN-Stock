@@ -11,5 +11,21 @@
   </EntityType>
   <EntityContainer Name="testEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="StockCodes" EntityType="Self.StockCode" />
+    <EntitySet Name="StockPrices" EntityType="testModel.StockPrice" />
   </EntityContainer>
+  <EntityType Name="StockPrice">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="16" FixedLength="true" Unicode="false" />
+    <Property Name="CeilingPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="FloorPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="DiffPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="OpenPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="HighPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="LowPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="ClosePrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TradingDate" Type="DateTime" Precision="7" />
+  </EntityType>
 </Schema>

@@ -56,21 +56,21 @@ namespace PorfolioInvesment.Controllers
                 using (db = new StoxDataEntities())
                 {
                     var historyHOSE = (from h in db.stox_tb_HOSE_Trading
-                                   where h.DateReport >= new DateTime(2014, 11, 02) && h.DateReport <= new DateTime(2014, 12, 02)
+                                       where h.DateReport >= new DateTime(2014, 12, 01) && h.DateReport <= new DateTime(2014, 12, 02)
                                    select new StockHis
                                    {
-                                       CeilingPrice = h.Ceiling,
-                                       ClosePrice = h.Last,
+                                       CeilingPrice = h.Ceiling *10,
+                                       ClosePrice = h.Last * 10,
                                        Code = h.StockSymbol,
-                                       DiffPrice = h.PriorClosePrice,
-                                       FloorPrice = h.Floor,
-                                       HighPrice = h.Highest,
-                                       LowPrice = h.Lowest,
-                                       OpenPrice = h.OpenPrice,
+                                       DiffPrice = h.PriorClosePrice * 10,
+                                       FloorPrice = h.Floor * 10,
+                                       HighPrice = h.Highest * 10,
+                                       LowPrice = h.Lowest * 10,
+                                       OpenPrice = h.OpenPrice * 10,
                                        TradingDate = h.DateReport
                                    });
                     var historyHNX = (from h in db.stox_tb_StocksInfo
-                                      where h.trading_date >= new DateTime(2014, 11, 02) && h.trading_date <= new DateTime(2014, 12, 02)
+                                      where h.trading_date >= new DateTime(2014, 12, 01) && h.trading_date <= new DateTime(2014, 12, 02)
                                    select new StockHis
                                    {
                                        CeilingPrice = h.ceiling_price,
@@ -83,12 +83,39 @@ namespace PorfolioInvesment.Controllers
                                        OpenPrice = h.open_price,
                                        TradingDate = h.trading_date
                                    });
-                    
-                    var count = historyHOSE.ToList().Count;
 
-                    historyHOSE.Union(historyHNX);
-                    var countUnion = historyHOSE.ToList().Count;
-                    return historyHOSE.ToList();
+                    var historyHNXIndex = (from h in db.Stox_tb_MarketInfo
+                                           where h.TRADING_DATE >= new DateTime(2014, 12, 01) && h.TRADING_DATE <= new DateTime(2014, 12, 02)
+                                      select new StockHis
+                                      {
+                                          CeilingPrice = 0,
+                                          ClosePrice = h.MARKET_INDEX,
+                                          Code = "HNXIndex",
+                                          DiffPrice = h.PRIOR_MARKET_INDEX,
+                                          FloorPrice = 0,
+                                          HighPrice = h.HIGHTEST,
+                                          LowPrice = h.LOWEST,
+                                          OpenPrice = h.OPEN_INDEX,
+                                          TradingDate = h.TRADING_DATE
+                                      });
+                    var historyVNIndex = (from h in db.stox_tb_HOSE_TotalTrading
+                                          where h.DateReport >= new DateTime(2014, 12, 01) && h.DateReport <= new DateTime(2014, 12, 02)
+                                           select new StockHis
+                                           {
+                                               CeilingPrice = 0,
+                                               ClosePrice = h.VNIndex,
+                                               Code = "VNIndex",
+                                               DiffPrice = h.PreVNIndex,
+                                               FloorPrice = 0,
+                                               HighPrice = h.Hightest,
+                                               LowPrice = h.Lowest,
+                                               OpenPrice = h.OpenIndex,
+                                               TradingDate = h.DateReport
+                                           });
+
+                    var UnionTowList = historyHOSE.Union(historyHNX).Union(historyHNXIndex).Union(historyVNIndex);
+                    //var countUnion = test.Count();
+                    return UnionTowList.ToList();
                 }
             }
             else

@@ -26,5 +26,6 @@ namespace SynStockHistory
         }
     
         public virtual DbSet<StockCode> StockCodes { get; set; }
+        public virtual DbSet<StockPrice> StockPrices { get; set; }
     }
 }
