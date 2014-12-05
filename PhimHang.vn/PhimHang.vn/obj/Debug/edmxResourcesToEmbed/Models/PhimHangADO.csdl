@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PHDBContext" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Post">
+    <Key>
+      <PropertyRef Name="PostId" />
+    </Key>
+    <Property Name="PostId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Message" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PostedBy" Type="Int32" Nullable="false" />
+    <Property Name="PostedDate" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="ChartImageURL" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="NhanDinh" Type="Int32" />
+    <Property Name="Vir" Type="Boolean" />
+    <NavigationProperty Name="PostComments" Relationship="PHDBContext.FK_PostComments_Posts" FromRole="Post" ToRole="PostComment" />
+    <NavigationProperty Name="StockRelates" Relationship="PHDBContext.FK_StockRelate_Posts" FromRole="Post" ToRole="StockRelate" />
+    <NavigationProperty Name="UserRelates" Relationship="PHDBContext.FK_UserRelate_Posts" FromRole="Post" ToRole="UserRelate" />
+    <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_Posts_UserLogins" FromRole="Post" ToRole="UserLogin" />
+  </EntityType>
+  <EntityContainer Name="testEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Posts" EntityType="Self.Post" />
+    <EntitySet Name="FollowStocks" EntityType="PHDBContext.FollowStock" />
+    <EntitySet Name="FollowUsers" EntityType="PHDBContext.FollowUser" />
+    <EntitySet Name="PostComments" EntityType="PHDBContext.PostComment" />
+    <EntitySet Name="Settings" EntityType="PHDBContext.Setting" />
+    <EntitySet Name="StockCodes" EntityType="PHDBContext.StockCode" />
+    <EntitySet Name="StockPrices" EntityType="PHDBContext.StockPrice" />
+    <EntitySet Name="StockRelates" EntityType="PHDBContext.StockRelate" />
+    <EntitySet Name="StockViewLastests" EntityType="PHDBContext.StockViewLastest" />
+    <EntitySet Name="UserRelates" EntityType="PHDBContext.UserRelate" />
+    <EntitySet Name="UserViewLastests" EntityType="PHDBContext.UserViewLastest" />
+    <AssociationSet Name="FK_PostComments_Posts" Association="PHDBContext.FK_PostComments_Posts">
+      <End Role="Post" EntitySet="Posts" />
+      <End Role="PostComment" EntitySet="PostComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StockRelate_Posts" Association="PHDBContext.FK_StockRelate_Posts">
+      <End Role="Post" EntitySet="Posts" />
+      <End Role="StockRelate" EntitySet="StockRelates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRelate_Posts" Association="PHDBContext.FK_UserRelate_Posts">
+      <End Role="Post" EntitySet="Posts" />
+      <End Role="UserRelate" EntitySet="UserRelates" />
+    </AssociationSet>
+    <EntitySet Name="UserLogins" EntityType="PHDBContext.UserLogin" />
+    <AssociationSet Name="FK_FollowStock_UserLogins" Association="PHDBContext.FK_FollowStock_UserLogins">
+      <End Role="UserLogin" EntitySet="UserLogins" />
+      <End Role="FollowStock" EntitySet="FollowStocks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FollowUser_UserLogins" Association="PHDBContext.FK_FollowUser_UserLogins">
+      <End Role="UserLogin" EntitySet="UserLogins" />
+      <End Role="FollowUser" EntitySet="FollowUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FollowUser_UserLogins1" Association="PHDBContext.FK_FollowUser_UserLogins1">
+      <End Role="UserLogin" EntitySet="UserLogins" />
+      <End Role="FollowUser" EntitySet="FollowUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PostComments_UserLogins" Association="PHDBContext.FK_PostComments_UserLogins">
+      <End Role="UserLogin" EntitySet="UserLogins" />
+      <End Role="PostComment" EntitySet="PostComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Posts_UserLogins" Association="PHDBContext.FK_Posts_UserLogins">
+      <End Role="UserLogin" EntitySet="UserLogins" />
+      <End Role="Post" EntitySet="Posts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StockViewLastest_UserLogins" Association="PHDBContext.FK_StockViewLastest_UserLogins">
+      <End Role="UserLogin" EntitySet="UserLogins" />
+      <End Role="StockViewLastest" EntitySet="StockViewLastests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRelate_UserLogins" Association="PHDBContext.FK_UserRelate_UserLogins">
+      <End Role="UserLogin" EntitySet="UserLogins" />
+      <End Role="UserRelate" EntitySet="UserRelates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserViewLastest_UserLogins" Association="PHDBContext.FK_UserViewLastest_UserLogins">
+      <End Role="UserLogin" EntitySet="UserLogins" />
+      <End Role="UserViewLastest" EntitySet="UserViewLastests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserViewLastest_UserLogins1" Association="PHDBContext.FK_UserViewLastest_UserLogins1">
+      <End Role="UserLogin" EntitySet="UserLogins" />
+      <End Role="UserViewLastest" EntitySet="UserViewLastests" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="FollowStock">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="StockFollowed" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+    <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_FollowStock_UserLogins" FromRole="FollowStock" ToRole="UserLogin" />
+  </EntityType>
+  <EntityType Name="FollowUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="UserIdFollowed" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+    <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_FollowUser_UserLogins" FromRole="FollowUser" ToRole="UserLogin" />
+    <NavigationProperty Name="UserLogin1" Relationship="PHDBContext.FK_FollowUser_UserLogins1" FromRole="FollowUser" ToRole="UserLogin" />
+  </EntityType>
+  <EntityType Name="PostComment">
+    <Key>
+      <PropertyRef Name="PostCommentsId" />
+    </Key>
+    <Property Name="PostCommentsId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Message" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="PostedBy" Type="Int64" Nullable="false" />
+    <Property Name="CommentBy" Type="Int32" Nullable="false" />
+    <Property Name="PostedDate" Type="DateTime" Nullable="false" Precision="7" />
+    <NavigationProperty Name="Post" Relationship="PHDBContext.FK_PostComments_Posts" FromRole="PostComment" ToRole="Post" />
+    <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_PostComments_UserLogins" FromRole="PostComment" ToRole="UserLogin" />
+  </EntityType>
+  <EntityType Name="Setting">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Key" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="Value" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+  </EntityType>
+  <EntityType Name="StockCode">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="16" FixedLength="true" Unicode="false" />
+    <Property Name="ShortName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="LongName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="StockPrice">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="16" FixedLength="true" Unicode="false" />
+    <Property Name="CeilingPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="FloorPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="DiffPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="OpenPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="HighPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="LowPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="ClosePrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TradingDate" Type="DateTime" Precision="7" />
+  </EntityType>
+  <EntityType Name="StockRelate">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StockCodeRelate" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
+    <Property Name="PostId" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Post" Relationship="PHDBContext.FK_StockRelate_Posts" FromRole="StockRelate" ToRole="Post" />
+  </EntityType>
+  <EntityType Name="StockViewLastest">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="StockCode" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+    <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_StockViewLastest_UserLogins" FromRole="StockViewLastest" ToRole="UserLogin" />
+  </EntityType>
+  <EntityType Name="UserRelate">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="PostId" Type="Int64" />
+    <NavigationProperty Name="Post" Relationship="PHDBContext.FK_UserRelate_Posts" FromRole="UserRelate" ToRole="Post" />
+    <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_UserRelate_UserLogins" FromRole="UserRelate" ToRole="UserLogin" />
+  </EntityType>
+  <EntityType Name="UserViewLastest">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="UserIdLastest" Type="Int32" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+    <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_UserViewLastest_UserLogins" FromRole="UserViewLastest" ToRole="UserLogin" />
+    <NavigationProperty Name="UserLogin1" Relationship="PHDBContext.FK_UserViewLastest_UserLogins1" FromRole="UserViewLastest" ToRole="UserLogin" />
+  </EntityType>
+  <Association Name="FK_PostComments_Posts">
+    <End Type="PHDBContext.Post" Role="Post" Multiplicity="1" />
+    <End Type="PHDBContext.PostComment" Role="PostComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="PostId" />
+      </Principal>
+      <Dependent Role="PostComment">
+        <PropertyRef Name="PostedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StockRelate_Posts">
+    <End Type="PHDBContext.Post" Role="Post" Multiplicity="1" />
+    <End Type="PHDBContext.StockRelate" Role="StockRelate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="PostId" />
+      </Principal>
+      <Dependent Role="StockRelate">
+        <PropertyRef Name="PostId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRelate_Posts">
+    <End Type="PHDBContext.Post" Role="Post" Multiplicity="0..1" />
+    <End Type="PHDBContext.UserRelate" Role="UserRelate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="PostId" />
+      </Principal>
+      <Dependent Role="UserRelate">
+        <PropertyRef Name="PostId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="UserLogin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KeyLogin" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="FollowStocks" Relationship="PHDBContext.FK_FollowStock_UserLogins" FromRole="UserLogin" ToRole="FollowStock" />
+    <NavigationProperty Name="FollowUsers" Relationship="PHDBContext.FK_FollowUser_UserLogins" FromRole="UserLogin" ToRole="FollowUser" />
+    <NavigationProperty Name="FollowUsers1" Relationship="PHDBContext.FK_FollowUser_UserLogins1" FromRole="UserLogin" ToRole="FollowUser" />
+    <NavigationProperty Name="PostComments" Relationship="PHDBContext.FK_PostComments_UserLogins" FromRole="UserLogin" ToRole="PostComment" />
+    <NavigationProperty Name="Posts" Relationship="PHDBContext.FK_Posts_UserLogins" FromRole="UserLogin" ToRole="Post" />
+    <NavigationProperty Name="StockViewLastests" Relationship="PHDBContext.FK_StockViewLastest_UserLogins" FromRole="UserLogin" ToRole="StockViewLastest" />
+    <NavigationProperty Name="UserRelates" Relationship="PHDBContext.FK_UserRelate_UserLogins" FromRole="UserLogin" ToRole="UserRelate" />
+    <NavigationProperty Name="UserViewLastests" Relationship="PHDBContext.FK_UserViewLastest_UserLogins" FromRole="UserLogin" ToRole="UserViewLastest" />
+    <NavigationProperty Name="UserViewLastests1" Relationship="PHDBContext.FK_UserViewLastest_UserLogins1" FromRole="UserLogin" ToRole="UserViewLastest" />
+  </EntityType>
+  <Association Name="FK_FollowStock_UserLogins">
+    <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />
+    <End Type="PHDBContext.FollowStock" Role="FollowStock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FollowStock">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FollowUser_UserLogins">
+    <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />
+    <End Type="PHDBContext.FollowUser" Role="FollowUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FollowUser">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FollowUser_UserLogins1">
+    <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />
+    <End Type="PHDBContext.FollowUser" Role="FollowUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FollowUser">
+        <PropertyRef Name="UserIdFollowed" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PostComments_UserLogins">
+    <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />
+    <End Type="PHDBContext.PostComment" Role="PostComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PostComment">
+        <PropertyRef Name="CommentBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Posts_UserLogins">
+    <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />
+    <End Type="PHDBContext.Post" Role="Post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Post">
+        <PropertyRef Name="PostedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StockViewLastest_UserLogins">
+    <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />
+    <End Type="PHDBContext.StockViewLastest" Role="StockViewLastest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StockViewLastest">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRelate_UserLogins">
+    <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />
+    <End Type="PHDBContext.UserRelate" Role="UserRelate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserRelate">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserViewLastest_UserLogins">
+    <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />
+    <End Type="PHDBContext.UserViewLastest" Role="UserViewLastest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserViewLastest">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserViewLastest_UserLogins1">
+    <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />
+    <End Type="PHDBContext.UserViewLastest" Role="UserViewLastest" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserViewLastest">
+        <PropertyRef Name="UserIdLastest" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

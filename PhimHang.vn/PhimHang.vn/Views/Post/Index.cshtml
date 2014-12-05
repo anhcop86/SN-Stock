@@ -15,10 +15,19 @@
             @Html.DisplayNameFor(model => model.Message)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.PostedBy)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.PostedDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AspNetUser.UserName)
+            @Html.DisplayNameFor(model => model.ChartImageURL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NhanDinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vir)
         </th>
         <th></th>
     </tr>
@@ -29,10 +38,19 @@
             @Html.DisplayFor(modelItem => item.Message)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.PostedBy)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.PostedDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AspNetUser.UserName)
+            @Html.DisplayFor(modelItem => item.ChartImageURL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NhanDinh)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vir)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.PostId }) |

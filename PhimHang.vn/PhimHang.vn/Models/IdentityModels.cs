@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using System.ComponentModel.DataAnnotations;
 using System;
+using System.Data.Entity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PhimHang.vn.Models
 {
@@ -33,9 +35,13 @@ namespace PhimHang.vn.Models
 
         public AccountType AccountType { get; set; }
 
+        public LockAccount LockAccount { get; set; }
+
+        public virtual UserExtentLogin UserExtentLogin { get; set; }
          
     }
-    public class UserLogin
+    [Table("UserLogins")]
+    public class UserExtentLogin
     {
         public int Id { get; set; }
         public string KeyLogin { get; set; }        
@@ -47,7 +53,18 @@ namespace PhimHang.vn.Models
             : base("DefaultConnection")
         {
         }
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    base.OnModelCreating(modelBuilder);
+        //    //modelBuilder.Entity<IdentityUser>()
+        //    //    .ToTable("UserLogins");
+        //    //modelBuilder.Entity<ApplicationUser>()
+        //    //    .ToTable("UserLogins");
+        //}
+
+        public DbSet<UserExtentLogin> UserLogin { get; set; }
     }
+
 
     public enum Verify
     {
@@ -57,5 +74,9 @@ namespace PhimHang.vn.Models
     public enum AccountType
     {
         Customer, Broker, Analyser
+    }
+    public enum LockAccount
+    {
+        Unlock, Lock
     }
 }

@@ -8,18 +8,30 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PhimHang.vn.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace PhimHang.vn.Controllers
 {
     public class PostController : Controller
     {
-        private Entities1 db = new Entities1();
+        private testEntities db = new testEntities();        
 
+        public PostController()
+            : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
+        {            
+            
+        }
+        public PostController(UserManager<ApplicationUser> userManager)
+        {
+            UserManager = userManager;
+        }
+
+        public UserManager<ApplicationUser> UserManager { get; private set; }
         // GET: /Post/
         public async Task<ActionResult> Index()
         {
-            var posts = db.Posts.Include(p => p.AspNetUser);
-            return View(await posts.ToListAsync());
+            return View(await db.Posts.ToListAsync());
         }
 
         // GET: /Post/Details/5
@@ -40,7 +52,6 @@ namespace PhimHang.vn.Controllers
         // GET: /Post/Create
         public ActionResult Create()
         {
-            ViewBag.PostedBy = new SelectList(db.AspNetUsers, "Id", "UserName");
             return View();
         }
 
@@ -49,18 +60,24 @@ namespace PhimHang.vn.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include="PostId,Message,PostedBy,PostedDate")] Post post)
+        public async Task<ActionResult> Create([Bind(Include="PostId,Message,ChartImageURL,NhanDinh,Vir")] Post post)
         {
             if (ModelState.IsValid)
             {
-                post.NhanDinh = 1;
-                post.ChartImageURL = "fdasfdsaf";
+                
+                if (!User.Identity.IsAuthenticated)
+                {
+                    return RedirectToAction("Login", "Account");
+                }
+                var currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                
+                post.PostedBy = currentUser.UserExtentLogin.Id;
+                post.PostedDate = DateTime.Now;
                 db.Posts.Add(post);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.PostedBy = new SelectList(db.AspNetUsers, "Id", "UserName", post.PostedBy);
             return View(post);
         }
 
@@ -76,7 +93,6 @@ namespace PhimHang.vn.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.PostedBy = new SelectList(db.AspNetUsers, "Id", "UserName", post.PostedBy);
             return View(post);
         }
 
@@ -85,17 +101,16 @@ namespace PhimHang.vn.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include="PostId,Message,PostedBy,PostedDate")] Post post)
+        public async Task<ActionResult> Edit([Bind(Include="PostId,Message,ChartImageURL,NhanDinh,Vir")] Post post)
         {
             if (ModelState.IsValid)
             {
-                post.NhanDinh = 1;
-                post.ChartImageURL = "fdasfdsaf";
+                post.PostedBy = 1;
+                post.PostedDate = DateTime.Now;
                 db.Entry(post).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.PostedBy = new SelectList(db.AspNetUsers, "Id", "UserName", post.PostedBy);
             return View(post);
         }
 

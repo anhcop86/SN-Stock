@@ -89,6 +89,8 @@ namespace PhimHang.vn.Controllers
                                                      FullName = model.FullName,
                                                         CreatedDate = DateTime.Now,
                                                         Verify = Verify.NO};
+                user.UserExtentLogin = new UserExtentLogin { KeyLogin = user.Id };
+                
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

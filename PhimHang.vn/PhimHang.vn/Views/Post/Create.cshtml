@@ -24,9 +24,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PostedBy, "PostedBy", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PostedBy, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("PostedBy", String.Empty)
+                @Html.EditorFor(model => model.PostedBy)
                 @Html.ValidationMessageFor(model => model.PostedBy)
             </div>
         </div>
@@ -36,6 +36,30 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PostedDate)
                 @Html.ValidationMessageFor(model => model.PostedDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ChartImageURL, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ChartImageURL)
+                @Html.ValidationMessageFor(model => model.ChartImageURL)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NhanDinh, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NhanDinh)
+                @Html.ValidationMessageFor(model => model.NhanDinh)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Vir, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Vir)
+                @Html.ValidationMessageFor(model => model.Vir)
             </div>
         </div>
 

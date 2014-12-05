@@ -1,6 +1,7 @@
 *Goi API lay gia realtime 
 
 http://localhost:9999/api/stockrealtime
+http://vfs.com.vn:6789/api/StockRealTime
 
 Content-type: application/json
 {"PI_tickerList":"KEYSECRET"}
@@ -16,3 +17,4 @@ Content-type: application/json
 
 goi API lay gia co phieu de ve bieu do
 http://localhost:9999/api/stoxdata/getHistory
+

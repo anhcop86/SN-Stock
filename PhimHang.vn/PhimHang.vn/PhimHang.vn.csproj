@@ -188,28 +188,58 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\AspNetUser.cs">
-      <DependentUpon>DbContext.tt</DependentUpon>
+    <Compile Include="Models\FollowStock.cs">
+      <DependentUpon>PhimHangADO.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DbContext.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DbContext.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DbContext.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DbContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DbContext.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DbContext.edmx</DependentUpon>
+    <Compile Include="Models\FollowUser.cs">
+      <DependentUpon>PhimHangADO.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\PhimHangADO.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PhimHangADO.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PhimHangADO.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PhimHangADO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PhimHangADO.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PhimHangADO.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\PhimHangvnHelper.cs" />
     <Compile Include="Models\Post.cs">
-      <DependentUpon>DbContext.tt</DependentUpon>
+      <DependentUpon>PhimHangADO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PostComment.cs">
+      <DependentUpon>PhimHangADO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Setting.cs">
+      <DependentUpon>PhimHangADO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StockCode.cs">
+      <DependentUpon>PhimHangADO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StockPrice.cs">
+      <DependentUpon>PhimHangADO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StockRelate.cs">
+      <DependentUpon>PhimHangADO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StockViewLastest.cs">
+      <DependentUpon>PhimHangADO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserLogin.cs">
+      <DependentUpon>PhimHangADO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserRelate.cs">
+      <DependentUpon>PhimHangADO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserViewLastest.cs">
+      <DependentUpon>PhimHangADO.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -227,22 +257,22 @@
     <Content Include="images\cover\cover-defaut.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\DbContext.edmx">
+    <EntityDeploy Include="Models\PhimHangADO.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DbContext.Designer.cs</LastGenOutput>
+      <LastGenOutput>PhimHangADO.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\DbContext.Context.tt">
+    <Content Include="Models\PhimHangADO.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DbContext.edmx</DependentUpon>
-      <LastGenOutput>DbContext.Context.cs</LastGenOutput>
+      <DependentUpon>PhimHangADO.edmx</DependentUpon>
+      <LastGenOutput>PhimHangADO.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\DbContext.edmx.diagram">
-      <DependentUpon>DbContext.edmx</DependentUpon>
+    <Content Include="Models\PhimHangADO.edmx.diagram">
+      <DependentUpon>PhimHangADO.edmx</DependentUpon>
     </Content>
-    <Content Include="Models\DbContext.tt">
+    <Content Include="Models\PhimHangADO.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DbContext.edmx</DependentUpon>
-      <LastGenOutput>DbContext.cs</LastGenOutput>
+      <DependentUpon>PhimHangADO.edmx</DependentUpon>
+      <LastGenOutput>PhimHangADO.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

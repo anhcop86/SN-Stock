@@ -11,16 +11,32 @@ namespace PhimHang.vn.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Post
     {
+        public Post()
+        {
+            this.PostComments = new HashSet<PostComment>();
+            this.StockRelates = new HashSet<StockRelate>();
+            this.UserRelates = new HashSet<UserRelate>();
+        }
+    
         public long PostId { get; set; }
+
+        [Required]
+        [MaxLength(15)]
         public string Message { get; set; }
-        public string PostedBy { get; set; }
+        
+        public int PostedBy { get; set; }
         public System.DateTime PostedDate { get; set; }
         public string ChartImageURL { get; set; }
         public Nullable<int> NhanDinh { get; set; }
+        public Nullable<bool> Vir { get; set; }
     
-        public virtual AspNetUser AspNetUser { get; set; }
+        public virtual ICollection<PostComment> PostComments { get; set; }
+        public virtual ICollection<StockRelate> StockRelates { get; set; }
+        public virtual ICollection<UserRelate> UserRelates { get; set; }
+        public virtual UserLogin UserLogin { get; set; }
     }
 }
