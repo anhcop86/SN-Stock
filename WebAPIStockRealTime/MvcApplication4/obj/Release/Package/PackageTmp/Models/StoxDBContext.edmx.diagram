@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="504178dfe1ad4aa683e58dd4740d4586" Name="Diagram1" ZoomLevel="108">
+        <EntityTypeShape EntityType="StoxDataModel.stox_tb_Company" Width="2.375" PointX="21.375" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="StoxDataModel.stox_tb_HOSE_Trading" Width="3.25" PointX="26" PointY="12.5" />
+        <EntityTypeShape EntityType="StoxDataModel.stox_tb_StocksInfo" Width="3.25" PointX="21.625" PointY="15.5" />
+        <EntityTypeShape EntityType="StoxDataModel.stox_tb_HOSE_TotalTrading" Width="3.125" PointX="26.625" PointY="16.5" />
+        <EntityTypeShape EntityType="StoxDataModel.Stox_tb_MarketInfo" Width="1.5" PointX="0.75" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="StoxDataModelStoreContainer" CdmEntityContainer="StoxDataEntities">
+    <EntitySetMapping Name="stox_tb_Company">
+      <EntityTypeMapping TypeName="StoxDataModel.stox_tb_Company">
+        <MappingFragment StoreEntitySet="stox_tb_Company">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Ticker" ColumnName="Ticker" />
+          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stox_tb_HOSE_Trading">
+      <EntityTypeMapping TypeName="StoxDataModel.stox_tb_HOSE_Trading">
+        <MappingFragment StoreEntitySet="stox_tb_HOSE_Trading">
+          <ScalarProperty Name="DateReport" ColumnName="DateReport" />
+          <ScalarProperty Name="Lowest" ColumnName="Lowest" />
+          <ScalarProperty Name="Highest" ColumnName="Highest" />
+          <ScalarProperty Name="Last" ColumnName="Last" />
+          <ScalarProperty Name="OpenPrice" ColumnName="OpenPrice" />
+          <ScalarProperty Name="PriorClosePrice" ColumnName="PriorClosePrice" />
+          <ScalarProperty Name="Floor" ColumnName="Floor" />
+          <ScalarProperty Name="Ceiling" ColumnName="Ceiling" />
+          <ScalarProperty Name="StockSymbol" ColumnName="StockSymbol" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stox_tb_StocksInfo">
+      <EntityTypeMapping TypeName="StoxDataModel.stox_tb_StocksInfo">
+        <MappingFragment StoreEntitySet="stox_tb_StocksInfo">
+          <ScalarProperty Name="floor_price" ColumnName="floor_price" />
+          <ScalarProperty Name="ceiling_price" ColumnName="ceiling_price" />
+          <ScalarProperty Name="lowest_price" ColumnName="lowest_price" />
+          <ScalarProperty Name="highest_price" ColumnName="highest_price" />
+          <ScalarProperty Name="close_price" ColumnName="close_price" />
+          <ScalarProperty Name="open_price" ColumnName="open_price" />
+          <ScalarProperty Name="basic_price" ColumnName="basic_price" />
+          <ScalarProperty Name="stock_type" ColumnName="stock_type" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="trading_date" ColumnName="trading_date" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stox_tb_HOSE_TotalTrading">
+      <EntityTypeMapping TypeName="StoxDataModel.stox_tb_HOSE_TotalTrading">
+        <MappingFragment StoreEntitySet="stox_tb_HOSE_TotalTrading">
+          <ScalarProperty Name="OpenIndex" ColumnName="OpenIndex" />
+          <ScalarProperty Name="Hightest" ColumnName="Hightest" />
+          <ScalarProperty Name="Lowest" ColumnName="Lowest" />
+          <ScalarProperty Name="PreVNIndex" ColumnName="PreVNIndex" />
+          <ScalarProperty Name="DateReport" ColumnName="DateReport" />
+          <ScalarProperty Name="VNIndex" ColumnName="VNIndex" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stox_tb_MarketInfo">
+      <EntityTypeMapping TypeName="StoxDataModel.Stox_tb_MarketInfo">
+        <MappingFragment StoreEntitySet="Stox_tb_MarketInfo">
+          <ScalarProperty Name="OPEN_INDEX" ColumnName="OPEN_INDEX" />
+          <ScalarProperty Name="HIGHTEST" ColumnName="HIGHTEST" />
+          <ScalarProperty Name="LOWEST" ColumnName="LOWEST" />
+          <ScalarProperty Name="DATE_REPORT" ColumnName="DATE_REPORT" />
+          <ScalarProperty Name="PT_TOTAL_TRADE" ColumnName="PT_TOTAL_TRADE" />
+          <ScalarProperty Name="PT_TOTAL_VALUE" ColumnName="PT_TOTAL_VALUE" />
+          <ScalarProperty Name="PT_TOTAL_QTTY" ColumnName="PT_TOTAL_QTTY" />
+          <ScalarProperty Name="AVR_PCT_INDEX" ColumnName="AVR_PCT_INDEX" />
+          <ScalarProperty Name="AVR_CHG_INDEX" ColumnName="AVR_CHG_INDEX" />
+          <ScalarProperty Name="AVR_PRIOR_MARKET_INDEX" ColumnName="AVR_PRIOR_MARKET_INDEX" />
+          <ScalarProperty Name="AVR_MARKET_INDEX" ColumnName="AVR_MARKET_INDEX" />
+          <ScalarProperty Name="PRV_PRIOR_MARKET_INDEX" ColumnName="PRV_PRIOR_MARKET_INDEX" />
+          <ScalarProperty Name="SESSION_NO" ColumnName="SESSION_NO" />
+          <ScalarProperty Name="MARKET_INDEX" ColumnName="MARKET_INDEX" />
+          <ScalarProperty Name="CURRENT_INDEX" ColumnName="CURRENT_INDEX" />
+          <ScalarProperty Name="PCT_INDEX" ColumnName="PCT_INDEX" />
+          <ScalarProperty Name="CHG_INDEX" ColumnName="CHG_INDEX" />
+          <ScalarProperty Name="PRIOR_MARKET_INDEX" ColumnName="PRIOR_MARKET_INDEX" />
+          <ScalarProperty Name="DECLINES" ColumnName="DECLINES" />
+          <ScalarProperty Name="NOCHANGE" ColumnName="NOCHANGE" />
+          <ScalarProperty Name="ADVANCES" ColumnName="ADVANCES" />
+          <ScalarProperty Name="TOTAL_VALUE" ColumnName="TOTAL_VALUE" />
+          <ScalarProperty Name="TOTAL_QTTY" ColumnName="TOTAL_QTTY" />
+          <ScalarProperty Name="TOTAL_STOCK" ColumnName="TOTAL_STOCK" />
+          <ScalarProperty Name="TOTAL_TRADE" ColumnName="TOTAL_TRADE" />
+          <ScalarProperty Name="TIME" ColumnName="TIME" />
+          <ScalarProperty Name="CURRENT_STATUS" ColumnName="CURRENT_STATUS" />
+          <ScalarProperty Name="TRADING_DATE" ColumnName="TRADING_DATE" />
+          <ScalarProperty Name="DATE_NO" ColumnName="DATE_NO" />
+          <ScalarProperty Name="FLOOR_CODE" ColumnName="FLOOR_CODE" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
