@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using PhimHang.vn.Models;
+using PhimHang.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace PhimHang.vn.Controllers
+namespace PhimHang.Controllers
 {
     public class PostController : Controller
     {

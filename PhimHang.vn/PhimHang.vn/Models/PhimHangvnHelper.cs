@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 
-namespace PhimHang.vn.Models
+namespace PhimHang.Models
 {
     public class PhimHangvnHelper
     {

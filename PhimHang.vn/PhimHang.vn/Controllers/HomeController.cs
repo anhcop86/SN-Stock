@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace PhimHang.vn.Controllers
+namespace PhimHang.Controllers
 {
     public class HomeController : Controller
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
-namespace PhimHang.vn
+namespace PhimHang
 {
     public static class WebApiConfig
     {

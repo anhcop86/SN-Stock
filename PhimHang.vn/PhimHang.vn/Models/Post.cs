@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PhimHang.vn.Models
+namespace PhimHang.Models
 {
     using System;
     using System.Collections.Generic;
@@ -23,11 +23,8 @@ namespace PhimHang.vn.Models
         }
     
         public long PostId { get; set; }
-
         [Required]
-        [MaxLength(15)]
         public string Message { get; set; }
-        
         public int PostedBy { get; set; }
         public System.DateTime PostedDate { get; set; }
         public string ChartImageURL { get; set; }

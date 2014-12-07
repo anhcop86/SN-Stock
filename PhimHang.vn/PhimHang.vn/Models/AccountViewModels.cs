@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PhimHang.vn.Models
+namespace PhimHang.Models
 {
     public class ExternalLoginConfirmationViewModel
     {

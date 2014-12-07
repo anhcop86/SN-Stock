@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace PhimHang.vn
+namespace PhimHang
 {
     public class FilterConfig
     {

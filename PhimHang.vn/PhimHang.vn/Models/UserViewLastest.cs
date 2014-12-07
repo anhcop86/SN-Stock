@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PhimHang.vn.Models
+namespace PhimHang.Models
 {
     using System;
     using System.Collections.Generic;

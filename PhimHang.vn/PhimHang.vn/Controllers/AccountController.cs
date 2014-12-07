@@ -8,11 +8,11 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
-using PhimHang.vn.Models;
+using PhimHang.Models;
 using System.IO;
 using System.Drawing;
 
-namespace PhimHang.vn.Controllers
+namespace PhimHang.Controllers
 {
     [Authorize]
     public class AccountController : Controller
