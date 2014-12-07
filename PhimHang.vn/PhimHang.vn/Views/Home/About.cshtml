@@ -1,7 +1,6 @@
-﻿@{
-    ViewBag.Title = "About";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
-
-<p>Use this area to provide additional information.</p>
+﻿@section scripts{
+    <script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>
+        <script src="~/SignalR/hubs"></script>
+        <script src="~/Scripts/Custom/timer.js"></script>
+    }
+    <span id="newTime"></span>

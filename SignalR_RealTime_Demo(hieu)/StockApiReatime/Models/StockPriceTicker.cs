@@ -26,7 +26,7 @@ namespace StockApiReatime.Models
         //stock can go up or down by a percentage of this factor on each change
         private readonly double _rangePercent = .002;
 
-        private readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(5000);
+        private readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(50000);
         private readonly Random _updateOrNotRandom = new Random();
 
         private readonly Timer _timer;
@@ -67,7 +67,7 @@ namespace StockApiReatime.Models
             // Returns data from a web service.
             //http://www.vfs.com.vn:6789/api/stocks
             //{PI_tickerList:'KLS|OGC|KBC'}
-            //var client = new RestClient("http://www.vfs.com.vn:6789/api/");
+            //var client = new RestClient("http://www.vfs.com.vn:6789/");
             Uri uri = new Uri(ApplicationHelpers.URLApi);
 
             using (var client = new HttpClient())
@@ -76,9 +76,9 @@ namespace StockApiReatime.Models
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var parameter = new { PI_tickerList = "SUMSTOCK" };
+                var parameter = new { PI_tickerList = "KEYSECRET" };
 
-                var response = client.PostAsJsonAsync("api/stocks", parameter).Result;
+                var response = client.PostAsJsonAsync("api/StockRealTime", parameter).Result;
 
                 if (response.IsSuccessStatusCode)
                 {

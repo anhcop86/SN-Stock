@@ -669,3 +669,14 @@ table{
 #box-header-right label{
 		margin-top:2px;
 }
+
+
+.ticker-price
+{
+}
+
+.ticker-price  .pricing span {
+	font-weight:bold;
+	margin:10px;
+	font-size:20pt;
+}

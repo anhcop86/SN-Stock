@@ -1,0 +1,95 @@
+﻿
+@section scripts{
+    <script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+}
+<div class="ticker-header clearfix">
+    <h1>
+        @ViewBag.StockName <span class="one-col-show-span" style="display:none;">@ViewBag.StockCode</span>
+
+    </h1>
+    <div class="js-price-color one-col-hide price-color-change negative" data-symbol="CBST"></div>
+    <div class="symbol-box one-col-hide">
+        <h2 id="stockcode">@ViewBag.StockCode</h2>
+
+        <br>
+        <span class="exchange"></span>
+    </div>
+    <div class="ticker-price">
+        <div class="pricing" data-symbol="CBST" style="padding-bottom: 20px;" data-stock-price="74.37" data-stock-direction="negative" data-stock-change="0.15 (0.20%) ">
+            <span class="price">74.37</span>
+            <span class="denomination"></span>
+            <span class="metric-change">
+                <span class="change-image negative"></span>
+                <span class="change negative">0.15 (0.20%) </span>
+            </span>
+
+            <span class="last-updated">last updated 4:25 PM EST Dec  5</span>
+        </div>
+
+    </div>
+
+    <div class="ad-text">
+        Trade
+        <strong>
+            $CBST
+        </strong>
+        Now
+    </div>
+</div>
+
+<script type="text/javascript">
+    var ViewModel = function () {
+        this.CompanyID = ko.observable();
+        this.FinishPrice = ko.observable();
+        this.Diff = ko.observable();
+        this.DiffRate = ko.observable();
+    };
+    
+    //ko.applyBindings(new ViewModel()); // This makes Knockout get to work
+
+
+    $(function () {
+        var ticker = $.connection.StockRealTimeHub;
+
+        
+        up = '▲';
+        down = '▼';
+
+        $stockTable = $('#stockTable');
+        $stockTableBody = $stockTable.find('tbody');
+        rowTemplate = '<tr data-symbol="{CompanyID}"><td>{CompanyID}</td><td>{FinishPrice}</td><td>{Direction}{Diff}</td><td> {TotalAmount}</td><td>{PercentChange}</td></tr>';
+
+        function formatStock(stock) {
+            return $.extend(stock, {
+                PercentChange: (((stock.FinishPrice - stock.RefPrice) / stock.FinishPrice) * 100).toFixed(2),
+                Direction: stock.Diff === 0 ? '' : stock.Diff >= 0 ? up : down
+            });
+        }
+
+        function init() {
+            
+            //ko.applyBindings(new ViewModel()); // knockoutjs binding stock
+            ticker.server.getStock($('#stockcode').html().toUpperCase()).done(function (stock) {
+                //$stockTableBody.empty();
+                //$.each(stocks, function () {
+                //var stock = formatStock(stock);
+                //$stockTableBody.append(rowTemplate.supplant(stock));
+                //});
+                alert(stock.CompanyID + stock.DiffRate);
+            });
+            ticker.server.joinRoom($('#stockcode').html().toUpperCase());
+
+        }
+
+        ticker.client.updateStockPrice = function (stock) {
+            var displaystock = formatStock(stock);
+            alert(stock.CompanyID);
+            $row = $(rowTemplate.supplant(displaystock));
+
+            $stockTableBody.find('tr[data-symbol=' + $('#stockcode').html().toUpperCase() + ']').replaceWith($row);
+        }
+
+        $.connection.hub.start().done(init);
+    });
+</script>

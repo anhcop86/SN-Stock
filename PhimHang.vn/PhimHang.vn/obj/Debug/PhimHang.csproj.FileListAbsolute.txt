@@ -6,7 +6,6 @@ E:\ProjectBK\SN-Stock\PhimHang.vn\PhimHang.vn\bin\EntityFramework.dll
 E:\ProjectBK\SN-Stock\PhimHang.vn\PhimHang.vn\bin\EntityFramework.SqlServer.dll
 E:\ProjectBK\SN-Stock\PhimHang.vn\PhimHang.vn\bin\ImageResizer.dll
 E:\ProjectBK\SN-Stock\PhimHang.vn\PhimHang.vn\bin\ImageResizer.Mvc.dll
-E:\ProjectBK\SN-Stock\PhimHang.vn\PhimHang.vn\bin\Json.dll
 E:\ProjectBK\SN-Stock\PhimHang.vn\PhimHang.vn\bin\Microsoft.AspNet.Identity.Core.dll
 E:\ProjectBK\SN-Stock\PhimHang.vn\PhimHang.vn\bin\Microsoft.AspNet.Identity.EntityFramework.dll
 E:\ProjectBK\SN-Stock\PhimHang.vn\PhimHang.vn\bin\Microsoft.AspNet.Identity.Owin.dll
@@ -37,7 +36,6 @@ E:\ProjectBK\SN-Stock\PhimHang.vn\PhimHang.vn\bin\System.Web.WebPages.Razor.dll
 E:\ProjectBK\SN-Stock\PhimHang.vn\PhimHang.vn\bin\WebGrease.dll
 E:\ProjectBK\SN-Stock\PhimHang.vn\PhimHang.vn\bin\ImageResizer.xml
 E:\ProjectBK\SN-Stock\PhimHang.vn\PhimHang.vn\bin\ImageResizer.Mvc.xml
-E:\ProjectBK\SN-Stock\PhimHang.vn\PhimHang.vn\bin\Json.pdb
 E:\ProjectBK\SN-Stock\PhimHang.vn\PhimHang.vn\bin\Microsoft.AspNet.SignalR.Core.xml
 E:\ProjectBK\SN-Stock\PhimHang.vn\PhimHang.vn\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
 E:\ProjectBK\SN-Stock\PhimHang.vn\PhimHang.vn\bin\Microsoft.Owin.xml
