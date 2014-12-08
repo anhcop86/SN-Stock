@@ -23,7 +23,7 @@ namespace SynStockHistory
         private async void button1_Click(object sender, EventArgs e)
         {
 
-            Uri uri = new Uri("http://localhost:9999/api/stoxdata/GetCompany");
+            Uri uri = new Uri("http://www.vfs.com.vn:6789/api/stoxdata/GetCompany");
 
             ParaStock para = new ParaStock { PI_tickerList = "KEYSECRET" };
             var company = new List<StockCode>();
@@ -64,7 +64,7 @@ namespace SynStockHistory
 
         private async void button2_Click(object sender, EventArgs e)
         {
-            Uri uri = new Uri("http://localhost:9999/api/stoxdata/getHistory");
+            Uri uri = new Uri("http://www.vfs.com.vn:6789/api/stoxdata/getHistory");
 
             ParaStock para = new ParaStock { PI_tickerList = "KEYSECRET" };
             var company = new List<StockPrice>();

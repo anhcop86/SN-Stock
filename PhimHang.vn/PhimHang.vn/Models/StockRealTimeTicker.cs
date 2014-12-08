@@ -25,7 +25,7 @@ namespace PhimHang.Models
 
         //stock can go up or down by a percentage of this factor on each change        
 
-        private readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(5000);
+        private readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(10000);
         private readonly Random _updateOrNotRandom = new Random();
 
         private readonly Timer _timer;
@@ -48,7 +48,7 @@ namespace PhimHang.Models
         public static StockRealTimeTicker Instance
         {
             get
-            {
+            {                
                 return _instance.Value;
             }
         }
@@ -59,13 +59,19 @@ namespace PhimHang.Models
             return await CompanyResult;
         }
 
+        public Task<List<StockRealTime>> GetAllStocksTestList(List<string> stock)
+        {
+            var CompanyResult = Task.FromResult(_stocks.Where(s => stock.Contains(s.CompanyID) ).ToList());
+            return CompanyResult;
+        }
+
         public async void GetStockPriceFromApi()
         {
             // Returns data from a web service.
             //http://www.vfs.com.vn:6789/api/stocks
             //{PI_tickerList:'KLS|OGC|KBC'}
             //var client = new RestClient("http://www.vfs.com.vn:6789/api/");
-            Uri uri = new Uri("http://vfs.com.vn:6789/api");
+            Uri uri = new Uri("http://www.vfs.com.vn:6789/api");
 
             using (var client = new HttpClient())
             {

@@ -13,6 +13,7 @@ namespace PhimHang.Hubs
     [HubName("StockRealTimeHub")]
     public class RealTimePriceHub : Hub
     {
+
         private readonly StockRealTimeTicker _stockRealtime;
 
         public RealTimePriceHub()
@@ -25,10 +26,20 @@ namespace PhimHang.Hubs
         }
 
 
-        public Task<StockRealTime> GetStock(string stock)
+        public StockRealTime GetStock(string stock)
         {
-            return _stockRealtime.GetAllStocksTest(stock);
+            var test = new List<string>();
+            GetStockList(test);
+            return _stockRealtime.GetAllStocksTest(stock).Result;
         }
+
+        public List<StockRealTime> GetStockList(List<string> stock)
+        {
+            stock.Add("KLS");
+            stock.Add("HAG");
+            return _stockRealtime.GetAllStocksTestList(stock).Result;
+        }
+
         public Task JoinRoom(string groupStock)
         {
             return Groups.Add(Context.ConnectionId, groupStock);
