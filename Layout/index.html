@@ -1,493 +1,541 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link type="text/css" rel="stylesheet" href="style.css" />
-<link type="text/css" rel="stylesheet" href="style_switch.css" />
-<link type="text/css" rel="stylesheet" href="style_nut_tang_giam.css" />
-<title>Cộng đồng chứng khoán</title>
- <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js">  </script>
-<script async="" type="text/javascript" src="http://www.googletagservices.com/tag/js/gpt.js"></script>
-<script src="jquery.js" type="text/javascript"></script>
-<script src="jquery.iphone-switch.js" type="text/javascript"></script>
-
-</head>
-
-<body>
-	<div id="wrapper">
-    		<div id="banner">
-			  <form name="frm" action="" method="post">
-            		<img src="images/logo.png" width="100" height="90" alt="" />
-                <div class="box-border">
-	                     <input type="text" size="50" value="" name="txt1" id="txt1" />
-	    				  <div id="img">                </div>		 
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Custom title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/jquery-ui/jquery-ui.css" rel="stylesheet">
+        <link href="css/font-awesome/css/font-awesome.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <script src="js/jquery/jquery.js"></script>
+        <script src="js/jquery/jquery-ui.js"></script>        
+    </head>
+    <body style="background-color: #91c7e8;">
+        <header>
+            <div class="navbar">
+                <div class="top-panel">                                
+                    <div id="logo" class="top-panel-left">
+                        <a href="#" style="margin-right: 10px;float: left;">
+                            <img src="img/logo.png" alt="null">
+                        </a> 
                     </div>
-                    <input type="submit" value="    Chat chit" name="btn2" class="btn1" />
-                    <input type="submit" value="    Bài mới" name="btn1" class="btn2" />
-            		<div id="img1"></div>		        
-			  </form>
+                    <div class="top-panel-right">
+                        <ul class="nav navbar-nav pull-right panel-menu">
+                            <li class="hidden-xs">
+                                <a href="index.html" >
+                                    <i class="fa fa-home"></i>                                    
+                                </a>
+                            </li>
+                            <li class="hidden-xs">
+                                <a href="index.html">
+                                    <i class="fa fa-envelope" style="font-size: 22px;"></i>                                    
+                                </a>
+                            </li>
+                            <li class="hidden-xs" style="margin-left: 80px;">
+                                <form id="frmSearch">
+                                    <span id="search_box_top">                                                       
+                                        <input autofocus="" name="q" id="kq" title="Search" autocomplete="off" type="text">
+                                        <i class="fa fa-search"></i>
+                                    </span>
+                                </form>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle account" data-toggle="dropdown">                                
+                                    <i class="fa  fa-cog pull-right"></i>
+                                </a>
+                                <!--                            <ul class="dropdown-menu">
+                                                                <li>
+                                                                    <a href="http://localhost:8886/Users/view/1">
+                                                                        <i class="fa fa-user"></i>
+                                                                        <span>Hồ sơ</span>
+                                                                    </a>
+                                                                </li>                                    
+                                                                <li>
+                                                                    <a href="http://localhost:8886/login/logout">
+                                                                        <i class="fa fa-power-off"></i>
+                                                                        <span>Đăng xuất</span>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>-->
+                            </li>
+                        </ul>
+                    </div>                
+                </div>   
+            </div>
+            <div class="menu-top-bar"> 
+                <div class="top-menu-2">
+                    <ul class="nav navbar-nav top-panel-left2">
+                        <li class="hidden-xs">
+                            <a href="index.html" class="link-menu-top-active bold">
+                                HÀNG NÓNG                                   
+                            </a>
+                        </li> 
+                        <li class="hidden-xs">
+                            <a href="index.html">
+                                $VNM                                   
+                            </a>
+                        </li> 
+                        <li class="hidden-xs">
+                            <a href="index.html">
+                                $GAS                                   
+                            </a>
+                        </li> 
+                        <li class="hidden-xs">
+                            <a href="index.html">
+                                $MSM                                   
+                            </a>
+                        </li> 
+                        <li class="hidden-xs">
+                            <a href="index.html">
+                                $MSM                                   
+                            </a>
+                        </li>
+                        <li class="hidden-xs">
+                            <a href="index.html">
+                                $REE                                   
+                            </a>
+                        </li>
+                        <li class="hidden-xs">
+                            <a href="index.html">
+                                $SSI                                  
+                            </a>
+                        </li>
+                        <li class="hidden-xs">
+                            <a href="index.html">
+                                $SSI                                  
+                            </a>
+                        </li>
+                        <li class="hidden-xs">
+                            <a href="index.html">
+                                $SSI                                  
+                            </a>
+                        </li>
+                        <li class="hidden-xs">
+                            <a href="index.html">
+                                $SSI                                  
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav pull-right top-panel-right2">
+                        <li class="hidden-xs">
+                            <a href="index.html" class="top-menu-2-active">CHỈ SỐ</a>
+                        </li> 
+                        <li class="hidden-xs">
+                            <a href="index.html">
+                                VNI
+                                <span class="bullish">
+                                    <i class="fa  fa-sort-up "></i>
+                                    <span class="top-menu-point">
+                                        39.81
+                                    </span>
+                                </span>
 
+                            </a>
+                        </li> 
+                        <li class="hidden-xs">
+                            <a href="index.html">
+                                VN30
+                                <span class="bearish">
+                                    <i class="fa fa-sort-down"></i>
+                                    <span class="top-menu-point">
+                                        39.81
+                                    </span>
+                                </span>
 
-            </div><!-- end of banner -->
-            
-            
-            <div id="menu-bar">
-
-						      <p>HÀNG NÓNG</p>      		
-            				  <ul>
-                              			<li> <a href="#"> $VNM</a></li>
-                                        <li><a href="#"> $GAS</a></li>
-                                        <li><a href="#"> $MSN</a></li>
-                                        <li><a href="#"> $REE</a></li>
-                                        <li><a href="#"> $SSI</a></li>
-										<li><a href="#"> $MSN</a></li>
-                                        <li><a href="#"> $REE</a></li>
-                                        <li><a href="#"> $SSI</a></li>
-                                        <li><a href="#"> $HCM</a></li>                                        
-                                        <li><a href="#"> $HCM</a></li>
-                                        <li><a href="#"> $HCM</a></li>
-                                                                                                      
-                              </ul>
-								
-                                <div id="chiso">
-                                		<p>INDEX</p>
-
-                                              <ul>
-                                                        <li> VNI <span><img src="images/up_arrow.png" /> 39.81</span></li>
-                                                        <li> VN30 <span><img src="images/up_arrow.png" />6.34</span></li>
-                                                        <li> HNI <span><img src="images/up_arrow.png" />19.09</span></li>
-                                                        <li> HN30 <span><img src="images/down_arrow.png"  />19.09</span></li>
-                                              </ul>
-                                </div>
-                            
-                            
-            </div><!-- end of menu -->
-            <div  class="clear"></div>
-            <div id="chat-bar">
-            		<div id="chat-bar-center">
-                    			<p>SINH VIEN MOI</p>
-                                <div id="khungchat">
-                                		<img src="images/hinh_to.png" width="70" height="70" alt="" />
-                                        <div id="khungchatcon">
-                                        		<form action="" method="post">
-                                        		  <input type="text" size="50" value="" name="txtchat" id="txtchat" maxlength="100"  />
-                                                  <img src="images/h1_khungchat.png" alt="" class="hoa" />
-                                                  <div  class="clear"></div>
-                                                  <div id = "khungchatcon1"> 
-                                            				<img src="images/h2_khungchat.png"  align="" />
-                                            				<img src="images/h3_khungchat.png" align="" />                                                              <div class="chu"> NHẬN ĐỊNH </div>
-                                                            <div class="onoffswitch">
-                                                          
-                                                                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
-                                                                <label class="onoffswitch-label" for="myonoffswitch">
-                                                                    <span class="onoffswitch-inner"></span>
-                                                                    <span class="onoffswitch-switch"></span>
-                                                                </label>
-                                                        </div>
-                                                            
-                                                             <p> 150 </p>     			 
-                                                            
-                                                            
-                                                  </div>
-                                                  
-                                        		</form>
-                                        </div>
-                                </div>
-                               							 <form action="#" method="post">
-                               		                           <input type="submit" value=" PHÍM" name="btn_phim" class="btn_phim" />
-                                                        </form>		
-                                
+                            </a>
+                        </li> 
+                        <li class="hidden-xs">
+                            <a href="index.html">
+                                HNI
+                                <span class="none-bullish-bearish">
+                                    <i class="fa fa-unsorted"></i>
+                                    <span class="top-menu-point">
+                                        39.81
+                                    </span>
+                                </span>
+                            </a>
+                        </li> 
+                        <li class="hidden-xs">
+                            <a href="index.html">
+                                HN30
+                                <span class="bullish">
+                                    <i class="fa fa-sort-up"></i>
+                                    <span class="top-menu-point">
+                                        39.81
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header> 
+        <div class="content-main">
+            <div class="area-left">
+                <!--                <div class="bar-login">
+                                    <div class="btn-login">LOGIN</div>
+                                    <div class="btn-logout">LOGOUT</div>
+                                </div>-->
+                <div class="user-info">
+                    <div class="cover-img">
+                        <img src="img/cover.jpg" alt="cover">
                     </div>
-            
-             											
-            
-            </div><!-- end of chat-bar -->
-            <div id="content">
-            			<div id="content-left">
-                        		<div class="left-header"><p>HÀNG NÓNG VỪA XEM<p></div>
-                                <div  class="list1">
-                                <ul>
-                                		<li>
-                                        		
-                                                			<table>
-                                                            		<tr class="line1">
-                                                                    		<td width="60%" class="cot11">$GAS</td>
-                                                                            <td class="cot12" align="center">108.66 <img src="images/down_arrow.png" /> </td>
-                                                                    </tr>
+                    <div class="user-profile">
+                        <div class="user-img">
+                            <img src="img/avatar.jpg" alt="cover">
+                        </div>
+                        <div class="user-name">
+                            TOM TRUONG
+                            <i class="fa  fa-check-circle">&nbsp;</i>
+                        </div>
+                    </div>
+                    <div class="user-sumary-info">
+                        <span>
+                            Bài Phím<br>
+                            <a href="#">1</a>
+                        </span>
+                        <span>
+                            Theo dõi<br>
+                            <a href="#">999</a>
+                        </span>
+                        <span>
+                            Được theo dõi<br>
+                            <a href="#">999</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="second-left-banner">
+                    <div class="banner-header-black">HÀNG NÓNG VỪA XEM</div>
+                    <div class="banner-item1">
+                        <div class="item-left">
+                            <a href="#">$GAS<br><span>PV GAS</span></a>
+                        </div>
+                        <div class="item-right">
+                            <strong>108.66</strong>
+                            <span class="bearish">
+                                <i class="fa fa-sort-down"></i><br>
+                                <span class="top-menu-point">
+                                    0.35 (0,32%)
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="banner-item1">
+                        <div class="item-left">
+                            <a href="#">$GAS<br><span>PV GAS</span></a>
+                        </div>
+                        <div class="item-right">
+                            <strong>108.66</strong>
+                            <span class="bullish">
+                                <i class="fa fa-sort-up"></i><br>
+                                <span class="top-menu-point">
+                                    0.35 (0,32%)
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="banner-item1">
+                        <div class="item-left">
+                            <a href="#">$GAS<br><span>PV GAS</span></a>
+                        </div>
+                        <div class="item-right">
+                            <strong>108.66</strong>
+                            <span class="bullish">
+                                <i class="fa fa-sort-up"></i><br>
+                                <span class="top-menu-point">
+                                    0.35 (0,32%)
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="banner-item1">
+                        <div class="item-left">
+                            <a href="#">$GAS<br><span>PV GAS</span></a>
+                        </div>
+                        <div class="item-right">
+                            <strong>108.66</strong>
+                            <span class="bullish">
+                                <i class="fa fa-sort-up"></i><br>
+                                <span class="top-menu-point">
+                                    0.35 (0,32%)
+                                </span>
+                            </span>
+                        </div>
+                    </div>
 
-                                                            		<tr class="line2">
-                                                                    		<td width="60%" class="cot21">PV GAS</td>
-                                                                            <td class="cot22" align="center">0.35 (0.32%)</td>
-                                                                    </tr>
-                                                            </table>                                                     
-                                                
-                                        </li>
+                    <div class="banner-item-user-detail">
+                        <div class="avata-genaral-size">
+                            <img src="img/avatar2.jpg" class="img-rounded" alt="avatar">
+                        </div>
+                        <div class="list-item-detail">                                                                              
+                            <div class="list-item-username">Tom Truong</div>                                
+                            <div class="list-item-control">                                    
+                                <a class="button" href="#">PhimHang <i class="fa  fa-check-circle">&nbsp;</i></a>                                    
+                            </div>
+                        </div>                        
+                    </div>
+                    <div class="banner-item-user-detail">
+                        <div class="avata-genaral-size">
+                            <img src="img/avata3.jpg" class="img-rounded" alt="avatar">
+                        </div>
+                        <div class="list-item-detail">                                                                              
+                            <div class="list-item-username">Tom Truong</div>                                
+                            <div class="list-item-control">                                    
+                                <a class="button" href="#">PhimHang <i class="fa  fa-check-circle">&nbsp;</i></a>                                    
+                            </div>
+                        </div>                        
+                    </div>
+                    <div class="banner-item-user-detail">
+                        <div class="avata-genaral-size">
+                            <img src="img/avatar4.jpg" class="img-rounded" alt="avatar">
+                        </div>
+                        <div class="list-item-detail">                                                                              
+                            <div class="list-item-username">Tom Truong</div>                                
+                            <div class="list-item-control">                                    
+                                <a class="button" href="#">PhimHang</a>                                    
+                            </div>
+                        </div>                        
+                    </div>
+                    <div class="banner-item-user-detail">
+                        <div class="avata-genaral-size">
+                            <img src="img/avatar5.jpg" class="img-rounded" alt="avatar">
+                        </div>
+                        <div class="list-item-detail">                                                                              
+                            <div class="list-item-username">Tom Truong</div>                                
+                            <div class="list-item-control">                                    
+                                <a class="button" href="#">PhimHang <i class="fa  fa-check-circle">&nbsp;</i></a>                                    
+                            </div>
+                        </div>                        
+                    </div>
 
-                                		<li>
-                                        		
-															<table>
-                                                            		<tr class="line1">
-                                                                    		<td width="60%" class="cot11">$REE</td>
-                                                                            <td class="cot12" align="center">117.29 <img src="images/up_arrow.png" /> </td>
-                                                                    </tr>
+                </div>
+            </div>
+            <div class="area-center">
+                <div class="status-box">
+                    <div class="avatar-small">
+                        <img src="img/avatar.jpg" class="img-rounded" alt="avatar">
+                    </div>
+                    <div class="input-status">
+                        <form name="frmStatus">
+                            <div class="input-status-text">
+                                <input autofocus="" name="status" id="status" title="Search" autocomplete="off" type="text">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="filer-bar">
+                    <span class="filer-bar-label">Bộ Lọc: </span>
+                    <a class="filer-bar-item" href="#">Tất cả</a>
+                    <a class="filer-bar-item" href="#">Theo biểu đồ</a>
+                    <a class="filer-bar-item" href="#">Theo nhận định</a>
+                    <a class="filer-bar-item" href="#">
+                        Tùy chọn khác
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                </div>
+                <div class="filer-new-status">
+                    <div class="filer-new-status-button-bar">
+                        <div class="toggle-switch toggle-switch-success">
+                            <label>
+                                <input checked="" type="checkbox"/>
+                                <span class="toggle-switch-inner"></span>
+                                <span class="toggle-switch-switch"></span>
+                            </label>
+                        </div>
+                        <div class="text-label">Hiển thị bài phím mới</div>
+                    </div>
+                    <div class="msg-new-status">
+                        Có <strong>2</strong> bài phím mới: <a href="#">Hiển Thị <strong>2</strong> bài phím này</a>
+                    </div>
+                </div>
+                <div class="list-status">
+                    <div class="list-item-status">
+                        <div class="avata-genaral-size">
+                            <img src="img/avatar.jpg" class="img-rounded" alt="avatar">
+                        </div>
+                        <div class="list-item-detail">                                              
+                            <div class="list-item-date">Dec 1 at 9:30 PM</div>
+                            <div class="list-item-username">Tom Truong</div>
+                            <div class="list-item-status-content">goodmorning</div>
+                            <div class="list-item-control">
+                                <a class="button" href="#"><i class="fa fa-comments"></i></a>
+                                <a class="button" href="#">Trả lời</a>
+                                <a class="button" href="#">Chia sẻ</a>
+                                <a class="button" href="#">Thích</a>
+                                <a class="button" href="#">Báo cáo vi phạm</a>
+                            </div>
+                        </div>                        
+                    </div> 
+                    <div class="list-item-status">
+                        <div class="avata-genaral-size">
+                            <img src="img/avatar5.jpg" class="img-rounded" alt="avatar">
+                        </div>
+                        <div class="list-item-detail">                                              
+                            <div class="list-item-date">Dec 1 at 9:30 PM</div>
+                            <div class="list-item-username">Tom Truong</div>
+                            <div class="list-item-status-content">Bootstrap includes a responsive, mobile first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases</div>
+                            <div class="list-item-control">
+                                <a class="button"><i class="fa fa-comments"></i></a>
+                                <a class="button">Trả lời</a>
+                                <a class="button">Chia sẻ</a>
+                                <a class="button">Thích</a>
+                                <a class="button">Báo cáo vi phạm</a>
+                            </div>
+                        </div>                        
+                    </div>
+                    <div class="list-item-status">
+                        <div class="avata-genaral-size">
+                            <img src="img/avata3.jpg" class="img-rounded" alt="avatar">
+                        </div>
+                        <div class="list-item-detail">                                              
+                            <div class="list-item-date">Dec 1 at 9:30 PM</div>
+                            <div class="list-item-username">Tom Truong</div>
+                            <div class="list-item-status-content">Bootstrap includes a responsive, mobile first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases</div>
+                            <div class="list-item-control">
+                                <a class="button"><i class="fa fa-comments"></i></a>
+                                <a class="button">Trả lời</a>
+                                <a class="button">Chia sẻ</a>
+                                <a class="button">Thích</a>
+                                <a class="button">Báo cáo vi phạm</a>
+                            </div>
+                        </div>                        
+                    </div>
+                    <div class="list-item-status">
+                        <div class="avata-genaral-size">
+                            <img src="img/avatar2.jpg" class="img-rounded" alt="avatar">
+                        </div>
+                        <div class="list-item-detail">                                              
+                            <div class="list-item-date">Dec 1 at 9:30 PM</div>
+                            <div class="list-item-username">Tom Truong</div>
+                            <div class="list-item-status-content">Bootstrap includes a responsive, mobile first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases</div>
+                            <div class="list-item-control">
+                                <a class="button"><i class="fa fa-comments"></i></a>
+                                <a class="button">Trả lời</a>
+                                <a class="button">Chia sẻ</a>
+                                <a class="button">Thích</a>
+                                <a class="button">Báo cáo vi phạm</a>
+                            </div>
+                        </div>                        
+                    </div>
+                    <div class="list-item-status">
+                        <div class="avata-genaral-size">
+                            <img src="img/avatar4.jpg" class="img-rounded" alt="avatar">
+                        </div>
+                        <div class="list-item-detail">                                              
+                            <div class="list-item-date">Dec 1 at 9:30 PM</div>
+                            <div class="list-item-username">Tom Truong</div>
+                            <div class="list-item-status-content">Bootstrap includes a responsive, mobile first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases</div>
+                            <div class="list-item-control">
+                                <a class="button"><i class="fa fa-comments"></i></a>
+                                <a class="button">Trả lời</a>
+                                <a class="button">Chia sẻ</a>
+                                <a class="button">Thích</a>
+                                <a class="button">Báo cáo vi phạm</a>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
 
-                                                            		<tr class="line2">
-                                                                    		<td width="60%" class="cot21">REE Corp.</td>
-                                                                            <td class="cot22 xanh" align="center">2.73 (2.45%)</td>
-                                                                    </tr>
-                                                            </table>                                                                                                     
-                                        </li>
-                                		<li>
-                       				            			<table>
-                                                            		<tr class="line1">
-                                                                    		<td width="60%" class="cot11">$PVD</td>
-                                                                            <td class="cot12" align="center">88.37 <img src="images/up_arrow.png" /> </td>
-                                                                    </tr>
-
-                                                            		<tr class="line2">
-                                                                    		<td width="60%" class="cot21">Dầu Khí ;</td>
-                                                                            <td class="cot22 xanh" align="center">0.35 (0.32%)</td>
-                                                                    </tr>
-                                                            </table>                                                     
-                                        </li>
-                                		<li>
-                       				            			<table>
-                                                            		<tr class="line1">
-                                                                    		<td width="60%" class="cot11">$KBC</td>
-                                                                            <td class="cot12" align="center">88.37 <img src="images/up_arrow.png" /> </td>
-                                                                    </tr>
-
-                                                            		<tr class="line2">
-                                                                    		<td width="60%" class="cot21">Kinh Bắc Co.</td>
-                                                                            <td class="cot22 xanh" align="center">0.35 (0.32%)</td>
-                                                                    </tr>
-                                                            </table>                                                     
-                                        </li>
-
-                                </ul>
-                                </div>
-                                <div class="list2">
-                                <ul >
-                                		<li>
-										   		          <table>
-                                                            		<tr >
-                                                                    		<td width="30%" rowspan="2" class="anh" align="center" ><img src="images/anh.png" align="" /></td>
-                                                                            <td class="c11" >BuiDinhHoa</td>
-                                                                    </tr>
-																	<tr >
-                                                                    		
-                                                                            <td  class="c21 chon">Phimhang<img src="images/chon.png" /></td>
-                                                                    </tr>
-
-                                                            		
-                                                            </table>                                                     
-
-                                        </li>
-
-                                		<li>
-										   		          <table>
-                                                            		<tr >
-                                                                    		<td width="30%" rowspan="2" class="anh" align="center" ><img src="images/anh.png" align="" /></td>
-                                                                            <td class="c11" >Ledangquang</td>
-                                                                    </tr>
-																	<tr >
-                                                                    		
-                                                                            <td  class="c21">Phimhang</td>
-                                                                    </tr>
-
-                                                            		
-                                                            </table>                                                     
-
-                                        </li>
-
-                                		<li>
-										   		          <table>
-                                                            		<tr >
-                                                                    		<td width="30%" rowspan="2" class="anh" align="center" ><img src="images/anh.png" align="" /></td>
-                                                                            <td class="c11" >NguyenDucTruong</td>
-                                                                    </tr>
-																	<tr >
-                                                                    		
-                                                                            <td  class="c21">Phimhang</td>
-                                                                    </tr>
-
-                                                            		
-                                                            </table>                                                     
-
-                                        </li>
-
-                                		<li>
-										   		          <table>
-                                                            		<tr >
-                                                                    		<td width="30%" rowspan="2" class="anh" align="center" ><img src="images/anh.png" align="" /></td>
-                                                                            <td class="c11" >cdck</td>
-                                                                    </tr>
-																	<tr >
-                                                                    		
-                                                                            <td  class="c21 chon">Phimhang<img src="images/chon.png" /></td>
-                                                                    </tr>
-
-                                                            		
-                                                            </table>                                                     
-
-                                        </li>
-
-                                		<li>
-										   		          <table>
-                                                            		<tr >
-                                                                    		<td width="30%" rowspan="2" class="anh" align="center" ><img src="images/anh.png" align="" /></td>
-                                                                            <td class="c11" >Phimphim</td>
-                                                                    </tr>
-																	<tr >
-                                                                    		
-                                                                            <td  class="c21 chon">Phimhang<img src="images/chon.png" /></td>
-                                                                    </tr>
-
-                                                            		
-                                                            </table>                                                     
-
-                                        </li>
-                                        
-
-                                </ul>
-                        </div>        
-                        
-    </div><!-- end of content left -->
-                        <div id="content-center">
-                        		<div id="content-center-header">
-                                
-                        			<ul>
-                                    		<li>Bộ Lọc :</li>
-                                    		<li><a href="#">Tất cả</a></li>
-                                            <li><a href="#">Theo biểu đồ</a></li>
-                                            <li><a href="#"> Theo nhận định</a></li>
-                                            <li><a href="#">Tùy chọn khác</a></li>
-
-                                            
-                                    </ul>
-                                  </div>
-                                  
-                        			<div id="box-center">
-                                    		<div id="box-center-header">
-                                            		
-                                            		<div id="box-header-right">
-                                                        <ul>
-                                                                <li><a href="#"> Hiển Thị Bài Phím Mới </a> </li>
-                                                             		
-																<label class="switch switch-green">
-                                                                  <input type="checkbox" class="switch-input" checked>
-                                                                  <span class="switch-label" data-on="On" data-off="Off"></span>
-                                                                  <span class="switch-handle"></span>
-                                                                </label> 
- 
-                                                        </ul>
-                                                    </div>
-                                                    
-                                            </div>
-                                            <p>Có <span>2</span> bài phím mới: <a href="#">Hiển Thị <span>2</span> bài phím này</a></p>
-                                    </div>
-		                        <div class="chat-news">
-                        			<ul>	
-                                    		<li>
-                                            		
-                                                    		<div class="chat-news-image"><img src="images/chat_anh1.png" /> </div>
-                                                            <div class="chat-news-content">
-	                                                            	<div class="chat-news-content1">BuiDinhHoa</div>
-	                                                            	<div class="chat-news-content2">$ABC cổ phiếu này tốt đấy</div>			                                                            		<div class="chat-news-content3">
-                                                                    	<ul>
-                                                                        		<li ><a href="#"><img src="images/two35.png" width="15" height="15"></a></li>
-                                                                                <li><a href="#"> Reply</a></li>
-                                                                        		<li><a href="#"> Share</a></li>                                                                        		<li><a href="#"> Like</a></li>                                                                        		<li><a href="#"> Report</a></li>                                                                                
-                                                                        </ul>
-                                                                    </div>	                                                                    
-                                                            </div>
-                                                    	                                                
-                                            </li>
-                                            
-                                    </ul>
-                                </div>	
-                        
-                         <div class="chat-news">
-                        			<ul>	
-                                    		<li>
-                                            		
-                                                    		<div class="chat-news-image"><img src="images/chat_anh2.png" /> </div>
-                                                            <div class="chat-news-content">
-	                                                            	<div class="chat-news-content1">LeDangQuang</div>
-	                                                            	<div class="chat-news-content2">$ABC cổ phiếu này tốt đấy</div>			                                                            		<div class="chat-news-content3">
-                                                                    	<ul>
-                                                                        		<li ><a href="#"></a></li>
-                                                                                <li><a href="#"> Reply</a></li>
-                                                                        		<li><a href="#"> Share</a></li>                                                                        		<li><a href="#"> Like</a></li>                                                                        		<li><a href="#"> Report</a></li>                                                                                
-                                                                        </ul>
-                                                                    </div>	                                                                    
-                                                            </div>
-                                                    	                                                
-                                            </li>
-                                            
-                                    </ul>
-                                </div>	
-                        
-                        <div class="chat-news">
-                        			<ul>	
-                                    		<li>
-                                            		
-                                                    		<div class="chat-news-image"><img src="images/chat_anh3.png" /> </div>
-                                                            <div class="chat-news-content">
-	                                                            	<div class="chat-news-content1">NguyenDucTruong</div>
-	                                                            	<div class="chat-news-content2">$ABC cổ phiếu này tốt đấy</div>			                                                            		<div class="chat-news-content3">
-                                                                    	<ul>
-                                                                        		<li ><a href="#"><img src="images/two35.png" width="15" height="15"></a></li>
-                                                                                <li><a href="#"> Reply</a></li>
-                                                                        		<li><a href="#"> Share</a></li>                                                                        		<li><a href="#"> Like</a></li>                                                                        		<li><a href="#"> Report</a></li>                                                                                
-                                                                        </ul>
-                                                                    </div>	                                                                    
-                                                            </div>
-                                                    	                                                
-                                            </li>
-                                            
-                                    </ul>
-                                </div>	
-                     
-                     <div class="chat-news">
-                        			<ul>	
-                                    		<li>
-                                            		
-                                                    		<div class="chat-news-image"><img src="images/chat_anh1.png" /> </div>
-                                                            <div class="chat-news-content">
-	                                                            	<div class="chat-news-content1">BuiDinhHoa</div>
-	                                                            	<div class="chat-news-content2">$ABC cổ phiếu này tốt đấy</div>			                                                            		<div class="chat-news-content3">
-                                                                    	<ul>
-                                                                        		<li ><a href="#"></a></li>
-                                                                                <li><a href="#"> Reply</a></li>
-                                                                        		<li><a href="#"> Share</a></li>                                                                        		<li><a href="#"> Like</a></li>                                                                        		<li><a href="#"> Report</a></li>                                                                                
-                                                                        </ul>
-                                                                    </div>	                                                                    
-                                                            </div>
-                                                    	                                                
-                                            </li>
-                                            
-                                    </ul>
-                                </div>	
-                     
-                         <div class="chat-news">
-                        			<ul>	
-                                    		<li>
-                                            		
-                                                    		<div class="chat-news-image"><img src="images/chat_anh2.png" /> </div>
-                                                            <div class="chat-news-content">
-	                                                            	<div class="chat-news-content1">NguyenDucTruong</div>
-	                                                            	<div class="chat-news-content2">$ABC cổ phiếu này tốt đấy</div>			                                                            		<div class="chat-news-content3">
-                                                                    	<ul>
-                                                                        		<li ><a href="#"></a></li>
-                                                                                <li><a href="#"> Reply</a></li>
-                                                                        		<li><a href="#"> Share</a></li>                                                                        		<li><a href="#"> Like</a></li>                                                                        		<li><a href="#"> Report</a></li>                                                                                
-                                                                        </ul>
-                                                                    </div>	                                                                    
-                                                            </div>
-                                                    	                                                
-                                            </li>
-                                            
-                                    </ul>
-                                </div>	
-                        
-                        <div class="chat-news">
-                        			<ul>	
-                                    		<li>
-                                            		
-                                                    		<div class="chat-news-image"><img src="images/chat_anh3.png" /> </div>
-                                                            <div class="chat-news-content">
-	                                                            	<div class="chat-news-content1">LeDangQuang</div>
-	                                                            	<div class="chat-news-content2">$ABC cổ phiếu này tốt đấy</div>			                                                            		<div class="chat-news-content3">
-                                                                    	<ul>
-                                                                        		<li ><a href="#"><img src="images/two35.png" width="15" height="15"></a></li>
-                                                                                <li><a href="#"> Reply</a></li>
-                                                                        		<li><a href="#"> Share</a></li>                                                                        		<li><a href="#"> Like</a></li>                                                                        		<li><a href="#"> Report</a></li>                                                                                
-                                                                        </ul>
-                                                                    </div>	                                                                    
-                                                            </div>
-                                                    	                                                
-                                            </li>
-                                            
-                                    </ul>
-                                </div>	
-                        
-                         <div class="chat-news">
-                        			<ul>	
-                                    		<li>
-                                            		
-                                                    		<div class="chat-news-image"><img src="images/chat_anh1.png" /> </div>
-                                                            <div class="chat-news-content">
-	                                                            	<div class="chat-news-content1">BuiDinhHoa</div>
-	                                                            	<div class="chat-news-content2">$ABC cổ phiếu này tốt đấy</div>			                                                            		<div class="chat-news-content3">
-                                                                    	<ul>
-                                                                        		<li ><a href="#"><img src="images/two35.png" width="15" height="15"></a></li>
-                                                                                <li><a href="#"> Reply</a></li>
-                                                                        		<li><a href="#"> Share</a></li>                                                                        		<li><a href="#"> Like</a></li>                                                                        		<li><a href="#"> Report</a></li>                                                                                
-                                                                        </ul>
-                                                                    </div>	                                                                    
-                                                            </div>
-                                                    	                                                
-                                            </li>
-                                            
-                                    </ul>
-                                </div>	
-                        
-                        
-                        </div><!-- end of content center -->
-                        <div id="content-right">
-                        		<div id="editprofile">
-                                		<table width="100%" cellpadding="0" cellspacing="0">
-                                        		<tr>
-                                                		<td colspan="2" class="editprofile-c11">
-                                                        <form action="#" method="post">
-                                                          <input type="submit" value=" Tùy Chọn" name="btn_edit" class="btn_edit" />
-                                                        </form>		
-                                                        </td>
-                                                </tr>
-                                        		<tr>
-                                                		<td width="50%" valign="middle" class="c21"><a href="#"><span>6</span> Bài Phím </a></td>
-                                                        <td valign="middle" class="c22"><a href="#"><span>0</span>  Được theo dõi</a></td>
-                                                </tr>
-                                        		<tr>
-                                                		<td width="50%" valign="middle" class="c31"><a href="#"><span>4</span> Theo dõi </a></td>
-                                                        <td valign="middle"><a href="#">  <span>1</span> hàng nóng </a></td>
-                                                </tr>
-
-                                        </table>
-                                </div>
-                                
-                          <div id="following">
-                          			<div class="following-header">Dân Phím Chuyên Nghiệp </div>
-                                    <div class="following-content">
-                                    		<div class="following-content-new">
-                                            <div class="following-content-image"><a href="#"><img src="images/follow_anh1.png" /> </a></div>
-                                            		<p><a href="#"> Obama</a> <br /> 
-                                            		<span>2,869 Theo dõi</span> </p>
-                                                     <form action="#" method="post">
-                                                    <input type="submit" value=" Theo dõi" name="btn_follow" class="btn_follow" />
-                                                    </form>
-                                            </div>
-                                            
-                                            <div class="following-content-new">
-                                            <div class="following-content-image"><a href="#"><img src="images/follow_anh2.png" /></a> </div>
-                                            		<p>mRhandsome<br /> 
-                                            		<span>3,610 Theo dõi</span> </p>
-                                                     <form action="#" method="post">
-                                                    <input type="submit" value=" Theo dõi" name="btn_follow" class="btn_follow" />
-                                                    </form>
-                                            </div>
-                                    </div>
-                                    <p><a href="#">Tìm Hiểu Về Dân Phím Chuyên Nghiệp</a></p>
-                                    <p><a href="#"> Để Trở Thành Dân Phím Chuyên Nghiệp</a></p>                                    
-                                    
-                          </div>
-                        
-              </div><!-- end of content right -->
-            		
-            </div><!-- end of content -->
-    
-</div>
-
-</body>
+            </div>
+            <div class="area-right">
+                <div class="banner-right-first">
+                    <div class="banner-header-white">ĐANG THEO DÕI</div>
+                    <div class="banner-item1">
+                        <div class="item-left">
+                            <a href="#">$GAS<br><span>PV GAS</span></a>
+                        </div>
+                        <div class="item-right">
+                            <strong>108.66</strong>
+                            <span class="bearish">
+                                <i class="fa fa-sort-down"></i><br>
+                                <span class="top-menu-point">
+                                    0.35 (0,32%)
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="banner-item1">
+                        <div class="item-left">
+                            <a href="#">$GAS<br><span>PV GAS</span></a>
+                        </div>
+                        <div class="item-right">
+                            <strong>108.66</strong>
+                            <span class="bullish">
+                                <i class="fa fa-sort-up"></i><br>
+                                <span class="top-menu-point">
+                                    0.35 (0,32%)
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="banner-item1">
+                        <div class="item-left">
+                            <a href="#">$GAS<br><span>PV GAS</span></a>
+                        </div>
+                        <div class="item-right">
+                            <strong>108.66</strong>
+                            <span class="bullish">
+                                <i class="fa fa-sort-up"></i><br>
+                                <span class="top-menu-point">
+                                    0.35 (0,32%)
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="banner-item1">
+                        <div class="item-left">
+                            <a href="#">$GAS<br><span>PV GAS</span></a>
+                        </div>
+                        <div class="item-right">
+                            <strong>108.66</strong>
+                            <span class="bullish">
+                                <i class="fa fa-sort-up"></i><br>
+                                <span class="top-menu-point">
+                                    0.35 (0,32%)
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="loadmore"><a href="#"><i class="fa  fa-angle-double-down"></i></a></div>
+                </div>
+                <div class="second-left-banner">
+                    <div class="banner-header-white2">DÂN PHÍM CHUYÊN NGHIỆP</div>
+                    <div class="banner-item-user-detail">
+                        <div class="avata-genaral-size">
+                            <img src="img/avata3.jpg" class="img-rounded" alt="avatar">
+                        </div>
+                        <div class="list-item-detail">                                                                              
+                            <div class="list-item-username">Tom Truong <i class="fa  fa-check-circle">&nbsp;</i></div>                                
+                            <div class="list-item-control">                                    
+                                <a class="button"><i class="fa fa-plus"></i>Theo dõi</a>                                   
+                            </div>
+                        </div>                        
+                    </div>
+                    <div class="banner-item-user-detail">
+                        <div class="avata-genaral-size">
+                            <img src="img/avatar4.jpg" class="img-rounded" alt="avatar">
+                        </div>
+                        <div class="list-item-detail">                                                                              
+                            <div class="list-item-username">Tom Truong <i class="fa  fa-check-circle">&nbsp;</i></div>                                
+                            <div class="list-item-control">                                    
+                                <a class="button"><i class="fa fa-plus"></i>Theo dõi</a>                                   
+                            </div>
+                        </div>                        
+                    </div> 
+                    <div class="banner-item-user-detail">
+                        <div class="avata-genaral-size">
+                            <img src="img/avatar5.jpg" class="img-rounded" alt="avatar">
+                        </div>
+                        <div class="list-item-detail">                                                                              
+                            <div class="list-item-username">Tom Truong <i class="fa  fa-check-circle">&nbsp;</i></div>                                
+                            <div class="list-item-control">                                    
+                                <a class="button"><i class="fa fa-plus"></i>Theo dõi</a>                                   
+                            </div>
+                        </div>                        
+                    </div>                     
+                    <div class="loadmore"><a href="#"><i class="fa  fa-angle-double-down"></i></a></div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
