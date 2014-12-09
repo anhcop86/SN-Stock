@@ -1,0 +1,145 @@
+﻿
+@section scripts{
+<script src="~/Scripts/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+}
+@using Newtonsoft.Json
+@using Newtonsoft.Json
+@{
+    var jsPeople = Html.Raw(JsonConvert.SerializeObject(Model));
+}
+
+    <div class="ticker-header clearfix" id="containB">
+        <h1>
+            @ViewBag.StockName <span class="one-col-show-span" data-bind="html: ColourChange"></span>
+
+        </h1>
+        <div class="js-price-color one-col-hide price-color-change negative" data-symbol="CBST"></div>
+        <div class="symbol-box one-col-hide">
+            <h2 id="stockcode">@ViewBag.StockCode</h2>
+
+            <br>
+            <span class="exchange"></span>
+        </div>
+        <div class="ticker-price">
+            <div class="pricing" data-symbol="CBST" style="padding-bottom: 20px;" data-stock-price="74.37" data-stock-direction="negative" data-stock-change="0.15 (0.20%) ">
+                <span class="price" data-bind="text:FinishPrice"></span>
+                <span class="denomination"></span>
+                <span class="metric-change">
+                    <span class="change-image negative"></span>
+                    <span class="change negative" data-bind="text:Diff"> </span>
+                    <span data-bind="text:DiffRate"></span>
+                </span>
+
+                <span class="last-updated">last updated 4:25 PM EST Dec  5</span>
+            </div>
+
+        </div>
+
+        <div class="ad-text">
+            Trade
+            <strong>
+                $CBST
+            </strong>
+            Now
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var viewModel = {
+
+            CompanyID: ko.observable(),
+            FinishPrice: ko.observable(),
+            Diff: ko.observable(),
+            DiffRate: ko.observable(),
+
+        };
+
+        //var listStock =
+        viewModel.ColourChange = ko.pureComputed(function () {
+            return this.Diff() === 0 ? '<em><color style="color:yellow">YELLOW </color></em>'
+                : this.Diff() > 0 ? 'GREEN'
+                : 'RED';
+        }, viewModel);
+         // This makes Knockout get to work
+
+
+        $(function () {
+            var ticker = $.connection.StockRealTimeHub;
+
+            function init() {
+
+                ticker.server.getStock($('#stockcode').html().toUpperCase()).done(function (stock) {
+
+                    viewModel.CompanyID(stock.CompanyID).Diff(stock.Diff).DiffRate(stock.DiffRate).FinishPrice(stock.FinishPrice);
+                    ko.applyBindings(viewModel, document.getElementById("containB")); // knockout javascript framework bindings
+
+                });
+                ticker.server.joinRoom($('#stockcode').html().toUpperCase());
+            }
+
+            ticker.client.updateStockPrice = function (stock) {
+                viewModel.CompanyID(stock.CompanyID).Diff(stock.Diff).DiffRate(stock.DiffRate).FinishPrice(stock.FinishPrice);
+
+            }
+
+            $.connection.hub.start().done(init);
+            $.connection.hub.logging = true;
+
+        });
+
+      
+
+    </script>
+
+<div id="aContainer">
+    <table>
+        <thead>
+            <tr>
+                <th>CompanyID name</th>
+                <th>FinishPrice</th>
+                <th>Diff</th>
+                <th>DiffRate</th>
+            </tr>
+        </thead>
+        <!-- Todo: Generate table body -->
+        <tbody data-bind="foreach: stockLists">
+            <tr>
+                <td data-bind="text: CompanyID"></td>
+                <td data-bind="text: FinishPrice"></td>
+                <td data-bind="text: Diff"></td>
+                <td data-bind="text: DiffRate"></td>
+                @*<td data-bind="text: ColourChange"></td>*@
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script type="text/javascript">
+    // getlist follow stock
+
+     $(function() {
+         var viewModel = {
+           stockLists :  ko.mapping.fromJS(@jsPeople)
+         };
+         //viewModel.ColourChange = ko.pureComputed(function () {
+         //    return this.Diff() === 0 ? '<em><color style="color:yellow">YELLOW </color></em>'
+         //        : this.Diff() > 0 ? 'GREEN'
+         //        : 'RED';
+         //}, viewModel);
+
+         setInterval(function () {
+             $.ajax(
+             {
+                 url: '@Url.Action("GetListStockPriceFollowForUser", "Account")',
+                 cache: false,
+                 success: function (data) {
+                     viewModel.stockLists = ko.mapping.fromJS(data);
+                 }
+             });
+         }, 20000);
+
+         ko.applyBindings(viewModel, document.getElementById("aContainer"));
+          });
+    </script>

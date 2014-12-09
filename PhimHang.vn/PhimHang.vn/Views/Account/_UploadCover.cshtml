@@ -1,0 +1,83 @@
+﻿
+@using (Html.BeginForm("CoverUpload", "Account", FormMethod.Post, new { id = "SubmitformUploadImageCover", enctype = "multipart/form-data" })) // upload hình phải có thuộc tính này, enctype = "multipart/form-data"
+{
+<table class="form-table">
+    <tbody>
+        <tr>
+            <th>
+                <label for="user_avatar">Cover:</label>
+            </th>
+            <td>
+                <img alt="Default_avatar_medium" id="imgFileName_cover" src="~/@ViewBag.ImageUrlCover?width=800&height=180&mode=crop" height="180" width="800">
+
+                <br>
+                <input id="uploadfileid_cover" name="uploadfileid_cover" type="file">
+                <br>
+                <span class="hint">Maximum size of 700 kb. JPG, GIF, or PNG.</span>
+                <span class="hint">Images will automatically be cropped to a square.</span>
+            </td>
+        </tr>
+        <tr>
+            <th></th>
+            
+            <td>
+                <a href="javascript:void(0)" class="btn btn-default" id="uploadCoverSubmit" style="margin-bottom: 0;">Upload Avata</a>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+}
+<div id="progress_cover">
+    <div id="bar_cover"></div>
+    <div id="percent_cover">0%</div>
+</div>
+<br />
+
+<div id="message_cover"></div>
+
+
+
+<script type="text/javascript">
+
+    $("a#uploadCoverSubmit").click(function () {
+        var options_cover = {
+            beforeSend: function () {
+                $("#progress_cover").show();
+                //clear everything
+                $("#bar_cover").width('0%');
+                $("#message_cover").html("");
+                $("#percent_cover").html("0%");
+            },
+            uploadProgress: function (event, position, total, percentComplete) {
+                $("#bar_cover").width(percentComplete + '%');
+                $("#percent_cover").html(percentComplete + '%');
+
+            },
+            success: function () {
+
+
+            },
+            complete: function (response) {
+                if (response.responseText.indexOf('YES') != -1) {
+                    $("#bar_cover").width('100%');
+                    $("#percent_cover").html('100%');
+                    $("#message_cover").html("<font color='green'>" + "Cập nhật Avata thành công" + "</font>");
+                    $("#imgFileName_cover").attr("src", "../" + response.responseText.replace("YES|", "") + "?width=800&height=180&mode=crop");                    
+
+                }
+                else {
+                    $("#progress_cover").hide();
+                    $("#message_cover").html("<font color='red'> " + response.responseText + "</font>");
+                }
+
+            },
+            error: function () {
+                $("#message_cover").html("<font color='red'> ERROR: unable to upload files</font>");
+
+            }
+        };
+        $("form#SubmitformUploadImageCover").ajaxForm(options_cover).submit();
+    });
+
+</script>
