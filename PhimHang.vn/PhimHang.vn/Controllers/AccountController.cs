@@ -546,6 +546,8 @@ namespace PhimHang.Controllers
             return (ActionResult)PartialView("_RemoveAccountPartial", linkedAccounts);
         }
 
+
+        
         [ActionName("GetListStockPriceFollowForUser")]
         public async Task<JsonResult> GetListStockPriceFollowForUser()
         {

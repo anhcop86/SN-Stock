@@ -33,19 +33,22 @@ namespace PhimHang.Controllers
         private testEntities db;
 
         public async Task<ViewResult> Index(string symbolName)
-        {
-            if (symbolName == "GetListStockPriceFollowForUser")
-            {
-                RedirectToAction("GetListStockPriceFollowForUser");
-            }
+        {            
             var company = new StockCode();
-            var currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            var currentUser = new ApplicationUser();
+            Session["listStock"] = new List<string>();
             using (db = new testEntities())
             {
+                if (User.Identity.IsAuthenticated)
+                {
+                     currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                     Session["listStock"] = (from s in db.FollowStocks
+                                             where s.UserId == currentUser.UserExtentLogin.Id
+                                             select s.StockFollowed).ToList();
+                }
+
                 company = await db.StockCodes.FirstOrDefaultAsync(m => m.Code == symbolName);
-                Session["listStock"] = (from s in db.FollowStocks
-                                        where s.UserId == currentUser.UserExtentLogin.Id
-                                        select s.StockFollowed).ToList();
+                
             }
 
             if (company != null)

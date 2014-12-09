@@ -4,7 +4,7 @@
     <script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>
     <script src="~/signalr/hubs"></script>
 }
-@using Newtonsoft.Json
+
 @using Newtonsoft.Json
 @{
     var jsPeople = Html.Raw(JsonConvert.SerializeObject(Model));
@@ -120,7 +120,7 @@
     // getlist follow stock
 
      $(function() {
-         var viewModel = {
+         var listStockUserModel = {
            stockLists :  ko.mapping.fromJS(@jsPeople)
          };
          //viewModel.ColourChange = ko.pureComputed(function () {
@@ -135,11 +135,11 @@
                  url: '@Url.Action("GetListStockPriceFollowForUser", "Account")',
                  cache: false,
                  success: function (data) {
-                     viewModel.stockLists = ko.mapping.fromJS(data);
+                     listStockUserModel.stockLists = ko.mapping.fromJS(data);
                  }
              });
          }, 20000);
 
-         ko.applyBindings(viewModel, document.getElementById("aContainer"));
+         ko.applyBindings(listStockUserModel, document.getElementById("aContainer"));
           });
     </script>
