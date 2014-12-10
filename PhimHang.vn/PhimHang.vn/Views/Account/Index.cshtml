@@ -1,11 +1,13 @@
 ﻿
 @{
-    ViewBag.Title = "Quản lý tài khoản";
+    ViewBag.Title = "";    
 }
-
-<ul style="margin:20px">
-    <li>@Html.ActionLink("Đổi mật khẩu", "Manage", "Account")</li>
-    <li>@Html.ActionLink("Cập nhật thông tin", "Profile", "Account")</li>
+@if(User.Identity.IsAuthenticated)
+{ 
+    <ul style="margin:20px">
+        <li>@Html.ActionLink("Đổi mật khẩu", "Manage", "Account")</li>
+        <li>@Html.ActionLink("Cập nhật thông tin", "Profile", "Account")</li>
    
-</ul>
+    </ul>
+}
 

@@ -54,6 +54,16 @@ namespace PhimHang.Controllers
             return View();
         }
 
+        [AllowAnonymous]
+        public ActionResult Index(string returnUrl)
+        {
+            if (returnUrl!=null)
+            {
+                ViewBag.ReturnUrl = returnUrl;    
+            }
+            
+            return View();
+        }
         //
         // POST: /Account/Login
         [HttpPost]
@@ -140,11 +150,11 @@ namespace PhimHang.Controllers
             return RedirectToAction("Manage", new { Message = message });
         }
         // GET: /Account
-        public ActionResult Index()
-        {
+        //public ActionResult Index()
+        //{
 
-            return View();
-        }
+        //    return View();
+        //}
 
         // GET: /Profile
         public ActionResult Profile(ManageMessageId? message)

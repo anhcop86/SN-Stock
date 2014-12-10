@@ -119,27 +119,27 @@
 <script type="text/javascript">
     // getlist follow stock
 
-     $(function() {
-         var listStockUserModel = {
-           stockLists :  ko.mapping.fromJS(@jsPeople)
-         };
-         //viewModel.ColourChange = ko.pureComputed(function () {
-         //    return this.Diff() === 0 ? '<em><color style="color:yellow">YELLOW </color></em>'
-         //        : this.Diff() > 0 ? 'GREEN'
-         //        : 'RED';
-         //}, viewModel);
+    $(function () {
+        var listStockUserModel = {
+            stockLists: ko.mapping.fromJS(@jsPeople)
+        };
+        //viewModel.ColourChange = ko.pureComputed(function () {
+        //    return this.Diff() === 0 ? '<em><color style="color:yellow">YELLOW </color></em>'
+        //        : this.Diff() > 0 ? 'GREEN'
+        //        : 'RED';
+        //}, viewModel);
 
-         setInterval(function () {
-             $.ajax(
-             {
-                 url: '@Url.Action("GetListStockPriceFollowForUser", "Account")',
-                 cache: false,
-                 success: function (data) {
-                     listStockUserModel.stockLists = ko.mapping.fromJS(data);
-                 }
-             });
-         }, 20000);
+        setInterval(function () {
+            $.ajax(
+            {
+                url: '@Url.Action("GetListStockPriceFollowForUser", "Account")',
+                cache: false,
+                success: function (data) {
+                    listStockUserModel.stockLists = ko.mapping.fromJS(data);
+                }
+            });
+        }, 20000);
 
-         ko.applyBindings(listStockUserModel, document.getElementById("aContainer"));
-          });
+        ko.applyBindings(listStockUserModel, document.getElementById("aContainer"));
+    });
     </script>

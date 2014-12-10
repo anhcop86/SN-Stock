@@ -195,7 +195,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FollowStockController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\SymbolController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -267,6 +269,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Profile.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\ThirtParty\imo.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -363,6 +366,8 @@
     <Content Include="Views\FollowStock\Details.cshtml" />
     <Content Include="Views\FollowStock\Edit.cshtml" />
     <Content Include="Views\FollowStock\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Register\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
