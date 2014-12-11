@@ -46,7 +46,16 @@ namespace PhimHang.Controllers
         public UserManager<ApplicationUser> UserManager { get; private set; }
 
         private testEntities db;// = new testEntities();
+        [AllowAnonymous]
+        public ActionResult Index(string returnUrl)
+        {
+            if (returnUrl != null)
+            {
+                ViewBag.ReturnUrl = returnUrl;
+            }
 
+            return View();
+        }
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
@@ -54,16 +63,7 @@ namespace PhimHang.Controllers
             return View();
         }
 
-        [AllowAnonymous]
-        public ActionResult Index(string returnUrl)
-        {
-            if (returnUrl!=null)
-            {
-                ViewBag.ReturnUrl = returnUrl;    
-            }
-            
-            return View();
-        }
+       
         //
         // POST: /Account/Login
         [HttpPost]
@@ -73,12 +73,13 @@ namespace PhimHang.Controllers
         {
             if (ModelState.IsValid)
             {
+                ViewBag.ReturnUrl = returnUrl;
                 var user = await UserManager.FindAsync(model.UserName, model.Password);
                 if (user != null)
                 {
                     await SignInAsync(user, model.RememberMe);
-                    //return RedirectToLocal(returnUrl); // Returun URL
-                    return RedirectToAction(""); // Hieu
+                    return RedirectToLocal(returnUrl); // Returun URL
+                    //eturn RedirectToAction(""); // Hieu
 
                 }
                 else
