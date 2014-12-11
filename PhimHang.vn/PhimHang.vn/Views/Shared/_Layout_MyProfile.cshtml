@@ -2,18 +2,17 @@
 <html>
 <head>
 
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    
-    <script src="~/Scripts/knockout-3.2.0.js"></script>    
+    <title>@ViewBag.Title</title>
+
+    <script src="~/Scripts/knockout-3.2.0.js"></script>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>
     <script src="~/signalr/hubs"></script>
     <!--For desgin-->
-    <title>Custom title</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    
+
     <link href="~/Content/jquery-ui.css" rel="stylesheet" />
     <link href="~/Content/style.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-ui-1.8.20.min.js"></script>
@@ -23,415 +22,290 @@
     <!-- End For desgin-->
 </head>
 
-    <body style="background-color: #91c7e8;">
-        <header>
-            <div class="navbar">
-                <div class="top-panel">
-                    <div id="logo" class="top-panel-left">
-                        <a href="/MyProfile" style="margin-right: 10px;float: left;">
-                            <img src="img/logo.png" alt="null">
-                        </a>
-                    </div>
-                    <div class="top-panel-right">
-                        <ul class="nav navbar-nav pull-right panel-menu">
-                            <li class="hidden-xs">
-                                <a href="index.html">
-                                    <i class="fa fa-home"></i>
-                                </a>
-                            </li>
-                            <li class="hidden-xs">
-                                <a href="index.html">
-                                    <i class="fa fa-envelope" style="font-size: 22px;"></i>
-                                </a>
-                            </li>
-                            <li class="hidden-xs" style="margin-left: 80px;">
-                                <form id="frmSearch">
-                                    <span id="search_box_top">
-                                        <input autofocus="" name="q" id="kq" title="Search" autocomplete="off" type="text">
-                                        <i class="fa fa-search"></i>
-                                    </span>
-                                </form>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle account" data-toggle="dropdown">
-                                    <i class="fa  fa-cog pull-right"></i>
-                                </a>
-                                <!--                            <ul class="dropdown-menu">
-                                                                <li>
-                                                                    <a href="http://localhost:8886/Users/view/1">
-                                                                        <i class="fa fa-user"></i>
-                                                                        <span>Hồ sơ</span>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="http://localhost:8886/login/logout">
-                                                                        <i class="fa fa-power-off"></i>
-                                                                        <span>Đăng xuất</span>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>-->
-                            </li>
-                        </ul>
-                    </div>
+<body style="background-color: #91c7e8;">
+    <header>
+        <div class="navbar">
+            <div class="top-panel">
+                <div id="logo" class="top-panel-left">
+                    <a href="/MyProfile" style="margin-right: 10px;float: left;">
+                        <img src="img/logo.png" alt="null">
+                    </a>
                 </div>
-            </div>
-            <div class="menu-top-bar">
-                <div class="top-menu-2">
-                    <ul class="nav navbar-nav top-panel-left2">
+                <div class="top-panel-right">
+                    <ul class="nav navbar-nav pull-right panel-menu">
                         <li class="hidden-xs">
-                            <a href="index.html" class="link-menu-top-active bold">
-                                HÀNG NÓNG
+                            <a href="index.html">
+                                <i class="fa fa-home"></i>
                             </a>
                         </li>
                         <li class="hidden-xs">
                             <a href="index.html">
-                                $VNM
+                                <i class="fa fa-envelope" style="font-size: 22px;"></i>
                             </a>
                         </li>
-                        <li class="hidden-xs">
-                            <a href="index.html">
-                                $GAS
-                            </a>
+                        <li class="hidden-xs" style="margin-left: 80px;">
+                            <form id="frmSearch">
+                                <span id="search_box_top">
+                                    <input autofocus="" name="q" id="kq" title="Search" autocomplete="off" type="text">
+                                    <i class="fa fa-search"></i>
+                                </span>
+                            </form>
                         </li>
-                        <li class="hidden-xs">
-                            <a href="index.html">
-                                $MSM
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle account" data-toggle="dropdown">
+                                <i class="fa  fa-cog pull-right"></i>
                             </a>
-                        </li>
-                        <li class="hidden-xs">
-                            <a href="index.html">
-                                $MSM
-                            </a>
-                        </li>
-                        <li class="hidden-xs">
-                            <a href="index.html">
-                                $REE
-                            </a>
-                        </li>
-                        <li class="hidden-xs">
-                            <a href="index.html">
-                                $SSI
-                            </a>
-                        </li>
-                        <li class="hidden-xs">
-                            <a href="index.html">
-                                $SSI
-                            </a>
-                        </li>
-                        <li class="hidden-xs">
-                            <a href="index.html">
-                                $SSI
-                            </a>
-                        </li>
-                        <li class="hidden-xs">
-                            <a href="index.html">
-                                $SSI
-                            </a>
+                            <!--                            <ul class="dropdown-menu">
+                                                            <li>
+                                                                <a href="http://localhost:8886/Users/view/1">
+                                                                    <i class="fa fa-user"></i>
+                                                                    <span>Hồ sơ</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="http://localhost:8886/login/logout">
+                                                                    <i class="fa fa-power-off"></i>
+                                                                    <span>Đăng xuất</span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>-->
                         </li>
                     </ul>
-                    <ul class="nav navbar-nav pull-right top-panel-right2">
-                        <li class="hidden-xs">
-                            <a href="index.html" class="top-menu-2-active">CHỈ SỐ</a>
-                        </li>
-                        <li class="hidden-xs">
-                            <a href="index.html">
-                                VNI
-                                <span class="bullish">
-                                    <i class="fa  fa-sort-up "></i>
-                                    <span class="top-menu-point">
-                                        39.81
-                                    </span>
-                                </span>
-
-                            </a>
-                        </li>
-                        <li class="hidden-xs">
-                            <a href="index.html">
-                                VN30
-                                <span class="bearish">
-                                    <i class="fa fa-sort-down"></i>
-                                    <span class="top-menu-point">
-                                        39.81
-                                    </span>
-                                </span>
-
-                            </a>
-                        </li>
-                        <li class="hidden-xs">
-                            <a href="index.html">
-                                HNI
-                                <span class="none-bullish-bearish">
-                                    <i class="fa fa-unsorted"></i>
-                                    <span class="top-menu-point">
-                                        39.81
-                                    </span>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="hidden-xs">
-                            <a href="index.html">
-                                HN30
-                                <span class="bullish">
-                                    <i class="fa fa-sort-up"></i>
-                                    <span class="top-menu-point">
-                                        39.81
-                                    </span>
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </header>
-        <div class="content-main">
-            <div class="area-left">
-                <!--                <div class="bar-login">
-                                    <div class="btn-login">LOGIN</div>
-                                    <div class="btn-logout">LOGOUT</div>
-                                </div>-->
-                <div class="user-info">
-                    <div class="cover-img">
-                        <img src="img/cover.jpg" alt="cover">
-                    </div>
-                    <div class="user-profile">
-                        <div class="user-img">
-                            <img src="img/avatar.jpg" alt="cover">
-                        </div>
-                        <div class="user-name">
-                            TOM TRUONG
-                            <i class="fa  fa-check-circle">&nbsp;</i>
-                        </div>
-                    </div>
-                    <div class="user-sumary-info">
-                        <span>
-                            Bài Phím<br>
-                            <a href="#">1</a>
-                        </span>
-                        <span>
-                            Theo dõi<br>
-                            <a href="#">999</a>
-                        </span>
-                        <span>
-                            Được theo dõi<br>
-                            <a href="#">999</a>
-                        </span>
-                    </div>
-                </div>
-                <div class="second-left-banner">
-                    <div class="banner-header-black">HÀNG NÓNG VỪA XEM</div>
-                    <div class="banner-item1">
-                        <div class="item-left">
-                            <a href="#">$GAS<br><span>PV GAS</span></a>
-                        </div>
-                        <div class="item-right">
-                            <strong>108.66</strong>
-                            <span class="bearish">
-                                <i class="fa fa-sort-down"></i><br>
-                                <span class="top-menu-point">
-                                    0.35 (0,32%)
-                                </span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="banner-item1">
-                        <div class="item-left">
-                            <a href="#">$GAS<br><span>PV GAS</span></a>
-                        </div>
-                        <div class="item-right">
-                            <strong>108.66</strong>
-                            <span class="bullish">
-                                <i class="fa fa-sort-up"></i><br>
-                                <span class="top-menu-point">
-                                    0.35 (0,32%)
-                                </span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="banner-item1">
-                        <div class="item-left">
-                            <a href="#">$GAS<br><span>PV GAS</span></a>
-                        </div>
-                        <div class="item-right">
-                            <strong>108.66</strong>
-                            <span class="bullish">
-                                <i class="fa fa-sort-up"></i><br>
-                                <span class="top-menu-point">
-                                    0.35 (0,32%)
-                                </span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="banner-item1">
-                        <div class="item-left">
-                            <a href="#">$GAS<br><span>PV GAS</span></a>
-                        </div>
-                        <div class="item-right">
-                            <strong>108.66</strong>
-                            <span class="bullish">
-                                <i class="fa fa-sort-up"></i><br>
-                                <span class="top-menu-point">
-                                    0.35 (0,32%)
-                                </span>
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="banner-item-user-detail">
-                        <div class="avata-genaral-size">
-                            <img src="img/avatar2.jpg" class="img-rounded" alt="avatar">
-                        </div>
-                        <div class="list-item-detail">
-                            <div class="list-item-username">Tom Truong</div>
-                            <div class="list-item-control">
-                                <a class="button" href="#">PhimHang <i class="fa  fa-check-circle">&nbsp;</i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="banner-item-user-detail">
-                        <div class="avata-genaral-size">
-                            <img src="img/avata3.jpg" class="img-rounded" alt="avatar">
-                        </div>
-                        <div class="list-item-detail">
-                            <div class="list-item-username">Tom Truong</div>
-                            <div class="list-item-control">
-                                <a class="button" href="#">PhimHang <i class="fa  fa-check-circle">&nbsp;</i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="banner-item-user-detail">
-                        <div class="avata-genaral-size">
-                            <img src="img/avatar4.jpg" class="img-rounded" alt="avatar">
-                        </div>
-                        <div class="list-item-detail">
-                            <div class="list-item-username">Tom Truong</div>
-                            <div class="list-item-control">
-                                <a class="button" href="#">PhimHang</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="banner-item-user-detail">
-                        <div class="avata-genaral-size">
-                            <img src="img/avatar5.jpg" class="img-rounded" alt="avatar">
-                        </div>
-                        <div class="list-item-detail">
-                            <div class="list-item-username">Tom Truong</div>
-                            <div class="list-item-control">
-                                <a class="button" href="#">PhimHang <i class="fa  fa-check-circle">&nbsp;</i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            
-            <!--render body here-->
-            @RenderBody()
-            <!--end render body here-->
-
-            <div class="area-right">
-                <div class="banner-right-first">
-                    <div class="banner-header-white">ĐANG THEO DÕI</div>
-                    <div class="banner-item1">
-                        <div class="item-left">
-                            <a href="#">$GAS<br><span>PV GAS</span></a>
-                        </div>
-                        <div class="item-right">
-                            <strong>108.66</strong>
-                            <span class="bearish">
-                                <i class="fa fa-sort-down"></i><br>
-                                <span class="top-menu-point">
-                                    0.35 (0,32%)
-                                </span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="banner-item1">
-                        <div class="item-left">
-                            <a href="#">$GAS<br><span>PV GAS</span></a>
-                        </div>
-                        <div class="item-right">
-                            <strong>108.66</strong>
-                            <span class="bullish">
-                                <i class="fa fa-sort-up"></i><br>
-                                <span class="top-menu-point">
-                                    0.35 (0,32%)
-                                </span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="banner-item1">
-                        <div class="item-left">
-                            <a href="#">$GAS<br><span>PV GAS</span></a>
-                        </div>
-                        <div class="item-right">
-                            <strong>108.66</strong>
-                            <span class="bullish">
-                                <i class="fa fa-sort-up"></i><br>
-                                <span class="top-menu-point">
-                                    0.35 (0,32%)
-                                </span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="banner-item1">
-                        <div class="item-left">
-                            <a href="#">$GAS<br><span>PV GAS</span></a>
-                        </div>
-                        <div class="item-right">
-                            <strong>108.66</strong>
-                            <span class="bullish">
-                                <i class="fa fa-sort-up"></i><br>
-                                <span class="top-menu-point">
-                                    0.35 (0,32%)
-                                </span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="loadmore"><a href="#"><i class="fa  fa-angle-double-down"></i></a></div>
-                </div>
-                <div class="second-left-banner">
-                    <div class="banner-header-white2">DÂN PHÍM CHUYÊN NGHIỆP</div>
-                    <div class="banner-item-user-detail">
-                        <div class="avata-genaral-size">
-                            <img src="img/avata3.jpg" class="img-rounded" alt="avatar">
-                        </div>
-                        <div class="list-item-detail">
-                            <div class="list-item-username">Tom Truong <i class="fa  fa-check-circle">&nbsp;</i></div>
-                            <div class="list-item-control">
-                                <a class="button"><i class="fa fa-plus"></i>Theo dõi</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="banner-item-user-detail">
-                        <div class="avata-genaral-size">
-                            <img src="img/avatar4.jpg" class="img-rounded" alt="avatar">
-                        </div>
-                        <div class="list-item-detail">
-                            <div class="list-item-username">Tom Truong <i class="fa  fa-check-circle">&nbsp;</i></div>
-                            <div class="list-item-control">
-                                <a class="button"><i class="fa fa-plus"></i>Theo dõi</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="banner-item-user-detail">
-                        <div class="avata-genaral-size">
-                            <img src="img/avatar5.jpg" class="img-rounded" alt="avatar">
-                        </div>
-                        <div class="list-item-detail">
-                            <div class="list-item-username">Tom Truong <i class="fa  fa-check-circle">&nbsp;</i></div>
-                            <div class="list-item-control">
-                                <a class="button"><i class="fa fa-plus"></i>Theo dõi</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="loadmore"><a href="#"><i class="fa  fa-angle-double-down"></i></a></div>
                 </div>
             </div>
         </div>
-    
-    
+        <div class="menu-top-bar">
+            <div class="top-menu-2">
+                <ul class="nav navbar-nav top-panel-left2">
+                    <li class="hidden-xs">
+                        <a href="index.html" class="link-menu-top-active bold">
+                            HÀNG NÓNG
+                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="index.html">
+                            $VNM
+                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="index.html">
+                            $GAS
+                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="index.html">
+                            $MSM
+                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="index.html">
+                            $MSM
+                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="index.html">
+                            $REE
+                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="index.html">
+                            $SSI
+                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="index.html">
+                            $SSI
+                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="index.html">
+                            $SSI
+                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="index.html">
+                            $SSI
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav pull-right top-panel-right2">
+                    <li class="hidden-xs">
+                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <a href="javascript:document.getElementById('logoutForm').submit()" class="top-menu-2-active">LOG OFF</a>
 
-    
+                        }
+                    </li>
+                    @*<li class="hidden-xs">
+                            <a href="index.html" class="top-menu-2-active">CHỈ SỐ</a>
+                        </li>*@
+                    <li class="hidden-xs">
+                        <a href="index.html">
+                            VNI
+                            <span class="bullish">
+                                <i class="fa  fa-sort-up "></i>
+                                <span class="top-menu-point">
+                                    39.81
+                                </span>
+                            </span>
+
+                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="index.html">
+                            VN30
+                            <span class="bearish">
+                                <i class="fa fa-sort-down"></i>
+                                <span class="top-menu-point">
+                                    39.81
+                                </span>
+                            </span>
+
+                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="index.html">
+                            HNI
+                            <span class="none-bullish-bearish">
+                                <i class="fa fa-unsorted"></i>
+                                <span class="top-menu-point">
+                                    39.81
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="hidden-xs">
+                        <a href="index.html">
+                            HN30
+                            <span class="bullish">
+                                <i class="fa fa-sort-up"></i>
+                                <span class="top-menu-point">
+                                    39.81
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="content-main">
+        <div class="area-left">
+            <!--render Partial_Area_Left-->
+            
+            @Html.Partial("_Partial_Area_Left")
+            <!--end render Partial_Area_Left-->
+        </div>
+
+        <!--render body here-->
+        @RenderBody()
+        <!--end render body here-->
+
+        <div class="area-right">
+            <div class="banner-right-first">
+                <div class="banner-header-white">ĐANG THEO DÕI</div>
+                <div class="banner-item1">
+                    <div class="item-left">
+                        <a href="#">$GAS<br><span>PV GAS</span></a>
+                    </div>
+                    <div class="item-right">
+                        <strong>108.66</strong>
+                        <span class="bearish">
+                            <i class="fa fa-sort-down"></i><br>
+                            <span class="top-menu-point">
+                                0.35 (0,32%)
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="banner-item1">
+                    <div class="item-left">
+                        <a href="#">$GAS<br><span>PV GAS</span></a>
+                    </div>
+                    <div class="item-right">
+                        <strong>108.66</strong>
+                        <span class="bullish">
+                            <i class="fa fa-sort-up"></i><br>
+                            <span class="top-menu-point">
+                                0.35 (0,32%)
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="banner-item1">
+                    <div class="item-left">
+                        <a href="#">$GAS<br><span>PV GAS</span></a>
+                    </div>
+                    <div class="item-right">
+                        <strong>108.66</strong>
+                        <span class="bullish">
+                            <i class="fa fa-sort-up"></i><br>
+                            <span class="top-menu-point">
+                                0.35 (0,32%)
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="banner-item1">
+                    <div class="item-left">
+                        <a href="#">$GAS<br><span>PV GAS</span></a>
+                    </div>
+                    <div class="item-right">
+                        <strong>108.66</strong>
+                        <span class="bullish">
+                            <i class="fa fa-sort-up"></i><br>
+                            <span class="top-menu-point">
+                                0.35 (0,32%)
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="loadmore"><a href="#"><i class="fa  fa-angle-double-down"></i></a></div>
+            </div>
+            <div class="second-left-banner">
+                <div class="banner-header-white2">DÂN PHÍM CHUYÊN NGHIỆP</div>
+                <div class="banner-item-user-detail">
+                    <div class="avata-genaral-size">
+                        <img src="img/avata3.jpg" class="img-rounded" alt="avatar">
+                    </div>
+                    <div class="list-item-detail">
+                        <div class="list-item-username">Tom Truong <i class="fa  fa-check-circle">&nbsp;</i></div>
+                        <div class="list-item-control">
+                            <a class="button"><i class="fa fa-plus"></i>Theo dõi</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-item-user-detail">
+                    <div class="avata-genaral-size">
+                        <img src="img/avatar4.jpg" class="img-rounded" alt="avatar">
+                    </div>
+                    <div class="list-item-detail">
+                        <div class="list-item-username">Tom Truong <i class="fa  fa-check-circle">&nbsp;</i></div>
+                        <div class="list-item-control">
+                            <a class="button"><i class="fa fa-plus"></i>Theo dõi</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-item-user-detail">
+                    <div class="avata-genaral-size">
+                        <img src="img/avatar5.jpg" class="img-rounded" alt="avatar">
+                    </div>
+                    <div class="list-item-detail">
+                        <div class="list-item-username">Tom Truong <i class="fa  fa-check-circle">&nbsp;</i></div>
+                        <div class="list-item-control">
+                            <a class="button"><i class="fa fa-plus"></i>Theo dõi</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="loadmore"><a href="#"><i class="fa  fa-angle-double-down"></i></a></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

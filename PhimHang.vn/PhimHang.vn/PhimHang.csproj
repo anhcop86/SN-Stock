@@ -435,6 +435,7 @@
     <Content Include="Views\Shared\_Layout_MyProfile.cshtml" />
     <Content Include="Views\MyProfile\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_Partial_Area_Left.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

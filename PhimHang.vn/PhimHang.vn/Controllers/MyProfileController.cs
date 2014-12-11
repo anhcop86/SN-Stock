@@ -1,8 +1,13 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using PhimHang.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace PhimHang.Controllers
 {
@@ -12,9 +17,31 @@ namespace PhimHang.Controllers
     {
         //
         // GET: /MyProfile/
-        public ActionResult Index()
+        public MyProfileController()
+            : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
-            return View();
+        }
+
+        public MyProfileController(UserManager<ApplicationUser> userManager)
+        {
+            UserManager = userManager;
+        }
+
+        public UserManager<ApplicationUser> UserManager { get; private set; }
+
+        private testEntities db = new testEntities();    
+        public async Task<ActionResult> Index()
+        {
+            // get user info
+            ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+
+            // thong tin bai phim
+            var post = await db.Posts.Where(p=> p.PostedBy == currentUser.UserExtentLogin.Id).ToListAsync();
+
+            ViewBag.TotalPost = post.Count;
+
+
+            return View(currentUser);
         }
 
         //
