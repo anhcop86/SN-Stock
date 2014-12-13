@@ -29,16 +29,28 @@ namespace PhimHang.Controllers
 
         public UserManager<ApplicationUser> UserManager { get; private set; }
 
-        private testEntities db = new testEntities();    
+        private testEntities db = new testEntities();
+        private const string ImageURLAvataDefault = "img/avatar_default.jpg";
+        private const string ImageURLCoverDefault = "img/cover_default.jpg";
+        private const string ImageURLAvata = "images/avatar/";
+        private const string ImageURLCover = "images/cover/";
         public async Task<ActionResult> Index()
         {
             // get user info
             ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
 
             // thong tin bai phim
-            var post = await db.Posts.Where(p=> p.PostedBy == currentUser.UserExtentLogin.Id).ToListAsync();
+            var post = await db.Posts.CountAsync(p=> p.PostedBy == currentUser.UserExtentLogin.Id);
+            var follow = await db.FollowUsers.CountAsync(f => f.UserId == currentUser.UserExtentLogin.Id);
+            var follower = await db.FollowUsers.CountAsync(f => f.UserIdFollowed == currentUser.UserExtentLogin.Id);
 
-            ViewBag.TotalPost = post.Count;
+
+            ViewBag.TotalPost = post;
+            ViewBag.Follow = follow;
+            ViewBag.Follower = follower;
+            string path = "";
+            ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.AvataCover) == true ? path + ImageURLCoverDefault : path + ImageURLCover + currentUser.AvataCover;
+            ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.AvataImage) == true ? path + ImageURLAvataDefault : path + ImageURLAvata + currentUser.AvataImage;
 
 
             return View(currentUser);

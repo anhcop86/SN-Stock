@@ -276,6 +276,8 @@
     <Content Include="Content\style_main.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\ThirtParty\imo.css" />
+    <Content Include="Content\walt_disney\license.txt" />
+    <Content Include="Content\walt_disney\waltograph.txt" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -286,9 +288,11 @@
     <Content Include="images\Login_Image.jpg" />
     <Content Include="img\avata3.jpg" />
     <Content Include="img\avatar.jpg" />
+    <Content Include="img\avatar_default.jpg" />
     <Content Include="img\avatar2.jpg" />
     <Content Include="img\avatar4.jpg" />
     <Content Include="img\avatar5.jpg" />
+    <Content Include="img\cover_default.jpg" />
     <Content Include="img\cover.jpg" />
     <Content Include="img\logo.png" />
     <Content Include="Scripts\bootstrap.js" />
@@ -340,6 +344,8 @@
     <Content Include="Content\font-awesome\scss\_spinning.scss" />
     <Content Include="Content\font-awesome\scss\_stacked.scss" />
     <Content Include="Content\font-awesome\scss\_variables.scss" />
+    <Content Include="Content\walt_disney\waltograph42.otf" />
+    <Content Include="Content\walt_disney\waltographUI.ttf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Custom\timer.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -384,7 +390,10 @@
     <Content Include="Scripts\MicrosoftAjax.js" />
     <Content Include="Scripts\MicrosoftMvcAjax.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\MyProfile\action.js" />
+    <Content Include="Scripts\MyProfile\jquery-ui.js" />
     <Content Include="Scripts\MyProfile\jquery-ui.min.js" />
+    <Content Include="Scripts\MyProfile\jquery.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -424,7 +433,7 @@
     <Content Include="Views\Post\Details.cshtml" />
     <Content Include="Views\Post\Edit.cshtml" />
     <Content Include="Views\Post\Index.cshtml" />
-    <Content Include="Views\Symbol\Index.cshtml" />
+    <Content Include="Views\Symbol\Index_bk.cshtml" />
     <Content Include="Views\FollowStock\Create.cshtml" />
     <Content Include="Views\FollowStock\Delete.cshtml" />
     <Content Include="Views\FollowStock\Details.cshtml" />
@@ -435,7 +444,11 @@
     <Content Include="Views\Shared\_Layout_MyProfile.cshtml" />
     <Content Include="Views\MyProfile\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\_Partial_Area_Left.cshtml" />
+    <Content Include="Views\Shared\_Partial_Area_Left_Profile.cshtml" />
+    <Content Include="Views\Shared\_Layout_MyProfile_Setting.cshtml" />
+    <Content Include="Views\Shared\_Partial_Area_Right_Profile.cshtml" />
+    <Content Include="Views\Symbol\Index.cshtml" />
+    <Content Include="Views\Symbol\_Partial_stock-detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

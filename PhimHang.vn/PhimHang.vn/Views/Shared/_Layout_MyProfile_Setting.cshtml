@@ -14,9 +14,7 @@
     <link href="~/Scripts/jquery-ui/jquery-ui.css" rel="stylesheet" />
 
     <link href="~/Content/font-awesome/css/font-awesome.css" rel="stylesheet" />
-
-    @*<script src="js/jquery/jquery.js"></script> da co tren min*@
-    
+    @*<script src="js/jquery/jquery.js"></script> da co tren min*@    
     <link href="~/Content/style.css" rel="stylesheet" />
     <script src="~/Scripts/MyProfile/jquery-ui.min.js"></script>
     <script src="~/Scripts/MyProfile/action.js"></script>
@@ -177,72 +175,8 @@
         </div>
 
         <div class="content-main">
-            <div class="area-left">
-               @Html.Partial("_Partial_Area_Left_Profile")
-            </div>
-            <div class="area-center">
-                <!--render body here-->
-                @RenderBody()
-                <!--end render body here-->
-            </div>
-            <div class="area-right">
-                <div class="banner-right-first">
-                    @Html.Partial("_Partial_Area_Right_Profile")
-                </div>
-                <div class="second-left-banner">
-                    <div class="banner-header-white">DÂN PHÍM CHUYÊN NGHIỆP</div>
-                    <div class="banner-item-user-detail">
-                        <div class="avata-genaral-size">
-                            <img src="img/avata3.jpg" class="img-rounded" alt="avatar">
-                        </div>
-                        <div class="list-item-detail">
-                            <div class="list-item-username">Tom Truong <i class="fa  fa-check-circle">&nbsp;</i></div>
-                            <div class="list-item-control">
-                                <a href="#" class="button"><i class="fa fa-plus"></i>Theo dõi</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="banner-item-user-detail">
-                        <div class="avata-genaral-size">
-                            <img src="img/avatar4.jpg" class="img-rounded" alt="avatar">
-                        </div>
-                        <div class="list-item-detail">
-                            <div class="list-item-username">Tom Truong <i class="fa  fa-check-circle">&nbsp;</i></div>
-                            <div class="list-item-control">
-                                <a href="#" class="button"><i class="fa fa-plus"></i>Theo dõi</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="banner-item-user-detail">
-                        <div class="avata-genaral-size">
-                            <img src="img/avatar5.jpg" class="img-rounded" alt="avatar">
-                        </div>
-                        <div class="list-item-detail">
-                            <div class="list-item-username">Tom Truong <i class="fa  fa-check-circle">&nbsp;</i></div>
-                            <div class="list-item-control">
-                                <a href="#" class="button"><i class="fa fa-plus"></i>Theo dõi</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="loadmore"><a href="#"><i class="fa  fa-angle-double-down"></i></a></div>
-                </div>
-                <div class="banner-info">
-                    <div>
-                        <a href="#">Giới thiệu</a>
-                        <a href="#">Quy định</a>
-                        <a href="#">Trợ giúp</a>
-                        <a href="#">Liên hệ</a>
-                    </div>
-                    <p>
-                        Bản quyền thuộc về Công ty TNHH XXXXXXXXXX<br>
-                        Theo giấy xác nhận cung cấp dịch vụ MXH trực tuyến số: ....
-                    </p>
-                </div>
-            </div>
+            @RenderBody()
         </div>
-
-
-
 
         @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)

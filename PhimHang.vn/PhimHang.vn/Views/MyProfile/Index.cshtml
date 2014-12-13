@@ -3,131 +3,160 @@
     Layout = "~/Views/Shared/_Layout_MyProfile.cshtml";
 }
 
-
-<div class="area-center">
-    <div class="status-box">
-        <div class="avatar-small">
-            <img src="img/avatar.jpg" class="img-rounded" alt="avatar">
-        </div>
-        <div class="input-status">
-            <form name="frmStatus">
-                <div class="input-status-text">
-                    <input autofocus="" name="status" id="status" title="Search" autocomplete="off" type="text">
-                </div>
-            </form>
-        </div>
+<div class="bg-white">
+<div class="status-box">
+    <div class="avatar-small">
+        <img src="@ViewBag.AvataEmage?width=28&height=28&mode=crop" class="img-rounded" alt="avatar">
     </div>
-    <div class="filer-bar">
-        <span class="filer-bar-label">Bộ Lọc: </span>
-        <a class="filer-bar-item" href="#">Tất cả</a>
-        <a class="filer-bar-item" href="#">Theo biểu đồ</a>
-        <a class="filer-bar-item" href="#">Theo nhận định</a>
-        <a class="filer-bar-item" href="#">
+    <div class="input-status">
+        <form name="frmStatus">
+            <div id="input-status-text" class="input-status-text">
+                <textarea name="status" rows="5" placeholder="$Mã cổ phiếu ($VNM, $GAS); Username" id="status" title="Search" autocomplete="off" rows="5"></textarea>
+            </div>
+            <div class="status-control">
+                <div class="choose_file f-left">
+                    <i class="fa fa-camera"></i>
+                    <input name="Select File" type="file" />
+                </div>
+
+                <div id="radio" class="switch3button f-left">
+                    <input type="radio" id="radio1" name="BullBear" value="Bull"><label for="radio1">Tăng</label>
+                    <input type="radio" id="radio2" name="BullBear" checked="checked" value="None"><label for="radio2">Đứng</label>
+                    <input type="radio" id="radio3" name="BullBear" value="Bear"><label for="radio3">Giảm</label>
+                </div>
+                <div id="btnPhim" class="f-right">
+                    <span>140</span>
+                    <a href="#" class="button-phim"><span>PHÍM</span></a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="filer-bar">
+    <div class="toSpan filer-bar-label">Bộ Lọc: </div>
+    <div class="toSpan filer-bar-item"> <a href="#">Tất cả</a> </div>
+    <div class="toSpan filer-bar-item"> <a href="#">Theo biểu đồ</a> </div>
+    <div class="toSpan filer-bar-item"> <a href="#">Theo nhận định</a></div>
+    <div class="toSpan filer-bar-item">
+        <a id="btn-option-more" href="#">
             Tùy chọn khác
             <i class="fa fa-caret-down"></i>
         </a>
     </div>
-    <div class="filer-new-status">
-        <div class="filer-new-status-button-bar">
-            <div class="toggle-switch toggle-switch-success">
-                <label>
-                    <input checked="" type="checkbox" />
-                    <span class="toggle-switch-inner"></span>
-                    <span class="toggle-switch-switch"></span>
-                </label>
-            </div>
-            <div class="text-label">Hiển thị bài phím mới</div>
+    <br>
+    <div class="dropdownlist filer-bar-dropdown">
+        <div class="dropdown-item">
+            <a href="#"><span class="todiv"><i class="fa fa-adn"></i> Profile</span></a>
         </div>
-        <div class="msg-new-status">
-            Có <strong>2</strong> bài phím mới: <a href="#">Hiển Thị <strong>2</strong> bài phím này</a>
+        <div class="dropdown-item">
+            <a href="#"><span class="todiv"><i class="fa fa-cog"></i> Setting</span></a>
         </div>
-    </div>
-    <div class="list-status">
-        <div class="list-item-status">
-            <div class="avata-genaral-size">
-                <img src="img/avatar.jpg" class="img-rounded" alt="avatar">
-            </div>
-            <div class="list-item-detail">
-                <div class="list-item-date">Dec 1 at 9:30 PM</div>
-                <div class="list-item-username">Tom Truong</div>
-                <div class="list-item-status-content">goodmorning</div>
-                <div class="list-item-control">
-                    <a class="button" href="#"><i class="fa fa-comments"></i></a>
-                    <a class="button" href="#">Trả lời</a>
-                    <a class="button" href="#">Chia sẻ</a>
-                    <a class="button" href="#">Thích</a>
-                    <a class="button" href="#">Báo cáo vi phạm</a>
-                </div>
-            </div>
-        </div>
-        <div class="list-item-status">
-            <div class="avata-genaral-size">
-                <img src="img/avatar5.jpg" class="img-rounded" alt="avatar">
-            </div>
-            <div class="list-item-detail">
-                <div class="list-item-date">Dec 1 at 9:30 PM</div>
-                <div class="list-item-username">Tom Truong</div>
-                <div class="list-item-status-content">Bootstrap includes a responsive, mobile first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases</div>
-                <div class="list-item-control">
-                    <a class="button"><i class="fa fa-comments"></i></a>
-                    <a class="button">Trả lời</a>
-                    <a class="button">Chia sẻ</a>
-                    <a class="button">Thích</a>
-                    <a class="button">Báo cáo vi phạm</a>
-                </div>
-            </div>
-        </div>
-        <div class="list-item-status">
-            <div class="avata-genaral-size">
-                <img src="img/avata3.jpg" class="img-rounded" alt="avatar">
-            </div>
-            <div class="list-item-detail">
-                <div class="list-item-date">Dec 1 at 9:30 PM</div>
-                <div class="list-item-username">Tom Truong</div>
-                <div class="list-item-status-content">Bootstrap includes a responsive, mobile first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases</div>
-                <div class="list-item-control">
-                    <a class="button"><i class="fa fa-comments"></i></a>
-                    <a class="button">Trả lời</a>
-                    <a class="button">Chia sẻ</a>
-                    <a class="button">Thích</a>
-                    <a class="button">Báo cáo vi phạm</a>
-                </div>
-            </div>
-        </div>
-        <div class="list-item-status">
-            <div class="avata-genaral-size">
-                <img src="img/avatar2.jpg" class="img-rounded" alt="avatar">
-            </div>
-            <div class="list-item-detail">
-                <div class="list-item-date">Dec 1 at 9:30 PM</div>
-                <div class="list-item-username">Tom Truong</div>
-                <div class="list-item-status-content">Bootstrap includes a responsive, mobile first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases</div>
-                <div class="list-item-control">
-                    <a class="button"><i class="fa fa-comments"></i></a>
-                    <a class="button">Trả lời</a>
-                    <a class="button">Chia sẻ</a>
-                    <a class="button">Thích</a>
-                    <a class="button">Báo cáo vi phạm</a>
-                </div>
-            </div>
-        </div>
-        <div class="list-item-status">
-            <div class="avata-genaral-size">
-                <img src="img/avatar4.jpg" class="img-rounded" alt="avatar">
-            </div>
-            <div class="list-item-detail">
-                <div class="list-item-date">Dec 1 at 9:30 PM</div>
-                <div class="list-item-username">Tom Truong</div>
-                <div class="list-item-status-content">Bootstrap includes a responsive, mobile first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases</div>
-                <div class="list-item-control">
-                    <a class="button"><i class="fa fa-comments"></i></a>
-                    <a class="button">Trả lời</a>
-                    <a class="button">Chia sẻ</a>
-                    <a class="button">Thích</a>
-                    <a class="button">Báo cáo vi phạm</a>
-                </div>
-            </div>
+        <div class="dropdown-item">
+            <a href="#"><span class="todiv"><i class="fa fa-sign-out"></i> Logout</span></a>
         </div>
     </div>
 
+</div>
+<div class="filer-new-status">
+    <div class="filer-new-status-button-bar">
+        <div class="onoffswitch f-right">
+            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+            <label id="abcww" class="onoffswitch-label" for="myonoffswitch">
+                <span class="onoffswitch-inner"></span>
+                <span class="onoffswitch-switch"></span>
+            </label>
+        </div>
+        <div class="text-label">Hiển thị bài phím mới</div>
+    </div>
+    <div id="msg-new-status" class="msg-new-status">
+        Có <strong>2</strong> bài phím mới: <a href="#">Hiển Thị <strong>2</strong> bài phím này</a>
+    </div>
+</div>
+<div class="list-status">
+    <div class="list-item-status">
+        <div class="avata-genaral-size">
+            <img src="img/avatar.jpg" class="img-rounded" alt="avatar">
+        </div>
+        <div class="list-item-detail">
+            <div class="list-item-date">Dec 1 at 9:30 PM</div>
+            <div class="list-item-username">Tom Truong</div>
+            <div class="list-item-status-content">goodmorning</div>
+            <div class="list-item-control">
+                <a class="button" href="#"><i class="fa fa-comments"></i></a>
+                <a class="button" href="#">Trả lời</a>
+                <a class="button" href="#">Chia sẻ</a>
+                <a class="button" href="#">Thích</a>
+                <a class="button" href="#">Báo cáo vi phạm</a>
+            </div>
+        </div>
+    </div>
+    <div class="list-item-status">
+        <div class="avata-genaral-size">
+            <img src="img/avatar5.jpg" class="img-rounded" alt="avatar">
+        </div>
+        <div class="list-item-detail">
+            <div class="list-item-date">Dec 1 at 9:30 PM</div>
+            <div class="list-item-username">Tom Truong</div>
+            <div class="list-item-status-content">Bootstrap includes a responsive, mobile first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases</div>
+            <div class="list-item-control">
+                <a class="button"><i class="fa fa-comments"></i></a>
+                <a class="button">Trả lời</a>
+                <a class="button">Chia sẻ</a>
+                <a class="button">Thích</a>
+                <a class="button">Báo cáo vi phạm</a>
+            </div>
+        </div>
+    </div>
+    <div class="list-item-status">
+        <div class="avata-genaral-size">
+            <img src="img/avata3.jpg" class="img-rounded" alt="avatar">
+        </div>
+        <div class="list-item-detail">
+            <div class="list-item-date">Dec 1 at 9:30 PM</div>
+            <div class="list-item-username">Tom Truong</div>
+            <div class="list-item-status-content">Bootstrap includes a responsive, mobile first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases</div>
+            <div class="list-item-control">
+                <a class="button"><i class="fa fa-comments"></i></a>
+                <a class="button">Trả lời</a>
+                <a class="button">Chia sẻ</a>
+                <a class="button">Thích</a>
+                <a class="button">Báo cáo vi phạm</a>
+            </div>
+        </div>
+    </div>
+    <div class="list-item-status">
+        <div class="avata-genaral-size">
+            <img src="img/avatar2.jpg" class="img-rounded" alt="avatar">
+        </div>
+        <div class="list-item-detail">
+            <div class="list-item-date">Dec 1 at 9:30 PM</div>
+            <div class="list-item-username">Tom Truong</div>
+            <div class="list-item-status-content">Bootstrap includes a responsive, mobile first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases</div>
+            <div class="list-item-control">
+                <a class="button"><i class="fa fa-comments"></i></a>
+                <a class="button">Trả lời</a>
+                <a class="button">Chia sẻ</a>
+                <a class="button">Thích</a>
+                <a class="button">Báo cáo vi phạm</a>
+            </div>
+        </div>
+    </div>
+    <div class="list-item-status">
+        <div class="avata-genaral-size">
+            <img src="img/avatar4.jpg" class="img-rounded" alt="avatar">
+        </div>
+        <div class="list-item-detail">
+            <div class="list-item-date">Dec 1 at 9:30 PM</div>
+            <div class="list-item-username">Tom Truong</div>
+            <div class="list-item-status-content">Bootstrap includes a responsive, mobile first fluid grid system that appropriately scales up to 12 columns as the device or viewport size increases</div>
+            <div class="list-item-control">
+                <a class="button"><i class="fa fa-comments"></i></a>
+                <a class="button">Trả lời</a>
+                <a class="button">Chia sẻ</a>
+                <a class="button">Thích</a>
+                <a class="button">Báo cáo vi phạm</a>
+            </div>
+        </div>
+    </div>
+</div>
 </div>

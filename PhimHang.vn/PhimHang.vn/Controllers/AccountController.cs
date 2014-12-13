@@ -110,7 +110,7 @@ namespace PhimHang.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser() { UserName = model.UserName,
-                                                    AvataImage = "default_avatar_medium.jpg",
+                                                    //AvataImage = "default_avatar_medium.jpg",
                                                      FullName = model.FullName,
                                                         CreatedDate = DateTime.Now,
                                                         Verify = Verify.NO};
