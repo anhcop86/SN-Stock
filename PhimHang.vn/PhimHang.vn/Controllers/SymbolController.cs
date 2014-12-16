@@ -37,15 +37,16 @@ namespace PhimHang.Controllers
         private const string ImageURLCover = "../images/cover/";
         public async Task<ViewResult> Index(string symbolName)
         {
-            var company = new StockCode();
-            ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-
-            #region danh muc co phieu dang follow
-            // danh muc co phieu dang follow
-
-            Session["listStock"] = new List<string>();
             using (db = new testEntities())
             {
+                var company = new StockCode();
+                ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+
+                #region danh muc co phieu dang follow
+                // danh muc co phieu dang follow
+
+                Session["listStock"] = new List<string>();
+
                 if (User.Identity.IsAuthenticated)
                 {
                     Session["listStock"] = (from s in db.FollowStocks
@@ -57,9 +58,9 @@ namespace PhimHang.Controllers
 
 
 
-            #endregion
+                #endregion
 
-            #region Thong tin menu ben trai
+                #region Thong tin menu ben trai
                 // Thong tin menu ben trai
                 var post = await db.Posts.CountAsync(p => p.PostedBy == currentUser.UserExtentLogin.Id);
                 var follow = await db.FollowUsers.CountAsync(f => f.UserId == currentUser.UserExtentLogin.Id);
@@ -75,33 +76,47 @@ namespace PhimHang.Controllers
 
                 // End thong tin menu ben trai
 
-            }
-            #endregion
 
-            #region thong tin co phieu
-            ViewBag.StockCode = company == null ? StatusSymbol.NF.ToString() : symbolName;
-            ViewBag.StockName = company == null ? StatusSymbol.NF.ToString() : company.ShortName;
-            #endregion
+                #endregion
 
-            #region danh muc co phieu vua moi xem duoc luu troong cookie
-            //var cookie = new HttpCookie("cookiename");
+                #region thong tin co phieu
+                ViewBag.StockCode = company == null ? StatusSymbol.NF.ToString() : symbolName;
+                ViewBag.StockName = company == null ? StatusSymbol.NF.ToString() : company.ShortName;
+                ViewBag.LongName = company == null ? StatusSymbol.NF.ToString() : company.LongName;
+                #endregion
 
-            if (Request.Cookies["HotStockCookie"] == null || string.IsNullOrEmpty(Request.Cookies["HotStockCookie"].Value))
-            {
-                Response.Cookies["HotStockCookie"].Value = "|" + symbolName;
+                #region danh muc co phieu vua moi xem duoc luu troong cookie
+                //var cookie = new HttpCookie("cookiename");
+
+                if (Request.Cookies["HotStockCookie"] == null || string.IsNullOrEmpty(Request.Cookies["HotStockCookie"].Value))
+                {
+                    Response.Cookies["HotStockCookie"].Value = "|" + symbolName;
+                }
+                else
+                {
+                    Response.Cookies["HotStockCookie"].Value = Request.Cookies["HotStockCookie"].Value.Replace("|" + symbolName, "") + "|" + symbolName;
+                }
+
+                string[] listHotStock = Response.Cookies["HotStockCookie"].Value.Split('|');
+
+                if (listHotStock.Length > 11) // neu xem hon 10 co phieu thi chi hien thi 10 co phieu dau tien
+                {
+                    Response.Cookies["HotStockCookie"].Value = Response.Cookies["HotStockCookie"].Value.Remove(0, Response.Cookies["HotStockCookie"].Value.IndexOf("|", 1)); // hien thi 10 co phieu đau tien
+                    listHotStock = Response.Cookies["HotStockCookie"].Value.Split('|');
+                }
+                List<string> listHotStockToArray = new List<string>();
+                foreach (var item in listHotStock)
+                {
+                    listHotStockToArray.Add(item);
+                }
+                var hotStockPrice = _stockRealtime.GetAllStocksTestList(listHotStockToArray).Result;
+
+                #endregion
+
+
+                //return View(_stockRealtime.GetAllStocksTestList((List<string>)Session["listStock"]).Result);
+                return View(currentUser);
             }
-            else
-            {
-                Response.Cookies["HotStockCookie"].Value = Request.Cookies["HotStockCookie"].Value.Replace("|" + symbolName, "") + "|" + symbolName;
-            }
-            var listHotStock = Response.Cookies["HotStockCookie"].Value.Split('|');
-            if (listHotStock.Length >10)
-            {
-                //Response.Cookies["HotStockCookie"].Value.Substring("","");
-            }
-            #endregion
-            //return View(_stockRealtime.GetAllStocksTestList((List<string>)Session["listStock"]).Result);
-            return View(currentUser);
         }
 
         //[Authorize]

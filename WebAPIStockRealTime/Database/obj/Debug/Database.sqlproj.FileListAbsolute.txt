@@ -27,3 +27,7 @@ E:\Working\SN-Stock\WebAPIStockRealTime\Database\bin\Debug\Database.dll
 E:\Working\SN-Stock\WebAPIStockRealTime\Database\bin\Debug\Database.pdb
 E:\Working\SN-Stock\WebAPIStockRealTime\Database\obj\Debug\Database.dll
 E:\Working\SN-Stock\WebAPIStockRealTime\Database\obj\Debug\Database.pdb
+E:\Working\SN-Stock\WebAPIStockRealTime\Database\obj\Debug\Model.xml
+E:\Working\SN-Stock\WebAPIStockRealTime\Database\obj\Debug\refactor.xml
+E:\Working\SN-Stock\WebAPIStockRealTime\Database\obj\Debug\postdeploy.sql
+E:\Working\SN-Stock\WebAPIStockRealTime\Database\obj\Debug\predeploy.sql

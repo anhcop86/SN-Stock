@@ -299,3 +299,4 @@ E:\Working\SN-Stock\WebAPIStockRealTime\MvcApplication4\bin\zh-Hans\System.Spati
 E:\Working\SN-Stock\WebAPIStockRealTime\MvcApplication4\bin\zh-Hant\System.Spatial.resources.dll
 E:\Working\SN-Stock\WebAPIStockRealTime\MvcApplication4\obj\Debug\PorfolioInvesment.dll
 E:\Working\SN-Stock\WebAPIStockRealTime\MvcApplication4\obj\Debug\PorfolioInvesment.pdb
+E:\Working\SN-Stock\WebAPIStockRealTime\MvcApplication4\obj\Debug\PorfolioInvesment.csprojResolveAssemblyReference.cache
