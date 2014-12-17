@@ -11,8 +11,8 @@
           </Key>
           <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="CreatedDate" Type="datetime2" Precision="7" />
           <Property Name="StockFollowed" Type="varchar" MaxLength="16" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" />
         </EntityType>
         <EntityType Name="FollowUser">
           <Key>
@@ -59,7 +59,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Code" Type="char" MaxLength="16" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="16" Nullable="false" />
           <Property Name="ShortName" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="LongName" Type="nvarchar" MaxLength="256" />
         </EntityType>
@@ -68,7 +68,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Code" Type="char" MaxLength="16" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="16" Nullable="false" />
           <Property Name="CeilingPrice" Type="money" />
           <Property Name="FloorPrice" Type="money" />
           <Property Name="DiffPrice" Type="money" />
@@ -83,7 +83,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="StockCodeRelate" Type="char" MaxLength="16" />
+          <Property Name="StockCodeRelate" Type="varchar" MaxLength="16" />
           <Property Name="PostId" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityType Name="StockViewLastest">
@@ -92,7 +92,7 @@
           </Key>
           <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="StockCode" Type="char" MaxLength="16" />
+          <Property Name="StockCode" Type="varchar" MaxLength="16" />
           <Property Name="CreatedDate" Type="datetime2" Precision="7" />
         </EntityType>
         <EntityType Name="UserLogins">
@@ -454,7 +454,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Code" Type="String" Nullable="false" MaxLength="16" FixedLength="true" Unicode="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
           <Property Name="ShortName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="LongName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
         </EntityType>
@@ -463,7 +463,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Code" Type="String" Nullable="false" MaxLength="16" FixedLength="true" Unicode="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
           <Property Name="CeilingPrice" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="FloorPrice" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="DiffPrice" Type="Decimal" Precision="19" Scale="4" />
@@ -478,7 +478,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StockCodeRelate" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
+          <Property Name="StockCodeRelate" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
           <Property Name="PostId" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Post" Relationship="PHDBContext.FK_StockRelate_Posts" FromRole="StockRelate" ToRole="Post" />
         </EntityType>
@@ -488,7 +488,7 @@
           </Key>
           <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="StockCode" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
+          <Property Name="StockCode" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
           <Property Name="CreatedDate" Type="DateTime" Precision="7" />
           <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_StockViewLastest_UserLogins" FromRole="StockViewLastest" ToRole="UserLogin" />
         </EntityType>

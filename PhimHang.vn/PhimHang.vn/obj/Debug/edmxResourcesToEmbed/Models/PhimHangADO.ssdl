@@ -6,8 +6,8 @@
     </Key>
     <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserId" Type="int" Nullable="false" />
-    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
     <Property Name="StockFollowed" Type="varchar" MaxLength="16" />
+    <Property Name="CreatedDate" Type="datetime2" Precision="7" />
   </EntityType>
   <EntityType Name="FollowUser">
     <Key>
@@ -54,7 +54,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Code" Type="char" MaxLength="16" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="16" Nullable="false" />
     <Property Name="ShortName" Type="nvarchar" MaxLength="256" Nullable="false" />
     <Property Name="LongName" Type="nvarchar" MaxLength="256" />
   </EntityType>
@@ -63,7 +63,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Code" Type="char" MaxLength="16" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="16" Nullable="false" />
     <Property Name="CeilingPrice" Type="money" />
     <Property Name="FloorPrice" Type="money" />
     <Property Name="DiffPrice" Type="money" />
@@ -78,7 +78,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="StockCodeRelate" Type="char" MaxLength="16" />
+    <Property Name="StockCodeRelate" Type="varchar" MaxLength="16" />
     <Property Name="PostId" Type="bigint" Nullable="false" />
   </EntityType>
   <EntityType Name="StockViewLastest">
@@ -87,7 +87,7 @@
     </Key>
     <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserId" Type="int" Nullable="false" />
-    <Property Name="StockCode" Type="char" MaxLength="16" />
+    <Property Name="StockCode" Type="varchar" MaxLength="16" />
     <Property Name="CreatedDate" Type="datetime2" Precision="7" />
   </EntityType>
   <EntityType Name="UserLogins">

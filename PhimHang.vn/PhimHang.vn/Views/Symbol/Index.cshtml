@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Phím hàng: " + @ViewBag.StockCode;
     Layout = "~/Views/Shared/_Layout_MyProfile.cshtml";
 }
 @section scripts{
@@ -17,7 +17,7 @@
 <div class="bg-white">
     <div class="status-box">
         <div class="avatar-small">
-            <img src="@ViewBag.AvataEmage?width=28&height=28&mode=crop" class="img-rounded" alt="avatar">
+            <img src="@Url.Content("~/" + @ViewBag.AvataEmage)?width=28&height=28&mode=crop" class="img-rounded" alt="avatar">
         </div>
         <div class="input-status">
             <form name="frmStatus">
@@ -86,7 +86,7 @@
     <div class="list-status">
         <div class="list-item-status">
             <div class="avata-genaral-size">
-                <img src="img/avatar.jpg" class="img-rounded" alt="avatar">
+                <img src="/img/avatar.jpg" class="img-rounded" alt="avatar">
             </div>
             <div class="list-item-detail">
                 <div class="list-item-date">Dec 1 at 9:30 PM</div>
@@ -103,7 +103,7 @@
         </div>
         <div class="list-item-status">
             <div class="avata-genaral-size">
-                <img src="img/avatar5.jpg" class="img-rounded" alt="avatar">
+                <img src="/img/avatar5.jpg" class="img-rounded" alt="avatar">
             </div>
             <div class="list-item-detail">
                 <div class="list-item-date">Dec 1 at 9:30 PM</div>
@@ -120,7 +120,7 @@
         </div>
         <div class="list-item-status">
             <div class="avata-genaral-size">
-                <img src="img/avata3.jpg" class="img-rounded" alt="avatar">
+                <img src="/img/avata3.jpg" class="img-rounded" alt="avatar">
             </div>
             <div class="list-item-detail">
                 <div class="list-item-date">Dec 1 at 9:30 PM</div>
@@ -137,7 +137,7 @@
         </div>
         <div class="list-item-status">
             <div class="avata-genaral-size">
-                <img src="img/avatar2.jpg" class="img-rounded" alt="avatar">
+                <img src="/img/avatar2.jpg" class="img-rounded" alt="avatar">
             </div>
             <div class="list-item-detail">
                 <div class="list-item-date">Dec 1 at 9:30 PM</div>
@@ -154,7 +154,7 @@
         </div>
         <div class="list-item-status">
             <div class="avata-genaral-size">
-                <img src="img/avatar4.jpg" class="img-rounded" alt="avatar">
+                <img src="/img/avatar4.jpg" class="img-rounded" alt="avatar">
             </div>
             <div class="list-item-detail">
                 <div class="list-item-date">Dec 1 at 9:30 PM</div>

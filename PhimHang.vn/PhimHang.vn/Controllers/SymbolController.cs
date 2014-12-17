@@ -31,10 +31,10 @@ namespace PhimHang.Controllers
         public UserManager<ApplicationUser> UserManager { get; private set; }
 
         private testEntities db = new testEntities();
-        private const string ImageURLAvataDefault = "../img/avatar_default.jpg";
-        private const string ImageURLCoverDefault = "../img/cover_default.jpg";
-        private const string ImageURLAvata = "../images/avatar/";
-        private const string ImageURLCover = "../images/cover/";
+        private const string ImageURLAvataDefault = "/img/avatar_default.jpg";
+        private const string ImageURLCoverDefault = "/img/cover_default.jpg";
+        private const string ImageURLAvata = "/images/avatar/";
+        private const string ImageURLCover = "/images/cover/";
         public async Task<ViewResult> Index(string symbolName)
         {
             using (db = new testEntities())
@@ -70,9 +70,9 @@ namespace PhimHang.Controllers
                 ViewBag.TotalPost = post;
                 ViewBag.Follow = follow;
                 ViewBag.Follower = follower;
-                string path = "../";
-                ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.AvataCover) == true ? path + ImageURLCoverDefault : path + ImageURLCover + currentUser.AvataCover;
-                ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.AvataImage) == true ? path + ImageURLAvataDefault : path + ImageURLAvata + currentUser.AvataImage;
+                
+                ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.AvataCover) == true ?  ImageURLCoverDefault :  ImageURLCover + currentUser.AvataCover;
+                ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.AvataImage) == true ?  ImageURLAvataDefault :  ImageURLAvata + currentUser.AvataImage;
 
                 // End thong tin menu ben trai
 
