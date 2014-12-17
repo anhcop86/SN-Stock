@@ -5,7 +5,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Code" Type="char" MaxLength="16" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="16" Nullable="false" />
     <Property Name="ShortName" Type="nvarchar" MaxLength="256" Nullable="false" />
     <Property Name="LongName" Type="nvarchar" MaxLength="256" />
   </EntityType>
@@ -14,7 +14,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Code" Type="char" MaxLength="16" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="16" Nullable="false" />
     <Property Name="CeilingPrice" Type="money" />
     <Property Name="FloorPrice" Type="money" />
     <Property Name="DiffPrice" Type="money" />

@@ -41,6 +41,9 @@ namespace SynStockHistory
 
             }
 
+            company.Add(new StockCode { Code = "HNXIndex", LongName = "Chỉ số Index của Hà Nội", ShortName = "Chỉ số Index của Hà Nội" });
+            company.Add(new StockCode { Code = "VnIndex", LongName = "Chỉ số Index của Hồ Chí Minh", ShortName = "Chỉ số Index của Hồ Chí Minh" });
+
             using (db = new testEntities())
             {
                 foreach (var item in company)

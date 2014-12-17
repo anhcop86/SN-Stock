@@ -272,6 +272,7 @@
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Profile.css" />
+    <Content Include="Content\StockPrice.css" />
     <Content Include="Content\Style_Login.css" />
     <Content Include="Content\style_main.css" />
     <Content Include="Content\style.css" />
@@ -396,6 +397,7 @@
     <Content Include="Scripts\MyProfile\jquery.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\StockPrice.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

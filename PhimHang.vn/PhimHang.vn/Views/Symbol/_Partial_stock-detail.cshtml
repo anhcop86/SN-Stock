@@ -1,15 +1,16 @@
 ﻿<div><h4>@ViewBag.StockName</h4> <a href="#">@ViewBag.LongName</a></div>
-<div class="clear stock-detail-index-box">
-    <div class="stock-id-box f-left">
+<div class="clear stock-detail-index-box" id="stockPriceDivId">
+    <div class="stock-id-box f-left RED_Price">
         <strong>@ViewBag.StockCode</strong><br>
         <div>&nbsp</div>
     </div>
     <div class="stock-detail-content f-left">
         <div>
-            <strong class="f-left">111.57</strong>
-            <div class="cRed f-left">
-                <div class="f-left" style="width: 16px; font-size: 16px; padding-top: 20px;"><i class="fa fa-sort-down"></i></div>
-                <div class="f-left" style="width: 50px; font-size: 2rem; margin-top: 0px;">1.13 (1.00%)</div>
+            <strong class="f-left" data-bind="text:FinishPrice"></strong>
+            <div class="cRed f-left" data-bind="css:ColourChange()">
+                <div class="f-left" style="width: 16px; font-size: 16px; padding-top: 20px;"><i class="fa fa-sort-down" style="display:none"></i></div>
+                <div class="f-left" style=" width: 50px; font-size: 2rem; margin-top: 0px;"><div data-bind="text:Diff"></div> <div data-bind="text:DiffRateChange()"></div></div>
+
             </div>
         </div>
         <div class="clear stock-lastupdate-time">

@@ -7,6 +7,8 @@
     <script src="~/Scripts/knockout.mapping-latest.js"></script>
     <script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>
     <script src="~/signalr/hubs"></script>
+<link href="~/Content/StockPrice.css" rel="stylesheet" />
+@*<script src="~/Scripts/StockPrice.js"></script>*@
 }
 
 
@@ -171,5 +173,55 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    var viewModel = {
+
+        CompanyID: ko.observable(),
+        FinishPrice: ko.observable(),
+        Diff: ko.observable(),
+        DiffRate: ko.observable(),
+
+    };
+
+    //var listStock =
+    viewModel.ColourChange = ko.pureComputed(function () {
+        return this.Diff() === 0 ? 'YELLOW_Price'
+            : this.Diff() > 0 ? 'GREEN_Price'
+            : 'RED_Price';
+    }, viewModel);
+
+    viewModel.DiffRateChange = ko.pureComputed(function () {
+        return '(' + ko.unwrap(this.DiffRate) + '%)';
+    }, viewModel);
+    // This makes Knockout get to work
+
+
+    $(function () {
+        var ticker = $.connection.StockRealTimeHub;
+
+        function init() {
+
+            ticker.server.getStock('@ViewBag.StockCode'.toUpperCase()).done(function (stock) {
+
+                viewModel.CompanyID(stock.CompanyID).Diff(stock.Diff).DiffRate(stock.DiffRate).FinishPrice(stock.FinishPrice);
+                ko.applyBindings(viewModel, document.getElementById("stockPriceDivId")); // knockout javascript framework bindings
+
+            });
+            ticker.server.joinRoom('@ViewBag.StockCode'.toUpperCase());
+        }
+
+        ticker.client.updateStockPrice = function (stock) {
+            viewModel.CompanyID(stock.CompanyID).Diff(stock.Diff).DiffRate(stock.DiffRate).FinishPrice(stock.FinishPrice);
+
+        }
+
+        $.connection.hub.start().done(init);
+        $.connection.hub.logging = true;
+
+    });
+
+
+</script>
 
 

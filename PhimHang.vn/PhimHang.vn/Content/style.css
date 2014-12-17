@@ -66,6 +66,7 @@ a{
 .f-left{
     float: left;
 }
+
 .f-right{
     float: right;
 }
@@ -724,7 +725,7 @@ a{
     padding-top: 20px;
 }
 .stock-id-box{
-    border-left: 8px solid #b90003;
+    border-left: 8px solid #1a75aa;
     background-color: #292929;
     color: #fff;
     width: 110px;
