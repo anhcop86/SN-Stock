@@ -30,10 +30,11 @@ namespace PhimHang.Controllers
         public UserManager<ApplicationUser> UserManager { get; private set; }
 
         private testEntities db = new testEntities();
-        private const string ImageURLAvataDefault = "/img/avatar_default.jpg";
-        private const string ImageURLCoverDefault = "/img/cover_default.jpg";
-        private const string ImageURLAvata = "/images/avatar/";
-        private const string ImageURLCover = "/images/cover/";
+        private const string ImageURLAvataDefault = "img/avatar_default.jpg";
+        private const string ImageURLCoverDefault = "img/cover_default.jpg";
+        private const string ImageURLAvata = "images/avatar/";
+        private const string ImageURLCover = "images/cover/";
+
         public async Task<ActionResult> Index()
         {
             // get user info

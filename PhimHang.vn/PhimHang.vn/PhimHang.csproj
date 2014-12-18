@@ -193,12 +193,14 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\FollowStockController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MyProfileController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\SymbolController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -451,6 +453,8 @@
     <Content Include="Views\Shared\_Partial_Area_Right_Profile.cshtml" />
     <Content Include="Views\Symbol\Index.cshtml" />
     <Content Include="Views\Symbol\_Partial_stock-detail.cshtml" />
+    <Content Include="Views\Shared\_Partial_Area_Search_Profile.cshtml" />
+    <Content Include="Views\Search\Helper.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

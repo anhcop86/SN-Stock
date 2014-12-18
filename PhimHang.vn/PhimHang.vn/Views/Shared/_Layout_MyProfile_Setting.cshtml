@@ -4,10 +4,10 @@
 
     <title>@ViewBag.Title</title>
     <meta charset="UTF-8">
-    <script src="~/Scripts/knockout-3.2.0.js"></script>
+    @*<script src="~/Scripts/knockout-3.2.0.js"></script>*@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>
-    <script src="~/signalr/hubs"></script>
+    @*<script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>*@
+    @*<script src="~/signalr/hubs"></script>*@
     <!--For desgin-->
 
     
@@ -49,12 +49,7 @@
                     </div>
                 </div>
                 <div class="toSpan f-right">
-                    <form id="frmSearch">
-                        <span id="search_box_top">
-                            <input name="q" id="kq" placeholder="MÃ CỔ PHIẾU ($VNM) hoặc USERNAME" title="Search" autocomplete="off" type="text">
-                            <i class="fa fa-search"></i>
-                        </span>
-                    </form>
+                    @Html.Partial("_Partial_Area_Search_Profile")
                 </div>
                 <div class="toSpan top-banner-icon f-right"><a href="#"><i class="fa fa-envelope"></i></a></div>
                 <div class="toSpan top-banner-icon f-right">

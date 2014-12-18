@@ -12,7 +12,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 namespace PhimHang.Controllers
 {
 
-    
+    [Authorize]
     public class SymbolController : Controller
     {
         //
@@ -31,10 +31,12 @@ namespace PhimHang.Controllers
         public UserManager<ApplicationUser> UserManager { get; private set; }
 
         private testEntities db = new testEntities();
-        private const string ImageURLAvataDefault = "/img/avatar_default.jpg";
-        private const string ImageURLCoverDefault = "/img/cover_default.jpg";
-        private const string ImageURLAvata = "/images/avatar/";
-        private const string ImageURLCover = "/images/cover/";
+        private const string ImageURLAvataDefault = "img/avatar_default.jpg";
+        private const string ImageURLCoverDefault = "img/cover_default.jpg";
+        private const string ImageURLAvata = "images/avatar/";
+        private const string ImageURLCover = "images/cover/";
+
+        
         public async Task<ViewResult> Index(string symbolName)
         {
             using (db = new testEntities())
@@ -207,7 +209,16 @@ namespace PhimHang.Controllers
             NF
         }
 
-        
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && UserManager != null)
+            {
+                UserManager.Dispose();
+                UserManager = null;
+            }
+            base.Dispose(disposing);
+        }
+
         #endregion
     }
 }

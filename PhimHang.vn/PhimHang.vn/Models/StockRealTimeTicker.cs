@@ -55,7 +55,7 @@ namespace PhimHang.Models
 
         public async Task<StockRealTime> GetAllStocksTest(string stock)
         {
-            var CompanyResult = Task.FromResult(_stocks.FirstOrDefault(s => s.CompanyID == stock));
+            var CompanyResult = Task.FromResult(_stocks.FirstOrDefault(s => s.CompanyID.ToUpper() == stock.ToUpper()));
             return await CompanyResult;
         }
 
@@ -121,7 +121,7 @@ namespace PhimHang.Models
         {
             foreach (var item in _stocks)
             {
-                Clients.Group(item.CompanyID).updateStockPrice(_stocks.FirstOrDefault(s => s.CompanyID == item.CompanyID));
+                Clients.Group(item.CompanyID.ToUpper()).updateStockPrice(_stocks.FirstOrDefault(s => s.CompanyID == item.CompanyID));
             }    
         }
 
