@@ -37,5 +37,6 @@ namespace PhimHang.Models
         public virtual DbSet<UserRelate> UserRelates { get; set; }
         public virtual DbSet<UserViewLastest> UserViewLastests { get; set; }
         public virtual DbSet<UserLogin> UserLogins { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
     }
 }

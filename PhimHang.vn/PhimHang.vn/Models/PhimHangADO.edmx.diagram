@@ -29,6 +29,8 @@
         <AssociationConnector Association="PHDBContext.FK_UserRelate_UserLogins" />
         <AssociationConnector Association="PHDBContext.FK_UserViewLastest_UserLogins" />
         <AssociationConnector Association="PHDBContext.FK_UserViewLastest_UserLogins1" />
+        <EntityTypeShape EntityType="PHDBContext.AspNetUser" Width="1.5" PointX="3" PointY="8.5" />
+        <AssociationConnector Association="PHDBContext.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

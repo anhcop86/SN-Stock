@@ -111,10 +111,11 @@ namespace PhimHang.Controllers
             {
                 var user = new ApplicationUser() { UserName = model.UserName,
                                                     //AvataImage = "default_avatar_medium.jpg",
-                                                     FullName = model.FullName,
-                                                        CreatedDate = DateTime.Now,
-                                                        Verify = Verify.NO};
-                user.UserExtentLogin = new UserExtentLogin { KeyLogin = user.Id };
+                                                     //FullName = model.FullName,
+                                                     //   CreatedDate = DateTime.Now,
+                                                     //   Verify = Verify.NO
+                };
+                user.UserExtentLogin = new UserExtentLogin { KeyLogin = user.Id, CreatedDate = DateTime.Now, FullName = model.FullName, Verify = Verify.NO };
                 
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -173,14 +174,14 @@ namespace PhimHang.Controllers
             else // user not null
             {
                 profile.UserName = user.UserName;
-                profile.FullName = user.FullName;
-                profile.Email = user.Email;
-                profile.BirthDay = user.BirthDate;
-                profile.CreatedDate = user.CreatedDate.ToString("dd/MM/yyyy");
-                profile.Verify = user.Verify ;//== null? Verify.NO: Verify.YES;
+                profile.FullName = user.UserExtentLogin.FullName;
+                profile.Email = user.UserExtentLogin.Email;
+                profile.BirthDay = user.UserExtentLogin.BirthDate;
+                profile.CreatedDate = user.UserExtentLogin.CreatedDate.ToString("dd/MM/yyyy");
+                profile.Verify = user.UserExtentLogin.Verify;//== null? Verify.NO: Verify.YES;
             }
-            ViewBag.ImageUrl = ImageURLAvata + user.AvataImage;
-            ViewBag.ImageUrlCover = ImageURLCover + user.AvataCover;
+            ViewBag.ImageUrl = ImageURLAvata + user.UserExtentLogin.AvataImage;
+            ViewBag.ImageUrlCover = ImageURLCover + user.UserExtentLogin.AvataCover;
             return View(profile);
         }
 
@@ -233,7 +234,7 @@ namespace PhimHang.Controllers
 
                 #region delete old avata image
 
-                string fullPath = Server.MapPath(uploadDir) + user.AvataImage;
+                string fullPath = Server.MapPath(uploadDir) + user.UserExtentLogin.AvataImage;
                 if (System.IO.File.Exists(fullPath))
                 {
                     System.IO.File.Delete(fullPath);
@@ -243,7 +244,7 @@ namespace PhimHang.Controllers
                 //
                 #region update new avata on server
 
-                user.AvataImage = NameFiletimeupload + Path.GetExtension(uploadfileid_avata.FileName);
+                user.UserExtentLogin.AvataImage = NameFiletimeupload + Path.GetExtension(uploadfileid_avata.FileName);
                 IdentityResult result = await UserManager.UpdateAsync(user);
                 if (result.Succeeded)
                 {
@@ -308,7 +309,7 @@ namespace PhimHang.Controllers
 
                 #region delete old avata image
 
-                string fullPath = Server.MapPath(uploadDir) + user.AvataCover;
+                string fullPath = Server.MapPath(uploadDir) + user.UserExtentLogin.AvataCover;
                 if (System.IO.File.Exists(fullPath))
                 {
                     System.IO.File.Delete(fullPath);
@@ -318,7 +319,7 @@ namespace PhimHang.Controllers
                 //
                 #region update new avata on server
 
-                user.AvataCover = NameFiletimeupload + Path.GetExtension(uploadfileid_cover.FileName);
+                user.UserExtentLogin.AvataCover = NameFiletimeupload + Path.GetExtension(uploadfileid_cover.FileName);
                 IdentityResult result = await UserManager.UpdateAsync(user);
                 if (result.Succeeded)
                 {
@@ -343,9 +344,9 @@ namespace PhimHang.Controllers
                 ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
                 if(user !=null)
                 {
-                    user.FullName = model.FullName;
-                    user.Email = model.Email;
-                    user.BirthDate = model.BirthDay;
+                    user.UserExtentLogin.FullName = model.FullName;
+                    user.UserExtentLogin.Email = model.Email;
+                    user.UserExtentLogin.BirthDate = model.BirthDay;
                 }
                 else
                 {

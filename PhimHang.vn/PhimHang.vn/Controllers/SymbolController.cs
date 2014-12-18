@@ -72,9 +72,9 @@ namespace PhimHang.Controllers
                 ViewBag.TotalPost = post;
                 ViewBag.Follow = follow;
                 ViewBag.Follower = follower;
-                
-                ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.AvataCover) == true ?  ImageURLCoverDefault :  ImageURLCover + currentUser.AvataCover;
-                ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.AvataImage) == true ?  ImageURLAvataDefault :  ImageURLAvata + currentUser.AvataImage;
+
+                ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataCover) == true ? ImageURLCoverDefault : ImageURLCover + currentUser.UserExtentLogin.AvataCover;
+                ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
 
                 // End thong tin menu ben trai
 

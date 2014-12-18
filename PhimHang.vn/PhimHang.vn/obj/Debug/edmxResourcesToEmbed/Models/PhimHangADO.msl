@@ -122,7 +122,28 @@
     <EntitySetMapping Name="UserLogins">
       <EntityTypeMapping TypeName="PHDBContext.UserLogin">
         <MappingFragment StoreEntitySet="UserLogins">
+          <ScalarProperty Name="LockAccount" ColumnName="LockAccount" />
+          <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+          <ScalarProperty Name="Verify" ColumnName="Verify" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="AvataCover" ColumnName="AvataCover" />
+          <ScalarProperty Name="AvataImage" ColumnName="AvataImage" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
           <ScalarProperty Name="KeyLogin" ColumnName="KeyLogin" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="PHDBContext.AspNetUser">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="UserExtentLogin_Id" ColumnName="UserExtentLogin_Id" />
+          <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

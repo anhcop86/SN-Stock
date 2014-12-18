@@ -5,6 +5,17 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="PHDBContext.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar(max)" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="Discriminator" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserExtentLogin_Id" Type="int" />
+        </EntityType>
         <EntityType Name="FollowStock">
           <Key>
             <PropertyRef Name="ID" />
@@ -101,6 +112,15 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="KeyLogin" Type="nvarchar(max)" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="AvataImage" Type="nvarchar" MaxLength="256" />
+          <Property Name="AvataCover" Type="nvarchar" MaxLength="256" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="256" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="Verify" Type="int" Nullable="false" />
+          <Property Name="AccountType" Type="int" Nullable="false" />
+          <Property Name="LockAccount" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="UserRelate">
           <Key>
@@ -119,6 +139,18 @@
           <Property Name="UserIdLastest" Type="int" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime2" Precision="7" />
         </EntityType>
+        <Association Name="FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id">
+          <End Role="UserLogins" Type="Self.UserLogins" Multiplicity="0..1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUsers">
+              <PropertyRef Name="UserExtentLogin_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_FollowStock_UserLogins">
           <End Role="UserLogins" Type="Self.UserLogins" Multiplicity="1" />
           <End Role="FollowStock" Type="Self.FollowStock" Multiplicity="*" />
@@ -264,6 +296,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="PHDBContextStoreContainer">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FollowStock" EntityType="Self.FollowStock" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FollowUser" EntityType="Self.FollowUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PostComments" EntityType="Self.PostComments" Schema="dbo" store:Type="Tables" />
@@ -276,6 +309,10 @@
           <EntitySet Name="UserLogins" EntityType="Self.UserLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRelate" EntityType="Self.UserRelate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserViewLastest" EntityType="Self.UserViewLastest" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" Association="Self.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id">
+            <End Role="UserLogins" EntitySet="UserLogins" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
           <AssociationSet Name="FK_FollowStock_UserLogins" Association="Self.FK_FollowStock_UserLogins">
             <End Role="UserLogins" EntitySet="UserLogins" />
             <End Role="FollowStock" EntitySet="FollowStock" />
@@ -405,6 +442,11 @@
           <AssociationSet Name="FK_UserViewLastest_UserLogins1" Association="PHDBContext.FK_UserViewLastest_UserLogins1">
             <End Role="UserLogin" EntitySet="UserLogins" />
             <End Role="UserViewLastest" EntitySet="UserViewLastests" />
+          </AssociationSet>
+          <EntitySet Name="AspNetUsers" EntityType="PHDBContext.AspNetUser" />
+          <AssociationSet Name="FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" Association="PHDBContext.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id">
+            <End Role="UserLogin" EntitySet="UserLogins" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="FollowStock">
@@ -564,6 +606,16 @@
           <NavigationProperty Name="UserRelates" Relationship="PHDBContext.FK_UserRelate_UserLogins" FromRole="UserLogin" ToRole="UserRelate" />
           <NavigationProperty Name="UserViewLastests" Relationship="PHDBContext.FK_UserViewLastest_UserLogins" FromRole="UserLogin" ToRole="UserViewLastest" />
           <NavigationProperty Name="UserViewLastests1" Relationship="PHDBContext.FK_UserViewLastest_UserLogins1" FromRole="UserLogin" ToRole="UserViewLastest" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="AvataImage" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="AvataCover" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Verify" Type="Int32" Nullable="false" />
+          <Property Name="AccountType" Type="Int32" Nullable="false" />
+          <Property Name="LockAccount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="PHDBContext.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" FromRole="UserLogin" ToRole="AspNetUser" />
         </EntityType>
         <Association Name="FK_FollowStock_UserLogins">
           <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />
@@ -670,6 +722,30 @@
             </Principal>
             <Dependent Role="UserViewLastest">
               <PropertyRef Name="UserIdLastest" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Discriminator" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserExtentLogin_Id" Type="Int32" />
+          <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" FromRole="AspNetUser" ToRole="UserLogin" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id">
+          <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="0..1" />
+          <End Type="PHDBContext.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogin">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUser">
+              <PropertyRef Name="UserExtentLogin_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -800,7 +876,28 @@
           <EntitySetMapping Name="UserLogins">
             <EntityTypeMapping TypeName="PHDBContext.UserLogin">
               <MappingFragment StoreEntitySet="UserLogins">
+                <ScalarProperty Name="LockAccount" ColumnName="LockAccount" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+                <ScalarProperty Name="Verify" ColumnName="Verify" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="AvataCover" ColumnName="AvataCover" />
+                <ScalarProperty Name="AvataImage" ColumnName="AvataImage" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
                 <ScalarProperty Name="KeyLogin" ColumnName="KeyLogin" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="PHDBContext.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserExtentLogin_Id" ColumnName="UserExtentLogin_Id" />
+                <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

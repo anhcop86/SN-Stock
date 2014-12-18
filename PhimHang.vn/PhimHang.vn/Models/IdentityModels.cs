@@ -14,7 +14,16 @@ namespace PhimHang.Models
         {
             //this.Verify = Verify.;
         }
-        
+     
+        public virtual UserExtentLogin UserExtentLogin { get; set; }
+         
+    }
+    [Table("UserLogins")]
+    public class UserExtentLogin
+    {
+        public int Id { get; set; }
+        public string KeyLogin { get; set; }
+
         public Nullable<DateTime> BirthDate { get; set; }
 
         [StringLength(256)]
@@ -30,21 +39,13 @@ namespace PhimHang.Models
         public string Email { get; set; }
 
         public DateTime CreatedDate { get; set; }
-                
+
         public Verify Verify { get; set; }
 
         public AccountType AccountType { get; set; }
 
         public LockAccount LockAccount { get; set; }
 
-        public virtual UserExtentLogin UserExtentLogin { get; set; }
-         
-    }
-    [Table("UserLogins")]
-    public class UserExtentLogin
-    {
-        public int Id { get; set; }
-        public string KeyLogin { get; set; }        
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

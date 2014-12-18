@@ -25,10 +25,20 @@ namespace PhimHang.Models
             this.UserRelates = new HashSet<UserRelate>();
             this.UserViewLastests = new HashSet<UserViewLastest>();
             this.UserViewLastests1 = new HashSet<UserViewLastest>();
+            this.AspNetUsers = new HashSet<AspNetUser>();
         }
     
         public int Id { get; set; }
         public string KeyLogin { get; set; }
+        public Nullable<System.DateTime> BirthDate { get; set; }
+        public string AvataImage { get; set; }
+        public string AvataCover { get; set; }
+        public string FullName { get; set; }
+        public string Email { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public int Verify { get; set; }
+        public int AccountType { get; set; }
+        public int LockAccount { get; set; }
     
         public virtual ICollection<FollowStock> FollowStocks { get; set; }
         public virtual ICollection<FollowUser> FollowUsers { get; set; }
@@ -39,5 +49,6 @@ namespace PhimHang.Models
         public virtual ICollection<UserRelate> UserRelates { get; set; }
         public virtual ICollection<UserViewLastest> UserViewLastests { get; set; }
         public virtual ICollection<UserViewLastest> UserViewLastests1 { get; set; }
+        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
     }
 }

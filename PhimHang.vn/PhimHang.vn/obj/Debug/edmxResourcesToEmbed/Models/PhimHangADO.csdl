@@ -77,6 +77,11 @@
       <End Role="UserLogin" EntitySet="UserLogins" />
       <End Role="UserViewLastest" EntitySet="UserViewLastests" />
     </AssociationSet>
+    <EntitySet Name="AspNetUsers" EntityType="PHDBContext.AspNetUser" />
+    <AssociationSet Name="FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" Association="PHDBContext.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id">
+      <End Role="UserLogin" EntitySet="UserLogins" />
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="FollowStock">
     <Key>
@@ -235,6 +240,16 @@
     <NavigationProperty Name="UserRelates" Relationship="PHDBContext.FK_UserRelate_UserLogins" FromRole="UserLogin" ToRole="UserRelate" />
     <NavigationProperty Name="UserViewLastests" Relationship="PHDBContext.FK_UserViewLastest_UserLogins" FromRole="UserLogin" ToRole="UserViewLastest" />
     <NavigationProperty Name="UserViewLastests1" Relationship="PHDBContext.FK_UserViewLastest_UserLogins1" FromRole="UserLogin" ToRole="UserViewLastest" />
+    <Property Name="BirthDate" Type="DateTime" Precision="3" />
+    <Property Name="AvataImage" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="AvataCover" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="FullName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Verify" Type="Int32" Nullable="false" />
+    <Property Name="AccountType" Type="Int32" Nullable="false" />
+    <Property Name="LockAccount" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="PHDBContext.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" FromRole="UserLogin" ToRole="AspNetUser" />
   </EntityType>
   <Association Name="FK_FollowStock_UserLogins">
     <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />
@@ -341,6 +356,30 @@
       </Principal>
       <Dependent Role="UserViewLastest">
         <PropertyRef Name="UserIdLastest" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Discriminator" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserExtentLogin_Id" Type="Int32" />
+    <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" FromRole="AspNetUser" ToRole="UserLogin" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id">
+    <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="0..1" />
+    <End Type="PHDBContext.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserLogin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUser">
+        <PropertyRef Name="UserExtentLogin_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
