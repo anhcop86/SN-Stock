@@ -30,9 +30,5 @@ E:\Working\SN-Stock\WebAPIStockRealTime\Database\obj\Debug\Database.pdb
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Database\bin\Debug\Database.dacpac
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Database\bin\Debug\Database.dll
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Database\bin\Debug\Database.pdb
-F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Database\obj\Debug\Model.xml
-F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Database\obj\Debug\refactor.xml
-F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Database\obj\Debug\postdeploy.sql
-F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Database\obj\Debug\predeploy.sql
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Database\obj\Debug\Database.dll
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Database\obj\Debug\Database.pdb

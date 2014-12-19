@@ -1,16 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="testModelStoreContainer" CdmEntityContainer="testEntities">
-    <EntitySetMapping Name="StockCodes">
-      <EntityTypeMapping TypeName="testModel.StockCode">
-        <MappingFragment StoreEntitySet="StockCode">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Code" ColumnName="Code" />
-          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
-          <ScalarProperty Name="LongName" ColumnName="LongName" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="StockPrices">
       <EntityTypeMapping TypeName="testModel.StockPrice">
         <MappingFragment StoreEntitySet="StockPrice">
@@ -22,6 +12,18 @@
           <ScalarProperty Name="DiffPrice" ColumnName="DiffPrice" />
           <ScalarProperty Name="FloorPrice" ColumnName="FloorPrice" />
           <ScalarProperty Name="CeilingPrice" ColumnName="CeilingPrice" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StockCodes">
+      <EntityTypeMapping TypeName="testModel.StockCode">
+        <MappingFragment StoreEntitySet="StockCode">
+          <ScalarProperty Name="IndexName" ColumnName="IndexName" />
+          <ScalarProperty Name="MarketType" ColumnName="MarketType" />
+          <ScalarProperty Name="LongName" ColumnName="LongName" />
+          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
           <ScalarProperty Name="Code" ColumnName="Code" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>

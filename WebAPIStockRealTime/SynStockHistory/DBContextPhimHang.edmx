@@ -13,6 +13,8 @@
           <Property Name="Code" Type="varchar" MaxLength="16" Nullable="false" />
           <Property Name="ShortName" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="LongName" Type="nvarchar" MaxLength="256" />
+          <Property Name="MarketType" Type="smallint" />
+          <Property Name="IndexName" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="StockPrice">
           <Key>
@@ -37,18 +39,9 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="testModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="StockCode">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Code" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ShortName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LongName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityContainer Name="testEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="StockCodes" EntityType="Self.StockCode" />
           <EntitySet Name="StockPrices" EntityType="testModel.StockPrice" />
+          <EntitySet Name="StockCodes" EntityType="testModel.StockCode" />
         </EntityContainer>
         <EntityType Name="StockPrice">
           <Key>
@@ -65,22 +58,23 @@
           <Property Name="ClosePrice" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="TradingDate" Type="DateTime" Precision="7" />
         </EntityType>
+        <EntityType Name="StockCode">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="ShortName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LongName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="MarketType" Type="Int16" />
+          <Property Name="IndexName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="testModelStoreContainer" CdmEntityContainer="testEntities">
-          <EntitySetMapping Name="StockCodes">
-            <EntityTypeMapping TypeName="testModel.StockCode">
-              <MappingFragment StoreEntitySet="StockCode">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
-                <ScalarProperty Name="LongName" ColumnName="LongName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="StockPrices">
             <EntityTypeMapping TypeName="testModel.StockPrice">
               <MappingFragment StoreEntitySet="StockPrice">
@@ -92,6 +86,18 @@
                 <ScalarProperty Name="DiffPrice" ColumnName="DiffPrice" />
                 <ScalarProperty Name="FloorPrice" ColumnName="FloorPrice" />
                 <ScalarProperty Name="CeilingPrice" ColumnName="CeilingPrice" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockCodes">
+            <EntityTypeMapping TypeName="testModel.StockCode">
+              <MappingFragment StoreEntitySet="StockCode">
+                <ScalarProperty Name="IndexName" ColumnName="IndexName" />
+                <ScalarProperty Name="MarketType" ColumnName="MarketType" />
+                <ScalarProperty Name="LongName" ColumnName="LongName" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

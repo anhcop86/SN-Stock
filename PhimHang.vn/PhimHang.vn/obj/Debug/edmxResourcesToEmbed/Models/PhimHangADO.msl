@@ -55,16 +55,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="StockCodes">
-      <EntityTypeMapping TypeName="PHDBContext.StockCode">
-        <MappingFragment StoreEntitySet="StockCode">
-          <ScalarProperty Name="LongName" ColumnName="LongName" />
-          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
-          <ScalarProperty Name="Code" ColumnName="Code" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="StockPrices">
       <EntityTypeMapping TypeName="PHDBContext.StockPrice">
         <MappingFragment StoreEntitySet="StockPrice">
@@ -144,6 +134,18 @@
           <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
           <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StockCodes">
+      <EntityTypeMapping TypeName="PHDBContext.StockCode">
+        <MappingFragment StoreEntitySet="StockCode">
+          <ScalarProperty Name="IndexName" ColumnName="IndexName" />
+          <ScalarProperty Name="MarketType" ColumnName="MarketType" />
+          <ScalarProperty Name="LongName" ColumnName="LongName" />
+          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

@@ -1,16 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="StoxDataModelStoreContainer" CdmEntityContainer="StoxDataEntities">
-    <EntitySetMapping Name="stox_tb_Company">
-      <EntityTypeMapping TypeName="StoxDataModel.stox_tb_Company">
-        <MappingFragment StoreEntitySet="stox_tb_Company">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Ticker" ColumnName="Ticker" />
-          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="stox_tb_HOSE_Trading">
       <EntityTypeMapping TypeName="StoxDataModel.stox_tb_HOSE_Trading">
         <MappingFragment StoreEntitySet="stox_tb_HOSE_Trading">
@@ -90,6 +80,74 @@
           <ScalarProperty Name="TRADING_DATE" ColumnName="TRADING_DATE" />
           <ScalarProperty Name="DATE_NO" ColumnName="DATE_NO" />
           <ScalarProperty Name="FLOOR_CODE" ColumnName="FLOOR_CODE" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stox_tb_Company">
+      <EntityTypeMapping TypeName="StoxDataModel.stox_tb_Company">
+        <MappingFragment StoreEntitySet="stox_tb_Company">
+          <ScalarProperty Name="freefloat" ColumnName="freefloat" />
+          <ScalarProperty Name="eBusinessRisk" ColumnName="eBusinessRisk" />
+          <ScalarProperty Name="eCompanyPromise" ColumnName="eCompanyPromise" />
+          <ScalarProperty Name="eLargeInvestProject" ColumnName="eLargeInvestProject" />
+          <ScalarProperty Name="eCompanyProfile" ColumnName="eCompanyProfile" />
+          <ScalarProperty Name="ePosCompany" ColumnName="ePosCompany" />
+          <ScalarProperty Name="eKeyDevelopments" ColumnName="eKeyDevelopments" />
+          <ScalarProperty Name="eBusinessStrategies" ColumnName="eBusinessStrategies" />
+          <ScalarProperty Name="eHistoryDev" ColumnName="eHistoryDev" />
+          <ScalarProperty Name="eCityID" ColumnName="eCityID" />
+          <ScalarProperty Name="eDistrictID" ColumnName="eDistrictID" />
+          <ScalarProperty Name="eRegistedOffice" ColumnName="eRegistedOffice" />
+          <ScalarProperty Name="ePrimaryProduct" ColumnName="ePrimaryProduct" />
+          <ScalarProperty Name="BusinessRisk" ColumnName="BusinessRisk" />
+          <ScalarProperty Name="CompanyPromise" ColumnName="CompanyPromise" />
+          <ScalarProperty Name="LargeInvestProject" ColumnName="LargeInvestProject" />
+          <ScalarProperty Name="CompanyProfile" ColumnName="CompanyProfile" />
+          <ScalarProperty Name="PosCompany" ColumnName="PosCompany" />
+          <ScalarProperty Name="KeyDevelopments" ColumnName="KeyDevelopments" />
+          <ScalarProperty Name="BusinessStrategies" ColumnName="BusinessStrategies" />
+          <ScalarProperty Name="HistoryDev" ColumnName="HistoryDev" />
+          <ScalarProperty Name="NumberOfTradeStation" ColumnName="NumberOfTradeStation" />
+          <ScalarProperty Name="NumberOfSub1" ColumnName="NumberOfSub1" />
+          <ScalarProperty Name="NumberOfATM" ColumnName="NumberOfATM" />
+          <ScalarProperty Name="Fax_Number" ColumnName="Fax_Number" />
+          <ScalarProperty Name="Fax_AC" ColumnName="Fax_AC" />
+          <ScalarProperty Name="Fax_CC" ColumnName="Fax_CC" />
+          <ScalarProperty Name="Telephone_Number" ColumnName="Telephone_Number" />
+          <ScalarProperty Name="Telephone_AC" ColumnName="Telephone_AC" />
+          <ScalarProperty Name="Telephone_CC" ColumnName="Telephone_CC" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+          <ScalarProperty Name="RegistedOffice" ColumnName="RegistedOffice" />
+          <ScalarProperty Name="WebsiteJobHunter" ColumnName="WebsiteJobHunter" />
+          <ScalarProperty Name="WebsiteProductServices" ColumnName="WebsiteProductServices" />
+          <ScalarProperty Name="WebsiteInvesterRelation" ColumnName="WebsiteInvesterRelation" />
+          <ScalarProperty Name="WebsiteAboutCompany" ColumnName="WebsiteAboutCompany" />
+          <ScalarProperty Name="WebsiteCorporateAction" ColumnName="WebsiteCorporateAction" />
+          <ScalarProperty Name="WebsiteHomepage" ColumnName="WebsiteHomepage" />
+          <ScalarProperty Name="NumberOfEmployees" ColumnName="NumberOfEmployees" />
+          <ScalarProperty Name="NumberOfCDPT" ColumnName="NumberOfCDPT" />
+          <ScalarProperty Name="CTCKID" ColumnName="CTCKID" />
+          <ScalarProperty Name="PriceListed" ColumnName="PriceListed" />
+          <ScalarProperty Name="ParValue" ColumnName="ParValue" />
+          <ScalarProperty Name="CapitalFund" ColumnName="CapitalFund" />
+          <ScalarProperty Name="ShareIssue" ColumnName="ShareIssue" />
+          <ScalarProperty Name="FirstListingDate" ColumnName="FirstListingDate" />
+          <ScalarProperty Name="ShareCirculate" ColumnName="ShareCirculate" />
+          <ScalarProperty Name="ShareType" ColumnName="ShareType" />
+          <ScalarProperty Name="Index" ColumnName="Index" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="ExchangeID" ColumnName="ExchangeID" />
+          <ScalarProperty Name="PrimaryProduct" ColumnName="PrimaryProduct" />
+          <ScalarProperty Name="IndustryID" ColumnName="IndustryID" />
+          <ScalarProperty Name="IndustryParent" ColumnName="IndustryParent" />
+          <ScalarProperty Name="CompanyTypeBeforeListed" ColumnName="CompanyTypeBeforeListed" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+          <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+          <ScalarProperty Name="Ticker" ColumnName="Ticker" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

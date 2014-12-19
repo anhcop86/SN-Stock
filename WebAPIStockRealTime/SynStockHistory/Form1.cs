@@ -24,6 +24,8 @@ namespace SynStockHistory
         {
 
             Uri uri = new Uri("http://www.vfs.com.vn:6789/api/stoxdata/GetCompany");
+            //Uri uri = new Uri("http://localhost:9999/api/stoxdata/GetCompany");
+        
 
             ParaStock para = new ParaStock { PI_tickerList = "KEYSECRET" };
             var company = new List<StockCode>();
@@ -41,8 +43,8 @@ namespace SynStockHistory
 
             }
 
-            company.Add(new StockCode { Code = "HNXIndex", LongName = "Chỉ số Index của Hà Nội", ShortName = "Chỉ số Index của Hà Nội" });
-            company.Add(new StockCode { Code = "VnIndex", LongName = "Chỉ số Index của Hồ Chí Minh", ShortName = "Chỉ số Index của Hồ Chí Minh" });
+            company.Add(new StockCode { Code = "HNXIndex", LongName = "Chỉ số Index của Hà Nội", ShortName = "Chỉ số Index của Hà Nội", MarketType = 10, IndexName = "HNXIndex" });
+            company.Add(new StockCode { Code = "VnIndex", LongName = "Chỉ số Index của Hồ Chí Minh", ShortName = "Chỉ số Index của Hồ Chí Minh", MarketType = 11, IndexName = "VnIndex" });
 
             using (db = new testEntities())
             {

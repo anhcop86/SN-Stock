@@ -73,6 +73,8 @@
           <Property Name="Code" Type="varchar" MaxLength="16" Nullable="false" />
           <Property Name="ShortName" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="LongName" Type="nvarchar" MaxLength="256" />
+          <Property Name="MarketType" Type="smallint" />
+          <Property Name="IndexName" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="StockPrice">
           <Key>
@@ -388,7 +390,6 @@
           <EntitySet Name="FollowUsers" EntityType="PHDBContext.FollowUser" />
           <EntitySet Name="PostComments" EntityType="PHDBContext.PostComment" />
           <EntitySet Name="Settings" EntityType="PHDBContext.Setting" />
-          <EntitySet Name="StockCodes" EntityType="PHDBContext.StockCode" />
           <EntitySet Name="StockPrices" EntityType="PHDBContext.StockPrice" />
           <EntitySet Name="StockRelates" EntityType="PHDBContext.StockRelate" />
           <EntitySet Name="StockViewLastests" EntityType="PHDBContext.StockViewLastest" />
@@ -448,6 +449,7 @@
             <End Role="UserLogin" EntitySet="UserLogins" />
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <EntitySet Name="StockCodes" EntityType="PHDBContext.StockCode" />
           </EntityContainer>
         <EntityType Name="FollowStock">
           <Key>
@@ -490,15 +492,6 @@
           <Property Name="Key" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
           <Property Name="Value" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="CreatedDate" Type="DateTime" Precision="7" />
-        </EntityType>
-        <EntityType Name="StockCode">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Code" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
-          <Property Name="ShortName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="LongName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="StockPrice">
           <Key>
@@ -749,6 +742,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="StockCode">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="ShortName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LongName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="MarketType" Type="Int16" />
+          <Property Name="IndexName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -806,16 +810,6 @@
                 <ScalarProperty Name="Value" ColumnName="Value" />
                 <ScalarProperty Name="Key" ColumnName="Key" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="StockCodes">
-            <EntityTypeMapping TypeName="PHDBContext.StockCode">
-              <MappingFragment StoreEntitySet="StockCode">
-                <ScalarProperty Name="LongName" ColumnName="LongName" />
-                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -898,6 +892,18 @@
                 <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
                 <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockCodes">
+            <EntityTypeMapping TypeName="PHDBContext.StockCode">
+              <MappingFragment StoreEntitySet="StockCode">
+                <ScalarProperty Name="IndexName" ColumnName="IndexName" />
+                <ScalarProperty Name="MarketType" ColumnName="MarketType" />
+                <ScalarProperty Name="LongName" ColumnName="LongName" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

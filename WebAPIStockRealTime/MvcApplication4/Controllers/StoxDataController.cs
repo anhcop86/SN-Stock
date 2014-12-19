@@ -36,7 +36,9 @@ namespace PorfolioInvesment.Controllers
                                       {
                                           Code = c.Ticker,
                                           ShortName = c.Name,
-                                          LongName = c.ShortName
+                                          LongName = c.ShortName,
+                                          MarketType = c.ExchangeID, // 0: HOSE, 1: HNX
+                                          IndexName = c.Index
                                       };
                     return companydata.ToList();
                 }

@@ -320,21 +320,12 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="StoxDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="stox_tb_Company">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Ticker" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="ShortName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          </EntityType>
         <EntityContainer Name="StoxDataEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="stox_tb_Company" EntityType="Self.stox_tb_Company" />
           <EntitySet Name="stox_tb_HOSE_Trading" EntityType="StoxDataModel.stox_tb_HOSE_Trading" />
           <EntitySet Name="stox_tb_StocksInfo" EntityType="StoxDataModel.stox_tb_StocksInfo" />
           <EntitySet Name="stox_tb_HOSE_TotalTrading" EntityType="StoxDataModel.stox_tb_HOSE_TotalTrading" />
           <EntitySet Name="Stox_tb_MarketInfo" EntityType="StoxDataModel.Stox_tb_MarketInfo" />
+          <EntitySet Name="stox_tb_Company" EntityType="StoxDataModel.stox_tb_Company" />
         </EntityContainer>
         <EntityType Name="stox_tb_HOSE_Trading">
           <Key>
@@ -415,22 +406,79 @@
           <Property Name="HIGHTEST" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="OPEN_INDEX" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
+        <EntityType Name="stox_tb_Company">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ticker" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ShortName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TypeID" Type="Int16" />
+          <Property Name="EnglishName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyTypeBeforeListed" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IndustryParent" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IndustryID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PrimaryProduct" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ExchangeID" Type="Int16" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="Index" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ShareType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ShareCirculate" Type="Double" />
+          <Property Name="FirstListingDate" Type="DateTime" Precision="3" />
+          <Property Name="ShareIssue" Type="Double" />
+          <Property Name="CapitalFund" Type="Double" />
+          <Property Name="ParValue" Type="Double" />
+          <Property Name="PriceListed" Type="Double" />
+          <Property Name="CTCKID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NumberOfCDPT" Type="Double" />
+          <Property Name="NumberOfEmployees" Type="Double" />
+          <Property Name="WebsiteHomepage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="WebsiteCorporateAction" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="WebsiteAboutCompany" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="WebsiteInvesterRelation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="WebsiteProductServices" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="WebsiteJobHunter" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="RegistedOffice" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DistrictID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CityID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone_CC" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone_AC" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone_Number" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Fax_CC" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Fax_AC" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Fax_Number" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NumberOfATM" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NumberOfSub1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NumberOfTradeStation" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="HistoryDev" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BusinessStrategies" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KeyDevelopments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PosCompany" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyProfile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LargeInvestProject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyPromise" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BusinessRisk" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ePrimaryProduct" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="eRegistedOffice" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="eDistrictID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="eCityID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="eHistoryDev" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="eBusinessStrategies" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="eKeyDevelopments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ePosCompany" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="eCompanyProfile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="eLargeInvestProject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="eCompanyPromise" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="eBusinessRisk" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="freefloat" Type="Double" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="StoxDataModelStoreContainer" CdmEntityContainer="StoxDataEntities">
-          <EntitySetMapping Name="stox_tb_Company">
-            <EntityTypeMapping TypeName="StoxDataModel.stox_tb_Company">
-              <MappingFragment StoreEntitySet="stox_tb_Company">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Ticker" ColumnName="Ticker" />
-                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="stox_tb_HOSE_Trading">
             <EntityTypeMapping TypeName="StoxDataModel.stox_tb_HOSE_Trading">
               <MappingFragment StoreEntitySet="stox_tb_HOSE_Trading">
@@ -510,6 +558,74 @@
                 <ScalarProperty Name="TRADING_DATE" ColumnName="TRADING_DATE" />
                 <ScalarProperty Name="DATE_NO" ColumnName="DATE_NO" />
                 <ScalarProperty Name="FLOOR_CODE" ColumnName="FLOOR_CODE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stox_tb_Company">
+            <EntityTypeMapping TypeName="StoxDataModel.stox_tb_Company">
+              <MappingFragment StoreEntitySet="stox_tb_Company">
+                <ScalarProperty Name="freefloat" ColumnName="freefloat" />
+                <ScalarProperty Name="eBusinessRisk" ColumnName="eBusinessRisk" />
+                <ScalarProperty Name="eCompanyPromise" ColumnName="eCompanyPromise" />
+                <ScalarProperty Name="eLargeInvestProject" ColumnName="eLargeInvestProject" />
+                <ScalarProperty Name="eCompanyProfile" ColumnName="eCompanyProfile" />
+                <ScalarProperty Name="ePosCompany" ColumnName="ePosCompany" />
+                <ScalarProperty Name="eKeyDevelopments" ColumnName="eKeyDevelopments" />
+                <ScalarProperty Name="eBusinessStrategies" ColumnName="eBusinessStrategies" />
+                <ScalarProperty Name="eHistoryDev" ColumnName="eHistoryDev" />
+                <ScalarProperty Name="eCityID" ColumnName="eCityID" />
+                <ScalarProperty Name="eDistrictID" ColumnName="eDistrictID" />
+                <ScalarProperty Name="eRegistedOffice" ColumnName="eRegistedOffice" />
+                <ScalarProperty Name="ePrimaryProduct" ColumnName="ePrimaryProduct" />
+                <ScalarProperty Name="BusinessRisk" ColumnName="BusinessRisk" />
+                <ScalarProperty Name="CompanyPromise" ColumnName="CompanyPromise" />
+                <ScalarProperty Name="LargeInvestProject" ColumnName="LargeInvestProject" />
+                <ScalarProperty Name="CompanyProfile" ColumnName="CompanyProfile" />
+                <ScalarProperty Name="PosCompany" ColumnName="PosCompany" />
+                <ScalarProperty Name="KeyDevelopments" ColumnName="KeyDevelopments" />
+                <ScalarProperty Name="BusinessStrategies" ColumnName="BusinessStrategies" />
+                <ScalarProperty Name="HistoryDev" ColumnName="HistoryDev" />
+                <ScalarProperty Name="NumberOfTradeStation" ColumnName="NumberOfTradeStation" />
+                <ScalarProperty Name="NumberOfSub1" ColumnName="NumberOfSub1" />
+                <ScalarProperty Name="NumberOfATM" ColumnName="NumberOfATM" />
+                <ScalarProperty Name="Fax_Number" ColumnName="Fax_Number" />
+                <ScalarProperty Name="Fax_AC" ColumnName="Fax_AC" />
+                <ScalarProperty Name="Fax_CC" ColumnName="Fax_CC" />
+                <ScalarProperty Name="Telephone_Number" ColumnName="Telephone_Number" />
+                <ScalarProperty Name="Telephone_AC" ColumnName="Telephone_AC" />
+                <ScalarProperty Name="Telephone_CC" ColumnName="Telephone_CC" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+                <ScalarProperty Name="RegistedOffice" ColumnName="RegistedOffice" />
+                <ScalarProperty Name="WebsiteJobHunter" ColumnName="WebsiteJobHunter" />
+                <ScalarProperty Name="WebsiteProductServices" ColumnName="WebsiteProductServices" />
+                <ScalarProperty Name="WebsiteInvesterRelation" ColumnName="WebsiteInvesterRelation" />
+                <ScalarProperty Name="WebsiteAboutCompany" ColumnName="WebsiteAboutCompany" />
+                <ScalarProperty Name="WebsiteCorporateAction" ColumnName="WebsiteCorporateAction" />
+                <ScalarProperty Name="WebsiteHomepage" ColumnName="WebsiteHomepage" />
+                <ScalarProperty Name="NumberOfEmployees" ColumnName="NumberOfEmployees" />
+                <ScalarProperty Name="NumberOfCDPT" ColumnName="NumberOfCDPT" />
+                <ScalarProperty Name="CTCKID" ColumnName="CTCKID" />
+                <ScalarProperty Name="PriceListed" ColumnName="PriceListed" />
+                <ScalarProperty Name="ParValue" ColumnName="ParValue" />
+                <ScalarProperty Name="CapitalFund" ColumnName="CapitalFund" />
+                <ScalarProperty Name="ShareIssue" ColumnName="ShareIssue" />
+                <ScalarProperty Name="FirstListingDate" ColumnName="FirstListingDate" />
+                <ScalarProperty Name="ShareCirculate" ColumnName="ShareCirculate" />
+                <ScalarProperty Name="ShareType" ColumnName="ShareType" />
+                <ScalarProperty Name="Index" ColumnName="Index" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ExchangeID" ColumnName="ExchangeID" />
+                <ScalarProperty Name="PrimaryProduct" ColumnName="PrimaryProduct" />
+                <ScalarProperty Name="IndustryID" ColumnName="IndustryID" />
+                <ScalarProperty Name="IndustryParent" ColumnName="IndustryParent" />
+                <ScalarProperty Name="CompanyTypeBeforeListed" ColumnName="CompanyTypeBeforeListed" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="Ticker" ColumnName="Ticker" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

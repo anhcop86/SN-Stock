@@ -68,6 +68,8 @@
     <Property Name="Code" Type="varchar" MaxLength="16" Nullable="false" />
     <Property Name="ShortName" Type="nvarchar" MaxLength="256" Nullable="false" />
     <Property Name="LongName" Type="nvarchar" MaxLength="256" />
+    <Property Name="MarketType" Type="smallint" />
+    <Property Name="IndexName" Type="nvarchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="StockPrice">
     <Key>

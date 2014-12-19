@@ -1,20 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="StoxDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="stox_tb_Company">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Ticker" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="ShortName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-  </EntityType>
   <EntityContainer Name="StoxDataEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="stox_tb_Company" EntityType="Self.stox_tb_Company" />
     <EntitySet Name="stox_tb_HOSE_Trading" EntityType="StoxDataModel.stox_tb_HOSE_Trading" />
     <EntitySet Name="stox_tb_StocksInfo" EntityType="StoxDataModel.stox_tb_StocksInfo" />
     <EntitySet Name="stox_tb_HOSE_TotalTrading" EntityType="StoxDataModel.stox_tb_HOSE_TotalTrading" />
     <EntitySet Name="Stox_tb_MarketInfo" EntityType="StoxDataModel.Stox_tb_MarketInfo" />
+    <EntitySet Name="stox_tb_Company" EntityType="StoxDataModel.stox_tb_Company" />
   </EntityContainer>
   <EntityType Name="stox_tb_HOSE_Trading">
     <Key>
@@ -94,5 +85,72 @@
     <Property Name="LOWEST" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="HIGHTEST" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="OPEN_INDEX" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="stox_tb_Company">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ticker" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ShortName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="TypeID" Type="Int16" />
+    <Property Name="EnglishName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyTypeBeforeListed" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="IndustryParent" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="IndustryID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PrimaryProduct" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="ExchangeID" Type="Int16" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="Index" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ShareType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ShareCirculate" Type="Double" />
+    <Property Name="FirstListingDate" Type="DateTime" Precision="3" />
+    <Property Name="ShareIssue" Type="Double" />
+    <Property Name="CapitalFund" Type="Double" />
+    <Property Name="ParValue" Type="Double" />
+    <Property Name="PriceListed" Type="Double" />
+    <Property Name="CTCKID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="NumberOfCDPT" Type="Double" />
+    <Property Name="NumberOfEmployees" Type="Double" />
+    <Property Name="WebsiteHomepage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="WebsiteCorporateAction" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="WebsiteAboutCompany" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="WebsiteInvesterRelation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="WebsiteProductServices" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="WebsiteJobHunter" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="RegistedOffice" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="DistrictID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="CityID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Telephone_CC" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Telephone_AC" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Telephone_Number" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Fax_CC" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Fax_AC" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Fax_Number" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="NumberOfATM" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="NumberOfSub1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="NumberOfTradeStation" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="HistoryDev" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BusinessStrategies" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="KeyDevelopments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PosCompany" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyProfile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LargeInvestProject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyPromise" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BusinessRisk" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ePrimaryProduct" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="eRegistedOffice" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="eDistrictID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="eCityID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="eHistoryDev" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="eBusinessStrategies" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="eKeyDevelopments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ePosCompany" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="eCompanyProfile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="eLargeInvestProject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="eCompanyPromise" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="eBusinessRisk" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="freefloat" Type="Double" />
   </EntityType>
 </Schema>

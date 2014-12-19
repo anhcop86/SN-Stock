@@ -56,10 +56,6 @@ namespace PhimHang.Controllers
                                             select s.StockFollowed).ToList();
                 }
 
-                company = await db.StockCodes.FirstOrDefaultAsync(m => m.Code == symbolName);
-
-
-
                 #endregion
 
                 #region Thong tin menu ben trai
@@ -82,9 +78,11 @@ namespace PhimHang.Controllers
                 #endregion
 
                 #region thong tin co phieu
+                company = await db.StockCodes.FirstOrDefaultAsync(m => m.Code == symbolName);
                 ViewBag.StockCode = company == null ? StatusSymbol.NF.ToString() : symbolName;
                 ViewBag.StockName = company == null ? StatusSymbol.NF.ToString() : company.ShortName;
                 ViewBag.LongName = company == null ? StatusSymbol.NF.ToString() : company.LongName;
+                ViewBag.MarketName = company == null ? StatusSymbol.NF.ToString() : company.IndexName;
                 #endregion
 
                 #region danh muc co phieu vua moi xem duoc luu troong cookie

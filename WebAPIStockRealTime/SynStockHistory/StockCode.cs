@@ -18,5 +18,7 @@ namespace SynStockHistory
         public string Code { get; set; }
         public string ShortName { get; set; }
         public string LongName { get; set; }
+        public Nullable<short> MarketType { get; set; }
+        public string IndexName { get; set; }
     }
 }
