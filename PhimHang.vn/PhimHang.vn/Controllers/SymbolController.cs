@@ -83,6 +83,7 @@ namespace PhimHang.Controllers
                 ViewBag.StockName = company == null ? StatusSymbol.NF.ToString() : company.ShortName;
                 ViewBag.LongName = company == null ? StatusSymbol.NF.ToString() : company.LongName;
                 ViewBag.MarketName = company == null ? StatusSymbol.NF.ToString() : company.IndexName;
+                ViewBag.CureentUserId = currentUser.UserExtentLogin.Id;
                 #endregion
 
                 #region danh muc co phieu vua moi xem duoc luu troong cookie

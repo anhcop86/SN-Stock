@@ -25,7 +25,7 @@ namespace PhimHang.Models
 
         //stock can go up or down by a percentage of this factor on each change        
 
-        private readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(10000);
+        private readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(60000);
         private readonly Random _updateOrNotRandom = new Random();
 
         private readonly Timer _timer;
