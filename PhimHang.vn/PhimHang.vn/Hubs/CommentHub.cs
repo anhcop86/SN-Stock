@@ -25,17 +25,17 @@ namespace PhimHang.Hubs
         {
             using (testEntities db = new testEntities())
             {
-                var ret = (from stockrelate in db.StockRelates.ToList()
-                           where stockrelate.StockCodeRelate == stockCurrent
-                           orderby stockrelate.Post.PostedDate descending
+                var ret = (from stockRelate in db.StockRelates.ToList()
+                           where stockRelate.StockCodeRelate == stockCurrent
+                           orderby stockRelate.Post.PostedDate descending
                            select new
                            {
-                               Message = stockrelate.Post.Message,
-                               PostedBy = stockrelate.Post.PostedDate,
-                               PostedByName = stockrelate.Post.UserLogin.FullName,
-                               PostedByAvatar = string.IsNullOrEmpty(stockrelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockrelate.Post.UserLogin.AvataImage,
-                               PostedDate = stockrelate.Post.PostedDate,
-                               PostId = stockrelate.PostId
+                               Message = stockRelate.Post.Message,
+                               PostedBy = stockRelate.Post.PostedDate,
+                               PostedByName = stockRelate.Post.UserLogin.FullName,
+                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage,
+                               PostedDate = stockRelate.Post.PostedDate,
+                               PostId = stockRelate.PostId
                            }).ToArray();
 
                 Clients.Group(stockCurrent).loadPosts(ret);

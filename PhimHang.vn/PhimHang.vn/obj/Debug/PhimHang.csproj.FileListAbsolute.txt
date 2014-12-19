@@ -265,7 +265,6 @@ F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\Microsoft.Owin.Secu
 F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.dll
 F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.pdb
-F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.csprojResolveAssemblyReference.cache
 E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\bin\PhimHang.dll.config
 E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\bin\PhimHang.dll
 E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\bin\PhimHang.pdb

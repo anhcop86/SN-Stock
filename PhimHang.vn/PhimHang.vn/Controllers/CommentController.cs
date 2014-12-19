@@ -33,20 +33,22 @@ namespace PhimHang.Controllers
         
         private const string ImageURLAvataDefault = "img/avatar_default.jpg";
         private const string ImageURLAvata = "images/avatar/";
+
+
         public async Task<dynamic> Get(string stockCurrent)
         {
 
-            var ret = (from post in await db.StockRelates.ToListAsync()
-                       where post.StockCodeRelate == stockCurrent
-                       orderby post.Post.PostedDate descending
+            var ret = (from stockRelate in await db.StockRelates.ToListAsync()
+                       where stockRelate.StockCodeRelate == stockCurrent
+                       orderby stockRelate.Post.PostedDate descending
                        select new
                        {
-                           Message = post.Post.Message,
-                           PostedBy = post.Post.PostedDate,
-                           PostedByName = post.Post.UserLogin.FullName,
-                           PostedByAvatar = string.IsNullOrEmpty(post.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + post.Post.UserLogin.AvataImage,
-                           PostedDate = post.Post.PostedDate,
-                           PostId = post.PostId
+                           Message = stockRelate.Post.Message,
+                           PostedBy = stockRelate.Post.PostedDate,
+                           PostedByName = stockRelate.Post.UserLogin.FullName,
+                           PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage,
+                           PostedDate = stockRelate.Post.PostedDate,
+                           PostId = stockRelate.PostId
                        }).AsEnumerable();
 
             return ret;
