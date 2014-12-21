@@ -40,7 +40,7 @@
                     <div id="btnPhim" class="f-right">
                         <span data-bind="text : count"></span>
                         <a href="javascript:void(0)" class="button-phim" data-bind="click : addPost"><span>PHÍM</span></a>
-                       
+                      
                     </div>
                 </div>
             
@@ -105,6 +105,8 @@
                 </div>
             </div>
         </div>
+
+        <a href="javascript:void(0)" class="button-phim" data-bind="click : loadMores"><span>LOAD MORE 10</span></a>
         <!--end list comment-->
 
     </div>
@@ -199,10 +201,9 @@
         self.init = function () {
             self.error(null);
             self.hub.server.joinRoom('@ViewBag.StockCode');
-            self.hub.server.getPosts('@ViewBag.StockCode' ).fail(function (err) {
+            self.hub.server.getPosts('@ViewBag.StockCode').fail(function (err) {
                 self.error(err);
             });
-           
         }
 
         self.addPost = function () {
@@ -217,6 +218,7 @@
             self.newMessage('$@ViewBag.StockCode ');
         }
 
+
         self.hub.client.loadPosts = function (data) {
             var mappedPosts = $.map(data, function (item) { return new Post(item, self.hub); });
             self.posts(mappedPosts);
@@ -230,6 +232,26 @@
             var countNum = 140 - self.newMessage().length;
             return countNum;
         });
+
+        self.loadMores = function () {
+            alert('load thu73 nao2');
+            $.get('@Url.Action("GetCommentBySymbol", "Symbol")',
+                          {
+                              stockCurrent: 'ACB'
+                          }, function (data) {
+                              alert(data);
+                              if (data == "A") {
+                                  alert('Thêm vào danh sách so sánh thành công');
+                                  $("#button-stock-follow").html("<i class='fa fa-plus'></i>&nbsp Đang theo dõi");
+                              }
+                              else if (data == "R") {
+                                  alert('Loại khỏi danh sách so sánh thành công');
+                                  $("#button-stock-follow").html("<i class='fa fa-plus'></i>&nbsp Theo dõi");
+                              } else {
+                                  alert('Chỉ thêm tối đa 10 cổ phiếu, loại bỏ bớt cổ phiếu theo dõi để thêm cổ phiếu mới');
+                              }
+                          })
+        };
 
     }
 
