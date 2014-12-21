@@ -241,6 +241,7 @@
     <Property Name="AccountType" Type="Int32" Nullable="false" />
     <Property Name="LockAccount" Type="Int32" Nullable="false" />
     <NavigationProperty Name="AspNetUsers" Relationship="PHDBContext.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" FromRole="UserLogin" ToRole="AspNetUser" />
+    <Property Name="UserNameCopy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_FollowStock_UserLogins">
     <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />

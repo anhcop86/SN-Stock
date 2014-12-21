@@ -17,15 +17,17 @@ namespace PhimHang.Controllers
     {
         //
         // GET: /MyProfile/
+       private readonly StockRealTimeTicker _stockRealtime;
         public MyProfileController()
-            : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
+            : this(StockRealTimeTicker.Instance, new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
         }
-
-        public MyProfileController(UserManager<ApplicationUser> userManager)
+        public MyProfileController(StockRealTimeTicker stockTicker, UserManager<ApplicationUser> userManager)
         {
+            _stockRealtime = stockTicker;
             UserManager = userManager;
         }
+       
 
         public UserManager<ApplicationUser> UserManager { get; private set; }
 
@@ -53,6 +55,26 @@ namespace PhimHang.Controllers
             ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataCover) == true ? ImageURLCoverDefault : ImageURLCover + currentUser.UserExtentLogin.AvataCover;
             ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
 
+            #region danh muc co phieu vua moi xem duoc luu troong cookie
+            //var cookie = new HttpCookie("cookiename");
+
+
+            string[] listHotStock = Response.Cookies["HotStockCookie"].Value == null ? new string[1] : Response.Cookies["HotStockCookie"].Value.Split('|');
+
+            if (listHotStock.Length > 11) // neu xem hon 10 co phieu thi chi hien thi 10 co phieu dau tien
+            {
+                Response.Cookies["HotStockCookie"].Value = Response.Cookies["HotStockCookie"].Value.Remove(0, Response.Cookies["HotStockCookie"].Value.IndexOf("|", 1)); // hien thi 10 co phieu đau tien
+                listHotStock = Response.Cookies["HotStockCookie"].Value.Split('|');
+            }
+            List<string> listHotStockToArray = new List<string>();
+            foreach (var item in listHotStock)
+            {
+                listHotStockToArray.Add(item);
+            }
+            var hotStockPrice = _stockRealtime.GetAllStocksTestList(listHotStockToArray).Result;
+
+            ViewBag.HotStockPriceList = hotStockPrice.Count() == 0 ? new List<StockRealTime>() : hotStockPrice;
+            #endregion
 
             return View(currentUser);
         }

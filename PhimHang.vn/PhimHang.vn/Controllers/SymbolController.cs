@@ -78,12 +78,14 @@ namespace PhimHang.Controllers
                 #endregion
 
                 #region thong tin co phieu
-                company = await db.StockCodes.FirstOrDefaultAsync(m => m.Code == symbolName);
-                ViewBag.StockCode = company == null ? StatusSymbol.NF.ToString() : symbolName;
+                company = await db.StockCodes.FirstOrDefaultAsync(m => m.Code.ToUpper() == symbolName.ToUpper());
+                ViewBag.StockCode = company == null ? StatusSymbol.NF.ToString() : symbolName.ToUpper();
                 ViewBag.StockName = company == null ? StatusSymbol.NF.ToString() : company.ShortName;
                 ViewBag.LongName = company == null ? StatusSymbol.NF.ToString() : company.LongName;
                 ViewBag.MarketName = company == null ? StatusSymbol.NF.ToString() : company.IndexName;
                 ViewBag.CureentUserId = currentUser.UserExtentLogin.Id;
+                ViewBag.UserName = currentUser.UserName;
+                ViewBag.AvataImageUrl = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage + "?width=46&height=46&mode=crop"; 
                 #endregion
 
                 #region danh muc co phieu vua moi xem duoc luu troong cookie
@@ -112,6 +114,7 @@ namespace PhimHang.Controllers
                 }
                 var hotStockPrice = _stockRealtime.GetAllStocksTestList(listHotStockToArray).Result;
 
+                ViewBag.HotStockPriceList = hotStockPrice.Count() == 0 ? new List<StockRealTime>() : hotStockPrice;
                 #endregion
 
 

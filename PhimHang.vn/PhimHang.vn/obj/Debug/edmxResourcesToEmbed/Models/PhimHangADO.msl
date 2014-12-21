@@ -112,6 +112,7 @@
     <EntitySetMapping Name="UserLogins">
       <EntityTypeMapping TypeName="PHDBContext.UserLogin">
         <MappingFragment StoreEntitySet="UserLogins">
+          <ScalarProperty Name="UserNameCopy" ColumnName="UserNameCopy" />
           <ScalarProperty Name="LockAccount" ColumnName="LockAccount" />
           <ScalarProperty Name="AccountType" ColumnName="AccountType" />
           <ScalarProperty Name="Verify" ColumnName="Verify" />

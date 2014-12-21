@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using PhimHang.Models;
 using System.Security.Principal;
 using Microsoft.AspNet.SignalR.Hubs;
+using System.Text.RegularExpressions;
 
 namespace PhimHang.Hubs
 {
@@ -18,8 +19,8 @@ namespace PhimHang.Hubs
          
         // GET: /Post/
         
-        private const string ImageURLAvataDefault = "img/avatar_default.jpg";
-        private const string ImageURLAvata = "images/avatar/";
+        private const string ImageURLAvataDefault = "/img/avatar_default.jpg";
+        private const string ImageURLAvata = "/images/avatar/";
 
         public void GetPosts(string stockCurrent)
         {
@@ -31,11 +32,11 @@ namespace PhimHang.Hubs
                            orderby stockRelate.Post.PostedDate descending
                            select new
                            {
-                               Message = stockRelate.Post.Message
+                               Message = stockRelate.Post.Message,
                                //PostedBy = stockRelate.Post.PostedDate,
-                               //PostedByName = stockRelate.Post.UserLogin.FullName,
-                               //PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage,
-                               //PostedDate = stockRelate.Post.PostedDate,
+                               PostedByName = stockRelate.Post.UserLogin.UserNameCopy,
+                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage + "?width=46&height=46&mode=crop",
+                               PostedDate = stockRelate.Post.PostedDate,
                                //PostId = stockRelate.PostId
                            }).ToArray();
                 var listStock = new List<string>();
@@ -46,34 +47,66 @@ namespace PhimHang.Hubs
             }
         }
 
-        public void AddPost(Post post, string stockCurrent, int currentUserId)
+        public void AddPost(Post post, string stockCurrent, int currentUserId, string userName, string avataImageUrl)
         {
             post.PostedBy = currentUserId;
             post.PostedDate = DateTime.UtcNow;
-            StockRelate stockRelate = new StockRelate();
+            
+            var listStock = new List<string>();
+            
+            #region explan this passing messege to stockcode and username list
+
+            List<string> listMessegeSplit = post.Message.Split(' ').ToList().FindAll(p => p.Contains("$") || p.Contains("@"));
+                        
+            #endregion
+
             using (testEntities db = new testEntities())
             {
                 db.Posts.Add(post);
-                stockRelate.PostId = post.PostId;
-                stockRelate.StockCodeRelate = stockCurrent;
-                db.StockRelates.Add(stockRelate);
-                db.SaveChanges();
-                //var usr = db.UserProfiles.FirstOrDefault(x => x.UserId == post.PostedBy);
+                /* co phieu dau tien la chinh no */
+                StockRelate stockRelateFirst = new StockRelate();
+                stockRelateFirst.PostId = post.PostId;
+                stockRelateFirst.StockCodeRelate = stockCurrent;
+                db.StockRelates.Add(stockRelateFirst); // add to database
+                listStock.Add(stockCurrent); // group of hub for client 
+                /* END */
+                //db.Posts.Add(post);
+                /* add post with stockrelate list */
+                foreach (var item in listMessegeSplit)
+                {
+                    if (item.Contains("$") && !item.Contains(stockCurrent)) // find the stock with $
+                    {
+                        string stockcode = item.Replace("$", "");
+                        StockRelate stockRelateLasts = new StockRelate();
+                        stockRelateLasts.PostId = post.PostId;
+                        stockRelateLasts.StockCodeRelate = stockcode;
+                        db.StockRelates.Add(stockRelateLasts); // add to database
+                        listStock.Add(stockcode); // group of hub for client 
+                    }
+                    else //find the user with @
+                    {
+                        // code later
+                    }
+                }
+               
+
+                /* add stockrelate */
+                 db.SaveChanges();
+
                 var ret = new
                 {
-                    Message = post.Message
+                    Message = post.Message,
                     //PostedBy = post.PostedBy,
-                    //PostedByName = usr.UserName,
-                    //PostedByAvatar = imgFolder + (String.IsNullOrEmpty(usr.AvatarExt) ? defaultAvatar : post.PostedBy + "." + post.UserProfile.AvatarExt),
-                    //PostedDate = post.PostedDate,
+                    PostedByName = userName,
+                    PostedByAvatar = "/" + avataImageUrl.Replace("amp;", ""),
+                    PostedDate = post.PostedDate
                     //PostId = post.PostId
                 };
 
-                var listStock = new List<string>();
-                listStock.Add(stockCurrent);
+               
 
                 Clients.Groups(listStock).addPost(ret);
-            }
+            } 
         }
 
 

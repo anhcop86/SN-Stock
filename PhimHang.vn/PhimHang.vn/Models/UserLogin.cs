@@ -39,6 +39,7 @@ namespace PhimHang.Models
         public int Verify { get; set; }
         public int AccountType { get; set; }
         public int LockAccount { get; set; }
+        public string UserNameCopy { get; set; }
     
         public virtual ICollection<FollowStock> FollowStocks { get; set; }
         public virtual ICollection<FollowUser> FollowUsers { get; set; }

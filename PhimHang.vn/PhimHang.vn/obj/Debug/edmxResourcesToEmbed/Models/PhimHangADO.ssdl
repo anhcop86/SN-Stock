@@ -109,6 +109,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="KeyLogin" Type="nvarchar(max)" />
+    <Property Name="UserNameCopy" Type="nvarchar" MaxLength="256" />
     <Property Name="BirthDate" Type="datetime" />
     <Property Name="AvataImage" Type="nvarchar" MaxLength="256" />
     <Property Name="AvataCover" Type="nvarchar" MaxLength="256" />

@@ -35,62 +35,25 @@
 
 <div class="second-left-banner">
 <div class="banner-header-white">HÀNG NÓNG VỪA XEM</div>
-<div class="banner-item1">
-    <div class="item-left">
-        <a href="#">$GAS<br><span>PV GAS</span></a>
-    </div>
-    <div class="item-right">
-        <strong>108.66</strong>
-        <span class="bearish">
-            <i class="fa fa-sort-down"></i><br>
-            <span class="top-menu-point">
-                0.35 (0,32%)
+    @foreach (var item in ViewBag.HotStockPriceList as List<StockRealTime>)
+    {
+        <div class="banner-item1">
+        <div class="item-left">
+            <a href="#">$@item.CompanyID<br><span>@item.CompanyID</span></a>
+        </div>
+        <div class="item-right">
+            <strong>@item.FinishPrice</strong>
+            <span class="bearish">
+                <i class="fa fa-sort-down"></i><br>
+                <span class="top-menu-point">
+                    @item.Diff (@item.DiffRate)
+                </span>
             </span>
-        </span>
+        </div>
     </div>
-</div>
-<div class="banner-item1">
-    <div class="item-left">
-        <a href="#">$GAS<br><span>PV GAS</span></a>
-    </div>
-    <div class="item-right">
-        <strong>108.66</strong>
-        <span class="bullish">
-            <i class="fa fa-sort-up"></i><br>
-            <span class="top-menu-point">
-                0.35 (0,32%)
-            </span>
-        </span>
-    </div>
-</div>
-<div class="banner-item1">
-    <div class="item-left">
-        <a href="#">$GAS<br><span>PV GAS</span></a>
-    </div>
-    <div class="item-right">
-        <strong>108.66</strong>
-        <span class="bullish">
-            <i class="fa fa-sort-up"></i><br>
-            <span class="top-menu-point">
-                0.35 (0,32%)
-            </span>
-        </span>
-    </div>
-</div>
-<div class="banner-item1">
-    <div class="item-left">
-        <a href="#">$GAS<br><span>PV GAS</span></a>
-    </div>
-    <div class="item-right">
-        <strong>108.66</strong>
-        <span class="bullish">
-            <i class="fa fa-sort-up"></i><br>
-            <span class="top-menu-point">
-                0.35 (0,32%)
-            </span>
-        </span>
-    </div>
-</div>
+    }
+
+
 
 <div class="banner-item-user-detail">
     <div class="avata-genaral-size">

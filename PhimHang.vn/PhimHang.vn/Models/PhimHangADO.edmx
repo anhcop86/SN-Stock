@@ -114,6 +114,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="KeyLogin" Type="nvarchar(max)" />
+          <Property Name="UserNameCopy" Type="nvarchar" MaxLength="256" />
           <Property Name="BirthDate" Type="datetime" />
           <Property Name="AvataImage" Type="nvarchar" MaxLength="256" />
           <Property Name="AvataCover" Type="nvarchar" MaxLength="256" />
@@ -609,6 +610,7 @@
           <Property Name="AccountType" Type="Int32" Nullable="false" />
           <Property Name="LockAccount" Type="Int32" Nullable="false" />
           <NavigationProperty Name="AspNetUsers" Relationship="PHDBContext.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" FromRole="UserLogin" ToRole="AspNetUser" />
+          <Property Name="UserNameCopy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_FollowStock_UserLogins">
           <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />
@@ -870,6 +872,7 @@
           <EntitySetMapping Name="UserLogins">
             <EntityTypeMapping TypeName="PHDBContext.UserLogin">
               <MappingFragment StoreEntitySet="UserLogins">
+                <ScalarProperty Name="UserNameCopy" ColumnName="UserNameCopy" />
                 <ScalarProperty Name="LockAccount" ColumnName="LockAccount" />
                 <ScalarProperty Name="AccountType" ColumnName="AccountType" />
                 <ScalarProperty Name="Verify" ColumnName="Verify" />

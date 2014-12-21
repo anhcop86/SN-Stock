@@ -27,7 +27,7 @@ body {
     font-family: tahoma,verdana,arial,sans-serif;
     font-size: 1.4rem;
     color: #333;
-    background-color: #91c7e8;
+    background-color: #36465d;
     -webkit-text-size-adjust:100%;
 }
 a{
@@ -52,7 +52,7 @@ a{
     display: block;
 }
 .bg-blue{
-    background: none repeat scroll 0% 0% #00609C;
+    background: none repeat scroll 0% 0% #36465d;
 }
 .w100p{
     width: 100%;
@@ -217,7 +217,7 @@ a{
     margin: 0px auto;    
 }
 .menu-top-bar ul > li > a.link-menu-top-active{
-    color:#1a75aa;    
+    color:#36465d;    
 }
 .bold{
     font-weight: bold;
@@ -389,7 +389,7 @@ a{
     background-color: #fff;    
 }
 .status-box{
-    background-color: #e5f2f8;
+    background-color: #FFFFFF;
     overflow: hidden;
     padding: 10px 10px 10px 25px; 
 }
@@ -417,12 +417,13 @@ a{
     float: left;
 }
 .input-status-text > textarea{
-    height: 18px;
-    border: medium none;
+    height: 28px;
+    border: 1px solid #aaa;
     margin-top: 2px;
     padding: 3px;
     width: 99%;
     max-width: 99%;
+    font-family: tahoma,verdana,arial,sans-serif;
 }
 /*status controler*/
 .status-control{
@@ -645,7 +646,7 @@ a{
 .banner-header-white
 {
     background-color: #fff;
-    color: #000;
+    color: #36465d;
     padding: 5px;    
     text-align: center;
     font-size: 13px;

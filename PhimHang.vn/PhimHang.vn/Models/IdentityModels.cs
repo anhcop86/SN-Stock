@@ -24,6 +24,8 @@ namespace PhimHang.Models
         public int Id { get; set; }
         public string KeyLogin { get; set; }
 
+        [StringLength(256)]
+        public string UserNameCopy { get; set; }
         public Nullable<DateTime> BirthDate { get; set; }
 
         [StringLength(256)]

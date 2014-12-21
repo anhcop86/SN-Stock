@@ -8,6 +8,7 @@
     <script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>
     <script src="~/signalr/hubs"></script>
 <link href="~/Content/StockPrice.css" rel="stylesheet" />
+<script src="~/Scripts/jquery.timeago.js"></script>
 @*<script src="~/Scripts/StockPrice.js"></script>*@
 }
 
@@ -40,7 +41,7 @@
                     <div id="btnPhim" class="f-right">
                         <span data-bind="text : count"></span>
                         <a href="javascript:void(0)" class="button-phim" data-bind="click : addPost"><span>PHÍM</span></a>
-                        <button type="submit" data-bind="enable: checkLenofNewMessage">Add</button>
+                       
                     </div>
                 </div>
             
@@ -90,11 +91,11 @@
         <!--list comment here-->
         <div class="list-item-status" data-bind="foreach : posts">
             <div class="avata-genaral-size">
-                <img src="/img/avatar4.jpg" class="img-rounded" alt="avatar">
+                <img class="img-rounded" alt="avatar" data-bind="attr: { src: PostedByAvatar }">
             </div>
             <div class="list-item-detail">
-                <div class="list-item-date">Dec 1 at 9:30 PM</div>
-                <div class="list-item-username">Tom Truong</div>
+                <div class="list-item-date" data-bind="text : PostedDate"></div>
+                <div class="list-item-username" data-bind="text : PostedByName"></div>
                 <div class="list-item-status-content" data-bind="html : Message"></div>
                 <div class="list-item-control">
                     <a class="button"><i class="fa fa-comments"></i></a>
@@ -139,13 +140,13 @@
 
         function init() {
 
-            ticker.server.getStock('@ViewBag.StockCode'.toUpperCase()).done(function (stock) {
+            ticker.server.getStock('@ViewBag.StockCode').done(function (stock) {
 
                 viewStockModel.CompanyID(stock.CompanyID).Diff(stock.Diff).DiffRate(stock.DiffRate).FinishPrice(stock.FinishPrice);
                 ko.applyBindings(viewStockModel, document.getElementById("stockPriceDivId")); // knockout javascript framework bindings
 
             });
-            ticker.server.joinRoom('@ViewBag.StockCode'.toUpperCase());
+            ticker.server.joinRoom('@ViewBag.StockCode');
         }
 
         ticker.client.updateStockPrice = function (stock) {
@@ -178,9 +179,9 @@
         //self.PostId = data.PostId;
         self.Message = ko.observable(data.Message || "");
         //self.PostedBy = data.PostedBy || "";
-        //self.PostedByName = data.PostedByName || "";
-        //self.PostedByAvatar = data.PostedByAvatar || "";
-        //self.PostedDate = getTimeAgo(data.PostedDate);
+        self.PostedByName = data.PostedByName || "";
+        self.PostedByAvatar = data.PostedByAvatar || "";
+        self.PostedDate = getTimeAgo(data.PostedDate);
         //self.error = ko.observable();
         self.hub = hub;
 
@@ -188,7 +189,7 @@
     function viewModel() {
         var self = this;
         self.posts = ko.observableArray();
-        self.newMessage = ko.observable("");
+        self.newMessage = ko.observable('$@ViewBag.StockCode ');
         self.error = ko.observable();
 
         // SignalR related
@@ -198,8 +199,8 @@
 
         self.init = function () {
             self.error(null);
-            self.hub.server.joinRoom('@ViewBag.StockCode'.toUpperCase());
-            self.hub.server.getPosts('@ViewBag.StockCode'.toUpperCase()).fail(function (err) {
+            self.hub.server.joinRoom('@ViewBag.StockCode');
+            self.hub.server.getPosts('@ViewBag.StockCode' ).fail(function (err) {
                 self.error(err);
             });
            
@@ -207,14 +208,14 @@
 
         self.addPost = function () {
             self.error(null);
-            self.hub.server.addPost({ "Message": self.newMessage() }, '@ViewBag.StockCode'.toUpperCase(), '@ViewBag.CureentUserId').fail(function (err) {
+            self.hub.server.addPost({ "Message": self.newMessage() }, '@ViewBag.StockCode', '@ViewBag.CureentUserId', '@ViewBag.UserName', '@ViewBag.AvataImageUrl').fail(function (err) {
                 self.error(err);
             });
         }
 
         self.hub.client.addPost = function (post) {
             self.posts.splice(0, 0, new Post(post, self.hub));
-            self.newMessage('');
+            self.newMessage('$@ViewBag.StockCode ');
         }
 
         self.hub.client.loadPosts = function (data) {
