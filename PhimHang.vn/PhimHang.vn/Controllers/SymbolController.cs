@@ -90,24 +90,23 @@ namespace PhimHang.Controllers
                 #region danh muc co phieu vua moi xem duoc luu troong cookie
                 //var cookie = new HttpCookie("cookiename");
 
-                if (Request.Cookies["HotStockCookie"] == null)
+                if (Request.Cookies["HotStockCookie" + currentUser.Id] == null)
                 {
-                    HttpCookie hotStockCookie = new HttpCookie("HotStockCookie");
-                    hotStockCookie.Value = "|";
-                    hotStockCookie.Expires = DateTime.Now.AddHours(1);
-                    Response.Cookies.Add(hotStockCookie);
+                    Response.Cookies.Clear();
+                    Response.Cookies["HotStockCookie" + currentUser.Id].Value = "";
+                    Response.Cookies["HotStockCookie" + currentUser.Id].Expires = DateTime.Now.AddDays(1);
                 }
                 else
                 {
-                    Request.Cookies["HotStockCookie"].Value = Request.Cookies["HotStockCookie"].Value.Replace("|" + symbolName, "") + "|" + symbolName;
+                    Response.Cookies["HotStockCookie" + currentUser.Id].Value = Request.Cookies["HotStockCookie" + currentUser.Id].Value.Replace("|" + symbolName, "") + "|" + symbolName;
                 }
 
-                string[] listHotStock = Request.Cookies["HotStockCookie"].Value.Split('|');
+                string[] listHotStock = Response.Cookies["HotStockCookie" + currentUser.Id].Value.Split('|');
 
                 if (listHotStock.Length > 11) // neu xem hon 10 co phieu thi chi hien thi 10 co phieu dau tien
                 {
-                    Request.Cookies["HotStockCookie"].Value = Request.Cookies["HotStockCookie"].Value.Remove(0, Request.Cookies["HotStockCookie"].Value.IndexOf("|", 1)); // hien thi 10 co phieu đau tien
-                    listHotStock = Request.Cookies["HotStockCookie"].Value.Split('|');
+                    Response.Cookies["HotStockCookie" + currentUser.Id].Value = Request.Cookies["HotStockCookie" + currentUser.Id].Value.Remove(0, Request.Cookies["HotStockCookie" + currentUser.Id].Value.IndexOf("|", 1)); // hien thi 10 co phieu đau tien
+                    listHotStock = Request.Cookies["HotStockCookie" + currentUser.Id].Value.Split('|');
                 }
                 List<string> listHotStockToArray = new List<string>();
                 foreach (var item in listHotStock)
@@ -119,6 +118,12 @@ namespace PhimHang.Controllers
                 ViewBag.HotStockPriceList = hotStockPrice.Count() == 0 ? new List<StockRealTime>() : hotStockPrice;
                 #endregion
 
+                #region danh muc dau tu
+                var followstocks = await db.FollowStocks.Where(f => f.UserId == currentUser.UserExtentLogin.Id).ToListAsync();
+                var listfollowstocksString = (from sf in followstocks
+                                              select sf.StockFollowed).ToList();
+                ViewBag.HotStockDMDT = _stockRealtime.GetAllStocksTestList(listfollowstocksString).Result;
+                #endregion
 
                 //return View(_stockRealtime.GetAllStocksTestList((List<string>)Session["listStock"]).Result);
                 return View(currentUser);
