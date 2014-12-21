@@ -460,6 +460,8 @@
     <Content Include="Views\Symbol\_Partial_stock-detail.cshtml" />
     <Content Include="Views\Shared\_Partial_Area_Search_Profile.cshtml" />
     <Content Include="Views\Search\Helper.cshtml" />
+    <Content Include="Views\Shared\_Partial_Area_Right_Down2.cshtml" />
+    <Content Include="Views\Shared\_Layout_Symbol.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

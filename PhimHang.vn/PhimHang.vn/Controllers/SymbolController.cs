@@ -45,16 +45,7 @@ namespace PhimHang.Controllers
                 ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
 
                 #region danh muc co phieu dang follow
-                // danh muc co phieu dang follow
-
-                Session["listStock"] = new List<string>();
-
-                if (User.Identity.IsAuthenticated)
-                {
-                    Session["listStock"] = (from s in db.FollowStocks
-                                            where s.UserId == currentUser.UserExtentLogin.Id
-                                            select s.StockFollowed).ToList();
-                }
+               
 
                 #endregion
 
@@ -63,8 +54,16 @@ namespace PhimHang.Controllers
                 var post = await db.Posts.CountAsync(p => p.PostedBy == currentUser.UserExtentLogin.Id);
                 var follow = await db.FollowUsers.CountAsync(f => f.UserId == currentUser.UserExtentLogin.Id);
                 var follower = await db.FollowUsers.CountAsync(f => f.UserIdFollowed == currentUser.UserExtentLogin.Id);
-
-
+                
+                var countStockFollowr = await db.FollowStocks.CountAsync(f => f.UserId == currentUser.UserExtentLogin.Id && f.StockFollowed == symbolName);
+                if (countStockFollowr==1)
+                {
+                    ViewBag.CheckStockExist = "Y";
+                }
+                else
+                {
+                    ViewBag.CheckStockExist = "N";
+                }
                 ViewBag.TotalPost = post;
                 ViewBag.Follow = follow;
                 ViewBag.Follower = follower;
@@ -91,21 +90,24 @@ namespace PhimHang.Controllers
                 #region danh muc co phieu vua moi xem duoc luu troong cookie
                 //var cookie = new HttpCookie("cookiename");
 
-                if (Request.Cookies["HotStockCookie"] == null || string.IsNullOrEmpty(Request.Cookies["HotStockCookie"].Value))
+                if (Request.Cookies["HotStockCookie"] == null)
                 {
-                    Response.Cookies["HotStockCookie"].Value = "|" + symbolName;
+                    HttpCookie hotStockCookie = new HttpCookie("HotStockCookie");
+                    hotStockCookie.Value = "|";
+                    hotStockCookie.Expires = DateTime.Now.AddHours(1);
+                    Response.Cookies.Add(hotStockCookie);
                 }
                 else
                 {
-                    Response.Cookies["HotStockCookie"].Value = Request.Cookies["HotStockCookie"].Value.Replace("|" + symbolName, "") + "|" + symbolName;
+                    Request.Cookies["HotStockCookie"].Value = Request.Cookies["HotStockCookie"].Value.Replace("|" + symbolName, "") + "|" + symbolName;
                 }
 
-                string[] listHotStock = Response.Cookies["HotStockCookie"].Value.Split('|');
+                string[] listHotStock = Request.Cookies["HotStockCookie"].Value.Split('|');
 
                 if (listHotStock.Length > 11) // neu xem hon 10 co phieu thi chi hien thi 10 co phieu dau tien
                 {
-                    Response.Cookies["HotStockCookie"].Value = Response.Cookies["HotStockCookie"].Value.Remove(0, Response.Cookies["HotStockCookie"].Value.IndexOf("|", 1)); // hien thi 10 co phieu đau tien
-                    listHotStock = Response.Cookies["HotStockCookie"].Value.Split('|');
+                    Request.Cookies["HotStockCookie"].Value = Request.Cookies["HotStockCookie"].Value.Remove(0, Request.Cookies["HotStockCookie"].Value.IndexOf("|", 1)); // hien thi 10 co phieu đau tien
+                    listHotStock = Request.Cookies["HotStockCookie"].Value.Split('|');
                 }
                 List<string> listHotStockToArray = new List<string>();
                 foreach (var item in listHotStock)

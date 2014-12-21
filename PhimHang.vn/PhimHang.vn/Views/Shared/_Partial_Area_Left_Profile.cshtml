@@ -39,16 +39,38 @@
     {
         <div class="banner-item1">
         <div class="item-left">
-            <a href="#">$@item.CompanyID<br><span>@item.CompanyID</span></a>
+            <a href="/Symbol/@item.CompanyID">$@item.CompanyID<br><span>@item.CompanyID</span></a>
         </div>
         <div class="item-right">
             <strong>@item.FinishPrice</strong>
-            <span class="bearish">
-                <i class="fa fa-sort-down"></i><br>
-                <span class="top-menu-point">
-                    @item.Diff (@item.DiffRate)
+            @if (item.Diff == 0)
+            {
+                <span class="none-bullish-bearish">
+                    <br>
+                    <span class="top-menu-point">
+                        @item.Diff (@item.DiffRate)
+                    </span>
                 </span>
-            </span>
+            }
+            else if (item.Diff > 0)
+            {
+                <span class="bullish">
+                    <br>
+                    <span class="top-menu-point">
+                        @item.Diff (@item.DiffRate)
+                    </span>
+                </span>
+            }
+            else
+            {
+                <span class="bearish">
+                    <br>
+                    <span class="top-menu-point">
+                        @item.Diff (@item.DiffRate)
+                    </span>
+                </span>              
+            }
+            
         </div>
     </div>
     }

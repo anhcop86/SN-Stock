@@ -37,6 +37,7 @@ namespace PhimHang
             //   appSecret: "");
 
             //app.UseGoogleAuthentication();
+           
 
             app.MapSignalR();
         }

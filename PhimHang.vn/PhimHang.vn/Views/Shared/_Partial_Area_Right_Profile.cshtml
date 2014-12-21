@@ -2,64 +2,50 @@
 
 @model ApplicationUser
 
-
-
-    <div class="banner-header-white">DMDT</div>
-    <div class="banner-item1">
+    <div class="banner-header-white">Danh mục đầu tư</div>
+@{
+    foreach (var item in ViewBag.HotStockDMDT as List<StockRealTime>)
+    {
+         <div class="banner-item1">
         <div class="item-left">
-            <a href="#">$GAS<br><span>PV GAS</span></a>
+            <a href="/Symbol/@item.CompanyID">$@item.CompanyID<br><span>@item.CompanyID</span></a>
         </div>
         <div class="item-right">
-            <strong>108.66</strong>
-            <span class="bearish">
-                <i class="fa fa-sort-down"></i><br>
-                <span class="top-menu-point">
-                    0.35 (0,32%)
+            <strong>@item.FinishPrice</strong>
+            @if (item.Diff == 0)
+            {
+                <span class="none-bullish-bearish">
+                    <br>
+                    <span class="top-menu-point">
+                        @item.Diff (@item.DiffRate)
+                    </span>
                 </span>
-            </span>
+            }
+            else if (item.Diff > 0)
+            {
+                <span class="bullish">
+                    <br>
+                    <span class="top-menu-point">
+                        @item.Diff (@item.DiffRate)
+                    </span>
+                </span>
+            }
+            else
+            {
+                <span class="bearish">
+                    <br>
+                    <span class="top-menu-point">
+                        @item.Diff (@item.DiffRate)
+                    </span>
+                </span>              
+            }
+            
         </div>
     </div>
-    <div class="banner-item1">
-        <div class="item-left">
-            <a href="#">$GAS<br><span>PV GAS</span></a>
-        </div>
-        <div class="item-right">
-            <strong>108.66</strong>
-            <span class="bullish">
-                <i class="fa fa-sort-up"></i><br>
-                <span class="top-menu-point">
-                    0.35 (0,32%)
-                </span>
-            </span>
-        </div>
-    </div>
-    <div class="banner-item1">
-        <div class="item-left">
-            <a href="#">$GAS<br><span>PV GAS</span></a>
-        </div>
-        <div class="item-right">
-            <strong>108.66</strong>
-            <span class="bullish">
-                <i class="fa fa-sort-up"></i><br>
-                <span class="top-menu-point">
-                    0.35 (0,32%)
-                </span>
-            </span>
-        </div>
-    </div>
-    <div class="banner-item1">
-        <div class="item-left">
-            <a href="#">$GAS<br><span>PV GAS</span></a>
-        </div>
-        <div class="item-right">
-            <strong>108.66</strong>
-            <span class="bullish">
-                <i class="fa fa-sort-up"></i><br>
-                <span class="top-menu-point">
-                    0.35 (0,32%)
-                </span>
-            </span>
-        </div>
-    </div>
+    }
+}
+    
+    
+ 
     <div class="loadmore"><a href="#"><i class="fa  fa-angle-double-down"></i></a></div>
 

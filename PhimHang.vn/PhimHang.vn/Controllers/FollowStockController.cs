@@ -8,12 +8,25 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PhimHang.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity;
 
 namespace PhimHang.Controllers
 {
+    [Authorize]
     public class FollowStockController : Controller
     {
         private testEntities db = new testEntities();
+        public FollowStockController()
+            : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
+        {
+        }
+        public FollowStockController(UserManager<ApplicationUser> userManager)
+        {            
+            UserManager = userManager;
+        }
+       
+        public UserManager<ApplicationUser> UserManager { get; private set; }
 
         // GET: /FollowStock/
         public async Task<ActionResult> Index()
@@ -47,19 +60,44 @@ namespace PhimHang.Controllers
         // POST: /FollowStock/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include="ID,UserId,StockFollowed,CreatedDate")] FollowStock followstock)
+        [HttpGet]
+        
+        public async Task<string> Create(string stock)
         {
-            if (ModelState.IsValid)
+            
+            using (db = new testEntities())
             {
-                db.FollowStocks.Add(followstock);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                
+                var countStockFollowr = await db.FollowStocks.CountAsync(f => f.UserId == currentUser.UserExtentLogin.Id );
+                var followrStockByUser = await db.FollowStocks.FirstOrDefaultAsync(f => f.UserId == currentUser.UserExtentLogin.Id && f.StockFollowed == stock);
+                if (countStockFollowr >= 10 && followrStockByUser == null)
+                {
+                    return "M";
+                }
+                
+                if (followrStockByUser == null && countStockFollowr < 10)
+                {
+                    var stockfollow = new FollowStock { UserId = currentUser.UserExtentLogin.Id, StockFollowed = stock , CreatedDate = DateTime.Now};
+                    db.FollowStocks.Add(stockfollow);
+                    await db.SaveChangesAsync();
+                    return "A";
+                }
+                else 
+                {
+                    db.FollowStocks.Remove(followrStockByUser);
+                    await db.SaveChangesAsync();
+                    return "R";
+                }
+
+                
             }
 
-            ViewBag.UserId = new SelectList(db.UserLogins, "Id", "KeyLogin", followstock.UserId);
-            return View(followstock);
+                
+            
+
+            
+            return "";
         }
 
         // GET: /FollowStock/Edit/5
