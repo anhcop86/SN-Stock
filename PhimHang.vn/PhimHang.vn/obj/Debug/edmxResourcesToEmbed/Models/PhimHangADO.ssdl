@@ -44,7 +44,7 @@
       <PropertyRef Name="PostId" />
     </Key>
     <Property Name="PostId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Message" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="Message" Type="nvarchar" MaxLength="512" />
     <Property Name="PostedBy" Type="int" Nullable="false" />
     <Property Name="PostedDate" Type="datetime2" Precision="7" Nullable="false" />
     <Property Name="ChartImageURL" Type="nvarchar" MaxLength="128" />

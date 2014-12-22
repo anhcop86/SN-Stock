@@ -47,8 +47,44 @@ namespace PhimHang.Hubs
             }
         }
 
-        public void AddPost(Post post, string stockCurrent, int currentUserId, string userName, string avataImageUrl)
+        public void AddPost(Post post, string stockCurrent, int currentUserId, string userName, string avataImageUrl, int nhanDinh)
         {
+            #region format message
+            string messagedefault = "";
+            messagedefault = post.Message;
+            List<string> listMessege = post.Message.Split(' ').ToList();
+            string messageFromatHTML = "";
+            foreach (var item in listMessege)
+            {
+                if (item.Contains("$") || item.Contains("@"))
+                {
+                    messageFromatHTML += "<b>" + item + "</b>" + " ";
+                }
+                else if (item.Contains("http") || item.Contains("www."))
+                {
+                    messageFromatHTML += "<a href='" + item + "'>LINK</a>" + " ";
+                }
+                else
+                {
+                    messageFromatHTML += item + " ";
+                }
+            }
+
+            if (nhanDinh == -1)
+            {
+                messageFromatHTML += " <span class='sentiment bullishs'>Giảm</span>";
+            }
+            else if (nhanDinh == 0)
+            {
+                messageFromatHTML += " <span class='sentiment Normals'>Đứng</span>";
+            }
+            else
+            {
+                messageFromatHTML += " <span class='sentiment bearishs'>Tăng</span>";
+            }
+            #endregion
+            //messageFromatHTML += "</a>";
+            post.Message = messageFromatHTML;
             post.PostedBy = currentUserId;
             post.PostedDate = DateTime.Now;
             
@@ -56,7 +92,7 @@ namespace PhimHang.Hubs
             
             #region explan this passing messege to stockcode and username list
 
-            List<string> listMessegeSplit = post.Message.Split(' ').ToList().FindAll(p => p.Contains("$") || p.Contains("@"));
+            List<string> listMessegeSplit = messagedefault.Split(' ').ToList().FindAll(p => p.Contains("$") || p.Contains("@"));
                         
             #endregion
 
@@ -64,13 +100,13 @@ namespace PhimHang.Hubs
             {
                 db.Posts.Add(post);
                 /* co phieu dau tien la chinh no */
-                if (stockCurrent != "")
+                if (stockCurrent != "KEYMYPROFILE")
                 {
                     StockRelate stockRelateFirst = new StockRelate();
                     stockRelateFirst.PostId = post.PostId;
                     stockRelateFirst.StockCodeRelate = stockCurrent;
                     db.StockRelates.Add(stockRelateFirst); // add to database
-                    listStock.Add(stockCurrent); // group of hub for client 
+                    listStock.Add(stockCurrent.ToUpper()); // group of hub for client 
                 }
                 /* END */
                 //db.Posts.Add(post);
@@ -79,7 +115,7 @@ namespace PhimHang.Hubs
                 {
                     if (item.Contains("$") && !item.Contains(stockCurrent)) // find the stock with $
                     {
-                        string stockcode = item.Replace("$", "");
+                        string stockcode = item.Replace("$", "").ToUpper();
                         StockRelate stockRelateLasts = new StockRelate();
                         stockRelateLasts.PostId = post.PostId;
                         stockRelateLasts.StockCodeRelate = stockcode;

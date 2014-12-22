@@ -32,15 +32,15 @@
                         <input name="Select File" type="file" />
                     </div>
 
-                    <div id="radio" class="switch3button f-left">
-                        <input type="radio" id="radio1" name="BullBear" value="Bull"><label for="radio1">Tăng</label>
-                        <input type="radio" id="radio2" name="BullBear" checked="checked" value="None"><label for="radio2">Đứng</label>
-                        <input type="radio" id="radio3" name="BullBear" value="Bear"><label for="radio3">Giảm</label>
+                    <div id="radioGroup" class="switch3button f-left">
+                        <input type="radio" id="radio3" name="BullBear" value="-1"><label for="radio3">Giảm</label>
+                        <input type="radio" id="radio2" name="BullBear" value="0" checked="checked"><label for="radio2">Đứng</label>
+                        <input type="radio" id="radio1" name="BullBear" value="1"><label for="radio1">Tăng</label>
                     </div>
                     <div id="btnPhim" class="f-right">
                         <span data-bind="text : count"></span>
-                        <a href="javascript:void(0)" class="button-phim" data-bind="click : addPost"><span>PHÍM</span></a>
-                      
+                        @*<a href="javascript:void(0)" class="button-phim" data-bind="click : addPost"><span>PHÍM</span></a>*@
+                        <input type="button" style="cursor:pointer" class="button-phim" value="PHÍM" data-bind="click : addPost,  enable: enablePhimHang " />
                     </div>
                 </div>
             
@@ -169,7 +169,7 @@
 <script type="text/javascript">
     function getTimeAgo(varDate) {
         if (varDate) {
-            return $.timeago(varDate.toString().slice(-1) == 'Z' ? varDate : varDate + 'Z');
+            return $.timeago(varDate);
         }
         else {
             return '';
@@ -206,6 +206,9 @@
                 self.error(err);
             });
         }
+        self.enablePhimHang = ko.computed(function () {
+            return self.newMessage().length <= 140 && self.newMessage().length >= 6;
+        });
 
         self.hub.client.loadPosts = function (data) {            
             var mappedPosts = $.map(data, function (item) { return new Post(item, self.hub); });
@@ -214,7 +217,8 @@
 
         self.addPost = function () {
             self.error(null);
-            self.hub.server.addPost({ "Message": self.newMessage() }, '@ViewBag.StockCode', '@ViewBag.CureentUserId', '@ViewBag.UserName', '@ViewBag.AvataImageUrl').fail(function (err) {
+            var nhanDinh = $("input:radio[name='BullBear']:checked").val();
+            self.hub.server.addPost({ "Message": self.newMessage() }, '@ViewBag.StockCode', '@ViewBag.CureentUserId', '@ViewBag.UserName', '@ViewBag.AvataImageUrl', nhanDinh).fail(function (err) {
                 self.error(err);
             });
         }

@@ -977,3 +977,32 @@ a.category-tab:hover{
 .user-info-mypage a{
     margin-left: 30px;
 }
+
+.sentiment{
+    border-radius: 3px;
+    box-shadow: inset 0 0 1px rgba(0,0,0,0.2),0 1px 0 #fff;
+    display: inline-block;
+    font-size: 0.85em;
+    padding:2px;
+}
+.bullishs
+{
+     background: #faebeb;
+    color: #c26e6e;
+    padding: 0 3px;
+}
+
+.bearishs
+{
+    background: #e3f0e3;
+    color: #60a85f;
+    padding: 0 3px;
+   
+}
+
+.Normals
+{
+    background:#FFBD00 ;
+    color: #c26e6e;
+    padding: 0 3px;
+}

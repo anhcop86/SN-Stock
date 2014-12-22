@@ -9,7 +9,6 @@
 }
 
 <div class="bg-white" id="CommentForKoLoad">
-    <div data-bind="text:error"></div>
     <div class="status-box">
         <div class="avatar-small">
             <img src="/@ViewBag.AvataEmage?width=28&height=28&mode=crop" class="img-rounded" alt="avatar">
@@ -25,10 +24,10 @@
                     <input name="Select File" type="file" />
                 </div>
 
-                <div id="radioGroup" class="switch3button f-left">                    
-                    <input type="radio" id="radio3" name="BullBear" value="-1"><label for="radio3">Giảm</label>                    
-                    <input type="radio" id="radio2" name="BullBear" value="0" checked="checked"><label for="radio2">Đứng</label>
-                    <input type="radio" id="radio1" name="BullBear" value="1"><label for ="radio1">Tăng</label>
+                <div id="radio" class="switch3button f-left">
+                    <input type="radio" id="radio1" name="BullBear" value="Bull"><label for="radio1">Tăng</label>
+                    <input type="radio" id="radio2" name="BullBear" value="None" checked="checked"><label for="radio2">Đứng</label>
+                    <input type="radio" id="radio3" name="BullBear" value="Bear"><label for="radio3">Giảm</label>
                 </div>
                 <div id="btnPhim" class="f-right">
                     <span data-bind="text : count"></span>
@@ -110,7 +109,7 @@
 <script type="text/javascript">
     function getTimeAgo(varDate) {
         if (varDate) {
-            return $.timeago(varDate);
+            return $.timeago(varDate.toString().slice(-1) == 'Z' ? varDate : varDate + 'Z');
         }
         else {
             return '';
@@ -158,11 +157,7 @@
 
         self.addPost = function () {
             self.error(null);
-            //var nhanDinh = $('input[name=BullBear]:checked').val();
-            
-            
-            var nhanDinh = $("input:radio[name='BullBear']:checked").val();
-            self.hub.server.addPost({ "Message": self.newMessage() }, 'KEYMYPROFILE', '@ViewBag.CureentUserId', '@ViewBag.UserName', '@ViewBag.AvataImageUrl', nhanDinh).fail(function (err) {
+            self.hub.server.addPost({ "Message": self.newMessage() }, 'KEYMYPROFILE', '@ViewBag.CureentUserId', '@ViewBag.UserName', '@ViewBag.AvataImageUrl').fail(function (err) {
                 self.error(err);                
             });
             self.newMessage('');
