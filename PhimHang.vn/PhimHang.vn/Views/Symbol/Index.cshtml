@@ -223,14 +223,7 @@
             self.posts.splice(0, 0, new Post(post, self.hub));
             self.newMessage('$@ViewBag.StockCode ');
         }
-
-
-       
-
-        self.checkLenofNewMessage = ko.pureComputed(function () {
-            return self.newMessage().lenght >0;
-        }, self);
-
+            
         self.count = ko.computed(function () {
             var countNum = 140 - self.newMessage().length;
             return countNum;
@@ -245,12 +238,10 @@
               
                 var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item, self.hub); });
                 $(mappedPosts).each(function (index, element) {                    
-                    self.posts.push(element);
-                    
+                    self.posts.push(element);                    
                 });                
             })
         };
-
     }
 
     ko.bindingHandlers.limitCharacters = {

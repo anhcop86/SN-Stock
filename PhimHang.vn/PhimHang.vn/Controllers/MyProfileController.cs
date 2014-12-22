@@ -40,6 +40,8 @@ namespace PhimHang.Controllers
         public async Task<ActionResult> Index()
         {
             // get user info
+            Session["DataTimeVistProfile"] = DateTime.Now;
+
             using (db = new testEntities())
             {
                 ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
@@ -95,30 +97,9 @@ namespace PhimHang.Controllers
                 return View(currentUser);
             }           
         }
-       /* public async Task<List<CommentProfileModels>> GetCommentByStockFollow(int fromdata)
-        {
-            using (db = new testEntities())
-            {
-                ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-                var followstocks = await db.FollowStocks.Where(f => f.UserId == currentUser.UserExtentLogin.Id).ToListAsync();
-                var listfollowstocksString = (from sf in followstocks
-                                              select sf.StockFollowed).ToList();
-
-                var ret = (from stockRelate in db.StockRelates.ToList()
-                                 where listfollowstocksString.Contains(stockRelate.StockCodeRelate)
-                                 orderby stockRelate.Post.PostedDate descending
-                                 select new CommentProfileModels
-                                 {
-                                     Message = stockRelate.Post.Message,
-                                     PostedByName = stockRelate.Post.UserLogin.UserNameCopy,
-                                     PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage + "?width=46&height=46&mode=crop",
-                                     PostedDate = stockRelate.Post.PostedDate,
-                                 }).Skip(fromdata).Take(10).ToList();
-                return await Task.FromResult(ret);              
-            }
-        }
         
-            */
+        
+            
 
         //
         // GET: /MyProfile/Details/5

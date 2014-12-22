@@ -50,7 +50,7 @@ namespace PhimHang.Hubs
         public void AddPost(Post post, string stockCurrent, int currentUserId, string userName, string avataImageUrl)
         {
             post.PostedBy = currentUserId;
-            post.PostedDate = DateTime.UtcNow;
+            post.PostedDate = DateTime.Now;
             
             var listStock = new List<string>();
             
@@ -123,5 +123,9 @@ namespace PhimHang.Hubs
         {
             return Groups.Remove(Context.ConnectionId, stockCurrent);
         }
+
+        ///////////////////////////////////////////////////// profile
+        
+        /////////////////////////////////////////////////////
     }
 }

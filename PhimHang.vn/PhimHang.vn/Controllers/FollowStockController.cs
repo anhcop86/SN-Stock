@@ -124,6 +124,38 @@ namespace PhimHang.Controllers
             
         }
 
+        public async Task<dynamic> GetCommentByStockFollowInProfile(int skipposition)
+        {
+            if (Session["DataTimeVistProfile"] == null)
+            {
+                Session["DataTimeVistProfile"] = DateTime.Now;
+            }
+            var dataTimeVistProfile = (DateTime)Session["DataTimeVistProfile"];
+            using (db = new testEntities())
+            {
+                ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                var followstocks = await db.FollowStocks.Where(f => f.UserId == currentUser.UserExtentLogin.Id).ToListAsync();
+                var listfollowstocksString = (from sf in followstocks
+                                              select sf.StockFollowed).ToList();
+
+                var ret = (from stockRelate in await db.StockRelates.ToListAsync()
+                           where listfollowstocksString.Contains(stockRelate.StockCodeRelate) // chon stock dc theo doi
+                           && (stockRelate.Post.PostedDate < dataTimeVistProfile)
+                           orderby stockRelate.Post.PostedDate descending
+                           select new CommentProfileModels
+                           {
+                               Message = stockRelate.Post.Message,
+                               PostedByName = stockRelate.Post.UserLogin.UserNameCopy,
+                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage + "?width=46&height=46&mode=crop",
+                               PostedDate = stockRelate.Post.PostedDate,
+                           }).Skip(skipposition).Take(10).ToArray();
+                //return await Task.FromResult(ret);
+
+                var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
+                return result;
+            }
+        }
+
         // GET: /FollowStock/Edit/5
         public async Task<ActionResult> Edit(long? id)
         {

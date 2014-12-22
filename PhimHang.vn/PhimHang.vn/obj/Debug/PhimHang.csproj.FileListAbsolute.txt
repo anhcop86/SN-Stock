@@ -40,7 +40,6 @@ F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\Microsoft.AspNet.Si
 F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\Microsoft.Owin.xml
 F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\Microsoft.Owin.Host.SystemWeb.xml
 F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\Microsoft.Owin.Security.xml
-F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\Newtonsoft.Json.xml
 F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\System.Web.Helpers.xml
 F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\System.Web.Mvc.xml
 F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\System.Web.Optimization.xml
@@ -65,3 +64,8 @@ F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\Microsoft.Owin.Secu
 F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.dll
 F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.pdb
+F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\PagedList.dll
+F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\PagedList.Mvc.dll
+F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\PagedList.xml
+F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\PagedList.Mvc.xml
+F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.csprojResolveAssemblyReference.cache
