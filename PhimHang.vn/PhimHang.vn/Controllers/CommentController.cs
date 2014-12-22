@@ -35,7 +35,7 @@ namespace PhimHang.Controllers
         private const string ImageURLAvata = "images/avatar/";
 
 
-        public async Task<dynamic> Get(string stockCurrent)
+       /* public async Task<dynamic> Get(string stockCurrent)
         {
 
             var ret = (from stockRelate in await db.StockRelates.ToListAsync()
@@ -53,6 +53,7 @@ namespace PhimHang.Controllers
 
             return ret;
         }
+        * */
 
         // GET api/comment/5
         public string Get(int id)

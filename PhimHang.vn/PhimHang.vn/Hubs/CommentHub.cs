@@ -38,12 +38,12 @@ namespace PhimHang.Hubs
                                PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage + "?width=46&height=46&mode=crop",
                                PostedDate = stockRelate.Post.PostedDate,
                                //PostId = stockRelate.PostId
-                           }).ToArray();
-                var listStock = new List<string>();
-                listStock.Add(stockCurrent);
+                           }).Take(10).ToArray();
+                //var listStock = new List<string>();              
 
-                Clients.Groups(listStock).loadPosts(ret);
+                Clients.Client(Context.ConnectionId).loadPosts(ret);
 
+              
             }
         }
 

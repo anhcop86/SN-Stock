@@ -95,7 +95,7 @@ namespace PhimHang.Controllers
                 return View(currentUser);
             }           
         }
-        public async Task<List<CommentProfileModels>> GetCommentByStockFollow(int fromdata)
+       /* public async Task<List<CommentProfileModels>> GetCommentByStockFollow(int fromdata)
         {
             using (db = new testEntities())
             {
@@ -118,7 +118,7 @@ namespace PhimHang.Controllers
             }
         }
         
-
+            */
 
         //
         // GET: /MyProfile/Details/5

@@ -105,8 +105,9 @@
                 </div>
             </div>
         </div>
-
-        <a href="javascript:void(0)" class="button-phim" data-bind="click : loadMores"><span>LOAD MORE 10</span></a>
+        <div style="text-align: center; margin-top: 10px; ">
+            <a href="javascript:void(0)" class="button-loadmore" data-bind="click : loadMores"><span>LOAD MORE 10</span></a>
+        </div>
         <!--end list comment-->
 
     </div>
@@ -206,6 +207,11 @@
             });
         }
 
+        self.hub.client.loadPosts = function (data) {            
+            var mappedPosts = $.map(data, function (item) { return new Post(item, self.hub); });
+            self.posts(mappedPosts);
+        }
+
         self.addPost = function () {
             self.error(null);
             self.hub.server.addPost({ "Message": self.newMessage() }, '@ViewBag.StockCode', '@ViewBag.CureentUserId', '@ViewBag.UserName', '@ViewBag.AvataImageUrl').fail(function (err) {
@@ -219,10 +225,7 @@
         }
 
 
-        self.hub.client.loadPosts = function (data) {
-            var mappedPosts = $.map(data, function (item) { return new Post(item, self.hub); });
-            self.posts(mappedPosts);
-        }
+       
 
         self.checkLenofNewMessage = ko.pureComputed(function () {
             return self.newMessage().lenght >0;
@@ -234,23 +237,18 @@
         });
 
         self.loadMores = function () {
-            alert('load thu73 nao2');
-            $.get('@Url.Action("GetCommentBySymbol", "Symbol")',
-                          {
-                              stockCurrent: 'ACB'
-                          }, function (data) {
-                              alert(data);
-                              if (data == "A") {
-                                  alert('Thêm vào danh sách so sánh thành công');
-                                  $("#button-stock-follow").html("<i class='fa fa-plus'></i>&nbsp Đang theo dõi");
-                              }
-                              else if (data == "R") {
-                                  alert('Loại khỏi danh sách so sánh thành công');
-                                  $("#button-stock-follow").html("<i class='fa fa-plus'></i>&nbsp Theo dõi");
-                              } else {
-                                  alert('Chỉ thêm tối đa 10 cổ phiếu, loại bỏ bớt cổ phiếu theo dõi để thêm cổ phiếu mới');
-                              }
-                          })
+            $.get('@Url.Action("GetCommentBySymbol", "FollowStock")',
+            {
+                stockCurrent: '@ViewBag.StockCode',
+                skipposition: self.posts().length
+            }, function (data) {                
+              
+                var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item, self.hub); });
+                $(mappedPosts).each(function (index, element) {                    
+                    self.posts.push(element);
+                    
+                });                
+            })
         };
 
     }

@@ -131,10 +131,11 @@ namespace PhimHang.Controllers
         }
 
         //[Authorize]
-
-        
+/*
+        [AllowAnonymous]
         [HttpGet]
-        public async Task<dynamic> GetCommentBySymbol( string stockCurrent)
+        [ActionName("GetCommentBySymbol")]
+        public async Task<string> GetCommentBySymbol( string stockCurrent)
         {
             using (db = new testEntities())
             {
@@ -153,7 +154,9 @@ namespace PhimHang.Controllers
                            }).Skip(5).Take(10).ToArray();
                 return await Task.FromResult(ret);
             }
-        }
+            *
+            return "";
+        }*/
         //
         // GET: /Symbol/Details/5
         public ActionResult Details(int id)

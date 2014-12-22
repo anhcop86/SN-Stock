@@ -465,10 +465,6 @@ a{
     margin-left: 50px;
 }
 .button-phim{
-    /*padding: 5px 15px 5px 15px;
-    background-color: #B7DBE9;
-    border-radius: 5px;*/
-
     background-color: #f7f8fa;
     border-radius: 3px;
     padding: 5px 15px 5px 15px;  
@@ -477,6 +473,18 @@ a{
     color:#55688c;
     margin-right:10px;
     font-weight:bold;
+}
+
+.button-loadmore{
+    background-color: #f7f8fa;
+    border-radius: 3px;
+    padding:5px 15px 5px 15px;      
+    border: 1px solid #ddd;
+    color:#55688c;    
+    font-weight:bold;
+    
+    
+    /*float:right;*/
 }
 
 /*end*/
