@@ -332,4 +332,8 @@ E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\bin\Microsoft.Owin.Security.Twitter.
 E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.dll
 E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.pdb
+<<<<<<< HEAD
 F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.csprojResolveAssemblyReference.cache
+=======
+E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.csprojResolveAssemblyReference.cache
+>>>>>>> d3bac88091581f29eefa19544ef50821f7ac3f29

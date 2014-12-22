@@ -63,20 +63,14 @@ namespace PhimHang.Controllers
                 #region danh muc co phieu vua moi xem duoc luu troong cookie
                 //var cookie = new HttpCookie("cookiename");
 
-                if (Request.Cookies["HotStockCookie"].Value == null)
+                if (Request.Cookies["HotStockCookie" + currentUser.Id] == null)
                 {
-                    HttpCookie hotStockCookie = new HttpCookie("HotStockCookie");
-                    hotStockCookie.Value = "|";
-                    hotStockCookie.Expires = DateTime.Now.AddHours(1);
-                    Response.Cookies.Add(hotStockCookie);
+                    Response.Cookies.Clear();
+                    Response.Cookies["HotStockCookie" + currentUser.Id].Value = "";
+                    Response.Cookies["HotStockCookie" + currentUser.Id].Expires = DateTime.Now.AddDays(1);
                 }
-                string[] listHotStock = Request.Cookies["HotStockCookie"].Value.Split('|');
+                string[] listHotStock = Request.Cookies["HotStockCookie" + currentUser.Id].Value.Split('|');
 
-                if (listHotStock.Length > 11) // neu xem hon 10 co phieu thi chi hien thi 10 co phieu dau tien
-                {
-                    Request.Cookies["HotStockCookie"].Value = Request.Cookies["HotStockCookie"].Value.Remove(0, Request.Cookies["HotStockCookie"].Value.IndexOf("|", 1)); // hien thi 10 co phieu đau tien
-                    listHotStock = Request.Cookies["HotStockCookie"].Value.Split('|');
-                }
                 List<string> listHotStockToArray = new List<string>();
                 foreach (var item in listHotStock)
                 {
@@ -87,7 +81,6 @@ namespace PhimHang.Controllers
                 ViewBag.HotStockPriceList = hotStockPrice.Count() == 0 ? new List<StockRealTime>() : hotStockPrice;
                 #endregion
 
-
                 #region danh muc dau tu
                 var followstocks = await db.FollowStocks.Where(f => f.UserId == currentUser.UserExtentLogin.Id).ToListAsync();
                 var listfollowstocksString = (from sf in followstocks                                              
@@ -95,10 +88,37 @@ namespace PhimHang.Controllers
                 ViewBag.HotStockDMDT = _stockRealtime.GetAllStocksTestList(listfollowstocksString).Result;                        
                 #endregion
 
+                #region nhung tin nam trong danh muc dau tu
+                
+                #endregion
+
                 return View(currentUser);
-            }
-           
+            }           
         }
+        public async Task<List<CommentProfileModels>> GetCommentByStockFollow(int fromdata)
+        {
+            using (db = new testEntities())
+            {
+                ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                var followstocks = await db.FollowStocks.Where(f => f.UserId == currentUser.UserExtentLogin.Id).ToListAsync();
+                var listfollowstocksString = (from sf in followstocks
+                                              select sf.StockFollowed).ToList();
+
+                var ret = (from stockRelate in db.StockRelates.ToList()
+                                 where listfollowstocksString.Contains(stockRelate.StockCodeRelate)
+                                 orderby stockRelate.Post.PostedDate descending
+                                 select new CommentProfileModels
+                                 {
+                                     Message = stockRelate.Post.Message,
+                                     PostedByName = stockRelate.Post.UserLogin.UserNameCopy,
+                                     PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage + "?width=46&height=46&mode=crop",
+                                     PostedDate = stockRelate.Post.PostedDate,
+                                 }).Skip(fromdata).Take(10).ToList();
+                return await Task.FromResult(ret);              
+            }
+        }
+        
+
 
         //
         // GET: /MyProfile/Details/5

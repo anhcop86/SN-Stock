@@ -92,12 +92,7 @@ namespace PhimHang.Controllers
 
                 
             }
-
-                
-            
-
-            
-            return "";
+                    
         }
 
         // GET: /FollowStock/Edit/5

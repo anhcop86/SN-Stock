@@ -64,11 +64,14 @@ namespace PhimHang.Hubs
             {
                 db.Posts.Add(post);
                 /* co phieu dau tien la chinh no */
-                StockRelate stockRelateFirst = new StockRelate();
-                stockRelateFirst.PostId = post.PostId;
-                stockRelateFirst.StockCodeRelate = stockCurrent;
-                db.StockRelates.Add(stockRelateFirst); // add to database
-                listStock.Add(stockCurrent); // group of hub for client 
+                if (stockCurrent != "")
+                {
+                    StockRelate stockRelateFirst = new StockRelate();
+                    stockRelateFirst.PostId = post.PostId;
+                    stockRelateFirst.StockCodeRelate = stockCurrent;
+                    db.StockRelates.Add(stockRelateFirst); // add to database
+                    listStock.Add(stockCurrent); // group of hub for client 
+                }
                 /* END */
                 //db.Posts.Add(post);
                 /* add post with stockrelate list */
