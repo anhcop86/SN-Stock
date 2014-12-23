@@ -130,39 +130,23 @@ namespace PhimHang.Controllers
             }
         }
 
-        //[Authorize]
-/*
-        [AllowAnonymous]
-        [HttpGet]
-        [ActionName("GetCommentBySymbol")]
-        public async Task<string> GetCommentBySymbol( string stockCurrent)
-        {
-            using (db = new testEntities())
-            {
-
-                var ret = (from stockRelate in db.StockRelates.ToList()
-                           where stockRelate.StockCodeRelate == stockCurrent
-                           orderby stockRelate.Post.PostedDate descending
-                           select new
-                           {
-                               Message = stockRelate.Post.Message,
-                               //PostedBy = stockRelate.Post.PostedDate,
-                               PostedByName = stockRelate.Post.UserLogin.UserNameCopy,
-                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage + "?width=46&height=46&mode=crop",
-                               PostedDate = stockRelate.Post.PostedDate,
-                               //PostId = stockRelate.PostId
-                           }).Skip(5).Take(10).ToArray();
-                return await Task.FromResult(ret);
-            }
-            *
-            return "";
-        }*/
-        //
+        
         // GET: /Symbol/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
+        //public async Task<ActionResult> Details(long postid, string stock)
+        //{            
+        //    using (db = new testEntities())
+        //    {
+        //        ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+
+        //        var post = await db.Posts.Include(p => p.UserLogin).FirstOrDefaultAsync(p => p.PostId == postid);
+        //        ViewBag.AvataEmagebyPost = string.IsNullOrEmpty(post.UserLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + post.UserLogin.AvataImage;
+        //        ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
+
+
+        //        return View(post);
+        //    }
+            
+        //}
 
         //
         // GET: /Symbol/Create

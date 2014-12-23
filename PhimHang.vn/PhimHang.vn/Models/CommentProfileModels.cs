@@ -14,5 +14,7 @@ namespace PhimHang.Models
         public string PostedByAvatar { get; set; }
 
         public DateTime PostedDate { get; set; }
+
+        public long PostId { get; set; }
     }
 }

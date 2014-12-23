@@ -15,6 +15,7 @@
     <NavigationProperty Name="StockRelates" Relationship="PHDBContext.FK_StockRelate_Posts" FromRole="Post" ToRole="StockRelate" />
     <NavigationProperty Name="UserRelates" Relationship="PHDBContext.FK_UserRelate_Posts" FromRole="Post" ToRole="UserRelate" />
     <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_Posts_UserLogins" FromRole="Post" ToRole="UserLogin" />
+    <Property Name="StockPrimary" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityContainer Name="testEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Posts" EntityType="Self.Post" />

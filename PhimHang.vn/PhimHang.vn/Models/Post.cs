@@ -28,6 +28,7 @@ namespace PhimHang.Models
         public string ChartImageURL { get; set; }
         public Nullable<int> NhanDinh { get; set; }
         public Nullable<bool> Vir { get; set; }
+        public string StockPrimary { get; set; }
     
         public virtual ICollection<PostComment> PostComments { get; set; }
         public virtual ICollection<StockRelate> StockRelates { get; set; }

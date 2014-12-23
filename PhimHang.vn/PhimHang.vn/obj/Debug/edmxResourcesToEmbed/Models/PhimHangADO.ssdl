@@ -50,6 +50,7 @@
     <Property Name="ChartImageURL" Type="nvarchar" MaxLength="128" />
     <Property Name="NhanDinh" Type="int" />
     <Property Name="Vir" Type="bit" />
+    <Property Name="StockPrimary" Type="varchar" MaxLength="16" />
   </EntityType>
   <EntityType Name="Settings">
     <Key>

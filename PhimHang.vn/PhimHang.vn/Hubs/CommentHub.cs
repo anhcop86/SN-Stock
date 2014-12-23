@@ -37,7 +37,8 @@ namespace PhimHang.Hubs
                                PostedByName = stockRelate.Post.UserLogin.UserNameCopy,
                                PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage + "?width=46&height=46&mode=crop",
                                PostedDate = stockRelate.Post.PostedDate,
-                               //PostId = stockRelate.PostId
+                               PostId = stockRelate.PostId,
+                               StockPrimary = stockRelate.Post.StockPrimary
                            }).Take(10).ToArray();
                 //var listStock = new List<string>();              
 
@@ -62,7 +63,7 @@ namespace PhimHang.Hubs
                 }
                 else if (item.Contains("http") || item.Contains("www."))
                 {
-                    messageFromatHTML += "<a href='" + item + "'>LINK</a>" + " ";
+                    messageFromatHTML += "<a href='" + item + "'><<LINK>></a>" + " ";
                 }
                 else
                 {
@@ -87,6 +88,7 @@ namespace PhimHang.Hubs
             post.Message = messageFromatHTML;
             post.PostedBy = currentUserId;
             post.PostedDate = DateTime.Now;
+            post.StockPrimary = stockCurrent;
             
             var listStock = new List<string>();
             
@@ -138,11 +140,10 @@ namespace PhimHang.Hubs
                     //PostedBy = post.PostedBy,
                     PostedByName = userName,
                     PostedByAvatar = "/" + avataImageUrl.Replace("amp;", ""),
-                    PostedDate = post.PostedDate
-                    //PostId = post.PostId
-                };
-
-               
+                    PostedDate = post.PostedDate,
+                    PostId = post.PostId,
+                    StockPrimary = post.StockPrimary
+                };               
 
                 Clients.Groups(listStock).addPost(ret);
             } 

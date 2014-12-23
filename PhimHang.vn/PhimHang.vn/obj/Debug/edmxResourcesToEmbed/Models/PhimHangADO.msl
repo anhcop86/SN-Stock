@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Posts">
       <EntityTypeMapping TypeName="PHDBContext.Post">
         <MappingFragment StoreEntitySet="Posts">
+          <ScalarProperty Name="StockPrimary" ColumnName="StockPrimary" />
           <ScalarProperty Name="PostId" ColumnName="PostId" />
           <ScalarProperty Name="Message" ColumnName="Message" />
           <ScalarProperty Name="PostedBy" ColumnName="PostedBy" />

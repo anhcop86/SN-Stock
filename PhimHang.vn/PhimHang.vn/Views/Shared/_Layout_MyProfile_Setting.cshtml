@@ -4,17 +4,20 @@
 
     <title>@ViewBag.Title</title>
     <meta charset="UTF-8">
-    @*<script src="~/Scripts/knockout-3.2.0.js"></script>*@
+    <script src="~/Scripts/knockout-3.2.0.js"></script>
+    <script src="~/Scripts/knockout.mapping-latest.js"></script>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    @*<script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>*@
-    @*<script src="~/signalr/hubs"></script>*@
+    <script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>
+    <script src="~/signalr/hubs"></script>
     <!--For desgin-->
 
-    
+
     <link href="~/Scripts/jquery-ui/jquery-ui.css" rel="stylesheet" />
 
     <link href="~/Content/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    @*<script src="js/jquery/jquery.js"></script> da co tren min*@    
+
+    @*<script src="js/jquery/jquery.js"></script> da co tren min*@
+
     <link href="~/Content/style.css" rel="stylesheet" />
     <script src="~/Scripts/MyProfile/jquery-ui.min.js"></script>
     <script src="~/Scripts/MyProfile/action.js"></script>
@@ -169,9 +172,39 @@
             </div>
         </div>
 
-        <div class="content-main">
-            @RenderBody()
-        </div>
+     <div class="content-main">
+         <div class="area-left">
+             @Html.Partial("_Partial_Area_Left_Ad")
+         </div>
+         <div class="area-center">
+             <!--render body here-->
+             @RenderBody()
+             <!--end render body here-->
+         </div>
+         <div class="area-right">
+             <div class="banner-right-first">
+                 @Html.Partial("_Partial_Area_Right_Ad")
+             </div>
+             @*<div class="second-left-banner">
+                 @Html.Partial("_Partial_Area_Right_Down2")
+             </div>*@
+             <div class="banner-info">
+                 <div>
+                     <a href="#">Giới thiệu</a>
+                     <a href="#">Quy định</a>
+                     <a href="#">Trợ giúp</a>
+                     <a href="#">Liên hệ</a>
+                 </div>
+                 <p>
+                     Bản quyền thuộc về Công ty TNHH XXXXXXXXXX<br>
+                     Theo giấy xác nhận cung cấp dịch vụ MXH trực tuyến số: ....
+                 </p>
+             </div>
+         </div>
+     </div>
+
+
+       
 
         @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)

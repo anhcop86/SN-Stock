@@ -17,6 +17,13 @@ namespace PhimHang
               url: "Symbol/{symbolName}",
               defaults: new { controller = "Symbol", action = "Index", symbolName = UrlParameter.Optional }
           );
+
+     /*       routes.MapRoute(
+              name: "symbolDetail",
+              url: "Symbol/Details/{symbolName}",
+              defaults: new { controller = "Symbol", action = "Details", symbolName = UrlParameter.Optional }
+          );
+    */
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

@@ -4,9 +4,9 @@
     Layout = "~/Views/Shared/_Layout_MyProfile.cshtml";
 }
 @section scripts{
-    <script src="~/Scripts/knockout.mapping-latest.js"></script>
-    <script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>
-    <script src="~/signalr/hubs"></script>
+    @*<script src="~/Scripts/knockout.mapping-latest.js"></script>*@
+    @*<script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>
+    <script src="~/signalr/hubs"></script>*@
 <link href="~/Content/StockPrice.css" rel="stylesheet" />
 <script src="~/Scripts/jquery.timeago.js"></script>
 @*<script src="~/Scripts/StockPrice.js"></script>*@
@@ -87,7 +87,7 @@
         </div>
     </div>
     <div class="list-status">
-        <!--list comment here-->
+        <!--list comment here location.href='/Symbol/Details/' +-->
         <div class="list-item-status" data-bind="foreach : posts">
             <div class="avata-genaral-size">
                 <img class="img-rounded" alt="avatar" data-bind="attr: { src: PostedByAvatar }">
@@ -95,10 +95,10 @@
             <div class="list-item-detail">
                 <div class="list-item-date" data-bind="text : PostedDate"></div>
                 <div class="list-item-username" data-bind="text : PostedByName"></div>
-                <div class="list-item-status-content" data-bind="html : Message"></div>
+                <div style="cursor:pointer" class="list-item-status-content" data-bind="html : Message, click : function() {  location.href='/PostDetail?postid='+ PostId +'&stock=' + StockPrimary } "></div>
                 <div class="list-item-control">
-                    <a class="button"><i class="fa fa-comments"></i></a>
-                    <a class="button">Trả lời</a>
+                    <a class="button"><i class="fa fa-comments"></i>1</a>
+                    <a style="cursor:pointer" class="button" data-bind="click : function() {  location.href='/PostDetail?postid='+ PostId +'&stock=' + StockPrimary }">Trả lời</a>
                     <a class="button">Chia sẻ</a>
                     <a class="button">Thích</a>
                     <a class="button">Báo cáo vi phạm</a>
@@ -178,14 +178,20 @@
     function Post(data, hub) {
         var self = this;
         data = data || {};
-        //self.PostId = data.PostId;
+        self.PostId = data.PostId;
         self.Message = ko.observable(data.Message || "");
         //self.PostedBy = data.PostedBy || "";
         self.PostedByName = data.PostedByName || "";
         self.PostedByAvatar = data.PostedByAvatar || "";
         self.PostedDate = getTimeAgo(data.PostedDate);
+        self.StockPrimary = data.StockPrimary;
+        //self.postDetailIdClick = ko.computed(function () {
+        //    //alert(self.PostId);
+        //});
+
         //self.error = ko.observable();
         self.hub = hub;
+
 
     }
     function viewModel() {
@@ -195,7 +201,7 @@
         self.error = ko.observable();
 
         // SignalR related
-        self.newPosts = ko.observableArray();
+        //self.newPosts = ko.observableArray();
         // Reference the proxy for the hub.
         self.hub = $.connection.CommentHub;
 
@@ -232,6 +238,8 @@
             var countNum = 140 - self.newMessage().length;
             return countNum;
         });
+
+        
 
         self.loadMores = function () {
             $.get('@Url.Action("GetCommentBySymbol", "FollowStock")',

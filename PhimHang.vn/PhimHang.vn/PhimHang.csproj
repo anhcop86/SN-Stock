@@ -204,6 +204,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MyProfileController.cs" />
     <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\PostDetailController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\SymbolController.cs" />
@@ -469,6 +470,9 @@
     <Content Include="Views\Search\Helper.cshtml" />
     <Content Include="Views\Shared\_Partial_Area_Right_Down2.cshtml" />
     <Content Include="Views\Shared\_Layout_Symbol.cshtml" />
+    <Content Include="Views\Shared\_Partial_Area_Left_Ad.cshtml" />
+    <Content Include="Views\Shared\_Partial_Area_Right_Ad.cshtml" />
+    <Content Include="Views\PostDetail\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
