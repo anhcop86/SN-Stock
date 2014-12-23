@@ -68,7 +68,7 @@ F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\PagedList.dll
 F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\PagedList.Mvc.dll
 F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\PagedList.xml
 F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\PagedList.Mvc.xml
-E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.dll
+F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.csprojResolveAssemblyReference.cache
 E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\bin\PhimHang.dll.config
 E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\bin\PhimHang.dll
 E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\bin\PhimHang.pdb
@@ -137,6 +137,5 @@ E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\bin\Microsoft.Owin.Security.OAuth.xm
 E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\bin\Microsoft.Owin.Security.Google.xml
 E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\bin\Microsoft.Owin.Security.Twitter.xml
 E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.dll
 E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.pdb
-E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.csprojResolveAssemblyReference.cache
-F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.csprojResolveAssemblyReference.cache

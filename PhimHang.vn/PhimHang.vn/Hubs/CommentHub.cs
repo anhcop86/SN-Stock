@@ -63,7 +63,7 @@ namespace PhimHang.Hubs
                 }
                 else if (item.Contains("http") || item.Contains("www."))
                 {
-                    messageFromatHTML += "<a href='" + item + "'><<LINK>></a>" + " ";
+                    messageFromatHTML += "<a target='_blank' href='" + item + "'>[LINK]</a>" + " ";
                 }
                 else
                 {
@@ -162,7 +162,63 @@ namespace PhimHang.Hubs
         }
 
         ///////////////////////////////////////////////////// profile
-        
+        //reply
         /////////////////////////////////////////////////////
+        public void AddReply(PostComment postcomment, string stockCurrent, int currentUserId, string userName, string avataImageUrl, long postid)
+        {
+            #region format message
+            string messagedefault = "";
+            messagedefault = postcomment.Message;
+            List<string> listMessege = postcomment.Message.Split(' ').ToList();
+            string messageFromatHTML = "";
+            foreach (var item in listMessege)
+            {
+                if (item.Contains("$") || item.Contains("@"))
+                {
+                    messageFromatHTML += "<b>" + item + "</b>" + " ";
+                }
+                else if (item.Contains("http") || item.Contains("www."))
+                {
+                    messageFromatHTML += "<a target='_blank' href='" + item + "'>[LINK]</a>" + " ";
+                }
+                else
+                {
+                    messageFromatHTML += item + " ";
+                }
+            }
+                      
+            postcomment.Message = messageFromatHTML;            
+            postcomment.PostedDate = DateTime.Now;
+            postcomment.PostedBy = postid;
+            postcomment.CommentBy = currentUserId;
+            #endregion
+
+            var listStock = new List<string>();
+            listStock.Add(stockCurrent.ToUpper());
+            #region explan this passing messege to stockcode and username list
+
+            //List<string> listMessegeSplit = messagedefault.Split(' ').ToList().FindAll(p => p.Contains("$") || p.Contains("@"));
+
+            #endregion
+
+            using (testEntities db = new testEntities())
+            {
+                db.PostComments.Add(postcomment);                
+                db.SaveChanges();
+
+                var ret = new
+                {
+                    ReplyMessage = postcomment.Message,
+                    //PostedBy = post.PostedBy,
+                    ReplyByName = userName,
+                    ReplyByAvatar = "/" + avataImageUrl.Replace("amp;", ""),
+                    ReplyDate = postcomment.PostedDate,
+                    ReplyId = postcomment.PostCommentsId              
+                };
+                Clients.Client(Context.ConnectionId).addReply(ret);
+                Clients.OthersInGroups(listStock).newReplyNoti(1, postid);
+            } 
+        }
+
     }
 }

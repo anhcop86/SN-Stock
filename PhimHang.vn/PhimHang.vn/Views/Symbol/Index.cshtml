@@ -83,7 +83,7 @@
             <div class="text-label">Hiển thị bài phím mới</div>
         </div>
         <div id="msg-new-status" class="msg-new-status">
-            Có <strong>2</strong> bài phím mới: <a href="#">Hiển Thị <strong>2</strong> bài phím này</a>
+            Có <strong></strong> bài phím mới: <a href="#">Hiển Thị <strong>2</strong> bài phím này</a>
         </div>
     </div>
     <div class="list-status">
@@ -97,7 +97,7 @@
                 <div class="list-item-username" data-bind="text : PostedByName"></div>
                 <div style="cursor:pointer" class="list-item-status-content" data-bind="html : Message, click : function() {  location.href='/PostDetail?postid='+ PostId +'&stock=' + StockPrimary } "></div>
                 <div class="list-item-control">
-                    <a class="button"><i class="fa fa-comments"></i>1</a>
+                    <a class="button" ><i class="fa fa-comments"></i><span style="color:red; font-weight:bold" data-bind="text :notification, visible: notification() > 0"></span></a>
                     <a style="cursor:pointer" class="button" data-bind="click : function() {  location.href='/PostDetail?postid='+ PostId +'&stock=' + StockPrimary }">Trả lời</a>
                     <a class="button">Chia sẻ</a>
                     <a class="button">Thích</a>
@@ -185,6 +185,7 @@
         self.PostedByAvatar = data.PostedByAvatar || "";
         self.PostedDate = getTimeAgo(data.PostedDate);
         self.StockPrimary = data.StockPrimary;
+        self.notification = ko.observable(0);
         //self.postDetailIdClick = ko.computed(function () {
         //    //alert(self.PostId);
         //});
@@ -199,7 +200,7 @@
         self.posts = ko.observableArray();
         self.newMessage = ko.observable('$@ViewBag.StockCode ');
         self.error = ko.observable();
-
+        
         // SignalR related
         //self.newPosts = ko.observableArray();
         // Reference the proxy for the hub.
@@ -239,7 +240,17 @@
             return countNum;
         });
 
-        
+        // notification of reply
+        self.hub.client.newReplyNoti = function (num , postid) {           
+            var replysfind = ko.utils.arrayFirst(self.posts(), function (item) {
+                return item.PostId === postid;
+            });
+            if (replysfind != null) {                
+                replysfind.notification(replysfind.notification() + num);
+            }
+            //alert(self.notification());
+        }
+        // end
 
         self.loadMores = function () {
             $.get('@Url.Action("GetCommentBySymbol", "FollowStock")',

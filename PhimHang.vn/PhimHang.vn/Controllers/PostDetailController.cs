@@ -50,7 +50,11 @@ namespace PhimHang.Controllers
                 ViewBag.AvataEmagebyPost = string.IsNullOrEmpty(post.UserLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + post.UserLogin.AvataImage;
                 ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
                 ViewBag.StockPrimary = stock;
-
+                // tham so hub
+                ViewBag.AvataImageUrl = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage + "?width=46&height=46&mode=crop";
+                ViewBag.UserName = currentUser.UserName;
+                ViewBag.CureentUserId = currentUser.UserExtentLogin.Id;
+                // end
                 return View(post);
             }
             
