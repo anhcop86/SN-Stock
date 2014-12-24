@@ -86,18 +86,18 @@
             Có <strong></strong> bài phím mới: <a href="#">Hiển Thị <strong>2</strong> bài phím này</a>
         </div>
     </div>
-    <div class="list-status">
+    <div class="list-status" data-bind="foreach : posts">
         <!--list comment here location.href='/Symbol/Details/' +-->
-        <div class="list-item-status" data-bind="foreach : posts">
+        <div class="list-item-status">
             <div class="avata-genaral-size">
-                <img class="img-rounded" alt="avatar" data-bind="attr: { src: PostedByAvatar }">
+                <img style="cursor:pointer" class="img-rounded" alt="avatar" data-bind="attr: { src: PostedByAvatar },click : function() {  location.href='/user/' + PostedByName + '/tab/1' }">
             </div>
             <div class="list-item-detail">
                 <div class="list-item-date" data-bind="text : PostedDate"></div>
-                <div class="list-item-username" data-bind="text : PostedByName"></div>
+                <div style="cursor:pointer" class="list-item-username" data-bind="text : PostedByName, click : function() {  location.href='/user/' + PostedByName + '/tab/1' }"></div>
                 <div style="cursor:pointer" class="list-item-status-content" data-bind="html : Message, click : function() {  location.href='/PostDetail?postid='+ PostId +'&stock=' + StockPrimary } "></div>
                 <div class="list-item-control">
-                    <a class="button" ><i class="fa fa-comments"></i><span style="color:red; font-weight:bold" data-bind="text :notification, visible: notification() > 0"></span></a>
+                    <a class="button"><i class="fa fa-comments"></i><span style="color:red; font-weight:bold" data-bind="text :notification, visible: notification() > 0"></span></a>
                     <a style="cursor:pointer" class="button" data-bind="click : function() {  location.href='/PostDetail?postid='+ PostId +'&stock=' + StockPrimary }">Trả lời</a>
                     <a class="button">Chia sẻ</a>
                     <a class="button">Thích</a>
@@ -105,11 +105,12 @@
                 </div>
             </div>
         </div>
-        <div style="text-align: center; margin-top: 10px; ">
-            <a href="javascript:void(0)" class="button-loadmore" data-bind="click : loadMores"><span>LOAD MORE 10</span></a>
-        </div>
+
         <!--end list comment-->
 
+    </div>
+    <div style="text-align: center; margin-top: 10px; ">
+        <a href="javascript:void(0)" class="button-loadmore" data-bind="click : loadMores"><span>LOAD MORE 10</span></a>
     </div>
 </div>
 <!-- gia co phieu real time-->

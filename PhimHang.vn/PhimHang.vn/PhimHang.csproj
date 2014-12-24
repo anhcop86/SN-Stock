@@ -208,6 +208,7 @@
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\SymbolController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -473,6 +474,13 @@
     <Content Include="Views\Shared\_Partial_Area_Left_Ad.cshtml" />
     <Content Include="Views\Shared\_Partial_Area_Right_Ad.cshtml" />
     <Content Include="Views\PostDetail\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout_User.cshtml" />
+    <Content Include="Views\Shared\_Partial_Area_Left_User.cshtml" />
+    <Content Include="Views\Shared\_Partial_Area_Right_User1.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Shared\_Partial_Area_MenuBar_User.cshtml" />
+    <Content Include="Views\User\_PartialUserTab1.cshtml" />
+    <Content Include="Views\Shared\_Layout_Reply_Ad.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

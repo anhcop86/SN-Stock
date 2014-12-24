@@ -1,45 +1,4 @@
-﻿@{
-    ViewBag.Title = "My profile";
-    Layout = "~/Views/Shared/_Layout_MyProfile.cshtml";
-}
-
-@section scripts{   
-    <link href="~/Content/StockPrice.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery.timeago.js"></script>   
-}
-
-<div class="bg-white" id="CommentForKoLoad">
-    <div data-bind="text:error"></div>
-    <div class="status-box">
-        <div class="avatar-small">
-            <img src="/@ViewBag.AvataEmage?width=28&height=28&mode=crop" class="img-rounded" alt="avatar">
-        </div>
-        <div class="input-status">
-
-            <div id="input-status-text" class="input-status-text">
-                <textarea data-bind="value : newMessage, valueUpdate : 'afterkeydown' , limitCharacters : 140" name="status" rows="5" placeholder="$Mã cổ phiếu ($VNM, $GAS); Username" id="status" title="Search"></textarea>
-            </div>
-            <div class="status-control">
-                <div class="choose_file f-left">
-                    <i class="fa fa-camera"></i>
-                    <input name="Select File" type="file" />
-                </div>
-
-                <div id="radioGroup" class="switch3button f-left">                    
-                    <input type="radio" id="radio3" name="BullBear" value="-1"><label for="radio3">Giảm</label>                    
-                    <input type="radio" id="radio2" name="BullBear" value="0" checked="checked"><label for="radio2">Đứng</label>
-                    <input type="radio" id="radio1" name="BullBear" value="1"><label for ="radio1">Tăng</label>
-                </div>
-                <div id="btnPhim" class="f-right">
-                    <span data-bind="text : count"></span>
-                    
-                    <input type="button" style="cursor:pointer" class="button-phim" value="PHÍM" data-bind="click : addPost,  enable: enablePhimHang " />
-                    @*<a href="javascript:void(0)" class="button-phim" data-bind=" , enable: newMessage().lenght > 6 "><span>PHÍM</span></a>*@
-                </div>
-            </div>
-
-        </div>
-    </div>
+﻿<div class="bg-white" id="PostForKoLoadByTab1">
     <div class="filer-bar">
         <div class="toSpan filer-bar-label">Bộ Lọc: </div>
         <div class="toSpan filer-bar-item"> <a href="#">Tất cả</a> </div>
@@ -65,22 +24,7 @@
         </div>
 
     </div>
-    <div class="filer-new-status">
-        <div class="filer-new-status-button-bar">
-            <div class="onoffswitch f-right">
-                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
-                <label id="abcww" class="onoffswitch-label" for="myonoffswitch">
-                    <span class="onoffswitch-inner"></span>
-                    <span class="onoffswitch-switch"></span>
-                </label>
-            </div>
-            <div class="text-label">Hiển thị bài phím mới</div>
-        </div>
-        <div id="msg-new-status" class="msg-new-status">
-            Có <strong>2</strong> bài phím mới: <a href="#">Hiển Thị <strong>2</strong> bài phím này</a>
-        </div>
-    </div>
-    <div class="list-status" data-bind="foreach : posts">        
+    <div class="list-status" data-bind="foreach : posts">
         <div class="list-item-status">
             <div class="avata-genaral-size">
                 <img style="cursor:pointer" class="img-rounded" alt="avatar" data-bind="attr: { src: PostedByAvatar },click : function() {  location.href='/user/' + PostedByName + '/tab/1' }">
@@ -103,6 +47,7 @@
         <a href="javascript:void(0)" class="button-loadmore" data-bind="click : loadMores"><span>LOAD MORE 10</span></a>
     </div>
 </div>
+
 
 <script type="text/javascript">
     function getTimeAgo(varDate) {
@@ -141,8 +86,9 @@
         self.init = function () {
             self.error(null);
             //self.hub.server.joinRoom('@ViewBag.StockCode');
-            $.get('@Url.Action("GetCommentByStockFollowInProfile", "FollowStock")',
-            {                
+            $.get('@Url.Action("GetPostByUserId", "User")',
+            {
+                userid: '@ViewBag.UserId',
                 skipposition: self.posts().length
             }, function (data) {
 
@@ -152,42 +98,14 @@
                 });
             })
         }
-        
 
-        self.addPost = function () {
-            self.error(null);
-            //var nhanDinh = $('input[name=BullBear]:checked').val();
-            
-            
-            var nhanDinh = $("input:radio[name='BullBear']:checked").val();
-            self.hub.server.addPost({ "Message": self.newMessage() }, 'KEYMYPROFILE', '@ViewBag.CureentUserId', '@ViewBag.UserName', '@ViewBag.AvataImageUrl', nhanDinh).fail(function (err) {
-                self.error(err);                
-            });
-            self.newMessage('');
-        }
-
-        //self.hub.client.addPost = function (post) {
-        //    self.posts.unshift(new Post(post, self.hub));
-        //    self.newMessage('');
-        //}
-        
-        self.count = ko.computed(function () {
-            var countNum = 140 - self.newMessage().length;
-            return countNum;
-        });
-
-
-        self.enablePhimHang = ko.computed(function () {            
-            return self.newMessage().length <= 140 && self.newMessage().length >= 6;
-        });
 
         self.loadMores = function () {
-            $.get('@Url.Action("GetCommentByStockFollowInProfile", "FollowStock")',
+            $.get('@Url.Action("GetPostByUserId", "User")',
             {
-                stockCurrent: '@ViewBag.StockCode',
+                 userid: '@ViewBag.UserId',
                 skipposition: self.posts().length
             }, function (data) {
-
                 var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item, self.hub); });
                 $(mappedPosts).each(function (index, element) {
                     self.posts.push(element);
@@ -198,15 +116,9 @@
 
     }
 
-    ko.bindingHandlers.limitCharacters = {
-        update: function (element, valueAccessor, allBindingsAccessor, viewModel) {
-            element.value = element.value.substr(0, valueAccessor());
-            allBindingsAccessor().value(element.value.substr(0, valueAccessor()));
-        }
-    };
 
     var vmPost = new viewModel();
-    ko.applyBindings(vmPost, document.getElementById("CommentForKoLoad"));
+    ko.applyBindings(vmPost, document.getElementById("PostForKoLoadByTab1"));
     $.connection.hub.start().done(function () {
         vmPost.init();
     });

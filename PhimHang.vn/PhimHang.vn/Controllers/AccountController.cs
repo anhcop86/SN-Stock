@@ -19,20 +19,7 @@ namespace PhimHang.Controllers
     {
         private const string ImageURLAvata = "images/avatar/";
         private const string ImageURLCover = "images/cover/";
-        //public AccountController()
-        //    : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
-        //{
-        //}
-
-        //public AccountController(UserManager<ApplicationUser> userManager)
-        //{
-        //    UserManager = userManager;
-        //}
-
-        //public UserManager<ApplicationUser> UserManager { get; private set; }
-
-        //
-        // GET: /Account/Login
+       
          private readonly StockRealTimeTicker _stockRealtime;
          public AccountController()
              : this(StockRealTimeTicker.Instance, new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))

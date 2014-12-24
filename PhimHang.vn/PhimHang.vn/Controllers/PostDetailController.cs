@@ -30,11 +30,7 @@ namespace PhimHang.Controllers
         private const string ImageURLCoverDefault = "img/cover_default.jpg";
         private const string ImageURLAvata = "images/avatar/";
         private const string ImageURLCover = "images/cover/";
-        // GET: /PostDetail/
-        //public ActionResult Index()
-        //{
-        //    return RedirectToAction("Helper", "Search");
-        //}
+ 
 
         public async Task<ActionResult> Index(long postid, string stock)
         {

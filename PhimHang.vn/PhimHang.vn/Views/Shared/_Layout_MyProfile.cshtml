@@ -42,6 +42,9 @@
                             <a href="/Account/Profile"><span class="todiv"><i class="fa fa-cog"></i> Setting</span></a>
                         </div>
                         <div class="dropdown-item">
+                            <a href="/Account/Manage"><span class="todiv"><i class="fa fa-cog"></i> Change password</span></a>
+                        </div>
+                        <div class="dropdown-item">
                             @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
                             {
                             @Html.AntiForgeryToken()
@@ -49,6 +52,8 @@
                             }
 
                         </div>
+                        
+                        
                     </div>
                 </div>
                 <div class="toSpan f-right">
@@ -204,8 +209,6 @@
                 </div>
             </div>
         </div>
-
-
 
 
         @Scripts.Render("~/bundles/bootstrap")

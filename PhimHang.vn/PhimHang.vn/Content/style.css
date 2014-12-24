@@ -968,8 +968,9 @@ a.category-tab:hover{
 .user-info-intro{
     margin: 5px 10px;
     padding: 5px 10px;
-    background-color: #78c6f9;
+    /*background-color: #78c6f9;*/
     color: #000;
+    border :1px solid #78c6f9;
 }
 .user-info-mypage{
     margin-top: 10px;

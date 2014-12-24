@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-
+    <!--thang reply setting su dung cai nay-->
     <title>@ViewBag.Title</title>
     <meta charset="UTF-8">
     <script src="~/Scripts/knockout-3.2.0.js"></script>
@@ -9,7 +9,7 @@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>
     <script src="~/signalr/hubs"></script>
-    <!--For desgin-->
+
 
 
     <link href="~/Scripts/jquery-ui/jquery-ui.css" rel="stylesheet" />
@@ -24,7 +24,7 @@
 
     <!-- End For desgin-->
 </head>
- <body>
+ <body style="background-color:white">
         <div id="top-banner" class="w100p bg-blue">
             <div class="f-left" id="top-banner-left">
                 <a href="/MyProfile" class="logo">
@@ -40,6 +40,9 @@
                         </div>
                         <div class="dropdown-item">
                             <a href="/Account/Profile"><span class="todiv"><i class="fa fa-cog"></i> Setting</span></a>
+                        </div>
+                        <div class="dropdown-item">
+                            <a href="/Account/Manage"><span class="todiv"><i class="fa fa-cog"></i> Change password</span></a>
                         </div>
                         <div class="dropdown-item">
                             @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -173,34 +176,13 @@
         </div>
 
      <div class="content-main">
-         <div class="area-left">
-             @Html.Partial("_Partial_Area_Left_Ad")
-         </div>
+        
          <div class="area-center">
              <!--render body here-->
              @RenderBody()
              <!--end render body here-->
          </div>
-         <div class="area-right">
-             <div class="banner-right-first">
-                 @Html.Partial("_Partial_Area_Right_Ad")
-             </div>
-             @*<div class="second-left-banner">
-                 @Html.Partial("_Partial_Area_Right_Down2")
-             </div>*@
-             <div class="banner-info">
-                 <div>
-                     <a href="#">Giới thiệu</a>
-                     <a href="#">Quy định</a>
-                     <a href="#">Trợ giúp</a>
-                     <a href="#">Liên hệ</a>
-                 </div>
-                 <p>
-                     Bản quyền thuộc về Công ty TNHH XXXXXXXXXX<br>
-                     Theo giấy xác nhận cung cấp dịch vụ MXH trực tuyến số: ....
-                 </p>
-             </div>
-         </div>
+         
      </div>
 
 
