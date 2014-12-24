@@ -45,6 +45,15 @@ namespace PhimHang.Controllers
                 
                 ViewBag.AvataImageUrl = string.IsNullOrEmpty(currentUser.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.AvataImage + "?width=98&height=98&mode=crop";
                 ViewBag.UserId = currentUser.Id;
+                var post = await db.Posts.CountAsync(p => p.PostedBy == currentUser.Id);
+                var follow = await db.FollowUsers.CountAsync(f => f.UserId == currentUser.Id);
+                var follower = await db.FollowUsers.CountAsync(f => f.UserIdFollowed == currentUser.Id);
+                var followStock = await db.FollowStocks.CountAsync(f => f.UserId == currentUser.Id);
+
+                ViewBag.TotalPost = post;
+                ViewBag.Follow = follow;
+                ViewBag.Follower = follower;
+                ViewBag.followStock = followStock;
                 #endregion
 
                 ViewBag.TabId = tabid;
