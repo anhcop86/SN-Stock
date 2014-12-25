@@ -94,5 +94,8 @@ namespace PhimHang.Models
 
         [Display(Name = "Xác thực user")]
         public Verify Verify { get; set; }
+
+        [StringLength(128)]
+        public string Status { get; set; }
     }
 }
