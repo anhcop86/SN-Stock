@@ -67,13 +67,13 @@
     </div>
     <div class="filer-new-status">
         <div class="filer-new-status-button-bar">
-            <div class="onoffswitch f-right">
+            @*<div class="onoffswitch f-right">
                 <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
                 <label id="abcww" class="onoffswitch-label" for="myonoffswitch">
                     <span class="onoffswitch-inner"></span>
                     <span class="onoffswitch-switch"></span>
                 </label>
-            </div>
+            </div>*@
             <div class="text-label">Hiển thị bài phím mới</div>
         </div>
         <div id="msg-new-status" class="msg-new-status">
@@ -118,7 +118,7 @@
         data = data || {};
         self.PostId = data.PostId;
         self.Message = ko.observable(data.Message || "");
-        //self.PostedBy = data.PostedBy || "";
+
         self.PostedByName = data.PostedByName || "";
         self.PostedByAvatar = data.PostedByAvatar || "";
         self.PostedDate = getTimeAgo(data.PostedDate);
@@ -142,7 +142,7 @@
             self.error(null);
             //self.hub.server.joinRoom('@ViewBag.StockCode');
             $.get('@Url.Action("GetCommentByStockFollowInProfile", "FollowStock")',
-            {                
+            {
                 skipposition: self.posts().length
             }, function (data) {
 
@@ -152,16 +152,30 @@
                 });
             })
         }
-        
+
+        setInterval(function () {
+            $.get('@Url.Action("GetCommentByStockFollowInProfileNewPost", "FollowStock")',
+            {
+                skipposition: self.posts().length
+            }, function (data) {
+
+                var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item, self.hub); });
+                $(mappedPosts).each(function (index, element) {
+                    //self.posts.push(element);
+                    self.newPosts.splice(0, 0, new Post(post, self.hub)); // bo cai new post vao đây
+                });
+            })
+        }, 20000);
+
 
         self.addPost = function () {
             self.error(null);
             //var nhanDinh = $('input[name=BullBear]:checked').val();
-            
-            
+
+
             var nhanDinh = $("input:radio[name='BullBear']:checked").val();
             self.hub.server.addPost({ "Message": self.newMessage() }, 'KEYMYPROFILE', '@ViewBag.CureentUserId', '@ViewBag.UserName', '@ViewBag.AvataImageUrl', nhanDinh).fail(function (err) {
-                self.error(err);                
+                self.error(err);
             });
             self.newMessage('');
         }
@@ -170,14 +184,14 @@
         //    self.posts.unshift(new Post(post, self.hub));
         //    self.newMessage('');
         //}
-        
+
         self.count = ko.computed(function () {
             var countNum = 140 - self.newMessage().length;
             return countNum;
         });
 
 
-        self.enablePhimHang = ko.computed(function () {            
+        self.enablePhimHang = ko.computed(function () {
             return self.newMessage().length <= 140 && self.newMessage().length >= 6;
         });
 

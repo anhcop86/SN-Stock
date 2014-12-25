@@ -404,6 +404,7 @@
     <Content Include="Content\font-awesome\scss\_variables.scss" />
     <Content Include="Content\walt_disney\waltograph42.otf" />
     <Content Include="Content\walt_disney\waltographUI.ttf" />
+    <None Include="Properties\PublishProfiles\phimhang o nha.pubxml" />
     <None Include="Properties\PublishProfiles\phimhang.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Custom\timer.js" />

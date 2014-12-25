@@ -83,7 +83,7 @@
             <div class="text-label">Hiển thị bài phím mới</div>
         </div>
         <div id="msg-new-status" class="msg-new-status" style="display:none">
-            Có <strong></strong> bài phím mới: <a href="#">Hiển Thị <strong>2</strong> bài phím này</a>
+            Có <strong data-bind="text: newPosts().length"></strong> bài phím mới <a href="#" data-bind="click : loadNewPosts, visible: newPosts().length > 0">Hiển Thị <strong data-bind="text : newPosts().length"></strong> bài phím này</a>
         </div>
     </div>
     <div class="list-status" data-bind="foreach : posts">
@@ -227,27 +227,28 @@
             self.hub.server.addPost({ "Message": self.newMessage() }, '@ViewBag.StockCode', '@ViewBag.CureentUserId', '@ViewBag.UserName', '@ViewBag.AvataImageUrl', nhanDinh).fail(function (err) {
                 self.error(err);
             });
-            checkpost = 'Y';
+            checkpost = 'Y';            
+            self.newMessage('$@ViewBag.StockCode ');//
         }
 
-        self.hub.client.addPost = function (post) {
-            if ($('#myonoffswitch').is(':checked')) {
-                alert('check ne');                
-                self.newPosts.splice(0, 0, new Post(post, self.hub));
-
-                self.newMessage('$@ViewBag.StockCode ');//
+        self.hub.client.addPost = function (post) {            
+            if ($('#myonoffswitch').is(':checked')) { // ON                
+                if (checkpost == 'Y') {
+                    self.posts.splice(0, 0, new Post(post, self.hub));                    
+                }
+                else { 
+                    self.newPosts.splice(0, 0, new Post(post, self.hub));
+                }                
             }
-            else {
-                alert('khong check nè');
+            else { // OFF                
                 self.posts.splice(0, 0, new Post(post, self.hub));
+            }            
+            checkpost = 'N';            
+        }
 
-                
-            }
-                
-                
-            
-
-            //checkpost = 'N';
+        self.loadNewPosts = function () {
+            self.posts(self.newPosts().concat(self.posts()));
+            self.newPosts([]);
         }
             
         self.count = ko.computed(function () {
