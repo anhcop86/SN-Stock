@@ -48,6 +48,11 @@ namespace PhimHang.Models
 
         public LockAccount LockAccount { get; set; }
 
+        [StringLength(128)]
+        public string Status { get; set; }
+
+
+
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -58,11 +63,13 @@ namespace PhimHang.Models
         }
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{
-        //    base.OnModelCreating(modelBuilder);
-        //    //modelBuilder.Entity<IdentityUser>()
-        //    //    .ToTable("UserLogins");
-        //    //modelBuilder.Entity<ApplicationUser>()
-        //    //    .ToTable("UserLogins");
+        //    //base.OnModelCreating(modelBuilder);
+        //    ////modelBuilder.Entity<IdentityUser>()
+        //    ////    .ToTable("UserLogins");
+        //    ////modelBuilder.Entity<ApplicationUser>()
+        //    ////    .ToTable("UserLogins");
+
+        //    //modelBuilder. = false;
         //}
 
         public DbSet<UserExtentLogin> UserLogin { get; set; }

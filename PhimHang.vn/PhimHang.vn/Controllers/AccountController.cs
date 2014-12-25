@@ -166,12 +166,42 @@ namespace PhimHang.Controllers
                 profile.BirthDay = user.UserExtentLogin.BirthDate;
                 profile.CreatedDate = user.UserExtentLogin.CreatedDate.ToString("dd/MM/yyyy");
                 profile.Verify = user.UserExtentLogin.Verify;//== null? Verify.NO: Verify.YES;
+                profile.Status = user.UserExtentLogin.Status;
             }
             ViewBag.ImageUrl = ImageURLAvata + user.UserExtentLogin.AvataImage;
             ViewBag.ImageUrlCover = ImageURLCover + user.UserExtentLogin.AvataCover;
             return View(profile);
         }
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Profile(ProfileUserViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+                if (user != null)
+                {
+                    user.UserExtentLogin.FullName = model.FullName;
+                    user.UserExtentLogin.Email = model.Email;
+                    user.UserExtentLogin.BirthDate = model.BirthDay;
+                    user.UserExtentLogin.Status = model.Status;
+                }
+                else
+                {
+                    return RedirectToAction("Login");
+                }
+                IdentityResult result = await UserManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Profile", new { Message = ManageMessageId.UpdateSucess });
+                }
+                else
+                {
+                    AddErrors(result);
+                }
+            }
+            return View(model);
+        }
 
         [HttpPost]
         public async Task<string> AvataUpload(HttpPostedFileBase uploadfileid_avata)
@@ -322,35 +352,7 @@ namespace PhimHang.Controllers
             }
 
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Profile(ProfileUserViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
-                if(user !=null)
-                {
-                    user.UserExtentLogin.FullName = model.FullName;
-                    user.UserExtentLogin.Email = model.Email;
-                    user.UserExtentLogin.BirthDate = model.BirthDay;
-                }
-                else
-                {
-                    return RedirectToAction("Login");
-                }
-                IdentityResult result = await UserManager.UpdateAsync(user);
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("Profile", new { Message = ManageMessageId.UpdateSucess });
-                }
-                else
-                {
-                    AddErrors(result);
-                }
-            }
-            return View(model);
-        }
+      
         // GET: /Account/Manage
         public ActionResult Manage(ManageMessageId? message)
         {
