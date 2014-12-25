@@ -74,7 +74,7 @@
     <div class="filer-new-status">
         <div class="filer-new-status-button-bar">
             <div class="onoffswitch f-right">
-                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch">
                 <label id="abcww" class="onoffswitch-label" for="myonoffswitch">
                     <span class="onoffswitch-inner"></span>
                     <span class="onoffswitch-switch"></span>
@@ -82,7 +82,7 @@
             </div>
             <div class="text-label">Hiển thị bài phím mới</div>
         </div>
-        <div id="msg-new-status" class="msg-new-status">
+        <div id="msg-new-status" class="msg-new-status" style="display:none">
             Có <strong></strong> bài phím mới: <a href="#">Hiển Thị <strong>2</strong> bài phím này</a>
         </div>
     </div>
@@ -187,9 +187,7 @@
         self.PostedDate = getTimeAgo(data.PostedDate);
         self.StockPrimary = data.StockPrimary;
         self.notification = ko.observable(0);
-        //self.postDetailIdClick = ko.computed(function () {
-        //    //alert(self.PostId);
-        //});
+        
 
         //self.error = ko.observable();
         self.hub = hub;
@@ -201,12 +199,12 @@
         self.posts = ko.observableArray();
         self.newMessage = ko.observable('$@ViewBag.StockCode ');
         self.error = ko.observable();
-        
+        self.newPosts = ko.observableArray();
         // SignalR related
         //self.newPosts = ko.observableArray();
         // Reference the proxy for the hub.
         self.hub = $.connection.CommentHub;
-
+        var checkpost = '';
         self.init = function () {
             self.error(null);
             self.hub.server.joinRoom('@ViewBag.StockCode');
@@ -229,11 +227,27 @@
             self.hub.server.addPost({ "Message": self.newMessage() }, '@ViewBag.StockCode', '@ViewBag.CureentUserId', '@ViewBag.UserName', '@ViewBag.AvataImageUrl', nhanDinh).fail(function (err) {
                 self.error(err);
             });
+            checkpost = 'Y';
         }
 
         self.hub.client.addPost = function (post) {
-            self.posts.splice(0, 0, new Post(post, self.hub));
-            self.newMessage('$@ViewBag.StockCode ');
+            if ($('#myonoffswitch').is(':checked')) {
+                alert('check ne');                
+                self.newPosts.splice(0, 0, new Post(post, self.hub));
+
+                self.newMessage('$@ViewBag.StockCode ');//
+            }
+            else {
+                alert('khong check nè');
+                self.posts.splice(0, 0, new Post(post, self.hub));
+
+                
+            }
+                
+                
+            
+
+            //checkpost = 'N';
         }
             
         self.count = ko.computed(function () {
