@@ -161,7 +161,6 @@ F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\System.Web.Routing.
 F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\System.Web.Services.dll
 F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\System.Xml.dll
 F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\bin\System.Xml.Linq.dll
-F:\Working\StockProject\SN-Stock\PhimHang.vn\PhimHang.vn\obj\Debug\PhimHang.csprojResolveAssemblyReference.cache
 E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\bin\Microsoft.CSharp.dll
 E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\bin\System.ComponentModel.DataAnnotations.dll
 E:\Working\SN-Stock\PhimHang.vn\PhimHang.vn\bin\System.Configuration.dll
