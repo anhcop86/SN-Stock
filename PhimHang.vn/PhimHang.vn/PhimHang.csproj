@@ -263,6 +263,10 @@
       <DependentUpon>PhimHangADO.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CommentProfileModels.cs" />
+    <Compile Include="Models\FilterKeyWord.cs">
+      <DependentUpon>PhimHangADO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FilterKeyworkSingleton.cs" />
     <Compile Include="Models\FollowStock.cs">
       <DependentUpon>PhimHangADO.tt</DependentUpon>
     </Compile>

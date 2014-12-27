@@ -16,6 +16,14 @@
           <Property Name="Discriminator" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="UserExtentLogin_Id" Type="int" />
         </EntityType>
+        <EntityType Name="FilterKeyWord">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KeyWord" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreateDate" Type="datetime2" Precision="7" />
+        </EntityType>
         <EntityType Name="FollowStock">
           <Key>
             <PropertyRef Name="ID" />
@@ -125,6 +133,7 @@
           <Property Name="Verify" Type="int" Nullable="false" />
           <Property Name="AccountType" Type="int" Nullable="false" />
           <Property Name="LockAccount" Type="int" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="128" />
         </EntityType>
         <EntityType Name="UserRelate">
           <Key>
@@ -301,6 +310,7 @@
         </Association>
         <EntityContainer Name="PHDBContextStoreContainer">
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FilterKeyWord" EntityType="Self.FilterKeyWord" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FollowStock" EntityType="Self.FollowStock" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FollowUser" EntityType="Self.FollowUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PostComments" EntityType="Self.PostComments" Schema="dbo" store:Type="Tables" />
@@ -453,6 +463,7 @@
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
           </AssociationSet>
           <EntitySet Name="StockCodes" EntityType="PHDBContext.StockCode" />
+          <EntitySet Name="FilterKeyWords" EntityType="PHDBContext.FilterKeyWord" />
           </EntityContainer>
         <EntityType Name="FollowStock">
           <Key>
@@ -613,6 +624,7 @@
           <Property Name="LockAccount" Type="Int32" Nullable="false" />
           <NavigationProperty Name="AspNetUsers" Relationship="PHDBContext.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" FromRole="UserLogin" ToRole="AspNetUser" />
           <Property Name="UserNameCopy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_FollowStock_UserLogins">
           <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />
@@ -757,6 +769,14 @@
           <Property Name="MarketType" Type="Int16" />
           <Property Name="IndexName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="FilterKeyWord">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KeyWord" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="7" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -875,6 +895,7 @@
           <EntitySetMapping Name="UserLogins">
             <EntityTypeMapping TypeName="PHDBContext.UserLogin">
               <MappingFragment StoreEntitySet="UserLogins">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="UserNameCopy" ColumnName="UserNameCopy" />
                 <ScalarProperty Name="LockAccount" ColumnName="LockAccount" />
                 <ScalarProperty Name="AccountType" ColumnName="AccountType" />
@@ -910,6 +931,15 @@
                 <ScalarProperty Name="LongName" ColumnName="LongName" />
                 <ScalarProperty Name="ShortName" ColumnName="ShortName" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FilterKeyWords">
+            <EntityTypeMapping TypeName="PHDBContext.FilterKeyWord">
+              <MappingFragment StoreEntitySet="FilterKeyWord">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="KeyWord" ColumnName="KeyWord" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

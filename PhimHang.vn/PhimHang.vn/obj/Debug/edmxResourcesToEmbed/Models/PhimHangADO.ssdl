@@ -11,6 +11,14 @@
     <Property Name="Discriminator" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="UserExtentLogin_Id" Type="int" />
   </EntityType>
+  <EntityType Name="FilterKeyWord">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KeyWord" Type="nvarchar" MaxLength="128" />
+    <Property Name="CreateDate" Type="datetime2" Precision="7" />
+  </EntityType>
   <EntityType Name="FollowStock">
     <Key>
       <PropertyRef Name="ID" />
@@ -120,6 +128,7 @@
     <Property Name="Verify" Type="int" Nullable="false" />
     <Property Name="AccountType" Type="int" Nullable="false" />
     <Property Name="LockAccount" Type="int" Nullable="false" />
+    <Property Name="Status" Type="nvarchar" MaxLength="128" />
   </EntityType>
   <EntityType Name="UserRelate">
     <Key>
@@ -296,6 +305,7 @@
   </Association>
   <EntityContainer Name="PHDBContextStoreContainer">
     <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FilterKeyWord" EntityType="Self.FilterKeyWord" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="FollowStock" EntityType="Self.FollowStock" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="FollowUser" EntityType="Self.FollowUser" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PostComments" EntityType="Self.PostComments" Schema="dbo" store:Type="Tables" />

@@ -113,6 +113,7 @@
     <EntitySetMapping Name="UserLogins">
       <EntityTypeMapping TypeName="PHDBContext.UserLogin">
         <MappingFragment StoreEntitySet="UserLogins">
+          <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="UserNameCopy" ColumnName="UserNameCopy" />
           <ScalarProperty Name="LockAccount" ColumnName="LockAccount" />
           <ScalarProperty Name="AccountType" ColumnName="AccountType" />
@@ -148,6 +149,15 @@
           <ScalarProperty Name="LongName" ColumnName="LongName" />
           <ScalarProperty Name="ShortName" ColumnName="ShortName" />
           <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FilterKeyWords">
+      <EntityTypeMapping TypeName="PHDBContext.FilterKeyWord">
+        <MappingFragment StoreEntitySet="FilterKeyWord">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="KeyWord" ColumnName="KeyWord" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

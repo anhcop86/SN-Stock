@@ -17,14 +17,14 @@ namespace PhimHang.Controllers
     {
         //
         // GET: /MyProfile/
-       private readonly StockRealTimeTicker _stockRealtime;
+       private readonly FilterKeyworkSingleton _keyword;
         public MyProfileController()
-            : this(StockRealTimeTicker.Instance, new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
+            : this(FilterKeyworkSingleton.Instance, new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
         }
-        public MyProfileController(StockRealTimeTicker stockTicker, UserManager<ApplicationUser> userManager)
+        public MyProfileController(FilterKeyworkSingleton KeyworkSing, UserManager<ApplicationUser> userManager)
         {
-            _stockRealtime = stockTicker;
+            _keyword = KeyworkSing;
             UserManager = userManager;
         }
        
@@ -80,16 +80,16 @@ namespace PhimHang.Controllers
                 {
                     listHotStockToArray.Add(item);
                 }
-                var hotStockPrice = _stockRealtime.GetAllStocksTestList(listHotStockToArray).Result;
+                //var hotStockPrice = _stockRealtime.GetAllStocksTestList(listHotStockToArray).Result;
 
-                ViewBag.HotStockPriceList = hotStockPrice.Count() == 0 ? new List<StockRealTime>() : hotStockPrice;
+                //ViewBag.HotStockPriceList = hotStockPrice.Count() == 0 ? new List<StockRealTime>() : hotStockPrice;
                 #endregion
 
                 #region danh muc dau tu
                 var followstocks = await db.FollowStocks.Where(f => f.UserId == currentUser.UserExtentLogin.Id).ToListAsync();
                 var listfollowstocksString = (from sf in followstocks                                              
                                              select sf.StockFollowed).ToList();
-                ViewBag.HotStockDMDT = _stockRealtime.GetAllStocksTestList(listfollowstocksString).Result;                        
+                //ViewBag.HotStockDMDT = _stockRealtime.GetAllStocksTestList(listfollowstocksString).Result;                        
                 #endregion
 
                 #region nhung tin nam trong danh muc dau tu

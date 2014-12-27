@@ -38,5 +38,6 @@ namespace PhimHang.Models
         public virtual DbSet<UserLogin> UserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<StockCode> StockCodes { get; set; }
+        public virtual DbSet<FilterKeyWord> FilterKeyWords { get; set; }
     }
 }

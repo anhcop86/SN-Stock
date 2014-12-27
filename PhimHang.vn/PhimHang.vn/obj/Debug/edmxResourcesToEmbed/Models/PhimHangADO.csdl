@@ -83,6 +83,7 @@
       <End Role="AspNetUser" EntitySet="AspNetUsers" />
     </AssociationSet>
     <EntitySet Name="StockCodes" EntityType="PHDBContext.StockCode" />
+    <EntitySet Name="FilterKeyWords" EntityType="PHDBContext.FilterKeyWord" />
   </EntityContainer>
   <EntityType Name="FollowStock">
     <Key>
@@ -243,6 +244,7 @@
     <Property Name="LockAccount" Type="Int32" Nullable="false" />
     <NavigationProperty Name="AspNetUsers" Relationship="PHDBContext.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" FromRole="UserLogin" ToRole="AspNetUser" />
     <Property Name="UserNameCopy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_FollowStock_UserLogins">
     <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />
@@ -386,5 +388,13 @@
     <Property Name="LongName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
     <Property Name="MarketType" Type="Int16" />
     <Property Name="IndexName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="FilterKeyWord">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KeyWord" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="7" />
   </EntityType>
 </Schema>
