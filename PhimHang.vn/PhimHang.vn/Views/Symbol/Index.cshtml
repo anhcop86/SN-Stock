@@ -114,57 +114,58 @@
     </div>
 </div>
 <!-- gia co phieu real time-->
-<script type="text/javascript">
+@*
+    <script type="text/javascript">
 
-    var viewStockModel = {
+        var viewStockModel = {
 
-        CompanyID: ko.observable(),
-        FinishPrice: ko.observable(),
-        Diff: ko.observable(),
-        DiffRate: ko.observable(),
+            CompanyID: ko.observable(),
+            FinishPrice: ko.observable(),
+            Diff: ko.observable(),
+            DiffRate: ko.observable(),
 
-    };
+        };
 
-    //var listStock =
-    viewStockModel.ColourChange = ko.pureComputed(function () {
-        return this.Diff() === 0 ? 'YELLOW_Price'
-            : this.Diff() > 0 ? 'GREEN_Price'
-            : 'RED_Price';
-    }, viewStockModel);
+        //var listStock =
+        viewStockModel.ColourChange = ko.pureComputed(function () {
+            return this.Diff() === 0 ? 'YELLOW_Price'
+                : this.Diff() > 0 ? 'GREEN_Price'
+                : 'RED_Price';
+        }, viewStockModel);
 
-    viewStockModel.DiffRateChange = ko.pureComputed(function () {
-        return '(' + ko.unwrap(this.DiffRate) + '%)';
-    }, viewStockModel);
-    // This makes Knockout get to work
+        viewStockModel.DiffRateChange = ko.pureComputed(function () {
+            return '(' + ko.unwrap(this.DiffRate) + '%)';
+        }, viewStockModel);
+        // This makes Knockout get to work
 
 
-    $(function () {
-        var ticker = $.connection.StockRealTimeHub;
+        $(function () {
+            var ticker = $.connection.StockRealTimeHub;
 
-        function init() {
+            function init() {
 
-            ticker.server.getStock('@ViewBag.StockCode').done(function (stock) {
+                ticker.server.getStock('@ViewBag.StockCode').done(function (stock) {
 
+                    viewStockModel.CompanyID(stock.CompanyID).Diff(stock.Diff).DiffRate(stock.DiffRate).FinishPrice(stock.FinishPrice);
+                    ko.applyBindings(viewStockModel, document.getElementById("stockPriceDivId")); // knockout javascript framework bindings
+
+                });
+                ticker.server.joinRoom('@ViewBag.StockCode');
+            }
+
+            ticker.client.updateStockPrice = function (stock) {
                 viewStockModel.CompanyID(stock.CompanyID).Diff(stock.Diff).DiffRate(stock.DiffRate).FinishPrice(stock.FinishPrice);
-                ko.applyBindings(viewStockModel, document.getElementById("stockPriceDivId")); // knockout javascript framework bindings
 
-            });
-            ticker.server.joinRoom('@ViewBag.StockCode');
-        }
+            }
 
-        ticker.client.updateStockPrice = function (stock) {
-            viewStockModel.CompanyID(stock.CompanyID).Diff(stock.Diff).DiffRate(stock.DiffRate).FinishPrice(stock.FinishPrice);
+            $.connection.hub.start().done(init);
+            $.connection.hub.logging = true;
 
-        }
-
-        $.connection.hub.start().done(init);
-        $.connection.hub.logging = true;
-
-    });
+        });
 
 
-</script>
-
+    </script>
+*@
 <!-- Comment-->
 
 <script type="text/javascript">

@@ -31,7 +31,7 @@ namespace PhimHang.Controllers
 
         public UserManager<ApplicationUser> UserManager { get; private set; }
 
-        private testEntities db = new testEntities();
+        private testEntities db;
         private const string ImageURLAvataDefault = "img/avatar_default.jpg";
         private const string ImageURLCoverDefault = "img/cover_default.jpg";
         private const string ImageURLAvata = "images/avatar/";
@@ -65,7 +65,7 @@ namespace PhimHang.Controllers
                 #endregion
 
                 #region danh muc co phieu vua moi xem duoc luu troong cookie
-                //var cookie = new HttpCookie("cookiename");
+               /* //var cookie = new HttpCookie("cookiename");
 
                 if (Request.Cookies["HotStockCookie" + currentUser.Id] == null)
                 {
@@ -83,13 +83,24 @@ namespace PhimHang.Controllers
                 //var hotStockPrice = _stockRealtime.GetAllStocksTestList(listHotStockToArray).Result;
 
                 //ViewBag.HotStockPriceList = hotStockPrice.Count() == 0 ? new List<StockRealTime>() : hotStockPrice;
+                * */
                 #endregion
 
                 #region danh muc dau tu
                 var followstocks = await db.FollowStocks.Where(f => f.UserId == currentUser.UserExtentLogin.Id).ToListAsync();
                 var listfollowstocksString = (from sf in followstocks                                              
                                              select sf.StockFollowed).ToList();
-                //ViewBag.HotStockDMDT = _stockRealtime.GetAllStocksTestList(listfollowstocksString).Result;                        
+
+                var DMDTShortName = (from fs in db.FollowStocks.ToList()
+                                           join s in db.StockCodes.ToList() on fs.StockFollowed equals s.Code
+                                           where listfollowstocksString.Contains(fs.StockFollowed)
+                                           select new StockDetail
+                                           {
+                                               Stock = fs.StockFollowed,
+                                               ShortName = s.ShortName
+                                           }).ToList();
+
+                ViewBag.HotStockDMDT =  DMDTShortName;//_stockRealtime.GetAllStocksTestList(listfollowstocksString).Result;                        
                 #endregion
 
                 #region nhung tin nam trong danh muc dau tu
@@ -97,10 +108,10 @@ namespace PhimHang.Controllers
                 #endregion
 
                 return View(currentUser);
-            }           
+            }
         }
-        
-        
+
+       
             
 
         //
@@ -182,4 +193,9 @@ namespace PhimHang.Controllers
             }
         }
     }
+        public class StockDetail
+        {
+            public string Stock { get; set; }
+            public string ShortName { get; set; }
+        }
 }

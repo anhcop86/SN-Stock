@@ -20,14 +20,14 @@ namespace PhimHang.Controllers
         private const string ImageURLAvata = "images/avatar/";
         private const string ImageURLCover = "images/cover/";
        
-         private readonly StockRealTimeTicker _stockRealtime;
+         
          public AccountController()
-             : this(StockRealTimeTicker.Instance, new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
+             : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
          {
          }
-        public AccountController(StockRealTimeTicker stockTicker, UserManager<ApplicationUser> userManager)
+        public AccountController( UserManager<ApplicationUser> userManager)
         {
-            _stockRealtime = stockTicker;
+            
             UserManager = userManager;
         }
         public UserManager<ApplicationUser> UserManager { get; private set; }
@@ -545,30 +545,6 @@ namespace PhimHang.Controllers
             var linkedAccounts = UserManager.GetLogins(User.Identity.GetUserId());
             ViewBag.ShowRemoveButton = HasPassword() || linkedAccounts.Count > 1;
             return (ActionResult)PartialView("_RemoveAccountPartial", linkedAccounts);
-        }
-
-
-        
-        [ActionName("GetListStockPriceFollowForUser")]
-        public async Task<JsonResult> GetListStockPriceFollowForUser()
-        {
-            if (!User.Identity.IsAuthenticated)
-            {
-                //RedirectToAction("Login", "Account");
-            }
-            var currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-            if (Session["listStock"] == null)
-            {
-
-                using (db = new testEntities())
-                {
-                    Session["listStock"] = (from s in db.FollowStocks
-                                            where s.UserId == currentUser.UserExtentLogin.Id
-                                            select s.StockFollowed).ToList();
-                }
-            }
-
-            return Json(_stockRealtime.GetAllStocksTestList((List<string>)Session["listStock"]).Result, JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)

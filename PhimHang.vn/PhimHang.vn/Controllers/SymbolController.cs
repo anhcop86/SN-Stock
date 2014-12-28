@@ -17,14 +17,14 @@ namespace PhimHang.Controllers
     {
         //
         // GET: /Symbol/
-        private readonly StockRealTimeTicker _stockRealtime;
+        //private readonly StockRealTimeTicker _stockRealtime;
         public SymbolController()
-            : this(StockRealTimeTicker.Instance, new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
+            : this( new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
         }
-        public SymbolController(StockRealTimeTicker stockTicker, UserManager<ApplicationUser> userManager)
+        public SymbolController( UserManager<ApplicationUser> userManager)
         {
-            _stockRealtime = stockTicker;
+            //_stockRealtime = stockTicker;
             UserManager = userManager;
         }
        
@@ -86,8 +86,9 @@ namespace PhimHang.Controllers
                 ViewBag.UserName = currentUser.UserName;
                 ViewBag.AvataImageUrl = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage + "?width=46&height=46&mode=crop"; 
                 #endregion
-
+                
                 #region danh muc co phieu vua moi xem duoc luu troong cookie
+                /*
                 //var cookie = new HttpCookie("cookiename");
 
                 if (Request.Cookies["HotStockCookie" + currentUser.Id] == null)
@@ -113,16 +114,25 @@ namespace PhimHang.Controllers
                 {
                     listHotStockToArray.Add(item);
                 }
-                var hotStockPrice = _stockRealtime.GetAllStocksTestList(listHotStockToArray).Result;
+                //var hotStockPrice = _stockRealtime.GetAllStocksTestList(listHotStockToArray).Result;
 
-                ViewBag.HotStockPriceList = hotStockPrice.Count() == 0 ? new List<StockRealTime>() : hotStockPrice;
-                #endregion
-
+                ViewBag.HotStockPriceList = listHotStockToArray;//hotStockPrice.Count() == 0 ? new List<StockRealTime>() : hotStockPrice;
+               */
+                 #endregion
+                
                 #region danh muc dau tu
                 var followstocks = await db.FollowStocks.Where(f => f.UserId == currentUser.UserExtentLogin.Id).ToListAsync();
                 var listfollowstocksString = (from sf in followstocks
                                               select sf.StockFollowed).ToList();
-                ViewBag.HotStockDMDT = _stockRealtime.GetAllStocksTestList(listfollowstocksString).Result;
+                var DMDTShortName = (from fs in db.FollowStocks.ToList()
+                                     join s in db.StockCodes.ToList() on fs.StockFollowed equals s.Code
+                                     where listfollowstocksString.Contains(fs.StockFollowed)
+                                     select new StockDetail
+                                     {
+                                         Stock = fs.StockFollowed,
+                                         ShortName = s.ShortName
+                                     }).ToList();
+                ViewBag.HotStockDMDT = DMDTShortName;//_stockRealtime.GetAllStocksTestList(listfollowstocksString).Result;
                 #endregion
 
                 //return View(_stockRealtime.GetAllStocksTestList((List<string>)Session["listStock"]).Result);
