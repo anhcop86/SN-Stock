@@ -192,7 +192,30 @@ namespace PhimHang.Controllers
             }
         }
 
-       
+        public async Task<dynamic> GetPostsByStock(string stockCurrent)
+        {
+            //var fjdsf = WebSecurity.CurrentUserId;
+            using (testEntities db = new testEntities())
+            {
+                var ret = (from stockRelate in await db.StockRelates.ToListAsync()
+                           where stockRelate.StockCodeRelate == stockCurrent
+                           orderby stockRelate.Post.PostedDate descending
+                           select new
+                           {
+                               Message = stockRelate.Post.Message,
+                               //PostedBy = stockRelate.Post.PostedDate,
+                               PostedByName = stockRelate.Post.UserLogin.UserNameCopy,
+                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage + "?width=46&height=46&mode=crop",
+                               PostedDate = stockRelate.Post.PostedDate,
+                               PostId = stockRelate.PostId,
+                               StockPrimary = stockRelate.Post.StockPrimary
+                           }).Take(10).ToArray();
+                //var listStock = new List<string>();              
+                var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
+                return result;
+
+            }
+        }
 
         // GET: /FollowStock/Edit/5
         public async Task<ActionResult> Edit(long? id)

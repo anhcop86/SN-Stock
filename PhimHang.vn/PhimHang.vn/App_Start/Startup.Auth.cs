@@ -25,7 +25,7 @@ namespace PhimHang
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
 
-            GlobalHost.Configuration.KeepAlive = null;
+            
             app.MapSignalR();
 
         }

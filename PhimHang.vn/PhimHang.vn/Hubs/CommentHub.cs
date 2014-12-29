@@ -160,23 +160,23 @@ namespace PhimHang.Hubs
             return Groups.Remove(Context.ConnectionId, stockCurrent);
         }
 
-        public override Task OnConnected()
-        {
-            var connectionId = Context.ConnectionId;
-            return base.OnConnected();
-        }
+        //public override Task OnConnected()
+        //{
+        //    var connectionId = Context.ConnectionId;
+        //    return base.OnConnected();
+        //}
 
-        public override Task OnReconnected()
-        {
-            var connectionId = Context.ConnectionId;
-            return base.OnReconnected();
-        }
+        //public override Task OnReconnected()
+        //{
+        //    var connectionId = Context.ConnectionId;
+        //    return base.OnReconnected();
+        //}
 
-        public override Task OnDisconnected(bool stopCall)
-        {
-            var connectionId = Context.ConnectionId;            
-            return base.OnDisconnected(stopCall);
-        }
+        //public override Task OnDisconnected(bool stopCall)
+        //{
+        //    var connectionId = Context.ConnectionId;            
+        //    return base.OnDisconnected(stopCall);
+        //}
 
         ///////////////////////////////////////////////////// profile
         //reply

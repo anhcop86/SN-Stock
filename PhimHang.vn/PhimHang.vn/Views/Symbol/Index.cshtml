@@ -200,25 +200,36 @@
         self.error = ko.observable();
         self.newPosts = ko.observableArray();
         // SignalR related
-        
+
         // Reference the proxy for the hub.
         self.hub = $.connection.CommentHub;
         var checkpost = '';
         self.init = function () {
             self.error(null);
             self.hub.server.joinRoom('@ViewBag.StockCode');
-            self.hub.server.getPosts('@ViewBag.StockCode').fail(function (err) {
+            @*self.hub.server.getPosts('@ViewBag.StockCode').fail(function (err) {
                 self.error(err);
-            });
+            });*@
+
+            $.get('@Url.Action("GetPostsByStock", "FollowStock")',
+            {
+                stockCurrent: '@ViewBag.StockCode',
+            }, function (data) {
+
+                var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item, self.hub); });
+                $(mappedPosts).each(function (index, element) {
+                    self.posts.push(element);
+                });
+            })            
         }
         self.enablePhimHang = ko.computed(function () {
             return self.newMessage().length <= 140 && self.newMessage().length >= 6;
         });
 
-        self.hub.client.loadPosts = function (data) {            
-            var mappedPosts = $.map(data, function (item) { return new Post(item, self.hub); });
-            self.posts(mappedPosts);
-        }
+        //self.hub.client.loadPosts = function (data) {
+        //    var mappedPosts = $.map(data, function (item) { return new Post(item, self.hub); });
+        //    self.posts(mappedPosts);
+        //}
 
         self.addPost = function () {
             self.error(null);
@@ -226,41 +237,41 @@
             self.hub.server.addPost({ "Message": self.newMessage() }, '@ViewBag.StockCode', '@ViewBag.CureentUserId', '@ViewBag.UserName', '@ViewBag.AvataImageUrl', nhanDinh).fail(function (err) {
                 self.error(err);
             });
-            checkpost = 'Y';            
+            checkpost = 'Y';
             self.newMessage('$@ViewBag.StockCode ');//
         }
 
-        self.hub.client.addPost = function (post) {            
-            if ($('#myonoffswitch').is(':checked')) { // ON                
+        self.hub.client.addPost = function (post) {
+            if ($('#myonoffswitch').is(':checked')) { // ON
                 if (checkpost == 'Y') {
-                    self.posts.splice(0, 0, new Post(post, self.hub));                    
+                    self.posts.splice(0, 0, new Post(post, self.hub));
                 }
-                else { 
+                else {
                     self.newPosts.splice(0, 0, new Post(post, self.hub));
-                }                
+                }
             }
-            else { // OFF                
+            else { // OFF
                 self.posts.splice(0, 0, new Post(post, self.hub));
-            }            
-            checkpost = 'N';            
+            }
+            checkpost = 'N';
         }
 
         self.loadNewPosts = function () {
             self.posts(self.newPosts().concat(self.posts()));
             self.newPosts([]);
         }
-            
+
         self.count = ko.computed(function () {
             var countNum = 140 - self.newMessage().length;
             return countNum;
         });
 
         // notification of reply
-        self.hub.client.newReplyNoti = function (num , postid) {           
+        self.hub.client.newReplyNoti = function (num, postid) {
             var replysfind = ko.utils.arrayFirst(self.posts(), function (item) {
                 return item.PostId === postid;
             });
-            if (replysfind != null) {                
+            if (replysfind != null) {
                 replysfind.notification(replysfind.notification() + num);
             }
             //alert(self.notification());
@@ -272,12 +283,12 @@
             {
                 stockCurrent: '@ViewBag.StockCode',
                 skipposition: self.posts().length
-            }, function (data) {                
-              
+            }, function (data) {
+
                 var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item, self.hub); });
-                $(mappedPosts).each(function (index, element) {                    
-                    self.posts.push(element);                    
-                });                
+                $(mappedPosts).each(function (index, element) {
+                    self.posts.push(element);
+                });
             })
         };
     }
