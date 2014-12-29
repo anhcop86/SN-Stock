@@ -43,7 +43,6 @@ namespace PhimHang.Hubs
                 //var listStock = new List<string>();              
 
                 Clients.Client(Context.ConnectionId).loadPosts(ret);
-
               
             }
         }
@@ -146,7 +145,7 @@ namespace PhimHang.Hubs
                 };               
 
                 Clients.Groups(listStock).addPost(ret);
-            } 
+            }
         }
 
 
@@ -159,6 +158,24 @@ namespace PhimHang.Hubs
         public Task LeaveRoom(string stockCurrent)
         {
             return Groups.Remove(Context.ConnectionId, stockCurrent);
+        }
+
+        public override Task OnConnected()
+        {
+            var connectionId = Context.ConnectionId;
+            return base.OnConnected();
+        }
+
+        public override Task OnReconnected()
+        {
+            var connectionId = Context.ConnectionId;
+            return base.OnReconnected();
+        }
+
+        public override Task OnDisconnected(bool stopCall)
+        {
+            var connectionId = Context.ConnectionId;            
+            return base.OnDisconnected(stopCall);
         }
 
         ///////////////////////////////////////////////////// profile

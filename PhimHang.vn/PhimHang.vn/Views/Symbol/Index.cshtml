@@ -188,11 +188,9 @@
         self.PostedDate = getTimeAgo(data.PostedDate);
         self.StockPrimary = data.StockPrimary;
         self.notification = ko.observable(0);
-        
 
         //self.error = ko.observable();
         self.hub = hub;
-
 
     }
     function viewModel() {
@@ -202,7 +200,7 @@
         self.error = ko.observable();
         self.newPosts = ko.observableArray();
         // SignalR related
-        //self.newPosts = ko.observableArray();
+        
         // Reference the proxy for the hub.
         self.hub = $.connection.CommentHub;
         var checkpost = '';
@@ -297,6 +295,7 @@
         vmPost.init();
     });
 
+    $.connection.hub.logging = true;
 </script>
 
 

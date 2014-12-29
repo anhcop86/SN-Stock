@@ -15,6 +15,7 @@ namespace PhimHang
     {
         protected void Application_Start()
         {
+
             Database.SetInitializer<ApplicationDbContext>(null); // khi model thay doi, khong lam gì hết, 
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
