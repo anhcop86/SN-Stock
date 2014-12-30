@@ -22,6 +22,7 @@ namespace PhimHang.Hubs
         private const string ImageURLAvataDefault = "/img/avatar_default.jpg";
         private const string ImageURLAvata = "/images/avatar/";
 
+        /*
         public void GetPosts(string stockCurrent)
         {
             //var fjdsf = WebSecurity.CurrentUserId;
@@ -45,9 +46,9 @@ namespace PhimHang.Hubs
                 Clients.Client(Context.ConnectionId).loadPosts(ret);
               
             }
-        }
+        }*/
 
-        public void AddPost(Post post, string stockCurrent, int currentUserId, string userName, string avataImageUrl, int nhanDinh)
+        public async Task AddPost(Post post, string stockCurrent, int currentUserId, string userName, string avataImageUrl, int nhanDinh)
         {
             #region format message
             string messagedefault = "";
@@ -131,7 +132,7 @@ namespace PhimHang.Hubs
                
 
                 /* add stockrelate */
-                 db.SaveChanges();
+                await db.SaveChangesAsync();
 
                 var ret = new
                 {
@@ -148,22 +149,22 @@ namespace PhimHang.Hubs
             }
         }
 
-
-
-        public Task JoinRoom(string stockCurrent)
+        public async Task JoinRoom(string stockCurrent)
         {
-            return Groups.Add(Context.ConnectionId, stockCurrent);
+            await Groups.Add(Context.ConnectionId, stockCurrent);
         }
 
-        public Task LeaveRoom(string stockCurrent)
+        public async Task LeaveRoom(string stockCurrent)
         {
-            return Groups.Remove(Context.ConnectionId, stockCurrent);
+            await Groups.Remove(Context.ConnectionId, stockCurrent);
         }
 
         //public override Task OnConnected()
         //{
         //    var connectionId = Context.ConnectionId;
+
         //    return base.OnConnected();
+             
         //}
 
         //public override Task OnReconnected()
@@ -172,16 +173,17 @@ namespace PhimHang.Hubs
         //    return base.OnReconnected();
         //}
 
-        //public override Task OnDisconnected(bool stopCall)
-        //{
-        //    var connectionId = Context.ConnectionId;            
-        //    return base.OnDisconnected(stopCall);
-        //}
+        // ondisconnected => remove group existed
+        public override Task OnDisconnected(bool stopCall)
+        {
+            var connectionId = Context.ConnectionId;
+            return base.OnDisconnected(stopCall);
+        }
 
         ///////////////////////////////////////////////////// profile
         //reply
         /////////////////////////////////////////////////////
-        public void AddReply(PostComment postcomment, string stockCurrent, int currentUserId, string userName, string avataImageUrl, long postid)
+        public async Task AddReply(PostComment postcomment, string stockCurrent, int currentUserId, string userName, string avataImageUrl, long postid)
         {
             #region format message
             string messagedefault = "";
@@ -221,7 +223,7 @@ namespace PhimHang.Hubs
             using (testEntities db = new testEntities())
             {
                 db.PostComments.Add(postcomment);                
-                db.SaveChanges();
+                await db.SaveChangesAsync();
 
                 var ret = new
                 {

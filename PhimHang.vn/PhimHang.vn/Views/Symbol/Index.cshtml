@@ -177,7 +177,7 @@
             return '';
         }
     }
-    function Post(data, hub) {
+    function Post(data) {
         var self = this;
         data = data || {};
         self.PostId = data.PostId;
@@ -190,7 +190,7 @@
         self.notification = ko.observable(0);
 
         //self.error = ko.observable();
-        self.hub = hub;
+        //self.hub = hub;
 
     }
     function viewModel() {
@@ -202,7 +202,11 @@
         // SignalR related
 
         // Reference the proxy for the hub.
-        self.hub = $.connection.CommentHub;
+        self.hub =  $.connection.CommentHub;
+
+        //without the genaraled proxy        
+
+
         var checkpost = '';
         self.init = function () {
             self.error(null);
@@ -216,7 +220,7 @@
                 stockCurrent: '@ViewBag.StockCode',
             }, function (data) {
 
-                var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item, self.hub); });
+                var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item); });
                 $(mappedPosts).each(function (index, element) {
                     self.posts.push(element);
                 });
@@ -244,14 +248,14 @@
         self.hub.client.addPost = function (post) {
             if ($('#myonoffswitch').is(':checked')) { // ON
                 if (checkpost == 'Y') {
-                    self.posts.splice(0, 0, new Post(post, self.hub));
+                    self.posts.splice(0, 0, new Post(post));
                 }
                 else {
-                    self.newPosts.splice(0, 0, new Post(post, self.hub));
+                    self.newPosts.splice(0, 0, new Post(post));
                 }
             }
             else { // OFF
-                self.posts.splice(0, 0, new Post(post, self.hub));
+                self.posts.splice(0, 0, new Post(post));
             }
             checkpost = 'N';
         }
@@ -285,7 +289,7 @@
                 skipposition: self.posts().length
             }, function (data) {
 
-                var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item, self.hub); });
+                var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item); });
                 $(mappedPosts).each(function (index, element) {
                     self.posts.push(element);
                 });
@@ -300,13 +304,14 @@
         }
     };
 
-    var vmPost = new viewModel();
+    var vmPost = new viewModel();    
     ko.applyBindings(vmPost, document.getElementById("CommentForKoLoad"));
     $.connection.hub.start().done(function () {
         vmPost.init();
     });
 
     $.connection.hub.logging = true;
+   
 </script>
 
 
