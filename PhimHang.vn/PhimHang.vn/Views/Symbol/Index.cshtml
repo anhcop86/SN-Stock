@@ -259,6 +259,7 @@
             }
             checkpost = 'N';
         }
+        
 
         self.loadNewPosts = function () {
             self.posts(self.newPosts().concat(self.posts()));
@@ -303,13 +304,14 @@
             allBindingsAccessor().value(element.value.substr(0, valueAccessor()));
         }
     };
-
+    //var chromeframe = Request.UserAgent != null && Request.UserAgent.Contains("chromeframe");
+    //var transports = chromeframe ? "{ transport: 'longPolling' }" : "";
     var vmPost = new viewModel();    
-    ko.applyBindings(vmPost, document.getElementById("CommentForKoLoad"));
-    $.connection.hub.start().done(function () {
+    ko.applyBindings(vmPost, document.getElementById("CommentForKoLoad"));    
+    $.connection.hub.start({transport: 'webSockets'}).done(function () {
         vmPost.init();
     });
-
+    
     $.connection.hub.logging = true;
    
 </script>
