@@ -310,7 +310,10 @@
     ko.applyBindings(vmPost, document.getElementById("CommentForKoLoad"));    
     $.connection.hub.start({transport: 'webSockets'}).done(function () {
         vmPost.init();
+    }).fail(function (data) {
+        alert('[Hub Start FAILED]' + data);
     });
+    
     
     $.connection.hub.logging = true;
    
