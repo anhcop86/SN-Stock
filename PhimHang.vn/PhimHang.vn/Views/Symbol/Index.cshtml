@@ -193,6 +193,7 @@
         //self.hub = hub;
 
     }
+    var commenthub = $.connection.CommentHub;
     function viewModel() {
         var self = this;
         self.posts = ko.observableArray();
@@ -202,15 +203,15 @@
         // SignalR related
 
         // Reference the proxy for the hub.
-        self.hub =  $.connection.CommentHub;
+        //self.hub = $.connection.CommentHub;
 
-        //without the genaraled proxy        
+        //without the genaraled proxy
 
 
         var checkpost = '';
         self.init = function () {
             self.error(null);
-            self.hub.server.joinRoom('@ViewBag.StockCode');
+            commenthub.server.joinRoom('@ViewBag.StockCode');
             @*self.hub.server.getPosts('@ViewBag.StockCode').fail(function (err) {
                 self.error(err);
             });*@
@@ -224,7 +225,7 @@
                 $(mappedPosts).each(function (index, element) {
                     self.posts.push(element);
                 });
-            })            
+            })
         }
         self.enablePhimHang = ko.computed(function () {
             return self.newMessage().length <= 140 && self.newMessage().length >= 6;
@@ -238,14 +239,14 @@
         self.addPost = function () {
             self.error(null);
             var nhanDinh = $("input:radio[name='BullBear']:checked").val();
-            self.hub.server.addPost({ "Message": self.newMessage() }, '@ViewBag.StockCode', '@ViewBag.CureentUserId', '@ViewBag.UserName', '@ViewBag.AvataImageUrl', nhanDinh).fail(function (err) {
+            commenthub.server.addPost({ "Message": self.newMessage() }, '@ViewBag.StockCode', '@ViewBag.CureentUserId', '@ViewBag.UserName', '@ViewBag.AvataImageUrl', nhanDinh).fail(function (err) {
                 self.error(err);
             });
             checkpost = 'Y';
             self.newMessage('$@ViewBag.StockCode ');//
         }
 
-        self.hub.client.addPost = function (post) {
+        commenthub.client.addPost = function (post) {
             if ($('#myonoffswitch').is(':checked')) { // ON
                 if (checkpost == 'Y') {
                     self.posts.splice(0, 0, new Post(post));
@@ -259,7 +260,7 @@
             }
             checkpost = 'N';
         }
-        
+
 
         self.loadNewPosts = function () {
             self.posts(self.newPosts().concat(self.posts()));
@@ -272,7 +273,7 @@
         });
 
         // notification of reply
-        self.hub.client.newReplyNoti = function (num, postid) {
+        commenthub.client.newReplyNoti = function (num, postid) {
             var replysfind = ko.utils.arrayFirst(self.posts(), function (item) {
                 return item.PostId === postid;
             });
@@ -308,24 +309,31 @@
     //var transports = chromeframe ? "{ transport: 'longPolling' }" : "";
     var vmPost = new viewModel();
     var tryingToReconnect = false;
-    ko.applyBindings(vmPost, document.getElementById("CommentForKoLoad"));    
-    $.connection.hub.start({ transport: ['webSockets', 'longPolling'] }).done(function () {
-        vmPost.init();
-        tryingToReconnect = true;
-    }).fail(function (data) {
-        alert('[Hub Start FAILED]' + data);
+    ko.applyBindings(vmPost, document.getElementById("CommentForKoLoad"));
+    $.connection.hub.start({ transport: ['webSockets', 'serverSentEvents', 'longPolling'] })
+                            .done(function () {
+                                vmPost.init();
+                                tryingToReconnect = true;
+                            }).fail(function (data) {
+                                alert('[Hub Start FAILED, please reload this website]');
+                            });
+
+
+    $.connection.hub.disconnected(function () {
+        setTimeout(function () {
+            if (tryingToReconnect) {
+                $.connection.hub.start().done(function () {
+                    commenthub.server.joinRoom('@ViewBag.StockCode');
+                });
+            }
+            else {
+                $.connection.hub.start().done(function () {
+                    vmPost.init();
+                });
+            }
+
+        }, 10000); // Restart connection after 10 seconds.
     });
-    //$.connection.hub.disconnected(function () {
-    //    setTimeout(function () {
-    //        if (tryingToReconnect) {
-    //            $.connection.hub.start();
-    //        }
-    //        else {
-    //            vmPost.init();
-    //        }
-            
-    //    }, 10000); // Restart connection after 5 seconds.
-    //});
     // Handle connection loss and reconnect in a robust way
     var timeout = null;
     var interval = 10000;
@@ -337,17 +345,19 @@
         }
         else if (timeout && change.newState === $.signalR.connectionState.connected) {
             console.log('Server reconnected, reinitialize');
-            if (tryingToReconnect) {
+            @*if (tryingToReconnect) { // lay nhung tin da mat khi dc ket noi lai
                 $.connection.hub.start();
             }
             else {
-                vmPost.init();
-            }
+                $.connection.hub.start().done(function () {
+                    vmPost.init();
+                });
+            }*@
             clearTimeout(timeout);
             timeout = null;
         }
     });
 
     $.connection.hub.logging = true;
-   
+
 </script>

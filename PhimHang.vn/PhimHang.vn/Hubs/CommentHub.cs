@@ -50,6 +50,7 @@ namespace PhimHang.Hubs
 
         public async Task AddPost(Post post, string stockCurrent, int currentUserId, string userName, string avataImageUrl, int nhanDinh)
         {
+           
             #region format message
             string messagedefault = "";
             messagedefault = post.Message;
