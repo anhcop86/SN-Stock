@@ -145,7 +145,7 @@ namespace PhimHang.Hubs
                     StockPrimary = post.StockPrimary
                 };               
 
-                Clients.Groups(listStock).addPost(ret);
+               await Clients.Groups(listStock).addPost(ret);
             }
         }
 
@@ -205,8 +205,8 @@ namespace PhimHang.Hubs
                     messageFromatHTML += item + " ";
                 }
             }
-                      
-            postcomment.Message = messageFromatHTML;            
+
+            postcomment.Message = messageFromatHTML;
             postcomment.PostedDate = DateTime.Now;
             postcomment.PostedBy = postid;
             postcomment.CommentBy = currentUserId;
@@ -222,7 +222,7 @@ namespace PhimHang.Hubs
 
             using (testEntities db = new testEntities())
             {
-                db.PostComments.Add(postcomment);                
+                db.PostComments.Add(postcomment);
                 await db.SaveChangesAsync();
 
                 var ret = new
@@ -232,11 +232,11 @@ namespace PhimHang.Hubs
                     ReplyByName = userName,
                     ReplyByAvatar = "/" + avataImageUrl.Replace("amp;", ""),
                     ReplyDate = postcomment.PostedDate,
-                    ReplyId = postcomment.PostCommentsId              
+                    ReplyId = postcomment.PostCommentsId
                 };
-                Clients.Client(Context.ConnectionId).addReply(ret);
-                Clients.OthersInGroups(listStock).newReplyNoti(1, postid);
-            } 
+                await Clients.Client(Context.ConnectionId).addReply(ret);
+                await Clients.OthersInGroups(listStock).newReplyNoti(1, postid);
+            }
         }
 
     }

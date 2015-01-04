@@ -306,19 +306,48 @@
     };
     //var chromeframe = Request.UserAgent != null && Request.UserAgent.Contains("chromeframe");
     //var transports = chromeframe ? "{ transport: 'longPolling' }" : "";
-    var vmPost = new viewModel();    
+    var vmPost = new viewModel();
+    var tryingToReconnect = false;
     ko.applyBindings(vmPost, document.getElementById("CommentForKoLoad"));    
-    $.connection.hub.start({transport: 'webSockets'}).done(function () {
+    $.connection.hub.start({ transport: ['webSockets', 'longPolling'] }).done(function () {
         vmPost.init();
+        tryingToReconnect = true;
     }).fail(function (data) {
         alert('[Hub Start FAILED]' + data);
     });
-    
-    
+    //$.connection.hub.disconnected(function () {
+    //    setTimeout(function () {
+    //        if (tryingToReconnect) {
+    //            $.connection.hub.start();
+    //        }
+    //        else {
+    //            vmPost.init();
+    //        }
+            
+    //    }, 10000); // Restart connection after 5 seconds.
+    //});
+    // Handle connection loss and reconnect in a robust way
+    var timeout = null;
+    var interval = 10000;
+    $.connection.hub.stateChanged(function (change) {
+        if (change.newState === $.signalR.connectionState.reconnecting) {
+            timeout = setTimeout(function () {
+                console.log('Server is unreachable, trying to reconnect...');
+            }, interval);
+        }
+        else if (timeout && change.newState === $.signalR.connectionState.connected) {
+            console.log('Server reconnected, reinitialize');
+            if (tryingToReconnect) {
+                $.connection.hub.start();
+            }
+            else {
+                vmPost.init();
+            }
+            clearTimeout(timeout);
+            timeout = null;
+        }
+    });
+
     $.connection.hub.logging = true;
    
 </script>
-
-
-
-
