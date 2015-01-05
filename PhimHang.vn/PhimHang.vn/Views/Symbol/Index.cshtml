@@ -226,6 +226,8 @@
                     self.posts.push(element);
                 });
             })
+
+            // try ajax
         }
         self.enablePhimHang = ko.computed(function () {
             return self.newMessage().length <= 140 && self.newMessage().length >= 6;
@@ -315,7 +317,8 @@
                                 vmPost.init();
                                 tryingToReconnect = true;
                             }).fail(function (data) {
-                                alert('[Hub Start FAILED, please reload this website]');
+                                alert('Không thể mở kết nối đến server, vui lòng làm mới lại website');
+
                             });
 
 
@@ -334,7 +337,14 @@
 
         }, 10000); // Restart connection after 10 seconds.
     });
+    //window.onbeforeunload = function (e) {
+    //    $.connection.hub.stop();
+    //    console.log('window.onbeforeunload');
+    //};
+
+    $.connection.hub.transportConnectTimeout = 4000;
     // Handle connection loss and reconnect in a robust way
+    @*
     var timeout = null;
     var interval = 10000;
     $.connection.hub.stateChanged(function (change) {
@@ -345,19 +355,23 @@
         }
         else if (timeout && change.newState === $.signalR.connectionState.connected) {
             console.log('Server reconnected, reinitialize');
-            @*if (tryingToReconnect) { // lay nhung tin da mat khi dc ket noi lai
+            if (tryingToReconnect) { // lay nhung tin da mat khi dc ket noi lai
                 $.connection.hub.start();
             }
             else {
                 $.connection.hub.start().done(function () {
                     vmPost.init();
                 });
-            }*@
+            }
             clearTimeout(timeout);
             timeout = null;
         }
+        else if (change.newState === $.connection.connectionState.disconnected) {
+            console.log('Server disconnected, disconnected');
+            $.connection.hub.start();
+        }
     });
-
+    *@
     $.connection.hub.logging = true;
 
 </script>
