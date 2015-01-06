@@ -315,18 +315,17 @@
                             .done(function () {
                                 vmPost.init();
                                 tryingToReconnect = true;
-                            }).fail(function (data) {
-                                console.log('Không thể mở kết nối đến server,.fail');
-                                commenthub.client.stop = function () {
-                                    $.connection.hub.stop();
-                                    console.log('connection.hub.stop();');
-                                };
-                                
+                            }).fail(function (fail) {
+                                console.log('Không thể mở kết nối đến server' + fail);                  
                             });
 
-    $.connection.hub.error(function () {
-        $.connection.hub.stop();
-        console.log('$.connection.hub.error');
+    $.connection.hub.error(function (error) {
+        commenthub.client.stopClient = function () {
+            $.connection.hub.stop();
+            console.log('$.connection.hub.error' + error);
+        };
+        
+        
     });
     $.connection.hub.disconnected(function () {
         setTimeout(function () {
@@ -341,7 +340,10 @@
                 });
             }
 
-        }, 5000); // Restart connection after 10 seconds.
+        }, 10000); // Restart connection after 10 seconds.
+    });
+    $.connection.hub.connectionSlow(function () {
+        console.log('Kết nối đến server chậm do đường truyền')
     });
     window.onbeforeunload = function (e) {
         //$.connection.hub.stop
