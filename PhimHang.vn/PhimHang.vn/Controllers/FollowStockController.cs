@@ -201,7 +201,8 @@ namespace PhimHang.Controllers
                 return result;
             }
         }
-
+        [AllowAnonymous]
+        [HttpGet]
         public async Task<dynamic> GetPostsByStock(string stockCurrent)
         {
             //var fjdsf = WebSecurity.CurrentUserId;
@@ -221,8 +222,8 @@ namespace PhimHang.Controllers
                                StockPrimary = stockRelate.Post.StockPrimary
                            }).Take(10).ToArray();
                 //var listStock = new List<string>();              
-                //var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
-                return Json(ret, JsonRequestBehavior.AllowGet);
+                var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
+                return result;
             }
         }
 

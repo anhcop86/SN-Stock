@@ -221,14 +221,12 @@
                 stockCurrent: '@ViewBag.StockCode',
             }, function (data) {
 
-                //var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item); });
-                var mappedPosts = $.map(data, function (item) { return new Post(item); });
+                var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item); });                
                 $(mappedPosts).each(function (index, element) {
                     self.posts.push(element);
                 });
-            })
-
-            // try ajax
+            })              
+            
         }
         self.enablePhimHang = ko.computed(function () {
             return self.newMessage().length <= 140 && self.newMessage().length >= 6;
@@ -318,11 +316,18 @@
                                 vmPost.init();
                                 tryingToReconnect = true;
                             }).fail(function (data) {
-                                alert('Không thể mở kết nối đến server, vui lòng làm mới lại website');
-
+                                console.log('Không thể mở kết nối đến server,.fail');
+                                commenthub.client.stop = function () {
+                                    $.connection.hub.stop();
+                                    console.log('connection.hub.stop();');
+                                };
+                                
                             });
 
-
+    $.connection.hub.error(function () {
+        $.connection.hub.stop();
+        console.log('$.connection.hub.error');
+    });
     $.connection.hub.disconnected(function () {
         setTimeout(function () {
             if (tryingToReconnect) {
@@ -336,12 +341,17 @@
                 });
             }
 
-        }, 10000); // Restart connection after 10 seconds.
+        }, 5000); // Restart connection after 10 seconds.
     });
-    //window.onbeforeunload = function (e) {
-    //    $.connection.hub.stop();
-    //    console.log('window.onbeforeunload');
-    //};
+    window.onbeforeunload = function (e) {
+        //$.connection.hub.stop
+        //commenthub.server.stop = function () {
+        //    $.connection.hub.stop();
+            
+        //    console.log('window.onbeforeunload');
+        //};
+        
+    };
 
     $.connection.hub.transportConnectTimeout = 4000;
     // Handle connection loss and reconnect in a robust way
