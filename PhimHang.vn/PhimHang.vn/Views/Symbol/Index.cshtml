@@ -221,7 +221,8 @@
                 stockCurrent: '@ViewBag.StockCode',
             }, function (data) {
 
-                var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item); });
+                //var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item); });
+                var mappedPosts = $.map(data, function (item) { return new Post(item); });
                 $(mappedPosts).each(function (index, element) {
                     self.posts.push(element);
                 });

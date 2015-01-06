@@ -16,7 +16,7 @@ namespace PhimHang.Controllers
     [Authorize]
     public class FollowStockController : Controller
     {
-        private testEntities db = new testEntities();
+        private testEntities db;
         public FollowStockController()
             : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
@@ -34,30 +34,40 @@ namespace PhimHang.Controllers
         // GET: /FollowStock/
         public async Task<ActionResult> Index()
         {
-            var followstocks = db.FollowStocks.Include(f => f.UserLogin);
-            return View(await followstocks.ToListAsync());
+            using (db=new testEntities())
+            {
+                var followstocks = db.FollowStocks.Include(f => f.UserLogin);
+                return View(await followstocks.ToListAsync());    
+            }
+            
         }
 
         // GET: /FollowStock/Details/5
         public async Task<ActionResult> Details(long? id)
         {
-            if (id == null)
+            using (db = new testEntities())
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                FollowStock followstock = await db.FollowStocks.FindAsync(id);
+                if (followstock == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(followstock);
             }
-            FollowStock followstock = await db.FollowStocks.FindAsync(id);
-            if (followstock == null)
-            {
-                return HttpNotFound();
-            }
-            return View(followstock);
         }
 
         // GET: /FollowStock/Create
         public ActionResult Create()
         {
-            ViewBag.UserId = new SelectList(db.UserLogins, "Id", "KeyLogin");
-            return View();
+            using (db = new testEntities())
+            {
+                ViewBag.UserId = new SelectList(db.UserLogins, "Id", "KeyLogin");
+                return View();
+            }
         }
 
         // POST: /FollowStock/Create
@@ -195,7 +205,7 @@ namespace PhimHang.Controllers
         public async Task<dynamic> GetPostsByStock(string stockCurrent)
         {
             //var fjdsf = WebSecurity.CurrentUserId;
-            using (testEntities db = new testEntities())
+            using (db = new testEntities())
             {
                 var ret = (from stockRelate in await db.StockRelates.ToListAsync()
                            where stockRelate.StockCodeRelate == stockCurrent
@@ -211,9 +221,8 @@ namespace PhimHang.Controllers
                                StockPrimary = stockRelate.Post.StockPrimary
                            }).Take(10).ToArray();
                 //var listStock = new List<string>();              
-                var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
-                return result;
-
+                //var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
+                return Json(ret, JsonRequestBehavior.AllowGet);
             }
         }
 
