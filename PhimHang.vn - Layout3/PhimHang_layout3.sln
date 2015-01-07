@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhimHang", "PhimHang.vn\PhimHang.csproj", "{006AF52B-81C7-49C4-A5F6-5D6A2C33FD2C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhimHang_layout3", "PhimHang.vn\PhimHang_layout3.csproj", "{006AF52B-81C7-49C4-A5F6-5D6A2C33FD2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

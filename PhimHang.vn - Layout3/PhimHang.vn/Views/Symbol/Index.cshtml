@@ -1,118 +1,187 @@
 ﻿
 @{
     ViewBag.Title = "Phím hàng: " + @ViewBag.StockCode;
-    Layout = "~/Views/Shared/_Layout_MyProfile.cshtml";
+    Layout = "~/Views/Shared/_Layout_Symbol.cshtml";
 }
 @section scripts{
-    @*<script src="~/Scripts/knockout.mapping-latest.js"></script>*@
-    @*<script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>
-    <script src="~/signalr/hubs"></script>*@
-<link href="~/Content/StockPrice.css" rel="stylesheet" />
-<script src="~/Scripts/jquery.timeago.js"></script>
-@*<script src="~/Scripts/StockPrice.js"></script>*@
+    <link href="~/Content/StockPrice.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.timeago.js"></script>
 }
 
+    <div class="bg-white" style="padding-bottom: 3px;">
+        <div class="status-box">
+            <div class="avatar-small">
+                <img src="@Url.Content("~/" + @ViewBag.AvataEmage)?width=28&height=28&mode=crop" class="img-rounded" alt="avatar">
+            </div>
+            <div class="input-status">
+                <form id="frmStatus" name="frmStatus">
+                    <div id="input-status-text" class="input-status-text">
+                        <textarea data-bind="value : newMessage, valueUpdate : 'afterkeydown' , limitCharacters : 140" name="status" rows="4" placeholder="$Mã cổ phiếu ($VNM, $GAS); Username" id="status" title="Search"></textarea>
+                    </div>
+                    <div class="status-control">
+                        <div class="choose_file f-left">
+                            <i class="fa fa-camera"></i>
+                            <input name="Select File" type="file" />
+                        </div>
 
-<div class="stock-detail">
-    @Html.Partial("_Partial_stock-detail")
-</div>
-<div class="bg-white" id="CommentForKoLoad">
-    <div class="status-box">
-        <div class="avatar-small">
-            <img src="@Url.Content("~/" + @ViewBag.AvataEmage)?width=28&height=28&mode=crop" class="img-rounded" alt="avatar">
+                        <div id="radio" class="switch3button f-left">
+                            <input type="radio" id="radio1" name="BullBear" value="Bull">
+                            <label for="radio1" class="divBull">Tăng</label>
+                            <input type="radio" id="radio3" name="BullBear" value="Bear">
+                            <label for="radio3" class="divBear">Giảm</label>
+                        </div>
+                        <div id="btnPhim" class="f-right">
+                            <span data-bind="text : count"></span>
+                            <a href="javascript:void(0)" class="button-phim" data-bind="click : addPost, visible: enablePhimHang "><span>PHÍM</span></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class="input-status">
-            
-                <div id="input-status-text" class="input-status-text">
-                    <textarea data-bind="value : newMessage, valueUpdate : 'afterkeydown' , limitCharacters : 140" name="status" rows="5" placeholder="$Mã cổ phiếu ($VNM, $GAS); Username" id="status" title="Search" ></textarea>
+        <div class="filer-bar">
+            <div class="toSpan filer-bar-label">Bộ Lọc: </div>
+            <div class="toSpan filer-bar-item"> <a href="#">Tất cả</a> </div>
+            <div class="toSpan filer-bar-item"> <a href="#">Theo biểu đồ</a> </div>
+            <div class="toSpan filer-bar-item"> <a href="#">Theo nhận định</a></div>
+            <div class="toSpan filer-bar-item">
+                <a id="btn-option-more" href="#" data-dropdown="#dropdown-2">
+                    Tùy chọn khác
+                    <i class="fa fa-caret-down"></i>
+                </a>
+                <div id="dropdown-2" class="dropdown dropdown-tip dropdown-anchor-right dropdown-relative">
+                    <ul class="dropdown-menu">
+                        <li><a href="#4">Item 4</a></li>
+                        <li><a href="#5">Item 5</a></li>
+                        <li><a href="#5">Item 6</a></li>
+                    </ul>
                 </div>
-                <div class="status-control">
-                    <div class="choose_file f-left">
-                        <i class="fa fa-camera"></i>
-                        <input name="Select File" type="file" />
-                    </div>
-
-                    <div id="radioGroup" class="switch3button f-left">
-                        <input type="radio" id="radio3" name="BullBear" value="-1"><label for="radio3">Giảm</label>
-                        <input type="radio" id="radio2" name="BullBear" value="0" checked="checked"><label for="radio2">Đứng</label>
-                        <input type="radio" id="radio1" name="BullBear" value="1"><label for="radio1">Tăng</label>
-                    </div>
-                    <div id="btnPhim" class="f-right">
-                        <span data-bind="text : count"></span>
-                        @*<a href="javascript:void(0)" class="button-phim" data-bind="click : addPost"><span>PHÍM</span></a>*@
-                        <input type="button" style="cursor:pointer" class="button-phim" value="PHÍM" data-bind="click : addPost,  enable: enablePhimHang " />
-                    </div>
+            </div>
+        </div>
+        <div class="filer-new-status">
+            <div class="filer-new-status-button-bar">
+                <div class="onoffswitch f-right">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch">
+                    <label id="abcww" class="onoffswitch-label" for="myonoffswitch">
+                        <span class="onoffswitch-inner"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
                 </div>
-            
+                <div class="text-label">Hiển thị bài phím mới</div>
+            </div>
+            <div id="msg-new-status" class="msg-new-status">
+                Có <strong data-bind="text: newPosts().length"></strong> bài phím mới <a href="#" data-bind="click : loadNewPosts, visible: newPosts().length > 0">Hiển Thị <strong data-bind="text : newPosts().length"></strong> bài phím này</a>
+            </div>
         </div>
     </div>
-    <div class="filer-bar">
-        <div class="toSpan filer-bar-label">Bộ Lọc: </div>
-        <div class="toSpan filer-bar-item"> <a href="#">Tất cả</a> </div>
-        <div class="toSpan filer-bar-item"> <a href="#">Theo biểu đồ</a> </div>
-        <div class="toSpan filer-bar-item"> <a href="#">Theo nhận định</a></div>
-        <div class="toSpan filer-bar-item">
-            <a id="btn-option-more" href="#">
-                Tùy chọn khác
-                <i class="fa fa-caret-down"></i>
-            </a>
+<div class="list-status" data-bind="foreach : posts">
+    <div class="bg-white">
+        <div class="list-item-status" tabindex="-1" data-bind="singleClick: clicked">
+            <div class=" avata-genaral-size">
+            <img src="/img/avatar5.jpg" class="img-rounded" alt="avatar">
         </div>
-        <br>
-        <div class="dropdownlist filer-bar-dropdown">
-            <div class="dropdown-item">
-                <a href="#"><span class="todiv"><i class="fa fa-adn"></i> Profile</span></a>
-            </div>
-            <div class="dropdown-item">
-                <a href="#"><span class="todiv"><i class="fa fa-cog"></i> Setting</span></a>
-            </div>
-            <div class="dropdown-item">
-                <a href="#"><span class="todiv"><i class="fa fa-sign-out"></i> Logout</span></a>
-            </div>
-        </div>
-
-    </div>
-    <div class="filer-new-status">
-        <div class="filer-new-status-button-bar">
-            <div class="onoffswitch f-right">
-                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch">
-                <label id="abcww" class="onoffswitch-label" for="myonoffswitch">
-                    <span class="onoffswitch-inner"></span>
-                    <span class="onoffswitch-switch"></span>
-                </label>
-            </div>
-            <div class="text-label">Hiển thị bài phím mới</div>
-        </div>
-        <div id="msg-new-status" class="msg-new-status" style="display:none">
-            Có <strong data-bind="text: newPosts().length"></strong> bài phím mới <a href="#" data-bind="click : loadNewPosts, visible: newPosts().length > 0">Hiển Thị <strong data-bind="text : newPosts().length"></strong> bài phím này</a>
-        </div>
-    </div>
-    <div class="list-status" data-bind="foreach : posts">
-        <!--list comment here location.href='/Symbol/Details/' +-->
-        <div class="list-item-status">
-            <div class="avata-genaral-size">
-                <img style="cursor:pointer" class="img-rounded" alt="avatar" data-bind="attr: { src: PostedByAvatar },click : function() {  location.href='/user/' + PostedByName + '/tab/1' }">
-            </div>
             <div class="list-item-detail">
-                <div class="list-item-date" data-bind="text : PostedDate"></div>
-                <div style="cursor:pointer" class="list-item-username" data-bind="text : PostedByName, click : function() {  location.href='/user/' + PostedByName + '/tab/1' }"></div>
-                <div style="cursor:pointer" class="list-item-status-content" data-bind="html : Message, click : function() {  location.href='/PostDetail?postid='+ PostId +'&stock=' + StockPrimary } "></div>
+                <div class="list-item-date">Dec 1 at 9:30 PM</div>
+                <div class="list-item-username">Tom Truong</div>
+                <div class="list-item-status-content">I always forget what the haters are gonna do until I sing the song.</div>
                 <div class="list-item-control">
-                    <a class="button"><i class="fa fa-comments"></i><span style="color:red; font-weight:bold" data-bind="text :notification, visible: notification() > 0"></span></a>
-                    <a style="cursor:pointer" class="button" data-bind="click : function() {  location.href='/PostDetail?postid='+ PostId +'&stock=' + StockPrimary }">Trả lời</a>
-                    <a class="button">Chia sẻ</a>
-                    <a class="button">Thích</a>
-                    <a class="button">Báo cáo vi phạm</a>
+                    <a class="button btn-answer" href="#" title="Trả lời (12)"><i class="fa fa-mail-reply"></i>Trả lời (12)</a>
+                    <a class="button" href="#" title="Chia sẻ (22)"><i class="fa fa-refresh"></i>Chia sẻ (22)</a>
+                    <a class="button" href="#" title="Thích"><i class="fa fa-star"></i>Thích</a>
+                    <a class="button" href="#" title="Báo cáo vi phạm"><i class="fa  fa-warning"></i>Báo cáo vi phạm</a>
                 </div>
             </div>
         </div>
-
-        <!--end list comment-->
-
-    </div>
-    <div style="text-align: center; margin-top: 10px; ">
-        <a href="javascript:void(0)" class="button-loadmore" data-bind="click : loadMores"><span>LOAD MORE 10</span></a>
+        <div class="list-comment">
+            <div class="comment-item">
+                <div class="avata-genaral-size">
+                    <img src="/img/avatar.jpg" class="img-rounded" alt="avatar">
+                </div>
+                <div class="list-item-detail">
+                    <form name="frmComment">
+                        <div class="input-comment-text">
+                            <textarea name="comment" rows="5" placeholder="$Mã cổ phiếu ($VNM, $GAS); " title="Search" autocomplete="off" rows="5"></textarea>
+                        </div>
+                        <div class="comment-control">
+                            <div id="btnPhim" class="f-right">
+                                <span>140</span>
+                                <a href="#" class="button-phim"><span>PHÍM</span></a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="comment-item">
+                <div class="avata-genaral-size">
+                    <img src="/img/avatar2.jpg" class="img-rounded" alt="avatar">
+                </div>
+                <div class="list-item-detail">
+                    <div class="list-item-date">Dec 1 at 9:30 PM</div>
+                    <div class="list-item-username">Tom Truong</div>
+                    <div class="list-item-status-content">Have a nice day</div>
+                    <div class="list-item-control">
+                        <a class="button" href="#" title="Báo cáo vi phạm"><i class="fa  fa-warning"></i>Báo cáo vi phạm</a>
+                    </div>
+                </div>
+            </div>
+            <div class="comment-item">
+                <div class="avata-genaral-size">
+                    <img src="/img/avatar5.jpg" class="img-rounded" alt="avatar">
+                </div>
+                <div class="list-item-detail">
+                    <div class="list-item-date">Dec 1 at 9:30 PM</div>
+                    <div class="list-item-username">Tom Truong</div>
+                    <div class="list-item-status-content">goodmorning</div>
+                    <div class="list-item-control">
+                        <a class="button" href="#" title="Báo cáo vi phạm"><i class="fa  fa-warning"></i>Báo cáo vi phạm</a>
+                    </div>
+                </div>
+            </div>
+            <div class="comment-item">
+                <div class="avata-genaral-size">
+                    <img src="/img/avatar5.jpg" class="img-rounded" alt="avatar">
+                </div>
+                <div class="list-item-detail">
+                    <div class="list-item-date">Dec 1 at 9:30 PM</div>
+                    <div class="list-item-username">Tom Truong</div>
+                    <div class="list-item-status-content">goodmorning</div>
+                    <div class="list-item-control">
+                        <a class="button" href="#" title="Báo cáo vi phạm"><i class="fa  fa-warning"></i>Báo cáo vi phạm</a>
+                    </div>
+                </div>
+            </div>
+            <div class="comment-item">
+                <div class="avata-genaral-size">
+                    <img src="/img/avatar5.jpg" class="img-rounded" alt="avatar">
+                </div>
+                <div class="list-item-detail">
+                    <div class="list-item-date">Dec 1 at 9:30 PM</div>
+                    <div class="list-item-username">Tom Truong</div>
+                    <div class="list-item-status-content">goodmorning</div>
+                    <div class="list-item-control">
+                        <a class="button" href="#" title="Báo cáo vi phạm"><i class="fa  fa-warning"></i>Báo cáo vi phạm</a>
+                    </div>
+                </div>
+            </div>
+            <div class="comment-item">
+                <div class="avata-genaral-size">
+                    <img src="/img/avatar5.jpg" class="img-rounded" alt="avatar">
+                </div>
+                <div class="list-item-detail">
+                    <div class="list-item-date">Dec 1 at 9:30 PM</div>
+                    <div class="list-item-username">Tom Truong</div>
+                    <div class="list-item-status-content">goodmorning</div>
+                    <div class="list-item-control">
+                        <a class="button" href="#" title="Báo cáo vi phạm"><i class="fa  fa-warning"></i>Báo cáo vi phạm</a>
+                    </div>
+                </div>
+            </div>
+            <div class="comment-loadmore">
+                <a href="#">View more in conversation →</a>
+            </div>
+        </div>
     </div>
 </div>
+
 <!-- gia co phieu real time-->
 @*
     <script type="text/javascript">
@@ -191,6 +260,7 @@
 
         //self.error = ko.observable();
         //self.hub = hub;
+       
 
     }
     var commenthub = $.connection.CommentHub;
@@ -268,6 +338,8 @@
             self.newPosts([]);
         }
 
+      
+
         self.count = ko.computed(function () {
             var countNum = 140 - self.newMessage().length;
             return countNum;
@@ -299,7 +371,32 @@
             })
         };
     }
-
+    ko.bindingHandlers.singleClick = {
+        init: function (element, e) {
+                $(element).on('click', function (e) {
+                    if ($(e.target).parents('.open').length == 0) {
+                        $('.open').removeClass('open');
+                        $('.list-comment').hide();
+                        if (!$(this).hasClass('btn-answer')) {
+                            $(this).next().show();
+                            $(this).parent('.bg-white').addClass('open');
+                        }
+                        else {
+                            $(this).parent().parent().parent().next().show();
+                            $(this).parent().parent().parent().parent('.bg-white').addClass('open');
+                        }
+                    }
+                    else {
+                        $('.open').removeClass('open');
+                        $('.list-comment').hide();
+                    }
+                }).on('click', 'a,button,input,img', function (e) {
+                    // clicked on descendant div                    
+                    e.stopPropagation();
+                });
+            
+        }
+    };
     ko.bindingHandlers.limitCharacters = {
         update: function (element, valueAccessor, allBindingsAccessor, viewModel) {
             element.value = element.value.substr(0, valueAccessor());
@@ -386,5 +483,7 @@
     });
     *@
     $.connection.hub.logging = true;
-
+    
 </script>
+
+
