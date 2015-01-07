@@ -1,0 +1,212 @@
+﻿@{
+    ViewBag.Title = "My profile";
+    Layout = "~/Views/Shared/_Layout_MyProfile.cshtml";
+}
+
+@section scripts{   
+    <link href="~/Content/StockPrice.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.timeago.js"></script>   
+}
+
+<div class="bg-white" id="CommentForKoLoad">
+    <div class="status-box">
+        <div class="avatar-small">
+            <img src="/@ViewBag.AvataEmage?width=28&height=28&mode=crop" class="img-rounded" alt="avatar">
+        </div>
+        <div class="input-status">
+
+            <div id="input-status-text" class="input-status-text">
+                <textarea data-bind="value : newMessage, valueUpdate : 'afterkeydown' , limitCharacters : 140" name="status" rows="5" placeholder="$Mã cổ phiếu ($VNM, $GAS); Username" id="status" title="Search"></textarea>
+            </div>
+            <div class="status-control">
+                <div class="choose_file f-left">
+                    <i class="fa fa-camera"></i>
+                    <input name="Select File" type="file" />
+                </div>
+
+                <div id="radio" class="switch3button f-left">
+                    <input type="radio" id="radio1" name="BullBear" value="Bull"><label for="radio1">Tăng</label>
+                    <input type="radio" id="radio2" name="BullBear" value="None" checked="checked"><label for="radio2">Đứng</label>
+                    <input type="radio" id="radio3" name="BullBear" value="Bear"><label for="radio3">Giảm</label>
+                </div>
+                <div id="btnPhim" class="f-right">
+                    <span data-bind="text : count"></span>
+                    
+                    <input type="button" style="cursor:pointer" class="button-phim" value="PHÍM" data-bind="click : addPost,  enable: enablePhimHang " />
+                    @*<a href="javascript:void(0)" class="button-phim" data-bind=" , enable: newMessage().lenght > 6 "><span>PHÍM</span></a>*@
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="filer-bar">
+        <div class="toSpan filer-bar-label">Bộ Lọc: </div>
+        <div class="toSpan filer-bar-item"> <a href="#">Tất cả</a> </div>
+        <div class="toSpan filer-bar-item"> <a href="#">Theo biểu đồ</a> </div>
+        <div class="toSpan filer-bar-item"> <a href="#">Theo nhận định</a></div>
+        <div class="toSpan filer-bar-item">
+            <a id="btn-option-more" href="#">
+                Tùy chọn khác
+                <i class="fa fa-caret-down"></i>
+            </a>
+        </div>
+        <br>
+        <div class="dropdownlist filer-bar-dropdown">
+            <div class="dropdown-item">
+                <a href="#"><span class="todiv"><i class="fa fa-adn"></i> Profile</span></a>
+            </div>
+            <div class="dropdown-item">
+                <a href="#"><span class="todiv"><i class="fa fa-cog"></i> Setting</span></a>
+            </div>
+            <div class="dropdown-item">
+                <a href="#"><span class="todiv"><i class="fa fa-sign-out"></i> Logout</span></a>
+            </div>
+        </div>
+
+    </div>
+    <div class="filer-new-status">
+        <div class="filer-new-status-button-bar">
+            <div class="onoffswitch f-right">
+                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+                <label id="abcww" class="onoffswitch-label" for="myonoffswitch">
+                    <span class="onoffswitch-inner"></span>
+                    <span class="onoffswitch-switch"></span>
+                </label>
+            </div>
+            <div class="text-label">Hiển thị bài phím mới</div>
+        </div>
+        <div id="msg-new-status" class="msg-new-status">
+            Có <strong>2</strong> bài phím mới: <a href="#">Hiển Thị <strong>2</strong> bài phím này</a>
+        </div>
+    </div>
+    <div class="list-status">
+        <!--Load ajax partical here-->
+        <div class="list-item-status" data-bind="foreach : posts">
+            <div class="avata-genaral-size">
+                <img class="img-rounded" alt="avatar" data-bind="attr: { src: PostedByAvatar }">
+            </div>
+            <div class="list-item-detail">
+                <div class="list-item-date" data-bind="text : PostedDate"></div>
+                <div class="list-item-username" data-bind="text : PostedByName"></div>
+                <div class="list-item-status-content" data-bind="html : Message"></div>
+                <div class="list-item-control">
+                    <a class="button"><i class="fa fa-comments"></i></a>
+                    <a class="button">Trả lời</a>
+                    <a class="button">Chia sẻ</a>
+                    <a class="button">Thích</a>
+                    <a class="button">Báo cáo vi phạm</a>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 10px; ">
+            <a href="javascript:void(0)" class="button-loadmore" data-bind="click : loadMores"><span>LOAD MORE 10</span></a>
+        </div>
+        <!--End Load ajax partical here-->
+    </div>
+</div>
+
+<script type="text/javascript">
+    function getTimeAgo(varDate) {
+        if (varDate) {
+            return $.timeago(varDate.toString().slice(-1) == 'Z' ? varDate : varDate + 'Z');
+        }
+        else {
+            return '';
+        }
+    }
+    function Post(data, hub) {
+        var self = this;
+        data = data || {};
+        //self.PostId = data.PostId;
+        self.Message = ko.observable(data.Message || "");
+        //self.PostedBy = data.PostedBy || "";
+        self.PostedByName = data.PostedByName || "";
+        self.PostedByAvatar = data.PostedByAvatar || "";
+        self.PostedDate = getTimeAgo(data.PostedDate);
+        //self.error = ko.observable();
+        self.hub = hub;
+
+    }
+    function viewModel() {
+        var self = this;
+        self.posts = ko.observableArray();
+        self.newMessage = ko.observable('');
+        self.error = ko.observable();
+
+        // SignalR related
+        self.newPosts = ko.observableArray();
+        // Reference the proxy for the hub.
+        self.hub = $.connection.CommentHub;
+
+        self.init = function () {
+            self.error(null);
+            //self.hub.server.joinRoom('@ViewBag.StockCode');
+            $.get('@Url.Action("GetCommentByStockFollowInProfile", "FollowStock")',
+            {                
+                skipposition: self.posts().length
+            }, function (data) {
+
+                var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item, self.hub); });
+                $(mappedPosts).each(function (index, element) {
+                    self.posts.push(element);
+                });
+            })
+        }
+        
+
+        self.addPost = function () {
+            self.error(null);
+            self.hub.server.addPost({ "Message": self.newMessage() }, 'KEYMYPROFILE', '@ViewBag.CureentUserId', '@ViewBag.UserName', '@ViewBag.AvataImageUrl').fail(function (err) {
+                self.error(err);                
+            });
+            self.newMessage('');
+        }
+
+        //self.hub.client.addPost = function (post) {
+        //    self.posts.unshift(new Post(post, self.hub));
+        //    self.newMessage('');
+        //}
+        
+        self.count = ko.computed(function () {
+            var countNum = 140 - self.newMessage().length;
+            return countNum;
+        });
+
+
+        self.enablePhimHang = ko.computed(function () {            
+            return self.newMessage().length <= 140 && self.newMessage().length >= 6;
+        });
+
+        self.loadMores = function () {
+            $.get('@Url.Action("GetCommentByStockFollowInProfile", "FollowStock")',
+            {
+                stockCurrent: '@ViewBag.StockCode',
+                skipposition: self.posts().length
+            }, function (data) {
+
+                var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item, self.hub); });
+                $(mappedPosts).each(function (index, element) {
+                    self.posts.push(element);
+
+                });
+            })
+        };
+
+    }
+
+    ko.bindingHandlers.limitCharacters = {
+        update: function (element, valueAccessor, allBindingsAccessor, viewModel) {
+            element.value = element.value.substr(0, valueAccessor());
+            allBindingsAccessor().value(element.value.substr(0, valueAccessor()));
+        }
+    };
+
+    var vmPost = new viewModel();
+    ko.applyBindings(vmPost, document.getElementById("CommentForKoLoad"));
+    $.connection.hub.start().done(function () {
+        vmPost.init();
+    });
+
+    $.connection.hub.logging = true;
+</script>
