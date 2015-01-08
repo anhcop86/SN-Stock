@@ -84,7 +84,7 @@
             return '';
         }
     }
-    function Post(data, hub) {
+    function Reply(data, hub) {
         var self = this;
         data = data || {};
         self.PostId = data.PostId;
@@ -115,7 +115,7 @@
             {
                 replyid: '@Model.PostId'
             }, function (data) {
-                var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item, self.hub); });
+                var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Reply(item, self.hub); });
                 $(mappedPosts).each(function (index, element) {
                     self.replys.push(element);
                 });
@@ -132,8 +132,8 @@
             });            
         }
 
-        self.hub.client.addReply = function (post) {
-            self.replys.push(new Post(post, self.hub));
+        self.hub.client.addReply = function (reply) {
+            self.replys.push(new Reply(reply, self.hub));
             self.newMessage('');
         }
 

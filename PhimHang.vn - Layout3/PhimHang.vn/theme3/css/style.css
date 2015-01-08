@@ -745,7 +745,7 @@ a.follow-button-mini:hover{
     overflow: hidden;
     background-color: #FFF;/*#F5F8FA;*/
     border-radius: 5px;
-    display: none;
+    /*display: none;*/
 }
 .list-comment .comment-item{
     border-bottom: 1px solid #ddd;

@@ -74,15 +74,18 @@
         </div>
     </div>
 <div class="list-status" data-bind="foreach : posts">
-    <div class="bg-white">
-        <div class="list-item-status" tabindex="-1" data-bind="singleClick: clicked">
+    <hr style="border-color: transparent; display: none; margin-top: 1px; " data-bind=" attr : { class : listCommentIdHr } " />
+    <div class="bg-white" >
+        <div class="list-item-status" tabindex="-1">
             <div class=" avata-genaral-size">
-            <img src="/img/avatar5.jpg" class="img-rounded" alt="avatar">
-        </div>
+                <img src="/img/avatar5.jpg" class="img-rounded" alt="avatar">
+            </div>
             <div class="list-item-detail">
-                <div class="list-item-date">Dec 1 at 9:30 PM</div>
-                <div class="list-item-username">Tom Truong</div>
-                <div class="list-item-status-content">I always forget what the haters are gonna do until I sing the song.</div>
+                <div data-bind="click : loadNewComments">
+                    <div class="list-item-date">Dec 1 at 9:30 PM</div>
+                    <div class="list-item-username" data-bind="text : PostedByName">Tom Truong</div>
+                    <div class="list-item-status-content" data-bind="html : Message"></div>
+                </div>
                 <div class="list-item-control">
                     <a class="button btn-answer" href="#" title="Trả lời (12)"><i class="fa fa-mail-reply"></i>Trả lời (12)</a>
                     <a class="button" href="#" title="Chia sẻ (22)"><i class="fa fa-refresh"></i>Chia sẻ (22)</a>
@@ -91,10 +94,11 @@
                 </div>
             </div>
         </div>
-        <div class="list-comment">
+        <div class="list-comment" data-bind=" attr: { id: listCommentId }, visible: replys().length > 0">
+
             <div class="comment-item">
                 <div class="avata-genaral-size">
-                    <img src="/img/avatar.jpg" class="img-rounded" alt="avatar">
+                    <img src="@Url.Content("~/" + @ViewBag.AvataEmage)?width=28&height=28&mode=crop" class="img-rounded" alt="avatar">
                 </div>
                 <div class="list-item-detail">
                     <form name="frmComment">
@@ -110,134 +114,46 @@
                     </form>
                 </div>
             </div>
-            <div class="comment-item">
-                <div class="avata-genaral-size">
-                    <img src="/img/avatar2.jpg" class="img-rounded" alt="avatar">
-                </div>
-                <div class="list-item-detail">
-                    <div class="list-item-date">Dec 1 at 9:30 PM</div>
-                    <div class="list-item-username">Tom Truong</div>
-                    <div class="list-item-status-content">Have a nice day</div>
-                    <div class="list-item-control">
-                        <a class="button" href="#" title="Báo cáo vi phạm"><i class="fa  fa-warning"></i>Báo cáo vi phạm</a>
+            <div data-bind="foreach : replys">
+                <div class="comment-item">
+                    <div class="avata-genaral-size">
+                        <img src="/img/avatar2.jpg" class="img-rounded" alt="avatar">
                     </div>
-                </div>
-            </div>
-            <div class="comment-item">
-                <div class="avata-genaral-size">
-                    <img src="/img/avatar5.jpg" class="img-rounded" alt="avatar">
-                </div>
-                <div class="list-item-detail">
-                    <div class="list-item-date">Dec 1 at 9:30 PM</div>
-                    <div class="list-item-username">Tom Truong</div>
-                    <div class="list-item-status-content">goodmorning</div>
-                    <div class="list-item-control">
-                        <a class="button" href="#" title="Báo cáo vi phạm"><i class="fa  fa-warning"></i>Báo cáo vi phạm</a>
-                    </div>
-                </div>
-            </div>
-            <div class="comment-item">
-                <div class="avata-genaral-size">
-                    <img src="/img/avatar5.jpg" class="img-rounded" alt="avatar">
-                </div>
-                <div class="list-item-detail">
-                    <div class="list-item-date">Dec 1 at 9:30 PM</div>
-                    <div class="list-item-username">Tom Truong</div>
-                    <div class="list-item-status-content">goodmorning</div>
-                    <div class="list-item-control">
-                        <a class="button" href="#" title="Báo cáo vi phạm"><i class="fa  fa-warning"></i>Báo cáo vi phạm</a>
-                    </div>
-                </div>
-            </div>
-            <div class="comment-item">
-                <div class="avata-genaral-size">
-                    <img src="/img/avatar5.jpg" class="img-rounded" alt="avatar">
-                </div>
-                <div class="list-item-detail">
-                    <div class="list-item-date">Dec 1 at 9:30 PM</div>
-                    <div class="list-item-username">Tom Truong</div>
-                    <div class="list-item-status-content">goodmorning</div>
-                    <div class="list-item-control">
-                        <a class="button" href="#" title="Báo cáo vi phạm"><i class="fa  fa-warning"></i>Báo cáo vi phạm</a>
-                    </div>
-                </div>
-            </div>
-            <div class="comment-item">
-                <div class="avata-genaral-size">
-                    <img src="/img/avatar5.jpg" class="img-rounded" alt="avatar">
-                </div>
-                <div class="list-item-detail">
-                    <div class="list-item-date">Dec 1 at 9:30 PM</div>
-                    <div class="list-item-username">Tom Truong</div>
-                    <div class="list-item-status-content">goodmorning</div>
-                    <div class="list-item-control">
-                        <a class="button" href="#" title="Báo cáo vi phạm"><i class="fa  fa-warning"></i>Báo cáo vi phạm</a>
+                    <div class="list-item-detail">
+                        <div class="list-item-date">Dec 1 at 9:30 PM</div>
+                        <div class="list-item-username" data-bind="text : ReplyByName"></div>
+                        <div class="list-item-status-content" data-bind="html : ReplyMessage">goodmorning</div>
+                        <div class="list-item-control">
+                            <a class="button" href="#" title="Báo cáo vi phạm"><i class="fa  fa-warning"></i>Báo cáo vi phạm</a>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="comment-loadmore">
                 <a href="#">View more in conversation →</a>
             </div>
+            
         </div>
     </div>
+    <hr style="border-color: transparent; display: none; margin-top: 1px; " data-bind=" attr : { class : listCommentIdHr } " />
 </div>
 
-<!-- gia co phieu real time-->
-@*
-    <script type="text/javascript">
-
-        var viewStockModel = {
-
-            CompanyID: ko.observable(),
-            FinishPrice: ko.observable(),
-            Diff: ko.observable(),
-            DiffRate: ko.observable(),
-
-        };
-
-        //var listStock =
-        viewStockModel.ColourChange = ko.pureComputed(function () {
-            return this.Diff() === 0 ? 'YELLOW_Price'
-                : this.Diff() > 0 ? 'GREEN_Price'
-                : 'RED_Price';
-        }, viewStockModel);
-
-        viewStockModel.DiffRateChange = ko.pureComputed(function () {
-            return '(' + ko.unwrap(this.DiffRate) + '%)';
-        }, viewStockModel);
-        // This makes Knockout get to work
-
-
-        $(function () {
-            var ticker = $.connection.StockRealTimeHub;
-
-            function init() {
-
-                ticker.server.getStock('@ViewBag.StockCode').done(function (stock) {
-
-                    viewStockModel.CompanyID(stock.CompanyID).Diff(stock.Diff).DiffRate(stock.DiffRate).FinishPrice(stock.FinishPrice);
-                    ko.applyBindings(viewStockModel, document.getElementById("stockPriceDivId")); // knockout javascript framework bindings
-
-                });
-                ticker.server.joinRoom('@ViewBag.StockCode');
-            }
-
-            ticker.client.updateStockPrice = function (stock) {
-                viewStockModel.CompanyID(stock.CompanyID).Diff(stock.Diff).DiffRate(stock.DiffRate).FinishPrice(stock.FinishPrice);
-
-            }
-
-            $.connection.hub.start().done(init);
-            $.connection.hub.logging = true;
-
-        });
-
-
-    </script>
-*@
 <!-- Comment-->
 
 <script type="text/javascript">
+    //$(":not(.area-center)").click(function () {
+    //    alert('all here');
+    //    //$("*").filter('.list-comment').hide();
+    //    //$("*").filter('hr').hide();
+    //    //self.replys([]);
+    //});
+    ////$('body').click(function () {
+    ////    $('.area-center').hide();
+    ////});
+
+    //$('.area-center').click(function (event) {
+    //    event.stopPropagation();
+    //});
     function getTimeAgo(varDate) {
         if (varDate) {
             return $.timeago(varDate);
@@ -245,6 +161,16 @@
         else {
             return '';
         }
+    }
+    function Reply(data) {
+        var self = this;
+        data = data || {};
+        self.PostId = data.PostId;
+        self.ReplyMessage = ko.observable(data.ReplyMessage || "");
+        self.ReplyByName = data.ReplyByName || "";
+        self.ReplyByAvatar = data.ReplyByAvatar || "";
+        self.ReplyDate = getTimeAgo(data.ReplyDate);
+        
     }
     function Post(data) {
         var self = this;
@@ -257,11 +183,48 @@
         self.PostedDate = getTimeAgo(data.PostedDate);
         self.StockPrimary = data.StockPrimary;
         self.notification = ko.observable(0);
+        self.replys = ko.observableArray();
+        self.listCommentId = 'list-comment' + data.PostId || "";
+        self.listCommentIdHr = 'Hrlist-comment' + data.PostId || "";
 
-        //self.error = ko.observable();
-        //self.hub = hub;
-       
-
+        self.loadNewComments = function () {
+            $("#list-comment" + self.PostId).toggle(20,function () {
+                if ($(this).is(":hidden")) {
+                    self.replys([]);
+                    $(".Hrlist-comment" + self.PostId).hide();
+                    console.log('hide :' + self.replys().length);
+                    // do this
+                } else {
+                    $(".Hrlist-comment" + self.PostId).show();
+                    $.get('@Url.Action("GetCommentByPostId", "FollowStock")',
+                   {
+                       postid: self.PostId,
+                   }, function (data) {
+                       var mappedReply = $.map(ko.utils.parseJson(data), function (item) { return new Reply(item); });
+                       $(mappedReply).each(function (index, element) {
+                           self.replys.push(element);
+                       });
+                   });
+                    console.log('show :' + self.replys().length);
+                }
+                    // do that
+                
+            });           
+            //$(":not(.area-center)").click(function () {
+            //    alert('all here');
+            //        //$("*").filter('.list-comment').hide();
+            //        //$("*").filter('hr').hide();
+            //        //self.replys([]);
+            //});
+          
+            //$(".content-main").click(function () {
+            //    alert('all here');
+            //    //$("*").filter('.list-comment').hide();
+            //    //$("*").filter('hr').hide();
+            //    //self.replys([]);
+            //});
+            
+        }
     }
     var commenthub = $.connection.CommentHub;
     function viewModel() {
@@ -269,7 +232,9 @@
         self.posts = ko.observableArray();
         self.newMessage = ko.observable('$@ViewBag.StockCode ');
         self.error = ko.observable();
-        self.newPosts = ko.observableArray();
+        self.newPosts = ko.observableArray(); // khi luu vao day khi co post moi voi nut thong bao post manual
+
+
         // SignalR related
 
         // Reference the proxy for the hub.
@@ -291,12 +256,12 @@
                 stockCurrent: '@ViewBag.StockCode',
             }, function (data) {
 
-                var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item); });                
+                var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item); });
                 $(mappedPosts).each(function (index, element) {
                     self.posts.push(element);
                 });
-            })              
-            
+            })
+
         }
         self.enablePhimHang = ko.computed(function () {
             return self.newMessage().length <= 140 && self.newMessage().length >= 6;
@@ -338,7 +303,7 @@
             self.newPosts([]);
         }
 
-      
+
 
         self.count = ko.computed(function () {
             var countNum = 140 - self.newMessage().length;
@@ -371,32 +336,7 @@
             })
         };
     }
-    ko.bindingHandlers.singleClick = {
-        init: function (element, e) {
-                $(element).on('click', function (e) {
-                    if ($(e.target).parents('.open').length == 0) {
-                        $('.open').removeClass('open');
-                        $('.list-comment').hide();
-                        if (!$(this).hasClass('btn-answer')) {
-                            $(this).next().show();
-                            $(this).parent('.bg-white').addClass('open');
-                        }
-                        else {
-                            $(this).parent().parent().parent().next().show();
-                            $(this).parent().parent().parent().parent('.bg-white').addClass('open');
-                        }
-                    }
-                    else {
-                        $('.open').removeClass('open');
-                        $('.list-comment').hide();
-                    }
-                }).on('click', 'a,button,input,img', function (e) {
-                    // clicked on descendant div                    
-                    e.stopPropagation();
-                });
-            
-        }
-    };
+
     ko.bindingHandlers.limitCharacters = {
         update: function (element, valueAccessor, allBindingsAccessor, viewModel) {
             element.value = element.value.substr(0, valueAccessor());
@@ -413,7 +353,7 @@
                                 vmPost.init();
                                 tryingToReconnect = true;
                             }).fail(function (fail) {
-                                console.log('Không thể mở kết nối đến server' + fail);                  
+                                console.log('Không thể mở kết nối đến server' + fail);
                             });
 
     $.connection.hub.error(function (error) {
@@ -421,8 +361,8 @@
             $.connection.hub.stop();
             console.log('$.connection.hub.error' + error);
         };
-        
-        
+
+
     });
     $.connection.hub.disconnected(function () {
         setTimeout(function () {
@@ -446,10 +386,10 @@
         //$.connection.hub.stop
         //commenthub.server.stop = function () {
         //    $.connection.hub.stop();
-            
+
         //    console.log('window.onbeforeunload');
         //};
-        
+
     };
 
     $.connection.hub.transportConnectTimeout = 4000;
@@ -483,7 +423,7 @@
     });
     *@
     $.connection.hub.logging = true;
-    
+
 </script>
 
 

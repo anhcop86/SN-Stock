@@ -34,6 +34,7 @@ $(document).ready(function () {
     //    }
     //    e.stopPropagation();
     //});
+
     $(".list-item-status,.btn-answer").on('click',  function (e) {
 		if($(e.target).parents('.open').length == 0){
 			$('.open').removeClass('open');
@@ -55,7 +56,7 @@ $(document).ready(function () {
         // clicked on descendant div                    
         e.stopPropagation();
     });
-    
+
     $("#tab-baiphim").click(function(){
         if(!$(this).hasClass('category-tab-active')){
             $('.category-tab-active').removeClass('category-tab-active');

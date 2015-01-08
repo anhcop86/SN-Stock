@@ -227,6 +227,32 @@ namespace PhimHang.Controllers
             }
         }
 
+        public async Task<dynamic> GetCommentByPostId(long postid)
+        {
+
+            using (db = new testEntities())
+            {
+                var ret = (from reply in await db.PostComments.ToListAsync()
+                           where reply.PostedBy == postid
+                           orderby reply.PostedDate descending
+                           select new
+                           {
+                               ReplyMessage = reply.Message,
+                               //PostedBy = post.PostedBy,
+                               ReplyByName = reply.UserLogin.UserNameCopy,
+                               ReplyByAvatar = "/" + reply.UserLogin.AvataImage,
+                               ReplyDate = reply.PostedDate,
+                               ReplyId = reply.PostCommentsId
+                           }).Take(5).ToArray();
+
+              
+
+                var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
+                return result;
+            }
+
+        }
+
         // GET: /FollowStock/Edit/5
         public async Task<ActionResult> Edit(long? id)
         {
