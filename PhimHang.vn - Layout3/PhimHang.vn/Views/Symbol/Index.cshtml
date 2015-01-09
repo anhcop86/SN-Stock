@@ -191,8 +191,7 @@
             $("#list-comment" + self.PostId).toggle(20,function () {
                 if ($(this).is(":hidden")) {
                     self.replys([]);
-                    $(".Hrlist-comment" + self.PostId).hide();
-                    console.log('hide :' + self.replys().length);
+                    $(".Hrlist-comment" + self.PostId).hide();                    
                     // do this
                 } else {
                     $(".Hrlist-comment" + self.PostId).show();
@@ -205,7 +204,7 @@
                            self.replys.push(element);
                        });
                    });
-                    console.log('show :' + self.replys().length);
+                    
                 }
                     // do that
                 

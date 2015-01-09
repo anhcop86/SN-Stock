@@ -1,0 +1,85 @@
+﻿@using ImageResizer;
+<script src="~/Scripts/jquery.form.js"></script>
+@using (Html.BeginForm("AvataUpload", "Account", FormMethod.Post, new { id = "SubmitformUploadImageAvata", enctype = "multipart/form-data" })) // upload hình phải có thuộc tính này, enctype = "multipart/form-data"
+{
+    <table class="form-table">
+        <tbody>
+            <tr>
+                <th>
+                    <label for="user_avatar">Avatar:</label>
+                </th>
+                <td>
+                    <img id="imgFileName" alt="Default_avatar_medium" src="~/@ViewBag.ImageUrl?width=120&height=120&mode=crop">                                        
+                    <br>
+                    <input id="uploadfileid_avata" name="uploadfileid_avata" type="file">
+                    <br>
+                    <span class="hint">Maximum size of 700 kb. JPG, GIF, or PNG.</span>
+                    <span class="hint">Images will automatically be cropped to a square.</span>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                @*<td><input class="btn btn-default" name="uploadAvataSubmit" style="margin-bottom: 0;" type="submit" value="Upload avata"></td>*@
+                <td><a href="javascript:void(0)" class="btn btn-default" id="uploadAvataSubmit" style="margin-bottom: 0;">Upload Avata</a></td>
+            </tr>
+            
+
+        </tbody>
+    </table>
+}
+
+<div id="progress">
+    <div id="bar"></div>
+    <div id="percent">0%</div>
+</div>
+<br />
+
+<div id="message"></div>
+
+<script type="text/javascript">
+
+    $("a#uploadAvataSubmit").click(function () {
+        alert("heererere");
+        var options = {
+            beforeSend: function () {
+                $("#progress").show();
+                //clear everything
+                $("#bar").width('0%');
+                $("#message").html("");
+                $("#percent").html("0%");
+            },
+            uploadProgress: function (event, position, total, percentComplete) {
+                $("#bar").width(percentComplete + '%');
+                $("#percent").html(percentComplete + '%');
+
+            },
+            success: function () {
+                
+
+            },
+            complete: function (response) {
+                if (response.responseText.indexOf('YES') != -1) {                    
+                    $("#bar").width('100%');
+                    $("#percent").html('100%');
+                    $("#message").html("<font color='green'>" + "Cập nhật Avata thành công" + "</font>");
+                    $("#imgFileName").attr("src", "../" + response.responseText.replace("YES|", "") + "?width=120&height=120&mode=crop");
+                                        
+
+                }
+                else {
+                    $("#progress").hide();
+                    $("#message").html("<font color='red'> " + response.responseText  + "</font>");
+                }
+                
+            },
+            error: function () {
+                $("#message").html("<font color='red'> ERROR: unable to upload files</font>");
+
+            }
+
+        };
+
+        $("form#SubmitformUploadImageAvata").ajaxForm(options).submit();
+    });
+
+</script>

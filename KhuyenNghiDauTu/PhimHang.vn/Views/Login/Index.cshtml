@@ -1,0 +1,48 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<!-- saved from url=(0020)https://imo.im/login -->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style type="text/css">
+    .ng-cloak,.x-ng-cloak,.ng-hide{display:none !important;}ng\:form{display:block;}</style>
+    <!--[if lt IE 9]><script src="/s/assets/lib/html5shiv.d3d35aa8.js"></script><script>
+    document.createElement('input-container');
+    document.createElement('spinner');</script><![endif]-->
+    <title>Register | imo messenger</title>
+    <meta content="Stay in touch with your family and friends with imo&#39;s free text, voice and video chat." name="description">
+    @*<link href="https://plus.google.com/108102764218883471843" id="gplus" rel="publisher">*@
+    <meta content="chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"><!-- fb -->
+ 
+
+    <link href="~/Content/ThirtParty/imo.css" rel="stylesheet" />
+    <script>
+        window.MessageFormat = {};
+        window.MessageFormat.locale = {};
+        window.CountryByIp = "VN";</script>
+    <script src="./Register   imo messenger_files/loader_prod.e3fb5a5c.js"></script>
+    <script src="./Register   imo messenger_files/main.78595e53.js"></script>
+</head><!-- IE8 fix -->
+<body main="" class="ng-scope" style="background-image: url( '/images/Login_Image.jpg');">
+    <!-- Root element of template can't be <body>; see angular issue #1459 --><div id="signup">
+        <div id="aside"><div class="imo-logo-wrapper"></div><h1 class="big-title ng-scope" translate="">Join with millions of people</h1><p class="subtitle ng-scope" translate="">Join millions of people using imo for free messaging, voice and video calls.</p></div><div id="login-register-container" register-login="">
+            <div class="header"><a href="/Register" class="tab register" ng-click="selectTab(REGISTER)" ng-class="{selected: selectedForm == REGISTER}" translate="">Register</a><a href="/Login" class=" tab login selected" ng-click="selectTab(LOGIN)" ng-class="{selected: selectedForm == LOGIN}" translate="">login</a></div><!-- ngIf: selectedForm == LOGIN --><login ng-if="selectedForm == LOGIN" class="ng-scope">
+                <form action="./Register   imo messenger_files/Register   imo messenger.html" method="post" id="login" validate="" novalidate="" class="ng-pristine ng-valid">
+                    <div class="info ng-scope ng-hide" translate="" ng-show="params.jg">
+                        Enter your imo Network account information. Then, sign into the app to
+                        start chatting with the group!
+                    </div><div ng-show="reason == &#39;uidpassword&#39;" class="global-error fancy-global-error ng-scope ng-hide" translate="">Invalid username or password.</div><div ng-show="reason == &#39;empty_country&#39;" class="global-error fancy-global-error ng-scope ng-hide" translate="">Please select your country</div><input type="hidden" name="phone_cc" value="VN"><validated-input class="phone fancy-input-container phone-field-with-country-code input-container ng-pristine ng-valid" placeholder="placeholder.phone"><label class="input-placeholder-wrapper"><input type="text" name="phone" class="fancy-input ng-pristine ng-valid" placeholder-attr="Mobile Phone Number" ng-model="phone_info.phone" ng-class="{error: showError(undefined.phone.$error)}" placeholder="Mobile Phone Number"></label><div class="error validated-input-error ng-binding ng-hide" ng-show="showError(undefined.phone.$error)"></div></validated-input><validated-input class="password fancy-input-container input-container ng-pristine ng-valid" placeholder="placeholder.password"><label class="input-placeholder-wrapper"><input type="password" name="password" class="fancy-input ng-pristine ng-valid" placeholder-attr="Password" ng-model="models.password" ng-class="{error: showError(undefined.password.$error)}" placeholder="Password"></label><div class="error validated-input-error ng-binding ng-hide" ng-show="showError(undefined.password.$error)"></div></validated-input><input type="hidden" name="trackId" value=""><input class="action-button fancy-button green big" type="submit" value="Login">
+                </form>
+            </login><!-- end ngIf: selectedForm == LOGIN --><!-- ngIf: selectedForm == REGISTER --><modals class="ng-scope"></modals>
+        </div>@*<div language-dropdown="" class="language-select">
+            <language-picker>
+                <select ng-model="language" ng-options="val[0] as val[1] for val in languages | alphabetize" ng-change="language_change()" class="ng-pristine ng-valid"><option value="0">Afrikaans</option><option value="1">Amharic (Ethiopia)</option><option value="2">Arabic</option><option value="3">Belarusian</option><option value="4">Bulgarian</option><option value="5">Chinese (Simplified)</option><option value="6">Chinese (Traditional)</option><option value="7">Croatian</option><option value="8">Czech</option><option value="9">Danish</option><option value="10">Dutch</option><option value="11" selected="selected">English</option><option value="12">Estonian</option><option value="13">Finnish</option><option value="14">French</option><option value="15">German</option><option value="16">Greek</option><option value="17">Hebrew</option><option value="18">Hindi</option><option value="19">Hungarian</option><option value="20">Indonesian</option><option value="21">Italian</option><option value="22">Japanese</option><option value="23">Korean</option><option value="24">Latvian</option><option value="25">Lithuanian</option><option value="26">Malay (Malaysia)</option><option value="27">Norwegian</option><option value="28">Persian (Iran)</option><option value="29">Polish (Poland)</option><option value="30">Portuguese (Brazil)</option><option value="31">Portuguese (Portugal)</option><option value="32">Romanian</option><option value="33">Russian</option><option value="34">Serbian</option><option value="35">Slovak</option><option value="36">Slovenian</option><option value="37">Spanish (Latin America)</option><option value="38">Spanish (Spain)</option><option value="39">Swahili</option><option value="40">Swedish</option><option value="41">Tagalog</option><option value="42">Thai</option><option value="43">Turkish</option><option value="44">Ukrainian</option><option value="45">Vietnamese</option><option value="46">Zulu</option></select>
+            </language-picker>
+        </div>*@
+    </div>
+</body>
+</html>
