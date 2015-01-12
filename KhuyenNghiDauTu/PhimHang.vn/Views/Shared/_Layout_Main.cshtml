@@ -35,6 +35,8 @@
     <!-- END: load jquery -->    
     <script src="~/DetailTheme/js/tiny-mce/plugins/table/js/table.js"></script>
     <script src="/DetailTheme/js/setup.js" type="text/javascript"></script>
+   
+    <!-- /TinyMCE -->
     <script type="text/javascript">
 
         $(document).ready(function () {
@@ -46,6 +48,29 @@
 
         });
     </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            setupTinyMCE();
+            setupProgressbar('progress-bar');
+            setDatePicker('date-picker');
+            setupDialogBox('dialog', 'opener');
+            $('input[type="checkbox"]').fancybutton();
+            $('input[type="radio"]').fancybutton();
+        });
+    </script>
+    <!-- /TinyMCE -->
+    <style type="text/css">
+        #progress-bar {
+            width: 400px;
+        }
+    </style>
+
+
+
+
+
+
 
     <!-- End For desgin-->
 </head>
@@ -86,8 +111,8 @@
          </div>
          <div class="grid_12">
              <ul class="nav main">
-                 <li class="ic-dashboard"><a href="dashboard.html"><span>Dashboard</span></a> </li>
-                 <li class="ic-form-style">
+                 <li class="ic-dashboard"><a href="/"><span>Dashboard</span></a> </li>
+                 @*<li class="ic-form-style">
                      <a href="javascript:"><span>Controls</span></a>
                      <ul>
                          <li><a href="form-controls.html">Forms</a> </li>
@@ -98,17 +123,19 @@
                  </li>
                  <li class="ic-typography"><a href="typography.html"><span>Typography</span></a></li>
                  <li class="ic-charts"><a href="charts.html"><span>Charts & Graphs</span></a></li>
-                 <li class="ic-grid-tables"><a href="table.html"><span>Data Table</span></a></li>
-                 <li class="ic-gallery dd">
-                     <a href="javascript:"><span>Image Galleries</span></a>
-                     <ul>
-                         <li><a href="image-gallery.html">Pretty Photo</a> </li>
-                         <li><a href="gallery-with-filter.html">Gallery with Filter</a> </li>
-                     </ul>
-                 </li>
-                 <li class="ic-notifications"><a href="notifications.html"><span>Notifications</span></a></li>
-
+                 <li class="ic-grid-tables"><a href="table.html"><span>Data Table</span></a></li>*@
+                 @*<li class="ic-gallery dd">
+                <a href="javascript:"><span>Image Galleries</span></a>
+                <ul>
+                    <li><a href="image-gallery.html">Pretty Photo</a> </li>
+                    <li><a href="gallery-with-filter.html">Gallery with Filter</a> </li>
+                </ul>
+            </li>*@
+                 @*<li class="ic-notifications"><a href="notifications.html"><span>Notifications</span></a></li>*@
+                 <li class="ic-form-style"><a href="/Recommendation/Create"><span>KN MUA</span></a> </li>
+                 <li class="ic-form-style"><a href="/Recommendation/Create"><span>KN BÁN</span></a> </li>
              </ul>
+
          </div>
          <div class="clear">
          </div>
@@ -117,45 +144,45 @@
                  <div class="block" id="section-menu">
                      <ul class="section menu">
                          <li>
-                             <a class="menuitem">Menu 1</a>
+                             <a class="menuitem">Báo cáo</a>
                              <ul class="submenu">
-                                 <li><a>Submenu 1</a> </li>
-                                 <li><a>Submenu 2</a> </li>
-                                 <li><a class="active">Submenu 3</a> </li>
+                                 <li><a class="active">Theo nhân viên</a> </li>
+                                 <li><a>Theo mã</a> </li>
+                                 @*<li><a class="active">Submenu 3</a> </li>
                                  <li><a>Submenu 4</a> </li>
-                                 <li><a>Submenu 5</a> </li>
+                                 <li><a>Submenu 5</a> </li>*@
                              </ul>
                          </li>
-                         <li>
-                             <a class="menuitem">Menu 2</a>
-                             <ul class="submenu">
-                                 <li><a>Submenu 1</a> </li>
-                                 <li><a>Submenu 2</a> </li>
-                                 <li><a>Submenu 3</a> </li>
-                                 <li><a>Submenu 4</a> </li>
-                                 <li><a>Submenu 5</a> </li>
-                             </ul>
-                         </li>
-                         <li>
-                             <a class="menuitem">Menu 3</a>
-                             <ul class="submenu">
-                                 <li><a>Submenu 1</a> </li>
-                                 <li><a>Submenu 2</a> </li>
-                                 <li><a>Submenu 3</a> </li>
-                                 <li><a>Submenu 4</a> </li>
-                                 <li><a>Submenu 5</a> </li>
-                             </ul>
-                         </li>
-                         <li>
-                             <a class="menuitem">Menu 4</a>
-                             <ul class="submenu">
-                                 <li><a>Submenu 1</a> </li>
-                                 <li><a>Submenu 2</a> </li>
-                                 <li><a>Submenu 3</a> </li>
-                                 <li><a>Submenu 4</a> </li>
-                                 <li><a>Submenu 5</a> </li>
-                             </ul>
-                         </li>
+                         @*<li>
+        <a class="menuitem">Menu 2</a>
+        <ul class="submenu">
+            <li><a>Submenu 1</a> </li>
+            <li><a>Submenu 2</a> </li>
+            <li><a>Submenu 3</a> </li>
+            <li><a>Submenu 4</a> </li>
+            <li><a>Submenu 5</a> </li>
+        </ul>
+    </li>
+    <li>
+        <a class="menuitem">Menu 3</a>
+        <ul class="submenu">
+            <li><a>Submenu 1</a> </li>
+            <li><a>Submenu 2</a> </li>
+            <li><a>Submenu 3</a> </li>
+            <li><a>Submenu 4</a> </li>
+            <li><a>Submenu 5</a> </li>
+        </ul>
+    </li>
+    <li>
+        <a class="menuitem">Menu 4</a>
+        <ul class="submenu">
+            <li><a>Submenu 1</a> </li>
+            <li><a>Submenu 2</a> </li>
+            <li><a>Submenu 3</a> </li>
+            <li><a>Submenu 4</a> </li>
+            <li><a>Submenu 5</a> </li>
+        </ul>
+    </li>*@
                      </ul>
                  </div>
              </div>

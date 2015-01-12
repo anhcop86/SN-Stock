@@ -691,6 +691,7 @@ img.right
 	width: 40%;
 	float: left;
 	margin-bottom: 1em;
+    display:none;
 }
 
 .dataTables_filter {
@@ -698,6 +699,7 @@ img.right
 	float: right;
 	text-align: right;
 	margin-bottom: 1em;
+    display:none;
 }
 
 .dataTables_info {

@@ -244,6 +244,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RecommendationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1244,6 +1245,11 @@
     <Content Include="Views\Shared\_Partial_Area_MenuBar_User.cshtml" />
     <Content Include="Views\Shared\_Layout_Reply_Ad.cshtml" />
     <Content Include="Views\Shared\_Layout_Main.cshtml" />
+    <Content Include="Views\Recommendation\Create.cshtml" />
+    <Content Include="Views\Recommendation\Delete.cshtml" />
+    <Content Include="Views\Recommendation\Details.cshtml" />
+    <Content Include="Views\Recommendation\Edit.cshtml" />
+    <Content Include="Views\Recommendation\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

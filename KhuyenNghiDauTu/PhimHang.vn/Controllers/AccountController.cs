@@ -19,16 +19,18 @@ namespace PhimHang.Controllers
     {
         private const string ImageURLAvata = "images/avatar/";
         private const string ImageURLCover = "images/cover/";
-       
-         
+                
          public AccountController()
              : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
          {
+             
          }
+
         public AccountController( UserManager<ApplicationUser> userManager)
         {
             
             UserManager = userManager;
+            UserManager.UserValidator = new UserValidator<ApplicationUser>(UserManager) { AllowOnlyAlphanumericUserNames = false };
         }
         public UserManager<ApplicationUser> UserManager { get; private set; }
 
@@ -96,13 +98,13 @@ namespace PhimHang.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.UserName,
+                var user = new ApplicationUser() { UserName = model.UserName.Replace(" ","").Trim(),
                                                     //AvataImage = "default_avatar_medium.jpg",
                                                      //FullName = model.FullName,
                                                      //   CreatedDate = DateTime.Now,
                                                      //   Verify = Verify.NO
                 };
-                user.UserExtentLogin = new UserExtentLogin { KeyLogin = user.Id, CreatedDate = DateTime.Now, FullName = model.FullName, Verify = Verify.NO, UserNameCopy = model.UserName };
+                user.UserExtentLogin = new UserExtentLogin { KeyLogin = user.Id, CreatedDate = DateTime.Now, FullName = model.FullName, Verify = Verify.NO, UserNameCopy = model.UserName.Replace(" ", "").Trim() };
                 
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
