@@ -1,27 +1,33 @@
-﻿@model IEnumerable<PhimHang.Models.RecommendStock>
+﻿@*@model IEnumerable<PhimHang.Models.RecommendStock>*@
 @{
     ViewBag.Title = "Danh sách khuyến nghị khách hàng";
     Layout = "~/Views/Shared/_Layout_Main.cshtml";
 }
+@model PagedList.IPagedList<PhimHang.Models.RecommendStock>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 <h2>
-    Danh mục khuyến nghị mua & bán
+    Danh mục khuyến nghị mua & bán    
 </h2>
 <div id="example_length" class="dataTables_length1">
     <table class="form">
+@using (Html.BeginForm("", "Home", FormMethod.Get))
+{
         <tr>
             <td><b>Ngày:</b></td>
-            <td><input class="col2" type="text" id="grumble" /></td>
-            <td><b>Mã:</b></td>
-            <td><input type="text" id="grumble" /></td>
+            <td><input type="text" value="" id="datetimepicker" /></td>
+            <td><b>Mã:</b></td>            
+            <td>@Html.TextBox("stockCode", ViewBag.stockCode as string)</td>
             <td><b>Người khuyến nghị:</b></td>
-            <td>@Html.DropDownList("select", @ViewBag.listUserId as SelectList, String.Empty, new { @name = "select" })</td>
+            <td>@Html.DropDownList("postBy", @ViewBag.listUserId as SelectList, String.Empty, new { @name = "select" })</td>
             <td><b>Loại:</b></td>
-            <td>@Html.DropDownList("select", @ViewBag.listTypeRecomendation as SelectList, String.Empty, new { @name = "select" })</td>
+            <td>@Html.DropDownList("recommentType", @ViewBag.listTypeRecomendation as SelectList, String.Empty, new { @name = "select" })</td>
             <td></td>
             <td><input type="submit" value="Tìm kiếm" class="btn btn-blue"></td>
             
         </tr>
+}
         </table>
 </div>
 <div class="block">    
@@ -60,8 +66,28 @@
 }
         </tbody>
     </table>
+    <br />
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+                                                    new { page, postBy = ViewBag.postBy, recommentType = ViewBag.recommentType, stockCode = ViewBag.stockCode }))
 
 
 </div>
+
+
+<link href="~/DetailTheme/css/jquery.datetimepicker.css" rel="stylesheet" />
+<script src="~/DetailTheme/js/jquery.datetimepicker.js"></script>
+
+<script type="text/javascript">
+    //window.onerror = function(errorMsg) {
+    //    $('#console').html($('#console').html()+'<br>'+errorMsg)
+    //}
+    $(function () {
+        $("#datepicker").datepicker();
+
+    });
+    
+
+</script>
 

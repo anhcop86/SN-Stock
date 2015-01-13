@@ -703,9 +703,10 @@ img.right
 }
 
 .dataTables_info {
-	width: 60%;
+	/*width: 60%;
 	float: left;
-	margin-top: 1em; 
+	margin-top: 1em;*/ 
+    display:none;
 }
 
 .dataTables_paginate {
@@ -713,6 +714,7 @@ img.right
 	float: right;
 	text-align: right;
 	margin-top: 1em; 
+    display:none;
 }
 
 /* Pagination nested */

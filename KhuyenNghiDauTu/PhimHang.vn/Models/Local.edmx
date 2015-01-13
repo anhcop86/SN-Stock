@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DatabaseLocal.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DatabaseLocal.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6002: The table/view 'KNDT.dbo.Comments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Comments">
@@ -34,6 +34,13 @@ warning 6002: The table/view 'KNDT.dbo.Comments' does not have a primary key def
           <Property Name="Description" Type="nvarchar" MaxLength="1024" />
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="PostBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StockCode" Type="varchar" MaxLength="16" Nullable="false" />
         </EntityType>
         <EntityType Name="UserLogins">
           <Key>
@@ -91,6 +98,7 @@ warning 6002: The table/view 'KNDT.dbo.Comments' does not have a primary key def
         </Association>
         <EntityContainer Name="DatabaseLocalStoreContainer">
           <EntitySet Name="RecommendStock" EntityType="Self.RecommendStock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stock" EntityType="Self.Stock" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserLogins" EntityType="Self.UserLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comments" EntityType="Self.Comments" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -114,8 +122,7 @@ warning 6002: The table/view 'KNDT.dbo.Comments' does not have a primary key def
             <End Role="RecommendStock" EntitySet="RecommendStock" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DatabaseLocal" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -223,7 +230,15 @@ warning 6002: The table/view 'KNDT.dbo.Comments' does not have a primary key def
             <End Role="UserLogins" EntitySet="UserLogins" />
             <End Role="Comments" EntitySet="Comments" />
           </AssociationSet>
+          <EntitySet Name="Stocks" EntityType="DatabaseLocal.Stock" />
         </EntityContainer>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StockCode" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -272,6 +287,14 @@ warning 6002: The table/view 'KNDT.dbo.Comments' does not have a primary key def
                 <ScalarProperty Name="PostedBy" ColumnName="PostedBy" />
                 <ScalarProperty Name="CommentBy" ColumnName="CommentBy" />
                 <ScalarProperty Name="PostedDate" ColumnName="PostedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stocks">
+            <EntityTypeMapping TypeName="DatabaseLocal.Stock">
+              <MappingFragment StoreEntitySet="Stock">
+                <ScalarProperty Name="StockCode" ColumnName="StockCode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

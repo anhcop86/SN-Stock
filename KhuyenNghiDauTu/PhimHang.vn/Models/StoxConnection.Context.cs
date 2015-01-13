@@ -13,10 +13,10 @@ namespace PhimHang.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class KNDTLocalConnection : DbContext
+    public partial class StoxDataEntities : DbContext
     {
-        public KNDTLocalConnection()
-            : base("name=KNDTLocalConnection")
+        public StoxDataEntities()
+            : base("name=StoxDataEntities")
         {
         }
     
@@ -25,9 +25,6 @@ namespace PhimHang.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<RecommendStock> RecommendStocks { get; set; }
-        public virtual DbSet<UserLogin> UserLogins { get; set; }
-        public virtual DbSet<Comment> Comments { get; set; }
-        public virtual DbSet<Stock> Stocks { get; set; }
+        public virtual DbSet<stox_tb_Company> stox_tb_Company { get; set; }
     }
 }

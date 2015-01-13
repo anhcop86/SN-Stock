@@ -8,6 +8,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PhimHang.Models;
+using PagedList;
+using System.Data.Entity;
 
 namespace PhimHang.Controllers
 {
@@ -15,31 +17,66 @@ namespace PhimHang.Controllers
     public class HomeController : Controller
     {
         private KNDTLocalConnection db = new KNDTLocalConnection();
+        private StoxDataEntities dbstox = new StoxDataEntities();
 
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(int? page, int? postBy, string recommentType, string stockCode)
         {
-            //return RedirectToAction("Login", "Account");
-            
-                LoadInit();
-                var recommendstocks = db.RecommendStocks.Include(r => r.UserLogin);
-                return View(await recommendstocks.ToListAsync());
-            
+            if (postBy == null)
+            {                
+                postBy = 0;
+            }
+            if (string.IsNullOrWhiteSpace(recommentType))
+            {
+                recommentType = "ALL";
+            }
+
+            if (string.IsNullOrWhiteSpace(stockCode))
+            {
+                stockCode = "ALL";
+            }
+
+            ViewBag.postBy = postBy;
+            ViewBag.recommentType = recommentType;
+            ViewBag.stockCode = stockCode;
+            LoadInit();
+
+            var recommendstocks = from r in db.RecommendStocks.Include(r => r.UserLogin)
+                                  orderby r.CreatedDate
+                                  where (r.PostBy == postBy || 0 == postBy)
+                                  && (r.TYPERecommend == recommentType || "ALL" == recommentType)
+                                  && (r.StockCode.Contains(stockCode) || "ALL"  == stockCode)
+                                  select r;
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+            return View(recommendstocks.ToPagedList(pageNumber, pageSize));
+
             //return View();
         }
 
-        private void LoadInit()
+        private async Task LoadInit()
         {
-            
-                ViewBag.listUserId = new SelectList(db.UserLogins, "Id", "UserNameCopy");
+            //var listStock = (from s in dbstox.stox_tb_Company.ToList()
+            //                 orderby s.Ticker
+            //                 where s.ExchangeID == 0
+            //                 select new
+            //                 {
+            //                     Ticker = s.Ticker
+            //                 }).ToList();
 
-                var listTypeRecomendation = new List<dynamic>
+            //ViewBag.listStock = new SelectList(listStock, "Ticker", "Ticker");
+
+
+            ViewBag.listUserId = new SelectList(db.UserLogins, "Id", "UserNameCopy");
+
+            var listTypeRecomendation = new List<dynamic>
                     { 
                         new { Id = "MUA", Name = "MUA" },
                         new { Id = "BAN", Name = "BÁN" } 
                     }.ToList();
 
-                ViewBag.listTypeRecomendation = new SelectList(listTypeRecomendation, "Id", "Name");
-            
+            ViewBag.listTypeRecomendation = new SelectList(listTypeRecomendation, "Id", "Name");
+
         }
 
         public ActionResult About()

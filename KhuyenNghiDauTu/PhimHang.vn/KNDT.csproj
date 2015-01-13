@@ -273,6 +273,27 @@
     <Compile Include="Models\RecommendStock.cs">
       <DependentUpon>Local.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Stock.cs">
+      <DependentUpon>Local.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StoxConnection.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StoxConnection.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StoxConnection.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StoxConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StoxConnection.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StoxConnection.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\stox_tb_Company.cs">
+      <DependentUpon>StoxConnection.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserLogin.cs">
       <DependentUpon>Local.tt</DependentUpon>
     </Compile>
@@ -302,6 +323,7 @@
     <Content Include="DetailTheme\css\grumble\grumble.min.css" />
     <Content Include="DetailTheme\css\ie.css" />
     <Content Include="DetailTheme\css\ie6.css" />
+    <Content Include="DetailTheme\css\jquery.datetimepicker.css" />
     <Content Include="DetailTheme\css\jquery.jqplot.min.css" />
     <Content Include="DetailTheme\css\layout.css" />
     <Content Include="DetailTheme\css\nav.css" />
@@ -683,6 +705,8 @@
     <Content Include="DetailTheme\js\jquery-ui\jquery.ui.sortable.min.js" />
     <Content Include="DetailTheme\js\jquery-ui\jquery.ui.tabs.min.js" />
     <Content Include="DetailTheme\js\jquery-ui\jquery.ui.widget.min.js" />
+    <Content Include="DetailTheme\js\jquery.datetimepicker.js" />
+    <Content Include="DetailTheme\js\jquery.js" />
     <Content Include="DetailTheme\js\popup\jquery.facebox.js" />
     <Content Include="DetailTheme\js\pretty-photo\jquery.prettyPhoto.js" />
     <Content Include="DetailTheme\js\quick-sand\jquery.quicksand.js" />
@@ -1139,6 +1163,23 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Local.edmx</DependentUpon>
       <LastGenOutput>Local.cs</LastGenOutput>
+    </Content>
+    <EntityDeploy Include="Models\StoxConnection.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>StoxConnection.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\StoxConnection.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StoxConnection.edmx</DependentUpon>
+      <LastGenOutput>StoxConnection.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\StoxConnection.edmx.diagram">
+      <DependentUpon>StoxConnection.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\StoxConnection.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StoxConnection.edmx</DependentUpon>
+      <LastGenOutput>StoxConnection.cs</LastGenOutput>
     </Content>
     <None Include="Properties\PublishProfiles\phimhang o nha.pubxml" />
     <None Include="Properties\PublishProfiles\phimhang.pubxml" />

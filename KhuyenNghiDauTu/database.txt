@@ -17,3 +17,9 @@ CREATE TABLE [Comments](
 	[CommentBy] [int] NOT NULL,
 	[PostedDate] [datetime2](7) NOT NULL
 	)
+
+
+CREATE TABLE [Stock](
+	[ID] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	[StockCode] [varchar](16) NOT NULL
+)
