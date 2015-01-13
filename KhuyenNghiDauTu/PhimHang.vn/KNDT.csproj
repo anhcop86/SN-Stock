@@ -301,11 +301,15 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome\css\font-awesome.css" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\jquery.datetimepicker.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Profile.css" />
     <Content Include="Content\StockPrice.css" />
@@ -315,6 +319,16 @@
     <Content Include="Content\ThirtParty\imo.css" />
     <Content Include="Content\walt_disney\license.txt" />
     <Content Include="Content\walt_disney\waltograph.txt" />
+    <Content Include="datetimepicker-master\.gitignore" />
+    <Content Include="datetimepicker-master\index.html" />
+    <Content Include="datetimepicker-master\jquery.datetimepicker.css" />
+    <Content Include="datetimepicker-master\jquery.datetimepicker.js" />
+    <Content Include="datetimepicker-master\jquery.js" />
+    <Content Include="datetimepicker-master\MIT-LICENSE.txt" />
+    <Content Include="datetimepicker-master\screen\1.png" />
+    <Content Include="datetimepicker-master\screen\2.png" />
+    <Content Include="datetimepicker-master\screen\3.1.png" />
+    <Content Include="datetimepicker-master\screen\3.png" />
     <Content Include="DetailTheme\css\960.css" />
     <Content Include="DetailTheme\css\facebox.css" />
     <Content Include="DetailTheme\css\fancy-button\fancy-button.css" />
@@ -1103,6 +1117,7 @@
     <Content Include="LoginTheme\js\jquery\jquery.usermode.js" />
     <Content Include="LoginTheme\js\jquery\ui.checkbox.js" />
     <Content Include="LoginTheme\js\jquery\ui.core.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.eot" />
@@ -1181,6 +1196,13 @@
       <DependentUpon>StoxConnection.edmx</DependentUpon>
       <LastGenOutput>StoxConnection.cs</LastGenOutput>
     </Content>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="datetimepicker-master\bower.json" />
+    <Content Include="datetimepicker-master\datetimepicker.jquery.json" />
+    <Content Include="datetimepicker-master\package.json" />
+    <Content Include="datetimepicker-master\README.md" />
     <None Include="Properties\PublishProfiles\phimhang o nha.pubxml" />
     <None Include="Properties\PublishProfiles\phimhang.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -1213,7 +1235,9 @@
     <Content Include="Scripts\jquery-ui\jquery-ui.theme.css" />
     <Content Include="Scripts\jquery-ui\jquery-ui.theme.min.css" />
     <Content Include="Scripts\jquery.autosize-min.js" />
+    <Content Include="Scripts\jquery.datetimepicker.js" />
     <Content Include="Scripts\jquery.form.js" />
+    <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\jquery.signalR-2.1.2.js" />
     <Content Include="Scripts\jquery.signalR-2.1.2.min.js" />
     <Content Include="Scripts\jquery.timeago.js" />
@@ -1299,9 +1323,6 @@
     <Folder Include="images\chart\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
