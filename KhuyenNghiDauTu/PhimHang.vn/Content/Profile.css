@@ -1,0 +1,72 @@
+﻿.form-table {
+    border-collapse: collapse;
+}
+    .form-table td, .form-table th {
+        padding: 0 30px 25px 0;
+        position: relative;
+        vertical-align: top;
+    }
+    .form-table th {
+        text-align: left;
+        padding-top: 3px;
+        width: 115px;
+    }
+    .form-table tr.bottom {
+        border-top: 1px solid #cdcdcd;
+    }
+    .form-table tr.bottom td {
+        padding-top: 20px;
+    }
+    .form-table tr.bottom-2 td {
+        padding-bottom: 50px;
+    }
+
+    .form-table #user_avatar{
+        padding-top:10px;
+    }
+
+    
+    #progress {
+        position: relative;
+        width: 400px;
+        border: 1px solid #ddd;
+        padding: 1px;
+        border-radius: 3px;
+    }
+
+    #bar {
+        background-color: #B4F5B4;
+        width: 0%;
+        height: 20px;
+        border-radius: 3px;
+    }
+
+    #percent {
+        position: absolute;
+        display: inline-block;
+        top: 3px;
+        left: 48%;
+    }
+
+    #progress_cover {
+        position: relative;
+        width: 400px;
+        border: 1px solid #ddd;
+        padding: 1px;
+        border-radius: 3px;
+    }
+
+    #bar_cover {
+        background-color: #B4F5B4;
+        width: 0%;
+        height: 20px;
+        border-radius: 3px;
+    }
+
+    #percent_cover {
+        position: absolute;
+        display: inline-block;
+        top: 3px;
+        left: 48%;
+    }
+
