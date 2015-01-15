@@ -811,7 +811,7 @@ body .ui-tooltip {
 	border: 1px solid #ffffff;
 	background: #1B75BB  50% 50% repeat-x;
 	color: #ffffff;
-	font-weight: bold;
+/*	font-weight: bold; */
 }
 .ui-widget-header a {
 	color: #ffffff;

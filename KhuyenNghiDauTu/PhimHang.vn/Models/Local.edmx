@@ -32,15 +32,8 @@ warning 6002: The table/view 'KNDT.dbo.Comments' does not have a primary key def
           <Property Name="StockHoldingTime" Type="int" />
           <Property Name="TargetSell" Type="numeric" Precision="18" Scale="1" />
           <Property Name="Description" Type="nvarchar" MaxLength="1024" />
-          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="PostBy" Type="int" />
-        </EntityType>
-        <EntityType Name="Stock">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="StockCode" Type="varchar" MaxLength="16" Nullable="false" />
         </EntityType>
         <EntityType Name="UserLogins">
           <Key>
@@ -98,7 +91,6 @@ warning 6002: The table/view 'KNDT.dbo.Comments' does not have a primary key def
         </Association>
         <EntityContainer Name="DatabaseLocalStoreContainer">
           <EntitySet Name="RecommendStock" EntityType="Self.RecommendStock" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Stock" EntityType="Self.Stock" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserLogins" EntityType="Self.UserLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comments" EntityType="Self.Comments" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -137,7 +129,7 @@ warning 6002: The table/view 'KNDT.dbo.Comments' does not have a primary key def
           <Property Name="StockHoldingTime" Type="Int32" />
           <Property Name="TargetSell" Type="Decimal" Precision="18" Scale="1" />
           <Property Name="Description" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="PostBy" Type="Int32" />
           <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_RecommendStock" FromRole="RecommendStock" ToRole="Comments" />
           <NavigationProperty Name="UserLogin" Relationship="Self.FK_RecommendStock_UserLogins" FromRole="RecommendStock" ToRole="UserLogins" />
@@ -230,15 +222,7 @@ warning 6002: The table/view 'KNDT.dbo.Comments' does not have a primary key def
             <End Role="UserLogins" EntitySet="UserLogins" />
             <End Role="Comments" EntitySet="Comments" />
           </AssociationSet>
-          <EntitySet Name="Stocks" EntityType="DatabaseLocal.Stock" />
         </EntityContainer>
-        <EntityType Name="Stock">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StockCode" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -287,14 +271,6 @@ warning 6002: The table/view 'KNDT.dbo.Comments' does not have a primary key def
                 <ScalarProperty Name="PostedBy" ColumnName="PostedBy" />
                 <ScalarProperty Name="CommentBy" ColumnName="CommentBy" />
                 <ScalarProperty Name="PostedDate" ColumnName="PostedDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Stocks">
-            <EntityTypeMapping TypeName="DatabaseLocal.Stock">
-              <MappingFragment StoreEntitySet="Stock">
-                <ScalarProperty Name="StockCode" ColumnName="StockCode" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

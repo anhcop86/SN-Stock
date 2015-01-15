@@ -8,86 +8,92 @@
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 <h2>
-    Danh mục khuyến nghị mua & bán    
+    Danh mục khuyến nghị mua & bán
 </h2>
 <div id="example_length" class="dataTables_length1">
     <table class="form">
-@using (Html.BeginForm("", "Home", FormMethod.Get))
-{
-        <tr>
-            <td><b>Ngày:</b></td>
-            <td><input type="text" value="" id="datetimepicker" /></td>
-            <td><b>Mã:</b></td>            
-            <td>@Html.TextBox("stockCode", ViewBag.stockCode as string)</td>
-            <td><b>Người khuyến nghị:</b></td>
-            <td>@Html.DropDownList("postBy", @ViewBag.listUserId as SelectList, String.Empty, new { @name = "select" })</td>
-            <td><b>Loại:</b></td>
-            <td>@Html.DropDownList("recommentType", @ViewBag.listTypeRecomendation as SelectList, String.Empty, new { @name = "select" })</td>
-            <td></td>
-            <td><input type="submit" value="Tìm kiếm" class="btn btn-blue"></td>
-            
-        </tr>
-}
-        </table>
-</div>
-<div class="block">    
-    <table class="data display datatable" id="example">
-        <thead>
+        @using (Html.BeginForm("", "Home", FormMethod.Get))
+        {
             <tr>
-                <th>Ngày</th>
-                <th>Mã</th>
-                <th>Người khuyến nghị</th>
-                <th>Loại</th>
-                <th>Tổng bình luận</th>
-                <th></th>
+                <td><b>Ngày:</b></td>
+                <td><input type="text" value="@ViewBag.datefilter" id="datetimepicker" name="dateFilter" /></td>
+                <td><b>Mã:</b></td>
+                <td>@Html.TextBox("stockCode", ViewBag.stockCode as string)</td>
+                <td><b>Người khuyến nghị:</b></td>
+                <td>@Html.DropDownList("postBy", @ViewBag.listUserId as SelectList, String.Empty, new { @name = "select" })</td>
+                <td><b>Loại:</b></td>
+                <td>@Html.DropDownList("recommentType", @ViewBag.listTypeRecomendation as SelectList, String.Empty, new { @name = "select" })</td>
+                <td></td>
+                <td><input type="submit" value="Tìm kiếm" class="btn btn-blue"></td>
+
             </tr>
-        </thead>
-        <tbody>
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StockCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserLogin.UserNameCopy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TYPERecommend)
-        </td>
-        <td>
-            20
-        </td>
-        <td><a style="color: #328AC5" href="#">chi tiết</a></td>
-    </tr>
-}
-        </tbody>
+        }
     </table>
-    <br />
-    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-
-    @Html.PagedListPager(Model, page => Url.Action("Index",
-                                                    new { page, postBy = ViewBag.postBy, recommentType = ViewBag.recommentType, stockCode = ViewBag.stockCode }))
-
-
 </div>
+<div id="mainContent">
+    <fieldset>
+        <div class="Table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ngày</th>
+                        <th>Mã</th>
+                        <th>Người khuyến nghị</th>
+                        <th>Loại</th>
+                        <th>Tổng bình luận</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.CreatedDate.ToString("dd/MM/yyyy")
+                            </td>
+                            <td style="font-weight: bold; color: #328AC5">
+                                @Html.DisplayFor(modelItem => item.StockCode)
+                            </td>
+                            <td>
+                                
+                                <a href="/Broker?postBy=@item.UserLogin.Id">@item.UserLogin.UserNameCopy</a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TYPERecommend)
+                            </td>
+                            <td>
+                                20
+                            </td>
+                            <td><a style="color: #328AC5" href="#">chi tiết</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <br />
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+            @Html.PagedListPager(Model, 
+                                page => Url.Action("Index", new { page, postBy = ViewBag.postBy, recommentType = ViewBag.recommentType, stockCode = ViewBag.stockCode, dateFilter = ViewBag.datefilter }))
 
 
-<link href="~/DetailTheme/css/jquery.datetimepicker.css" rel="stylesheet" />
-<script src="~/DetailTheme/js/jquery.datetimepicker.js"></script>
-
-<script type="text/javascript">
-    //window.onerror = function(errorMsg) {
-    //    $('#console').html($('#console').html()+'<br>'+errorMsg)
-    //}
-    $(function () {
-        $("#datepicker").datepicker();
-
-    });
+        </div>
+    </fieldset>
+</div>
     
+        <script type="text/javascript">
+            $().ready(function () {
+                $('#datetimepicker').datepicker({
+                    dateFormat: 'dd/mm/yy',
+                    buttonImage: '@Url.Content("~/Content/themes/calendar.gif")',
+                    buttonImageOnly: true,
+                    showOn: 'both',
+                    //minDate: "0"
 
-</script>
+
+                });
+            });
+        </script>
+
+
+
 

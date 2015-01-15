@@ -26,7 +26,7 @@ namespace PhimHang.Models
         public Nullable<int> StockHoldingTime { get; set; }
         public Nullable<decimal> TargetSell { get; set; }
         public string Description { get; set; }
-        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public System.DateTime CreatedDate { get; set; }
         public Nullable<int> PostBy { get; set; }
     
         public virtual ICollection<Comment> Comments { get; set; }

@@ -242,6 +242,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BrokerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RecommendationController.cs" />
@@ -273,9 +274,6 @@
     <Compile Include="Models\RecommendStock.cs">
       <DependentUpon>Local.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Stock.cs">
-      <DependentUpon>Local.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\StoxConnection.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -303,15 +301,78 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\content.css" />
     <Content Include="Content\font-awesome\css\font-awesome.css" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\images\ajax-loader.png" />
+    <Content Include="Content\images\icon-search-black.png" />
+    <Content Include="Content\images\icons-18-black.png" />
+    <Content Include="Content\images\icons-18-white.png" />
+    <Content Include="Content\images\icons-36-black.png" />
+    <Content Include="Content\images\icons-36-white.png" />
+    <Content Include="Content\images\lock.png" />
+    <Content Include="Content\images\map.jpg" />
+    <Content Include="Content\images\MC.jpg" />
+    <Content Include="Content\images\onepay.png" />
+    <Content Include="Content\images\secure.png" />
+    <Content Include="Content\images\vbvDots.gif" />
+    <Content Include="Content\images\verisignseal.png" />
+    <Content Include="Content\images\VS.jpg" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Profile.css" />
     <Content Include="Content\StockPrice.css" />
     <Content Include="Content\Style_Login.css" />
     <Content Include="Content\style_main.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\button-edit.png" />
+    <Content Include="Content\themes\calendar.gif" />
+    <Content Include="Content\themes\Delete.png" />
+    <Content Include="Content\themes\Edit.png" />
+    <Content Include="Content\themes\sunny\images\ui-bg_diagonals-medium_20_d34d17_40x40.png" />
+    <Content Include="Content\themes\sunny\images\ui-bg_flat_30_cccccc_40x100.png" />
+    <Content Include="Content\themes\sunny\images\ui-bg_flat_50_5c5c5c_40x100.png" />
+    <Content Include="Content\themes\sunny\images\ui-bg_gloss-wave_45_817865_500x100.png" />
+    <Content Include="Content\themes\sunny\images\ui-bg_gloss-wave_60_fece2f_500x100.png" />
+    <Content Include="Content\themes\sunny\images\ui-bg_gloss-wave_70_ffdd57_500x100.png" />
+    <Content Include="Content\themes\sunny\images\ui-bg_gloss-wave_90_fff9e5_500x100.png" />
+    <Content Include="Content\themes\sunny\images\ui-bg_highlight-soft_100_feeebd_1x100.png" />
+    <Content Include="Content\themes\sunny\images\ui-bg_inset-soft_30_ffffff_1x100.png" />
+    <Content Include="Content\themes\sunny\images\ui-icons_3d3d3d_256x240.png" />
+    <Content Include="Content\themes\sunny\images\ui-icons_bd7b00_256x240.png" />
+    <Content Include="Content\themes\sunny\images\ui-icons_d19405_256x240.png" />
+    <Content Include="Content\themes\sunny\images\ui-icons_eb990f_256x240.png" />
+    <Content Include="Content\themes\sunny\images\ui-icons_ed9f26_256x240.png" />
+    <Content Include="Content\themes\sunny\images\ui-icons_fadc7a_256x240.png" />
+    <Content Include="Content\themes\sunny\images\ui-icons_ffe180_256x240.png" />
+    <Content Include="Content\themes\sunny\jquery-ui-1.8.17.custom.css" />
     <Content Include="Content\ThirtParty\imo.css" />
     <Content Include="Content\walt_disney\license.txt" />
     <Content Include="Content\walt_disney\waltograph.txt" />
@@ -970,9 +1031,72 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="images\avatar\default_avatar_medium.jpg" />
-    <Content Include="images\cover\cover-defaut.jpg" />
-    <Content Include="images\Login_Image.jpg" />
+    <Content Include="images\bg-body.gif" />
+    <Content Include="images\bg-close.gif" />
+    <Content Include="images\bg-filter.gif" />
+    <Content Include="images\bg-functions-sub.gif" />
+    <Content Include="images\bg-functions.gif" />
+    <Content Include="images\bg-login-title-wrapper.gif" />
+    <Content Include="images\bg-login-title.gif" />
+    <Content Include="images\bg-message-bottom.jpg" />
+    <Content Include="images\bg-message-error.jpg" />
+    <Content Include="images\bg-message-info.jpg" />
+    <Content Include="images\bg-message-top.jpg" />
+    <Content Include="images\bg-pager.gif" />
+    <Content Include="images\bg-sub-tabs.gif" />
+    <Content Include="images\bg-table-head.gif" />
+    <Content Include="images\bg-table-row.gif" />
+    <Content Include="images\bg-tabs.gif" />
+    <Content Include="images\ico-edit.gif" />
+    <Content Include="images\ico-minus.gif" />
+    <Content Include="images\ico-order-down.gif" />
+    <Content Include="images\ico-order-up.gif" />
+    <Content Include="images\ico-plus.gif" />
+    <Content Include="images\ico-sort-down.gif" />
+    <Content Include="images\ico-sort-up.gif" />
+    <Content Include="images\ico-status-active.gif" />
+    <Content Include="images\ico-status-inactive.gif" />
+    <Content Include="images\ico-theme-1.gif" />
+    <Content Include="images\ico-theme-2.gif" />
+    <Content Include="images\ico-theme-3.gif" />
+    <Content Include="images\img-building.gif" />
+    <Content Include="images\logo.gif" />
+    <Content Include="images\theme1\bg-button-left.gif" />
+    <Content Include="images\theme1\bg-button-right.gif" />
+    <Content Include="images\theme1\bg-content-title-wrapper.gif" />
+    <Content Include="images\theme1\bg-content-title.gif" />
+    <Content Include="images\theme1\bg-filter-title-wrapper.gif" />
+    <Content Include="images\theme1\bg-filter-title.gif" />
+    <Content Include="images\theme1\bg-functions-arrow-1.gif" />
+    <Content Include="images\theme1\bg-functions-arrow-2.gif" />
+    <Content Include="images\theme1\bg-login.jpg" />
+    <Content Include="images\theme1\bg-quicksearch-title-wrapper.gif" />
+    <Content Include="images\theme1\bg-quicksearch-title.gif" />
+    <Content Include="images\theme1\bg-quicksearch-toggle.gif" />
+    <Content Include="images\theme2\bg-button-left.gif" />
+    <Content Include="images\theme2\bg-button-right.gif" />
+    <Content Include="images\theme2\bg-content-title-wrapper.gif" />
+    <Content Include="images\theme2\bg-content-title.gif" />
+    <Content Include="images\theme2\bg-filter-title-wrapper.gif" />
+    <Content Include="images\theme2\bg-filter-title.gif" />
+    <Content Include="images\theme2\bg-functions-arrow-1.gif" />
+    <Content Include="images\theme2\bg-functions-arrow-2.gif" />
+    <Content Include="images\theme2\bg-login.jpg" />
+    <Content Include="images\theme2\bg-quicksearch-title-wrapper.gif" />
+    <Content Include="images\theme2\bg-quicksearch-title.gif" />
+    <Content Include="images\theme2\bg-quicksearch-toggle.gif" />
+    <Content Include="images\theme3\bg-button-left.gif" />
+    <Content Include="images\theme3\bg-button-right.gif" />
+    <Content Include="images\theme3\bg-content-title-wrapper.gif" />
+    <Content Include="images\theme3\bg-content-title.gif" />
+    <Content Include="images\theme3\bg-filter-title-wrapper.gif" />
+    <Content Include="images\theme3\bg-filter-title.gif" />
+    <Content Include="images\theme3\bg-functions-arrow-1.gif" />
+    <Content Include="images\theme3\bg-functions-arrow-2.gif" />
+    <Content Include="images\theme3\bg-login.jpg" />
+    <Content Include="images\theme3\bg-quicksearch-title-wrapper.gif" />
+    <Content Include="images\theme3\bg-quicksearch-title.gif" />
+    <Content Include="images\theme3\bg-quicksearch-toggle.gif" />
     <Content Include="img\avata3.jpg" />
     <Content Include="img\avatar.jpg" />
     <Content Include="img\avatar_default.jpg" />
@@ -1181,6 +1305,12 @@
       <DependentUpon>StoxConnection.edmx</DependentUpon>
       <LastGenOutput>StoxConnection.cs</LastGenOutput>
     </Content>
+    <Content Include="Content\themes\base\images\vssver2.scc" />
+    <Content Include="Content\themes\base\vssver2.scc" />
+    <Content Include="Content\themes\sunny\images\vssver2.scc" />
+    <Content Include="Content\themes\sunny\vssver2.scc" />
+    <Content Include="Content\themes\vssver2.scc" />
+    <Content Include="Content\images\vssver2.scc" />
     <None Include="Properties\PublishProfiles\phimhang o nha.pubxml" />
     <None Include="Properties\PublishProfiles\phimhang.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -1192,6 +1322,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
     <Content Include="Content\jquery-ui.css" />
+    <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery-ui\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
     <Content Include="Scripts\jquery-ui\images\ui-bg_flat_15_cd0a0a_40x100.png" />
     <Content Include="Scripts\jquery-ui\images\ui-bg_glass_100_e4f1fb_1x400.png" />
@@ -1291,12 +1422,12 @@
     <Content Include="Views\Recommendation\Details.cshtml" />
     <Content Include="Views\Recommendation\Edit.cshtml" />
     <Content Include="Views\Recommendation\Index.cshtml" />
+    <Content Include="Views\Broker\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="DetailTheme\js\tiny-mce\plugins\spellchecker\classes\utils\" />
     <Folder Include="DetailTheme\js\tiny-mce\plugins\spellchecker\includes\" />
-    <Folder Include="images\chart\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

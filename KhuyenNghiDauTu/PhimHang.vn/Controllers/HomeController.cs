@@ -16,11 +16,11 @@ namespace PhimHang.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        private KNDTLocalConnection db = new KNDTLocalConnection();
-        private StoxDataEntities dbstox = new StoxDataEntities();
+        private KNDTLocalConnection db = new KNDTLocalConnection();        
 
-        public async Task<ActionResult> Index(int? page, int? postBy, string recommentType, string stockCode)
+        public async Task<ActionResult> Index(int? page, int? postBy, string recommentType, string stockCode, string dateFilter)
         {
+
             if (postBy == null)
             {                
                 postBy = 0;
@@ -34,17 +34,31 @@ namespace PhimHang.Controllers
             {
                 stockCode = "ALL";
             }
+            var datetimeFilter = new DateTime();
+            if (string.IsNullOrWhiteSpace(dateFilter) || dateFilter == "ALL")
+            {
+                dateFilter = "ALL";
+                
+            }
+            else
+            {
+                datetimeFilter = new DateTime(int.Parse(dateFilter.Substring(6, 4)), int.Parse(dateFilter.Substring(3, 2)), int.Parse(dateFilter.Substring(0, 2)));
+            }
+            
 
+                
             ViewBag.postBy = postBy;
             ViewBag.recommentType = recommentType;
             ViewBag.stockCode = stockCode;
+            ViewBag.datefilter = dateFilter;
             LoadInit();
 
             var recommendstocks = from r in db.RecommendStocks.Include(r => r.UserLogin)
-                                  orderby r.CreatedDate
+                                  orderby r.CreatedDate descending
                                   where (r.PostBy == postBy || 0 == postBy)
                                   && (r.TYPERecommend == recommentType || "ALL" == recommentType)
                                   && (r.StockCode.Contains(stockCode) || "ALL"  == stockCode)
+                                  && (r.CreatedDate == datetimeFilter || new DateTime() == datetimeFilter)
                                   select r;
             int pageSize = 10;
             int pageNumber = (page ?? 1);

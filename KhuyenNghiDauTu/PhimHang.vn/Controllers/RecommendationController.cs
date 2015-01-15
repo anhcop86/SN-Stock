@@ -55,7 +55,7 @@ namespace PhimHang.Controllers
         {
             if (ModelState.IsValid)
             {
-                recommendstock.CreatedDate = DateTime.Now;
+                recommendstock.CreatedDate = DateTime.Now.Date;
                 db.RecommendStocks.Add(recommendstock);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");

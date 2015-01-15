@@ -11,7 +11,6 @@
         <AssociationConnector Association="DatabaseLocal.FK_Comments_RecommendStock" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseLocal.FK_RecommendStock_UserLogins" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseLocal.FK_Comments_UserLogins" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="DatabaseLocal.Stock" Width="1.5" PointX="0.75" PointY="5.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
