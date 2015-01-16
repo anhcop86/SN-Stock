@@ -1,0 +1,88 @@
+﻿@model PhimHang.Models.BuyRecommendModel
+@{
+    ViewBag.Title = "Khuyến nghị mua";
+    Layout = "~/Views/Shared/_Layout_Main.cshtml";
+}
+
+<h2>
+    Khuyến nghị mua
+</h2>
+@using (Html.BeginForm("BuyRecommend", "Recommendation", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()    
+        <div id="example_length" class="dataTables_length1">
+            <table class="form">
+                <tr>
+                    <td class="col1"><label> Mã cổ phiếu:</label></td>
+                    <td class="col2">
+                        @*<input type="text" id="grumble" name="StockCode" />*@
+                        @*@Html.TextBoxFor(model => model.StockCode, new { id = "grumble" })*@
+                        @Html.DropDownListFor(model => model.StockCode, ViewBag.listStockCode as SelectList, string.Empty , new { id = "select" })
+                        @Html.ValidationMessageFor(model => model.StockCode)
+                    </td>
+                    
+                    <td class="col1" style="margin-left:30px"><label> PE:</label><label>12.3</label></td>                    
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="col1"><label>Khuyến nghị:</label></td>
+                    <td>
+                        @Html.DropDownList("TYPERecommend", @ViewBag.listTypeRecomendation as SelectList, String.Empty, new { @name = "select" })
+                     @Html.ValidationMessageFor(model => model.TYPERecommend)
+                    </td>
+                    
+
+                    <td class="col1" style="margin-left:30px"><label> PE:</label><label>12.3</label></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="col1"><label> Vùng giá mua:</label></td>
+                    <td class="col2">
+                        @Html.TextBoxFor(model => model.BuyPrice, new { id = "grumble" })
+                        @Html.ValidationMessageFor(model => model.BuyPrice)
+                    </td>
+
+                    <td class="col1" style="margin-left:30px"><label> PE:</label><label>12.3</label></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="col1"><label>Thời gian nắm giữ (ngày):</label></td>
+                    <td class="col2">
+                        @Html.TextBoxFor(model => model.StockHoldingTime, new { id = "grumble", type = "number" })
+                        @Html.ValidationMessageFor(model => model.StockHoldingTime)
+                    </td>
+
+                    <td class="col1" style="margin-left:30px"><label> PE:</label><label>12.3</label></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td class="col1"><label>Giá bán mục tiêu:</label></td>
+                    <td class="col2">
+                        @*<input type="text" id="grumble" />*@
+                        @Html.TextBoxFor(model => model.TargetSell, new { id = "grumble" })
+                        @Html.ValidationMessageFor(model => model.TargetSell)
+                    </td>
+
+                    <td class="col1"><label> PE:</label><label>12.3</label></td>
+                    <td></td>
+                </tr>
+                
+                <tr>
+                    <td class="col1"><label>Chi tiết khuyến nghị:</label></td>
+                    <td class="col2">@*<textarea cols="5" style="width:400px;height:80px" ></textarea>*@
+                    @Html.TextAreaFor(model => model.Description, new { style = "width:400px;height:80px", cols = "5" })
+                        @Html.ValidationMessageFor(model => model.Description)
+                    
+                    </td>
+                                        
+                </tr>
+
+            </table>
+            <input type="submit" value="Lưu" class="btn btn-blue">
+        </div>
+        
+
+    
+
+}

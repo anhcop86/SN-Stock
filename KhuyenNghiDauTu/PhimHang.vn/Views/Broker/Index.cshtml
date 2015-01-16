@@ -18,6 +18,9 @@
                 
                 <td><b>Người khuyến nghị:</b></td>
                 <td>@Html.DropDownList("postBy", @ViewBag.listUserId as SelectList, String.Empty, new { @name = "select" })</td>                
+                <td><b>Khuyến nghị trong tháng:</b></td>
+                <td>@Html.DropDownList("monthReport", @ViewBag.monthReport as SelectList, new { @name = "select" })</td>
+
                 <td></td>
                 <td><input type="submit" value="Tìm kiếm" class="btn btn-blue"></td>
 
@@ -67,7 +70,7 @@
             Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
             @Html.PagedListPager(Model,
-                                page => Url.Action("Index", new { page, postBy = ViewBag.postBy }))
+                                         page => Url.Action("Index", new { page, postBy = ViewBag.postBy, monthReport = ViewBag.monthReportV }))
 
 
         </div>

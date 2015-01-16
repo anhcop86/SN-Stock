@@ -24,7 +24,7 @@ body {
 /* anchors
 ----------------------------------------------- */
 a {
-	color: #000;
+	color:#328AC5;
 	font-weight:bold;
 	text-decoration: none;
 }
@@ -183,7 +183,7 @@ blockquote cite {
 	font-size:.9em;
 }
 ul, ol {
-	padding-top:0;
+	padding-top:0;    
 }
 
 
@@ -1135,3 +1135,7 @@ td.details {
 }
 
 .gallery-sand .sorting{background-color:white !important;}
+
+.field-validation-error {
+    color:red;
+}

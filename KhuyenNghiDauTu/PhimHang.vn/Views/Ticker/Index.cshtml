@@ -1,6 +1,6 @@
 ﻿@*@model IEnumerable<PhimHang.Models.RecommendStock>*@
 @{
-    ViewBag.Title = "Danh sách khuyến nghị khách hàng";
+    ViewBag.Title = "Danh sách khuyến nghị theo nhân viên";
     Layout = "~/Views/Shared/_Layout_Main.cshtml";
 }
 @model PagedList.IPagedList<PhimHang.Models.RecommendStock>
@@ -12,17 +12,14 @@
 </h2>
 <div id="example_length" class="dataTables_length1">
     <table class="form">
-        @using (Html.BeginForm("", "Home", FormMethod.Get))
+        @using (Html.BeginForm("", "Ticker", FormMethod.Get))
         {
             <tr>
-                <td><b>Ngày:</b></td>
-                <td><input type="text" value="@ViewBag.datefilter" id="datetimepicker" name="dateFilter" /></td>
+
                 <td><b>Mã:</b></td>
-                <td>@Html.TextBox("stockCode", ViewBag.stockCode as string)</td>
-                <td><b>Người khuyến nghị:</b></td>
-                <td>@Html.DropDownList("postBy", @ViewBag.listUserId as SelectList, String.Empty, new { @name = "select" })</td>
-                <td><b>Loại:</b></td>
-                <td>@Html.DropDownList("recommentType", @ViewBag.listTypeRecomendation as SelectList, String.Empty, new { @name = "select" })</td>
+                <td>@Html.TextBox("stockCode", ViewBag.stockCode as string, new { maxlength = 10 })</td>
+                <td><b>Khuyến nghị trong tháng:</b></td>
+                <td>@Html.DropDownList("monthReport", @ViewBag.monthReport as SelectList , new { @name = "select" })</td>
                 <td></td>
                 <td><input type="submit" value="Tìm kiếm" class="btn btn-blue"></td>
 
@@ -51,12 +48,11 @@
                             <td>
                                 @item.CreatedDate.ToString("dd/MM/yyyy")
                             </td>
-                            <td style="font-weight: bold; color: #328AC5">                                
-                                <a href="/Ticker?stockCode=@item.StockCode&monthReport=@item.CreatedDate.Month">@item.StockCode</a>
+                            <td style="font-weight: bold; color: #328AC5">
+                                @Html.DisplayFor(modelItem => item.StockCode)
                             </td>
                             <td>
-                                
-                                <a href="/Broker?postBy=@item.UserLogin.Id&monthReport=@item.CreatedDate.Month">@item.UserLogin.UserNameCopy</a>
+                                @Html.DisplayFor(modelItem => item.UserLogin.UserNameCopy)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.TYPERecommend)
@@ -72,28 +68,10 @@
             <br />
             Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-            @Html.PagedListPager(Model, 
-                                page => Url.Action("Index", new { page, postBy = ViewBag.postBy, recommentType = ViewBag.recommentType, stockCode = ViewBag.stockCode, dateFilter = ViewBag.datefilter }))
+            @Html.PagedListPager(Model,
+                                               page => Url.Action("Index", new { page, stockCode = ViewBag.stockCode, monthReport = ViewBag.monthReportV }))
 
 
         </div>
     </fieldset>
 </div>
-    
-        <script type="text/javascript">
-            $().ready(function () {
-                $('#datetimepicker').datepicker({
-                    dateFormat: 'dd/mm/yy',
-                    buttonImage: '@Url.Content("~/Content/themes/calendar.gif")',
-                    buttonImageOnly: true,
-                    showOn: 'both',
-                    //minDate: "0"
-
-
-                });
-            });
-        </script>
-
-
-
-

@@ -246,6 +246,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RecommendationController.cs" />
+    <Compile Include="Controllers\TickerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -271,6 +272,7 @@
       <DependentUpon>Local.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\PhimHangvnHelper.cs" />
+    <Compile Include="Models\RecommendationModel.cs" />
     <Compile Include="Models\RecommendStock.cs">
       <DependentUpon>Local.tt</DependentUpon>
     </Compile>
@@ -1423,6 +1425,8 @@
     <Content Include="Views\Recommendation\Edit.cshtml" />
     <Content Include="Views\Recommendation\Index.cshtml" />
     <Content Include="Views\Broker\Index.cshtml" />
+    <Content Include="Views\Ticker\Index.cshtml" />
+    <Content Include="Views\Recommendation\BuyRecommend.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

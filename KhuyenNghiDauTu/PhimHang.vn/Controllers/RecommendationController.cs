@@ -15,8 +15,52 @@ namespace PhimHang.Controllers
     public class RecommendationController : Controller
     {
         private KNDTLocalConnection db = new KNDTLocalConnection();
-
+        private StoxDataEntities dbstox = new StoxDataEntities();
         // GET: /Recommendation/
+        public ActionResult BuyRecommend()
+        {
+            //ViewBag.PostBy = new SelectList(db.UserLogins, "Id", "KeyLogin");
+            LoadInit();
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> BuyRecommend([Bind(Include = "ID,StockCode,TYPERecommend,BuyPrice,StockHoldingTime,TargetSell,Description,CreatedDate,PostBy")] BuyRecommendModel buyRecommendModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var recommentToDb = new RecommendStock();
+
+                recommentToDb.CreatedDate = DateTime.Now.Date;
+                recommentToDb.PostBy =  db.UserLogins.FirstOrDefault(u=> u.UserNameCopy == User.Identity.Name).Id;
+                recommentToDb.StockCode = buyRecommendModel.StockCode;
+                recommentToDb.StockHoldingTime = buyRecommendModel.StockHoldingTime;
+                recommentToDb.TargetSell = buyRecommendModel.TargetSell;
+                recommentToDb.TYPERecommend = buyRecommendModel.TYPERecommend;                
+
+                db.RecommendStocks.Add(recommentToDb);
+                await db.SaveChangesAsync();
+                return RedirectToAction("", "Home");
+            }
+            LoadInit();
+            //ViewBag.PostBy = new SelectList(db.UserLogins, "Id", "KeyLogin", recommentToDb.PostBy);
+            return View(buyRecommendModel);
+        }
+        private async Task LoadInit()
+        {
+            ViewBag.listStockCode = new SelectList(dbstox.stox_tb_Company, "Ticker", "Ticker");
+
+            var listTypeRecomendation = new List<dynamic>
+                    { 
+                        new { Id = "MUA", Name = "MUA" },
+                        new { Id = "BAN", Name = "BÁN" } 
+                    }.ToList();
+
+            ViewBag.listTypeRecomendation = new SelectList(listTypeRecomendation, "Id", "Name");
+
+        }
+
+
         public async Task<ActionResult> Index()
         {
 

@@ -39,23 +39,11 @@
     @*<script src="~/DetailTheme/js/tiny-mce/plugins/table/js/table.js"></script>*@
     <script src="/DetailTheme/js/setup.js" type="text/javascript"></script>
    
-    <!-- /TinyMCE -->
-    @*<script type="text/javascript">
 
-        $(document).ready(function () {
-            setupLeftMenu();
+    @*<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
 
-            $('.datatable').dataTable({
-                "aoColumns": [
-                        { "bSortable": false }
-                ]
-            });
-            setSidebarHeight();
-           
-        });
-    </script>*@
 
-   
+    
     <!-- END: Datetime picker -->
 
     <link href="~/Content/jquery-ui.css" rel="stylesheet" />
@@ -122,7 +110,7 @@
                 </ul>
             </li>*@
                  @*<li class="ic-notifications"><a href="notifications.html"><span>Notifications</span></a></li>*@
-                 <li class="ic-form-style"><a href="/Recommendation/Create"><span>KN MUA</span></a> </li>
+                 <li class="ic-form-style"><a href="/Recommendation/BuyRecommend"><span>KN MUA</span></a> </li>
                  <li class="ic-form-style"><a href="/Recommendation/Create"><span>KN BÁN</span></a> </li>
              </ul>
 
@@ -134,10 +122,10 @@
                  <div class="block" id="section-menu">
                      <ul class="section menu">
                          <li>
-                             <a class="menuitem">Báo cáo</a>
+                             <a class="menuitem">Báo cáo theo tháng</a>
                              <ul class="submenu">
-                                 <li><a href="/Broker" class="active">Theo nhân viên</a> </li>
-                                 <li><a>Theo mã</a> </li>
+                                 <li><a href="/Broker" >Theo nhân viên</a> </li> <!--class="active"-->
+                                 <li><a href="/Ticker">Theo mã</a> </li>
                                  @*<li><a class="active">Submenu 3</a> </li>
                                  <li><a>Submenu 4</a> </li>
                                  <li><a>Submenu 5</a> </li>*@

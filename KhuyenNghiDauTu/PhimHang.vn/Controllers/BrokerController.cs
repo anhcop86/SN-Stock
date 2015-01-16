@@ -19,17 +19,25 @@ namespace PhimHang.Controllers
         private KNDTLocalConnection db = new KNDTLocalConnection();        
         //
         // GET: /Broker/
-        public ActionResult Index(int? page, int? postBy)
+        public ActionResult Index(int? page, int? postBy,int? monthReport)
         {
             if (postBy == null)
             {
                 postBy = 0;
             }
+            if (monthReport == null)
+            {
+                monthReport = DateTime.Now.Month;
+            }
             ViewBag.postBy = postBy;
+            ViewBag.monthReportV = monthReport;
+
             LoadInit();
             var recommendstocks = from r in db.RecommendStocks.Include(r => r.UserLogin)
                                   orderby r.CreatedDate descending
                                   where (r.PostBy == postBy || 0 == postBy)
+                                   && (r.CreatedDate.Month == monthReport || 0 == monthReport)
+                                   && (r.CreatedDate.Year == DateTime.Now.Year)
                                   select r;
             int pageSize = 10;
             int pageNumber = (page ?? 1);
@@ -50,7 +58,23 @@ namespace PhimHang.Controllers
 
 
             ViewBag.listUserId = new SelectList(db.UserLogins, "Id", "UserNameCopy");
-      
+            var monthReport = new List<dynamic>
+             {
+                 new { Id = "0",Name = string.Empty  },
+                  new { Id = "1",Name = "1"  },
+                        new { Id = "2",Name = "2" },
+                        new { Id = "3",Name = "3"},
+                        new { Id = "4" ,Name = "4"},
+                        new { Id = "5" ,Name = "5"},
+                        new { Id = "6" ,Name = "6"},
+                        new { Id = "7" ,Name = "7"},
+                        new { Id = "8",Name = "8"},
+                        new { Id = "9" ,Name = "9"},
+                        new { Id = "10" ,Name = "10"},
+                        new { Id = "11" ,Name = "11"},
+                        new { Id = "12" ,Name = "12"}
+             };
+            ViewBag.monthReport = new SelectList(monthReport, "Id", "Name");
 
         }
 	}
