@@ -1,0 +1,125 @@
+/* form */
+#mainContent fieldset .Input { overflow: hidden; padding: 5px 0; }
+* html #mainContent fieldset .Input { height: 1%; }
+#mainContent fieldset .Input label, #mainContent fieldset .Input input,
+#mainContent fieldset .Input select, #mainContent fieldset .Input textarea,
+#mainContent fieldset .Input .Required { float: left; padding: 1px 2px; }
+#mainContent fieldset .Input input, #mainContent fieldset .Input select { margin-right: 2px; }
+#mainContent fieldset .Input label { font-weight: bolder; padding-right: 10px; width: 170px; }
+#mainContent fieldset .Input textarea { height: 200px; overflow: auto; }
+#mainContent fieldset .Tiny { width: 50px; }
+#mainContent fieldset .Small { width: 70px; }
+#mainContent fieldset .Medium { width: 150px; }
+#mainContent fieldset .Large { width: 300px; }
+#mainContent fieldset .XLarge { width: 450px; }
+#mainContent fieldset .File { margin: -2px 0 0 0; padding: 0px; }
+#mainContent fieldset .Checkbox { margin: 2px 2px 0 0; padding: 0px; }
+* html #mainContent fieldset .Checkbox { margin: -2px 0 0 -3px; }
+*:first-child+html #mainContent fieldset .Checkbox { margin: -2px 0 0 -3px; }
+#mainContent fieldset .Input .Required { color: #d00; font-size: 1.4em; font-weight: bolder; }
+
+/* photo */
+#mainContent fieldset .Input .Photo { float: left; }
+#mainContent fieldset .Input .Photo li { overflow: hidden; padding-bottom: 5px; }
+* html #mainContent fieldset .Input .Photo li { height: 1%; }
+#mainContent fieldset .Input .Photo li label { font-weight: normal; width: 200px; }
+
+/* filter */
+#mainContent fieldset .Filter { overflow: hidden; padding: 5px 0; }
+* html #mainContent fieldset .Filter { height: 1%; }
+#mainContent fieldset .Filter label { font-weight: bolder; padding-right: 10px; }
+#mainContent fieldset .Filter select { padding: 1px 2px; }
+#mainContent fieldset .Filter a:link, #mainContent fieldset .Filter a:visited { color: #333; font-weight: bolder; margin-left: 10px; }
+
+/* table */
+#mainContent .Table { padding: 5px 0; }
+#mainContent .Table table { border-collapse: collapse; width: 100%; }
+#mainContent .Table table th, #mainContent .Table table td { text-align: center; }
+#mainContent .Table table th {
+    background: #fbfbfa url(../images/bg-table-head.gif) repeat-x;
+    border: #ddd solid 1px;
+    padding: 5px 3px;
+    white-space: nowrap;
+}
+#mainContent .Table table td {  padding: 10px 3px; font-size:12.5px; border-bottom: solid 1px #E9EEEF }
+#mainContent .Table table td.Desc { font-weight: normal; text-align: left; }
+#mainContent .Table table td.Desc h3 { font-size: 1em; }
+#mainContent .Table table tr.Over td { background: url(images/bg-table-row.gif) repeat-x left bottom; }
+#mainContent .Table table td img { vertical-align: middle; }
+
+/* message */
+#mainContent .Message {
+    background: url(../images/bg-message-bottom.jpg) no-repeat left bottom;
+    font-weight: bolder;
+    margin: 0 auto 20px;
+    width: 630px;
+}
+#mainContent .Message .Wrapper { background: url(../images/bg-message-top.jpg) no-repeat; color: #666; padding: 10px; }
+#mainContent .Message .Error, #mainContent .Message .Info {
+    background: no-repeat left 40px;
+    min-height: 100px;
+    padding: 50px 43px 50px 161px;
+}
+* html #mainContent .Message .Error, * html #mainContent .Message .Info { height: 100px; }
+#mainContent .Message .Error { background-image: url(../images/bg-message-error.jpg); }
+#mainContent .Message .Info { background-image: url(../images/bg-message-info.jpg); }
+#mainContent .Message strong { color: #60a441; }
+
+/* filter */
+#newFilter { display: none; }
+#filter {
+    background: url(../images/bg-filter.gif) no-repeat;
+    float: right;
+    height: 198px;
+    padding: 10px;
+    width: 593px;
+}
+#filter h3 {
+    background: no-repeat;
+    color: #fff;
+    font-size: 1.25em;
+    height: 27px;
+    left: -16px;
+    padding-bottom: 6px;
+    padding-left: 6px;
+    position: relative;
+}
+#filter h3 span { background: repeat-x; display: block; float: left; line-height: 27px; padding: 0 20px; }
+#filter fieldset { padding: 5px 10px; }
+#filter fieldset div { overflow: hidden; padding-top: 5px; }
+* html #filter fieldset div { height: 1%; }
+#filter fieldset label, #filter fieldset input, #filter fieldset select {
+    float: left;
+    margin-right: 5px;
+    padding: 1px 2px;
+    vertical-align: top;
+}
+#filter fieldset label { font-weight: bolder; padding-right: 5px; }
+#filter fieldset ul { border-top: #999 dashed 1px; margin-top: 10px; padding-top: 10px; }
+#filter fieldset ul li { overflow: hidden; padding-bottom: 5px; }
+* html #filter fieldset ul li { height: 1%; }
+#filter fieldset .TextInput1 { width: 250px; }
+#filter fieldset .TextInput2 { width: 400px; }
+#filter fieldset .DropDown1 { width: 150px; }
+#filter fieldset .DropDown2 { width: 70px; }
+#filter fieldset .Button, #filter fieldset .Button span,
+#filter fieldset .Button input { float: left; }
+#filter fieldset .Button { background: no-repeat; margin-right: 5px; padding-left: 15px; }
+#filter fieldset .Button span { background: no-repeat right top; padding-right: 15px; }
+#filter fieldset .Button input {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bolder;
+    height: 23px;
+    margin: 0px;
+    padding: 0 0 4px;
+}
+
+/* msg */
+.Message { background-color: #eee; padding: 20px; height: 80px; overflow: hidden; }
+.Message .Action { margin-top: 15px; }
+.Message .Action a { background: no-repeat right top; display: block; float: left; font-weight: bolder; height: 23px; margin-right: 5px; padding-right: 15px; }
+.Message .Action a span { background: no-repeat; color: #fff; cursor: pointer; display: block; float: left; height: 23px; line-height: 18px; padding-left: 15px; }
+.Message .Action a:hover span { color: #000; }

@@ -1,0 +1,83 @@
+﻿@model PhimHang.Models.RecommendStock
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout_Main.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RecommendStock</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StockCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StockCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TYPERecommend)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TYPERecommend)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BuyPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BuyPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StockHoldingTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StockHoldingTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TargetSell)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TargetSell)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserLogin.KeyLogin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserLogin.KeyLogin)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
