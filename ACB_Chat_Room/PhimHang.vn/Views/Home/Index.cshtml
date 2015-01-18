@@ -1,99 +1,355 @@
-﻿@*@model IEnumerable<PhimHang.Models.RecommendStock>*@
-@{
-    ViewBag.Title = "Danh sách khuyến nghị khách hàng";
-    Layout = "~/Views/Shared/_Layout_Main.cshtml";
+﻿@{
+    ViewBag.Title = "ACB chat group";
 }
-@model PagedList.IPagedList<PhimHang.Models.RecommendStock>
-@using PagedList.Mvc;
-<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
-<h2>
-    Danh mục khuyến nghị mua & bán
-</h2>
-<div id="example_length" class="dataTables_length1">
-    <table class="form">
-        @using (Html.BeginForm("", "Home", FormMethod.Get))
-        {
-            <tr>
-                <td><b>Ngày:</b></td>
-                <td><input type="text" value="@ViewBag.datefilter" id="datetimepicker" name="dateFilter" /></td>
-                <td><b>Mã:</b></td>
-                <td>@Html.TextBox("stockCode", ViewBag.stockCode as string)</td>
-                <td><b>Người khuyến nghị:</b></td>
-                <td>@Html.DropDownList("postBy", @ViewBag.listUserId as SelectList, String.Empty, new { @name = "select" })</td>
-                <td><b>Loại:</b></td>
-                <td>@Html.DropDownList("recommentType", @ViewBag.listTypeRecomendation as SelectList, String.Empty, new { @name = "select" })</td>
-                <td></td>
-                <td><input type="submit" value="Tìm kiếm" class="btn btn-blue"></td>
+<link type="text/css" rel="stylesheet" href="/Css/ChatStyle.css" />
+<link rel="stylesheet" href="/Css/JQueryUI/themes/base/jquery.ui.all.css">
+<link href="~/Content/ACBChatGroup.css" rel="stylesheet" />
 
-            </tr>
-        }
-    </table>
+<!--Script references. -->
+<!--Reference the jQuery library. -->
+<script src="/Scripts/ui/jquery.ui.core.js"></script>
+<script src="/Scripts/ui/jquery.ui.widget.js"></script>
+<script src="/Scripts/ui/jquery.ui.mouse.js"></script>
+<script src="/Scripts/ui/jquery.ui.draggable.js"></script>
+<script src="/Scripts/ui/jquery.ui.resizable.js"></script>
+
+
+<!----------------------------------------------------------->
+<div id="header">
+    ACB Chat Room portal
 </div>
-<div id="mainContent">
-    <fieldset>
-        <div class="Table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Ngày</th>
-                        <th>Mã</th>
-                        <th>Người khuyến nghị</th>
-                        <th>Loại</th>
-                        <th>Tổng bình luận</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @item.CreatedDate.ToString("dd/MM/yyyy")
-                            </td>
-                            <td style="font-weight: bold; color: #328AC5">                                
-                                <a href="/Ticker?stockCode=@item.StockCode&monthReport=@item.CreatedDate.Month">@item.StockCode</a>
-                            </td>
-                            <td>
-                                
-                                <a href="/Broker?postBy=@item.UserLogin.Id&monthReport=@item.CreatedDate.Month">@item.UserLogin.UserNameCopy</a>
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TYPERecommend)
-                            </td>
-                            <td>
-                                20
-                            </td>
-                            <td><a style="color: #328AC5" href="#">chi tiết</a></td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-            <br />
-            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+<br />
+<br />
+<br />
 
-            @Html.PagedListPager(Model, 
-                                page => Url.Action("Index", new { page, postBy = ViewBag.postBy, recommentType = ViewBag.recommentType, stockCode = ViewBag.stockCode, dateFilter = ViewBag.datefilter }))
-
+<div id="divContainer">
+    
+    <div id="divChat" class="chatRoom">
+        <div class="title">
+            Welcome to Chat Room [<span id='spanUser'></span>]
 
         </div>
-    </fieldset>
+        <div class="content">
+            <div id="divChatWindow" class="chatWindow">
+            </div>
+            <div id="divusers" class="users">
+            </div>
+        </div>
+        <div class="messageBar">
+            <input class="textbox" type="text" id="txtMessage" />
+            <input id="btnSendMsg" type="button" value="Send" class="submitButton" />
+        </div>
+    </div>
+
+    <div id="listUser" class="listUserLoad">       
+    </div>
+
+    <input id="hdId" type="hidden" />
+    <input id="hdUserName" type="hidden" />
 </div>
-    
-        <script type="text/javascript">
-            $().ready(function () {
-                $('#datetimepicker').datepicker({
-                    dateFormat: 'dd/mm/yy',
-                    buttonImage: '@Url.Content("~/Content/themes/calendar.gif")',
-                    buttonImageOnly: true,
-                    showOn: 'both',
-                    //minDate: "0"
 
 
-                });
+
+<!------------------script----------------------------------------->
+
+<script type="text/javascript">
+
+    $(function () {
+
+        setScreen(false);
+
+        // Declare a proxy to reference the hub.
+        var chatHub = $.connection.chatHub;
+
+        registerClientMethods(chatHub);
+
+        // Start Hub
+        $.connection.hub.start().done(function () {
+
+            registerEvents(chatHub)
+
+        });
+
+    });
+
+    function setScreen(isLogin) {
+
+        if (!isLogin) {
+
+            $("#divChat").hide();
+            $("#divLogin").show();
+        }
+        else {
+
+            $("#divChat").show();
+            $("#divLogin").hide();
+        }
+
+    }
+
+    function registerEvents(chatHub) {
+        chatHub.server.connect();       // load user mới khi đăng nhập vào hệ thống
+
+        $('#btnSendMsg').click(function () {
+
+            var msg = $("#txtMessage").val();
+            if (msg.length > 0) {
+
+                var userName = $('#hdUserName').val();
+                chatHub.server.sendMessageToAll(userName, msg);
+                $("#txtMessage").val('');
+            }
+        });
+
+
+        $("#txtNickName").keypress(function (e) {
+            if (e.which == 13) {
+                $("#btnStartChat").click();
+            }
+        });
+
+        $("#txtMessage").keypress(function (e) {
+            if (e.which == 13) {
+                $('#btnSendMsg').click();
+            }
+        });
+
+
+    }
+
+    function registerClientMethods(chatHub) {
+
+        // Calls when user successfully logged in
+        chatHub.client.onConnected = function (id, userName, allUsers, statusUser) {
+
+            setScreen(true);
+
+            $('#hdId').val(userName);
+            $('#hdUserName').val(userName);
+            $('#spanUser').html(userName);
+
+            // Add All Users
+            for (i = 0; i < allUsers.length; i++) {
+
+                AddUser(chatHub, allUsers[i].UserId, allUsers[i].UserName, statusUser);
+            }
+
+            // Add Existing Messages
+            //for (i = 0; i < messages.length; i++) {
+
+            //    AddMessage(messages[i].UserName, messages[i].Message);
+            //}
+
+
+        }
+
+        // On New User Connected
+        chatHub.client.onNewUserConnected = function (id, name) {
+
+            UpDateUser(chatHub, id, name);
+        }
+
+        function UpDateUser(chatHub, id, name) {
+            var checkuser = $('#listUser').find('#' + name).length;
+            console.log(checkuser);
+            if (checkuser.length == 0) {
+                AddUser(chatHub, name, name, "O");
+            }
+            else {
+                $('#listUser').find('#' + name).find('div').css({ "background-color": "green" })
+            }
+
+        }
+
+
+
+
+        // On User Disconnected
+        chatHub.client.onUserDisconnected = function (id, userName) {
+            $('#listUser').find('#' + userName).find('div').css({ "background-color": "#b0b3b7" })
+            //$('#' + id).remove();
+
+            //var ctrId = 'private_' + id;
+            //$('#' + ctrId).remove();
+
+
+            //var disc = $('<div class="disconnect">"' + userName + '" logged off.</div>');
+
+            //$(disc).hide();
+            //$('#divusers').prepend(disc);
+            //$(disc).fadeIn(200).delay(2000).fadeOut(200);
+
+        }
+
+        chatHub.client.messageReceived = function (userName, message) {
+
+            AddMessage(userName, message);
+        }
+
+
+        chatHub.client.sendPrivateMessage = function (windowId, fromUserName, message , group, groupname) {
+            var ctrId = "";
+            if (group == "G") {
+                ctrId = 'Group_' + windowId;
+            }
+            else {
+                ctrId = 'private_' + windowId;
+            }
+
+            //var ctrId = 'private_' + windowId;
+
+
+            if ($('#' + ctrId).length == 0) {
+
+                createPrivateChatWindow(chatHub, windowId, ctrId, fromUserName, groupname);
+
+            }
+
+            $('#' + ctrId).find('#divMessage').append('<div class="message"><span class="userName">' + fromUserName + '</span>: ' + message + '</div>');
+
+            // set scrollbar
+            var height = $('#' + ctrId).find('#divMessage')[0].scrollHeight;
+            $('#' + ctrId).find('#divMessage').scrollTop(height);
+
+        }
+
+    }
+
+    function AddUser(chatHub, id, name, statusUser) {
+
+        var userId = $('#hdId').val();
+
+        var code = "";
+
+        if (userId == name) {
+
+            code = $('<div id="' + name + '" class="loginUser">' + name + '<div class="OnlineIcon"></div></div>');
+
+        }
+        else {
+            if (statusUser == "O") {
+                code = $('<a id="' + name + '" class="user" >' + name + '<div class="OnlineIcon"></div><a>');
+            }
+            if (statusUser == "F") {
+                code = $('<a id="' + name + '" class="user" >' + name + '<div class="OfflineIcon"></div><a>');
+            }
+
+            if (statusUser == "G") {
+                code = $('<a alt="G"  id="' + id + '" class="user" >Group: ' + name + '</div><a>');
+            }
+
+            $(code).click(function () {
+
+                var id = $(this).attr('id');
+
+                if (userId != id) {
+                    if ($(this).attr('alt') == "G") {
+                        OpenPrivateChatWindow(chatHub, id, name, "G");
+                    }
+                    else {
+                        OpenPrivateChatWindow(chatHub, id, name, "P");
+                    }
+                   
+                }
+
             });
-        </script>
+        }
 
+        $("#listUser").append(code);
 
+    }
 
+    function AddMessage(userName, message) {
+        $('#divChatWindow').append('<div class="message"><span class="userName">' + userName + '</span>: ' + message + '</div>');
 
+        var height = $('#divChatWindow')[0].scrollHeight;
+
+        $('#divChatWindow').scrollTop(height);
+    }
+
+    function OpenPrivateChatWindow(chatHub, id, userName, group) {
+        var ctrId = "";
+        if (group == "G") {
+            ctrId = 'Group_' + id;
+        }
+        else {
+            ctrId = 'private_' + userName;
+        }
+        
+
+        if ($('#' + ctrId).length > 0) return; // check esist window
+
+        createPrivateChatWindow(chatHub, id, ctrId, userName, userName);
+
+    }
+
+    function createPrivateChatWindow(chatHub, userId, ctrId, userName, groupname) {
+
+        var div = '<div id="' + ctrId + '" class="ui-widget-content draggable" rel="0">' +
+                   '<div class="header">' +
+                      '<div  style="float:right;">' +
+                          '<img id="imgDelete"  style="cursor:pointer;" src="/Images/delete.png"/>' +
+                       '</div>' +
+
+                       '<span class="selText" rel="0">' + groupname + '</span>' +
+                   '</div>' +
+                   '<div id="divMessage" class="messageArea">' +
+
+                   '</div>' +
+                   '<div class="buttonBar">' +
+                      '<input id="txtPrivateMessage" class="msgText" type="text"   />' +
+                      '<input id="btnSendMessage" class="submitButton button" type="button" value="Send"   />' +
+                   '</div>' +
+                '</div>';
+
+        var $div = $(div);
+
+        // DELETE BUTTON IMAGE
+        $div.find('#imgDelete').click(function () {
+            $('#' + ctrId).remove();
+        });
+
+        // Send Button event
+        $div.find("#btnSendMessage").click(function () {
+
+            $textBox = $div.find("#txtPrivateMessage");
+            var msg = $textBox.val();
+            if (msg.length > 0) {
+
+                chatHub.server.sendPrivateMessage(userId, msg);
+                $textBox.val('');
+            }
+        });
+
+        // Text Box event
+        $div.find("#txtPrivateMessage").keypress(function (e) {
+            if (e.which == 13) {
+                $div.find("#btnSendMessage").click();
+            }
+        });
+
+        AddDivToContainer($div);
+
+    }
+
+    function AddDivToContainer($div) {
+        $('#divContainer').prepend($div);
+
+        $div.draggable({
+
+            handle: ".header",
+            stop: function () {
+
+            }
+        });
+
+        ////$div.resizable({
+        ////    stop: function () {
+
+        ////    }
+        ////});
+
+    }
+
+</script>

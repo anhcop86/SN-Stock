@@ -16,8 +16,8 @@ namespace PhimHang.Models
     {
         public UserLogin()
         {
-            this.RecommendStocks = new HashSet<RecommendStock>();
-            this.Comments = new HashSet<Comment>();
+            this.Group_User = new HashSet<Group_User>();
+            this.Group_User_Messege = new HashSet<Group_User_Messege>();
         }
     
         public int Id { get; set; }
@@ -34,7 +34,7 @@ namespace PhimHang.Models
         public int LockAccount { get; set; }
         public string Status { get; set; }
     
-        public virtual ICollection<RecommendStock> RecommendStocks { get; set; }
-        public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<Group_User> Group_User { get; set; }
+        public virtual ICollection<Group_User_Messege> Group_User_Messege { get; set; }
     }
 }

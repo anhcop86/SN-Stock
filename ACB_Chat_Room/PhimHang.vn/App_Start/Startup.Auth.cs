@@ -25,7 +25,7 @@ namespace PhimHang
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
             //GlobalHost.Configuration.TransportConnectTimeout = TimeSpan.FromSeconds(10);  
             //GlobalHost.Configuration.KeepAlive = TimeSpan.FromSeconds(10);
-            //app.MapSignalR();
+            app.MapSignalR();
 
         }
     }
