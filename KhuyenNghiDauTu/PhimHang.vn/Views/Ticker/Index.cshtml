@@ -1,6 +1,6 @@
 ﻿@*@model IEnumerable<PhimHang.Models.RecommendStock>*@
 @{
-    ViewBag.Title = "Danh sách khuyến nghị theo nhân viên";
+    ViewBag.Title = "Danh sách khuyến nghị theo mã chứng khoán";
     Layout = "~/Views/Shared/_Layout_Main.cshtml";
 }
 @model PagedList.IPagedList<PhimHang.Models.RecommendStock>
@@ -8,7 +8,7 @@
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 <h2>
-    Danh mục khuyến nghị mua & bán
+    Danh sách khuyến nghị theo mã chứng khoán
 </h2>
 <div id="example_length" class="dataTables_length1">
     <table class="form">
@@ -16,7 +16,7 @@
         {
             <tr>
 
-                <td><b>Mã:</b></td>
+                <td><b>Mã chứng khoán:</b></td>
                 <td>@Html.TextBox("stockCode", ViewBag.stockCode as string, new { maxlength = 10 })</td>
                 <td><b>Khuyến nghị trong tháng:</b></td>
                 <td>@Html.DropDownList("monthReport", @ViewBag.monthReport as SelectList , new { @name = "select" })</td>
@@ -60,7 +60,7 @@
                             <td>
                                 20
                             </td>
-                            <td><a style="color: #328AC5" href="#">chi tiết</a></td>
+                            <td><a style="color: #328AC5" href="/Recommendation/Detail?id=@item.ID">chi tiết</a></td>
                         </tr>
                     }
                 </tbody>

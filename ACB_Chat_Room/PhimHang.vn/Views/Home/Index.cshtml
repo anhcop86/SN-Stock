@@ -15,6 +15,9 @@
 <script src="/Scripts/ui/jquery.ui.resizable.js"></script>
 
 
+<!---------------------------multiple checkbox-------------------------------->
+<script src="~/DetailTheme/multiplecheckbox/jquery.multiple.select.js"></script>
+<link href="~/DetailTheme/multiplecheckbox/multiple-select.css" rel="stylesheet" />
 <!----------------------------------------------------------->
 <div id="header">
     ACB Chat Room portal
@@ -26,20 +29,7 @@
 <div id="divContainer">
     
     <div id="divChat" class="chatRoom">
-        <div class="title">
-            Welcome to Chat Room [<span id='spanUser'></span>]
-
-        </div>
-        <div class="content">
-            <div id="divChatWindow" class="chatWindow">
-            </div>
-            <div id="divusers" class="users">
-            </div>
-        </div>
-        <div class="messageBar">
-            <input class="textbox" type="text" id="txtMessage" />
-            <input id="btnSendMsg" type="button" value="Send" class="submitButton" />
-        </div>
+              
     </div>
 
     <div id="listUser" class="listUserLoad">       
@@ -47,12 +37,29 @@
 
     <input id="hdId" type="hidden" />
     <input id="hdUserName" type="hidden" />
+
+    @*<div class="form-group">        
+        <select id="ms" multiple="multiple">
+            <option value="anhcop86">anhcop86</option>
+            <option value="voky86">voky86</option>
+            <option value="Truongquynbao">Truongquynbao</option>
+            <option value="thegioihaohoa">thegioihaohoa</option>        
+        </select>        
+    </div>*@
 </div>
 
 
 
 <!------------------script----------------------------------------->
-
+<script>
+    $(function () {
+        $('#ms').change(function () {
+            console.log($(this).val());
+        }).multipleSelect({
+            width: '150px'
+        });
+    });
+</script>
 <script type="text/javascript">
 
     $(function () {
@@ -153,7 +160,7 @@
         function UpDateUser(chatHub, id, name) {
             var checkuser = $('#listUser').find('#' + name).length;
             console.log(checkuser);
-            if (checkuser.length == 0) {
+            if (checkuser == 0) {
                 AddUser(chatHub, name, name, "O");
             }
             else {
@@ -291,6 +298,9 @@
                       '<div  style="float:right;">' +
                           '<img id="imgDelete"  style="cursor:pointer;" src="/Images/delete.png"/>' +
                        '</div>' +
+                       '<div  style="float:right;margin-right:5px">' +
+                          '<img id="imgAddUser"  style="cursor:pointer;" src="/Images/AddUser.png"/>' +
+                       '</div>' +
 
                        '<span class="selText" rel="0">' + groupname + '</span>' +
                    '</div>' +
@@ -303,12 +313,49 @@
                    '</div>' +
                 '</div>';
 
+        var createAddUserGroup = '<div id="GroupMulti' + userName + '" class="form-group" style="position:fixed;float:right">' +
+                                    '<select id="GroupSelect' + userName + '" multiple="multiple">' +
+                                        '<option value="anhcop86" disabled>anhcop86</option>' +
+                                        '<option value="voky86">voky86</option>'+
+                                        '<option value="Truongquynbao">Truongquynbao</option>' +
+                                        '<option value="thegioihaohoa">thegioihaohoa</option>' +                                        
+                                    '</select>' +
+                                    '<a id="createNewGroup" href="#">add</a>' +
+                                '</div>'
+
+        // tạo cửa sổ chat
         var $div = $(div);
+
+
+       // tạo group chat                             
+        var $createAddUserGroup = $(createAddUserGroup);
+
+        $div.find('#imgAddUser').click(function () {
+            $div.find('.header').prepend($createAddUserGroup);
+            $createAddUserGroup.find('#GroupSelect' + userName).multipleSelect({
+                width: '150px',
+                selectAll: false
+            });
+        });
+       
+
+        $createAddUserGroup.find("#createNewGroup").click(function () {
+            var listuer = $createAddUserGroup.find('#GroupSelect' + userName).val();
+            chatHub.server.createGroup_User(listuer);
+            $('#GroupMulti' + userName).remove();            
+        });
+        //--------------------------------------------------
+
+        
+       
 
         // DELETE BUTTON IMAGE
         $div.find('#imgDelete').click(function () {
             $('#' + ctrId).remove();
         });
+
+      
+        
 
         // Send Button event
         $div.find("#btnSendMessage").click(function () {

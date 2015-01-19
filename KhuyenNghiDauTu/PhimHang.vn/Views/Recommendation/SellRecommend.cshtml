@@ -1,0 +1,68 @@
+﻿@model PhimHang.Models.SellRecommendModel
+@{
+    ViewBag.Title = "Khuyến nghị bán";
+    Layout = "~/Views/Shared/_Layout_Main.cshtml";
+}
+
+<h2>
+    Khuyến nghị BÁN
+</h2>
+@using (Html.BeginForm("SellRecommend", "Recommendation", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div id="example_length" class="dataTables_length1">
+        <table class="form">
+            <tr>
+                <td class="col1"><label> Mã cổ phiếu:</label></td>
+                <td class="col2">
+                    @*<input type="text" id="grumble" name="StockCode" />*@
+                    @*@Html.TextBoxFor(model => model.StockCode, new { id = "grumble" })*@
+                    @Html.DropDownList("StockCode", ViewBag.listStockCode as SelectList, string.Empty, new { id = "select" })
+                    @Html.ValidationMessageFor(model => model.StockCode)
+                </td>
+
+                <td class="col1" style="margin-left:30px"><label> PE:</label><label>12.3</label></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="col1"><label>Khuyến nghị:</label></td>
+                <td>
+                    @Html.DropDownList("TYPERecommend", @ViewBag.listTypeRecomendation as SelectList, new { @name = "select", disabled = "disabled" })
+                    @*@Html.ValidationMessageFor(model => model.TYPERecommend)*@
+
+                </td>
+
+
+                <td class="col1" style="margin-left:30px"><label> PE:</label><label>12.3</label></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="col1"><label> Vùng giá bán:</label></td>
+                <td class="col2">
+                    @Html.TextBoxFor(model => model.BuyPrice, new { id = "grumble" })
+                    @Html.ValidationMessageFor(model => model.BuyPrice)
+                </td>
+
+                <td class="col1" style="margin-left:30px"><label> PE:</label><label>12.3</label></td>
+                <td></td>
+            </tr>            
+
+            <tr>
+                <td class="col1"><label>Chi tiết khuyến nghị:</label></td>
+                <td class="col2">
+                    @*<textarea cols="5" style="width:400px;height:80px" ></textarea>*@
+                @Html.TextAreaFor(model => model.Description, new { style = "width:400px;height:80px", cols = "5" })
+                @Html.ValidationMessageFor(model => model.Description)
+
+            </td>
+
+        </tr>
+
+    </table>
+    <input type="submit" value="Lưu" class="btn btn-blue">
+</div>
+
+
+
+
+}

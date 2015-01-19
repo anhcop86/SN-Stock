@@ -23,3 +23,6 @@ CREATE TABLE [Stock](
 	[ID] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	[StockCode] [varchar](16) NOT NULL
 )
+
+  ALTER TABLE [RecommendStock]
+  ADD CreatedModify datetime

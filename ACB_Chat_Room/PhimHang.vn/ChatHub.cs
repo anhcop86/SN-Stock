@@ -149,6 +149,24 @@ namespace PhimHang
                 CurrentMessage.RemoveAt(0);
         }
 
+        public void CreateGroup_User(string[] listUser)
+        {
+            // store last 100 messages in cache
+            if (listUser != null)
+            {
+                string groupname = "";
+
+                foreach (var item in listUser)
+                {
+                    groupname += item;
+                }
+    
+            }
+            
+           
+        }
+
+
         #endregion
     }
 }

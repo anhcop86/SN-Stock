@@ -25,18 +25,21 @@ namespace PhimHang.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> BuyRecommend([Bind(Include = "ID,StockCode,TYPERecommend,BuyPrice,StockHoldingTime,TargetSell,Description,CreatedDate,PostBy")] BuyRecommendModel buyRecommendModel)
+        public async Task<ActionResult> BuyRecommend([Bind(Include = "ID,StockCode,BuyPrice,StockHoldingTime,TargetSell,Description,CreatedDate,PostBy")] BuyRecommendModel buyRecommendModel)
         {
             if (ModelState.IsValid)
             {
                 var recommentToDb = new RecommendStock();
 
                 recommentToDb.CreatedDate = DateTime.Now.Date;
+                recommentToDb.CreatedModify = DateTime.Now;
                 recommentToDb.PostBy =  db.UserLogins.FirstOrDefault(u=> u.UserNameCopy == User.Identity.Name).Id;
                 recommentToDb.StockCode = buyRecommendModel.StockCode;
                 recommentToDb.StockHoldingTime = buyRecommendModel.StockHoldingTime;
                 recommentToDb.TargetSell = buyRecommendModel.TargetSell;
-                recommentToDb.TYPERecommend = buyRecommendModel.TYPERecommend;                
+                recommentToDb.BuyPrice = buyRecommendModel.BuyPrice;
+                recommentToDb.Description = buyRecommendModel.Description;
+                recommentToDb.TYPERecommend = "MUA";                
 
                 db.RecommendStocks.Add(recommentToDb);
                 await db.SaveChangesAsync();
@@ -48,12 +51,20 @@ namespace PhimHang.Controllers
         }
         private async Task LoadInit()
         {
-            ViewBag.listStockCode = new SelectList(dbstox.stox_tb_Company, "Ticker", "Ticker");
+            var listStock = (from s in dbstox.stox_tb_Company
+                             where s.ExchangeID == 0 || s.ExchangeID == 1
+                             orderby s.Ticker
+                             select new
+                             {
+                                 Ticker = s.Ticker
+                             }
+                             ).ToList();
+            ViewBag.listStockCode = new SelectList(listStock, "Ticker", "Ticker");
 
             var listTypeRecomendation = new List<dynamic>
                     { 
-                        new { Id = "MUA", Name = "MUA" },
-                        new { Id = "BAN", Name = "BÁN" } 
+                        new { Id = "MUA", Name = "MUA" }
+                        
                     }.ToList();
 
             ViewBag.listTypeRecomendation = new SelectList(listTypeRecomendation, "Id", "Name");
@@ -176,5 +187,69 @@ namespace PhimHang.Controllers
             }
             base.Dispose(disposing);
         }
+
+        //--------------------------SELL
+
+        public ActionResult SellRecommend()
+        {
+            //ViewBag.PostBy = new SelectList(db.UserLogins, "Id", "KeyLogin");
+            LoadInitSell();
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> SellRecommend([Bind(Include = "ID,StockCode,BuyPrice,Description")] SellRecommendModel sellRecommendModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var recommentToDb = new RecommendStock();
+
+                recommentToDb.CreatedDate = DateTime.Now.Date;
+                recommentToDb.CreatedModify = DateTime.Now;
+                recommentToDb.PostBy = db.UserLogins.FirstOrDefault(u => u.UserNameCopy == User.Identity.Name).Id;
+                recommentToDb.StockCode = sellRecommendModel.StockCode;
+                recommentToDb.Description = sellRecommendModel.Description;
+                recommentToDb.BuyPrice = sellRecommendModel.BuyPrice;
+                recommentToDb.TYPERecommend = "BAN";
+
+                db.RecommendStocks.Add(recommentToDb);
+                await db.SaveChangesAsync();
+                return RedirectToAction("", "Home");
+            }
+            LoadInitSell();
+            //ViewBag.PostBy = new SelectList(db.UserLogins, "Id", "KeyLogin", recommentToDb.PostBy);
+            return View(sellRecommendModel);
+        }
+        private async Task LoadInitSell()
+        {
+            var listStock = (from s in dbstox.stox_tb_Company
+                             where s.ExchangeID == 0 || s.ExchangeID == 1
+                             orderby s.Ticker
+                             select new
+                             {
+                                 Ticker = s.Ticker
+                             }
+                             ).ToList();
+            ViewBag.listStockCode = new SelectList(listStock, "Ticker", "Ticker");
+
+            var listTypeRecomendation = new List<dynamic>
+                    { 
+                        new { Id = "BAN", Name = "BÁN" }
+                        
+                    }.ToList();
+
+            ViewBag.listTypeRecomendation = new SelectList(listTypeRecomendation, "Id", "Name");
+
+        }
+
+        public ActionResult Detail(int id)
+        {
+
+            var recomment = db.RecommendStocks.FirstOrDefault(rs => rs.ID == id);
+            ViewBag.IdRecommend = id;
+            return View(recomment);
+        }
+
+
     }
 }

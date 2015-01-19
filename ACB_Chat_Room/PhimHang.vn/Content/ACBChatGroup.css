@@ -1,10 +1,11 @@
 ﻿.listUserLoad{    
     background-color:#EFF3F7;
     height:500px;
-    width:100px;
+    width:200px;
     position:fixed;
     top: 100px;
-    overflow:hidden;
+    left:500px;
+    overflow:inherit;
 }
 
 #divContainer .user

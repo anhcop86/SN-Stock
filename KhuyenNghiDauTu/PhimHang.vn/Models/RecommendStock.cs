@@ -28,6 +28,7 @@ namespace PhimHang.Models
         public string Description { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public Nullable<int> PostBy { get; set; }
+        public Nullable<System.DateTime> CreatedModify { get; set; }
     
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual UserLogin UserLogin { get; set; }

@@ -34,6 +34,7 @@ warning 6002: The table/view 'KNDT.dbo.Comments' does not have a primary key def
           <Property Name="Description" Type="nvarchar" MaxLength="1024" />
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="PostBy" Type="int" />
+          <Property Name="CreatedModify" Type="datetime" />
         </EntityType>
         <EntityType Name="UserLogins">
           <Key>
@@ -133,6 +134,7 @@ warning 6002: The table/view 'KNDT.dbo.Comments' does not have a primary key def
           <Property Name="PostBy" Type="Int32" />
           <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_RecommendStock" FromRole="RecommendStock" ToRole="Comments" />
           <NavigationProperty Name="UserLogin" Relationship="Self.FK_RecommendStock_UserLogins" FromRole="RecommendStock" ToRole="UserLogins" />
+          <Property Name="CreatedModify" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="UserLogin">
           <Key>
@@ -232,6 +234,7 @@ warning 6002: The table/view 'KNDT.dbo.Comments' does not have a primary key def
           <EntitySetMapping Name="RecommendStocks">
             <EntityTypeMapping TypeName="DatabaseLocal.RecommendStock">
               <MappingFragment StoreEntitySet="RecommendStock">
+                <ScalarProperty Name="CreatedModify" ColumnName="CreatedModify" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="StockCode" ColumnName="StockCode" />
                 <ScalarProperty Name="TYPERecommend" ColumnName="TYPERecommend" />

@@ -5,7 +5,7 @@
 }
 
 <h2>
-    Khuyến nghị mua
+    Khuyến nghị MUA
 </h2>
 @using (Html.BeginForm("BuyRecommend", "Recommendation", FormMethod.Post))
 {
@@ -17,7 +17,7 @@
                     <td class="col2">
                         @*<input type="text" id="grumble" name="StockCode" />*@
                         @*@Html.TextBoxFor(model => model.StockCode, new { id = "grumble" })*@
-                        @Html.DropDownListFor(model => model.StockCode, ViewBag.listStockCode as SelectList, string.Empty , new { id = "select" })
+                        @Html.DropDownList("StockCode", ViewBag.listStockCode as SelectList, string.Empty, new { id = "select" })
                         @Html.ValidationMessageFor(model => model.StockCode)
                     </td>
                     
@@ -27,8 +27,9 @@
                 <tr>
                     <td class="col1"><label>Khuyến nghị:</label></td>
                     <td>
-                        @Html.DropDownList("TYPERecommend", @ViewBag.listTypeRecomendation as SelectList, String.Empty, new { @name = "select" })
-                     @Html.ValidationMessageFor(model => model.TYPERecommend)
+                        @Html.DropDownList("TYPERecommend", @ViewBag.listTypeRecomendation as SelectList, new { @name = "select", disabled = "disabled" })
+                     @*@Html.ValidationMessageFor(model => model.TYPERecommend)*@
+                        
                     </td>
                     
 

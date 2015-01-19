@@ -1,0 +1,104 @@
+﻿
+@model PhimHang.Models.RecommendStock
+@{
+    ViewBag.Title = "Chi tiết khuyến nghị";
+    Layout = "~/Views/Shared/_Layout_Main.cshtml";
+}
+
+<h2>
+    Khuyến nghị @Model.TYPERecommend
+</h2>
+
+    <div id="example_length" class="dataTables_length1">
+        <table class="form">
+            <tr>
+                <td class="col1"><label> Mã cổ phiếu:</label></td>
+                <td class="col2">
+                    
+                    <input type="text" id="grumble" name="StockCode" value="@Model.StockCode" disabled />
+                    @*@Html.TextBoxFor(model => model.StockCode, new { id = "grumble" })*@
+                    @*@Html.DropDownList("StockCode", ViewBag.listStockCode as SelectList, string.Empty, new { id = "select" })
+                    @Html.ValidationMessageFor(model => model.StockCode)*@
+                </td>
+
+                <td class="col1" style="margin-left:30px"><label> PE:</label><label>12.3</label></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="col1"><label>Khuyến nghị:</label></td>
+                <td>
+                    <input type="text" id="grumble" name="StockCode" value="@Model.TYPERecommend" disabled />
+                    @*@Html.DropDownList("TYPERecommend", @ViewBag.listTypeRecomendation as SelectList, new { @name = "select", disabled = "disabled" })*@
+                    @*@Html.ValidationMessageFor(model => model.TYPERecommend)*@
+
+                </td>
+
+
+                <td class="col1" style="margin-left:30px"><label> PE:</label><label>12.3</label></td>
+                <td></td>
+            </tr>
+            <tr>
+                @{
+                    if (Model.TYPERecommend == "MUA")
+                    {
+                        <td class="col1"><label> Vùng giá mua:</label></td>        
+                    }
+                    else
+                    {
+                        <td class="col1"><label> Vùng giá bán:</label></td>        
+                    }
+                
+                
+                 }
+                <td class="col2">
+                    <input type="text" id="grumble" name="StockCode" value="@Model.BuyPrice" disabled class="success" />
+                    @*@Html.TextBoxFor(model => model.BuyPrice, new { id = "grumble" })
+                    @Html.ValidationMessageFor(model => model.BuyPrice)*@
+                </td>
+
+                <td class="col1" style="margin-left:30px"><label> PE:</label><label>12.3</label></td>
+                <td></td>
+            </tr>
+            @{
+                if (Model.TYPERecommend == "MUA")
+                {
+                     <tr>
+                        <td class="col1"><label>Thời gian nắm giữ (ngày):</label></td>
+                        <td class="col2">
+                            <input type="text" id="grumble" name="StockCode" value="@Model.StockHoldingTime" disabled class="success" />
+                            @*@Html.TextBoxFor(model => model.StockHoldingTime, new { id = "grumble", type = "number" })
+                            @Html.ValidationMessageFor(model => model.StockHoldingTime)*@
+                        </td>
+
+                        <td class="col1" style="margin-left:30px"><label> PE:</label><label>12.3</label></td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td class="col1"><label>Giá bán mục tiêu:</label></td>
+                        <td class="col2">
+                            <input type="text" id="grumble" name="StockCode" value="@Model.TargetSell" disabled class="success" />
+                    
+                        </td>
+
+                        <td class="col1"><label> PE:</label><label>12.3</label></td>
+                        <td></td>
+                    </tr>
+                }
+             }
+           
+
+            <tr>
+                <td class="col1"><label>Chi tiết khuyến nghị:</label></td>
+                <td class="col2">
+                    <textarea cols="5" style="width:400px;height:80px" >@Model.Description</textarea>
+                @*@Html.TextAreaFor(model => model.Description, new { style = "width:400px;height:80px", cols = "5" })
+                @Html.ValidationMessageFor(model => model.Description)*@
+
+            </td>
+
+        </tr>
+
+    </table>
+    <input type="submit" value="Bình luận" class="btn btn-blue">
+</div>

@@ -54,7 +54,7 @@ namespace PhimHang.Controllers
             LoadInit();
 
             var recommendstocks = from r in db.RecommendStocks.Include(r => r.UserLogin)
-                                  orderby r.CreatedDate descending
+                                  orderby r.CreatedModify descending
                                   where (r.PostBy == postBy || 0 == postBy)
                                   && (r.TYPERecommend == recommentType || "ALL" == recommentType)
                                   && (r.StockCode.Contains(stockCode) || "ALL"  == stockCode)

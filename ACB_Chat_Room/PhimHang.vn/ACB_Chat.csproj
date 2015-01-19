@@ -1138,10 +1138,14 @@
     <Content Include="DetailTheme\js\tiny-mce\utils\form_utils.js" />
     <Content Include="DetailTheme\js\tiny-mce\utils\mctabs.js" />
     <Content Include="DetailTheme\js\tiny-mce\utils\validate.js" />
+    <Content Include="DetailTheme\multiplecheckbox\jquery.multiple.select.js" />
+    <Content Include="DetailTheme\multiplecheckbox\multiple-select.css" />
+    <Content Include="DetailTheme\multiplecheckbox\multiple-select.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\AddUser.png" />
     <Content Include="images\Offiline.ico" />
     <Content Include="images\Online.ico" />
     <Content Include="images\bg-body.gif" />
