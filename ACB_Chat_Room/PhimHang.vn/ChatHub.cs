@@ -48,7 +48,7 @@ namespace PhimHang
                                  where g.UserOfGroup == idUser
                                  select new
                                  {
-                                     UserId = g.GroupId,
+                                    UserId = g.GroupId,
                                     UserName = g.Group.GroupName
                                  }).Distinct().ToList();
 
@@ -56,7 +56,7 @@ namespace PhimHang
                 Clients.Caller.onConnected(id, userName, userStatusOnline, "O"); // List ONLine
                 Clients.Caller.onConnected(id, userName, userStatusOffline,"F"); // List OFFLine
 
-                Clients.Caller.onConnected(id, userName, listGroup, "G"); // List OFFLine
+                Clients.Caller.onConnected(id, userName, listGroup, "G"); // List Group
 
                 // send to all except caller client switch online
                 Clients.AllExcept(id).onNewUserConnected(id, userName); 
@@ -83,21 +83,21 @@ namespace PhimHang
             {
                 var listGroup = db.Group_User.Where(gu => gu.GroupId == i && gu.UserOfGroup != idUser).ToList();
                 var listUserInGroup = new List<string>();
-                var GroupName = "";
-                //listGroup.ForEach(g => listUserInGroup.Add(g.UserLogin.UserNameCopy), GroupName += g.UserLogin.UserNameCopy);
+                var GroupName = db.Groups.FirstOrDefault(g=>g.GroupId == i).GroupName;
+                
                 foreach (var item in listGroup)
                 {
                     listUserInGroup.Add(item.UserLogin.UserNameCopy);
-                    GroupName += item.UserLogin.UserNameCopy + "|";
+                    //GroupName += item.UserLogin.UserNameCopy + "|";
                 }
 
                 //listGroup.Where(u => !ListUserNameConnection.Contains(u.UserName)).ToList();
 
 
-                Clients.Users(listUserInGroup).sendPrivateMessage(toUserId, fromUserId, message, "G", GroupName + fromUserId);
+                Clients.Users(listUserInGroup).sendPrivateMessage(toUserId, fromUserId, message, "G", GroupName);
 
                 // send to caller user
-                Clients.Caller.sendPrivateMessage(toUserId, fromUserId, message, "G", GroupName + fromUserId);
+                Clients.Caller.sendPrivateMessage(toUserId, fromUserId, message, "G", GroupName );
 
             }
             else // send direct
@@ -149,21 +149,57 @@ namespace PhimHang
                 CurrentMessage.RemoveAt(0);
         }
 
-        public void CreateGroup_User(string[] listUser)
+        public void CreateGroup_User(string[] listUser, string groupName)
         {
-            // store last 100 messages in cache
             if (listUser != null)
             {
-                string groupname = "";
+                string myUserId = Context.User.Identity.Name; // tạo group phải có mình trong đó
+                string groupnameDefault = "";
+                string NameFirstsend = "";
 
                 foreach (var item in listUser)
                 {
-                    groupname += item;
+                    groupnameDefault += item + "|";
+                    NameFirstsend += item + "|";
                 }
-    
+
+                groupnameDefault += myUserId;
+
+                Group group = new Group();
+                group.GroupName = string.IsNullOrWhiteSpace(groupName) ? groupnameDefault : groupName;
+                group.GroupType = "G";
+                db.Groups.Add(group);
+
+                foreach (var item in listUser)
+                {
+                    Group_User userGroup = new Group_User();
+                    userGroup.GroupId = group.GroupId;
+                    userGroup.UserOfGroup = db.UserLogins.FirstOrDefault(ul => ul.UserNameCopy == item).Id;
+                    db.Group_User.Add(userGroup);
+                }
+
+                Group_User myGroup = new Group_User();
+                myGroup.GroupId = group.GroupId;
+                myGroup.UserOfGroup = db.UserLogins.FirstOrDefault(ul => ul.UserNameCopy == myUserId).Id;
+                db.Group_User.Add(myGroup);
+
+                try
+                {
+                    db.SaveChanges();
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+
+
+                SendPrivateMessage(group.GroupId.ToString(), myUserId + " Đã thêm " + NameFirstsend + " vào nhóm ");
+
             }
-            
-           
+
+
         }
 
 

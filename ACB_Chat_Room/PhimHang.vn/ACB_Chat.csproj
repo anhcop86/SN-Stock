@@ -304,6 +304,20 @@
     <Content Include="Content\images\MC.jpg" />
     <Content Include="Content\images\onepay.png" />
     <Content Include="Content\images\secure.png" />
+    <Content Include="Content\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
+    <Content Include="Content\images\ui-bg_flat_15_cd0a0a_40x100.png" />
+    <Content Include="Content\images\ui-bg_glass_100_e4f1fb_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_50_3baae3_1x400.png" />
+    <Content Include="Content\images\ui-bg_glass_80_d7ebf9_1x400.png" />
+    <Content Include="Content\images\ui-bg_highlight-hard_100_f2f5f7_1x100.png" />
+    <Content Include="Content\images\ui-bg_highlight-hard_70_000000_1x100.png" />
+    <Content Include="Content\images\ui-bg_highlight-soft_100_deedf7_1x100.png" />
+    <Content Include="Content\images\ui-bg_highlight-soft_25_ffef8f_1x100.png" />
+    <Content Include="Content\images\ui-icons_2694e8_256x240.png" />
+    <Content Include="Content\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\images\ui-icons_3d80b3_256x240.png" />
+    <Content Include="Content\images\ui-icons_72a7cf_256x240.png" />
+    <Content Include="Content\images\ui-icons_ffffff_256x240.png" />
     <Content Include="Content\images\vbvDots.gif" />
     <Content Include="Content\images\verisignseal.png" />
     <Content Include="Content\images\VS.jpg" />
@@ -1224,6 +1238,7 @@
     <Content Include="img\cover_default.jpg" />
     <Content Include="img\cover.jpg" />
     <Content Include="img\logo.png" />
+    <Content Include="img\Logo_ACBS_DF.png" />
     <Content Include="LoginTheme\css\datePicker.css" />
     <Content Include="LoginTheme\css\pro_dropline.css" />
     <Content Include="LoginTheme\css\pro_dropline_ie.css" />
@@ -1379,22 +1394,6 @@
     <Content Include="Content\font-awesome\scss\_variables.scss" />
     <Content Include="Content\walt_disney\waltograph42.otf" />
     <Content Include="Content\walt_disney\waltographUI.ttf" />
-    <Content Include="LoginTheme\images\forms\Thumbs.db" />
-    <Content Include="LoginTheme\images\login\Thumbs.db" />
-    <Content Include="LoginTheme\images\shared\nav\Thumbs.db" />
-    <Content Include="LoginTheme\images\shared\Thumbs.db" />
-    <Content Include="LoginTheme\images\table\Thumbs.db" />
-    <Content Include="LoginTheme\images\Thumbs.db" />
-    <Content Include="DetailTheme\img\gallery\thumbs_small\Thumbs.db" />
-    <Content Include="DetailTheme\img\pretty-photo\.DS_Store" />
-    <Content Include="DetailTheme\img\pretty-photo\fullscreen\.DS_Store" />
-    <Content Include="DetailTheme\img\Thumbs.db" />
-    <Content Include="Content\themes\base\images\vssver2.scc" />
-    <Content Include="Content\themes\base\vssver2.scc" />
-    <Content Include="Content\themes\sunny\images\vssver2.scc" />
-    <Content Include="Content\themes\sunny\vssver2.scc" />
-    <Content Include="Content\themes\vssver2.scc" />
-    <Content Include="Content\images\vssver2.scc" />
     <EntityDeploy Include="Models\DbChatGroup.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DbChatGroup.Designer.cs</LastGenOutput>
@@ -1412,6 +1411,7 @@
       <DependentUpon>DbChatGroup.edmx</DependentUpon>
       <LastGenOutput>DbChatGroup.cs</LastGenOutput>
     </Content>
+    <None Include="Properties\PublishProfiles\AcbsChat.pubxml" />
     <None Include="Properties\PublishProfiles\phimhang o nha.pubxml" />
     <None Include="Properties\PublishProfiles\phimhang.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

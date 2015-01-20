@@ -19,47 +19,104 @@
 <script src="~/DetailTheme/multiplecheckbox/jquery.multiple.select.js"></script>
 <link href="~/DetailTheme/multiplecheckbox/multiple-select.css" rel="stylesheet" />
 <!----------------------------------------------------------->
+
+<!---------------------------Diaglog-------------------------------->
+<link href="~/Content/jquery-ui.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-ui.js"></script>
+<!----------------------------------------------------------->
 <div id="header">
-    ACB Chat Room portal
+    <a href="/"><img src="/img/Logo_ACBS_DF.png" alt="ACBS" /></a>
+    
 </div>
 <br />
 <br />
 <br />
 
 <div id="divContainer">
-    
+    <div style="margin-bottom:7px">        
+        <input id="LinkimgCreate" class="submitButton button" type="button" value="ADD ROOM">
+    </div>
     <div id="divChat" class="chatRoom">
-              
+
     </div>
 
-    <div id="listUser" class="listUserLoad">       
+    <div id="listUser" class="listUserLoad">
+        
     </div>
+    
 
     <input id="hdId" type="hidden" />
     <input id="hdUserName" type="hidden" />
 
-    @*<div class="form-group">        
-        <select id="ms" multiple="multiple">
-            <option value="anhcop86">anhcop86</option>
-            <option value="voky86">voky86</option>
-            <option value="Truongquynbao">Truongquynbao</option>
-            <option value="thegioihaohoa">thegioihaohoa</option>        
-        </select>        
-    </div>*@
+    <div class="dialogGroup" id="dialog">
+        <div class="form-group">
+            <select id="ms" multiple="multiple">
+                @*<option value="anhcop86">anhcop86</option>
+                <option value="truongvoky">truongvoky</option>                
+                <option value="truongthuyson">truongthuyson</option>*@
+            </select>
+        </div>
+        <div style="margin-top: 180px; text-align:center;">
+            <input id="txtGroupName" type="text" placeholder="Nhập tên group" width="100" style="margin-bottom:10px" />
+            <br />
+            <input id="btnCreateGroup" class="submitButton button" type="button" value="Tạo group chat">
+        </div>
+    </div>
 </div>
 
 
 
 <!------------------script----------------------------------------->
+
 <script>
     $(function () {
-        $('#ms').change(function () {
-            console.log($(this).val());
-        }).multipleSelect({
-            width: '150px'
+
+        $('#ms').multipleSelect({
+            width: '250px',
+            selectAll: false,
+            filter: true,
+            isOpen: true,
+            keepOpen: true,
+            maxHeight: 250
+            
+        });
+        $('#LinkimgCreate').click(function () {
+            $('#ms').html('');
+            $('#txtGroupName').val('');
+            document.body.style.overflow = 'hidden';
+            $.ajax({
+                cache: false,
+                type: "GET",
+                url: '@Url.Action("GetListUserExcept", "Home")',
+                success: function (data) {
+                    $.each(data, function (id, option) {
+                        //$('#ms').append($('<option></option>').val(option.id).html(option.name));
+                        //$('#ms').append('<option value="' + option.id + '">' + option.name + '</option>');
+                        $opt = $("<option />", {
+                            value: option.name,
+                            text: option.name
+                        });
+
+                        $('#ms').append($opt).multipleSelect("refresh");
+                    });
+                },
+
+            })
+            
+            dialog.dialog("open");
+
+        });
+        dialog = $("#dialog").dialog({
+            modal: true,
+            width: 300,
+            height:400,
+            resizable: false,
+            autoOpen: false,
+            title: 'Tạo nhóm chat'
         });
     });
 </script>
+
 <script type="text/javascript">
 
     $(function () {
@@ -122,6 +179,21 @@
             }
         });
 
+
+        // chat group
+
+
+       
+
+        $('#btnCreateGroup').click(function () {
+            var listGroup = $('#ms').val();
+            var groupName = $('#txtGroupName').val();
+            if (listGroup != null) {
+                chatHub.server.createGroup_User(listGroup, groupName);
+                dialog.dialog("close");
+            }
+
+        })
 
     }
 
@@ -210,11 +282,20 @@
             if ($('#' + ctrId).length == 0) {
 
                 createPrivateChatWindow(chatHub, windowId, ctrId, fromUserName, groupname);
-
             }
 
             $('#' + ctrId).find('#divMessage').append('<div class="message"><span class="userName">' + fromUserName + '</span>: ' + message + '</div>');
+            
+            if (windowId == fromUserName && group == "P") {
+                
+                $('#' + ctrId).find('.header').css({ "background-color": "#287CDB" });
+            }
 
+            if ($('#hdId').val() != fromUserName && group == "G") {
+
+                $('#' + ctrId).find('.header').css({ "background-color": "#287CDB" });
+            }
+            
             // set scrollbar
             var height = $('#' + ctrId).find('#divMessage')[0].scrollHeight;
             $('#' + ctrId).find('#divMessage').scrollTop(height);
@@ -293,14 +374,12 @@
 
     function createPrivateChatWindow(chatHub, userId, ctrId, userName, groupname) {
 
-        var div = '<div id="' + ctrId + '" class="ui-widget-content draggable" rel="0">' +
+        var div = '<div  id="' + ctrId + '" class="ui-widget-content draggable" rel="0">' +
                    '<div class="header">' +
                       '<div  style="float:right;">' +
                           '<img id="imgDelete"  style="cursor:pointer;" src="/Images/delete.png"/>' +
                        '</div>' +
-                       '<div  style="float:right;margin-right:5px">' +
-                          '<img id="imgAddUser"  style="cursor:pointer;" src="/Images/AddUser.png"/>' +
-                       '</div>' +
+                      
 
                        '<span class="selText" rel="0">' + groupname + '</span>' +
                    '</div>' +
@@ -313,37 +392,17 @@
                    '</div>' +
                 '</div>';
 
-        var createAddUserGroup = '<div id="GroupMulti' + userName + '" class="form-group" style="position:fixed;float:right">' +
-                                    '<select id="GroupSelect' + userName + '" multiple="multiple">' +
-                                        '<option value="anhcop86" disabled>anhcop86</option>' +
-                                        '<option value="voky86">voky86</option>'+
-                                        '<option value="Truongquynbao">Truongquynbao</option>' +
-                                        '<option value="thegioihaohoa">thegioihaohoa</option>' +                                        
-                                    '</select>' +
-                                    '<a id="createNewGroup" href="#">add</a>' +
-                                '</div>'
-
+        //'<div  style="float:right;margin-right:5px">' + cai nay de lam left room
+        //                   '<img id="imgAddUser"  style="cursor:pointer;" src="/Images/AddUser.png"/>' +
+        //                '</div>' +
         // tạo cửa sổ chat
         var $div = $(div);
 
 
        // tạo group chat                             
-        var $createAddUserGroup = $(createAddUserGroup);
-
-        $div.find('#imgAddUser').click(function () {
-            $div.find('.header').prepend($createAddUserGroup);
-            $createAddUserGroup.find('#GroupSelect' + userName).multipleSelect({
-                width: '150px',
-                selectAll: false
-            });
-        });
        
 
-        $createAddUserGroup.find("#createNewGroup").click(function () {
-            var listuer = $createAddUserGroup.find('#GroupSelect' + userName).val();
-            chatHub.server.createGroup_User(listuer);
-            $('#GroupMulti' + userName).remove();            
-        });
+
         //--------------------------------------------------
 
         
@@ -352,14 +411,12 @@
         // DELETE BUTTON IMAGE
         $div.find('#imgDelete').click(function () {
             $('#' + ctrId).remove();
-        });
-
-      
+        });      
         
 
         // Send Button event
         $div.find("#btnSendMessage").click(function () {
-
+            $('#' + ctrId).find('.header').css({ "background-color": "#d7e5e4" });
             $textBox = $div.find("#txtPrivateMessage");
             var msg = $textBox.val();
             if (msg.length > 0) {
@@ -376,12 +433,19 @@
             }
         });
 
+        $div.find("#txtPrivateMessage").focus(function () {
+            $('#' + ctrId).find('.header').css({ "background-color": "#d7e5e4" });
+        });
+
         AddDivToContainer($div);
 
     }
 
     function AddDivToContainer($div) {
-        $('#divContainer').prepend($div);
+        var top = Math.floor((Math.random() * 500) + 1);
+        var left = Math.floor((Math.random() * 1000) + 1);
+        
+        $('#divContainer').prepend($div.css({"left":left,"top":top}));
 
         $div.draggable({
 

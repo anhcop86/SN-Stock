@@ -2,10 +2,10 @@
     background-color:#EFF3F7;
     height:500px;
     width:200px;
-    position:fixed;
+    /*position:fixed;
     top: 100px;
     left:500px;
-    overflow:inherit;
+    overflow:inherit;*/
 }
 
 #divContainer .user
@@ -46,3 +46,7 @@
                 margin-top:3px;
                  border-radius:5px;
             }
+
+.dialogGroup{
+    display:none;
+}
