@@ -1108,6 +1108,7 @@
     <Content Include="img\cover_default.jpg" />
     <Content Include="img\cover.jpg" />
     <Content Include="img\logo.png" />
+    <Content Include="img\userDefault.jpg" />
     <Content Include="LoginTheme\css\datePicker.css" />
     <Content Include="LoginTheme\css\pro_dropline.css" />
     <Content Include="LoginTheme\css\pro_dropline_ie.css" />
@@ -1229,6 +1230,7 @@
     <Content Include="LoginTheme\js\jquery\jquery.usermode.js" />
     <Content Include="LoginTheme\js\jquery\ui.checkbox.js" />
     <Content Include="LoginTheme\js\jquery\ui.core.js" />
+    <Content Include="Scripts\action.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.eot" />

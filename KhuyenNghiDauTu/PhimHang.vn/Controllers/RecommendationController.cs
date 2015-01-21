@@ -39,8 +39,8 @@ namespace PhimHang.Controllers
                 recommentToDb.TargetSell = buyRecommendModel.TargetSell;
                 recommentToDb.BuyPrice = buyRecommendModel.BuyPrice;
                 recommentToDb.Description = buyRecommendModel.Description;
-                recommentToDb.TYPERecommend = "MUA";                
-
+                recommentToDb.TYPERecommend = "MUA";
+                recommentToDb.SumComment = 0;
                 db.RecommendStocks.Add(recommentToDb);
                 await db.SaveChangesAsync();
                 return RedirectToAction("", "Home");
@@ -211,7 +211,7 @@ namespace PhimHang.Controllers
                 recommentToDb.Description = sellRecommendModel.Description;
                 recommentToDb.BuyPrice = sellRecommendModel.BuyPrice;
                 recommentToDb.TYPERecommend = "BAN";
-
+                recommentToDb.SumComment = 0;
                 db.RecommendStocks.Add(recommentToDb);
                 await db.SaveChangesAsync();
                 return RedirectToAction("", "Home");
@@ -241,14 +241,76 @@ namespace PhimHang.Controllers
             ViewBag.listTypeRecomendation = new SelectList(listTypeRecomendation, "Id", "Name");
 
         }
-
+        private const string ImageURLAvataDefault = "/img/avatar_default.jpg";
         public ActionResult Detail(int id)
         {
-
+            ViewBag.AvataEmage = ImageURLAvataDefault;
             var recomment = db.RecommendStocks.FirstOrDefault(rs => rs.ID == id);
             ViewBag.IdRecommend = id;
             return View(recomment);
         }
+
+        public async Task<dynamic> GetCommentFromId(int id)
+        {
+            //var result = db.Comments.Where(c => c.PostedBy == id).ToList();
+            var ret = (from reply in db.Comments
+                       where reply.PostedBy == id
+                       orderby reply.PostedDate descending
+                       select new
+                       {
+                           ReplyMessage = reply.Message,
+                           ReplyByName = reply.UserLogin.UserNameCopy,
+                           ReplyByAvatar = ImageURLAvataDefault + "?width=46&height=46&mode=crop",
+                           ReplyDate = reply.PostedDate,
+                           ReplyId = reply.CommentsId,
+                       }).ToArray();
+
+
+            //return Json(ret, JsonRequestBehavior.AllowGet);
+            var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
+            return result;
+        }
+        [HttpPost]
+        public async Task<dynamic> AddNewComment(int idkn, string messege)
+        {
+            //var result = db.Comments.Where(c => c.PostedBy == id).ToList();
+            var comment = new Comment();
+            comment.Message = messege;
+            comment.CommentBy = db.UserLogins.FirstOrDefault(ul => ul.UserNameCopy == User.Identity.Name).Id;
+            comment.PostedBy = idkn;
+            comment.PostedDate = DateTime.Now;
+
+            RecommendStock recommendstock = await db.RecommendStocks.FindAsync(idkn);
+            recommendstock.SumComment = recommendstock.SumComment + 1;
+            db.Entry(recommendstock).State = EntityState.Modified;            
+
+            try
+            {
+                db.Comments.Add(comment);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            var ret = (from reply in db.Comments
+                       where reply.CommentsId == comment.CommentsId
+                       orderby reply.PostedDate ascending
+                       select new
+                       {
+                           ReplyMessage = reply.Message,
+                           ReplyByName = reply.UserLogin.UserNameCopy,
+                           ReplyByAvatar = ImageURLAvataDefault + "?width=46&height=46&mode=crop",
+                           ReplyDate = reply.PostedDate,
+                           ReplyId = reply.CommentsId,
+                       }).ToArray();
+
+
+            var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
+            return result;
+        }
+
 
 
     }

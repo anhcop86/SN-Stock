@@ -352,7 +352,6 @@
         $('#divChatWindow').append('<div class="message"><span class="userName">' + userName + '</span>: ' + message + '</div>');
 
         var height = $('#divChatWindow')[0].scrollHeight;
-
         $('#divChatWindow').scrollTop(height);
     }
 
@@ -397,16 +396,7 @@
         //                '</div>' +
         // tạo cửa sổ chat
         var $div = $(div);
-
-
-       // tạo group chat                             
-       
-
-
-        //--------------------------------------------------
-
-        
-       
+              
 
         // DELETE BUTTON IMAGE
         $div.find('#imgDelete').click(function () {
@@ -455,11 +445,15 @@
             }
         });
 
-        ////$div.resizable({
-        ////    stop: function () {
+        //$div.resizable({
+        //    maxHeight: 250,
+        //    maxWidth: 350,
+        //    minHeight: 150,
+        //    minWidth: 200,
+        //    stop: function () {
 
-        ////    }
-        ////});
+        //    }
+        //});
 
     }
 

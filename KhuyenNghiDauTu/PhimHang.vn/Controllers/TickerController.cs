@@ -33,7 +33,7 @@ namespace PhimHang.Controllers
              ViewBag.monthReportV = monthReport;
              LoadInit();
              var recommendstocks = from r in db.RecommendStocks.Include(r => r.UserLogin)
-                                   orderby r.CreatedDate descending
+                                   orderby r.CreatedModify descending
                                    where  (r.StockCode.Contains(stockCode) || "ALL"  == stockCode)
                                    && (r.CreatedDate.Month == monthReport || 0 == monthReport)
                                    && (r.CreatedDate.Year == DateTime.Now.Year)

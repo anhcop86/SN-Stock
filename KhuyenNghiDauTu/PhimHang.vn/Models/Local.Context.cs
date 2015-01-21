@@ -25,8 +25,8 @@ namespace PhimHang.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<RecommendStock> RecommendStocks { get; set; }
         public virtual DbSet<UserLogin> UserLogins { get; set; }
-        public virtual DbSet<Comment> Comments { get; set; }
     }
 }

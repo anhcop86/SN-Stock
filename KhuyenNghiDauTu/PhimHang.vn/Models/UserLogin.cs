@@ -16,8 +16,8 @@ namespace PhimHang.Models
     {
         public UserLogin()
         {
-            this.RecommendStocks = new HashSet<RecommendStock>();
             this.Comments = new HashSet<Comment>();
+            this.RecommendStocks = new HashSet<RecommendStock>();
         }
     
         public int Id { get; set; }
@@ -34,7 +34,7 @@ namespace PhimHang.Models
         public int LockAccount { get; set; }
         public string Status { get; set; }
     
-        public virtual ICollection<RecommendStock> RecommendStocks { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<RecommendStock> RecommendStocks { get; set; }
     }
 }

@@ -5,15 +5,9 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DatabaseLocal.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'KNDT.dbo.Comments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Comments">
           <Key>
             <PropertyRef Name="CommentsId" />
-            <PropertyRef Name="Message" />
-            <PropertyRef Name="PostedBy" />
-            <PropertyRef Name="CommentBy" />
-            <PropertyRef Name="PostedDate" />
           </Key>
           <Property Name="CommentsId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Message" Type="nvarchar" MaxLength="256" Nullable="false" />
@@ -35,6 +29,7 @@ warning 6002: The table/view 'KNDT.dbo.Comments' does not have a primary key def
           <Property Name="CreatedDate" Type="datetime" Nullable="false" />
           <Property Name="PostBy" Type="int" />
           <Property Name="CreatedModify" Type="datetime" />
+          <Property Name="SumComment" Type="int" />
         </EntityType>
         <EntityType Name="UserLogins">
           <Key>
@@ -91,17 +86,9 @@ warning 6002: The table/view 'KNDT.dbo.Comments' does not have a primary key def
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DatabaseLocalStoreContainer">
+          <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RecommendStock" EntityType="Self.RecommendStock" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserLogins" EntityType="Self.UserLogins" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Comments" EntityType="Self.Comments" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Comments].[CommentsId] AS [CommentsId], 
-    [Comments].[Message] AS [Message], 
-    [Comments].[PostedBy] AS [PostedBy], 
-    [Comments].[CommentBy] AS [CommentBy], 
-    [Comments].[PostedDate] AS [PostedDate]
-    FROM [dbo].[Comments] AS [Comments]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_Comments_RecommendStock" Association="Self.FK_Comments_RecommendStock">
             <End Role="RecommendStock" EntitySet="RecommendStock" />
             <End Role="Comments" EntitySet="Comments" />
@@ -119,22 +106,52 @@ warning 6002: The table/view 'KNDT.dbo.Comments' does not have a primary key def
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DatabaseLocal" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="KNDTLocalConnection" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Comments" EntityType="DatabaseLocal.Comment" />
+          <EntitySet Name="RecommendStocks" EntityType="DatabaseLocal.RecommendStock" />
+          <EntitySet Name="UserLogins" EntityType="DatabaseLocal.UserLogin" />
+          <AssociationSet Name="FK_Comments_RecommendStock" Association="DatabaseLocal.FK_Comments_RecommendStock">
+            <End Role="RecommendStock" EntitySet="RecommendStocks" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_UserLogins" Association="DatabaseLocal.FK_Comments_UserLogins">
+            <End Role="UserLogin" EntitySet="UserLogins" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecommendStock_UserLogins" Association="DatabaseLocal.FK_RecommendStock_UserLogins">
+            <End Role="UserLogin" EntitySet="UserLogins" />
+            <End Role="RecommendStock" EntitySet="RecommendStocks" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="CommentsId" />
+          </Key>
+          <Property Name="CommentsId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PostedBy" Type="Int32" Nullable="false" />
+          <Property Name="CommentBy" Type="Int32" Nullable="false" />
+          <Property Name="PostedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="RecommendStock" Relationship="DatabaseLocal.FK_Comments_RecommendStock" FromRole="Comment" ToRole="RecommendStock" />
+          <NavigationProperty Name="UserLogin" Relationship="DatabaseLocal.FK_Comments_UserLogins" FromRole="Comment" ToRole="UserLogin" />
+        </EntityType>
         <EntityType Name="RecommendStock">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StockCode" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TYPERecommend" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StockCode" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="TYPERecommend" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
           <Property Name="BuyPrice" Type="Decimal" Precision="18" Scale="1" />
           <Property Name="StockHoldingTime" Type="Int32" />
           <Property Name="TargetSell" Type="Decimal" Precision="18" Scale="1" />
           <Property Name="Description" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="PostBy" Type="Int32" />
-          <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_RecommendStock" FromRole="RecommendStock" ToRole="Comments" />
-          <NavigationProperty Name="UserLogin" Relationship="Self.FK_RecommendStock_UserLogins" FromRole="RecommendStock" ToRole="UserLogins" />
           <Property Name="CreatedModify" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Comments" Relationship="DatabaseLocal.FK_Comments_RecommendStock" FromRole="RecommendStock" ToRole="Comment" />
+          <NavigationProperty Name="UserLogin" Relationship="DatabaseLocal.FK_RecommendStock_UserLogins" FromRole="RecommendStock" ToRole="UserLogin" />
+          <Property Name="SumComment" Type="Int32" />
         </EntityType>
         <EntityType Name="UserLogin">
           <Key>
@@ -153,42 +170,38 @@ warning 6002: The table/view 'KNDT.dbo.Comments' does not have a primary key def
           <Property Name="AccountType" Type="Int32" Nullable="false" />
           <Property Name="LockAccount" Type="Int32" Nullable="false" />
           <Property Name="Status" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="RecommendStocks" Relationship="Self.FK_RecommendStock_UserLogins" FromRole="UserLogins" ToRole="RecommendStock" />
-          <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_UserLogins" FromRole="UserLogins" ToRole="Comments" />
-        </EntityType>
-        <EntityType Name="Comment">
-          <Key>
-            <PropertyRef Name="CommentsId" />
-            <PropertyRef Name="Message" />
-            <PropertyRef Name="PostedBy" />
-            <PropertyRef Name="CommentBy" />
-            <PropertyRef Name="PostedDate" />
-          </Key>
-          <Property Name="CommentsId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Message" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PostedBy" Type="Int32" Nullable="false" />
-          <Property Name="CommentBy" Type="Int32" Nullable="false" />
-          <Property Name="PostedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <NavigationProperty Name="RecommendStock" Relationship="Self.FK_Comments_RecommendStock" FromRole="Comments" ToRole="RecommendStock" />
-          <NavigationProperty Name="UserLogin" Relationship="Self.FK_Comments_UserLogins" FromRole="Comments" ToRole="UserLogins" />
+          <NavigationProperty Name="Comments" Relationship="DatabaseLocal.FK_Comments_UserLogins" FromRole="UserLogin" ToRole="Comment" />
+          <NavigationProperty Name="RecommendStocks" Relationship="DatabaseLocal.FK_RecommendStock_UserLogins" FromRole="UserLogin" ToRole="RecommendStock" />
         </EntityType>
         <Association Name="FK_Comments_RecommendStock">
-          <End Role="RecommendStock" Type="Self.RecommendStock" Multiplicity="1" />
-          <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
+          <End Type="DatabaseLocal.RecommendStock" Role="RecommendStock" Multiplicity="1" />
+          <End Type="DatabaseLocal.Comment" Role="Comment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="RecommendStock">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Comments">
+            <Dependent Role="Comment">
               <PropertyRef Name="PostedBy" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_RecommendStock_UserLogins">
-          <End Role="UserLogins" Type="Self.UserLogin" Multiplicity="0..1" />
-          <End Role="RecommendStock" Type="Self.RecommendStock" Multiplicity="*" />
+        <Association Name="FK_Comments_UserLogins">
+          <End Type="DatabaseLocal.UserLogin" Role="UserLogin" Multiplicity="1" />
+          <End Type="DatabaseLocal.Comment" Role="Comment" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="UserLogins">
+            <Principal Role="UserLogin">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="CommentBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecommendStock_UserLogins">
+          <End Type="DatabaseLocal.UserLogin" Role="UserLogin" Multiplicity="0..1" />
+          <End Type="DatabaseLocal.RecommendStock" Role="RecommendStock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogin">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="RecommendStock">
@@ -196,84 +209,56 @@ warning 6002: The table/view 'KNDT.dbo.Comments' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Comments_UserLogins">
-          <End Role="UserLogins" Type="Self.UserLogin" Multiplicity="1" />
-          <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserLogins">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Comments">
-              <PropertyRef Name="CommentBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="KNDTLocalConnection" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="RecommendStocks" EntityType="Self.RecommendStock" />
-          <EntitySet Name="UserLogins" EntityType="Self.UserLogin" />
-          <EntitySet Name="Comments" EntityType="Self.Comment" />
-          <AssociationSet Name="FK_Comments_RecommendStock" Association="Self.FK_Comments_RecommendStock">
-            <End Role="RecommendStock" EntitySet="RecommendStocks" />
-            <End Role="Comments" EntitySet="Comments" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RecommendStock_UserLogins" Association="Self.FK_RecommendStock_UserLogins">
-            <End Role="UserLogins" EntitySet="UserLogins" />
-            <End Role="RecommendStock" EntitySet="RecommendStocks" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Comments_UserLogins" Association="Self.FK_Comments_UserLogins">
-            <End Role="UserLogins" EntitySet="UserLogins" />
-            <End Role="Comments" EntitySet="Comments" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DatabaseLocalStoreContainer" CdmEntityContainer="KNDTLocalConnection">
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="DatabaseLocal.Comment">
+              <MappingFragment StoreEntitySet="Comments">
+                <ScalarProperty Name="PostedDate" ColumnName="PostedDate" />
+                <ScalarProperty Name="CommentBy" ColumnName="CommentBy" />
+                <ScalarProperty Name="PostedBy" ColumnName="PostedBy" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="CommentsId" ColumnName="CommentsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="RecommendStocks">
             <EntityTypeMapping TypeName="DatabaseLocal.RecommendStock">
               <MappingFragment StoreEntitySet="RecommendStock">
+                <ScalarProperty Name="SumComment" ColumnName="SumComment" />
                 <ScalarProperty Name="CreatedModify" ColumnName="CreatedModify" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="StockCode" ColumnName="StockCode" />
-                <ScalarProperty Name="TYPERecommend" ColumnName="TYPERecommend" />
-                <ScalarProperty Name="BuyPrice" ColumnName="BuyPrice" />
-                <ScalarProperty Name="StockHoldingTime" ColumnName="StockHoldingTime" />
-                <ScalarProperty Name="TargetSell" ColumnName="TargetSell" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="PostBy" ColumnName="PostBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TargetSell" ColumnName="TargetSell" />
+                <ScalarProperty Name="StockHoldingTime" ColumnName="StockHoldingTime" />
+                <ScalarProperty Name="BuyPrice" ColumnName="BuyPrice" />
+                <ScalarProperty Name="TYPERecommend" ColumnName="TYPERecommend" />
+                <ScalarProperty Name="StockCode" ColumnName="StockCode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserLogins">
             <EntityTypeMapping TypeName="DatabaseLocal.UserLogin">
               <MappingFragment StoreEntitySet="UserLogins">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="KeyLogin" ColumnName="KeyLogin" />
-                <ScalarProperty Name="UserNameCopy" ColumnName="UserNameCopy" />
-                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-                <ScalarProperty Name="AvataImage" ColumnName="AvataImage" />
-                <ScalarProperty Name="AvataCover" ColumnName="AvataCover" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Verify" ColumnName="Verify" />
-                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
-                <ScalarProperty Name="LockAccount" ColumnName="LockAccount" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Comments">
-            <EntityTypeMapping TypeName="DatabaseLocal.Comment">
-              <MappingFragment StoreEntitySet="Comments">
-                <ScalarProperty Name="CommentsId" ColumnName="CommentsId" />
-                <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="PostedBy" ColumnName="PostedBy" />
-                <ScalarProperty Name="CommentBy" ColumnName="CommentBy" />
-                <ScalarProperty Name="PostedDate" ColumnName="PostedDate" />
+                <ScalarProperty Name="LockAccount" ColumnName="LockAccount" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+                <ScalarProperty Name="Verify" ColumnName="Verify" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="AvataCover" ColumnName="AvataCover" />
+                <ScalarProperty Name="AvataImage" ColumnName="AvataImage" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="UserNameCopy" ColumnName="UserNameCopy" />
+                <ScalarProperty Name="KeyLogin" ColumnName="KeyLogin" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

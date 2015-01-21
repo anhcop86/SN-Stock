@@ -11,7 +11,7 @@ CREATE TABLE RecommendStock(
 )
 
 CREATE TABLE [Comments](
-	[CommentsId] [bigint] IDENTITY(1,1) NOT NULL,
+	[CommentsId] [bigint] IDENTITY(1,1) NOT NULL PRIMARY KEY,
 	[Message] [nvarchar](256) NOT NULL,
 	[PostedBy] [int] NOT NULL,
 	[CommentBy] [int] NOT NULL,
@@ -19,10 +19,8 @@ CREATE TABLE [Comments](
 	)
 
 
-CREATE TABLE [Stock](
-	[ID] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
-	[StockCode] [varchar](16) NOT NULL
-)
-
   ALTER TABLE [RecommendStock]
   ADD CreatedModify datetime
+
+ALTER TABLE [dbo].[RecommendStock]
+ADD SumComment int
