@@ -26,5 +26,8 @@ namespace PhimHang.Models
         }
     
         public virtual DbSet<stox_tb_Company> stox_tb_Company { get; set; }
+        public virtual DbSet<stox_tb_Ratio> stox_tb_Ratio { get; set; }
+        public virtual DbSet<stox_tb_HOSE_Trading> stox_tb_HOSE_Trading { get; set; }
+        public virtual DbSet<stox_tb_StocksInfo> stox_tb_StocksInfo { get; set; }
     }
 }

@@ -15,26 +15,26 @@
                 <tr>
                     <td class="col1"><label> Mã cổ phiếu:</label></td>
                     <td class="col2">
-                        @*<input type="text" id="grumble" name="StockCode" />*@
-                        @*@Html.TextBoxFor(model => model.StockCode, new { id = "grumble" })*@
-                        @Html.DropDownList("StockCode", ViewBag.listStockCode as SelectList, string.Empty, new { id = "select" })
+                        @Html.DropDownList("StockCode", ViewBag.listStockCode as SelectList, string.Empty, new { id = "selectStockCode" })
                         @Html.ValidationMessageFor(model => model.StockCode)
                     </td>
                     
-                    <td class="col1" style="margin-left:30px"><label> PE:</label><label>12.3</label></td>                    
+                    <td class="col1" style="margin-left:30px"><label> KLCPLH: </label><label id="lbKLCPLH"></label></td>
+                    <td></td>
+                    <td class="col1" style="margin-left:30px"><label> KLNY: </label><label id="lbKLNY"></label></td>
                     <td></td>
                 </tr>
                 <tr>
                     <td class="col1"><label>Khuyến nghị:</label></td>
                     <td>
                         @Html.DropDownList("TYPERecommend", @ViewBag.listTypeRecomendation as SelectList, new { @name = "select", disabled = "disabled" })
-                     @*@Html.ValidationMessageFor(model => model.TYPERecommend)*@
-                        
                     </td>
-                    
-
-                    <td class="col1" style="margin-left:30px"><label> PE:</label><label>12.3</label></td>
+                    <td class="col1" style="margin-left:30px"><label> PE: </label><label id="lbPE"></label></td>
                     <td></td>
+                    <td class="col1" style="margin-left:30px"><label> KLBQ 10 phiên: </label><label id="lbBQ10Phien"></label></td>
+                    <td></td>
+
+                   
                 </tr>
                 <tr>
                     <td class="col1"><label> Vùng giá mua:</label></td>
@@ -43,7 +43,7 @@
                         @Html.ValidationMessageFor(model => model.BuyPrice)
                     </td>
 
-                    <td class="col1" style="margin-left:30px"><label> PE:</label><label>12.3</label></td>
+                    <td class="col1" style="margin-left:30px"><label> PB: </label><label id="lbPB"></label></td>
                     <td></td>
                 </tr>
                 <tr>
@@ -53,7 +53,7 @@
                         @Html.ValidationMessageFor(model => model.StockHoldingTime)
                     </td>
 
-                    <td class="col1" style="margin-left:30px"><label> PE:</label><label>12.3</label></td>
+                    <td class="col1" style="margin-left:30px"><label> EPS: </label><label id="lbEPS"></label></td>
                     <td></td>
                 </tr>
 
@@ -65,8 +65,8 @@
                         @Html.ValidationMessageFor(model => model.TargetSell)
                     </td>
 
-                    <td class="col1"><label> PE:</label><label>12.3</label></td>
-                    <td></td>
+                    @*<td class="col1"><label> PE:</label><label>12.3</label></td>
+                    <td></td>*@
                 </tr>
                 
                 <tr>
@@ -81,9 +81,33 @@
 
             </table>
             <input type="submit" value="Lưu" class="btn btn-blue">
-        </div>
-        
-
-    
-
+        </div>        
 }
+
+<script>
+    $(function () {
+        $('#selectStockCode').change(function () {
+            $.ajax({
+                cache: false,
+                type: "GET",
+                url: '@Url.Action("GetInfoStoxByAjax", "Recommendation")',
+                data: { "selectStockCode": $('#selectStockCode').val() },
+                success: function (data) {
+                    $('#lbKLCPLH').html(data.KLCPLH);
+                    $('#lbKLNY').html(data.KLNY);
+
+                    $('#lbPE').html(data.PE);
+                    $('#lbPB').html(data.PB);
+
+                    $('#lbEPS').html(data.EPS);
+                    $('#lbBQ10Phien').html(data.BQ10Phien);
+                    
+                },
+
+            })
+        });
+    });
+    $(window).load(function () {
+        $('#selectStockCode').change();
+    });
+</script>

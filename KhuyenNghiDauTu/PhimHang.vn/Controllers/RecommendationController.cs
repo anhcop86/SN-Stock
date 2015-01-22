@@ -21,6 +21,7 @@ namespace PhimHang.Controllers
         {
             //ViewBag.PostBy = new SelectList(db.UserLogins, "Id", "KeyLogin");
             LoadInit();
+
             return View();
         }
         [HttpPost]
@@ -241,12 +242,64 @@ namespace PhimHang.Controllers
             ViewBag.listTypeRecomendation = new SelectList(listTypeRecomendation, "Id", "Name");
 
         }
+
         private const string ImageURLAvataDefault = "/img/avatar_default.jpg";
         public ActionResult Detail(int id)
         {
             ViewBag.AvataEmage = ImageURLAvataDefault;
             var recomment = db.RecommendStocks.FirstOrDefault(rs => rs.ID == id);
             ViewBag.IdRecommend = id;
+            // thong tin stox tu database stox
+            var maxdate = (from s in dbstox.stox_tb_Ratio where s.Ticker == recomment.StockCode select s.UpdateDate).Max();
+            
+            var stoxinfo = (from si in dbstox.stox_tb_Ratio
+                            where si.Ticker == recomment.StockCode
+                            && (si.UpdateDate == maxdate)
+                            select new
+                            {
+                                KLCPLH = si.F5_1b,
+                                PE = si.F5_50,
+                                PB = si.F5_54,
+                                EPS = si.F5_11
+                            }).FirstOrDefault();
+
+            var stoxCompany = (from sc in dbstox.stox_tb_Company
+                               where sc.Ticker == recomment.StockCode
+                               select new
+                               {
+                                   KLNY = sc.ShareIssue
+                               }).FirstOrDefault();
+
+            ViewBag.KLCPLH = stoxinfo.KLCPLH;
+            ViewBag.PE = stoxinfo.PE;
+            ViewBag.PB = stoxinfo.PB;
+            ViewBag.EPS = stoxinfo.EPS;
+            ViewBag.KLNY = stoxCompany.KLNY;
+
+            var phien_date_hose_10 = (from ht in dbstox.stox_tb_HOSE_Trading
+                                      orderby ht.DateReport descending
+                                      where ht.StockSymbol == recomment.StockCode
+                                      select new
+                                      {                                          
+                                          NumberShare = ht.Totalshare
+                                      }).Take(10).ToList();
+
+            var phien_date_hnx_10 = (from ht in dbstox.stox_tb_StocksInfo
+                                      orderby ht.dateReport descending
+                                      where ht.code == recomment.StockCode
+                                      select new
+                                      {                                          
+                                          NumberShare = ht.total_trading_qtty
+                                      }).Take(10).ToList();
+            if (phien_date_hose_10.Count > 0)
+            {
+                ViewBag.BQ10Phien = phien_date_hose_10.Average(m => m.NumberShare);
+            }
+            else
+            {
+                ViewBag.BQ10Phien = phien_date_hnx_10.Average(m => m.NumberShare);
+            }
+            //
             return View(recomment);
         }
 
@@ -311,6 +364,90 @@ namespace PhimHang.Controllers
             return result;
         }
 
+        public async Task<dynamic> GetInfoStoxByAjax(string selectStockCode)
+        {
+            if (!string.IsNullOrWhiteSpace(selectStockCode))
+            {
+
+
+                // thong tin stox tu database stox
+                var maxdate = (from s in dbstox.stox_tb_Ratio where s.Ticker == selectStockCode select s.UpdateDate).Max();
+
+                var stoxinfo = (from si in dbstox.stox_tb_Ratio
+                                where si.Ticker == selectStockCode
+                                && (si.UpdateDate == maxdate)
+                                select new
+                                {
+                                    KLCPLH = si.F5_1b,
+                                    PE = si.F5_50,
+                                    PB = si.F5_54,
+                                    EPS = si.F5_11
+                                }).FirstOrDefault();
+
+                var stoxCompany = (from sc in dbstox.stox_tb_Company
+                                   where sc.Ticker == selectStockCode
+                                   select new
+                                   {
+                                       KLNY = sc.ShareIssue
+                                   }).FirstOrDefault();
+
+                var KLCPLH = stoxinfo.KLCPLH;
+                var PE = stoxinfo.PE;
+                var PB = stoxinfo.PB;
+                var EPS = stoxinfo.EPS;
+                var KLNY = stoxCompany.KLNY;
+
+                var phien_date_hose_10 = (from ht in dbstox.stox_tb_HOSE_Trading
+                                          orderby ht.DateReport descending
+                                          where ht.StockSymbol == selectStockCode
+                                          select new
+                                          {
+                                              NumberShare = ht.Totalshare
+                                          }).Take(10).ToList();
+
+                var phien_date_hnx_10 = (from ht in dbstox.stox_tb_StocksInfo
+                                         orderby ht.dateReport descending
+                                         where ht.code == selectStockCode
+                                         select new
+                                         {
+                                             NumberShare = ht.total_trading_qtty
+                                         }).Take(10).ToList();
+                dynamic BQ10Phien = 0;
+                if (phien_date_hose_10.Count > 0)
+                {
+                    BQ10Phien = phien_date_hose_10.Average(m => m.NumberShare);
+                }
+                else
+                {
+                    BQ10Phien = phien_date_hnx_10.Average(m => m.NumberShare);
+                }
+                var ret = new
+                {
+                    KLCPLH = string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N0}", KLCPLH),
+                    PE = string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N2}", PE),
+                    PB = string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N2}", PB),
+                    EPS = string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N0}", EPS),
+                    KLNY = string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N0}",KLNY),
+                    BQ10Phien = string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N0}",BQ10Phien)
+                };
+
+                return Json(ret, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                var ret = new
+                {
+                    KLCPLH = "Chọn mã CP",
+                    PE = "Chọn mã CP",
+                    PB = "Chọn mã CP",
+                    EPS = "Chọn mã CP",
+                    KLNY = "Chọn mã CP",
+                    BQ10Phien = "Chọn mã CP",
+                };
+
+                return Json(ret, JsonRequestBehavior.AllowGet);
+            }
+        }
 
 
     }

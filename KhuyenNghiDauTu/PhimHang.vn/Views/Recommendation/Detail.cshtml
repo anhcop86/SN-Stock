@@ -7,15 +7,32 @@
 <script src="~/Scripts/jquery.timeago.js"></script>
 <h2>
     Khuyến nghị @Model.TYPERecommend
+    @*<span style="float:right">
+        Ngày:  @Model.CreatedModify.ToString("dd/MM/yyyy hh:mm:ss")
+    </span>*@
 </h2>
+
 <div id="example_length" class="dataTables_length1">
     <table class="form">
+        <tr>
+            <td class="col1"><label> Người khuyến nghị:</label></td>
+            <td class="col2">
+                <input type="text" id="grumble" name="StockCode" value="@Model.UserLogin.UserNameCopy" disabled />                
+                <label>Ngày:  @Model.CreatedModify.ToString("dd/MM/yyyy hh:mm:ss")</label>
+            </td>
+            <td class="col1" style="margin-left:30px"><label> KLCPLH: </label><label>@string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N0}", @ViewBag.KLCPLH)</label></td>
+            <td></td>
+            <td class="col1" style="margin-left:30px"><label> KLNY: </label><label>@string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N0}", @ViewBag.KLNY)</label></td>
+            <td></td>
+        </tr>
         <tr>
             <td class="col1"><label> Mã cổ phiếu:</label></td>
             <td class="col2">
                 <input type="text" id="grumble" name="StockCode" value="@Model.StockCode" disabled />
             </td>
-            <td class="col1" style="margin-left:30px"><label> PE:</label><label>12.3</label></td>
+            <td class="col1" style="margin-left:30px"><label> PE: </label><label>@string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N2}", @ViewBag.PE)</label></td>
+            <td></td>
+            <td class="col1" style="margin-left:30px"><label> KLBQ 10 phiên: </label><label>@string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N0}", @ViewBag.BQ10Phien)</label></td>
             <td></td>
         </tr>
         <tr>
@@ -23,7 +40,7 @@
             <td>
                 <input type="text" id="grumble" name="StockCode" value="@Model.TYPERecommend" disabled />
             </td>
-            <td class="col1" style="margin-left:30px"><label> PE:</label><label>12.3</label></td>
+            <td class="col1" style="margin-left:30px"><label> PB: </label><label>@string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N2}",@ViewBag.PB)</label></td>
             <td></td>
         </tr>
         <tr>
@@ -40,7 +57,7 @@
             <td class="col2">
                 <input type="text" id="grumble" name="StockCode" value="@Model.BuyPrice" disabled class="success" />
             </td>
-            <td class="col1" style="margin-left:30px"><label> PE:</label><label>12.3</label></td>
+            <td class="col1" style="margin-left:30px"><label> EPS: </label><label>@string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N0}", @ViewBag.EPS)</label></td>
             <td></td>
         </tr>
         @{
@@ -49,11 +66,10 @@
                 <tr>
                     <td class="col1"><label>Thời gian nắm giữ (ngày):</label></td>
                     <td class="col2">
-                        <input type="text" id="grumble" name="StockCode" value="@Model.StockHoldingTime" disabled class="success" />                      
+                        <input type="text" id="grumble" name="StockCode" value="@Model.StockHoldingTime" disabled class="success" />
                     </td>
 
-                    <td class="col1" style="margin-left:30px"><label> PE:</label><label>12.3</label></td>
-                    <td></td>
+                   
                 </tr>
 
                 <tr>
@@ -62,8 +78,7 @@
                         <input type="text" id="grumble" name="StockCode" value="@Model.TargetSell" disabled class="success" />
                     </td>
 
-                    <td class="col1"><label> PE:</label><label>12.3</label></td>
-                    <td></td>
+                  
                 </tr>
             }
         }
@@ -192,11 +207,7 @@
 
             }
 
-            //self.hub.client.addReply = function (post) {
-            //    self.replys.push(new Post(post));
-            //    self.newMessage('');
-            //}
-
+            
             self.count = ko.computed(function () {
                 var countNum = 140 - self.newMessage().length;
                 return countNum;

@@ -140,14 +140,7 @@ namespace PhimHang.Controllers
             }
             return RedirectToAction("Manage", new { Message = message });
         }
-        // GET: /Account
-        //public ActionResult Index()
-        //{
-
-        //    return View();
-        //}
-
-        // GET: /Profile
+      
         public ActionResult Profile(ManageMessageId? message)
         {
 

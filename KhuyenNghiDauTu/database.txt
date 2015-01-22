@@ -20,7 +20,7 @@ CREATE TABLE [Comments](
 
 
   ALTER TABLE [RecommendStock]
-  ADD CreatedModify datetime
+  ADD CreatedModify datetime Not null
 
 ALTER TABLE [dbo].[RecommendStock]
 ADD SumComment int
