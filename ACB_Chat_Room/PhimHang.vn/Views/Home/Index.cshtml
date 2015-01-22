@@ -89,9 +89,7 @@
                 type: "GET",
                 url: '@Url.Action("GetListUserExcept", "Home")',
                 success: function (data) {
-                    $.each(data, function (id, option) {
-                        //$('#ms').append($('<option></option>').val(option.id).html(option.name));
-                        //$('#ms').append('<option value="' + option.id + '">' + option.name + '</option>');
+                    $.each(data, function (id, option) {         
                         $opt = $("<option />", {
                             value: option.name,
                             text: option.name

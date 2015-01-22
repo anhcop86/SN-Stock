@@ -45,7 +45,7 @@ namespace PhimHang.Controllers
             return View();
         }
         [HttpGet]
-        public ActionResult GetListUserExcept()
+        public Task<JsonResult> GetListUserExcept()
         {
             var userNamelogin = User.Identity.Name;
             //var result = db.UserLogins.Where(ul => !ul.UserNameCopy.Contains(userNamelogin)).ToList();
@@ -55,10 +55,10 @@ namespace PhimHang.Controllers
                           {
                               id = ul.UserNameCopy,
                               name = ul.UserNameCopy
-                          }).ToList();
+                          }).ToListAsync();
 
 
-            return Json(result, JsonRequestBehavior.AllowGet);
+            return Task.FromResult(Json(result.Result, JsonRequestBehavior.AllowGet));
         }
     }
 }
