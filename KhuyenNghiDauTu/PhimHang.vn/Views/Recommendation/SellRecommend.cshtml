@@ -18,9 +18,9 @@
                     @Html.DropDownList("StockCode", ViewBag.listStockCode as SelectList, string.Empty, new { id = "selectStockCode" })
                     @Html.ValidationMessageFor(model => model.StockCode)
                 </td>
-                <td class="col1" style="margin-left:30px"><label> KLCPLH: </label><label id="lbKLCPLH"></label></td>
+                <td class="col1" style="margin-left:30px"><label> PE: </label><label id="lbPE" class="infoStox"></label></td>
                 <td></td>
-                <td class="col1" style="margin-left:30px"><label> KLNY: </label><label id="lbKLNY"></label></td>
+                <td class="col1" style="margin-left:30px"><label> KLCPLH: </label><label id="lbKLCPLH" class="infoStox"></label></td>
                 <td></td>
                 
             </tr>
@@ -30,9 +30,9 @@
                     @Html.DropDownList("TYPERecommend", @ViewBag.listTypeRecomendation as SelectList, new { @name = "select", disabled = "disabled" })
                 </td>
 
-                <td class="col1" style="margin-left:30px"><label> PE: </label><label id="lbPE"></label></td>
+                <td class="col1" style="margin-left:30px"><label> PB: </label><label id="lbPB" class="infoStox"></label></td>
                 <td></td>
-                <td class="col1" style="margin-left:30px"><label> KLBQ 10 phiên: </label><label id="lbBQ10Phien"></label></td>
+                <td class="col1" style="margin-left:30px"><label> KLNY: </label><label id="lbKLNY" class="infoStox"></label></td>
                 <td></td>
 
             </tr>
@@ -43,14 +43,14 @@
                     @Html.ValidationMessageFor(model => model.BuyPrice)
                 </td>
 
-                <td class="col1" style="margin-left:30px"><label> PB: </label><label id="lbPB"></label></td>
+                <td class="col1" style="margin-left:30px"><label> EPS: </label><label id="lbEPS" class="infoStox"></label></td>
                 <td></td>
-                <td class="col1" style="margin-left:30px"><label> EPS: </label><label id="lbEPS"></label></td>
-                <td></td>
+                <td class="col1" style="margin-left:30px"><label> KLBQ 10 phiên: </label><label id="lbBQ10Phien" class="infoStox"></label></td>
+                <td></td>  
             </tr>            
 
             <tr>
-                <td class="col1"><label>Chi tiết khuyến nghị:</label></td>
+                <td class="col1" style="vertical-align: top;"><label>Chi tiết khuyến nghị:</label></td>
                 <td class="col2">
                     @*<textarea cols="5" style="width:400px;height:80px" ></textarea>*@
                 @Html.TextAreaFor(model => model.Description, new { style = "width:400px;height:80px", cols = "5" })
@@ -77,7 +77,13 @@
                 type: "GET",
                 url: '@Url.Action("GetInfoStoxByAjax", "Recommendation")',
                 data: { "selectStockCode": $('#selectStockCode').val() },
+                beforeSend: function (xhr) {
+                    //Add your image loader here
+                    $('.infoStox').html('<img src="/images/ajax-loader.gif" />');
+
+                },
                 success: function (data) {
+                    $('.infoStox').html('<img src="/images/ajax-loader.gif" />');
                     $('#lbKLCPLH').html(data.KLCPLH);
                     $('#lbKLNY').html(data.KLNY);
 
