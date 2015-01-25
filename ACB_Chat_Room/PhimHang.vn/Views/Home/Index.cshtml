@@ -51,9 +51,7 @@
     <div class="dialogGroup" id="dialog">
         <div class="form-group">
             <select id="ms" multiple="multiple">
-                @*<option value="anhcop86">anhcop86</option>
-                <option value="truongvoky">truongvoky</option>                
-                <option value="truongthuyson">truongthuyson</option>*@
+              
             </select>
         </div>
         <div style="margin-top: 180px; text-align:center;">
@@ -67,8 +65,11 @@
 
 
 <!------------------script----------------------------------------->
-
 <script>
+    
+</script>
+<script>
+   
     $(function () {
 
         $('#ms').multipleSelect({
@@ -175,9 +176,9 @@
                 $('#btnSendMsg').click();
             }
         });
-        
+
         // chat group
-        // khi click vào tạo nhóm trên 
+        // khi click vào tạo nhóm trên
         $('#btnCreateGroup').click(function () {
             var listGroup = $('#ms').val();
             var groupName = $('#txtGroupName').val();
@@ -186,6 +187,22 @@
                 dialog.dialog("close");
             }
         })
+
+        // load window
+        $(function () {
+            $.ajax({
+                cache: false,
+                type: "GET",
+                url: '@Url.Action("LoadWindowStatusOnLoad", "Home")',
+                success: function (data) {
+                    $.each(data, function (id, option) {
+                        createPrivateChatWindow(chatHub, option.k, option.c, option.u, option.w);
+                    });
+                },
+
+            })
+
+        });
     }
 
     function registerClientMethods(chatHub) {
@@ -258,7 +275,7 @@
         }
 
 
-        chatHub.client.sendPrivateMessage = function (windowId, fromUserName, message , group, groupname) {
+        chatHub.client.sendPrivateMessage = function (windowId, fromUserName, message, group, groupname) {
             var ctrId = "";
             if (group == "G") {
                 ctrId = 'Group_' + windowId;
@@ -269,16 +286,19 @@
 
             //var ctrId = 'private_' + windowId;
 
-
+            var cheskexistwindow = false;
             if ($('#' + ctrId).length == 0) {
 
                 createPrivateChatWindow(chatHub, windowId, ctrId, fromUserName, groupname);
+                cheskexistwindow = true;
+            }
+            if (!cheskexistwindow) {
+                $('#' + ctrId).find('#divMessage').append('<div class="message"><span class="userName">' + fromUserName + '</span>: ' + message + '</div>');
             }
 
-            $('#' + ctrId).find('#divMessage').append('<div class="message"><span class="userName">' + fromUserName + '</span>: ' + message + '</div>');
-            
+
             if (windowId == fromUserName && group == "P") {
-                
+
                 $('#' + ctrId).find('.header').css({ "background-color": "#287CDB" });
             }
 
@@ -286,7 +306,7 @@
 
                 $('#' + ctrId).find('.header').css({ "background-color": "#287CDB" });
             }
-            
+
             // set scrollbar
             var height = $('#' + ctrId).find('#divMessage')[0].scrollHeight;
             $('#' + ctrId).find('#divMessage').scrollTop(height);
@@ -329,7 +349,7 @@
                     else {
                         OpenPrivateChatWindow(chatHub, id, name, "P");
                     }
-                   
+
                 }
 
             });
@@ -354,7 +374,7 @@
         else {
             ctrId = 'private_' + userName;
         }
-        
+
 
         if ($('#' + ctrId).length > 0) return; // check esist window
 
@@ -369,12 +389,9 @@
                       '<div  style="float:right;">' +
                           '<img id="imgDelete"  style="cursor:pointer;" src="/Images/delete.png"/>' +
                        '</div>' +
-                      
-
                        '<span class="selText" rel="0">' + groupname + '</span>' +
                    '</div>' +
                    '<div id="divMessage" class="messageArea">' +
-
                    '</div>' +
                    '<div class="buttonBar">' +
                       '<input id="txtPrivateMessage" class="msgText" type="text"   />' +
@@ -387,13 +404,16 @@
         //                '</div>' +
         // tạo cửa sổ chat
         var $div = $(div);
-              
+
 
         // DELETE BUTTON IMAGE
         $div.find('#imgDelete').click(function () {
             $('#' + ctrId).remove();
-        });      
-        
+
+            // close window
+            chatHub.server.closeWindow(userId, userName);
+        });
+
 
         // Send Button event
         $div.find("#btnSendMessage").click(function () {
@@ -401,7 +421,6 @@
             $textBox = $div.find("#txtPrivateMessage");
             var msg = $textBox.val();
             if (msg.length > 0) {
-
                 chatHub.server.sendPrivateMessage(userId, msg);
                 $textBox.val('');
             }
@@ -417,22 +436,43 @@
         $div.find("#txtPrivateMessage").focus(function () {
             $('#' + ctrId).find('.header').css({ "background-color": "#d7e5e4" });
         });
-
-        AddDivToContainer($div);
-
+        AddDivToContainer($div, userId, ctrId, groupname);
     }
 
-    function AddDivToContainer($div) {
+    function AddDivToContainer($div, userId, ctrId, groupname) {
         var top = Math.floor((Math.random() * 500) + 1);
         var left = Math.floor((Math.random() * 1000) + 1);
-        
-        $('#divContainer').prepend($div.css({"left":left,"top":top}));
 
+        $('#divContainer').prepend($div.css({ "left": left, "top": top }));
+        //load history
+        $.ajax({
+            cache: false,
+            type: "GET",
+            url: '@Url.Action("LoadHistoryOfMessege", "Home")',
+            data: { "userOrGroup": userId, "groupname": groupname, "top": top, "left": left, "ctrId": ctrId },
+            success: function (data) {
+                $.each(data, function (id, option) {
+                    $('#' + ctrId).find('#divMessage').append(option.messege);
+                });
+            },
+        })
         $div.draggable({
-
             handle: ".header",
             stop: function () {
-
+                // change left & top
+               
+                //chatHub.server.changePositionWindow(userId, userName);
+                $.ajax({
+                    cache: false,
+                    type: "GET",
+                    url: '@Url.Action("ChangePositionWindow", "Home")',
+                    data: { "groupid": userId, "top": $(this).offset().top, "left": $(this).offset().left },
+                    success: function (data) {
+                        $.each(data, function (id, option) {
+                            $('#' + ctrId).find('#divMessage').append(option.messege);
+                        });
+                    },
+                });
             }
         });
 

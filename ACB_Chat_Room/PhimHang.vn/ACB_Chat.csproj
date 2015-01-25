@@ -276,8 +276,14 @@
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\MessageDetail.cs" />
+    <Compile Include="Models\MessegeDirect.cs">
+      <DependentUpon>DbChatGroup.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PhimHangvnHelper.cs" />
     <Compile Include="Models\RecommendationModel.cs" />
+    <Compile Include="Models\StatusWindow.cs">
+      <DependentUpon>DbChatGroup.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserDetail.cs" />
     <Compile Include="Models\UserLogin.cs">
       <DependentUpon>DbChatGroup.tt</DependentUpon>

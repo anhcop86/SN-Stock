@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DBChatGroupModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DBChatGroupModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Group">
           <Key>
             <PropertyRef Name="GroupId" />
@@ -31,9 +31,32 @@
           </Key>
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="GroupId" Type="int" Nullable="false" />
-          <Property Name="WhoChat" Type="int" Nullable="false" />
+          <Property Name="WhoChat" Type="nvarchar" MaxLength="256" />
           <Property Name="ConentMesseger" Type="nvarchar" MaxLength="1024" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MessegeDirect">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FromUser" Type="int" Nullable="false" />
+          <Property Name="ToUser" Type="int" Nullable="false" />
+          <Property Name="ConentMesseger" Type="nvarchar" MaxLength="1024" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="WhoChat" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="StatusWindow">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CtrId" Type="nvarchar" MaxLength="256" />
+          <Property Name="WindowName" Type="nvarchar" MaxLength="256" />
+          <Property Name="LeftPosition" Type="nvarchar" MaxLength="8" />
+          <Property Name="TopPosition" Type="nvarchar" MaxLength="8" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" />
+          <Property Name="KeyWindowName" Type="nvarchar" MaxLength="256" />
         </EntityType>
         <EntityType Name="UserLogins">
           <Key>
@@ -77,18 +100,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Group_User_Messege_UserLogins">
-          <End Role="UserLogins" Type="Self.UserLogins" Multiplicity="1" />
-          <End Role="Group_User_Messege" Type="Self.Group_User_Messege" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserLogins">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Group_User_Messege">
-              <PropertyRef Name="WhoChat" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Group_User_UserLogins">
           <End Role="UserLogins" Type="Self.UserLogins" Multiplicity="1" />
           <End Role="Group_User" Type="Self.Group_User" Multiplicity="*" />
@@ -101,10 +112,36 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_MessegeDirect_UserLogins">
+          <End Role="UserLogins" Type="Self.UserLogins" Multiplicity="1" />
+          <End Role="MessegeDirect" Type="Self.MessegeDirect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MessegeDirect">
+              <PropertyRef Name="FromUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessegeDirect_UserLogins1">
+          <End Role="UserLogins" Type="Self.UserLogins" Multiplicity="1" />
+          <End Role="MessegeDirect" Type="Self.MessegeDirect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MessegeDirect">
+              <PropertyRef Name="ToUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DBChatGroupModelStoreContainer">
           <EntitySet Name="Group" EntityType="Self.Group" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Group_User" EntityType="Self.Group_User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Group_User_Messege" EntityType="Self.Group_User_Messege" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MessegeDirect" EntityType="Self.MessegeDirect" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusWindow" EntityType="Self.StatusWindow" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserLogins" EntityType="Self.UserLogins" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Group_User_Group" Association="Self.FK_Group_User_Group">
             <End Role="Group" EntitySet="Group" />
@@ -114,20 +151,51 @@
             <End Role="Group" EntitySet="Group" />
             <End Role="Group_User_Messege" EntitySet="Group_User_Messege" />
           </AssociationSet>
-          <AssociationSet Name="FK_Group_User_Messege_UserLogins" Association="Self.FK_Group_User_Messege_UserLogins">
-            <End Role="UserLogins" EntitySet="UserLogins" />
-            <End Role="Group_User_Messege" EntitySet="Group_User_Messege" />
-          </AssociationSet>
           <AssociationSet Name="FK_Group_User_UserLogins" Association="Self.FK_Group_User_UserLogins">
             <End Role="UserLogins" EntitySet="UserLogins" />
             <End Role="Group_User" EntitySet="Group_User" />
           </AssociationSet>
+          <AssociationSet Name="FK_MessegeDirect_UserLogins" Association="Self.FK_MessegeDirect_UserLogins">
+            <End Role="UserLogins" EntitySet="UserLogins" />
+            <End Role="MessegeDirect" EntitySet="MessegeDirect" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessegeDirect_UserLogins1" Association="Self.FK_MessegeDirect_UserLogins1">
+            <End Role="UserLogins" EntitySet="UserLogins" />
+            <End Role="MessegeDirect" EntitySet="MessegeDirect" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBChatGroupModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DBChatGroup" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Groups" EntityType="DBChatGroupModel.Group" />
+          <EntitySet Name="Group_User" EntityType="DBChatGroupModel.Group_User" />
+          <EntitySet Name="Group_User_Messege" EntityType="DBChatGroupModel.Group_User_Messege" />
+          <EntitySet Name="MessegeDirects" EntityType="DBChatGroupModel.MessegeDirect" />
+          <EntitySet Name="UserLogins" EntityType="DBChatGroupModel.UserLogin" />
+          <AssociationSet Name="FK_Group_User_Group" Association="DBChatGroupModel.FK_Group_User_Group">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="Group_User" EntitySet="Group_User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Group_User_Messege_Group" Association="DBChatGroupModel.FK_Group_User_Messege_Group">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="Group_User_Messege" EntitySet="Group_User_Messege" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Group_User_UserLogins" Association="DBChatGroupModel.FK_Group_User_UserLogins">
+            <End Role="UserLogin" EntitySet="UserLogins" />
+            <End Role="Group_User" EntitySet="Group_User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessegeDirect_UserLogins" Association="DBChatGroupModel.FK_MessegeDirect_UserLogins">
+            <End Role="UserLogin" EntitySet="UserLogins" />
+            <End Role="MessegeDirect" EntitySet="MessegeDirects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessegeDirect_UserLogins1" Association="DBChatGroupModel.FK_MessegeDirect_UserLogins1">
+            <End Role="UserLogin" EntitySet="UserLogins" />
+            <End Role="MessegeDirect" EntitySet="MessegeDirects" />
+          </AssociationSet>
+          <EntitySet Name="StatusWindows" EntityType="DBChatGroupModel.StatusWindow" />
+        </EntityContainer>
         <EntityType Name="Group">
           <Key>
             <PropertyRef Name="GroupId" />
@@ -135,8 +203,8 @@
           <Property Name="GroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="GroupName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="GroupType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="Group_User" Relationship="Self.FK_Group_User_Group" FromRole="Group" ToRole="Group_User" />
-          <NavigationProperty Name="Group_User_Messege" Relationship="Self.FK_Group_User_Messege_Group" FromRole="Group" ToRole="Group_User_Messege" />
+          <NavigationProperty Name="Group_User" Relationship="DBChatGroupModel.FK_Group_User_Group" FromRole="Group" ToRole="Group_User" />
+          <NavigationProperty Name="Group_User_Messege" Relationship="DBChatGroupModel.FK_Group_User_Messege_Group" FromRole="Group" ToRole="Group_User_Messege" />
         </EntityType>
         <EntityType Name="Group_User">
           <Key>
@@ -149,8 +217,8 @@
           <Property Name="LeftPosition" Type="Int32" />
           <Property Name="Reviced" Type="Boolean" />
           <Property Name="WindowLoad" Type="Boolean" />
-          <NavigationProperty Name="Group" Relationship="Self.FK_Group_User_Group" FromRole="Group_User" ToRole="Group" />
-          <NavigationProperty Name="UserLogin" Relationship="Self.FK_Group_User_UserLogins" FromRole="Group_User" ToRole="UserLogins" />
+          <NavigationProperty Name="Group" Relationship="DBChatGroupModel.FK_Group_User_Group" FromRole="Group_User" ToRole="Group" />
+          <NavigationProperty Name="UserLogin" Relationship="DBChatGroupModel.FK_Group_User_UserLogins" FromRole="Group_User" ToRole="UserLogin" />
         </EntityType>
         <EntityType Name="Group_User_Messege">
           <Key>
@@ -158,11 +226,23 @@
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="GroupId" Type="Int32" Nullable="false" />
-          <Property Name="WhoChat" Type="Int32" Nullable="false" />
-          <Property Name="ConentMesseger" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WhoChat" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ConentMesseger" Type="String" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="true" />
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <NavigationProperty Name="Group" Relationship="Self.FK_Group_User_Messege_Group" FromRole="Group_User_Messege" ToRole="Group" />
-          <NavigationProperty Name="UserLogin" Relationship="Self.FK_Group_User_Messege_UserLogins" FromRole="Group_User_Messege" ToRole="UserLogins" />
+          <NavigationProperty Name="Group" Relationship="DBChatGroupModel.FK_Group_User_Messege_Group" FromRole="Group_User_Messege" ToRole="Group" />
+        </EntityType>
+        <EntityType Name="MessegeDirect">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FromUser" Type="Int32" Nullable="false" />
+          <Property Name="ToUser" Type="Int32" Nullable="false" />
+          <Property Name="ConentMesseger" Type="String" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="WhoChat" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserLogin" Relationship="DBChatGroupModel.FK_MessegeDirect_UserLogins" FromRole="MessegeDirect" ToRole="UserLogin" />
+          <NavigationProperty Name="UserLogin1" Relationship="DBChatGroupModel.FK_MessegeDirect_UserLogins1" FromRole="MessegeDirect" ToRole="UserLogin" />
         </EntityType>
         <EntityType Name="UserLogin">
           <Key>
@@ -181,12 +261,13 @@
           <Property Name="AccountType" Type="Int32" Nullable="false" />
           <Property Name="LockAccount" Type="Int32" Nullable="false" />
           <Property Name="Status" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Group_User" Relationship="Self.FK_Group_User_UserLogins" FromRole="UserLogins" ToRole="Group_User" />
-          <NavigationProperty Name="Group_User_Messege" Relationship="Self.FK_Group_User_Messege_UserLogins" FromRole="UserLogins" ToRole="Group_User_Messege" />
+          <NavigationProperty Name="Group_User" Relationship="DBChatGroupModel.FK_Group_User_UserLogins" FromRole="UserLogin" ToRole="Group_User" />
+          <NavigationProperty Name="MessegeDirects" Relationship="DBChatGroupModel.FK_MessegeDirect_UserLogins" FromRole="UserLogin" ToRole="MessegeDirect" />
+          <NavigationProperty Name="MessegeDirects1" Relationship="DBChatGroupModel.FK_MessegeDirect_UserLogins1" FromRole="UserLogin" ToRole="MessegeDirect" />
         </EntityType>
         <Association Name="FK_Group_User_Group">
-          <End Role="Group" Type="Self.Group" Multiplicity="1" />
-          <End Role="Group_User" Type="Self.Group_User" Multiplicity="*" />
+          <End Type="DBChatGroupModel.Group" Role="Group" Multiplicity="1" />
+          <End Type="DBChatGroupModel.Group_User" Role="Group_User" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Group">
               <PropertyRef Name="GroupId" />
@@ -197,8 +278,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Group_User_Messege_Group">
-          <End Role="Group" Type="Self.Group" Multiplicity="1" />
-          <End Role="Group_User_Messege" Type="Self.Group_User_Messege" Multiplicity="*" />
+          <End Type="DBChatGroupModel.Group" Role="Group" Multiplicity="1" />
+          <End Type="DBChatGroupModel.Group_User_Messege" Role="Group_User_Messege" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Group">
               <PropertyRef Name="GroupId" />
@@ -209,10 +290,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Group_User_UserLogins">
-          <End Role="UserLogins" Type="Self.UserLogin" Multiplicity="1" />
-          <End Role="Group_User" Type="Self.Group_User" Multiplicity="*" />
+          <End Type="DBChatGroupModel.UserLogin" Role="UserLogin" Multiplicity="1" />
+          <End Type="DBChatGroupModel.Group_User" Role="Group_User" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="UserLogins">
+            <Principal Role="UserLogin">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Group_User">
@@ -220,41 +301,43 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Group_User_Messege_UserLogins">
-          <End Role="UserLogins" Type="Self.UserLogin" Multiplicity="1" />
-          <End Role="Group_User_Messege" Type="Self.Group_User_Messege" Multiplicity="*" />
+        <Association Name="FK_MessegeDirect_UserLogins">
+          <End Type="DBChatGroupModel.UserLogin" Role="UserLogin" Multiplicity="1" />
+          <End Type="DBChatGroupModel.MessegeDirect" Role="MessegeDirect" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="UserLogins">
+            <Principal Role="UserLogin">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Group_User_Messege">
-              <PropertyRef Name="WhoChat" />
+            <Dependent Role="MessegeDirect">
+              <PropertyRef Name="FromUser" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DBChatGroup" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Groups" EntityType="Self.Group" />
-          <EntitySet Name="Group_User" EntityType="Self.Group_User" />
-          <EntitySet Name="Group_User_Messege" EntityType="Self.Group_User_Messege" />
-          <EntitySet Name="UserLogins" EntityType="Self.UserLogin" />
-          <AssociationSet Name="FK_Group_User_Group" Association="Self.FK_Group_User_Group">
-            <End Role="Group" EntitySet="Groups" />
-            <End Role="Group_User" EntitySet="Group_User" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Group_User_Messege_Group" Association="Self.FK_Group_User_Messege_Group">
-            <End Role="Group" EntitySet="Groups" />
-            <End Role="Group_User_Messege" EntitySet="Group_User_Messege" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Group_User_UserLogins" Association="Self.FK_Group_User_UserLogins">
-            <End Role="UserLogins" EntitySet="UserLogins" />
-            <End Role="Group_User" EntitySet="Group_User" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Group_User_Messege_UserLogins" Association="Self.FK_Group_User_Messege_UserLogins">
-            <End Role="UserLogins" EntitySet="UserLogins" />
-            <End Role="Group_User_Messege" EntitySet="Group_User_Messege" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        <Association Name="FK_MessegeDirect_UserLogins1">
+          <End Type="DBChatGroupModel.UserLogin" Role="UserLogin" Multiplicity="1" />
+          <End Type="DBChatGroupModel.MessegeDirect" Role="MessegeDirect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogin">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MessegeDirect">
+              <PropertyRef Name="ToUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="StatusWindow">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CtrId" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="WindowName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LeftPosition" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="TopPosition" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="KeyWindowName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -263,52 +346,77 @@
           <EntitySetMapping Name="Groups">
             <EntityTypeMapping TypeName="DBChatGroupModel.Group">
               <MappingFragment StoreEntitySet="Group">
-                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
-                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
                 <ScalarProperty Name="GroupType" ColumnName="GroupType" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Group_User">
             <EntityTypeMapping TypeName="DBChatGroupModel.Group_User">
               <MappingFragment StoreEntitySet="Group_User">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
-                <ScalarProperty Name="UserOfGroup" ColumnName="UserOfGroup" />
-                <ScalarProperty Name="TopPosition" ColumnName="TopPosition" />
-                <ScalarProperty Name="LeftPosition" ColumnName="LeftPosition" />
-                <ScalarProperty Name="Reviced" ColumnName="Reviced" />
                 <ScalarProperty Name="WindowLoad" ColumnName="WindowLoad" />
+                <ScalarProperty Name="Reviced" ColumnName="Reviced" />
+                <ScalarProperty Name="LeftPosition" ColumnName="LeftPosition" />
+                <ScalarProperty Name="TopPosition" ColumnName="TopPosition" />
+                <ScalarProperty Name="UserOfGroup" ColumnName="UserOfGroup" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Group_User_Messege">
             <EntityTypeMapping TypeName="DBChatGroupModel.Group_User_Messege">
               <MappingFragment StoreEntitySet="Group_User_Messege">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
-                <ScalarProperty Name="WhoChat" ColumnName="WhoChat" />
-                <ScalarProperty Name="ConentMesseger" ColumnName="ConentMesseger" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ConentMesseger" ColumnName="ConentMesseger" />
+                <ScalarProperty Name="WhoChat" ColumnName="WhoChat" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MessegeDirects">
+            <EntityTypeMapping TypeName="DBChatGroupModel.MessegeDirect">
+              <MappingFragment StoreEntitySet="MessegeDirect">
+                <ScalarProperty Name="WhoChat" ColumnName="WhoChat" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ConentMesseger" ColumnName="ConentMesseger" />
+                <ScalarProperty Name="ToUser" ColumnName="ToUser" />
+                <ScalarProperty Name="FromUser" ColumnName="FromUser" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserLogins">
             <EntityTypeMapping TypeName="DBChatGroupModel.UserLogin">
               <MappingFragment StoreEntitySet="UserLogins">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="KeyLogin" ColumnName="KeyLogin" />
-                <ScalarProperty Name="UserNameCopy" ColumnName="UserNameCopy" />
-                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-                <ScalarProperty Name="AvataImage" ColumnName="AvataImage" />
-                <ScalarProperty Name="AvataCover" ColumnName="AvataCover" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Verify" ColumnName="Verify" />
-                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
-                <ScalarProperty Name="LockAccount" ColumnName="LockAccount" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="LockAccount" ColumnName="LockAccount" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+                <ScalarProperty Name="Verify" ColumnName="Verify" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="AvataCover" ColumnName="AvataCover" />
+                <ScalarProperty Name="AvataImage" ColumnName="AvataImage" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="UserNameCopy" ColumnName="UserNameCopy" />
+                <ScalarProperty Name="KeyLogin" ColumnName="KeyLogin" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusWindows">
+            <EntityTypeMapping TypeName="DBChatGroupModel.StatusWindow">
+              <MappingFragment StoreEntitySet="StatusWindow">
+                <ScalarProperty Name="KeyWindowName" ColumnName="KeyWindowName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="TopPosition" ColumnName="TopPosition" />
+                <ScalarProperty Name="LeftPosition" ColumnName="LeftPosition" />
+                <ScalarProperty Name="WindowName" ColumnName="WindowName" />
+                <ScalarProperty Name="CtrId" ColumnName="CtrId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

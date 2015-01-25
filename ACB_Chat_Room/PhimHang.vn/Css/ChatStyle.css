@@ -144,7 +144,7 @@
 {
     position: absolute;
     border: #5f9482 solid 1px !important;
-    width: 250px;
+    /*width: 250px;*/ /*duong vien scroll*/
 }
 
     .draggable .header

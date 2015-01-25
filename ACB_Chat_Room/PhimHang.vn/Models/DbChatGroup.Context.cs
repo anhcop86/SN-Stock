@@ -28,6 +28,8 @@ namespace PhimHang.Models
         public virtual DbSet<Group> Groups { get; set; }
         public virtual DbSet<Group_User> Group_User { get; set; }
         public virtual DbSet<Group_User_Messege> Group_User_Messege { get; set; }
+        public virtual DbSet<MessegeDirect> MessegeDirects { get; set; }
         public virtual DbSet<UserLogin> UserLogins { get; set; }
+        public virtual DbSet<StatusWindow> StatusWindows { get; set; }
     }
 }

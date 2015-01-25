@@ -12,14 +12,14 @@ namespace PhimHang.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Group_User_Messege
+    public partial class StatusWindow
     {
         public long Id { get; set; }
-        public int GroupId { get; set; }
-        public string WhoChat { get; set; }
-        public string ConentMesseger { get; set; }
-        public System.DateTime CreatedDate { get; set; }
-    
-        public virtual Group Group { get; set; }
+        public string CtrId { get; set; }
+        public string WindowName { get; set; }
+        public string LeftPosition { get; set; }
+        public string TopPosition { get; set; }
+        public string UserName { get; set; }
+        public string KeyWindowName { get; set; }
     }
 }

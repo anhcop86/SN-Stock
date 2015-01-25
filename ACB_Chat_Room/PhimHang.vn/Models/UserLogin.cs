@@ -17,7 +17,8 @@ namespace PhimHang.Models
         public UserLogin()
         {
             this.Group_User = new HashSet<Group_User>();
-            this.Group_User_Messege = new HashSet<Group_User_Messege>();
+            this.MessegeDirects = new HashSet<MessegeDirect>();
+            this.MessegeDirects1 = new HashSet<MessegeDirect>();
         }
     
         public int Id { get; set; }
@@ -35,6 +36,7 @@ namespace PhimHang.Models
         public string Status { get; set; }
     
         public virtual ICollection<Group_User> Group_User { get; set; }
-        public virtual ICollection<Group_User_Messege> Group_User_Messege { get; set; }
+        public virtual ICollection<MessegeDirect> MessegeDirects { get; set; }
+        public virtual ICollection<MessegeDirect> MessegeDirects1 { get; set; }
     }
 }
