@@ -91,6 +91,8 @@ namespace PhimHang
                 {
                     listUserInGroup.Add(item.UserLogin.UserNameCopy);
                     //GroupName += item.UserLogin.UserNameCopy + "|";
+
+                    // lưu trạng thái nếu chưa nhận dc tin
                     var group = db.StatusWindows.FirstOrDefault(sw => sw.KeyWindowName == toUserId && sw.UserName == item.UserLogin.UserNameCopy);
                     if (group == null)
                     {
@@ -105,7 +107,7 @@ namespace PhimHang
 
                         };
                         db.StatusWindows.Add(sw);
-                        await db.SaveChangesAsync();
+                        await  db.SaveChangesAsync();
                     }
                 }
 
@@ -117,14 +119,23 @@ namespace PhimHang
                     GroupId = i,
                     WhoChat = fromUserId
                 };
-
-                db.Group_User_Messege.Add(group_User_Messege);
-                await db.SaveChangesAsync();
-
+                try
+                {
+                    db.Group_User_Messege.Add(group_User_Messege);
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    
+                    throw;
+                }
+            // send group
                 Clients.Users(listUserInGroup).sendPrivateMessage(toUserId, fromUserId, message, "G", GroupName);
 
                 // send to caller user
                 Clients.Caller.sendPrivateMessage(toUserId, fromUserId, message, "G", GroupName);
+
+                
 
             }
             else // send direct messenge
@@ -139,6 +150,41 @@ namespace PhimHang
                     WhoChat = fromUserId
                 };
 
+                // lưu trạng thái nếu chưa nhận dc tin
+                var Frompirvate = db.StatusWindows.FirstOrDefault(sw => sw.KeyWindowName == toUserId && sw.UserName == fromUserId);
+                if (Frompirvate == null)
+                {
+                    StatusWindow sw = new StatusWindow
+                    {
+                        CtrId = "private_" + toUserId,
+                        WindowName = toUserId,
+                        TopPosition = "200" + "px",
+                        LeftPosition = "100" + "px",
+                        UserName = fromUserId,
+                        KeyWindowName = toUserId
+
+                    };
+                    db.StatusWindows.Add(sw);
+                    //await db.SaveChangesAsync();
+                }
+                var topirvate = db.StatusWindows.FirstOrDefault(sw => sw.KeyWindowName == fromUserId && sw.UserName == toUserId);
+                if (topirvate == null)
+                {
+                    StatusWindow sw = new StatusWindow
+                    {
+                        CtrId = "private_" + fromUserId,
+                        WindowName = fromUserId,
+                        TopPosition = "200" + "px",
+                        LeftPosition = "100" + "px",
+                        UserName = toUserId,
+                        KeyWindowName = fromUserId
+
+                    };
+                    db.StatusWindows.Add(sw);
+                    //await db.SaveChangesAsync();
+                }
+                //end
+
                 db.MessegeDirects.Add(messegeDirect);
                 await db.SaveChangesAsync();
                 // send to 
@@ -152,6 +198,10 @@ namespace PhimHang
             //var checkesistwindow = db.StatusWindows.Where(w => w.CtrId == ctrId && w.UserName == User.Identity.Name).ToList();
             
 
+        }
+        public async Task Disconnected(bool stopCall)
+        {
+            OnDisconnected(stopCall);
         }
 
         public override System.Threading.Tasks.Task OnDisconnected(bool stopCall)
@@ -235,7 +285,8 @@ namespace PhimHang
 
         public async Task CloseWindow(string groupid, string username)
         {
-            var group = db.StatusWindows.FirstOrDefault(sw => sw.KeyWindowName == groupid && sw.UserName == username);
+            string myUserId = Context.User.Identity.Name;
+            var group = db.StatusWindows.FirstOrDefault(sw => sw.KeyWindowName == groupid && sw.UserName == myUserId);
             db.StatusWindows.Remove(group);
             await db.SaveChangesAsync();
         }

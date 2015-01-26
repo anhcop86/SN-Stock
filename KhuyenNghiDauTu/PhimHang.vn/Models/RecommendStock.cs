@@ -30,6 +30,7 @@ namespace PhimHang.Models
         public Nullable<int> PostBy { get; set; }
         public System.DateTime CreatedModify { get; set; }
         public Nullable<int> SumComment { get; set; }
+        public string ImageUrl { get; set; }
     
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual UserLogin UserLogin { get; set; }

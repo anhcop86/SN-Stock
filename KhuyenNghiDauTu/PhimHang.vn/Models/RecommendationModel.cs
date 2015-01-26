@@ -39,6 +39,9 @@ namespace PhimHang.Models
         [StringLength(512, ErrorMessage = "Nhập ít nhất 10 từ, nhiều nhất 512 ký tự", MinimumLength = 10) ]
         [Display(Name = "Chi tiết khuyến nghị")]
         public string Description { get; set; }
+
+        [FileExtensions(Extensions = "jpg,jpeg", ErrorMessage = "Chỉ chon được file ảnh")]
+        public HttpPostedFileBase ChartImange { get; set; }
                 
 
     }

@@ -203,7 +203,13 @@
             })
 
         });
+        // user disconnect
+        $(window).unload(function () {
+            chatHub.server.disconnected(true);
+        });
+      
     }
+   
 
     function registerClientMethods(chatHub) {
 
@@ -218,7 +224,6 @@
 
             // Add All Users
             for (i = 0; i < allUsers.length; i++) {
-
                 AddUser(chatHub, allUsers[i].UserId, allUsers[i].UserName, statusUser);
             }
 
@@ -284,6 +289,8 @@
                 ctrId = 'private_' + windowId;
             }
 
+            
+
             //var ctrId = 'private_' + windowId;
 
             var cheskexistwindow = false;
@@ -300,11 +307,13 @@
             if (windowId == fromUserName && group == "P") {
 
                 $('#' + ctrId).find('.header').css({ "background-color": "#287CDB" });
+                document.title = groupname + ': ' + message;
             }
 
             if ($('#hdId').val() != fromUserName && group == "G") {
 
                 $('#' + ctrId).find('.header').css({ "background-color": "#287CDB" });
+                document.title = groupname + ': ' + message;
             }
 
             // set scrollbar
@@ -418,6 +427,7 @@
         // Send Button event
         $div.find("#btnSendMessage").click(function () {
             $('#' + ctrId).find('.header').css({ "background-color": "#d7e5e4" });
+            document.title = 'ACB';
             $textBox = $div.find("#txtPrivateMessage");
             var msg = $textBox.val();
             if (msg.length > 0) {
@@ -435,6 +445,7 @@
 
         $div.find("#txtPrivateMessage").focus(function () {
             $('#' + ctrId).find('.header').css({ "background-color": "#d7e5e4" });
+            document.title = 'ACB';
         });
         AddDivToContainer($div, userId, ctrId, groupname);
     }
@@ -442,6 +453,8 @@
     function AddDivToContainer($div, userId, ctrId, groupname) {
         var top = Math.floor((Math.random() * 500) + 1);
         var left = Math.floor((Math.random() * 1000) + 1);
+
+        
 
         $('#divContainer').prepend($div.css({ "left": left, "top": top }));
         //load history
@@ -452,8 +465,12 @@
             data: { "userOrGroup": userId, "groupname": groupname, "top": top, "left": left, "ctrId": ctrId },
             success: function (data) {
                 $.each(data, function (id, option) {
-                    $('#' + ctrId).find('#divMessage').append(option.messege);
+                    var ctrwindow = $('#' + ctrId).find('#divMessage');
+                    $('#' + ctrId).find('#divMessage').append(option.messege);                   
                 });
+                // set scrollbar
+                var height = $('#' + ctrId).find('#divMessage')[0].scrollHeight;
+                $('#' + ctrId).find('#divMessage').scrollTop(height);
             },
         })
         $div.draggable({

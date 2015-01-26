@@ -26,7 +26,7 @@ namespace PhimHang.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> BuyRecommend([Bind(Include = "ID,StockCode,BuyPrice,StockHoldingTime,TargetSell,Description,CreatedDate,PostBy")] BuyRecommendModel buyRecommendModel)
+        public async Task<ActionResult> BuyRecommend([Bind(Include = "ID,StockCode,BuyPrice,StockHoldingTime,TargetSell,Description,CreatedDate,PostBy,ChartImange")] BuyRecommendModel buyRecommendModel)
         {
             if (ModelState.IsValid)
             {

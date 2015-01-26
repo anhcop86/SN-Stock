@@ -24,3 +24,7 @@ CREATE TABLE [Comments](
 
 ALTER TABLE [dbo].[RecommendStock]
 ADD SumComment int
+
+
+  ALTER TABLE [dbo].[RecommendStock]
+  ADD ImageUrl nvarchar(256)

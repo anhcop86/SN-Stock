@@ -30,6 +30,7 @@
           <Property Name="PostBy" Type="int" />
           <Property Name="SumComment" Type="int" />
           <Property Name="CreatedModify" Type="datetime" Nullable="false" />
+          <Property Name="ImageUrl" Type="nvarchar" MaxLength="256" />
         </EntityType>
         <EntityType Name="UserLogins">
           <Key>
@@ -152,6 +153,7 @@
           <NavigationProperty Name="Comments" Relationship="DatabaseLocal.FK_Comments_RecommendStock" FromRole="RecommendStock" ToRole="Comment" />
           <NavigationProperty Name="UserLogin" Relationship="DatabaseLocal.FK_RecommendStock_UserLogins" FromRole="RecommendStock" ToRole="UserLogin" />
           <Property Name="SumComment" Type="Int32" />
+          <Property Name="ImageUrl" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="UserLogin">
           <Key>
@@ -229,6 +231,7 @@
           <EntitySetMapping Name="RecommendStocks">
             <EntityTypeMapping TypeName="DatabaseLocal.RecommendStock">
               <MappingFragment StoreEntitySet="RecommendStock">
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
                 <ScalarProperty Name="SumComment" ColumnName="SumComment" />
                 <ScalarProperty Name="CreatedModify" ColumnName="CreatedModify" />
                 <ScalarProperty Name="PostBy" ColumnName="PostBy" />
