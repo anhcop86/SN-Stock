@@ -283,7 +283,7 @@ namespace PhimHang
 
         }
 
-        public async Task CloseWindow(string groupid, string username)
+        public async Task CloseWindow(string groupid)
         {
             string myUserId = Context.User.Identity.Name;
             var group = db.StatusWindows.FirstOrDefault(sw => sw.KeyWindowName == groupid && sw.UserName == myUserId);
