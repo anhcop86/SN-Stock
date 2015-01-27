@@ -627,3 +627,10 @@ a.category-tab:hover{
     color: #FFBD00;
     padding: 0 3px;
 }
+
+.chartImage{
+    background: #F1F1F1;
+    position:absolute;
+    
+    /*overflow:inherit;*/
+}

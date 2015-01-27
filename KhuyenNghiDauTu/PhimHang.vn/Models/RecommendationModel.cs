@@ -36,11 +36,11 @@ namespace PhimHang.Models
         public decimal TargetSell { get; set; }
 
         [Required(ErrorMessage= "Nhập chi tiết khuyến nghị")]
-        [StringLength(512, ErrorMessage = "Nhập ít nhất 10 từ, nhiều nhất 512 ký tự", MinimumLength = 10) ]
+        [StringLength(900, ErrorMessage = "Nhập ít nhất 10 từ, nhiều nhất 900 ký tự", MinimumLength = 10) ]
         [Display(Name = "Chi tiết khuyến nghị")]
         public string Description { get; set; }
 
-        [FileExtensions(Extensions = "jpg,jpeg", ErrorMessage = "Chỉ chon được file ảnh")]
+        [ValidateFile]
         public HttpPostedFileBase ChartImange { get; set; }
                 
 
@@ -62,8 +62,12 @@ namespace PhimHang.Models
         public decimal BuyPrice { get; set; }
 
         [Required(ErrorMessage = "Nhập chi tiết khuyến nghị")]
-        [StringLength(512, ErrorMessage = "Nhập ít nhất 10 từ, nhiều nhất 512 ký tự", MinimumLength = 10)]
+        [StringLength(900, ErrorMessage = "Nhập ít nhất 10 từ, nhiều nhất 900 ký tự", MinimumLength = 10)]
         [Display(Name = "Chi tiết khuyến nghị")]
         public string Description { get; set; }
+
+        [ValidateFile]
+        public HttpPostedFileBase ChartImange { get; set; }
+                
     }
 }

@@ -61,6 +61,17 @@
             <td class="col2">
                 <input type="text" id="grumble" name="StockCode" value="@Model.BuyPrice" disabled class="success" />
             </td>
+            @{
+                if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
+                {
+                    <td>
+                        <div class="chartImage">
+                            <img src="@Model.ImageUrl?width=450&height=280&mode=crop" />
+                        </div>
+                    </td>
+                }
+            }
+          
             
         </tr>
         @{
@@ -88,7 +99,7 @@
         <tr>
             <td class="col1" style="vertical-align: top;"><label>Chi tiết khuyến nghị:</label></td>
             <td class="col2">
-                <textarea cols="5" style="width:400px;height:80px">@Model.Description</textarea>
+                <textarea cols="5" style="width:400px;height:120px" disabled>@Model.Description</textarea>
             </td>
         </tr>
     </table>

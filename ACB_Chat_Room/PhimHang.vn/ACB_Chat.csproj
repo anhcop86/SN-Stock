@@ -1459,6 +1459,8 @@
     <Content Include="Scripts\ui\jquery.ui.resizable.js" />
     <Content Include="Scripts\ui\jquery.ui.widget.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="ThemeDark\ACBChatGroup.css" />
+    <Content Include="ThemeDark\style.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1499,6 +1501,8 @@
     <Content Include="Views\Broker\Index.cshtml" />
     <Content Include="Views\Ticker\Index.cshtml" />
     <Content Include="Views\Recommendation\BuyRecommend.cshtml" />
+    <Content Include="Views\Shared\_Layout_Dark_Theme.cshtml" />
+    <Content Include="Views\Home\Layout_dark.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PhimHang.Models;
+using System.IO;
 
 namespace PhimHang.Controllers
 {
@@ -24,14 +25,27 @@ namespace PhimHang.Controllers
 
             return View();
         }
+        private const string ImageURLAvata = "/Chart/";
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> BuyRecommend([Bind(Include = "ID,StockCode,BuyPrice,StockHoldingTime,TargetSell,Description,CreatedDate,PostBy,ChartImange")] BuyRecommendModel buyRecommendModel)
         {
             if (ModelState.IsValid)
             {
-                var recommentToDb = new RecommendStock();
+                var uploadDir = ImageURLAvata;
+                var geraralFileName = User.Identity.Name + DateTime.Now.ToString("yyyyMMddHHmmss") + "_chart";
+                string NameFiletimeupload = geraralFileName;
+                if (buyRecommendModel.ChartImange!=null)
+                {
+                    #region upload file                    
+                    
+                    var imagePath = Path.Combine(Server.MapPath(uploadDir), NameFiletimeupload + Path.GetExtension(buyRecommendModel.ChartImange.FileName));
+                    buyRecommendModel.ChartImange.SaveAs(imagePath);
+                    #endregion    
+                }
+                
 
+                var recommentToDb = new RecommendStock();
                 recommentToDb.CreatedDate = DateTime.Now.Date;
                 recommentToDb.CreatedModify = DateTime.Now;
                 recommentToDb.PostBy =  db.UserLogins.FirstOrDefault(u=> u.UserNameCopy == User.Identity.Name).Id;
@@ -42,6 +56,11 @@ namespace PhimHang.Controllers
                 recommentToDb.Description = buyRecommendModel.Description;
                 recommentToDb.TYPERecommend = "MUA";
                 recommentToDb.SumComment = 0;
+                if (buyRecommendModel.ChartImange != null)
+                {
+                    recommentToDb.ImageUrl = uploadDir + NameFiletimeupload + Path.GetExtension(buyRecommendModel.ChartImange.FileName);    
+                }
+                
                 db.RecommendStocks.Add(recommentToDb);
                 await db.SaveChangesAsync();
                 return RedirectToAction("", "Home");
@@ -199,10 +218,21 @@ namespace PhimHang.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> SellRecommend([Bind(Include = "ID,StockCode,BuyPrice,Description")] SellRecommendModel sellRecommendModel)
+        public async Task<ActionResult> SellRecommend([Bind(Include = "ID,StockCode,BuyPrice,Description,ChartImange")] SellRecommendModel sellRecommendModel)
         {
             if (ModelState.IsValid)
             {
+                var uploadDir = ImageURLAvata;
+                var geraralFileName = User.Identity.Name + DateTime.Now.ToString("yyyyMMddHHmmss") + "_chart";
+                string NameFiletimeupload = geraralFileName;
+                if (sellRecommendModel.ChartImange != null)
+                {
+                    #region upload file
+
+                    var imagePath = Path.Combine(Server.MapPath(uploadDir), NameFiletimeupload + Path.GetExtension(sellRecommendModel.ChartImange.FileName));
+                    sellRecommendModel.ChartImange.SaveAs(imagePath);
+                    #endregion
+                }
                 var recommentToDb = new RecommendStock();
 
                 recommentToDb.CreatedDate = DateTime.Now.Date;
@@ -213,6 +243,10 @@ namespace PhimHang.Controllers
                 recommentToDb.BuyPrice = sellRecommendModel.BuyPrice;
                 recommentToDb.TYPERecommend = "BAN";
                 recommentToDb.SumComment = 0;
+                if (sellRecommendModel.ChartImange != null)
+                {
+                    recommentToDb.ImageUrl = uploadDir + NameFiletimeupload + Path.GetExtension(sellRecommendModel.ChartImange.FileName);
+                }
                 db.RecommendStocks.Add(recommentToDb);
                 await db.SaveChangesAsync();
                 return RedirectToAction("", "Home");

@@ -7,14 +7,14 @@
 <h2>
     Khuyến nghị BÁN
 </h2>
-@using (Html.BeginForm("SellRecommend", "Recommendation", FormMethod.Post))
+@using (Html.BeginForm("SellRecommend", "Recommendation", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <div id="example_length" class="dataTables_length1">
         <table class="form">
             <tr>
                 <td class="col1"><label> Mã cổ phiếu:</label></td>
-                <td class="col2">                   
+                <td class="col2">
                     @Html.DropDownList("StockCode", ViewBag.listStockCode as SelectList, string.Empty, new { id = "selectStockCode" })
                     @Html.ValidationMessageFor(model => model.StockCode)
                 </td>
@@ -22,7 +22,7 @@
                 <td></td>
                 <td class="col1" style="margin-left:30px"><label> KLCPLH: </label><label id="lbKLCPLH" class="infoStox"></label></td>
                 <td></td>
-                
+
             </tr>
             <tr>
                 <td class="col1"><label>Khuyến nghị:</label></td>
@@ -46,21 +46,30 @@
                 <td class="col1" style="margin-left:30px"><label> EPS: </label><label id="lbEPS" class="infoStox"></label></td>
                 <td></td>
                 <td class="col1" style="margin-left:30px"><label> KLBQ 10 phiên: </label><label id="lbBQ10Phien" class="infoStox"></label></td>
-                <td></td>  
-            </tr>            
+                <td></td>
+                
+            </tr>
 
             <tr>
                 <td class="col1" style="vertical-align: top;"><label>Chi tiết khuyến nghị:</label></td>
                 <td class="col2">
                     @*<textarea cols="5" style="width:400px;height:80px" ></textarea>*@
-                @Html.TextAreaFor(model => model.Description, new { style = "width:400px;height:80px", cols = "5" })
-                @Html.ValidationMessageFor(model => model.Description)
+                    @Html.TextAreaFor(model => model.Description, new { style = "width:400px;height:80px", cols = "5" })
+                    @Html.ValidationMessageFor(model => model.Description)
 
-            </td>
+                </td>
 
-        </tr>
-
-    </table>
+            </tr>
+            <tr>
+                <td class="col1"><label>Hình chart:</label></td>
+                @*<td><input id="uploadchart" name="ChartImange" type="file"></td>*@
+                <td>
+                    @Html.TextBoxFor(model => model.ChartImange, new { id = "grumble", type = "file" })
+                    @Html.ValidationMessageFor(model => model.ChartImange)
+                </td>
+            </tr>
+        </table>
+   
     <input type="submit" value="Lưu" class="btn btn-blue">
 </div>
 

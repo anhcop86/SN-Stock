@@ -321,6 +321,7 @@
     <Compile Include="Models\UserLogin.cs">
       <DependentUpon>Local.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ValidateFileAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -1450,6 +1451,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Chart\" />
     <Folder Include="DetailTheme\js\tiny-mce\plugins\spellchecker\classes\utils\" />
     <Folder Include="DetailTheme\js\tiny-mce\plugins\spellchecker\includes\" />
   </ItemGroup>

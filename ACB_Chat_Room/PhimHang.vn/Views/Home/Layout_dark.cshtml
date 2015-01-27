@@ -1,11 +1,13 @@
-﻿@{
-    ViewBag.Title = "ACB chat group";
+﻿
+@{
+    ViewBag.Title = "Layout_dark";
+    Layout = "~/Views/Shared/_Layout_Dark_Theme.cshtml";
 }
+
 
 <link type="text/css" rel="stylesheet" href="/Css/ChatStyle.css" />
 <link rel="stylesheet" href="/Css/JQueryUI/themes/base/jquery.ui.all.css">
-<link href="~/Content/ACBChatGroup.css" rel="stylesheet" />
-
+<link href="~/ThemeDark/ACBChatGroup.css" rel="stylesheet" />
 <!--Script references. -->
 <!--Reference the jQuery library. -->
 <script src="/Scripts/ui/jquery.ui.core.js"></script>
@@ -19,23 +21,31 @@
 <script src="~/DetailTheme/multiplecheckbox/jquery.multiple.select.js"></script>
 <link href="~/DetailTheme/multiplecheckbox/multiple-select.css" rel="stylesheet" />
 <!----------------------------------------------------------->
-
 <!---------------------------Diaglog-------------------------------->
 <link href="~/Content/jquery-ui.css" rel="stylesheet" />
 <script src="~/Scripts/jquery-ui.js"></script>
 <!----------------------------------------------------------->
-
-
-<div id="header">
-    <a href="/"><img src="/img/Logo_ACBS_DF.png" alt="ACBS" /></a>
-    
-</div>
+<!---------------------------Dark theme-------------------------------->
+<link href="~/ThemeDark/style.css" rel="stylesheet" />
+<!----------------------------------------------------------->
+<header>
+    <div class="container">
+        <h1><a href="index.html">ACB</a></h1>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="icon tasks">Tasks <span>3</span></a></li>
+                <li class="active"><a href="index.html" class="icon messages">Messages <span>17</span></a></li>
+                <li><a href="index.html" class="icon settings">Settings</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
 <br />
 <br />
 <br />
 
 <div id="divContainer">
-    <div style="margin-bottom:7px">        
+    <div style="margin-bottom:7px">
         <input id="LinkimgCreate" class="submitButton button" type="button" value="ADD ROOM">
     </div>
     <div id="divChat" class="chatRoom">
@@ -43,18 +53,16 @@
     </div>
 
     <div id="listUser" class="listUserLoad">
-        
+
     </div>
-    
+
 
     <input id="hdId" type="hidden" />
     <input id="hdUserName" type="hidden" />
 
     <div class="dialogGroup" id="dialog">
         <div class="form-group">
-            <select id="ms" multiple="multiple">
-              
-            </select>
+            <select id="ms" multiple="multiple"></select>
         </div>
         <div style="margin-top: 180px; text-align:center;">
             <input id="txtGroupName" type="text" placeholder="Nhập tên group" width="100" style="margin-bottom:10px" />
@@ -68,10 +76,10 @@
 
 <!------------------script----------------------------------------->
 <script>
-    
+
 </script>
 <script>
-   
+
     $(function () {
 
         $('#ms').multipleSelect({
@@ -81,7 +89,7 @@
             isOpen: true,
             keepOpen: true,
             maxHeight: 250
-            
+
         });
         $('#LinkimgCreate').click(function () {
             $('#ms').html('');
@@ -92,7 +100,7 @@
                 type: "GET",
                 url: '@Url.Action("GetListUserExcept", "Home")',
                 success: function (data) {
-                    $.each(data, function (id, option) {         
+                    $.each(data, function (id, option) {
                         $opt = $("<option />", {
                             value: option.name,
                             text: option.name
@@ -103,7 +111,7 @@
                 },
 
             })
-            
+
             dialog.dialog("open");
 
         });
@@ -209,9 +217,9 @@
         $(window).unload(function () {
             chatHub.server.disconnected(true);
         });
-      
+
     }
-   
+
 
     function registerClientMethods(chatHub) {
 
@@ -291,7 +299,7 @@
                 ctrId = 'private_' + windowId;
             }
 
-            
+
 
             //var ctrId = 'private_' + windowId;
 
@@ -425,6 +433,10 @@
             chatHub.server.closeWindow(userId);
         });
 
+        $div.click(function () {
+            $div.css({ "z-index": 2 });
+        })        
+
 
         // Send Button event
         $div.find("#btnSendMessage").click(function () {
@@ -456,7 +468,7 @@
         var top = Math.floor((Math.random() * 500) + 1);
         var left = Math.floor((Math.random() * 1000) + 1);
 
-        
+
 
         $('#divContainer').prepend($div.css({ "left": left, "top": top }));
         //load history
@@ -468,7 +480,7 @@
             success: function (data) {
                 $.each(data, function (id, option) {
                     var ctrwindow = $('#' + ctrId).find('#divMessage');
-                    $('#' + ctrId).find('#divMessage').append(option.messege);                   
+                    $('#' + ctrId).find('#divMessage').append(option.messege);
                 });
                 // set scrollbar
                 var height = $('#' + ctrId).find('#divMessage')[0].scrollHeight;
@@ -476,10 +488,10 @@
             },
         })
         $div.draggable({
-            handle: ".header",
+            handle: ".header",            
             stop: function () {
                 // change left & top
-               
+
                 //chatHub.server.changePositionWindow(userId, userName);
                 @*$.ajax({
                     cache: false,
@@ -508,3 +520,4 @@
     }
 
 </script>
+

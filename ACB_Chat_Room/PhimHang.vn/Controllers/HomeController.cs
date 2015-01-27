@@ -26,6 +26,12 @@ namespace PhimHang.Controllers
             return View();
         }
 
+        public async Task<ActionResult> Layout_dark()
+        {
+            return View();
+        }
+
+
         private async Task LoadInit()
         {
 

@@ -41,6 +41,7 @@
                         <th>Người khuyến nghị</th>
                         <th>Loại</th>
                         <th>Tổng bình luận</th>
+                        <th>Chart</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -63,6 +64,17 @@
                             </td>
                             <td>
                                 @item.SumComment
+                            </td>
+                            <td>
+                                
+                                @if (string.IsNullOrWhiteSpace(item.ImageUrl))
+                                {
+                                    @: NO
+                                }
+                                else
+                                {
+                                    @: YES
+                                }
                             </td>
                             <td><a style="color: #328AC5" href="/Recommendation/Detail?id=@item.ID">chi tiết</a></td>
                         </tr>
