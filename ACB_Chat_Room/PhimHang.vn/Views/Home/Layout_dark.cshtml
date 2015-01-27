@@ -28,6 +28,10 @@
 <!---------------------------Dark theme-------------------------------->
 <link href="~/ThemeDark/style.css" rel="stylesheet" />
 <!----------------------------------------------------------->
+<!---------------------------Dropdownlist-------------------------------->
+<link href="~/DetailTheme/css/jquery.dropdown.css" rel="stylesheet" />
+<script src="~/DetailTheme/js/jquery.dropdown.js"></script>
+<!----------------------------------------------------------->
 <header>
     <div class="container">
         <h1><a href="index.html">ACB</a></h1>
@@ -40,10 +44,21 @@
         </nav>
     </div>
 </header>
+<div id="dropdown-1" class="dropdown dropdown-tip">
+    <ul class="dropdown-menu">
+        <li><a href="#">Item 1</a></li>
+        <li><a href="#2">Item 2</a></li>
+        <li><a href="#3">Item 3</a></li>
+        <li class="dropdown-divider"></li>
+        <li><a href="#4">Item 4</a></li>
+        <li><a href="#5">Item 5</a></li>
+        <li><a href="#5">Item 6</a></li>
+    </ul>
+</div>
 <br />
 <br />
 <br />
-
+<a href="#" data-dropdown="#dropdown-1">dropdown</a>
 <div id="divContainer">
     <div style="margin-bottom:7px">
         <input id="LinkimgCreate" class="submitButton button" type="button" value="ADD ROOM">
@@ -76,7 +91,11 @@
 
 <!------------------script----------------------------------------->
 <script>
-
+    $('#dropdown-1').on('show', function(){
+        console.log('show');
+    }).on('hide', function (){
+        console.log('hide');
+    });
 </script>
 <script>
 
@@ -433,9 +452,11 @@
             chatHub.server.closeWindow(userId);
         });
 
+      
         $div.click(function () {
-            $div.css({ "z-index": 2 });
-        })        
+            $(".ui-widget-content").css({ "z-index": 0 });
+            $('#' + ctrId).css({ "z-index": 2 });
+        })
 
 
         // Send Button event

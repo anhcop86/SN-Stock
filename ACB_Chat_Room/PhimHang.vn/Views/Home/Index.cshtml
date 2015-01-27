@@ -26,6 +26,8 @@
 <!----------------------------------------------------------->
 
 
+
+
 <div id="header">
     <a href="/"><img src="/img/Logo_ACBS_DF.png" alt="ACBS" /></a>
     
@@ -398,7 +400,9 @@
         var div = '<div  id="' + ctrId + '" class="ui-widget-content draggable" rel="0">' +
                    '<div class="header">' +
                       '<div  style="float:right;">' +
+                        '<img id="imgAddUser" style="padding-right: 10px;cursor:pointer;" src="/Images/AddUser.png"/>' +
                           '<img id="imgDelete"  style="cursor:pointer;" src="/Images/delete.png"/>' +
+                          
                        '</div>' +
                        '<span class="selText" rel="0">' + groupname + '</span>' +
                    '</div>' +
@@ -414,8 +418,8 @@
         //                   '<img id="imgAddUser"  style="cursor:pointer;" src="/Images/AddUser.png"/>' +
         //                '</div>' +
         // tạo cửa sổ chat
-        var $div = $(div);
 
+        var $div = $(div);
 
         // DELETE BUTTON IMAGE
         $div.find('#imgDelete').click(function () {
@@ -424,6 +428,11 @@
             // close window
             chatHub.server.closeWindow(userId);
         });
+
+        $div.click(function () {
+            $(".ui-widget-content").css({ "z-index": 0 });
+            $('#' + ctrId).css({ "z-index": 2 });
+        })
 
 
         // Send Button event

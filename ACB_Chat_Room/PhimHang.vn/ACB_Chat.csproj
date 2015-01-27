@@ -516,6 +516,7 @@
     <Content Include="DetailTheme\css\ie.css" />
     <Content Include="DetailTheme\css\ie6.css" />
     <Content Include="DetailTheme\css\jquery.datetimepicker.css" />
+    <Content Include="DetailTheme\css\jquery.dropdown.css" />
     <Content Include="DetailTheme\css\jquery.jqplot.min.css" />
     <Content Include="DetailTheme\css\layout.css" />
     <Content Include="DetailTheme\css\nav.css" />
@@ -898,6 +899,7 @@
     <Content Include="DetailTheme\js\jquery-ui\jquery.ui.tabs.min.js" />
     <Content Include="DetailTheme\js\jquery-ui\jquery.ui.widget.min.js" />
     <Content Include="DetailTheme\js\jquery.datetimepicker.js" />
+    <Content Include="DetailTheme\js\jquery.dropdown.js" />
     <Content Include="DetailTheme\js\jquery.js" />
     <Content Include="DetailTheme\js\popup\jquery.facebox.js" />
     <Content Include="DetailTheme\js\pretty-photo\jquery.prettyPhoto.js" />
