@@ -1168,6 +1168,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\AddUser.png" />
+    <Content Include="images\ajax-loader.gif" />
     <Content Include="images\Offiline.ico" />
     <Content Include="images\Online.ico" />
     <Content Include="images\bg-body.gif" />
@@ -1463,6 +1464,7 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="ThemeDark\ACBChatGroup.css" />
     <Content Include="ThemeDark\style.css" />
+    <Content Include="ThemeFloat\style.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1505,6 +1507,8 @@
     <Content Include="Views\Recommendation\BuyRecommend.cshtml" />
     <Content Include="Views\Shared\_Layout_Dark_Theme.cshtml" />
     <Content Include="Views\Home\Layout_dark.cshtml" />
+    <Content Include="Views\Shared\_Layout_Float_Theme.cshtml" />
+    <Content Include="Views\Home\Layout_Float.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

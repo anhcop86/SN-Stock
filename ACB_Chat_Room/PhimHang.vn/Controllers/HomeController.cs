@@ -31,6 +31,10 @@ namespace PhimHang.Controllers
             return View();
         }
 
+        public async Task<ActionResult> Layout_Float()
+        {
+            return View();
+        }
 
         private async Task LoadInit()
         {
@@ -146,14 +150,42 @@ namespace PhimHang.Controllers
             return Task.FromResult(Json(result.Result, JsonRequestBehavior.AllowGet));
         }
 
-        public async Task ChangePositionWindow(string groupid, int top, int left)
+        //public async Task ChangePositionWindow(string groupid, int top, int left)
+        //{
+        //    var userNamelogin = User.Identity.Name;
+        //    var group = db.StatusWindows.FirstOrDefault(sw => sw.KeyWindowName == groupid && sw.UserName == userNamelogin);
+        //    group.TopPosition = top.ToString() + "px";
+        //    group.LeftPosition = left.ToString() + "px";
+        //    db.Entry(group).State = EntityState.Modified;
+        //    await db.SaveChangesAsync();
+        //}
+
+        public Task<JsonResult> GetListUserInGroup(string groupid)
         {
-            var userNamelogin = User.Identity.Name;
-            var group = db.StatusWindows.FirstOrDefault(sw => sw.KeyWindowName == groupid && sw.UserName == userNamelogin);
-            group.TopPosition = top.ToString() + "px";
-            group.LeftPosition = left.ToString() + "px";
-            db.Entry(group).State = EntityState.Modified;
-            await db.SaveChangesAsync();
+            var idUserLogin = db.UserLogins.FirstOrDefault(u => u.UserNameCopy == User.Identity.Name).Id;
+             int i;
+            var group = int.TryParse(groupid, out i);
+            var result = (from ul in db.Group_User
+                          where ul.GroupId == i
+                          select new
+                          {
+                              un = ul.UserLogin.UserNameCopy,                              
+                          }).ToListAsync();
+            if (result.Result.Count>0)
+            {
+                return Task.FromResult(Json(result.Result, JsonRequestBehavior.AllowGet));    
+            }
+            else
+            {         
+                var resultDirect = new List<dynamic>
+                              {
+                                 new { un = User.Identity.Name},
+                                 new { un = groupid}
+                              }.ToList();
+                return Task.FromResult(Json(resultDirect, JsonRequestBehavior.AllowGet));
+            }
+            
         }
+
     }
 }

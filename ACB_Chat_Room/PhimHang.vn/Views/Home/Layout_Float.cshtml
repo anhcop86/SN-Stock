@@ -1,9 +1,8 @@
 ﻿
 @{
-    ViewBag.Title = "Layout_dark";
-    Layout = "~/Views/Shared/_Layout_Dark_Theme.cshtml";
+    ViewBag.Title = "Layout_Float";
+    Layout = "~/Views/Shared/_Layout_Float_Theme.cshtml";
 }
-
 
 <link type="text/css" rel="stylesheet" href="/Css/ChatStyle.css" />
 <link rel="stylesheet" href="/Css/JQueryUI/themes/base/jquery.ui.all.css">
@@ -26,24 +25,47 @@
 <script src="~/Scripts/jquery-ui.js"></script>
 <!----------------------------------------------------------->
 <!---------------------------Dark theme-------------------------------->
-<link href="~/ThemeDark/style.css" rel="stylesheet" />
+<link href="~/ThemeFloat/style.css" rel="stylesheet" />
 <!----------------------------------------------------------->
 <!---------------------------Dropdownlist-------------------------------->
 <link href="~/DetailTheme/css/jquery.dropdown.css" rel="stylesheet" />
 <script src="~/DetailTheme/js/jquery.dropdown.js"></script>
 <!----------------------------------------------------------->
-<header>
-    <div class="container">
-        <h1><a href="index.html">ACB</a></h1>
-        <nav>
-            <ul>
-                <li><a href="index.html" class="icon tasks">Tasks <span>3</span></a></li>
-                <li class="active"><a href="index.html" class="icon messages">Messages <span>17</span></a></li>
-                <li><a href="index.html" class="icon settings">Settings</a></li>
-            </ul>
-        </nav>
+
+<a href="http://dribbble.com/shots/966016-Messages?list=users" style="color:#09c; padding:20px; display:block; clear:both; text-align:center;">A HTML version of 'Messages' by Coleman Tharp</a>
+
+<div class="container">
+    <div class="header">
+        <h2>Messages</h2>
+        <a href="#" title="Add Friend to this chat">+</a>
     </div>
-</header>
+    <div class="chat-box">
+        <div class="message-box left-img">
+            <div class="picture">
+                <img src="http://dribbble.s3.amazonaws.com/users/2493/avatars/original/joey_head_new.png?1346157876" title="user name" />
+                <span class="time">10 mins</span>
+            </div>
+            <div class="message">
+                <span>Bobby Giangeruso</span>
+                <p>Hey Mike, how are you doing?</p>
+            </div>
+        </div>
+        <div class="message-box right-img">
+            <div class="picture">
+                <img src="http://dribbble.s3.amazonaws.com/users/212696/avatars/small/monogram_pixel_perfect.png?1359994784" title="user name" />
+                <span class="time">2 mins</span>
+            </div>
+            <div class="message">
+                <span>Mike Moloney</span>
+                <p>Pretty good, Eating nutella, nommommom</p>
+            </div>
+        </div>
+        <div class="enter-message">
+            <input type="text" placeholder="Enter your message.." />
+            <a href="#" class="send">Send</a>
+        </div>
+    </div>
+</div>
 <div id="dropdown-1" class="dropdown dropdown-tip">
     <ul class="dropdown-menu">
         @*<li><a href="#">Item 1</a></li> *@
@@ -85,7 +107,15 @@
 <!------------------script----------------------------------------->
 
 <script>
+    $(function () {
 
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0!
+
+        var yyyy = today.getFullYear();
+        if (dd < 10) { dd = '0' + dd } if (mm < 10) { mm = '0' + mm } today = mm + '/' + dd + '/' + yyyy;
+    });
     $(function () {
 
         $('#ms').multipleSelect({
@@ -452,8 +482,8 @@
 
                 },
                 success: function (data) {
-                    var livalue = '';                    
-                    $.each(data, function (id, option) {                        
+                    var livalue = '';
+                    $.each(data, function (id, option) {
                         livalue += "<li><a href='#'>" + option.un + "</a></li>";
                     });
                     console.log(livalue);
@@ -461,17 +491,17 @@
                 },
             });
             $('#dropdown-1').on('show', function () {
-                
+
             }).on('hide', function () {
                 $('#dropdown').html('');
             });
         });
 
-      
+
         $div.click(function () {
             $(".ui-widget-content").css({ "z-index": 0 });
             $('#' + ctrId).css({ "z-index": 2 });
-            
+
         })
 
 
@@ -525,10 +555,10 @@
             },
         })
 
-       
-       
+
+
         $div.draggable({
-            handle: ".header",            
+            handle: ".header",
             stop: function () {
                 // change left & top
 
@@ -544,7 +574,7 @@
                         });
                     },
                 });*@
-                
+
             }
         });
 
