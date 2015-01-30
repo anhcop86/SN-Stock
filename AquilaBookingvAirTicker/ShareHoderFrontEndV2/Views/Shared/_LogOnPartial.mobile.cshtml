@@ -1,0 +1,13 @@
+﻿@if (Request.IsAuthenticated) {
+       <div style="font-family:Tahoma; font-size:0.9em;font-style:normal" >
+            <a href="../Home" data-role="button" data-icon="home" data-iconpos="notext"  style="margin-left: 4px">@Resources.UserInterface.home</a>            
+             <div style="float:right;color:Black; padding-right: 4px" >
+                @User.Identity.Name
+                | <a href="@Url.Action("LogOff", "Account", Resources.UserInterface.logOff)" style="color:Black;cursor:pointer;font-style:normal;text-decoration:none" title="@Resources.UserInterface.logOffHint" >@Resources.UserInterface.logOff</a>              
+            </div>
+       </div>
+}
+else
+{
+    @Html.ActionLink("Log on", "LogOn", "Account", routeValues: null, htmlAttributes: new { id = "logonLink", data_dialog_title = "Identification", data_icon = "gear", @class = "ui-btn-right" })
+}

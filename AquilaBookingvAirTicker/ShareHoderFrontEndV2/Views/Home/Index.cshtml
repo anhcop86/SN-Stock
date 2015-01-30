@@ -1,0 +1,152 @@
+﻿@model  IEnumerable<ShareHolderCore.Domain.Model.Facility>
+@{
+    ViewBag.Title = @Resources.Resource.home;    
+}
+    <div class="box-main">
+		<div class="box-left">
+       
+		        @Html.Partial("_LongSearchPartial")
+        
+		</div><!--box-left-->
+		<div class="box-right">
+		    <div class="slider">	   
+                 @Html.Partial("_SliderPartial")
+		    </div>
+		</div><!--box-right-->
+		</div><!--box-main-->
+<div class="box-main">
+    <div class="box-left">
+
+        <div class="box">
+        <div class="title center">Hot deals?</div>
+            <div class="text hot-deal">
+                <div class="deal-phan">
+                 @*<select name="select7" class="select7">
+                        <option selected="selected">Tất cả</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+
+                     </select>*@
+                      @using (Ajax.BeginForm("SearchHotdeal", "", null, new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "updateAjaxId", LoadingElementDuration = 1 }, new { id = "updateIDHotdel" }))
+                      {
+                        @Html.DropDownList("SelectedHotdeal", (SelectList)ViewData["SelectedListHotelHotdeal"], "Tất cả", new { id = "SelectedHotdeal", @class = "hotdealoption" })                       
+                        <br />
+                        <div id="updateAjaxId">                      
+                           @Html.Partial("_HotdealPartial")                                                     
+                        </div>    
+                      } 
+                </div>
+            </div><!--text-->
+        </div><!--box-->
+    </div><!--box-left-->
+<div class="box-right">    
+       <div class="box">
+        <div class="title">@Resources.Resource.HelpFromUs</div>
+        <div class="" style="text-align:center">
+             @Html.Partial("_OfflineHelp")
+            <div class="clear"></div>
+    @*        <a href="#" class="read-more">@Resources.Resource.ReadMore</a>*@
+        </div>
+    </div>
+        <div class="box">
+        <div class="title"> @Resources.Resource.FavouritDestination</div>
+        <div class="text  box-de">
+            <img src="../../images/hinh2.jpg" />
+            @*@Html.ActionLink("Crowne Plaza Đà Nẵng", "Index", "Hotel/Details/1") <br/>*@
+
+             @{
+                 foreach (var item in (IList<ShareHolderCore.Domain.Model.FavouritDestination>)ViewData["FavouritDestination"])
+                 {
+                        
+                       @* @: <li> <a href="#" class="FavouritDestinationId">@item.Name</a> </li>
+                        @: <li> <a href="#" class="FavouritDestinationId">@item.Name</a> </li>*@
+                        @: <li> @Html.ActionLink(@item.Name, "Index", "DestinationSearchResult", new { searchInput = @item.Name, FavouritDestination = Path.GetRandomFileName().Replace(".", "") }, null) </li>
+                    }
+               }
+            <div class="clear"></div>
+    @*        <a href="#" class="read-more">@Resources.Resource.ReadMore</a>*@
+        </div>
+    </div><!--box-->
+
+
+         <div class="box">
+            <div class="title"> @Resources.Resource.MostView</div>
+            <div class="text  box-de">
+                <img src="../../images/hinh2.jpg" alt="Most viewed hotels" />
+                @{
+                    foreach (var item in (IList<ShareHolderCore.Domain.Model.Hotel>)ViewData["ListMostView"])
+                    {
+                        @: <li> @Html.ActionLink(@item.Name, "", "Book/Details/" + @item.HotelId) </li>
+                        
+                    }
+                }
+                <div class="clear">
+                </div>
+                @*<a href="#" class="read-more"> @Resources.Resource.ReadMore</a>*@
+            </div>
+         </div>
+    </div>
+    <!--</b>ox-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".FavouritDestinationId").click(function () {
+                $("#searchInput").val($(this).text());
+            });
+        });
+    </script>
+    
+       <script type="text/javascript">
+           $().ready(function () {
+               $("#SelectedHotdeal").change(function () {
+
+                   submitForm();
+               });
+               
+               function submitForm() {
+                   $("#updateIDHotdel").submit();
+
+               }
+           });
+//           $(document).ready(function () {
+//               $(".page").click(function () {
+//                   
+//                   var page = parseInt($(this).html());
+//                   var SelectedHotdeal = $('#SelectedHotdeal').val();
+//                   alert(page);
+//                   $.ajax({
+//                       url: '@Url.Action("SearchHotdeal")',
+//                       data: { "page": page, "SelectedHotdeal": SelectedHotdeal },
+
+//                       success: function (data) {
+
+//                           $("#updateAjaxId").html(data);
+//                       }
+//                   });
+//                   //submitForm();
+//               });
+//           });
+           function myFunction(value) {
+               var page = value;
+               
+               var SelectedHotdeal = $('#SelectedHotdeal').val();
+
+               $.ajax({
+                   url: '@Url.Action("SearchHotdeal")',
+                   data: { "page": page, "SelectedHotdeal": SelectedHotdeal },
+
+                   success: function (data) {
+
+                       $("#updateAjaxId").html(data);
+                   },
+                   complete: function () {
+                      
+                    }
+
+               });
+           }
+            </script>
+</div><!--box-main-->
+<div class="clear"></div>
+
+

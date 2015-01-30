@@ -1,0 +1,160 @@
+﻿@model IEnumerable<ShareHoderFrontEndV2.Models.CartItem>
+@{
+    ViewBag.Title = @Resources.Resource.aquilaBooking;
+}
+
+<div class="box-main">
+    <div class="box-left">
+        @Html.Partial("_LongSearchPartial")
+    </div><!--box-left-->
+<div class="box-right">
+<div class="slider">
+   <div id="example1">
+      <div class="effectContainer">
+	  
+        <div class="slide r1">
+		<img src="../../images/hinh.jpg" alt="" />
+        </div><!--slide-->
+        <div class="slide r1">
+		<img src="../../images/hinh1.jpg" alt="" />
+        </div><!--slide-->
+      </div>
+    </div>
+
+</div>
+</div><!--box-right-->
+</div><!--box-main-->
+
+<div class="box-main">
+<div class="box box-pha">
+
+<div class="main-step" >
+
+<div class="step1">
+<div class="title">@Resources.Resource.bookingCondition</div>
+<div class="text">
+@*This hotel has provided the following important information in english about this offer superior room : 22m2 ,loccated at different floors the superiors rooms offers lake or cathedral views, offers a sizeable working area and all superior amenities with stunning cailings and colonial french Decoration.*@
+@{
+    foreach (var item in Model)
+    {   	
+        //if(@item.Prod.Availability.Hotel.Display == "Y")
+        //{
+          <strong> @Html.Raw( System.Net.WebUtility.HtmlDecode(@item.Prod.Availability.Hotel.BookingCondition))</strong>
+          <br/>        
+       // } 
+    }   
+ }
+</div>
+</div>
+<div class="step" style="border-color:White">
+    <div style="text-align:left"><span style="font-weight:bold">@Resources.Resource.agreeTermCondition</span>
+        <span><input id="checkBoxAgreePolicy" type="checkbox" /></span>
+    </div>
+</div>
+
+</div><!--main-step-->
+<div class="main-step">
+
+<div class="clear"></div>
+<div class="box-chi">
+<table cellpadding="0" cellspacing="0" class="pricing">
+    <tr>
+        <th>@Resources.Resource.HotelName</th>
+        <th>@Resources.Resource.RoomType</th>
+        <th>@Resources.Resource.fromDate</th>
+        <th>@Resources.Resource.toDate</th>
+        <th>@Resources.Resource.numberOfDate</th>
+        <th>@Resources.Resource.quantity</th>
+        <th>@Resources.Resource.PriceHotel</th>
+        <th>@Resources.Resource.amount</th>
+        <th>@Resources.Resource.vat</th>
+        <th>@Resources.Resource.amountWithVAT</th>       
+        <th></th>
+    </tr>
+    @{
+        decimal? totalMoney = 0;   
+    }
+    @foreach (var item in Model)
+    {
+        totalMoney += item.Subtotal + ((item.Subtotal * 10) / 100);
+        <tr>
+            <td>
+            @item.Prod.Availability.Hotel.Name
+        </td>
+        <td>
+            @item.Prod.Availability.RoomType.Name
+            
+        </td>
+        <td>
+            @item.FromDate
+           
+        </td>
+        <td>
+            @item.ToDate
+           
+        </td>
+         <td>
+            @item.TotalDate
+           
+        </td>
+            <td>
+            
+            @item.NoRoom
+           
+        </td>
+        <td>
+            
+            @string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"),"{0,0:N0}", @item.Prod.Availability.Price)
+           
+        </td>
+         <td>
+            @{
+                var totalNotVAT = item.TotalDate * item.NoRoom * item.Prod.Availability.Price;
+                var VATAmount = (totalNotVAT * 10) / 100;
+                decimal? sumAmount = totalNotVAT + VATAmount;
+            }
+            @string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N0}", totalNotVAT)
+           
+        </td>
+        <td>
+            @string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N0}", VATAmount)
+            
+        </td>
+        <td>          
+            @string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N0}", sumAmount)
+        </td>
+        <td>
+            @Html.ActionLink(" ", "RemoveCart", "ShoppingCart", new { idbooking = @item.Prod.Availability.AvailabilityId }, new { style = "background: url('" + Url.Content("~/images/deletecart.gif") + "') no-repeat center right; display:block;  height: 17px; width: 16px;" })                                                                                                        
+            
+        </td>
+        </tr>
+    }
+</table>
+<table cellpadding="0" cellspacing="0" class="pricing">
+    @*<tr>
+        <td colspan="3">
+        NHẬP MÃ SỐ ƯU ĐÃI
+        </td>
+    </tr>*@
+    <tr>
+        
+        <td colspan="2" style="text-align:right">
+            <strong>@Resources.Resource.totalAmount (VND)</strong>
+        </td>
+        <td>
+        
+            <b>@string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N0}", @totalMoney)</b>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+        @*<a href="../Payment" class="botton">Next</a>*@
+        @Html.ActionLink(@Resources.Resource.pay, "", "Payment", null, new { @class = "botton" })
+        </td>
+    </tr>
+</table>
+</div>
+
+
+</div><!--box-->
+</div><!--box-main-->

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-lazy="true" namespace="ShareHolderCore.Domain.Model" assembly="ShareHolderCore">
+	<class name="ShareHolderCore.Domain.Model.HotelOwner,ShareHolderCore" table="HotelOwner" lazy="true">
+
+		<!-- Primary Key(s) -->
+    <id name="HotelOwnerId" column="HotelOwnerId" type="Int32" unsaved-value="0">
+			<generator class="native"/>
+		</id>		
+		<!-- Properties -->
+		<property column="MemberId" type="Int32" name="MemberId" not-null="false" />
+		<property column="FullName" type="String" name="FullName" not-null="false" length="255" />
+		<property column="PaymentType" type="String" name="PaymentType" not-null="true" />
+		<property column="Email" type="String" name="Email" not-null="false" length="127" />
+    
+		<property column="PhoneNumber" type="String" name="PhoneNumber" not-null="false" length="20" />
+		<property column="Address" type="String" name="Address"  not-null="false" length="50" />
+		<property column="ActiveDate" type="String" name="ActiveDate" length="8" not-null="false" />
+    <property column="CloseDate" type="String" name="CloseDate" length="8" not-null="false" />
+    
+		<property column="Remark" type="String" name="Remark" length="255" not-null="false" />
+    <property column="CreatedDate" type="String" name="CreatedDate" length="14" />
+    <property column="CreatedBy" type="String" name="CreatedBy" length="14" />    
+	    
+		<!-- One-To-Many relations -->
+		
+    
+    
+	</class>
+</hibernate-mapping>

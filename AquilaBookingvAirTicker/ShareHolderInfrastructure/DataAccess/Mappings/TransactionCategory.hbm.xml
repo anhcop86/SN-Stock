@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-lazy="true" namespace="ShareHolderCore.Domain.Model" assembly="ShareHolderCore">
+	<class name="ShareHolderCore.Domain.Model.TransactionCategory,ShareHolderCore" table="TransactionCategory" lazy="false">
+
+		<!-- Primary Key(s) -->
+		<id name="TransactionCategoryId" column="TransactionCategoryId" type="Int32" unsaved-value="0">
+			<generator class="native"/>
+		</id>
+		
+		<!-- Properties -->
+		<property column="Description" type="String" name="Description" length="255" />
+		
+		<!-- One-To-Many relations -->
+		
+		<bag name="ListTransaction" generic="true" inverse="true" cascade="none" lazy="true">
+			<key column="TransactionCategoryId"/>
+			<one-to-many class="ShareHolderCore.Domain.Model.TradingTransaction,ShareHolderCore" />
+		</bag>
+		
+	</class>
+</hibernate-mapping>

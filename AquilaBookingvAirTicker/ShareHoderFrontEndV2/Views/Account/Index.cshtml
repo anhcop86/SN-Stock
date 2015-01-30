@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Account Home Page";
+}
+
+@section featured {
+<section class="featured">
+    <div class="content-wrapper">
+        <hgroup class="title">
+            <h1>@ViewBag.Title.</h1>
+            <h2>@ViewBag.Message</h2>
+        </hgroup>
+       
+    </div>
+</section>
+}
+<div class="main-content">
+    <div class="left-menu">
+        @Html.Partial("ProfileLeftMenuPartial")
+    </div>
+    <div class="content">
+       
+    </div>
+</div>
+
+            

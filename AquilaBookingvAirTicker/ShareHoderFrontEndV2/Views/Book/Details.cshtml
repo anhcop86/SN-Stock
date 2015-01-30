@@ -1,0 +1,351 @@
+﻿ @model ShareHolderCore.Domain.Model.Hotel
+
+<meta name="keywords" content="@Model.Name, Khách sạn Aquila, khách sạn giảm giá, đặt phòng trực tuyến, đặt phòng thời gian thực, dịch vụ khách hàng 24 giờ" />
+<meta name="description" content="@Model.Name: Xác Nhận Đặt Phòng Ngay Lập Tức và giá rẻ ở Khách sạn @Model.Name với Aquila." />
+@{
+    ViewBag.Title = @Model.Name;    
+}
+<link href="../../Content/tsc_tabs.css" rel="stylesheet" type="text/css" />
+<script src="../../Scripts/tsc_tabs.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+function GetLagerImage(hotelImageId) {   
+                    $.ajax({
+                        type: "GET",
+                        url: "/Book/GetImageById?hotelImageId=" + hotelImageId,
+                        datatype: "string",
+                        success: function (data) {
+                            $('#largeImage').attr('src', data);                           
+                        }
+                    });
+                }
+</script>
+
+<div class="content">
+ 
+    <div class="left">
+        @Html.Partial("_ShortSearchPartial")
+
+    <div class="box box-box">
+        @Html.Partial("_CompareListPartial")
+    </div><!--box-->
+
+    <div class="box box-box">
+    <ul class="menu-left">
+            @Html.Partial("_HotelViewlastestPartial")
+    </ul>
+    </div><!--box-->
+
+    <div class="box">
+    <div class="title">@Resources.Resource.HelpFromUs</div>
+        @Html.Partial("_OfflineHelp")
+        <div class="hinh-pro">	
+            <img src="../../images/hinh3.jpg" alt="" />
+        </div>
+    </div><!--box-->
+
+    </div><!--left-->
+    @Html.Partial("_MapPartial")
+    <div class="right">
+    
+        <div class="box">
+            <div class="title">
+                <h1>@Model.Name</h1>
+                <span id="star">
+                            @for (int i = 0; i < @Model.Star; i++)
+                            {
+                                <img src="../../images/star.png" alt="star" />
+                            }
+                </span>
+                <h6>@Model.HotelAddress</h6>
+             <span class="">&nbsp;
+            <!-- Add compare hotel in your session or Membership (login) -->
+                @{       
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        if (ViewData["listcompareLogin"] == null || !((List<int>)ViewData["listcompareLogin"]).Contains(@Model.HotelId))  
+                        {
+                                    @:<input type="image" class="ImageAddAjax" src="../../images/icon.jpg" name="Add" style="float:right; width:22px; height:22px;cursor:pointer"  alt="@Model.HotelId"  id="compareAdd-@Model.HotelId"/>   
+                         }
+                        else
+                        {
+                                    @:<input type="image" class="ImageAddAjax" src="../../images/remove.jpg" name = "Remove" style="float:right; width:22px; height:22px;cursor:pointer"  alt="@Model.HotelId" id="compareRemove-@Model.HotelId" />
+                        }
+                    }
+                    else
+                    {
+                        if (HttpContext.Current.Session["comparelistold"] == null || !((List<int>)HttpContext.Current.Session["comparelistold"]).Contains(@Model.HotelId))
+                        {
+                                    @:<input type="image" class="ImageAddAjax" src="../../images/icon.jpg" name="Add" style="float:right; width:22px; height:22px;cursor:pointer"   alt="@Model.HotelId" title="@Resources.Resource.addToCompareList" id="compareAdd-@Model.HotelId" />
+                                }
+                        else
+                        {
+                                    @:<input type="image" class="ImageAddAjax" src="../../images/remove.jpg" name = "Remove" style="float:right; width:22px; height:22px;cursor:pointer"  alt="@Model.HotelId" title="@Resources.Resource.removeFromCompareList" id="compareRemove-@Model.HotelId"/>
+                        }
+                    }
+                 } 
+                                   
+                 </span>
+                 <span class="review">&nbsp;&nbsp;@Resources.Resource.Compare&nbsp;</span>
+                 <span class="review">@Resources.Resource.map&nbsp;<a onclick="javascript:showmap(1)" style="cursor:pointer"><img src="../../images/map.jpg" align="absmiddle" alt="@Resources.Resource.map" title="@Resources.Resource.mapTitle @Model.Name" /></a></span>  	
+            <!-- End compare -->
+
+            @*<span class="review">@Resources.Resource.ReviewHotel: @ViewData["Review"]</span>*@</div>
+            <div style="margin-left:10px;margin-right:10px;"><img src="@ShareHoderFrontEndV2.Ext.ApplicationHelper.ImageDirectoryHotel/@ViewData["imagepath"]"  style="width:630px;height:350px;border-radius:10px;" alt="holtel room" id="largeImage" /> 
+            </div>
+            <div class="text">
+                <ul class="line-chay line-review">
+                     @foreach (var item in (IList<ShareHolderCore.Domain.Model.HotelImageExtent>)ViewData["imageListPathOfRoom"])
+                     {
+                         byte? id = @item.RoomTypeId;                         
+                        <li><img src="@ShareHoderFrontEndV2.Ext.ApplicationHelper.ImageDirectoryHotel/@item.ImagesStore.ImagePath"  alt="holtel room" onclick="GetLagerImage('@item.HotelImageID')" style="cursor:pointer"/> <a  href="javascript:GetLagerImage('@item.HotelImageID')">@item.NameOfRoomType</a></li>
+                     }
+		            
+                </ul>
+            </div>
+        </div><!--box-->
+        @*/////// Search kiem tra lai gia phong*@
+        @{
+            if (((IList<ShareHolderCore.Domain.Model.Availability>)ViewData["listAvailability"]).Count == 0)
+            {
+                @:@Html.Partial("_CheckPriceOfRoomSearch")    
+            }
+        }   
+         
+    <div class="box">
+    
+    <div class="title">@Resources.Resource.DetailBooking</div>
+        <div class="text">
+         @*/////// kiem tra lai gia phong*@
+             @{
+                @:@Html.Partial("_AvailabilityPartial")    
+            }
+
+        <h3>@Resources.Resource.Description</h3>
+        <p>        
+            @Html.Raw(Model.LongDesc)
+        </p>
+        </div>
+    </div><!--box-->    
+
+    <div class="box">
+    <div class="title"><h3>@Resources.Resource.hotelServices  @Model.Name</h3>
+   @* @Resources.Resource.imagesOf  @Model.Name <img  alt="" src="../../images/sao.jpg" align="absmiddle" />*@
+                
+        @*<span class="review">@Resources.Resource.ReviewHotel: @ViewData["Review"]</span>*@
+    </div>
+    <div class="text"> 
+
+    <div class="box-check">
+    <div class="title-check"><div class="kiem-check"><span class="co">@Resources.Resource.available</span><span class="khong">@Resources.Resource.notAvailable</span></div></div>
+    <table cellpadding="0" cellspacing="0" class="table-tngh">
+    <!--<tr>
+        <td colspan="3"><strong>TIỆN NGHI KHÁCH SẠN	</strong></td>
+    </tr>-->  
+     @{   
+         int i1 = 1;
+         foreach (var item in (IList<ShareHolderCore.Domain.Model.FacilityExtent>)ViewData["listFacility"])
+         {
+             if (i1 == 1)
+             {
+                @:<tr>
+            }
+             if (i1 % 4 == 0)
+             {
+                @:<tr>
+            }          
+                     
+             <td class="
+             @{
+             if (item.CheckFacility == "Y")
+             {
+                    @:check
+                 }
+             if (item.CheckFacility == "N")
+             {
+                     @:no
+                 }
+             }"> @item.Name
+             </td>            
+             if (i1 == 4)
+             {
+                @:<tr>
+            }
+             if (i1 % 8 == 0)
+             {
+                @:</tr>
+            }
+             i1++;
+         }            
+        }
+    </table>
+    </div><!--bx-check-->
+
+    </div>
+    </div><!--box-->
+    
+    <div class="box"><!--COMMENT HOTEL OR FACEBOOK-->
+       
+                        <!-- DC Flat Tabs Start -->
+                <div class="tsc_flat_tab_main_container" style="width:100%;">
+ 
+                    <ul class="flat_tabs"> @*bỏ border trong tsc_tabd.css 250*@
+                       @* <li><a href="#ftab1">Dành cho thành viên</a></li>*@
+                       @* <li><a href="#ftab2">Dành cho Facebook</a></li>*@
+                        
+ 
+                    </ul>
+                    <span style="float:left; margin-right:10px;margin-top:10px;margin-left:15px; border:none; width:400px; border-radius:10px">
+                            <div>
+                            <img src="../../images/yellowstar.png" alt="" class="" style="cursor:default" /> @Resources.Resource.StarTerrible &nbsp&nbsp
+                            <img src="../../images/yellowstar.png" alt="" class="" style="cursor:default" /><img src="../../images/yellowstar.png" alt="" class="" style="cursor:default" /> @Resources.Resource.StarPoor &nbsp&nbsp 
+                            <img src="../../images/yellowstar.png" alt="" class="" style="cursor:default" /><img src="../../images/yellowstar.png" alt="" class="" style="cursor:default" /><img src="../../images/yellowstar.png" alt="" class="" style="cursor:default" />  @Resources.Resource.StarAverage &nbsp&nbsp
+                            </div>
+                        
+                             <div style="margin-left:0px;">
+                            <img src="../../images/yellowstar.png" alt="" class="" style="cursor:default" /><img src="../../images/yellowstar.png" alt="" class="" style="cursor:default" /><img src="../../images/yellowstar.png" alt="" class="" style="cursor:default" /><img src="../../images/yellowstar.png" alt="" class="" style="cursor:default" /> @Resources.Resource.StarVerygood &nbsp&nbsp
+                            <img src="../../images/yellowstar.png" alt="" class="" style="cursor:default" /><img src="../../images/yellowstar.png" alt="" class="" style="cursor:default" /><img src="../../images/yellowstar.png" alt="" class="" style="cursor:default" /><img src="../../images/yellowstar.png" alt="" class="" style="cursor:default" /><img src="../../images/yellowstar.png" alt="" class="" style="cursor:default" />  @Resources.Resource.StarExecellent
+                              </div>
+                        </span>
+                    <span style="float:right; background:white; margin-right:10px; border:none ">
+                            @Html.Partial("_HotelRatingPartial")
+                        </span>
+                    <div class="tsc_flat_tab_subcontainer">
+         
+                        <!-- Tab 1 Start -->
+                        <div id="ftab1" class="tsc_flat_tab_content">
+                           @Html.Partial("_PartialCommentV1") 
+                        </div>
+                        <!-- Tab 1 End -->
+         
+                        <!-- Tab 2 Start -->
+                     @*   <div id="ftab2" class="tsc_flat_tab_content">
+                            <div class="fb-comments" data-href="@Request.Url.AbsoluteUri" data-numposts="5" data-colorscheme="light" width="630px"></div>
+                        </div>*@
+                        <!-- Tab 2 End -->
+         
+                       
+                    </div>
+                </div>
+                <!-- DC Flat Tabs End -->
+                <div class="tsc_clear"></div> <!-- line break/clear line -->
+    </div><!--END-->
+      
+    </div><!--right-->
+ 
+    </div><!--content-->
+    @{
+        
+        if (Session["txtFromDate"] == null)
+        {
+            Session["txtFromDate"] = "";
+        }
+        string testsession = Session["txtFromDate"].ToString();
+
+        int iid = int.Parse(Session["iid"].ToString());
+        
+    }
+ 
+
+      <div id="messageinfo" title="Thông tin" style="display:none">
+              <p id>
+                <span class="ui-icon ui-icon-circle-check" style="float: left; margin: 0 7px 50px 0; "></span>
+                    @Resources.Resource.bookwarningNofRoom
+              </p>
+              @*<p>
+                Currently using <b>36% of your storage space</b>.
+              </p>*@
+            </div>
+             <div id="messageinfodate" title="Thông tin" style="display:none">
+              <p id>
+                <span class="ui-icon ui-icon-circle-check" style="float: left; margin: 0 7px 50px 0; "></span>
+                    Bạn phải tìm ngày đặt phòng phù hợp
+              </p>
+              @*<p>
+                Currently using <b>36% of your storage space</b>.
+              </p>*@
+            </div>
+           <script type="text/javascript">
+               $().ready(function () {
+                   $(".botton-book").click(function (e) {
+                       var prefix = $(this).attr("id");
+                       if ($('#optionselect-' + prefix.substr(-1)).val() == 0 ) {
+                           $("#messageinfo").dialog("open");
+                           e.preventDefault();
+                           return;
+                       } else {
+                           var ipvalue = $('#optionselect-' + prefix.substr(-1)).val();
+                           this.href = this.href.replace("selectNoRoom", ipvalue);
+                       }
+                       if ($("#txtFromDate").val() == '' || $("#txtToDate").val() == '' || '@testsession' == "") {
+                           $("#messageinfodate").dialog("open");
+                           e.preventDefault();
+                           return;
+                       }
+                   });
+                   $("#messageinfo").dialog({
+                       autoOpen: false,
+                       modal: true,
+                       buttons: {
+                           Ok: function () {
+                               $(this).dialog("close");
+                           }
+                       }
+                   });
+                   $("#messageinfodate").dialog({
+                       autoOpen: false,
+                       modal: true,
+                       buttons: {
+                           Ok: function () {
+                               $(this).dialog("close");
+                           }
+                       }
+                   });
+               });
+               
+            </script>
+            <script type="text/javascript">
+                $().ready(function () {
+                    $('.defaultOption').change(function () {                      
+                        var resetDropdown = +'@iid';
+                        for (var i = 1; i <= resetDropdown; i++) {
+                            if (("optionselect-" + i.toString()) != $(this).attr("id")) {
+                                $("#optionselect-" + i.toString()).val(0);
+                            }
+                        }
+                    });
+                   
+                });
+
+                
+</script>  
+
+      <script type="text/javascript">
+          $(document).ready(function () {
+              $(".ImageAddAjax").click(function () {
+                  var DirImage = $(this).attr("src");
+                  var txtne = DirImage.substring(13);
+                  var prefix = $(this).attr("id");
+                  $.get('@Url.Action("Add", "CompareList")',
+                          {
+                              hotelid: $(this).attr("alt")
+                          }, function (data) {
+
+                              if (data == "A") {
+                                  alert('Thêm vào danh sách so sánh thành công');
+                                  $('#' + prefix).attr("src", "../../images/remove.jpg");
+                              }
+                              else if (data == "R") {
+                                  alert('Loại khỏi danh sách so sánh thành công');
+                                  $('#' + prefix).attr("src", "../../images/icon.jpg");
+                              } else {
+                                  alert('Chỉ thêm tối đa 3 khách sạn');
+                              }
+                          })
+
+              });
+          });
+      </script>
+              
+           
+              

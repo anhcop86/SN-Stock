@@ -1,0 +1,250 @@
+﻿@*<link href="@Url.Content("~/Content/themes/base/jquery.ui.all.css")" rel="stylesheet" type="text/css">
+<script src="@Url.Content("~/Scripts/jquery-1.7.1.js")"  type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.ui.core.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.ui.widget.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.ui.datepicker.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.ui.datepicker-vi.js")" type="text/javascript"></script>
+*@
+<style>
+.ui-autocomplete {
+    max-height: 200px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+    /* add padding to account for vertical scrollbar */
+    padding-right: 20px;
+}
+/* IE 6 doesn't support max-height
+ * we use height instead, but this forces the menu to always be this tall
+ */
+* html .ui-autocomplete {
+    height: 100px;
+}
+</style>
+<div class="box">
+                
+		        <div class="title">@Resources.Resource.WhereAndCheckRoom</div>
+		        <div class="text">
+		            <div class="search">
+                    @using (Html.BeginForm("", "DestinationSearchResult", FormMethod.Get, new { id = "formSearch" }))
+                    {
+		                <p><b>@Resources.Resource.Destination</b>
+                                                                       @* <input id="searchInput" type="text" value="@Session["textboxSeachValue"]" />*@
+                                                                        @Html.TextBox("searchInput", @Session["textboxSeachValue"], new { id = "searchInput" })
+                                                                     </p>
+
+                    
+                    <table width="100%" style="height:80px">
+                        <tr>
+		                    <td>@Resources.Resource.fromDate</td>
+                            <td  style="padding-bottom:2px;">
+                                <input style="width:100px" type="text" id="txtFromDate" name="txtFromDate" value="@Session["txtFromDate"]" title="@Resources.Resource.checkinDateTitle" />
+                            </td>
+                          @*  <td>
+                                
+                                @Html.DropDownList("TextMonthYear", (SelectList)ViewData["MonthYear"], new { @class = "monthoption" })
+                            </td>
+                            <td>
+                                <img  src="../../images/icon-cal-blue-1.png" alt="Most viewed hotels" style="margin-top:12px; margin-left:10px" />
+                            </td>
+                            <td>
+                            </td>*@
+			          
+                        </tr>
+                       <tr>
+		                    <td ><label>@Resources.Resource.toDate </label></td>
+                            <td>
+                                 <input type="text" style="width:100px" id="txtToDate" name="txtToDate" value="@Session["txtToDate"]" title="@Resources.Resource.checkoutDateTitle" />
+                            </td>
+                        @*    <td>
+                                @Html.DropDownList("TextMonthYear", (SelectList)ViewData["MonthYear"], new { @class = "monthoption" })
+                            </td>
+                            <td>
+                                <img src="../../images/icon-cal-blue-1.png" alt="Most viewed hotels" style="margin-top:12px; margin-left:10px" />
+                            </td>*@			        
+                        </tr>
+                        <tr>
+                            <td>@Resources.Resource.numberOfDate</td>
+                            <td><label id="valueTotalDate">0</label></td>
+                            <td>                               
+
+                                 @*<a id = "buttonsubmit" style="cursor:pointer; width:80px; height:31px" title = "@Resources.Resource.SearchDestination" >@Resources.Resource.SearchDestination</a>*@
+
+                                 <input type="submit" id="submitSearch" class = "botton" value="@Resources.Resource.search" style = "float:right; width:150px; height:40px; color:White" title="@Resources.Resource.searchTitle" />
+
+                                 @*@Html.ActionLink("Book", "", "DestinationSearchResult", null, new { style = "float:none; width:97px; height:30px", @class = "botton" })*@
+
+                                 
+                            </td>
+                        </tr>
+                </table>
+                    }
+			             @*<a style="float:left;width:45px; text-align:center" href="../DestinationSearchResult" class="botton">@Resources.Resource.SearchDestination</a>*@
+                        @*@Html.TextBox("searchInput", @Session["textboxSeachValue"], new { id = "fromdatepicker", @readonly = "true" }) test roi xoa *@
+                    
+		            </div>
+		        </div>
+		    </div>
+            <div id="dialog-message" title="Tìm khách sạn" style="display:none">
+              <p id>
+                <span class="ui-icon ui-icon-circle-check" style="float: left; margin: 0 7px 50px 0; "></span>
+                    @Resources.Resource.destinationMising
+              </p>
+              @*<p>
+                Currently using <b>36% of your storage space</b>.
+              </p>*@
+            </div>
+            
+                   <script type="text/javascript">
+                       $().ready(function () {
+                           $('#txtFromDate').datepicker({                           
+                               dateFormat: 'dd/mm/yy',
+                               buttonImage: '@Url.Content("~/Content/themes/calendar.gif")',
+                               buttonImageOnly: true,
+                                showOn:'both',
+                                minDate: "0"
+                                
+                                
+                           });
+                        }); 
+                       $().ready(function () {
+
+                           $('#txtToDate').datepicker({
+                               dateFormat: 'dd/mm/yy',
+                               buttonImage: '@Url.Content("~/Content/themes/calendar.gif")',
+                               buttonImageOnly: true,
+                               showOn: 'both',
+                               minDate: "0"
+                           });
+                       });
+                 
+                </script>
+             <script type="text/javascript">
+                 $().ready(function () {
+                     $("#formSearch").submit(function (e) {
+                         if ($("#searchInput").val() == '') {
+//                         || $("#txtFromDate").val() == '' || $("#txtToDate").val() == ''
+                             $("#dialog-message").dialog("open");
+                             e.preventDefault();
+                         }
+                     });
+                     $("#dialog-message").dialog({
+                         autoOpen: false,
+                         modal: true,
+                         buttons: {
+                             Ok: function () {
+                                 $(this).dialog("close");
+                             }
+                         }
+                     });
+                 });
+               
+            </script>
+                 <script type="text/javascript">
+                     $().ready(function () {
+                         
+                         if ($("#txtFromDate").val() != '' || $("#txtToDate").val() != '') {
+                             var fromdate = $('#txtFromDate').datepicker("getDate").valueOf();
+                             var todate = $('#txtToDate').datepicker("getDate").valueOf();
+                             var resual = (todate - fromdate) / 86400000;
+                             $('#valueTotalDate').text(resual);
+                         }
+                         $('#txtToDate').change(function () {
+                             var strLoadingText = "<%$ Resources.Reource.About %>";
+                             if ($("#txtFromDate").val() != '') {
+                                 var fromdate = $('#txtFromDate').datepicker("getDate").valueOf();
+                                 var todate = $('#txtToDate').datepicker("getDate").valueOf();
+                                 var resual = (todate - fromdate) / 86400000;
+                                 if (resual < 0) {
+                                     //alert("Ngày về phải lớn hơn ngày đi");
+                                     alert(strLoadingText);
+                                     $('#txtToDate').datepicker("setDate", $('#txtFromDate').datepicker("getDate"))
+                                     $('#valueTotalDate').text(0);
+                                 }
+                                 else {
+                                     $('#valueTotalDate').text(resual);
+                                 }
+                             }
+                         });
+                         $('#txtFromDate').change(function () {
+                             var strLoadingText = "<%$ Resources.Reource.About %>";
+                             if ($("#txtToDate").val() != '') {
+                                 var fromdate = $('#txtFromDate').datepicker("getDate").valueOf();
+                                 var todate = $('#txtToDate').datepicker("getDate").valueOf();
+                                 var resual = (todate - fromdate) / 86400000;
+                                 if (resual < 0) {
+                                    // alert("Ngày về phải lớn hơn ngày đi");
+                                     alert(strLoadingText);
+                                     alert(strLoadingText); $('#txtToDate').datepicker("setDate", $('#txtFromDate').datepicker("getDate"))
+                                     $('#valueTotalDate').text(0);
+                                 }
+                                 else {
+                                     $('#valueTotalDate').text(resual);
+                                 }
+                             }
+                         });
+
+                         if ($('#txtFromDate').val() == '') {
+                             $('#txtFromDate').val(getDefaultFromDate);
+                         }
+                         if ($('#txtToDate').val() == '') {
+                             $('#txtToDate').val(getDefaultToDate);
+                         }
+                         //                         $('#searchInput').onchange(function () {
+                         //                             alert("Change!");
+                         //                         });
+                         $(function () {
+                             $("#searchInput").autocomplete({
+                                 source: function (request, response) {
+                                     $.ajax({
+                                         url: "Home/FetchLocationList/?data=" + $("#searchInput").val(),
+                                         data: {},
+                                         dataType: "json",
+                                         type: "POST",
+                                         contentType: "application/json; charset=utf-8",
+                                         dataFilter: function (data) { return data; },
+                                         success: function (data) {
+
+                                             response($.map(data, function (item) {
+                                                 //alert(item.LocationName);
+                                                 return {
+
+                                                     value: item.LocationNameViet
+                                                 }
+                                             }))
+                                         },
+                                         error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                             //                                             alert(textStatus);
+                                         }
+                                     });
+                                 },
+                                 minLength: 1
+                             });
+                         });
+                     });
+
+                     function getDefaultFromDate() {
+                         var date = new Date();
+                         var year = date.getFullYear();
+                         var month = (1 + date.getMonth()).toString();
+                         month = month.length > 1 ? month : '0' + month;
+                         var day = date.getDate().toString();
+                         day = day.length > 1 ? day : '0' + day;
+                         return day + '/' + month + '/' + year;
+                     }
+
+                     function getDefaultToDate() {
+                         var date = new Date();
+                         date.setDate(date.getDate() + 2);
+                         var year = date.getFullYear();
+                         var month = (1 + date.getMonth()).toString();
+                         month = month.length > 1 ? month : '0' + month;
+                         var day = date.getDate().toString();
+                         day = day.length > 1 ? day : '0' + day;
+                         return day + '/' + month + '/' + year;
+                     }
+                </script>
+          
+
+
+            

@@ -1,0 +1,7 @@
+﻿  <li><b><a href="#">@Resources.Resource.HotelViewlastest</a></b></li>
+                @{
+                    foreach (var item in (IList<ShareHolderCore.Domain.Model.Hotel>)ViewData["reposiHotelViewlastest"])
+                    {
+                            @: <li> @Html.ActionLink(@item.Name, "", "Book/Details/" + @item.HotelId) </li>
+                        }
+                    }    

@@ -1,0 +1,207 @@
+﻿@model IEnumerable<ShareHoderFrontEndV2.Models.CartItem>
+@{
+    ViewBag.Title = @Resources.Resource.aquilaBooking;
+}
+<script src="../../Scripts/account.js" type="text/javascript"></script>
+<link href="../../Content/account.css" rel="stylesheet" type="text/css" />
+<div class="box-main">
+<div class="box-left">
+     @Html.Partial("_LongSearchPartial")
+</div><!--box-left-->
+<div class="box-right">
+<div class="slider">
+   <div id="example1">
+      <div class="effectContainer">	  
+        <div class="slide r1">
+		<img src="../../images/hinh.jpg" alt="" />
+        </div><!--slide-->
+        <div class="slide r1">
+		<img src="../../images/hinh1.jpg" alt="" />
+        </div><!--slide-->
+      </div>
+    </div>
+
+</div>
+</div><!--box-right-->
+</div><!--box-main-->
+@using (Html.BeginForm("Book", "Payment", FormMethod.Get, new { id="paymentForm" }))
+{
+<div class="box-main">
+<div class="box box-pha">
+
+<div class="title-step"><img src="../../images/step2.jpg" align="absmiddle"/> @Resources.Resource.customerInfo</div>
+
+    <div id="StatusBox">
+          <div id="AdminStatus" runat="server" style="display:none"></div>
+     </div>
+     @{
+    string firstName = string.Empty;
+    string lastName = string.Empty;
+    string emailAddress = string.Empty;
+    
+    string mobile = string.Empty;
+    if (User.Identity.IsAuthenticated)
+    {
+        var infouser = (ShareHolderCore.Domain.Model.Membership)@Session["LoginObject"];
+        var name = infouser.MemberName.Split(' ');
+        firstName = name[name.Length - 1];
+        lastName = infouser.MemberName.Replace(firstName, "");
+        emailAddress = infouser.Email;
+        mobile = infouser.MobilePIN;
+        
+    }
+    
+     }
+<table cellpadding="0" cellspacing="0" class="form-pay">
+<tr>
+    <td><b style="color:Red">* </b>@Resources.Resource.FirstName</td>
+    <td><input type="text" id="FirstNameClient" name="FirstNameClient" maxlength="70" value="@firstName" /></td>
+</tr>
+<tr>
+    <td><b style="color:Red">* </b>@Resources.Resource.LastName</td>
+    <td><input type="text" id="LastNameClient" name="LastNameClient"  maxlength="150" value="@lastName" /></td>
+</tr>
+<tr>
+    <td><b style="color:Red">* </b>@Resources.Resource.emailAddress</td>
+    <td><input type="text" id="MailAddressClient" name="MailAddressClient"  maxlength="127"  value="@emailAddress" /></td>    
+</tr>
+<tr>
+    <td><b style="color:Red">* </b>@Resources.Resource.mobile</td>
+    <td><input type="text" id="MobileClient" name="MobileClient"  maxlength="20" value="@mobile"/></td>
+</tr>
+
+<tr>
+<td>@Resources.Resource.remark</td>
+<td><textarea id="RemarkClient" name="RemarkClient" maxlength="255" ></textarea></td>
+</tr>
+</table>
+<div class="title-step"><img src="../../images/step3.jpg" align="absmiddle"/> @Resources.Resource.paymentMethod</div>
+
+@Html.Partial("_PayMetholPartial")
+
+
+<div class="tt-thanh">
+
+<h3>@Resources.Resource.bookingSummary</h3>
+<table cellpadding="0" cellspacing="0" class="table-xac">
+<tr>
+    <td><b>@Resources.Resource.serviceName</b></td>
+    <td>
+    @{
+    foreach (var item in Model)
+    {
+            @: @item.Prod.Availability.Hotel.Name (@item.Prod.Availability.RoomType.Name) <br />
+        }
+    }
+    
+    </td>
+</tr>
+<tr>
+    <td>@Resources.Resource.totalRoom:</td>
+    <td>  @{
+        int totalNoRoom = 0;
+        foreach (var item in Model)
+        {
+            totalNoRoom += @item.NoRoom;
+        }
+                    @: @totalNoRoom
+                }
+            </td>
+</tr>
+<tr>
+    <td>@Resources.Resource.amount:</td>
+    <td>
+      @{
+    decimal? totalSubtotal = 0;
+    foreach (var item in Model)
+    {
+        totalSubtotal += @item.Subtotal;
+    }
+                @: @string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N0}", totalSubtotal) 
+            }
+    
+    </td>
+</tr>
+<tr>
+    <td>@Resources.Resource.vat:</td>
+    <td>10% 
+    @{
+    @:( @string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N0}", totalSubtotal * Convert.ToDecimal(0.1)))
+        }
+        </td>
+</tr>
+<tr>
+    <td>@Resources.Resource.totalAmount:</td>
+    <td>
+        @{
+    totalSubtotal = totalSubtotal + (totalSubtotal * Convert.ToDecimal(0.1));
+            @: @string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N0}", totalSubtotal)
+        }
+    </td>
+</tr>
+<tr>
+<td>@Resources.Resource.payBy</td>
+<td><span id="PaymentStyle">@Resources.Resource.payByDebitCard</span></td>
+</tr>
+</table>
+
+
+<div class="nhap-ma">
+<strong><em>@Resources.Resource.paymentWarningMsg&#32;<a href="/Home/terms" target="_blank">@Resources.Resource.paymentWarningMsg1</a>&#32;@Resources.Resource.paymentWarningMsg2</em></strong>
+<div style="margin-top:10px">
+@*@Html.ActionLink("THANH TOÁN", "Book", "Payment", null, new { @class = "botton", style = "padding: 10px,float:none" })
+*@
+<input id="paymentButton" style="background: none repeat scroll 0 0 #1B75BB; cursor:pointer; border-radius: 5px 5px 5px 5px; width:90px; height:26px; border:0; margin-left:20px; margin-bottom:10px;  color: #FFFFFF;" type="submit" value="@Resources.Resource.payment" title="Resources.Resource.payment" />
+
+</div>
+
+</div>
+
+
+</div>
+
+@*<div class="box-km">
+<p>
+Quà tặng đặt biệt khi đăng ký<br />
+<span>Phiếu giảm 100.000 vnđ</span>
+</p>
+<p class="line-km">
+<input type="text" />
+<input type="text" />
+</p>
+<p><button>Đăng Ký Ngay</button></p>
+</div>*@
+
+</div><!--box-->
+</div><!--box-main-->
+}
+<script type="text/javascript">
+<!--
+    var TabbedPanels1 = new Spry.Widget.TabbedPanels("TabbedPanels1");
+    $("span#PaymentStyle").text('@Resources.Resource.payByDebitCard');
+//-->
+</script>
+
+ <script type="text/javascript">
+     $("#paymentButton").click(function (e) {
+         if ($("#FirstNameClient").val() == '' || $("#LastNameClient").val() == '' || $("#MailAddressClient").val() == '' || $("#MobileClient").val() == '') { //|| $("#ArrivalTimeClient").attr("selectedIndex") == 0
+             ShowStatus("warning", "@Resources.Resource.paymentValidation");
+             $("#searchInput").focus();
+             e.preventDefault();
+             return;
+         }
+//         else if ($(".PayMetholHiddenText").val() == 'O') {
+
+//             if ($("input.payment_input").val() == '' || $("select#payment_inputMonth").attr("selectedIndex") == 0 || $("select#payment_inputYear").attr("selectedIndex") == 0) {
+//                 ShowStatus("warning", "Quý khách cần điền đầy đủ thông tin thanh toán");
+//                 $("#searchInput").focus();
+//                 e.preventDefault();
+//             }
+//             else {
+//                 $("#paymentForm").submit();
+//             }
+//         }
+     });
+
+
+ </script>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-lazy="true" namespace="ShareHolderCore.Domain.Model" assembly="ShareHolderCore">
+	<class name="ShareHolderCore.Domain.Model.ShareHolder,ShareHolderCore" table="ShareHolder" lazy="false">
+
+		<!-- Primary Key(s) -->
+		<id name="ShareHolderId" column="ShareHolderId" type="Int32" unsaved-value="0">
+			<generator class="native"/>
+		</id>
+		
+		<!-- Foreign Keys not mapped as Many-To-One relations -->
+		<!--<property column="ShareHolderGroupId" type="Int32" name="ShareHolderGroup" />-->
+		<many-to-one name="ShareHolderGroup"  column="ShareHolderGroupId" class="ShareHolderCore.Domain.Model.ShareHolderGroup,ShareHolderCore" />
+		<!--><property column="BankId" type="Int32" name="BankId" />-->
+		<!--<property column="UserId" type="Guid" name="UserId" />-->
+		
+		<!-- Properties -->
+		<property column="Name" type="String" name="Name" not-null="true" length="255" />
+		<property column="Address" type="String" name="Address" not-null="true" length="255" />
+		<property column="Phone" type="String" name="Phone" length="20" />
+		<property column="Mobile" type="String" name="Mobile" length="20" />
+		<property column="SSN" type="String" name="Ssn" not-null="true" length="50" />
+		<property column="Nationality" type="String" name="Nationality" length="10" />
+		<property column="ShareHolderCode" type="String" name="ShareHolderCode" length="50" />
+		<property column="DOB" type="DateTime" name="Dob" />
+		<property column="BirthPlace" type="String" name="BirthPlace" length="50" />
+		<property column="WorkPlace" type="String" name="WorkPlace" length="50" />
+		<property column="IssueDate" type="DateTime" name="IssueDate" />
+		<property column="IssuePlace" type="String" name="IssuePlace" length="50" />
+		<property column="ContactAddress" type="String" name="ContactAddress" length="255" />
+		<property column="RepTradingPerson" type="String" name="RepTradingPerson" length="50" />
+		<property column="RepSSN" type="String" name="Repssn" length="50" />
+		<property column="RepIssueDate" type="DateTime" name="RepIssueDate" />
+		<property column="RepIssuePlace" type="String" name="RepIssuePlace" length="50" />
+		<property column="Note" type="String" name="Note" length="255" />
+		<property column="Address2" type="String" name="Address2" length="255" />
+		<property column="Gender" type="String" name="Gender" length="1" />
+		<property column="StartDate" type="DateTime" name="StartDate" />
+		<property column="AddressCityId" type="Int32" name="AddressCityId" />
+		<property column="AddressLocationId" type="Int32" name="AddressLocationId" />
+		<property column="Address2CityId" type="Int32" name="Address2CityId" />
+		<property column="Address2LocationId" type="Int32" name="Address2LocationId" />
+		<property column="BankAccountNumber" type="String" name="BankAccountNumber" length="255" />
+        <property column="BankId" type="Int32" name="BankId" />
+        <property column="UserId"  type="Guid" name="UserId" />
+    <property column="ShareHolderType" type="String" name="ShareHolderType" length="1" />
+    <property column="ParentShareHolderId" type="Int32" name="ParentShareHolderId" />
+		<!-- One-To-Many relations -->
+		<bag name="ListTransactionDetail" generic="true" inverse="true" cascade="none" lazy="true">
+			<key column="ShareHolderId"/>
+			<one-to-many class="ShareHolderCore.Domain.Model.TransactionDetail,ShareHolderCore" />
+		</bag>
+		
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-lazy="true" namespace="ShareHolderCore.Domain.Model" assembly="ShareHolderCore">
+  <class name="ShareHolderCore.Domain.Model.HotelComment,ShareHolderCore" table="HotelComment" lazy="true">
+
+    <!-- Primary Key(s) -->
+    <id name="CommentId" column="CommentId" type="Int64" unsaved-value="0">
+      <generator class="native"/>
+    </id>
+
+    <!-- Properties -->
+    <!--<property column="CountryId" type="Int16" name="CountryId" />-->    
+    <property column="HotelId" type="Int32" name="HotelId" not-null="0"/>
+    <property column="Rate"  type="Byte" name="Rate"  not-null="1"/>
+    <property column="comment" type="String" name="comment" length="4000" />
+    <property column="MemberId" type="Int32" name="MemberId" not-null="1" />
+    <property column="CommentDate" type="DateTime" name="CommentDate" not-null="1" />
+    
+  
+  </class>
+</hibernate-mapping>
+

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-lazy="true" namespace="ShareHolderCore.Domain.Model" assembly="ShareHolderCore">
+  <class name="ShareHolderCore.Domain.Model.Availability,ShareHolderCore" table="Availability" lazy="true">
+
+    <!-- Primary Key(s) -->
+    <id name="AvailabilityId" column="AvailabilityId" type="Int64" unsaved-value="0">
+      <generator class="native"/>
+    </id>
+
+    <!-- Properties -->
+    <!--<property column="HotelId" type="Int32" name="HotelId"/>-->
+    <!--<property column="RoomTypeId" type="Int16" name="RoomTypeId"/>-->
+    <property column="FromDate" type="String" name="FromDate" length="14" />
+    <property column="ToDate" type="String" name="ToDate" length="14" />
+    <property column="Quantity" type="Int32" name="Quantity"/>
+    <property column="IsHotDeal" type="String" name="IsHotDeal" length="1" />
+    
+
+    <!--<property column="CurrencyTypeId" type="Int16" name="CurrencyTypeId"/>-->
+    <property column="Price" type="Decimal" name="Price"/>   
+    <property column="CreatedDate" type="String" name="CreatedDate" length="14" />
+    <property column="CreatedBy" type="String" name="CreatedBy" length="14" />
+    <property column="PromotionalPrice" type="Decimal" name="PromotionalPrice" />
+    <property column="IsPromotion" type="String" name="IsPromotion" length="1" />
+
+
+    <!--Many to one-->
+    
+    <many-to-one name="RoomType"  column="RoomTypeId" class="ShareHolderCore.Domain.Model.RoomType,ShareHolderCore" lazy="false" />
+    <many-to-one name="CurrencyType"  column="CurrencyTypeId" class="ShareHolderCore.Domain.Model.CurrencyType,ShareHolderCore" />
+    <many-to-one name="Hotel"  column="HotelId" class="ShareHolderCore.Domain.Model.Hotel,ShareHolderCore"  lazy="false"/>
+    <!-- One-To-Many relations -->
+    
+    
+    <!--<bag name="ListHotelFacility" generic="true" inverse="true" cascade="none" lazy="true">
+      <key column="FacilityId"/>
+      <one-to-many class="ShareHolderCore.Domain.Model.HotelFacility,ShareHolderCore" />
+    </bag>-->
+
+  </class>
+</hibernate-mapping>
+

@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = @Resources.Resource.home + "-"  + @Resources.Resource.payment;
+}
+
+   <div class="contentLogin">        
+     <fieldset>
+        <table cellpadding="20px" cellspacing="20px">           
+             <tr>
+             <td>
+                <div class="box cols cols-la">
+                    <h4> @ViewData["viewOrderStatus"]</h4>
+                    <br />
+                    <h4>@Resources.Resource.mailToClient</h4>
+                    <label>@Resources.Resource.yourBookingCode<b style="color:#2F77FD"> @ViewData["viewcode"].ToString() </b></label>
+                    <br />
+                    <label>@Resources.Resource.checkBookingNotify01 <a href= "@Url.Action("Index", "BookingHistory")"><span>@Resources.Resource.orderHere</span></a> @Resources.Resource.checkBookingNotify02</label><br />
+                </div>
+               </td>
+            </tr>
+        </table>        
+      </fieldset>
+    </div>
+    
+

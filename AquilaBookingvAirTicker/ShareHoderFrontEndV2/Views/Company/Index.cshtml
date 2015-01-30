@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ShareHolderCore.Domain.Model.Company>
+
+<div class="main-content">
+    <div class="left-menu">
+        @Html.Partial("TransactionLeftMenuPartial")
+    </div>
+    <div class="content">
+        <table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>companies(s)</th>
+            <th>Symbol</th>
+            <th>Date</th>
+            <th>Tags</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var comp in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(comp.Name, "Details", new {  id = @comp.CompanyId })</td>
+                 
+                <td></td>
+                <td>@comp.ShareSymbol</td>
+                <td>@comp.IssueDate</td>
+                <td> @Html.ActionLink("Details", "Details", new { id = @comp.CompanyId })</td>
+            </tr>                                           
+        }
+    </tbody>
+</table>
+    @Html.ActionLink("Add", "Create");
+    </div>
+</div>
+

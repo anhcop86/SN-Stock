@@ -1,0 +1,66 @@
+﻿@model ShareHolderCore.Domain.Model.Hotel
+
+@{
+    
+    ViewBag.Title = @Resources.UserInterfaceVN.DetailHotel + @Model.Name;
+}
+
+<div class="box-main">
+		<div class="box-left">
+		        @Html.Partial("_LongSearchPartial")
+		</div><!--box-left-->
+		<div class="box-right">
+		    <div class="slider">	   
+                 @Html.Partial("_SliderPartial")
+		    </div>
+		</div><!--box-right-->
+		</div><!--box-main-->
+    <div class="box-main">
+		    <div class="box">
+		        <div class="title">@Model.Name
+                         <span id="star">
+                            @for (int i = 0; i <  @Model.Star; i++)
+                            {
+                                <img src="../../images/star.png" alt="star" />
+                            }
+                        </span>
+                </div>
+		        <div class="text">
+		            <div class="travel-main">
+		            <div class="travel-left">
+		                <img src="../../images/Hotel/@ViewData["imagepath"]" alt="Image hotel" />
+                        @*<img src="../../images/Hotel/@Model.ListHotelImage." />*@
+		                <h3>@Model.Name @Html.ActionLink(" ", "", "CompareList/Add/" + @Model.HotelId, null, new { title = @Resources.UserInterfaceVN.CompareList, style = "background: url('" + Url.Content("~/images/icon.jpg") + "') no-repeat ; float:right; height:31px; width:31px;" })</h3>
+		                <strong>@Resources.UserInterfaceVN.Address</strong>
+		                 @Model.HotelAddress <br />
+		                @Model.LongDesc
+		            </div>
+		            <div class="travel-right cols">
+		                <label><span>@Resources.UserInterfaceVN.PriceHotel</span></label> @string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N0}", @ViewData["price"])<br />
+		                <label><span>@Resources.UserInterfaceVN.ReviewHotel</span></label>		6<br />
+		                <label><span>@Resources.UserInterfaceVN.Comments</span></label> 	(23)<br />
+		                <label>&nbsp;</label><span>@Html.ActionLink(@Resources.UserInterfaceVN.Booknow, "", "Book/Details/" + @Model.HotelId)</span>
+                         @*<label>&nbsp;</label><span><a href="@Url.Action("", "Book", new { id = @Model.HotelId })" >@Resources.UserInterfaceVN.Booknow</a></span>*@
+		            </div>
+		            </div>	
+		        </div>
+		    </div><!--box-->
+		</div><!--box-main-->
+
+
+		<div class="box-main">
+		    <div class="box">
+		        <div class="title">@Resources.UserInterfaceVN.ListRoom</div>
+		        <div class="text">
+		            <ul class="line-chay">
+                    @foreach (var item in (IList<ShareHolderCore.Domain.Model.HotelImageExtent>)ViewData["imageListPathOfRoom"])
+                    {
+                        byte? id = @item.RoomTypeId;
+                        
+                        <li><img src="../../images/Hotel/@item.ImagesStore.ImagePath"  alt="holtel room" /> <a href="#">@item.NameOfRoomType</a></li>
+                    }
+		            
+		            </ul><!--line-chay-->
+		        </div><!--text-->
+		    </div><!--box-->
+		</div><!--box-main-->

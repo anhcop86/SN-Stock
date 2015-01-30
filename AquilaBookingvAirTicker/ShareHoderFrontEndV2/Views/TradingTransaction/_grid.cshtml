@@ -1,0 +1,19 @@
+﻿ @model IEnumerable<ShareHolderCore.Domain.Model.TransactionDetailHistory>
+
+@{
+    var grid = new WebGrid(Model, rowsPerPage: 20, ajaxUpdateContainerId: "myGrid");
+    @grid.GetHtml(tableStyle: "webGrid",
+                htmlAttributes: new { id = "DataTable" },
+                headerStyle: "header",
+                alternatingRowStyle: "alt",
+                columns: grid.Columns(
+                        grid.Column("TransactionNumber", Resources.UserInterface.transactionNumber, style: "stringCell"),
+                        grid.Column("TransactionDate", Resources.UserInterface.date, format: @<text>@item.TransactionDate.ToString("dd/MM/yyyy")</text>, style: "stringCell"),
+                        grid.Column("TypeDescription", Resources.UserInterface.type, style: "stringCell"),
+                        grid.Column("DebitShareHolderCode", Resources.UserInterface.debitShareHolderCode, style: "stringCell"),
+                        grid.Column("DebitShareHolderName", Resources.UserInterface.debitShareHolderName, style: "stringCell"),
+                        grid.Column("CreditShareHolderCode", Resources.UserInterface.creditShareHolderCode, style: "stringCell"),
+                                                                                grid.Column("CreditShareHolderName", Resources.UserInterface.creditShareHolderName, style: "stringCell"),
+                                                    grid.Column("Quantity", Resources.UserInterface.quantity, format: @<text>@item.Quantity.ToString("#,#")</text>, style: "numberCell")
+                                                                                                                                                                                                                                                                                                                                                                                                                                ));
+}

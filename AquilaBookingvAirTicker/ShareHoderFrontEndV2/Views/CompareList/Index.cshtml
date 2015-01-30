@@ -1,0 +1,154 @@
+﻿@model IEnumerable<ShareHolderCore.Domain.Model.Hotel>
+@{
+    ViewBag.Title = @Resources.Resource.home;
+}
+
+<div class="main-content" style="margin-top: 30px;">
+<div class="content" >
+    <div class="left">
+             @Html.Partial("_ShortSearchPartial")
+            
+        <div class="box box-box">
+             @Html.Partial("_CompareListPartial")
+        </div><!--box-->
+
+        <div class="box box-box">
+        <ul class="menu-left">
+                @Html.Partial("_HotelViewlastestPartial")
+        </ul>
+        </div><!--box-->
+
+        <div class="box">
+            <div class="title">@Resources.UserInterfaceVN.HelpFromUs</div>
+            @Html.Partial("_OfflineHelp2")
+        </div><!--box-->
+
+    </div><!--left-->
+    <div class="right">
+
+        <div class="box">
+        <div class="title">@Resources.Resource.Compare <span>@Session["Warningcomparelist"]</span></div>
+            <div class="text">
+            <table cellpadding="0" cellspacing="0" class="pricing">
+                <tr>
+                <td> @Resources.UserInterfaceVN.HotelName</td>
+                    @foreach (var item in Model)
+                    {
+                         <td>@Html.ActionLink(@item.Name, "", "Hotel/Details/" + @item.HotelId)</td>
+                    }
+                </tr>
+                <tr>
+                    <td>@Resources.UserInterfaceVN.HotelStar</td>                
+                    @foreach (var item in Model)
+                    {
+                         <td>
+                            @for (int i = 0; i < @item.Star; i++)
+                            {
+                                <img src="../../images/star.png" alt="star" />
+                            }
+                         </td>
+                    }                  
+                </tr>
+                <tr>
+                <td>Giá phòng</td>
+                @{  
+                ShareHolderCore.IAvailabilityRepository<ShareHolderCore.Domain.Model.Availability> irp = new ShareHolderCore.Domain.Repositories.AvailabilityRepository();
+                ShareHolderCore.IRoomTypeRepository<ShareHolderCore.Domain.Model.RoomType> roomTypeRes = new ShareHolderCore.Domain.Repositories.RoomTypeRepository();
+                
+                }
+               @foreach (var item in Model)
+               {
+                     <td> 
+                        @*@string.Format("{0,0:N0}", @irp.getPrice(@item.HotelId))*@
+                        @*@irp.getListPrice(@item.HotelId);*@
+                        @{
+                            var minHotelPriceList = @irp.getListPrice(item.HotelId);
+                         }
+                          
+                        @foreach (var minitem in minHotelPriceList)
+                        {
+                            @: @roomTypeRes.GetById(@minitem.RoomTypeId).Name: @string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N0}", @minitem.Price) <br />
+                        }
+		 
+	                        
+                            
+                     </td>
+               }    
+                </tr>
+               @*<tr>
+                    <td>Loại khách sạn</td>
+                    @foreach (var item in Model)
+                    {
+                     <td></td>
+                    }  
+                
+                </tr>*@
+               <tr>
+                <td>Khu vực</td>
+                    @foreach (var item in Model)
+                    {
+                     <td>@item.Location</td>
+                    }  
+                </tr>    
+               
+            @{
+                #region lay danh sach dich vu va check danh sach
+                ShareHolderCore.IFacilityRepository ifr = new ShareHolderCore.Domain.Repositories.FacilityRepository();
+                }
+                   @{ 
+                       foreach (var itemFacility in (IList<ShareHolderCore.Domain.Model.FacilityExtent>)ViewData["listFacility"])
+                       {
+                            <tr>
+                                <td>@itemFacility.Name</td>
+                                @foreach (var item in Model)
+                                {
+                                 <td>
+                                    @{
+                                    if (@ifr.CheckFacility(item.HotelId, itemFacility.FacilityId) == "Y")
+                                    {
+                                                @:<img src="../../images/pri-check.jpg" alt="" />
+                                            }
+                                    else
+                                    {
+                                                @:<img src="../../images/pri-no.jpg" alt="" />
+                                            }
+                                    }
+                                        
+                                 </td>
+                                }
+                            </tr>
+                       }
+                #endregion
+                }
+                 <tr>
+                    <td>@Resources.Resource.removeFromCompareList</td>
+                    @foreach (var item in Model)
+                    {
+                     <td>
+                        <a  href="../CompareList/remove/@item.HotelId"><img src="../../images/remove.jpg" /></a>
+                     </td>
+                    }
+                </tr>
+                <tr>
+                    <td>Đặt phòng</td>
+                    @foreach (var item in Model)
+                    {
+                     <td>
+                        <a style="padding:3px ;background:#1b75bb;border-radius:5px 5px;color:#fff;" href="../Book/Details/@item.HotelId">@Resources.Resource.Booknow</a>
+                     </td>
+                    }
+                </tr>
+
+               
+
+
+                
+            </table>
+        </div>
+    </div><!--box-->
+
+
+
+    </div><!--right-->
+</div><!--content-->
+<div class="clear"></div>

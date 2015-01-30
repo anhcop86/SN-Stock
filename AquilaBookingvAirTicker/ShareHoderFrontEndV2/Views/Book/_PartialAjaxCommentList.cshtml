@@ -1,0 +1,35 @@
+﻿<div id="commentlist" style="display:block">
+
+
+@{
+    foreach (var item in ViewData["HotelCommentData"] as List<ShareHolderCore.Domain.Model.HotelComment>)
+    {
+        
+   
+        <div id="vcard$Comement$Id$@item.CommentId" class="vcard comment" id="updateAjax">
+            <div id="Comement$Id$@item.CommentId" class="comment_header">
+	            <span class="gravatar"><img src="../../images/noavatar.jpg" alt="fdsaf" width="28" height="28"/></span>
+            
+	                    <div class="visitor">
+		                    <span class="fn">@ShareHoderFrontEndV2.Ext.ApplicationHelper.GetNameOfMembershipForComment(@item.MemberId) @Resources.Resource.say</span>		
+		                    <div style="float:right; padding-right:10px">@item.CommentDate.ToString("dd/MM/yyyy hh:mm:ss") 
+                            @{
+                                if (User.Identity.IsAuthenticated && item.MemberId == (@Session["LoginObject"] as ShareHolderCore.Domain.Model.Membership).MemberId)
+                                {
+                                    <a style="float:right;width:7px;height:7px;text-decoration:none;text-align:center" href="javascript:void(0);" onclick="javascript:deleteComment(@item.CommentId)" id="Delete$Id$@item.CommentId" title="@Resources.Resource.deleteCommentTitle">&nbsp;<strong>&#215;</strong></a>
+                                }
+                            }
+                            </div>
+	                    </div>
+	                    <div><p class="content">@item.comment</p></div>
+                        
+                        
+             
+	        </div>
+	        <p class="author"> 	
+	        </p><div class="comment-replies" id="replies_c9b48b1d-9c48-409e-9d6a-ea0751bda4dd" style="display:none;"></div>
+        </div>
+     }
+    } 
+</div>
+

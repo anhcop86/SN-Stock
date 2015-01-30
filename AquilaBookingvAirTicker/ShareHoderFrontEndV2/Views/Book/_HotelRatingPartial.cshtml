@@ -1,0 +1,92 @@
+﻿
+@{
+    var url = Request.Url.AbsolutePath;    
+}
+@*@if (!User.Identity.IsAuthenticated)
+{
+    <text>Please <a href="/Account/Logon?ReturnUrl=@Request.Url.AbsolutePath" title="Login to rate">Login</a> to rate</text>
+    return;
+}*@
+@if (Request.Cookies[url] == null) {
+    <input type="hidden" value="@ViewData["hotelIdResearch"]" id="HoteIdRating" name="HoteIdRating"/>
+    <div id="ratingDiv" style="text-align:center" class="smallText"> 
+        
+        @{
+            if(User.Identity.IsAuthenticated)
+            {
+                @:Poor 
+                for (int i = 1; i <= 5; i++)
+                {
+                    <img src="../../images/whitestar.png" alt="" class="ratingStar" data-value="@i"/>
+                }
+                @:Excellent
+            }
+            else{
+                for (int i = 1; i <= (int)(decimal.Parse(@ViewData["HotelRatingAvg"].ToString())/1); i++)
+                {
+                    <img src="../../images/yellowstar.png" alt="" class="ratingStar" data-value="@i" style="cursor:default" />
+                }
+                for (int i = 1; i <= 5 - ((int)(decimal.Parse(@ViewData["HotelRatingAvg"].ToString()) / 1)); i++)
+                {
+                    <img src="../../images/whitestar.png" alt="" class="ratingStar" data-value="@i" style="cursor:default" />
+                }
+                
+                @:<br />Rating: @ViewData["HotelRatingAvg"] out of 5 !
+            }
+            
+        }
+
+         
+        <label id="lblResult"></label>
+        
+    </div>
+    <style type="text/css">
+        .ratingStar { 
+            cursor:pointer;
+        }
+    </style>
+    
+        if(User.Identity.IsAuthenticated) // Rating if logon
+        {
+            <script type="text/javascript">
+
+                var clickedFlag = false;
+                $(".ratingStar").mouseover(function () {
+                    $(this).attr("src", "/images/yellowstar.png").prevAll("img.ratingStar").attr("src", "/images/yellowstar.png");
+                });
+                $(".ratingStar, #radingDiv").mouseout(function () {
+       
+                   $(this).attr("src", "/images/whitestar.png");
+       
+                });
+                $("#ratingDiv").mouseout(function () {
+                    if (!clickedFlag) {
+                        $(".ratingStar").attr("src", "/images/whitestar.png");
+
+                    }
+                });
+    
+                $(".ratingStar").click(function () {
+                    clickedFlag = true;
+                    $(".ratingStar").unbind("mouseout mouseover click").css("cursor", "default");
+
+                    var url = "/Book/SendRating?r=" + $(this).attr("data-value") + "&h=" + $("#HoteIdRating").val();   //&id=@Model&url=@url";
+                    $.post(url, null, function (data) {
+                        $("#lblResult").html(data);
+                    });
+                });
+        //        $("#lblResult").ajaxStart(function () {
+        //            $("#lblResult").html("Processing ....");
+        //        });
+                $("#lblResult").ajaxError(function () {
+                    $("#lblResult").html("<br />Error occured.");
+                });
+            </script>
+        }
+        
+        
+}
+else
+{
+    <text><span style="color:green;">Thanks for your vote !</span></text>
+}

@@ -1,0 +1,115 @@
+﻿@model ShareHoderFrontEndV2.Models.LogOnModel
+
+@{
+    ViewBag.Title = Resources.UserInterface.logOn;
+}
+
+<script src="@Url.Content("~/Scripts/jquery-1.7.1.js")"  type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.ui.core.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.ui.widget.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.ui.datepicker.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.ui.datepicker-vi.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+
+<div style="margin-top:30px">
+    
+@using (Html.BeginForm((string)ViewBag.FormAction, "Account", FormMethod.Post, new { id = "logon"}))
+{   
+    
+    <div class="logon">
+        <div style="color:White; padding:10px;">@Html.ValidationSummary(true, @Resources.Resource.logonFailed) </div>
+        <fieldset>
+        
+            <table>
+                <tr>
+                    <td> @Resources.Resource.loginId</td>
+                    <td> @Html.TextBoxFor(m => m.UserName,new { style="width:250px" }) </td>
+                    <td> @Html.ValidationMessageFor(m => m.UserName)</td>
+                    
+                </tr>
+                <tr>
+                    
+                        <td>@Resources.Resource.password</td>
+                        <td>@Html.PasswordFor(m => m.Password, new { style = "width:250px" })</td>
+                        <td>@Html.ValidationMessageFor(m => m.Password)</td>
+                    
+                </tr>
+                <tr>
+                   
+                </tr>
+            </table> 
+            <div class="Rememberme">
+                 <li>
+                        @Html.CheckBoxFor(m => m.RememberMe)
+                        @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+                
+                        @Html.ActionLink(@Resources.Resource.forgotPass, "ResetPassword", "Account")
+                 </li>
+            </div>     
+        <div  >            
+            <div class="buttonwrapper">
+            <table style="margin:0px; padding:0px">
+                <tr>
+                    <td>
+                        <a id="logonButton" class="submitbutton" style="cursor:pointer" title="@Resources.Resource.logOn">@Resources.Resource.logOn</a>                                                
+                    </td>
+                </tr>
+                 <tr>
+                    <td>                        
+                        @*Hoặc đăng nhập bằng facebook: <fb:login-button show-faces="false" width="200" max-rows="1" onlogin="afterFacebookConnect();"></fb:login-button>*@
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                          <p class="alert-message">
+                    @Resources.Resource.registerMsgReminder @Html.ActionLink(@Resources.Resource.here, "Register", "Account") @Resources.Resource.toRegister. 
+                            </p>
+                    </td>
+                </tr>
+            </table>
+                               
+              
+            </div>
+             
+        </div>
+       
+    </fieldset>
+    </div>
+    
+}
+
+     
+ 
+        
+   
+
+</div> 
+ <script type="text/javascript">
+     $("#logonButton").click(function () {
+         submitForm();
+     });
+
+     function submitForm() {
+         $("#logon").submit();
+     }
+
+
+//     function afterFacebookConnect() {
+//         FB.getLoginStatus(function (response) {
+//             if (response.status === 'connected') {
+//                 var uid = response.authResponse.userID;
+//                 var accessToken = response.authResponse.accessToken;
+//                 window.location = "../Account/FacebookLogin?token=" + accessToken;                 
+//             } else if (response.status === 'not_authorized') {
+//                 alert('not_authorized');
+//             } else {
+//                 alert('not_authorized');
+//             }
+//         });
+//     }
+    
+</script>
+@*<div id="fb-root"></div>*@
+

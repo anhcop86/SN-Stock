@@ -1,0 +1,148 @@
+﻿@model  IEnumerable<ShareHolderCore.Domain.Model.TransactionDetailHistory>
+<link href="@Url.Content("~/Content/themes/base/jquery.ui.all.css")" rel="stylesheet" type="text/css">
+<script src="@Url.Content("~/Scripts/jquery-1.7.1.js")"  type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.ui.core.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.ui.widget.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.ui.datepicker.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.ui.datepicker-vi.js")" type="text/javascript"></script>
+@{
+    ViewBag.Title = @Resources.UserInterface.searchCurrentBalance;
+}
+<meta name="viewport" content="width=device-width" />
+  
+<div class="main-content">
+    <div class="left-menu">
+        @Html.Partial("TransactionLeftMenuPartial")
+    </div>
+    <div class="content">
+ 
+    @using (Html.BeginForm("SearchTradingTransaction", "TradingTransaction", FormMethod.Post, new { id = "searchTrans" }))
+    {
+       <table class="searchHeader"> 
+        <tr  >           
+            <td class="align-left"><label>@Html.Label(Resources.UserInterface.fromDate)</label></td>
+            <td class="align-left">@Html.TextBox("fromdatepicker", ViewData["fromdatepicker"], htmlAttributes: new { @readonly = "true" })</td>
+            <td class="align-left"><label>@Html.Label(Resources.UserInterface.toDate)</label></td>
+            <td class="align-left">@Html.TextBox("todatepicker", ViewData["todatepicker"], htmlAttributes: new { @readonly = "true" })</td>            
+        </tr>
+        <tr >
+            <td class="align-left"><label>@Html.Label(Resources.UserInterface.shareSymbolOrShareHolder)</label></td>
+            <td class="align-left" >@Html.DropDownList("Id",
+                 (SelectList)ViewBag.ShareHolderId)</td>
+            <td class="align-left"><label>@Html.Label(Resources.UserInterface.type)</label></td>
+            <td class="align-left">@Html.DropDownList("TransactionCategoryId",
+                 (SelectList)ViewBag.transactionCategory, "Tất cả")</td>
+        </tr>       
+        <tr style="text-align:center">            
+            <td colspan="4" class="align-center">
+            </td>
+        </tr>
+        </table>
+        <div style="margin-left: 380px; margin-top: 10px; margin-bottom: 10px">
+            <div class="buttonwrapper">
+                <a class="ovalbutton" id="searchButton" style="cursor:pointer" title="@Resources.UserInterface.searchHint"><span>@Resources.UserInterface.search</span></a>
+            </div>
+        </div>
+     
+            <table class="gridData">
+        <tr>
+            <th>
+                @Html.Label(Resources.UserInterface.transactionNumber)
+            </th>
+            <th>
+                @Html.Label(Resources.UserInterface.date)
+            </th>
+            <th>
+                @Html.Label(Resources.UserInterface.type)
+            </th>
+            <th>
+                @Html.Label(Resources.UserInterface.debitShareHolderCode)
+            </th>
+            <th>
+                 @Html.Label(Resources.UserInterface.debitShareHolderName)
+            </th>
+            <th>
+                 @Html.Label(Resources.UserInterface.creditShareHolderCode)
+            </th>
+            <th>
+                 @Html.Label(Resources.UserInterface.creditShareHolderName)
+            </th>
+             <th>
+                 @Html.Label(Resources.UserInterface.quantity)
+            </th>          
+        </tr>
+    @{ int index = 1;
+
+       foreach (var item in Model)
+       {
+           if (index % 2 != 0)
+           {
+             @:<tr>
+          }
+           else
+           {          
+              @:<tr class="oddTd">
+          }  
+          <td class="stringCell">
+                @Html.DisplayFor(modelItem => item.TransactionNumber)
+            </td>
+            <td class="stringCell">
+                @Html.DisplayFor(modelItem => item.TransactionDate)
+            </td>
+            <td class="stringCell">
+                @Html.DisplayFor(modelItem => item.TypeDescription)
+            </td>
+            <td class="stringCell">
+               @Html.DisplayFor(modelItem => item.DebitShareHolderCode)   
+            </td>
+            <td class="stringCell" >
+               @Html.DisplayFor(modelItem => item.DebitShareHolderName)
+            </td>
+            <td class="stringCell">           
+               @Html.DisplayFor(modelItem => item.CreditShareHolderCode)
+            </td>
+            <td class="stringCell">
+                 @Html.DisplayFor(modelItem => item.CreditShareHolderName)             
+            </td>
+            <td class="numberCell">
+                 @Html.Label(string.Format("{0,0:N0}", item.Quantity)) 
+            </td>
+           @Html.DisplayText("</tr>")
+           index = index + 1;
+       }
+      
+    }
+    </table>
+
+    }
+    
+     </div>
+      <script type="text/javascript">
+          $().ready(function () {
+
+              
+              $('#fromdatepicker').datepicker({
+                  dateFormat: 'dd/mm/yy',
+                  buttonImage: '@Url.Content("~/Content/themes/calendar.gif")',
+                  buttonImageOnly: true,
+                  showOn: "button"
+              });
+          });
+          $().ready(function () {
+            
+              $('#todatepicker').datepicker({
+                  dateFormat: 'dd/mm/yy',
+                  buttonImage: '@Url.Content("~/Content/themes/calendar.gif")',
+                  buttonImageOnly: true,
+                  showOn: "button"
+              });
+          });
+          $("#searchButton").click(function () {
+              submitForm();
+          });
+
+          function submitForm() {
+              $("#searchTrans").submit();
+          }
+</script>
+</div>

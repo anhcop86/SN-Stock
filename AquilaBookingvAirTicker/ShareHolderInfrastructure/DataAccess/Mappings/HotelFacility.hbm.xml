@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-lazy="true" namespace="ShareHolderCore.Domain.Model" assembly="ShareHolderCore">
+  <class name="ShareHolderCore.Domain.Model.HotelFacility,ShareHolderCore" table="HotelFacility" lazy="true">
+
+    <!-- Primary Key(s) -->
+    <id name="HotelFacilityId" column="HotelFacilityId" type="Int32" unsaved-value="0">
+      <generator class="native"/>
+    </id>
+
+    <!-- Properties -->
+    <property column="HotelId" type="Int32" name="HotelId"/>
+    <property column="FacilityId" type="Int16" name="FacilityId"/>
+    <property column="CreatedDate" type="String" name="CreatedDate" length="14" />
+    <property column="CreatedBy" type="String" name="CreatedBy" length="14" />
+    
+
+    <!-- One-To-Many relations -->
+      <!--<bag name="HotelFacility" generic="true" inverse="true" cascade="none" lazy="true">
+        <key column="FacilityId"/>
+        <one-to-many class="ShareHolderCore.Domain.Model.HotelFacility,ShareHolderCore" />
+      </bag>-->
+    
+    
+    <!-- Many to one relations -->
+    <many-to-one name="Facility"  column="FacilityId" class="ShareHolderCore.Domain.Model.Facility,ShareHolderCore" />
+    <many-to-one name="Hotel"  column="HotelId" class="ShareHolderCore.Domain.Model.Hotel,ShareHolderCore" />
+
+  </class>
+</hibernate-mapping>
+

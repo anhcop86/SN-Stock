@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = @Resources.UserInterface.home;
+}
+
+<div>
+<ul id="menu" data-role="listview" data-inset="true">
+    <li data-role="list-divider" data-theme="e">@Resources.ValidationMessage.profile</li>
+        <li data-theme="e">@Html.ActionLink(Resources.UserInterface.myProfile1, "MyProfile", "Account")</li>
+        <li data-theme="e">@Html.ActionLink(Resources.UserInterface.changePassword, "ChangePassword", "Account")</li>
+    <li data-role="list-divider" data-theme="e">@Resources.ValidationMessage.transaction</li>
+        <li data-theme="e">@Html.ActionLink("Tìm kiếm", "Index", "TradingTransaction")</li>
+        <li data-theme="e">@Html.ActionLink("Chi tiết sổ cổ đông", "CurrentBalance", "TradingTransaction")</li>
+        <li data-theme="e">@Html.ActionLink("Thống kê số dư", "SummaryCurrentBalance", "TradingTransaction")
+    </li>
+</ul>
+</div>

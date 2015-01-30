@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-lazy="true" namespace="ShareHolderCore.Domain.Model" assembly="ShareHolderCore">
+  <class name="ShareHolderCore.Domain.Model.Logging,ShareHolderCore" table="Logging" lazy="true">
+
+    <!-- Primary Key(s) -->
+    <id name="LoggingId" column="LoggingId" type="Guid">
+      <generator class="native"/>
+    </id>
+
+    <!-- Properties -->
+    
+    <property column="LoggingDate" type="DateTime" name="LoggingDate"/>
+    <property column="MemberId" type="Int32" name="MemberId" />
+    <property column="LoggingDescription" type="String" name="LoggingDescription" length="4000"/>  
+    <property column="IpAddress" type="String" name="IpAddress" length="25" />
+    <property column="CreatedDate" type="String" name="CreatedDate" length="14" />
+    <property column="CreatedBy" type="String" name="CreatedBy" length="14" />
+    
+
+  </class>
+</hibernate-mapping>
+

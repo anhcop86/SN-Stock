@@ -1,0 +1,41 @@
+﻿
+ <div class="menuleft">
+ <table>
+    <tr>
+        <td>
+          <b style="color:#2F77FD">@Resources.Resource.myProfile1</b>
+        </td>
+    </tr>
+    <tr>
+        <td><li class="FirstItem">@Html.ActionLink(@Resources.Resource.myProfile, "MyProfile", "Account")</li></td>
+    </tr>
+    <tr>
+    @{
+        
+        if(Session["LoginByFacebook"] == "N")
+        {
+        @: <td><li class="SubItem">@Html.ActionLink(@Resources.Resource.changePassword, "ChangePassword", "Account")</li></td>
+        }
+
+     }
+    </tr>
+     <tr>
+     @{
+         if(User.Identity.IsAuthenticated)
+         {
+            @:<td><li class="FirstItem">@Html.ActionLink(@Resources.Resource.bookingHistory, "InfoServicesMember", "BookingHistory")</li></td>
+         }
+         else
+         {
+             @:<td><li class="FirstItem">@Html.ActionLink(@Resources.Resource.bookingHistory, "", "BookingHistory")</li></td>
+         }
+       }
+    </tr>
+    <tr>
+        <td><li class="FirstItem">@Html.ActionLink(@Resources.Resource.CompareList, "", "CompareList")</li></td>
+    </tr>
+    <tr>
+        <td><li class="LastItem">&nbsp;</li></td>
+    </tr>
+ </table>
+ </div>

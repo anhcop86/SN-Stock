@@ -1,0 +1,122 @@
+﻿@model ShareHolderCore.Domain.Model.Booking
+@{
+    ViewBag.Title = @Resources.UserInterface.myProfile;
+}
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<link href="../../Content/tableBook.css" rel="stylesheet" type="text/css" />
+<div class="main-content">
+    <div class="left-menu">
+        @Html.Partial("ProfileLeftMenuPartial")
+    </div>
+    <div class="contentLogin">
+       @*@Html.ValidationSummary(true, "Hồ sơ lưu không thành công. vui lòng nhập đầy đủ thông tin dưới đây.")*@
+
+@using (Html.BeginForm("MyProfile", "Account", FormMethod.Post, new { id = "ProfileFrm" }))
+{
+    <fieldset>
+    <br />
+        <b><div style="margin-left:20px;color:#2F77FD">Thông tin dịch vụ đã đặt</div></b>
+       
+         
+            <div class="contentLogin">
+            <fieldset>
+                 <table>
+                    <tr>
+                        <td><label> Ngày đặt phòng:</label></td>
+                        <td>@ShareHoderFrontEndV2.Ext.CustomHelpers.parstFormatTo_DD_MM_YYYY(@Model.BookingDate)</td>
+                        
+                    </tr>
+                     <tr>
+                        <td> Tên khách hàng:</td>
+                        <td>@Model.FullName</td>
+                        
+                    </tr>
+                     <tr>
+                        <td> Số điện thoại đặt:</td>
+                        <td>@Model.PhoneNumber</td>
+                        
+                    </tr>
+                     <tr>
+                        <td> Địa chỉ IP:</td>
+                        <td>@Model.IpAddress</td>
+                        
+                    </tr>
+                     <tr>
+                        <td> Tình trạng đơn hàng:</td>
+                        <td>@ViewData["viewOrderStatus"]</td>
+                        
+                    </tr>
+                    <tr>
+                        <td> Tổng giá trị đơn hàng:</td>
+                        <td>@string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N0}", @ViewData["viewSumOrder"]) (VAT)</td>
+                        
+                    </tr> 
+                    <tr>
+                        <td> Số tiền đặt cọc:</td>
+                        <td>@string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N0}", @ViewData["viewDispositOrder"])</td>
+                        
+                    </tr>
+                    
+                </table>
+            </fieldset>
+            </div>           
+                
+                  <!-- BOOKING DETAIL -->
+               <div id="mainContent">
+                <fieldset>
+                      <div class="Table">
+                                <table cellpadding="0" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                          <th>Ngày đến</th>
+                                          <th>Ngày đi</th>
+                                          <th>Tên khách sạn</th>
+                                          <th>Loại phòng</th>
+                                          <th>Số lượng</th>                                 
+                                          <th>Giá</th>
+                                         @* <th>Đặt cọc</th>*@
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach (var detail in ShareHoderFrontEndV2.Ext.ApplicationHelper.getBookingDetailFromBookingid(@Model.BookingId))
+                                    {                                
+                                       <tr>
+                                             <td>@ShareHoderFrontEndV2.Ext.CustomHelpers.parstFormatTo_DD_MM_YYYY(@detail.FromDate)</td>
+                                            <td>@ShareHoderFrontEndV2.Ext.CustomHelpers.parstFormatTo_DD_MM_YYYY(@detail.ToDate)</td>
+                                            <td>@ShareHoderFrontEndV2.Ext.CustomHelpers.getNameHotel(@detail.HotelId)</td>                                                                                                  
+                                            <td>@detail.RoomType.Name</td>
+                                            <td> @detail.Quantity</td>
+                                            <td>@string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N0}", @detail.Price)</td>
+                                            @*<td>@string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N0}", @detail.Remark)</td>                                 *@
+                                        </tr>
+                                    }                                
+                                    </tbody>
+                                </table>
+                              </div>
+                              </fieldset>
+                        </div>
+                    <!-- end booking detail -->
+                
+                
+      
+       
+       
+       
+    </fieldset>
+}
+    </div>
+</div>
+<script type="text/javascript">
+
+    $("#submitButton").click(function () {
+        submitForm();
+    });
+
+    function submitForm() {
+        $("#ProfileFrm").submit();
+    }
+</script>
+
+

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-lazy="true" namespace="ShareHolderCore.Domain.Model" assembly="ShareHolderCore">
+  <class name="ShareHolderCore.Domain.Model.SystemVersion,ShareHolderCore" table="SystemVersion" lazy="true">
+
+    <!-- Primary Key(s) -->
+    <id name="SysVersionId" column="SysVersionId" type="Int32" unsaved-value="0">
+      <generator class="native"/>
+    </id>
+
+    <!-- Properties -->
+    
+    <property column="SysVersion" type="String" name="SysVersion" length="20" />
+    <property column="VersionName" type="String" name="VersionName" length="20" />
+    <property column="UpdateDate" type="DateTime" name="UpdateDate"/>  
+    <property column="VersionDescription" type="String" name="VersionDescription" length="127" />    
+
+    
+
+  </class>
+</hibernate-mapping>
+

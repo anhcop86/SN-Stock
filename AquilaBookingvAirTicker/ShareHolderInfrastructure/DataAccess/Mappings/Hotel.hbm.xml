@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-lazy="true" namespace="ShareHolderCore.Domain.Model" assembly="ShareHolderCore">
+  <class name="ShareHolderCore.Domain.Model.Hotel,ShareHolderCore" table="Hotel" lazy="true">
+
+    <!-- Primary Key(s) -->
+    <id name="HotelId" column="HotelId" type="Int32" unsaved-value="0">
+      <generator class="native"/>
+    </id>
+
+    <!-- Properties -->
+    <property column="Name" type="String" name="Name" length="255" />
+    <property column="Star" type="Int32" name="Star"/>
+    <property column="HotelAddress" type="String" name="HotelAddress" length="255"/>
+    <property column="ShortDesc" type="String" name="ShortDesc" length="2000" />
+    <property column="LongDesc" type="String" name="LongDesc" length="5000" />
+    <property column="Location" type="String" name="Location" length="512" />
+    <property column="CreatedDate" type="String" name="CreatedDate" length="14" />
+    <property column="CreatedBy" type="String" name="CreatedBy" length="14" />
+    <property column="MostView" type="String" name="MostView" length="1" />
+    <property column="HotelOwnerId" type="Int32" name="HotelOwnerId"/>
+    <property column="BookingCondition" type="String" name="BookingCondition" length="5000"/>
+    <property column="Display" type="String" name="Display" length="1"/>
+    <property column="HotelCode" type="String" name="HotelCode" length="15"/>
+    <!-- One-To-Many relations -->
+      <!--<bag name="HotelFacility" generic="true" inverse="true" cascade="none" lazy="true">
+        <key column="FacilityId"/>
+        <one-to-many class="ShareHolderCore.Domain.Model.HotelFacility,ShareHolderCore" />
+      </bag>-->
+    <!-- Many to one relations -->
+    <many-to-one name="Province"  column="ProvinceId" class="ShareHolderCore.Domain.Model.Province,ShareHolderCore" />
+    <bag name="ListHotelFacility" generic="true" inverse="true" cascade="none" lazy="true">
+        <key column="HotelId"/>
+        <one-to-many class="ShareHolderCore.Domain.Model.HotelFacility,ShareHolderCore" />
+    </bag>
+    <bag name="ListHotelImage" generic="true" inverse="true" cascade="none" lazy="true">
+      <key column="HotelId"/>
+      <one-to-many class="ShareHolderCore.Domain.Model.HotelImage,ShareHolderCore" />
+    </bag>
+    
+    <bag name="ListAvailability" generic="true" inverse="true" cascade="none" lazy="true">
+      <key column="HotelId"/>
+      <one-to-many class="ShareHolderCore.Domain.Model.Availability,ShareHolderCore" />
+    </bag>
+
+    <bag name="ListAvailabilityHist" generic="true" inverse="true" cascade="none" lazy="true">
+      <key column="HotelId"/>
+      <one-to-many class="ShareHolderCore.Domain.Model.AvailabilityHist,ShareHolderCore" />
+    </bag>
+    <bag name="ListCompareListDetail" generic="true" inverse="true" cascade="none" lazy="true">
+      <key column="HotelId"/>
+      <one-to-many class="ShareHolderCore.Domain.Model.CompareListDetail,ShareHolderCore" />
+    </bag>
+  </class>
+</hibernate-mapping>
+

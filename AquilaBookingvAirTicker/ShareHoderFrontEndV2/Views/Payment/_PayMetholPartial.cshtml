@@ -1,0 +1,231 @@
+﻿<link href="../../Content/Payment.css" rel="stylesheet" type="text/css" />
+<div id="TabbedPanels1" class="TabbedPanels">
+  <ul class="TabbedPanelsTabGroup">
+    @*<li class="TabbedPanelsTab" id="TabbedPanelsTab1" tabindex="0">@Resources.Resource.creditCard</li>*@
+    <li class="TabbedPanelsTab" id="TabbedPanelsTab2" tabindex="1">@Resources.Resource.debitCard</li>
+    <li class="TabbedPanelsTab" id="TabbedPanelsTab3" tabindex="2">@Resources.Resource.payOffline</li>
+  </ul>
+  
+  <div class="TabbedPanelsContentGroup">
+  @*  <div class="TabbedPanelsContent">
+   <b>Thanh toán bằng thẻ VISA</b> <br />
+       
+       <!-- THANH TOAN VISA -->
+        <div class="block_card">
+            <div class="row_input">
+                <div class="col_label">
+                    Mã số thẻ:
+                </div>
+                <div class="col_input">
+                    <input tabindex="1" type="text" name="vpc_CardNum" maxlength="21" class="payment_input" style="width: 30%;" value=""/>
+                </div>
+            </div>
+             <div class="row_input">
+                <div class="col_label">
+                    Tên chủ thẻ:
+                </div>
+                <div class="col_input">
+                    <input tabindex="2" type="text" name="vpc_CardHoderName" maxlength="100" class="payment_input" style="width: 50%;" value="">
+                </div>
+            </div>
+            <div class="row_input">
+                <div class="col_label">
+                    Loại thẻ:
+                </div>
+                <div class="col_input">
+            
+                        <img src="../../Content/images/VS.jpg" alt="" class="logo_cardtype" style="padding-left: 0px">
+            
+                        <img src="../../Content/images/MC.jpg" alt="" class="logo_cardtype" style="padding-left: 0px">
+            
+                </div>
+            </div>
+            <div class="row_input">
+                <div class="col_label">
+                    Ngày hết hạn:
+                </div>
+                <div class="col_input">
+                    <select tabindex="2" name="monthExpire" class="payment_input" id="payment_inputMonth" style="width: 60px;float: left;">
+                        <option value="00"></option>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                    <span class="delimiter">/</span>
+                    <select tabindex="3" name="yearExpire" class="payment_input" id="payment_inputYear" style="width: 80px;float: left;">
+                        <option value="00"></option>
+                
+                            <option value="2014">
+                                2014</option>
+                
+                            <option value="2015">
+                                2015</option>
+                
+                            <option value="2016">
+                                2016</option>
+                
+                            <option value="2017">
+                                2017</option>
+                
+                            <option value="2018">
+                                2018</option>
+                
+                            <option value="2019">
+                                2019</option>
+                
+                            <option value="2020">
+                                2020</option>
+                
+                            <option value="2021">
+                                2021</option>
+                
+                            <option value="2022">
+                                2022</option>
+                
+                            <option value="2023">
+                                2023</option>
+                
+                    </select>
+                </div>
+            </div>
+            <div class="row_input">
+                <div class="col_label">
+                    CSC:
+                </div>
+                <div class="col_input">
+                    <input tabindex="4" type="text" maxlength="4" class="payment_input" style="width: 60px;text-align: center;" name="vpc_CardSecurityCode" value="">
+                                    <span class="link_support"><a href="https://onepay.vn/vpcpay/what.htm" onclick="return popup(this, &#39;notes&#39;)">What is this?</a></span>
+                </div>
+            </div>
+
+        </div>
+                 
+             <!-- THANH TOAN VISA -->
+    </div> *@
+    
+    <div class="TabbedPanelsContent">
+    <div style="margin-left:20px; padding:10px">
+        <input type="radio" checked="checked"/> <label>Payoo</label><br />
+        <input type="radio" disabled="disabled" /> <label>Ngân lượng</label> <br />
+        <input type="radio" disabled="disabled"/> <label>Bảo kim</label> <br /> <br />
+        <img src="../../images/mb_small.jpg" alt="" /> <img src="../../images/vcb_small.jpg" alt="" />
+        <img src="../../images/bidv_small.jpg" alt="" /> <img src="../../images/icb_small.jpg" alt="" />
+        <img src="../../images/sab_small.jpg" alt="" /> <img src="../../images/sea_small.jpg" alt="" />
+        <img src="../../images/msb_small.jpg" alt="" /> <img src="../../images/vb_small.png" alt="" />
+    </div>
+    </div>
+
+    <div class="TabbedPanelsContent">
+       <h5 style="margin-bottom:5px">@Resources.Resource.payOfflineMsg</h5>
+       <table class="offlineTable">
+        <tr>
+            <td style="width:187px; text-align:center">@Resources.Resource.bankName</td>
+            <td style="width: 189px;text-align:center">@Resources.Resource.bankAccountName</td>
+            <td style="width: 255px;text-align:center">@Resources.Resource.bankAccountNumber
+            </td>
+        </tr>
+        <tr>
+            <td >@Resources.Resource.bankACB
+            </td>
+            <td >DUONG CAM TUAN
+            </td>
+            <td >55800999
+            </td>
+        </tr>
+        <tr>
+            <td >@Resources.Resource.bankVCB
+            </td>
+            <td >DUONG CAM TUAN
+            </td>
+            <td >0251001273828
+            </td>
+        </tr>
+        <tr>
+            <td >@Resources.Resource.bankMDB
+            </td>
+            <td >DUONG CAM TUAN
+            </td>
+            <td >10000214553
+            </td>
+        </tr>
+        <tr>
+            <td >@Resources.Resource.bankSACOM
+            </td>
+            <td >Công ty TNHH công nghệ Aquila
+            </td>
+            <td >0600 6300 5870
+            </td>
+        </tr>
+        <tr>
+            <td >@Resources.Resource.bankSACOM1
+            </td>
+            <td >PHAM KIM THOA
+            </td>
+            <td >060006000382
+            </td>
+        </tr>
+        <tr>
+            <td >@Resources.Resource.bankVCB
+            </td>
+            <td >Công ty TNHH công nghệ Aquila
+            </td>
+            <td >0331 0004 26166
+            </td>
+        </tr>
+        <tr>
+            <td >@Resources.Resource.bankAGRI
+            </td>
+            <td >DUONG CAM TUAN
+            </td>
+            <td >1602205174263</td>
+        </tr>
+        <tr>
+            <td >@Resources.Resource.bankDongA
+            </td>
+            <td >PHAM KIM THOA
+            </td>
+            <td >0107849638
+            </td>
+        </tr>
+        <tr>
+            <td >@Resources.Resource.bankAB
+            </td>
+            <td >DUONG CAM TUAN
+            </td>
+            <td >1061002974072
+            </td>
+        </tr>
+    </table>
+    </div>
+  
+
+  </div>
+  <input type="hidden" class="PayMetholHiddenText" name="PayMetholHiddenText" value="O"  />
+</div>
+
+ <script type="text/javascript">
+  //   $("li#TabbedPanelsTab1").click(function (e) {
+
+    //     $("span#PaymentStyle").text('Thẻ VISA');
+      //   $(".PayMetholHiddenText").val('V');
+    // });
+     $("li#TabbedPanelsTab2").click(function (e) {
+         $("span#PaymentStyle").text('@Resources.Resource.payByDebitCard');
+         $(".PayMetholHiddenText").val('D');
+     });
+     $("li#TabbedPanelsTab3").click(function (e) {
+         $("span#PaymentStyle").text('@Resources.Resource.payOffline1');
+         $(".PayMetholHiddenText").val('C');
+     });
+
+
+     </script>

@@ -1,0 +1,15 @@
+﻿@model IEnumerable<ShareHolderCore.Domain.Model.Company>
+
+
+<h2>mobile @ViewBag.Title</h2>
+
+<ul id="menu" data-role="listview" data-filter="true" data-inset="true" data-theme="e">
+    <li data-role="list-divider" data-theme="e" > Stock list</li>
+    @foreach (var comp in Model)
+    {
+        <li data-theme="e">@Html.ActionLink(comp.ShareSymbol + " - " +  comp.Name, "Details", new { id = @comp.CompanyId })</li>
+    }
+</ul>
+
+
+

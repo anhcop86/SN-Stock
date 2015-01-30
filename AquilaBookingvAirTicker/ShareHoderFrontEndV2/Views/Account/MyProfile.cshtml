@@ -1,0 +1,80 @@
+﻿@model ShareHoderFrontEndV2.Models.ProfileModel
+
+@{
+    ViewBag.Title = @Resources.Resource.myProfile;
+}
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+<div class="main-content" style="margin-top:30px">
+    <div class="left-menu">
+        @Html.Partial("ProfileLeftMenuPartial")
+    </div>
+    <div class="contentLogin">
+       @Html.ValidationSummary(true, "Hồ sơ lưu không thành công. vui lòng nhập đầy đủ thông tin dưới đây.")
+
+@using (Html.BeginForm("MyProfile", "Account", FormMethod.Post, new { id = "ProfileFrm" }))
+{
+    <fieldset>
+    <br />
+        <div style="margin-left:20px;color:#2F77FD"><b>@Resources.Resource.myProfile</b></div>
+        <table>
+            <tr>
+                <td>@Resources.Resource.loginId</td>
+                <td>@Html.DisplayFor(m => m.LoginId)</td>
+                <td>@Html.ValidationMessageFor(m => m.LoginId)</td>
+            </tr>
+            <tr>
+                <td>@Resources.Resource.fullName</td>
+                <td>@Html.DisplayFor(m => m.UserName)</td>
+                <td>@Html.ValidationMessageFor(m => m.UserName)</td>
+            </tr>
+            <tr>
+                <td>@Resources.Resource.emailAddress</td>              
+                    @{
+                        if (Session["LoginByFacebook"] == "N")
+                        {
+                            @:<td> @Html.DisplayFor(m => m.Email)</td>
+                        }
+                        else
+                        {
+                            @:<td> @Html.DisplayFor(m => m.Email)</td>
+                        }
+                    }                
+                <td>@Html.ValidationMessageFor(m => m.Email)</td>
+            </tr>
+            
+            <tr>
+                <td>@Resources.Resource.isEnable</td>
+                <td>@Html.CheckBoxFor((m => m.IsLockedOut), new { disabled = "disabled" })</td>
+                <td>@Html.ValidationMessageFor(m => m.IsLockedOut)</td>
+            </tr>
+            <tr>
+                <td>@Resources.Resource.lastLoginDate</td>
+                <td>@Html.DisplayFor(m => m.LastLoginDate)</td>
+                <td>@Html.ValidationMessageFor(m => m.LastLoginDate)</td>
+            </tr>
+        </table>
+        @*
+         <div>            
+            <div class="buttonwrapper">
+                <a class="submitbutton" id="submitButton" style="cursor:pointer" title="@Resources.ValidationMessage.saveProfile"><span>@Resources.ValidationMessage.saveProfile</span></a>
+            </div>
+         </div>*@
+    </fieldset>
+}
+    </div>
+</div>
+<script type="text/javascript">
+
+    $("#submitButton").click(function () {
+        submitForm();
+    });
+
+    function submitForm() {
+        $("#ProfileFrm").submit();
+    }
+</script>
+
+

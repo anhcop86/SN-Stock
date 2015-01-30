@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping  xmlns="urn:nhibernate-mapping-2.2" namespace="ShareHolderCore.Domain.Model" assembly="ShareHolderCore" >	
+	<sql-query name="spShareHolderShareSymbolGetByUserId">
+		<query-param name="@UserId"  type="String"   />
+        <return-scalar column="Id"  type="String" />
+		<return-scalar column="ShareHolderId"  type="Int32" />
+		<return-scalar column="ShareSymbol"  type="String" />
+        <return-scalar column="ShareHolderType"  type="String" />
+				exec spShareHolderShareSymbolGetByUserId :UserId	
+	</sql-query>
+</hibernate-mapping>

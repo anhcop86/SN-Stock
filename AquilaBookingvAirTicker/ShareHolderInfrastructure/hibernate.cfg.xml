@@ -1,0 +1,13 @@
+﻿<hibernate-configuration xmlns="urn:nhibernate-configuration-2.2">
+  <session-factory>
+    <property name="connection.driver_class">NHibernate.Driver.SqlClientDriver</property>
+    <property name="connection.connection_string">server=forum.vfs.com.vn;database=AquilaSystem;uid=sa;pwd=@password123456;</property>
+    <!--<property name="connection.connection_string">server=.;database=Aquila;Integrated Security=true;</property>-->
+    <property name="show_sql">true</property>
+    <property name="dialect">NHibernate.Dialect.MsSql2008Dialect</property>
+    <property name="cache.use_query_cache">false</property>
+    <property name="adonet.batch_size">100</property>
+    <property name="proxyfactory.factory_class">NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle</property>
+    <mapping assembly="ShareHolderInfrastructure" />
+  </session-factory>
+</hibernate-configuration>

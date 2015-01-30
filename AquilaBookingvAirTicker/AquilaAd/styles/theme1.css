@@ -1,0 +1,50 @@
+/* hyperlink */
+a:link, a:visited { color: #09f; }
+a:hover { color: #000; }
+
+/* layout */
+body { background-color: #99b2bd; }
+
+/* header */
+#header #features li a:hover { color: #09f; }
+
+/* quickSearch */
+#quickSearch { border-top: #09f solid 5px; }
+#quickSearch h2 { background-image: url(../images/theme1/bg-quicksearch-title-wrapper.gif); }
+#quickSearch h2 span { background-image: url(../images/theme1/bg-quicksearch-title.gif); }
+#quickSearch .Toggle { background-image: url(../images/theme1/bg-quicksearch-toggle.gif); }
+#quickSearch fieldset .Button { background-image: url(../images/theme1/bg-button-left.gif); }
+#quickSearch fieldset .Button span { background-image: url(../images/theme1/bg-button-right.gif); }
+
+/* nav */
+#nav a:hover { color: #09f; }
+
+/* content */
+#content h2 { background-image: url(../images/theme1/bg-content-title-wrapper.gif); }
+#content h2 span { background-image: url(../images/theme1/bg-content-title.gif); }
+
+/* tab, subtab & functions */
+#tab li a:hover, #subtab li a:hover, #content .Panel .Functions li a:hover { color: #09f; }
+#content .Panel .Functions li.HasChild { background-image: url(../images/theme1/bg-functions-arrow-1.gif); }
+#content .Panel .Functions li.HasChild ul li.HasChild { background-image: url(../images/theme1/bg-functions-arrow-2.gif); }
+
+/* pager & filter */
+#content .Panel .Pager li a:hover, #content .Panel .Pager li span,
+#mainContent fieldset .Filter a:hover { color: #09f; }
+
+/* table */
+#mainContent .Table table td { border-bottom: #09f solid 1px; }
+
+/* filter */
+#filter h3 { background-image: url(../images/theme1/bg-filter-title-wrapper.gif); }
+#filter h3 span { background-image: url(../images/theme1/bg-filter-title.gif); }
+#filter fieldset .Button { background-image: url(../images/theme1/bg-button-left.gif); }
+#filter fieldset .Button span { background-image: url(../images/theme1/bg-button-right.gif); }
+
+/* login */
+#login { background-image: url(../images/theme1/bg-login.jpg); }
+#login fieldset .Support { border-top: #09f solid 1px; color: #09f; }
+
+/* msg */
+.Message .Action a { background-image: url(../images/theme1/bg-button-right.gif); }
+.Message .Action a span { background-image: url(../images/theme1/bg-button-left.gif); }

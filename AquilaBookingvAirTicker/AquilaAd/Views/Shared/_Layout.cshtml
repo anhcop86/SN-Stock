@@ -1,0 +1,290 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />    
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+     @Scripts.Render("~/bundles/jquery")
+
+    <title>@ViewBag.Title</title>
+    <link href="../../styles/common.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="../../styles/content.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="../../styles/theme1.css" rel="stylesheet" type="text/css" title="theme1" media="screen" />
+    <link href="../../styles/theme2.css" rel="alternate stylesheet" type="text/css" title="theme2" media="screen" />
+    <link href="../../styles/theme3.css" rel="alternate stylesheet" type="text/css" title="theme3" media="screen" />    
+    <link href="../../styles/shadowbox.css" rel="stylesheet" type="text/css" media="screen" />    
+    <script src="../../Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>    
+    <script src="../../Scripts/shadowbox/shadowbox.js" type="text/javascript"></script>    
+    <script src="../../Scripts/jquery.cookie.js" type="text/javascript"></script>
+    <script src="../../Scripts/extras.js" type="text/javascript"></script>
+    <script src="../../ckeditor/ckeditor.js" type="text/javascript"></script>
+    <script src="../../ckeditor/adapters/jquery.js" type="text/javascript"></script>
+
+    <!--
+        syncfusion extent render
+    -->
+    @*<script src="@Url.Content("~/Scripts/jquery-ui-1.8.20.min.js")" type="text/javascript"></script>*@
+    <link href="@Url.Content("~/ejThemes/Default-theme/ej.widgets.all.min.css")" rel="stylesheet"/>    
+    <script src="@Url.Content("~/Scripts/jsrender.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.easing-1.3.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.globalize.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ej/ej.web.all.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/ej/ej.unobtrusive.min.js")" type="text/javascript"></script>  
+     <!--
+        end
+    -->
+
+    <script type="text/javascript">
+        Shadowbox.init({
+            language: 'en',
+            players: ['html']
+        });
+
+        //messagebox
+        function messageBox() {
+            Shadowbox.open({
+                content: '<div class="Message"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ante odio, cursus non fringilla nec, venenatis ut nunc. Curabitur in consectetur mauris.</p><p class="Action"><a href="#" title="Yes"><span>Yes</span></a> <a href="#" title="No"><span>No</span></a></p></div>',
+                player: 'html',
+                title: 'Message',
+                height: 120,
+                width: 400
+            });
+        }
+    </script>
+</head>
+<body>
+ <div id="header">
+        <h1><a href="#" title="FlexReal 2009">FlexReal 2009</a></h1>
+        <ul id="features">
+            <li class="First">
+                <fieldset>
+                    <label for="lang">Language</label>
+                    <select id="lang" name="lang">
+                        <option>English</option>
+                        <option>Vietnam</option>
+                        <option>Japan</option>
+                        <option>Spanish</option>
+                    </select>
+                </fieldset>
+            </li>
+            <li><a href="#" title="Account">Account</a></li>
+            <li>
+                @Html.ActionLink("Logout", "LogOff", "Account")
+            </li>
+        </ul>
+        <ul id="themes">
+            
+            <li><a href="#" title="Theme 1" rel="theme1"><img src="../../images/ico-theme-1.gif" alt="Theme 1" /></a></li>
+            <li><a href="#" title="Theme 2" rel="theme2"><img src="../../images/ico-theme-2.gif" alt="Theme 2" /></a></li>
+            <li><a href="#" title="Theme 3" rel="theme3"><img src="../../images/ico-theme-3.gif" alt="Theme 3" /></a></li>
+        </ul>
+        <div id="userPanel">
+            <h2>FlexReal</h2>
+            <h3>Hi:   @{
+                if (User.Identity.IsAuthenticated)
+                {
+                    @User.Identity.Name
+                      
+                        
+                }
+                   
+               } </h3>
+            <ul>
+                <li class="Privilege">you login as 
+                    @{
+                        if (User.Identity.IsAuthenticated && (@Session["UserType"] as ShareHolderCore.Domain.Model.HotelOwner) != null)
+                        {
+                            @:Hotel Manager
+                        }
+                        else
+                        {
+                            @:Administrator
+                        }
+                     }
+                </li>
+                <li>Currently you manage 4546 of out 10002 properties</li>
+            </ul>
+        </div>
+    </div>
+      <!-- header.end -->
+
+    <hr />
+
+    <!-- main -->
+     <div id="main">
+
+        <!-- quickSearch -->
+        <div id="quickSearch">
+            <h2><span>Quick search</span></h2>
+            <a href="#" title="Collapse" class="Toggle">Collapse</a>
+            <fieldset>
+                <div>
+                    <label for="property">Search on:</label>
+                    <select id="property" name="property" class="DropDown1">
+                        <option>Property</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="description">Criteria:</label>
+                    <ul>
+                        <li>
+                            <select id="description" name="description" class="DropDown1">
+                                <option>Description</option>
+                            </select>
+                            <select id="operator1" name="operator1" class="DropDown2">
+                                <option>Like</option>
+                                <option>=</option>
+                                <option>&gt;=</option>
+                                <option>&lt;=</option>
+                            </select>
+                            <input type="text" id="keyword1" name="keyword1" class="TextInput" />
+                            <select id="logical1" name="logical1" class="DropDown2">
+                                <option>Or</option>
+                                <option>And</option>
+                                <option>Not</option>
+                            </select>
+                        </li>
+                        <li>
+                            <select id="price" name="price" class="DropDown1">
+                                <option>Price</option>
+                            </select>
+                            <select id="operator2" name="operator2" class="DropDown2">
+                                <option>Like</option>
+                                <option>=</option>
+                                <option>&gt;=</option>
+                                <option>&lt;=</option>
+                            </select>
+                            <input type="text" id="keyword2" name="keyword2" class="TextInput" />
+                            <select id="logical2" name="logical2" class="DropDown2">
+                                <option>Or</option>
+                                <option>And</option>
+                                <option>Not</option>
+                            </select>
+                        </li>
+                        <li>
+                            <select id="leased" name="leased" class="DropDown1">
+                                <option>Leased</option>
+                            </select>
+                            <select id="operator3" name="operator3" class="DropDown2">
+                                <option>Like</option>
+                                <option>=</option>
+                                <option>&gt;=</option>
+                                <option>&lt;=</option>
+                            </select>
+                            <input type="text" id="keyword3" name="keyword3" class="TextInput" />
+                            <select id="logical3" name="logical3" class="DropDown2">
+                                <option>Or</option>
+                                <option>And</option>
+                                <option>Not</option>
+                            </select>
+                        </li>
+                    </ul>
+                </div>
+                <div class="Submit">
+                    <span class="Button"><span><input type="submit" value="Search" /></span></span>
+                </div>
+            </fieldset>
+        </div>
+        <!-- quickSearch.end -->
+
+        <!-- nav -->
+        <ul id="nav">
+            <li id="masterData">
+                <span>Thông tin chung</span>
+                <ul >
+                @{
+                    if (User.Identity.IsAuthenticated && (@Session["UserType"] as ShareHolderCore.Domain.Model.HotelOwner) != null)
+                    {
+
+                    }
+                    else
+                    {
+                        @:<li id="masterData_countries"> @Html.ActionLink("Quốc gia", "", "Country")</li>
+                        @:<li id="masterData_services"> @Html.ActionLink("Dịch vụ", "", "Services")</li>
+                        @:<li id="masterData_hotelRoom">@Html.ActionLink("Phòng khách sạn", "", "RoomHotel")</li>
+                        @:<li id="masterData_provinces">@Html.ActionLink("Khu vực", "", "Province")</li>
+                    }
+                    <li id="masterData_hotels">@Html.ActionLink("Danh mục khách sạn ", "","")</li>  
+                    }
+                </ul>
+            </li>
+            <li id="availability">
+                <span>Quản lý phòng trống</span>
+                <ul>        
+                    <li id="availability_management">@Html.ActionLink("Thêm phòng trống", "", "Availability")</li>              
+                </ul>
+            </li>
+            <li id="booking">
+                <span>Đặt phòng</span>
+                <ul>
+                    <li id="booking_management">@Html.ActionLink("Đặt phòng", "","Booking")</li>  
+                    <li id="payment_management">@Html.ActionLink("Thanh toán", "","Payment")</li>                  
+                </ul>
+            </li>
+            <li id="account">
+                <span>Thành viên</span>
+                <ul>
+                @{
+                    if (User.Identity.IsAuthenticated && (@Session["UserType"] as ShareHolderCore.Domain.Model.HotelOwner) != null)
+                    {
+                        
+                    }
+                    else
+                    {
+                        @:<li id="account_management">@Html.ActionLink("Thành viên", "", "Membership")</li> 
+                    }
+                          
+                  }            
+                </ul>
+            </li>          
+            <li id="SMS">
+                <span>Alert</span>
+                <ul>
+                    <li><a href="#" title="Template">Template</a></li>
+                    <li><a href="#" title="Schedule">Schedule</a></li>
+                    <li><a href="#" title="Send SMS">Send SMS</a></li>
+                    <li><a href="#" title="Simulation">Simulation</a></li>
+                </ul>
+            </li>
+            @*<li><a href="#" title="Report">Report</a></li>*@
+            <li  id="Settings">
+                <span>Settings</span>
+                <ul>
+                    <li><a href="#" title="Email">Email</a></li>
+                    <li><a href="#" title="Exchange Rate">Exchange Rate</a></li>
+                    <li><a href="#" title="Property">Hotel</a></li>
+                </ul>
+            </li>
+            <li id="Sercurity">
+                <span>Sercurity</span>
+                <ul>
+                    <li><a href="#" title="User">User</a></li>
+                    <li><a href="#" title="Role">Role</a></li>
+                    <li><a href="#" title="Authorization">Authorization</a></li>
+                </ul>
+            </li>
+        </ul>
+        <!-- nav.end -->
+
+        <!-- content -->
+        @RenderBody()
+        <!-- content.end -->
+
+        <div class="Clearfix"></div>
+
+    </div>
+    <!-- main.end -->
+
+    <hr />
+
+    <!-- footer -->
+    <div id="footer">
+        <p>&copy; 2007 - 2009 DataSys. All rights reserved.</p>
+    </div>
+    <!-- footer.end -->   
+     @Html.EJ().ScriptManager()
+       @RenderSection("scripts", required: false)
+</body>
+</html>

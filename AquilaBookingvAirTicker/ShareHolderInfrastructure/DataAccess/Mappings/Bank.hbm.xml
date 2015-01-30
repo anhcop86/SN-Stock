@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-lazy="true" namespace="ShareHolderCore.Domain.Model" assembly="ShareHolderCore">
+	<class name="ShareHolderCore.Domain.Model.Bank, ShareHolderCore" table="Bank" lazy="true">
+
+		<!-- Primary Key(s) -->
+		<id name="BankId" column="BankId" type="Int32" unsaved-value="0">
+			<generator class="native"/>
+		</id>
+		
+		<!-- Properties -->
+		<property column="Name" type="String" name="Name" not-null="true" length="255" />
+		<property column="Address" type="String" name="Address" not-null="true" length="255" />
+		<property column="Phone" type="String" name="Phone" length="20" />
+		<property column="Website" type="String" name="Website" length="255" />
+		<property column="Fax" type="String" name="Fax" length="20" />
+		
+		<!-- One-To-Many relations -->
+		<!--<bag name="ListShareHolder" generic="true" inverse="true" cascade="none" lazy="true">
+			<key column="BankId"/>
+			<one-to-many class="ShareHolderCore.Domain.Model.ShareHolder,ShareHolderCore" />
+		</bag>-->
+		
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping  xmlns="urn:nhibernate-mapping-2.2" namespace="ShareHolderCore.Domain.Model" assembly="ShareHolderCore" >
+	
+	
+	<sql-query name="spSearchTransactionDetailHistoryFrontEnd">
+    <query-param name="TransactionFromDate"  type="DateTime"   />
+		<query-param name="TransactionToDate"  type="DateTime"   />
+		<query-param name="ShareHolderId"  type="Int32"   />
+		<query-param name="ShareSymbol"    type="String"  />
+    <query-param name="TransactionCategoryId"    type="Int32"  />
+		<query-param name="OrderBy"   type="String"  />
+		<query-param name="OrderDirection"   type="String"   />
+		<query-param name="Page"  type="Int32"    />
+		<query-param name="PageSize"  type="Int32"    />
+		<query-param name="TotalRecords"  type="Int32"  />
+
+      <return-scalar column="TransactionId"  type="Int64" />
+			<return-scalar column="TransactionNumber"  type="String" />			
+			<return-scalar column="TransactionDate"  type="DateTime"  />
+			<return-scalar column="ShareSymbol" type="String"     />			
+			<return-scalar column="CreditShareHolderCode"  type="String"  />
+			<return-scalar column="CreditShareHolderName"  type="String"   />
+      <return-scalar column="DebitShareHolderCode"  type="String"  />
+      <return-scalar column="DebitShareHolderName"  type="String"   />
+			<return-scalar column="TypeDescription" type="String"   />
+      <return-scalar column="Quantity"   type="Int64"    />
+			<return-scalar column="Note"  type="String"  />
+
+    exec spSearchTransactionDetailHistoryFrontEnd
+    :TransactionFromDate,
+    :TransactionToDate,
+    :ShareHolderId,
+    :ShareSymbol,
+    :TransactionCategoryId,
+    :OrderBy,
+    :OrderDirection,
+    :Page,
+    :PageSize,
+    :TotalRecords
+  </sql-query>
+</hibernate-mapping>

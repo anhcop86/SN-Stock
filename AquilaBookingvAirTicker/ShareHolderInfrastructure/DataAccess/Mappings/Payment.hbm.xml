@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-lazy="true" namespace="ShareHolderCore.Domain.Model" assembly="ShareHolderCore">
+  <class name="ShareHolderCore.Domain.Model.Payment,ShareHolderCore" table="Payment" lazy="true">
+
+    <!-- Primary Key(s) -->
+    <id name="PaymentId" column="PaymentId" type="Int64" unsaved-value="0">
+      <generator class="native"/>
+    </id>
+
+    <!-- Properties -->    
+    
+    <property column="PaymentDate" type="String" name="PaymentDate" length="8" not-null="true" />
+    <property column="PaymentTime" type="String" name="PaymentTime" length="6" not-null="true" />
+    <property column="MemberId" type="Int32" name="MemberId"  not-null="false"/>
+    <property column="BookingId" type="Int64" name="BookingId" />    
+    <property column="BookingCode" type="String" name="BookingCode" length="50" not-null="true"/>   
+    <property column="FirstName" type="String" name="FirstName" length="70" not-null="false" />
+    <property column="LastName" type="String" name="LastName" length="150" />
+    <property column="Address" type="String" name="Address" length="255"/>
+    <property column="PaymentType" type="String" name="PaymentType" length="1" not-null="true" />
+    <property column="PaymentMethod" type="String" name="PaymentMethod" length="1" not-null="true"  />
+    <property column="CardNumber" type="String" name="CardNumber" length="21"/>
+    <property column="CardHolderName" type="String" name="CardHolderName" length="100" />
+    <property column="ExpiryDate" type="String" name="ExpiryDate" length="6" />
+    <property column="CVCCode" type="String" name="CVCCode" length="10"/>
+    <property column="BankName" type="String" name="BankName" length="70" />
+    <property column="Email" type="String" name="Email" length="127" not-null="true" />
+    <property column="PhoneNumber" type="String" name="PhoneNumber" length="20" not-null="true"/>
+    <property column="CheckInTime" type="String" name="CheckInTime" length="8" not-null="false"  />
+    <property column="Remark" type="String" name="Remark" length="255" />
+    <property column="PayooOrderStatus" type="Int32" name="PayooOrderStatus"/>
+    <property column="OrderAmount" type="Decimal" name="OrderAmount" length="70" />
+    <property column="OrderFee" type="Decimal" name="OrderFee" length="127" />
+    <property column="ShippingDateTime" type="String" name="ShippingDateTime" length="14"/>
+    <property column="DeliveryDateTime" type="String" name="DeliveryDateTime" length="14" />
+    <property column="PaymentStatus" type="Int32" name="PaymentStatus" />
+    <property column="PaymentAmount" type="Decimal" name="PaymentAmount"/>
+    <property column="DispositAmount" type="Decimal" name="DispositAmount"/>    
+    <property column="PaymentGateWay" type="String" name="PaymentGateWay"/>
+    <property column="CurrencyTypeId" type="Byte" name="CurrencyTypeId" not-null="true" />
+    <property column="IpAddress" type="String" name="IpAddress" length="255" not-null="true"/>
+    <property column="CreatedDate" type="String" name="CreatedDate" length="14" not-null="true"/>
+    <property column="CreatedBy" type="String" name="CreatedBy" length="14" not-null="true"/>    
+
+   
+
+  </class>
+</hibernate-mapping>
+

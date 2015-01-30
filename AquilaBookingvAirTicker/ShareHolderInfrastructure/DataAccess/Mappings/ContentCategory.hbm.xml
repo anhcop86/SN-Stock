@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-lazy="true" namespace="ShareHolderCore.Domain.Model" assembly="ShareHolderCore">
+	<class name="ShareHolderCore.Domain.Model.ContentCategory, ShareHolderCore" table="Bank" lazy="true">
+
+		<!-- Primary Key(s) -->
+		<id name="ContentCategoryId" column="ContentCategoryId" type="Int32" unsaved-value="0">
+			<generator class="native"/>
+		</id>
+		
+		<!-- Properties -->
+		<property column="Name" type="String" name="Name" not-null="true" length="200" />
+		<property column="Description" type="String" name="Description" not-null="false" length="2000" />
+		<property column="VerticalPosition" type="Int32" name="VerticalPosition" />
+		<property column="Type" type="String" name="Type" length="50" not-null="false" />
+		<property column="URL" type="String" name="URL" length="50" not-null="false" />
+    <property column="Display" type="String" name="Display" length="50" not-null="false" />
+    <property column="ParentID" type="Int32" name="ParentID" />
+    <property column="LevelNumber" type="Int32" name="LevelNumber"  />
+    <property column="DisplayInHomePage" type="String" name="DisplayInHomePage" length="150"  not-null="false"/>
+    <property column="FirstDisplay" type="String" name="FirstDisplay" length="20" not-null="false" />
+    <property column="DisplayOrder" type="Int32" name="DisplayOrder" />
+    <many-to-one name="Language"  column="LanguageId" class="ShareHolderCore.Domain.Model.Language,ShareHolderCore" />    
+
+    <!-- One-To-Many relations -->
+		<bag name="ListContentItem" generic="true" inverse="true" cascade="none" lazy="true">
+			<key column="ContentCategoryId"/>
+			<one-to-many class="ShareHolderCore.Domain.Model.ContentItem,ShareHolderCore" />
+		</bag>
+		
+	</class>
+</hibernate-mapping>
