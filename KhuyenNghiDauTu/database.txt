@@ -28,3 +28,10 @@ ADD SumComment int
 
   ALTER TABLE [dbo].[RecommendStock]
   ADD ImageUrl nvarchar(256)
+
+
+ALTER TABLE [dbo].[RecommendStock]
+DROP COLUMN [Description]
+
+ALTER TABLE [dbo].[RecommendStock]
+ADD [Description] nvarchar(max)

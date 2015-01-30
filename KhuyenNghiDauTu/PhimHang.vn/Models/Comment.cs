@@ -20,7 +20,7 @@ namespace PhimHang.Models
         public int CommentBy { get; set; }
         public System.DateTime PostedDate { get; set; }
     
-        public virtual RecommendStock RecommendStock { get; set; }
         public virtual UserLogin UserLogin { get; set; }
+        public virtual RecommendStock RecommendStock { get; set; }
     }
 }

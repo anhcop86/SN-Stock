@@ -180,12 +180,23 @@ namespace PhimHang.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            if (User.Identity.Name != "long.thai")
+            {
+                return RedirectToAction("", "");
+            }
+            var commentrecommendstock = db.Comments.Where(cm => cm.PostedBy == id).ToList();
             RecommendStock recommendstock = await db.RecommendStocks.FindAsync(id);
+
             if (recommendstock == null)
             {
                 return HttpNotFound();
             }
-            return View(recommendstock);
+            db.Comments.RemoveRange(commentrecommendstock);
+            db.RecommendStocks.Remove(recommendstock);
+            await db.SaveChangesAsync();
+
+
+            return RedirectToAction("ModifyRecommend" , "Home");
         }
 
         // POST: /Recommendation/Delete/5

@@ -36,7 +36,7 @@ namespace PhimHang.Models
         public decimal TargetSell { get; set; }
 
         [Required(ErrorMessage= "Nhập chi tiết khuyến nghị")]
-        [StringLength(900, ErrorMessage = "Nhập ít nhất 10 từ, nhiều nhất 900 ký tự", MinimumLength = 10) ]
+        //[StringLength(max, ErrorMessage = "Nhập ít nhất 10 từ, nhiều nhất 900 ký tự", MinimumLength = 10) ]
         [Display(Name = "Chi tiết khuyến nghị")]
         public string Description { get; set; }
 
@@ -62,7 +62,7 @@ namespace PhimHang.Models
         public decimal BuyPrice { get; set; }
 
         [Required(ErrorMessage = "Nhập chi tiết khuyến nghị")]
-        [StringLength(900, ErrorMessage = "Nhập ít nhất 10 từ, nhiều nhất 900 ký tự", MinimumLength = 10)]
+        //[StringLength(900, ErrorMessage = "Nhập ít nhất 10 từ, nhiều nhất 900 ký tự", MinimumLength = 10)]
         [Display(Name = "Chi tiết khuyến nghị")]
         public string Description { get; set; }
 

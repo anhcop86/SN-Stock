@@ -66,6 +66,58 @@ namespace PhimHang.Controllers
 
             //return View();
         }
+        public async Task<ActionResult> ModifyRecommend(int? page, int? postBy, string recommentType, string stockCode, string dateFilter)
+        {
+            if (User.Identity.Name != "long.thai")
+            {                
+                return RedirectToAction("", "");
+            }
+            if (postBy == null)
+            {
+                postBy = 0;
+            }
+            if (string.IsNullOrWhiteSpace(recommentType))
+            {
+                recommentType = "ALL";
+            }
+
+            if (string.IsNullOrWhiteSpace(stockCode))
+            {
+                stockCode = "ALL";
+            }
+            var datetimeFilter = new DateTime();
+            if (string.IsNullOrWhiteSpace(dateFilter) || dateFilter == "ALL")
+            {
+                dateFilter = "ALL";
+
+            }
+            else
+            {
+                datetimeFilter = new DateTime(int.Parse(dateFilter.Substring(6, 4)), int.Parse(dateFilter.Substring(3, 2)), int.Parse(dateFilter.Substring(0, 2)));
+            }
+
+
+
+            ViewBag.postBy = postBy;
+            ViewBag.recommentType = recommentType;
+            ViewBag.stockCode = stockCode;
+            ViewBag.datefilter = dateFilter;
+            LoadInit();
+
+            var recommendstocks = from r in db.RecommendStocks.Include(r => r.UserLogin)
+                                  orderby r.CreatedModify descending
+                                  where (r.PostBy == postBy || 0 == postBy)
+                                  && (r.TYPERecommend == recommentType || "ALL" == recommentType)
+                                  && (r.StockCode.Contains(stockCode) || "ALL" == stockCode)
+                                  && (r.CreatedDate == datetimeFilter || new DateTime() == datetimeFilter)
+                                  select r;
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+            return View(recommendstocks.ToPagedList(pageNumber, pageSize));
+
+            //return View();
+        }
 
         private async Task LoadInit()
         {

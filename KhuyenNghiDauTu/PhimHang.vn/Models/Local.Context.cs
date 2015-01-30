@@ -26,7 +26,7 @@ namespace PhimHang.Models
         }
     
         public virtual DbSet<Comment> Comments { get; set; }
-        public virtual DbSet<RecommendStock> RecommendStocks { get; set; }
         public virtual DbSet<UserLogin> UserLogins { get; set; }
+        public virtual DbSet<RecommendStock> RecommendStocks { get; set; }
     }
 }

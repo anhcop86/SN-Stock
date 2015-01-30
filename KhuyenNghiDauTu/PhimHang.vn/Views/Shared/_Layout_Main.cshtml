@@ -108,6 +108,13 @@
                  @*<li class="ic-notifications"><a href="notifications.html"><span>Notifications</span></a></li>*@
                  <li class="ic-form-style"><a href="/Recommendation/BuyRecommend"><span>KN MUA</span></a> </li>
                  <li class="ic-form-style"><a href="/Recommendation/SellRecommend"><span>KN BÁN</span></a> </li>
+                 @{
+                     if (@User.Identity.GetUserName() == "long.thai")
+                     {
+                         <li class="ic-form-style"><a href="/Home/ModifyRecommend"><span>XÓA KN</span></a> </li>
+                     }
+                 }
+                 
              </ul>
 
          </div>
