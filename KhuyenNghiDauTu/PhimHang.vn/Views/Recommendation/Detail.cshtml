@@ -7,9 +7,6 @@
 <script src="~/Scripts/jquery.timeago.js"></script>
 <h2>
     Khuyến nghị @Model.TYPERecommend
-    @*<span style="float:right">
-        Ngày:  @Model.CreatedModify.ToString("dd/MM/yyyy hh:mm:ss")
-    </span>*@
 </h2>
 
 <div id="example_length" class="dataTables_length1">
@@ -250,10 +247,5 @@
         
         var vmPost = new viewModel();
         ko.applyBindings(vmPost, document.getElementById("CommentForKoLoad"));
-        vmPost.init();
-        //$.connection.hub.start().done(function () {
-        //    vmPost.init();
-        //});
-
-        //$.connection.hub.logging = true;
+        vmPost.init();      
     </script>
