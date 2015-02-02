@@ -42,7 +42,7 @@ namespace ShareHoderFrontEndV2.Controllers
             var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
             return result;
         }
-
+        /*
          [HttpPost]
         public dynamic AddNewComment(int idkn, string messege)
         {
@@ -81,6 +81,6 @@ namespace ShareHoderFrontEndV2.Controllers
             var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
             return result;
         }
-
+        */
     }
 }
