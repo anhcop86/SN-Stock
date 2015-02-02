@@ -17,6 +17,12 @@ namespace PhimHang
               url: "Symbol/{symbolName}",
               defaults: new { controller = "Symbol", action = "Index", symbolName = UrlParameter.Optional }
           );
+            // map router ticker (new)
+            routes.MapRoute(
+              name: "ticker",
+              url: "Ticker/{symbolName}",
+              defaults: new { controller = "Ticker", action = "Index", symbolName = UrlParameter.Optional }
+          );
 
             routes.MapRoute(
               name: "user",

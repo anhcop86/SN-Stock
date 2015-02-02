@@ -1,0 +1,436 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Ticker.cshtml";
+}
+@section scripts{        
+    <script src="~/Scripts/jquery.timeago.js"></script>    
+}
+<div id="CommentForKoLoad">
+    <div class="area-center">
+        <div id="top-status-box" class="bg-white status-box">
+            <div class="avata-comment">
+                <img src="@ViewBag.AvataEmage?width=35&height=35&mode=crop" class="img-rounded" alt="avatar">
+            </div>
+            <div class="input-status">
+                <form id="frmStatus" name="frmStatus" method="GET">
+                    <div id="input-status-text" class="input-status-text">
+                        <textarea data-bind="value : newMessage, valueUpdate : 'afterkeydown' , limitCharacters : 140" class="status-cm" name="status" rows="5" placeholder="$Mã cổ phiếu ($VNM, $GAS); Username" id="status" title="Search" autocomplete="off" rows="5"></textarea>
+                    </div>
+                    <div class="status-control">
+                        <div class="choose_file f-left">
+                            <i class="fa fa-camera"></i>
+                            <input name="Select File" type="file" />
+                        </div>
+                        <div id="radio" class="switch3button f-left">
+                            <input type="radio" id="radio1" name="BullBear" value="Bull">
+                            <label for="radio1" class="divBull ">Tăng</label>
+                            <input type="radio" id="radio3" name="BullBear" value="Bear">
+                            <label for="radio3" class="divBear">Giảm</label>
+                        </div>
+                        <div id="btnPhim" class="f-right">
+                            <span data-bind="text : count"></span>
+                            <a href="#" class="button-phim disable" data-bind="click : addPost,  enable: enablePhimHang "><span>PHÍM</span></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="bg-white" style="padding-top: 10px; padding-bottom: 3px;">
+            <div class="filer-bar">
+                <div class="toSpan filer-bar-label">BỘ LỌC: </div>
+                <div class="toSpan filer-bar-item"> <a href="#" class="active">Tất cả</a> </div>
+                <div class="toSpan filer-bar-item"> <a href="#">Theo biểu đồ</a> </div>
+                <div class="toSpan filer-bar-item"> <a href="#">Theo nhận định</a></div>
+                <div class="toSpan filer-bar-item">
+                    <a id="btn-option-more" href="#" data-dropdown="#dropdown-2">
+                        Tùy chọn khác
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <div id="dropdown-2" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
+                        <ul class="dropdown-menu">
+                            <li><a href="#4">Item 4</a></li>
+                            <li><a href="#5">Item 5</a></li>
+                            <li><a href="#5">Item 6</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="list-status">
+            <div class="bg-white">
+                <div class="list-item-status" tabindex="-1">
+                    <div class="avata-genaral-size">
+                        <img src="/img/avatar.jpg" class="img-rounded" alt="avatar">
+                    </div>
+                    <div class="list-item-detail">
+                        <div class="list-item-date">Dec 1 at 9:30 PM</div>
+                        <div class="list-item-username">Tom Truong <span class="divBear-cm">Giảm</span></div>
+                        <div class="list-item-status-content">goodmorning</div>
+                        <div class="list-item-control">
+                            <a class="button" href="#"><i class="fa fa-comments"></i></a>
+                            <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
+                            <a class="button" href="#" title="Thích">Thích</a>
+                            <a class="button btnMore" href="#" title="..." data-dropdown="#cm-1">
+                                ...
+                            </a>
+                            <div id="cm-1" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" title="Chia sẻ">Chia sẻ</a></li>
+                                    <li><a href="#" title="Vi phạm">Vi phạm</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white" style="border-bottom: none;">
+                <div class="list-item-status" tabindex="-1">
+                    <div class="avata-genaral-size">
+                        <img src="/img/avatar5.jpg" class="img-rounded" alt="avatar">
+                    </div>
+                    <div class="list-item-detail">
+                        <div class="list-item-date">Dec 1 at 9:30 PM</div>
+                        <div class="list-item-username">Tom Truong <span class="divBull-cm">Tăng</span></div>
+                        <div class="list-item-status-content">I always forget what the haters are gonna do until I sing the song.</div>
+                        <div class="list-item-control">
+                            <a class="button" href="#"><i class="fa fa-comments"></i></a>
+                            <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
+                            <a class="button" href="#" title="Thích">Thích</a>
+                            <a class="button btnMore" href="#" title="..." data-dropdown="#cm-2">
+                                ...
+                            </a>
+                            <div id="cm-2" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" title="Chia sẻ">Chia sẻ</a></li>
+                                    <li><a href="#" title="Vi phạm">Vi phạm</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="bg-white-custom">
+                <div class="filer-new-status">
+                    <div class="filer-new-status-button-bar">
+                        <div class="text-label">Hiển thị<a style="font-size: 14px;" href="#"> <strong>5</strong> bài phím mới </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div data-bind="foreach : posts">
+                <div class="bg-white">
+                    <div class="list-item-status" tabindex="-1">
+                        <div class="avata-genaral-size">
+                            <img data-bind="attr: { src: PostedByAvatar },click : function() {  location.href='/user/' + PostedByName + '/tab/1' }" class="img-rounded" alt="avatar">
+                        </div>
+                        <div class="list-item-detail">
+                            <div class="list-item-date" data-bind="text : PostedDate"></div>
+                            <div class="list-item-username" data-bind="text : PostedByName, click : function() {  location.href='/user/' + PostedByName + '/tab/1' }"></div>
+                            <div class="list-item-status-content" data-bind="html : Message"></div>
+                            <div class="list-item-control">
+                                <a class="button" href="#"><i class="fa fa-comments"></i></a>
+                                <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
+                                <a class="button" href="#" title="Thích">Thích</a>
+                                <a class="button btnMore" href="#" title="..." data-dropdown="#cm-3">
+                                    ...
+                                </a>
+                                <div id="cm-3" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#" title="Chia sẻ">Chia sẻ</a></li>
+                                        <li><a href="#" title="Vi phạm">Vi phạm</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div id="dialog" title="Basic dialog">
+        <div class="bg-white open">
+            <div class="list-item-status" tabindex="-1">
+                <div class="avata-genaral-size">
+                    <img src="/img/avatar.jpg" class="img-rounded" alt="avatar">
+                </div>
+                <div class="list-item-detail">
+                    <div class="list-item-date">Dec 1 at 9:30 PM</div>
+                    <div class="list-item-username">Tom Truong</div>
+                    <div class="list-item-status-content">goodmorning</div>
+                    <div class="list-item-control">
+                        <a class="button" href="#"><i class="fa fa-comments"></i></a>
+                        <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
+                        <a class="button" href="#" title="Thích">Thích</a>
+                        <a class="button btnMore" href="#" title="..." data-dropdown="#cm-dialog">
+                            ...
+                        </a>
+                        <div id="cm-dialog" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
+                            <ul class="dropdown-menu">
+                                <li><a href="#" title="Chia sẻ">Chia sẻ</a></li>
+                                <li><a href="#" title="Vi phạm">Vi phạm</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="display: block;" class="list-comment">
+                <div class="comment-item">
+                    <div class="avata-genaral-size">
+                        <img src="/img/avatar.jpg" class="img-rounded" alt="avatar">
+                    </div>
+                    <div id="input-comment" class="input-status">
+                        <form name="frmComment">
+                            <div class="input-status-text">
+                                <textarea class="status-cm" id="comment-text" name="comment" rows="5" placeholder="$Mã cổ phiếu ($VNM, $GAS); Username" title="Search" autocomplete="off"></textarea>
+                            </div>
+                            <div class="status-control">
+                                <div id="btnPhim" class="f-right">
+                                    <span>140</span>
+                                    <a href="#" class="button-phim disable"><span>PHÍM</span></a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="scroll-div">
+                    <div class="comment-item">
+                        <div class="avata-genaral-size">
+                            <img src="/img/avatar.jpg" class="img-rounded" alt="avatar">
+                        </div>
+                        <div class="list-item-detail">
+                            <div class="list-item-date">Dec 1 at 9:30 PM</div>
+                            <div class="list-item-username">sherrytwit</div>
+                            <div class="list-item-status-content">carsondahlberg Thanks! Which ma is it in the spx graph? Daily, weekly or monthly chart ?</div>
+                            <div class="list-item-control-cm">
+                                <a class="button f-right" href="#" title="Vi phạm">Vi phạm</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment-item">
+                        <div class="avata-genaral-size">
+                            <img src="/img/avatar5.jpg" class="img-rounded" alt="avatar">
+                        </div>
+                        <div class="list-item-detail">
+                            <div class="list-item-date">Dec 1 at 9:30 PM</div>
+                            <div class="list-item-username">Tom Truong</div>
+                            <div class="list-item-status-content">goodmorning</div>
+                            <div class="list-item-control-cm">
+                                <a class="button f-right" href="#" title="Vi phạm">Vi phạm</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment-item">
+                        <div class="avata-genaral-size">
+                            <img src="/img/avatar4.jpg" class="img-rounded" alt="avatar">
+                        </div>
+                        <div class="list-item-detail">
+                            <div class="list-item-date">Dec 1 at 9:30 PM</div>
+                            <div class="list-item-username">Tom Truong</div>
+                            <div class="list-item-status-content">Last night I had the privilege of attending the CFA Society of North Carolina's 2015 Annual Forecast Dinner. The hosts were gracious and the keynote speakers were the lively Peter Chiappinelli</div>
+                            <div class="list-item-control-cm">
+                                <a class="button f-right" href="#" title="Vi phạm">Vi phạm</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="comment-loadmore">
+                    <a href="#">View more in conversation →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- gia co phieu real time-->
+
+<!-- Comment-->
+
+<script type="text/javascript">
+    function getTimeAgo(varDate) {
+        if (varDate) {
+            return $.timeago(varDate);
+        }
+        else {
+            return '';
+        }
+    }
+    function Post(data) {
+        var self = this;
+        data = data || {};
+        self.PostId = data.PostId;
+        self.Message = ko.observable(data.Message || "");
+        //self.PostedBy = data.PostedBy || "";
+        self.PostedByName = data.PostedByName || "";
+        self.PostedByAvatar = data.PostedByAvatar || "";
+        self.PostedDate = getTimeAgo(data.PostedDate);
+        self.StockPrimary = data.StockPrimary;
+        self.notification = ko.observable(0);
+
+        //self.error = ko.observable();
+        //self.hub = hub;
+
+    }
+    var commenthub = $.connection.CommentHub;
+    function viewModel() {
+        var self = this;
+        self.posts = ko.observableArray();
+        self.newMessage = ko.observable('$@ViewBag.StockCode ');
+        self.error = ko.observable();
+        self.newPosts = ko.observableArray();
+        // SignalR related
+
+        // Reference the proxy for the hub.
+        //self.hub = $.connection.CommentHub;
+
+        //without the genaraled proxy
+                
+        self.init = function () {
+            self.error(null);
+            commenthub.server.joinRoom('@ViewBag.StockCode');
+            $.ajax({
+                cache: false,
+                type: "GET",
+                url: '@Url.Action("GetPostsByStock", "Post")',
+                data: { stockCurrent: '@ViewBag.StockCode' },
+                beforeSend: function (xhr) {
+                    //Add your image loader here
+                    //$('.infoStox').html('<img src="/images/ajax-loader.gif" />');
+                },
+                success: function (data) {
+                    var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item); });
+                    $(mappedPosts).each(function (index, element) {
+                        self.posts.push(element);
+                    });
+                }
+
+            });
+
+        }
+        self.enablePhimHang = ko.computed(function () {
+            return self.newMessage().length <= 140 && self.newMessage().length >= 6;
+        });
+
+        //self.hub.client.loadPosts = function (data) {
+        //    var mappedPosts = $.map(data, function (item) { return new Post(item, self.hub); });
+        //    self.posts(mappedPosts);
+        //}
+
+        self.addPost = function () {
+            self.error(null);
+            var nhanDinh = $("input:radio[name='BullBear']:checked").val();
+            commenthub.server.addPost({ "Message": self.newMessage() }, '@ViewBag.StockCode', '@ViewBag.CureentUserId', '@ViewBag.UserName', '@ViewBag.AvataImageUrl', nhanDinh).fail(function (err) {
+                self.error(err);
+            });
+            checkpost = 'Y';
+            self.newMessage('$@ViewBag.StockCode ');//
+        }
+
+        commenthub.client.addPost = function (post) {
+            if ($('#myonoffswitch').is(':checked')) { // ON
+                if (checkpost == 'Y') {
+                    self.posts.splice(0, 0, new Post(post));
+                }
+                else {
+                    self.newPosts.splice(0, 0, new Post(post));
+                }
+            }
+            else { // OFF
+                self.posts.splice(0, 0, new Post(post));
+            }
+            checkpost = 'N';
+        }
+
+
+        self.loadNewPosts = function () {
+            self.posts(self.newPosts().concat(self.posts()));
+            self.newPosts([]);
+        }
+
+        self.count = ko.computed(function () {
+            var countNum = 140 - self.newMessage().length;
+            return countNum;
+        });
+
+        // notification of reply
+        commenthub.client.newReplyNoti = function (num, postid) {
+            var replysfind = ko.utils.arrayFirst(self.posts(), function (item) {
+                return item.PostId === postid;
+            });
+            if (replysfind != null) {
+                replysfind.notification(replysfind.notification() + num);
+            }
+            //alert(self.notification());
+        }
+        // end
+
+        self.loadMores = function () {
+            $.get('@Url.Action("GetCommentBySymbol", "FollowStock")',
+            {
+                stockCurrent: '@ViewBag.StockCode',
+                skipposition: self.posts().length
+            }, function (data) {
+
+                var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item); });
+                $(mappedPosts).each(function (index, element) {
+                    self.posts.push(element);
+                });
+            })
+        };
+    }
+
+    ko.bindingHandlers.limitCharacters = {
+        update: function (element, valueAccessor, allBindingsAccessor, viewModel) {
+            element.value = element.value.substr(0, valueAccessor());
+            allBindingsAccessor().value(element.value.substr(0, valueAccessor()));
+        }
+    };
+    //var chromeframe = Request.UserAgent != null && Request.UserAgent.Contains("chromeframe");
+    //var transports = chromeframe ? "{ transport: 'longPolling' }" : "";
+    var vmPost = new viewModel();
+    ko.applyBindings(vmPost, document.getElementById("CommentForKoLoad"));
+    $.connection.hub.start({ transport: ['webSockets', 'serverSentEvents', 'longPolling'] })
+                            .done(function () {
+                                vmPost.init();
+
+                            }).fail(function (fail) {
+                                console.log('Không thể mở kết nối đến server' + fail);
+                            });
+
+    $.connection.hub.disconnected(function () {
+        setTimeout(function () {
+            if (tryingToReconnect) {
+                $.connection.hub.start().done(function () {
+                    commenthub.server.joinRoom('@ViewBag.StockCode');
+                });
+            }
+            else {
+                $.connection.hub.start().done(function () {
+                    vmPost.init();
+                });
+            }
+
+        }, 10000); // Restart connection after 10 seconds.
+    });
+    $.connection.hub.connectionSlow(function () {
+        console.log('Kết nối đến server chậm do đường truyền')
+    });
+    window.onbeforeunload = function (e) {
+        //$.connection.hub.stop
+        //commenthub.server.stop = function () {
+        //    $.connection.hub.stop();
+
+        //    console.log('window.onbeforeunload');
+        //};
+    };
+
+
+    $.connection.hub.logging = true;
+
+</script>
+
