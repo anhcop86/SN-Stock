@@ -1,0 +1,13 @@
+﻿.f-left .GREEN_Price{
+    float: left;
+    color:green;
+}
+.f-left .YELLOW_Price{
+    float: left;
+    color:#FFBD00;
+}
+.f-left .RED_Price{
+    float: left;
+    color:red;
+}
+

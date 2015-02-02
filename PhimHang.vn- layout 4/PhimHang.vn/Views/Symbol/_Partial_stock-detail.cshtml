@@ -1,0 +1,66 @@
+﻿<div>
+    <h4>@ViewBag.StockName</h4>
+    <a href="#">@ViewBag.LongName</a>
+    <a href="#" class="button-stock-follow" id="button-stock-follow">
+        @{
+            if (ViewBag.CheckStockExist == "Y")
+            {
+               @: <i class="fa fa-plus"></i>&nbsp Đang theo dõi
+            }
+            else
+            {
+               @: <i class="fa fa-plus"></i>&nbsp Theo dõi
+            }
+        }
+            
+    </a>
+</div>
+<div class="clear stock-detail-index-box" id="stockPriceDivId">
+    <div class="stock-id-box f-left RED_Price">
+        <strong>@ViewBag.StockCode</strong><br>
+        <div>@ViewBag.MarketName</div>
+       
+    </div>
+    @*
+    <div class="stock-detail-content f-left">
+        <div>
+            <strong class="f-left" data-bind="text:FinishPrice"></strong>
+            <div class="cRed f-left" data-bind="css:ColourChange()">
+                <div class="f-left" style="width: 16px; font-size: 16px; padding-top: 20px;"><i class="fa fa-sort-down" style="display:none"></i></div>
+                <div class="f-left" style=" width: 50px; font-size: 2rem; margin-top: 0px;"><div data-bind="text:Diff"></div> <div data-bind="text:DiffRateChange()"></div></div>
+
+            </div>
+        </div>
+        <div class="clear stock-lastupdate-time">
+            REALTIME 5s
+        </div>
+
+    </div>
+*@
+</div>
+
+
+<script type="text/javascript">
+          $(document).ready(function () {
+              $("#button-stock-follow").click(function () {                  
+                  var stock = '@ViewBag.StockCode';
+                  $.get('@Url.Action("Create", "FollowStock")',
+                          {
+                              stock: stock
+                          }, function (data) {
+
+                              if (data == "A") {
+                                  alert('Thêm vào danh sách so sánh thành công');
+                                  $("#button-stock-follow").html("<i class='fa fa-plus'></i>&nbsp Đang theo dõi");
+                              }
+                              else if (data == "R") {
+                                  alert('Loại khỏi danh sách so sánh thành công');
+                                  $("#button-stock-follow").html("<i class='fa fa-plus'></i>&nbsp Theo dõi");
+                              } else {
+                                  alert('Chỉ thêm tối đa 10 cổ phiếu, loại bỏ bớt cổ phiếu theo dõi để thêm cổ phiếu mới');
+                              }
+                          })
+
+              });
+          });
+</script>
