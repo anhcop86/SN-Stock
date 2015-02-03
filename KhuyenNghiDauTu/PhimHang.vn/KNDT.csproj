@@ -348,6 +348,7 @@
     <Content Include="Content\images\VS.jpg" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Profile.css" />
+    <Content Include="Content\Recommend.css" />
     <Content Include="Content\StockPrice.css" />
     <Content Include="Content\Style_Login.css" />
     <Content Include="Content\style_main.css" />
@@ -1293,16 +1294,6 @@
     <Content Include="Content\font-awesome\scss\_variables.scss" />
     <Content Include="Content\walt_disney\waltograph42.otf" />
     <Content Include="Content\walt_disney\waltographUI.ttf" />
-    <Content Include="LoginTheme\images\forms\Thumbs.db" />
-    <Content Include="LoginTheme\images\login\Thumbs.db" />
-    <Content Include="LoginTheme\images\shared\nav\Thumbs.db" />
-    <Content Include="LoginTheme\images\shared\Thumbs.db" />
-    <Content Include="LoginTheme\images\table\Thumbs.db" />
-    <Content Include="LoginTheme\images\Thumbs.db" />
-    <Content Include="DetailTheme\img\gallery\thumbs_small\Thumbs.db" />
-    <Content Include="DetailTheme\img\pretty-photo\.DS_Store" />
-    <Content Include="DetailTheme\img\pretty-photo\fullscreen\.DS_Store" />
-    <Content Include="DetailTheme\img\Thumbs.db" />
     <EntityDeploy Include="Models\Local.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Local.Designer.cs</LastGenOutput>
@@ -1337,12 +1328,6 @@
       <DependentUpon>StoxConnection.edmx</DependentUpon>
       <LastGenOutput>StoxConnection.cs</LastGenOutput>
     </Content>
-    <Content Include="Content\themes\base\images\vssver2.scc" />
-    <Content Include="Content\themes\base\vssver2.scc" />
-    <Content Include="Content\themes\sunny\images\vssver2.scc" />
-    <Content Include="Content\themes\sunny\vssver2.scc" />
-    <Content Include="Content\themes\vssver2.scc" />
-    <Content Include="Content\images\vssver2.scc" />
     <None Include="Properties\PublishProfiles\KNKH.pubxml" />
     <None Include="Properties\PublishProfiles\phimhang o nha.pubxml" />
     <None Include="Properties\PublishProfiles\phimhang.pubxml" />
