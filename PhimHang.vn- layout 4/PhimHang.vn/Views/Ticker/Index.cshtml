@@ -163,58 +163,51 @@
         <div class="bg-white open">
             <div class="list-item-status" tabindex="-1">
                 <div class="avata-genaral-size">
-                    <img src="/img/avatar.jpg" class="img-rounded" alt="avatar">
+                    <img id="idImgPostDetail" class="img-rounded" alt="avatar">
                 </div>
                 <div class="list-item-detail">
-                    <div class="list-item-date" data-bind="text : Post.PostedDate"></div>
-                    <div class="list-item-username">Tom Truong</div>
-                    <div class="list-item-status-content">goodmorning</div>
+                    <div class="list-item-date" id="idPostedDateDetail"></div>
+                    <div class="list-item-username"  id="idPostNameDetail"></div>
+                    <div class="list-item-status-content" id="idPostMessenge"></div>
                     <div class="list-item-control">
                         <a class="button" href="#"><i class="fa fa-comments"></i></a>
-                        <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
-                        <a class="button" href="#" title="Thích">Thích</a>
-                        <a class="button btnMore" href="#" title="..." data-dropdown="#cm-dialog">
-                            ...
-                        </a>
-                        <div id="cm-dialog" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
-                            <ul class="dropdown-menu">
-                                <li><a href="#" title="Chia sẻ">Chia sẻ</a></li>
-                                <li><a href="#" title="Vi phạm">Vi phạm</a></li>
-                            </ul>
-                        </div>
+                        <a class="button btn-answer" href="#" title="Trả lời">Thích</a>
+                    
                     </div>
                 </div>
             </div>
             <div style="display: block;" class="list-comment">
                 <div class="comment-item">
                     <div class="avata-genaral-size">
-                        <img src="/img/avatar.jpg" class="img-rounded" alt="avatar">
+                        <img src="@ViewBag.AvataEmage?width=35&height=35&mode=crop" class="img-rounded" alt="avatar">
                     </div>
                     <div id="input-comment" class="input-status">
                         <form name="frmComment">
                             <div class="input-status-text">
-                                <textarea class="status-cm" id="comment-text" name="comment" rows="5" placeholder="$Mã cổ phiếu ($VNM, $GAS); Username" title="Search" autocomplete="off"></textarea>
+                                <textarea data-bind="value : newReply, valueUpdate : 'afterkeydown' , limitCharacters : 140" class="status-cm" id="comment-text" name="comment" rows="5" placeholder="Nhập trả lời ở đây" title="Search" autocomplete="off"></textarea>
                             </div>
                             <div class="status-control">
                                 <div id="btnPhim" class="f-right">
-                                    <span>140</span>
-                                    <a href="#" class="button-phim disable"><span>PHÍM</span></a>
+                                    <span data-bind="text : countReply"></span>
+                                    <button id="btAddPost" style="cursor:pointer" class="button-phim" data-bind=" enable: enablePhimHangReply , click : addReply ">PHÍM</button>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
                 <div class="scroll-div">
-                    <div class="comment-item">
-                        <div class="avata-genaral-size">
-                            <img src="/img/avatar.jpg" class="img-rounded" alt="avatar">
-                        </div>
-                        <div class="list-item-detail">
-                            <div class="list-item-date">Dec 1 at 9:30 PM</div>
-                            <div class="list-item-username">sherrytwit</div>
-                            <div class="list-item-status-content">carsondahlberg Thanks! Which ma is it in the spx graph? Daily, weekly or monthly chart ?</div>
-                            <div class="list-item-control-cm">
-                                <a class="button f-right" href="#" title="Vi phạm">Vi phạm</a>
+                    <div data-bind="foreach : replys">
+                        <div class="comment-item">
+                            <div class="avata-genaral-size">
+                                <img data-bind="attr: { src: ReplyByAvatar },click : function() {  location.href='/user/' + ReplyByName + '/tab/1' }" class="img-rounded" alt="avatar">
+                            </div>
+                            <div class="list-item-detail">
+                                <div class="list-item-date" data-bind="text : ReplyDate"></div>
+                                <div class="list-item-username" data-bind="text: ReplyByName"></div>
+                                <div class="list-item-status-content" data-bind="html: ReplyMessage"></div>
+                                <div class="list-item-control-cm">
+                                    <a class="button f-right" href="#" title="Vi phạm">Vi phạm</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -240,29 +233,43 @@
             return '';
         }
     }
+    function Reply(data) {
+        var self = this;
+        data = data || {};
+        self.ReplyId = data.ReplyId;
+        self.ReplyMessage = data.ReplyMessage || "";
+        self.ReplyByName = data.ReplyByName || "";
+        self.ReplyByAvatar = data.ReplyByAvatar || "";
+        self.ReplyDate = getTimeAgo(data.ReplyDate);
+        self.PostCommentsId = data.PostCommentsId;
+    }
     function Post(data) {
         var self = this;
         data = data || {};
         self.PostId = data.PostId;
-        self.Message = ko.observable(data.Message || "");        
+        self.Message = data.Message || "";
         self.PostedByName = data.PostedByName || "";
         self.PostedByAvatar = data.PostedByAvatar || "";
         self.PostedDate = getTimeAgo(data.PostedDate);
         self.StockPrimary = data.StockPrimary;
         self.notification = ko.observable(0);
-        self.Stm = (data.Stm === 1 ? "<span class='divBear-cm'>Giảm</span>" : data.Stm === 2 ? "<span class='divBull-cm'>Tăng</span>" : "") || "";        
+        self.Stm = (data.Stm === 1 ? "<span class='divBear-cm'>Giảm</span>" : data.Stm === 2 ? "<span class='divBull-cm'>Tăng</span>" : "") || "";
     }
     var commenthub = $.connection.CommentHub;
     function viewModel() {
         var self = this;
-        self.posts = ko.observableArray();
-        self.newMessage = ko.observable('$@ViewBag.StockCode ');
+        self.posts = ko.observableArray(); // danh muc post
+        self.replys = ko.observableArray(); // danh mục reply
+        self.newMessage = ko.observable('$@ViewBag.StockCode '); // noi dung tin post
+        self.newReply = ko.observable(''); // noi dung tin reply
         self.error = ko.observable();
-        self.newPosts = ko.observableArray();
-        self.postDetail = ko.observable();
+        self.newPosts = ko.observableArray(); // biến tạm để luu post moi, sau khi click thi moi bung ra
+        self.postDetail = ko.observableArray();
         // SignalR related
         
         var checkpost = '';
+        var checkreply = '';
+        var postidCurrent = 0;
         self.init = function () {
             self.error(null);
             commenthub.server.joinRoom('@ViewBag.StockCode');
@@ -285,13 +292,8 @@
             });
 
         }
-     
-        //self.hub.client.loadPosts = function (data) {
-        //    var mappedPosts = $.map(data, function (item) { return new Post(item, self.hub); });
-        //    self.posts(mappedPosts);
-        //}
-
-        self.addPost = function () {
+   /////////////////////////////////////////////////////
+        self.addPost = function () { // them post
             self.error(null);
             $('#btAddPost').attr("disabled", true); // disble ngay khong de click them
             var nhanDinh = $("input:radio[name='BullBear']:checked").val();
@@ -304,6 +306,16 @@
             checkpost = 'Y';
             self.newMessage('$@ViewBag.StockCode ');//
         }
+        
+        self.addReply = function () { // them tra loi
+            commenthub.server.addReply({ "Message": self.newReply(), "PostedBy": postidCurrent },'@ViewBag.StockCode',   '@ViewBag.CureentUserId', '@ViewBag.UserName', '@ViewBag.AvataImageUrl').fail(function (err) {
+                self.error(err);
+            });
+            checkreply = 'Y';
+            self.newReply('');
+        }
+
+        /////////////////////////////////////////////////////////////
         // recieve the post from server
         commenthub.client.addPost = function (post) {
             if (checkpost == 'Y') {
@@ -315,32 +327,68 @@
             checkpost = 'N';
         }
 
+        commenthub.client.addReply = function (reply) {
+            //self.replys.unshift(reply);
+            self.replys.splice(0, 0, new Reply(reply));
+        }
+
+        /////////////////////
+
         self.loadNewPosts = function () {
             self.posts(self.newPosts().concat(self.posts()));
             self.newPosts([]);
         }
 
-        self.detailPost = function (data, e) { // chi tiet post bao gom tra loi
-            self.postDetail = data;
+        self.detailPost = function (data, e) { // chi tiet post bao gom tra loi  
+            self.newReply('');
+            self.replys([]);
+            $("#idPostedDateDetail").html(data.PostedDate);
+            $("#idPostNameDetail").html(data.PostedByName);
+            $("#idImgPostDetail").attr('src', data.PostedByAvatar);
+            $("#idPostMessenge").html(data.Message);
+            postidCurrent = data.PostId;
+            // load 10 reply gan nhat
+            $.ajax({
+                cache: false,
+                type: "GET",
+                url: '@Url.Action("GetReplyByPostId", "Post")',
+                data: { replyid : data.PostId },
+                beforeSend: function (xhr) {
+                    //Add your image loader here
 
-            console.log(self.postDetail);
-            //console.log(data);
+                },
+                success: function (data) {
+                    var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Reply(item); });
+                    $(mappedPosts).each(function (index, element) {
+                        self.replys.push(element);
+                    });
+                }
+
+            });
             if (!$(e.target).hasClass('btnMore')) {
                         document.body.style.overflow = 'hidden';
                         dialog.dialog("open");
                         $(".ui-widget-overlay").click(function () {
                             dialog.dialog('close');
                             document.body.style.overflow = 'auto';
-                        });
-                    }
+                            //self.replys('');
+                        })
+            }
         }
- 
+       
         self.enablePhimHang = ko.computed(function () {
             return self.newMessage().length <= 140 && self.newMessage().length >= 6;
         });
 
         self.count = ko.computed(function () {
             var countNum = 140 - self.newMessage().length;
+            return countNum;
+        });
+        self.enablePhimHangReply = ko.computed(function () {
+            return self.newReply().length <= 140 && self.newReply().length >= 6;
+        });
+        self.countReply = ko.computed(function () {
+            var countNum = 140 - self.newReply().length;
             return countNum;
         });
 

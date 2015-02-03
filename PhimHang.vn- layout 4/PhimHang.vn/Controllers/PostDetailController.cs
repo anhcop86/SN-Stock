@@ -80,6 +80,8 @@ namespace PhimHang.Controllers
             }
         }
 
+
+        #region temple
         //
         // GET: /PostDetail/Details/5
         public ActionResult Details(int id)
@@ -158,5 +160,6 @@ namespace PhimHang.Controllers
                 return View();
             }
         }
+        #endregion
     }
 }

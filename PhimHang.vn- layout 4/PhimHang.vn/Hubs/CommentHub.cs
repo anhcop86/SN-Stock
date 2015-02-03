@@ -140,6 +140,32 @@ namespace PhimHang.Hubs
             }
         }
 
+        public async Task AddReply(PostComment reply, string stockCurrent, int currentUserId, string userName, string avataImageUrl)
+        {
+            reply.CommentBy = currentUserId;
+            reply.PostedDate = DateTime.Now;
+            var listStock = new List<string>();
+            listStock.Add(stockCurrent.ToUpper());
+            using (testEntities db = new testEntities())
+            {
+                db.PostComments.Add(reply);
+                await db.SaveChangesAsync();
+
+                var ret = new
+                {
+                    ReplyMessage = reply.Message,
+                    //PostedBy = post.PostedBy,
+                    ReplyByName = userName,
+                    ReplyByAvatar = avataImageUrl.Replace("amp;", ""),
+                    ReplyDate = reply.PostedDate,
+                    ReplyId = reply.PostCommentsId,
+                    PostCommentsId = reply.PostCommentsId
+                };
+                await Clients.Caller.addReply(ret);
+                //await Clients.OthersInGroups(listStock).newReplyNoti(1, reply.PostedBy);
+            }
+        }
+
         public async Task JoinRoom(string stockCurrent)
         {
             await Groups.Add(Context.ConnectionId, stockCurrent);

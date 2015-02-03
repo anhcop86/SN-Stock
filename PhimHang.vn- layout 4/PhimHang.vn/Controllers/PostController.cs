@@ -176,5 +176,32 @@ namespace PhimHang.Controllers
                 return result;
             }
         }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<dynamic> GetReplyByPostId(long replyid)
+        {
+
+            using (db = new testEntities())
+            {
+
+                var ret = (from reply in await db.PostComments.ToListAsync()
+                           where reply.PostedBy == replyid
+                           orderby reply.PostedDate ascending
+                           select new
+                           {
+                               ReplyMessage = reply.Message,
+                               ReplyByName = reply.UserLogin.UserNameCopy,
+                               ReplyByAvatar = string.IsNullOrEmpty(reply.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + reply.UserLogin.AvataImage + "?width=46&height=46&mode=crop",
+                               ReplyDate = reply.PostedDate,
+                               ReplyId = reply.PostCommentsId,
+                               PostCommentsId = reply.PostCommentsId
+                           }).Take(10).ToArray();
+                //return await Task.FromResult(ret);
+
+                var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
+                return result;
+            }
+        }
     }
 }
