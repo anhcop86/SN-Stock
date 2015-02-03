@@ -25,7 +25,6 @@ namespace PhimHang.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Post> Posts { get; set; }
         public virtual DbSet<FollowStock> FollowStocks { get; set; }
         public virtual DbSet<FollowUser> FollowUsers { get; set; }
         public virtual DbSet<PostComment> PostComments { get; set; }
@@ -39,5 +38,6 @@ namespace PhimHang.Models
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<StockCode> StockCodes { get; set; }
         public virtual DbSet<FilterKeyWord> FilterKeyWords { get; set; }
+        public virtual DbSet<Post> Posts { get; set; }
     }
 }

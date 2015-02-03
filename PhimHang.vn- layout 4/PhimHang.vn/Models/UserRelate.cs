@@ -18,7 +18,7 @@ namespace PhimHang.Models
         public int UserId { get; set; }
         public Nullable<long> PostId { get; set; }
     
-        public virtual Post Post { get; set; }
         public virtual UserLogin UserLogin { get; set; }
+        public virtual Post Post { get; set; }
     }
 }

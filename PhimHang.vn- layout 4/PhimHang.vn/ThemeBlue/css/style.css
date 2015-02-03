@@ -307,6 +307,7 @@ ul.top-panel-left2 > li:not(:first-child):hover{
     font-size: 1.1rem;
     font-weight: bold;
     padding: 3px;
+    float:right;
 }
 .divBear{
     padding:5px; 
@@ -336,6 +337,7 @@ ul.top-panel-left2 > li:not(:first-child):hover{
     font-weight: bold;
     padding: 3px;    
     border-radius:3px;
+    float:right;
 }
 .bearish{
     color:red;
@@ -597,12 +599,12 @@ a.follow-button-mini:hover{
     color:#EAF5F9!important;
     border-radius: 5px;
 }
-.button-phim{
+/*.button-phim{
     padding: 5px 15px 5px 15px;
     background-color: #2696C0;
     color:#fff!important;
     border-radius: 5px;
-}
+}*/
 input[name=BullBear]{
     display: none;
 }
@@ -1469,4 +1471,23 @@ ul.alpha-bottom > li.selected,ul.alpha-bottom > li.selected:hover:not(:first-chi
 }
 .ui-corner-all{
     border-radius: 0px;
+}
+
+button:disabled
+{
+     padding: 5px 15px 5px 15px;
+    background-color: #B7DCEA;
+    color:#EAF5F9!important;
+    border-radius: 5px;
+    border-color: transparent;
+}
+
+
+button
+{
+    padding: 5px 15px 5px 15px;
+    background-color: #2696C0;
+    color:#fff!important;
+    border-radius: 5px;
+    border-color: transparent;
 }

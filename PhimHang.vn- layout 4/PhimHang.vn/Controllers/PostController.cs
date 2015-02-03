@@ -168,7 +168,8 @@ namespace PhimHang.Controllers
                                PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
                                PostedDate = stockRelate.Post.PostedDate,
                                PostId = stockRelate.PostId,
-                               StockPrimary = stockRelate.Post.StockPrimary
+                               StockPrimary = stockRelate.Post.StockPrimary,
+                               Stm = stockRelate.Post.NhanDinh
                            }).Take(10).ToArray();
                 //var listStock = new List<string>();              
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);

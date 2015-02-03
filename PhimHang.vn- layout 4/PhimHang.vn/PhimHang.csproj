@@ -1021,7 +1021,6 @@
     <Content Include="Views\Shared\_Layout_Reply_Ad.cshtml" />
     <Content Include="Views\Shared\_Layout_Ticker.cshtml" />
     <Content Include="Views\Ticker\Index.cshtml" />
-    <Content Include="Views\Ticker\_Partial_stock-detail.cshtml" />
     <Content Include="ThemeBlue\css\font-awesome\fonts\fontawesome-webfont.eot" />
     <Content Include="ThemeBlue\css\font-awesome\fonts\fontawesome-webfont.ttf" />
     <Content Include="ThemeBlue\css\font-awesome\fonts\fontawesome-webfont.woff" />

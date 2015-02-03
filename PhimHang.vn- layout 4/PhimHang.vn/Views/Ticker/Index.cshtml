@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = ViewBag.StockCode + ": phím " + ViewBag.StockName;
     Layout = "~/Views/Shared/_Layout_Ticker.cshtml";
 }
 @section scripts{        
@@ -23,14 +23,15 @@
                             <input name="Select File" type="file" />
                         </div>
                         <div id="radio" class="switch3button f-left">
-                            <input type="radio" id="radio1" name="BullBear" value="Bull">
+                            <input type="radio" id="radio1" name="BullBear" value="2">
                             <label for="radio1" class="divBull ">Tăng</label>
-                            <input type="radio" id="radio3" name="BullBear" value="Bear">
+                            <input type="radio" id="radio3" name="BullBear" value="1">
                             <label for="radio3" class="divBear">Giảm</label>
                         </div>
                         <div id="btnPhim" class="f-right">
-                            <span data-bind="text : count"></span>
-                            <a href="#" class="button-phim disable" data-bind="click : addPost,  enable: enablePhimHang "><span>PHÍM</span></a>
+                            <span data-bind="text : count"></span>                            
+                            <button id="btAddPost" style="cursor:pointer" class="button-phim" data-bind="click : addPost,  enable: enablePhimHang " >PHÍM</button>
+
                         </div>
                     </div>
                 </form>
@@ -116,20 +117,26 @@
             <div class="bg-white-custom">
                 <div class="filer-new-status">
                     <div class="filer-new-status-button-bar">
-                        <div class="text-label">Hiển thị<a style="font-size: 14px;" href="#"> <strong>5</strong> bài phím mới </a>
+                        <div class="text-label">
+                            Hiển thị<a href="#" style="font-size: 14px;" data-bind="click : loadNewPosts"> <strong data-bind="text: newPosts().length"></strong> bài phím mới </a>
                         </div>
                     </div>
                 </div>
             </div>
             <div data-bind="foreach : posts">
                 <div class="bg-white">
-                    <div class="list-item-status" tabindex="-1">
+                    <div class="list-item-status" tabindex="-1" data-bind=" click: function(data, event) { $parent.detailPost(data, event); }">
+                        @*click: function(data, event) { $parent.detailPost; event.stopPropagation(); }*@
                         <div class="avata-genaral-size">
                             <img data-bind="attr: { src: PostedByAvatar },click : function() {  location.href='/user/' + PostedByName + '/tab/1' }" class="img-rounded" alt="avatar">
                         </div>
                         <div class="list-item-detail">
                             <div class="list-item-date" data-bind="text : PostedDate"></div>
-                            <div class="list-item-username" data-bind="text : PostedByName, click : function() {  location.href='/user/' + PostedByName + '/tab/1' }"></div>
+                            <div class="list-item-username">
+                                <div data-bind="text : PostedByName, click : function() {  location.href='/user/' + PostedByName + '/tab/1' }"></div>
+                                <span data-bind="html : Stm"></span>
+                            </div>
+
                             <div class="list-item-status-content" data-bind="html : Message"></div>
                             <div class="list-item-control">
                                 <a class="button" href="#"><i class="fa fa-comments"></i></a>
@@ -149,10 +156,9 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
+    <!--post detail & reply-->
     <div id="dialog" title="Basic dialog">
         <div class="bg-white open">
             <div class="list-item-status" tabindex="-1">
@@ -160,7 +166,7 @@
                     <img src="/img/avatar.jpg" class="img-rounded" alt="avatar">
                 </div>
                 <div class="list-item-detail">
-                    <div class="list-item-date">Dec 1 at 9:30 PM</div>
+                    <div class="list-item-date" data-bind="text : Post.PostedDate"></div>
                     <div class="list-item-username">Tom Truong</div>
                     <div class="list-item-status-content">goodmorning</div>
                     <div class="list-item-control">
@@ -212,32 +218,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="comment-item">
-                        <div class="avata-genaral-size">
-                            <img src="/img/avatar5.jpg" class="img-rounded" alt="avatar">
-                        </div>
-                        <div class="list-item-detail">
-                            <div class="list-item-date">Dec 1 at 9:30 PM</div>
-                            <div class="list-item-username">Tom Truong</div>
-                            <div class="list-item-status-content">goodmorning</div>
-                            <div class="list-item-control-cm">
-                                <a class="button f-right" href="#" title="Vi phạm">Vi phạm</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="comment-item">
-                        <div class="avata-genaral-size">
-                            <img src="/img/avatar4.jpg" class="img-rounded" alt="avatar">
-                        </div>
-                        <div class="list-item-detail">
-                            <div class="list-item-date">Dec 1 at 9:30 PM</div>
-                            <div class="list-item-username">Tom Truong</div>
-                            <div class="list-item-status-content">Last night I had the privilege of attending the CFA Society of North Carolina's 2015 Annual Forecast Dinner. The hosts were gracious and the keynote speakers were the lively Peter Chiappinelli</div>
-                            <div class="list-item-control-cm">
-                                <a class="button f-right" href="#" title="Vi phạm">Vi phạm</a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="comment-loadmore">
                     <a href="#">View more in conversation →</a>
@@ -264,17 +244,13 @@
         var self = this;
         data = data || {};
         self.PostId = data.PostId;
-        self.Message = ko.observable(data.Message || "");
-        //self.PostedBy = data.PostedBy || "";
+        self.Message = ko.observable(data.Message || "");        
         self.PostedByName = data.PostedByName || "";
         self.PostedByAvatar = data.PostedByAvatar || "";
         self.PostedDate = getTimeAgo(data.PostedDate);
         self.StockPrimary = data.StockPrimary;
         self.notification = ko.observable(0);
-
-        //self.error = ko.observable();
-        //self.hub = hub;
-
+        self.Stm = (data.Stm === 1 ? "<span class='divBear-cm'>Giảm</span>" : data.Stm === 2 ? "<span class='divBull-cm'>Tăng</span>" : "") || "";        
     }
     var commenthub = $.connection.CommentHub;
     function viewModel() {
@@ -283,13 +259,10 @@
         self.newMessage = ko.observable('$@ViewBag.StockCode ');
         self.error = ko.observable();
         self.newPosts = ko.observableArray();
+        self.postDetail = ko.observable();
         // SignalR related
-
-        // Reference the proxy for the hub.
-        //self.hub = $.connection.CommentHub;
-
-        //without the genaraled proxy
-                
+        
+        var checkpost = '';
         self.init = function () {
             self.error(null);
             commenthub.server.joinRoom('@ViewBag.StockCode');
@@ -300,7 +273,7 @@
                 data: { stockCurrent: '@ViewBag.StockCode' },
                 beforeSend: function (xhr) {
                     //Add your image loader here
-                    //$('.infoStox').html('<img src="/images/ajax-loader.gif" />');
+                    
                 },
                 success: function (data) {
                     var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item); });
@@ -312,10 +285,7 @@
             });
 
         }
-        self.enablePhimHang = ko.computed(function () {
-            return self.newMessage().length <= 140 && self.newMessage().length >= 6;
-        });
-
+     
         //self.hub.client.loadPosts = function (data) {
         //    var mappedPosts = $.map(data, function (item) { return new Post(item, self.hub); });
         //    self.posts(mappedPosts);
@@ -323,34 +293,51 @@
 
         self.addPost = function () {
             self.error(null);
+            $('#btAddPost').attr("disabled", true); // disble ngay khong de click them
             var nhanDinh = $("input:radio[name='BullBear']:checked").val();
+            if (nhanDinh == null) {
+                nhanDinh = 0;
+            }
             commenthub.server.addPost({ "Message": self.newMessage() }, '@ViewBag.StockCode', '@ViewBag.CureentUserId', '@ViewBag.UserName', '@ViewBag.AvataImageUrl', nhanDinh).fail(function (err) {
                 self.error(err);
             });
             checkpost = 'Y';
             self.newMessage('$@ViewBag.StockCode ');//
         }
-
+        // recieve the post from server
         commenthub.client.addPost = function (post) {
-            if ($('#myonoffswitch').is(':checked')) { // ON
-                if (checkpost == 'Y') {
-                    self.posts.splice(0, 0, new Post(post));
-                }
-                else {
-                    self.newPosts.splice(0, 0, new Post(post));
-                }
-            }
-            else { // OFF
+            if (checkpost == 'Y') {
                 self.posts.splice(0, 0, new Post(post));
+            }
+            else {
+                self.newPosts.splice(0, 0, new Post(post));
             }
             checkpost = 'N';
         }
-
 
         self.loadNewPosts = function () {
             self.posts(self.newPosts().concat(self.posts()));
             self.newPosts([]);
         }
+
+        self.detailPost = function (data, e) { // chi tiet post bao gom tra loi
+            self.postDetail = data;
+
+            console.log(self.postDetail);
+            //console.log(data);
+            if (!$(e.target).hasClass('btnMore')) {
+                        document.body.style.overflow = 'hidden';
+                        dialog.dialog("open");
+                        $(".ui-widget-overlay").click(function () {
+                            dialog.dialog('close');
+                            document.body.style.overflow = 'auto';
+                        });
+                    }
+        }
+ 
+        self.enablePhimHang = ko.computed(function () {
+            return self.newMessage().length <= 140 && self.newMessage().length >= 6;
+        });
 
         self.count = ko.computed(function () {
             var countNum = 140 - self.newMessage().length;

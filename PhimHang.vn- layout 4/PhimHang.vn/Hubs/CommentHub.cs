@@ -48,7 +48,7 @@ namespace PhimHang.Hubs
             }
         }*/
 
-        public async Task AddPost(Post post, string stockCurrent, int currentUserId, string userName, string avataImageUrl, int nhanDinh)
+        public async Task AddPost(Post post, string stockCurrent, int currentUserId, string userName, string avataImageUrl, byte nhanDinh)
         {
            
             #region format message
@@ -72,24 +72,13 @@ namespace PhimHang.Hubs
                 }
             }
 
-            if (nhanDinh == -1)
-            {
-                messageFromatHTML += " <span class='sentiment bullishs'>Giảm</span>";
-            }
-            else if (nhanDinh == 0)
-            {
-                messageFromatHTML += " <span class='sentiment Normals'>Đứng</span>";
-            }
-            else
-            {
-                messageFromatHTML += " <span class='sentiment bearishs'>Tăng</span>";
-            }
             #endregion
             //messageFromatHTML += "</a>";
             post.Message = messageFromatHTML;
             post.PostedBy = currentUserId;
             post.PostedDate = DateTime.Now;
             post.StockPrimary = stockCurrent;
+            post.NhanDinh = nhanDinh;
             
             var listStock = new List<string>();
             
@@ -116,7 +105,7 @@ namespace PhimHang.Hubs
                 /* add post with stockrelate list */
                 foreach (var item in listMessegeSplit)
                 {
-                    if (item.Contains("$") && !item.Contains(stockCurrent)) // find the stock with $
+                    if (item.Contains("$") && !item.Contains(stockCurrent) && !listStock.Contains(item)) // find the stock with $
                     {
                         string stockcode = item.Replace("$", "").ToUpper();
                         StockRelate stockRelateLasts = new StockRelate();
@@ -140,12 +129,13 @@ namespace PhimHang.Hubs
                     Message = post.Message,
                     //PostedBy = post.PostedBy,
                     PostedByName = userName,
-                    PostedByAvatar = "/" + avataImageUrl.Replace("amp;", ""),
+                    PostedByAvatar = avataImageUrl.Replace("amp;", ""),
                     PostedDate = post.PostedDate,
                     PostId = post.PostId,
-                    StockPrimary = post.StockPrimary
-                };               
-
+                    StockPrimary = post.StockPrimary,
+                    Stm = post.NhanDinh
+                };
+               
                await Clients.Groups(listStock).addPost(ret);
             }
         }

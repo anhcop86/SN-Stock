@@ -100,35 +100,21 @@ $(document).ready(function () {
 //        }
         evt.stopPropagation();
     });
-    $(".list-item-status,.btn-answer").on('click', function (e) {
-        if (!$(e.target).hasClass('btnMore')) {
-            document.body.style.overflow = 'hidden';
-            dialog.dialog("open");
-            $(".ui-widget-overlay").click(function () {
-                dialog.dialog('close');
-                document.body.style.overflow = 'auto';
-            });
-//		if($(e.target).parents('.open').length == 0){
-//			$('.open').removeClass('open');
-//			$('.list-comment').hide();
-//			if (!$(this).hasClass('btn-answer')) {
-//				$(this).next().show();
-//				$(this).parent('.bg-white').addClass('open');
-//			}
-//			else {
-//				$(this).parent().parent().parent().next().show();            
-//				$(this).parent().parent().parent().parent('.bg-white').addClass('open');
-//			}
-//		}
-//		else {
-//			$('.open').removeClass('open');
-//			$('.list-comment').hide();
-//		}
-        }
-    }).on('click', 'a:not(.btnMore),button,input,img', function (e) {
-        // clicked on descendant div            
-        e.stopPropagation();
-    });
+    //$(".list-item-status,.btn-answer").on('click', function (e) {
+    //    if (!$(e.target).hasClass('btnMore')) {
+    //        document.body.style.overflow = 'hidden';
+    //        dialog.dialog("open");
+    //        $(".ui-widget-overlay").click(function () {
+    //            dialog.dialog('close');
+    //            document.body.style.overflow = 'auto';
+    //        });
+    //    }
+    //})//.on('click', 'a:not(.btnMore),button,input,img', function (e) {
+    //    // clicked on descendant div            
+    //    e.stopPropagation();
+    //});
+ 
+
 
     $("#tab-baiphim").click(function () {
         if (!$(this).hasClass('category-tab-active')) {
