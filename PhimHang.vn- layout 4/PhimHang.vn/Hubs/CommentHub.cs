@@ -105,9 +105,10 @@ namespace PhimHang.Hubs
                 /* add post with stockrelate list */
                 foreach (var item in listMessegeSplit)
                 {
-                    if (item.Contains("$") && !item.Contains(stockCurrent) && !listStock.Contains(item)) // find the stock with $
+                    string stockcode = item.Replace("$", "").ToUpper();
+                    if (item.Contains("$") && !listStock.Contains(stockcode)) // find the stock with $
                     {
-                        string stockcode = item.Replace("$", "").ToUpper();
+                        
                         StockRelate stockRelateLasts = new StockRelate();
                         stockRelateLasts.PostId = post.PostId;
                         stockRelateLasts.StockCodeRelate = stockcode;

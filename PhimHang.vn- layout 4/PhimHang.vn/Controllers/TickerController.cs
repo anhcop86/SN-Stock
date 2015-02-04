@@ -76,6 +76,7 @@ namespace PhimHang.Controllers
                 ViewBag.CureentUserId = currentUser.UserExtentLogin.Id;
                 ViewBag.UserName = currentUser.UserName;
                 ViewBag.AvataImageUrl = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage + "?width=46&height=46&mode=crop";
+                
                 #endregion
 
 
