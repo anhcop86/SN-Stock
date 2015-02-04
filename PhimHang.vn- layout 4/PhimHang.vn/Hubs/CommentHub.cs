@@ -64,7 +64,7 @@ namespace PhimHang.Hubs
                 }
                 else if (item.Contains("http") || item.Contains("www."))
                 {
-                    messageFromatHTML += "<a target='_blank' href='" + item + "'>[LINK]</a>" + " ";
+                    messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='" + item + "'>[LINK]</a>" + " ";
                 }
                 else
                 {

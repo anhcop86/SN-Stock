@@ -292,6 +292,9 @@
       <DependentUpon>PhimHangADO.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\PhimHangvnHelper.cs" />
+    <Compile Include="Models\PinStock.cs">
+      <DependentUpon>PhimHangADO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Post.cs">
       <DependentUpon>PhimHangADO.tt</DependentUpon>
     </Compile>
@@ -346,6 +349,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\ajax-loader_cungphim.gif" />
     <Content Include="images\avatar\default_avatar_medium.jpg" />
     <Content Include="images\cover\cover-defaut.jpg" />
     <Content Include="images\Login_Image.jpg" />

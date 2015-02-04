@@ -39,5 +39,6 @@ namespace PhimHang.Models
         public virtual DbSet<StockCode> StockCodes { get; set; }
         public virtual DbSet<FilterKeyWord> FilterKeyWords { get; set; }
         public virtual DbSet<Post> Posts { get; set; }
+        public virtual DbSet<PinStock> PinStocks { get; set; }
     }
 }

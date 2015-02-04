@@ -31,7 +31,6 @@
                         <div id="btnPhim" class="f-right">
                             <span data-bind="text : count"></span>                            
                             <button id="btAddPost" style="cursor:pointer" class="button-phim" data-bind="click : addPost,  enable: enablePhimHang " >PHÍM</button>
-
                         </div>
                     </div>
                 </form>
@@ -60,60 +59,40 @@
         </div>
 
         <div class="list-status">
-            <div class="bg-white">
-                <div class="list-item-status" tabindex="-1">
-                    <div class="avata-genaral-size">
-                        <img src="/img/avatar.jpg" class="img-rounded" alt="avatar">
-                    </div>
-                    <div class="list-item-detail">
-                        <div class="list-item-date">Dec 1 at 9:30 PM</div>
-                        <div class="list-item-username">Tom Truong <span class="divBear-cm">Giảm</span></div>
-                        <div class="list-item-status-content">goodmorning</div>
-                        <div class="list-item-control">
-                            <a class="button" href="#"><i class="fa fa-comments"></i></a>
-                            <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
-                            <a class="button" href="#" title="Thích">Thích</a>
-                            <a class="button btnMore" href="#" title="..." data-dropdown="#cm-1">
-                                ...
-                            </a>
-                            <div id="cm-1" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
-                                <ul class="dropdown-menu">
-                                    <li><a href="#" title="Chia sẻ">Chia sẻ</a></li>
-                                    <li><a href="#" title="Vi phạm">Vi phạm</a></li>
-                                </ul>
+            <!--pin ma co phieu o day-->            
+            <div data-bind="foreach : postPins">
+                <div class="bg-white">
+                    <div class="list-item-status" tabindex="-1" data-bind=" click: function(data, event) { $parent.detailPost(data, event); }">
+                        @*click: function(data, event) { $parent.detailPost; event.stopPropagation(); }*@
+                        <div class="avata-genaral-size">
+                            <img data-bind="attr: { src: PostedByAvatar },click : function() {  location.href='/user/' + PostedByName + '/tab/1' }" class="img-rounded" alt="avatar">
+                        </div>
+                        <div class="list-item-detail">
+                            <div class="list-item-date" data-bind="text : PostedDate"></div>
+                            <div class="list-item-username" style="width:0%">
+                                <div style="cursor:pointer" onclick='selectMe(event,"#")' data-bind="text : PostedByName, click : function() {  location.href='/user/' + PostedByName + '/tab/1'  }"></div>
+                            </div>
+                            <span data-bind="html : Stm"></span>
+                            <div class="list-item-status-content" data-bind="html : Message"></div>
+                            <div class="list-item-control">
+                                <a class="button" href="#"><i class="fa fa-comments"></i></a>
+                                <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
+                                <a class="button" href="#" title="Thích">Thích</a>
+                                <a class="button btnMore" href="#" title="..." data-dropdown="#cm-3">
+                                    ...
+                                </a>
+                                <div id="cm-3" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#" title="Chia sẻ">Chia sẻ</a></li>
+                                        <li><a href="#" title="Vi phạm">Vi phạm</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="bg-white" style="border-bottom: none;">
-                <div class="list-item-status" tabindex="-1">
-                    <div class="avata-genaral-size">
-                        <img src="/img/avatar5.jpg" class="img-rounded" alt="avatar">
-                    </div>
-                    <div class="list-item-detail">
-                        <div class="list-item-date">Dec 1 at 9:30 PM</div>
-                        <div class="list-item-username">Tom Truong <span class="divBull-cm">Tăng</span></div>
-                        <div class="list-item-status-content">I always forget what the haters are gonna do until I sing the song.</div>
-                        <div class="list-item-control">
-                            <a class="button" href="#"><i class="fa fa-comments"></i></a>
-                            <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
-                            <a class="button" href="#" title="Thích">Thích</a>
-                            <a class="button btnMore" href="#" title="..." data-dropdown="#cm-2">
-                                ...
-                            </a>
-                            <div id="cm-2" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
-                                <ul class="dropdown-menu">
-                                    <li><a href="#" title="Chia sẻ">Chia sẻ</a></li>
-                                    <li><a href="#" title="Vi phạm">Vi phạm</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
+            <!---->
             <div class="bg-white-custom">
                 <div class="filer-new-status">
                     <div class="filer-new-status-button-bar">
@@ -122,7 +101,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>            
             <div data-bind="foreach : posts">
                 <div class="bg-white">
                     <div class="list-item-status" tabindex="-1" data-bind=" click: function(data, event) { $parent.detailPost(data, event); }">
@@ -132,11 +111,10 @@
                         </div>
                         <div class="list-item-detail">
                             <div class="list-item-date" data-bind="text : PostedDate"></div>
-                            <div class="list-item-username">
-                                <div data-bind="text : PostedByName, click : function() {  location.href='/user/' + PostedByName + '/tab/1' }"></div>
-                                <span data-bind="html : Stm"></span>
+                            <div class="list-item-username" style="width:0%">
+                                <div style="cursor:pointer" onclick='selectMe(event,"#")' data-bind="text : PostedByName, click : function() {  location.href='/user/' + PostedByName + '/tab/1'  }"></div>
                             </div>
-
+                            <span data-bind="html : Stm"></span>
                             <div class="list-item-status-content" data-bind="html : Message"></div>
                             <div class="list-item-control">
                                 <a class="button" href="#"><i class="fa fa-comments"></i></a>
@@ -166,9 +144,15 @@
                     <img id="idImgPostDetail" class="img-rounded" alt="avatar">
                 </div>
                 <div class="list-item-detail">
-                    <div class="list-item-date" id="idPostedDateDetail"></div>
-                    <div class="list-item-username"  id="idPostNameDetail"></div>
+                    <div class="list-item-date" id="idPostedDateDetail" ></div>
+                    <div onclick='selectMe(event,"#")' class="list-item-username" style="width:0%">
+                        <div id="idPostNameDetail"></div>
+
+                    </div>
+                    <span id="idStmDetail"></span>
                     <div class="list-item-status-content" id="idPostMessenge"></div>
+                 
+
                     <div class="list-item-control">
                         <a class="button" href="#"><i class="fa fa-comments"></i></a>
                         <a class="button btn-answer" href="#" title="Trả lời">Thích</a>
@@ -224,7 +208,18 @@
 
 <!-- Comment-->
 
-<script type="text/javascript">
+<script type="text/javascript">   
+    
+    function selectMe(e, data) {        // khi nguoi dung click vao link trong knockout js click event
+        e.stopPropagation();        
+    }
+
+    function setDefaultAfterPost() {
+        $('.divBull, .divBear').parent().children('.switch3button-select').removeClass('switch3button-select'); // remove style of all radio button
+        $('input[type=radio]').prop('checked', false); // remove checked of radio button
+        //$("#status").css('height', '25'); // set size default of textarea 
+        //$('#status').parent().next('.status-control').hide(); // set hide button
+    }
     function getTimeAgo(varDate) {
         if (varDate) {
             return $.timeago(varDate);
@@ -260,6 +255,7 @@
         var self = this;
         self.posts = ko.observableArray(); // danh muc post
         self.replys = ko.observableArray(); // danh mục reply
+        self.postPins = ko.observableArray(); // danh muc cac bai post dc pin len dau
         self.newMessage = ko.observable('$@ViewBag.StockCode '); // noi dung tin post
         self.newReply = ko.observable(''); // noi dung tin reply
         self.error = ko.observable();
@@ -270,9 +266,30 @@
         var checkpost = '';
         var checkreply = '';
         var postidCurrent = 0;
+        var checkLoadFirst = 0;
         self.init = function () {
             self.error(null);
             commenthub.server.joinRoom('@ViewBag.StockCode');
+            // lay danh muc pin bai viet
+            $.ajax({
+                cache: false,
+                type: "GET",
+                url: '@Url.Action("GetPostsByStockPin", "Post")',
+                data: { stockCurrent: '@ViewBag.StockCode' },
+                beforeSend: function (xhr) {
+                    //Add your image loader here
+                    //$('.ajaxLoadingImage').html('<img src="/images/ajax-loader_cungphim.gif" />');
+                },
+                success: function (data) {
+                    //$('.ajaxLoadingImage').html('');
+                    var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item); });
+                    $(mappedPosts).each(function (index, element) {
+                        self.postPins.push(element);
+                    });
+                    
+                }
+            });
+            // lay danh muc thuong
             $.ajax({
                 cache: false,
                 type: "GET",
@@ -280,16 +297,18 @@
                 data: { stockCurrent: '@ViewBag.StockCode' },
                 beforeSend: function (xhr) {
                     //Add your image loader here
-                    
+                    //$('.ajaxLoadingImage').html('<img src="/images/ajax-loader_cungphim.gif" />');
                 },
                 success: function (data) {
+                    //$('.ajaxLoadingImage').html('');
                     var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item); });
                     $(mappedPosts).each(function (index, element) {
                         self.posts.push(element);
                     });
+                    checkLoadFirst = 1;
                 }
-
             });
+           
 
         }
    /////////////////////////////////////////////////////
@@ -305,6 +324,7 @@
             });
             checkpost = 'Y';
             self.newMessage('$@ViewBag.StockCode ');//
+            setDefaultAfterPost();
         }
         
         self.addReply = function () { // them tra loi
@@ -328,8 +348,8 @@
         }
 
         commenthub.client.addReply = function (reply) {
-            //self.replys.unshift(reply);
-            self.replys.splice(0, 0, new Reply(reply));
+            self.replys.unshift(new Reply(reply));
+            //self.replys.splice(0, 0, new Reply(reply));
         }
 
         /////////////////////
@@ -338,7 +358,7 @@
             self.posts(self.newPosts().concat(self.posts()));
             self.newPosts([]);
         }
-
+       
         self.detailPost = function (data, e) { // chi tiet post bao gom tra loi  
             self.newReply('');
             self.replys([]);
@@ -346,6 +366,7 @@
             $("#idPostNameDetail").html(data.PostedByName);
             $("#idImgPostDetail").attr('src', data.PostedByAvatar);
             $("#idPostMessenge").html(data.Message);
+            $("#idStmDetail").html(data.Stm);            
             postidCurrent = data.PostId;
             // load 10 reply gan nhat
             $.ajax({
@@ -365,6 +386,7 @@
                 }
 
             });
+           
             if (!$(e.target).hasClass('btnMore')) {
                         document.body.style.overflow = 'hidden';
                         dialog.dialog("open");
@@ -403,8 +425,34 @@
             //alert(self.notification());
         }
         // end
-
-        self.loadMores = function () {
+        $(window).scroll(function () { // scroll endpage load more
+            if ($(window).scrollTop() + $(window).height() == $(document).height() && checkLoadFirst == 1) {
+                var interval = setInterval(callAjax, 5000);
+                clearInterval(interval);
+                var callAjax = function () {
+                    $.ajax({
+                        cache: false,
+                        type: "GET",
+                        url: '@Url.Action("GetMorePostsByStock", "Post")',
+                        data: { stockCurrent: '@ViewBag.StockCode', skipposition: self.posts().length + self.newPosts().length },
+                        beforeSend: function (xhr) {
+                            //Add your image loader here
+                            //$('.ajaxLoadingImage').html('<img src="/images/ajax-loader_cungphim.gif" />');
+                        },
+                        success: function (data) {
+                            //$('.ajaxLoadingImage').html('');
+                            var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item); });
+                            $(mappedPosts).each(function (index, element) {
+                                self.posts.push(element);
+                            });
+                            
+                        }
+                    })
+                }
+                
+            }
+        });
+        self.loadMores = function () { // when end page
             $.get('@Url.Action("GetCommentBySymbol", "FollowStock")',
             {
                 stockCurrent: '@ViewBag.StockCode',

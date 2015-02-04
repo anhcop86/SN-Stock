@@ -148,7 +148,7 @@ namespace PhimHang.Controllers
             }
             base.Dispose(disposing);
         }
-        private const string ImageURLAvataDefault = "/img/avatar_default.jpg";
+        private const string ImageURLAvataDefault = "/img/avatar2.jpg";
         private const string ImageURLAvata = "/images/avatar/";
         [AllowAnonymous]
         [HttpGet]
@@ -165,7 +165,7 @@ namespace PhimHang.Controllers
                                Message = stockRelate.Post.Message,
                                //PostedBy = stockRelate.Post.PostedDate,
                                PostedByName = stockRelate.Post.UserLogin.UserNameCopy,
-                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
+                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault +"?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
                                PostedDate = stockRelate.Post.PostedDate,
                                PostId = stockRelate.PostId,
                                StockPrimary = stockRelate.Post.StockPrimary,
@@ -187,7 +187,7 @@ namespace PhimHang.Controllers
 
                 var ret = (from reply in await db.PostComments.ToListAsync()
                            where reply.PostedBy == replyid
-                           orderby reply.PostedDate ascending
+                           orderby reply.PostedDate descending
                            select new
                            {
                                ReplyMessage = reply.Message,
@@ -201,6 +201,56 @@ namespace PhimHang.Controllers
 
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
                 return result;
+            }
+        }
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<dynamic> GetPostsByStockPin(string stockCurrent)
+        {
+            //var fjdsf = WebSecurity.CurrentUserId;
+            using (db = new testEntities())
+            {
+                var ret = (from stockRelate in await db.PinStocks.ToListAsync()
+                           where stockRelate.StockCodePin == stockCurrent
+                           orderby stockRelate.CreatedDate descending
+                           select new
+                           {
+                               Message = stockRelate.Post.Message,
+                               //PostedBy = stockRelate.Post.PostedDate,
+                               PostedByName = stockRelate.Post.UserLogin.UserNameCopy,
+                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
+                               PostedDate = stockRelate.Post.PostedDate,
+                               PostId = stockRelate.PostId,
+                               StockPrimary = stockRelate.Post.StockPrimary,
+                               Stm = stockRelate.Post.NhanDinh
+                           }).Take(5).ToArray();
+                //var listStock = new List<string>();              
+                var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
+                return result;
+            }
+        }
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<dynamic> GetMorePostsByStock(string stockCurrent, int skipposition)
+        {
+            //var fjdsf = WebSecurity.CurrentUserId;
+            using (db = new testEntities())
+            {
+                var ret = (from stockRelate in await db.StockRelates.ToListAsync()
+                           where stockRelate.StockCodeRelate == stockCurrent
+                           orderby stockRelate.Post.PostedDate descending
+                           select new
+                           {
+                               Message = stockRelate.Post.Message,                               
+                               PostedByName = stockRelate.Post.UserLogin.UserNameCopy,
+                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
+                               PostedDate = stockRelate.Post.PostedDate,
+                               PostId = stockRelate.PostId,
+                               StockPrimary = stockRelate.Post.StockPrimary,
+                               Stm = stockRelate.Post.NhanDinh
+                           }).Skip(skipposition).Take(10).ToArray();                   
+                //var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
+                return Newtonsoft.Json.JsonConvert.SerializeObject(ret);
             }
         }
     }

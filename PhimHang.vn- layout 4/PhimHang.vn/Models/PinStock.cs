@@ -12,12 +12,12 @@ namespace PhimHang.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class StockRelate
+    public partial class PinStock
     {
         public long ID { get; set; }
-        public string StockCodeRelate { get; set; }
+        public string StockCodePin { get; set; }
         public long PostId { get; set; }
-        public Nullable<bool> PinTab { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
     
         public virtual Post Post { get; set; }
     }

@@ -32,6 +32,8 @@
         <AssociationConnector Association="PHDBContext.FK_Posts_UserLogins" />
         <AssociationConnector Association="PHDBContext.FK_StockRelate_Posts" />
         <AssociationConnector Association="PHDBContext.FK_UserRelate_Posts" />
+        <EntityTypeShape EntityType="PHDBContext.PinStock" Width="1.5" PointX="5.25" PointY="13.125" />
+        <AssociationConnector Association="PHDBContext.FK_Posts_PinStock" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -14,6 +14,8 @@ $(document).ready(function () {
     if (!$('#myonoffswitch').is(':checked')) {
         $("#msg-new-status").hide();
     }
+    $(document).scrollTop(50);
+    //$("body").scrollTop(0);
     //$("#radio").buttonset();
     $('.divBull, .divBear').click(function () {
         if (!$(this).hasClass('switch3button-select')) {

@@ -477,6 +477,9 @@ ul.top-panel-left2 > li:not(:first-child):hover{
     float: left;
     width: 150px;
 }
+.list-item-detail a {
+    color:#328AC5;
+}
 .banner-item-user-detail > .list-item-detail > .list-item-username{
     margin-top: 5px;
     margin-bottom: 5px;
@@ -863,8 +866,8 @@ input[name=BullBear]{
 }
 .list-comment .avata-genaral-size,.avata-comment{
     float:left;
-    width: 35px;
-    height: 35px;
+    width: 46px;
+    height: 46px;
     margin: 5px;
     /*border-radius: 3px;*/
     /*border: 2px solid #ddd;*/
