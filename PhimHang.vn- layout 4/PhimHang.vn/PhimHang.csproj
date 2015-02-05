@@ -351,6 +351,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="images\ajax-loader_cungphim.gif" />
     <Content Include="images\avatar\default_avatar_medium.jpg" />
+    <Content Include="images\company_logo.jpg" />
     <Content Include="images\cover\cover-defaut.jpg" />
     <Content Include="images\Login_Image.jpg" />
     <Content Include="img\avata3.jpg" />
@@ -1116,9 +1117,12 @@
     <Content Include="ThemeBlue\plugins\tinymce\skins\lightgray\fonts\tinymce.woff" />
     <Content Include="ThemeBlue\plugins\xcharts\LICENSE" />
     <Content Include="ThemeBlue\plugins\xcharts\README.md" />
+    <Content Include="Views\Shared\_Layout_Home.cshtml" />
+    <Content Include="Views\Shared\_Partial_Area_Left_Stock_Ticker.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Chart\" />
     <Folder Include="images\chart\" />
   </ItemGroup>
   <ItemGroup>

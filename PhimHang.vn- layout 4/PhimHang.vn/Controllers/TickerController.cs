@@ -30,11 +30,11 @@ namespace PhimHang.Controllers
         private const string ImageURLAvataDefault = "/img/avatar2.jpg";        
         private const string ImageURLAvata = "/images/avatar/";
         
-
+        [AllowAnonymous]
         public async Task<ViewResult> Index(string symbolName)
         {            
                 var company = new StockCode();
-                ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                //ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
 
                 #region danh muc co phieu dang follow
 
@@ -43,24 +43,36 @@ namespace PhimHang.Controllers
 
                 #region Thong tin menu ben trai
                 // Thong tin menu ben trai
-                var post = await db.Posts.CountAsync(p => p.PostedBy == currentUser.UserExtentLogin.Id);
-                var follow = await db.FollowUsers.CountAsync(f => f.UserId == currentUser.UserExtentLogin.Id);
-                var follower = await db.FollowUsers.CountAsync(f => f.UserIdFollowed == currentUser.UserExtentLogin.Id);
+                //var post = await db.Posts.CountAsync(p => p.PostedBy == currentUser.UserExtentLogin.Id);
+                //var follow = await db.FollowUsers.CountAsync(f => f.UserId == currentUser.UserExtentLogin.Id);
+                //var follower = await db.FollowUsers.CountAsync(f => f.UserIdFollowed == currentUser.UserExtentLogin.Id);
 
-                var countStockFollowr = await db.FollowStocks.CountAsync(f => f.UserId == currentUser.UserExtentLogin.Id && f.StockFollowed == symbolName);
-                if (countStockFollowr == 1)
+                //var countStockFollowr = await db.FollowStocks.CountAsync(f => f.UserId == currentUser.UserExtentLogin.Id && f.StockFollowed == symbolName);
+                //if (countStockFollowr == 1)
+                //{
+                //    ViewBag.CheckStockExist = "Y";
+                //}
+                //else
+                //{
+                //    ViewBag.CheckStockExist = "N";
+                //}
+                //ViewBag.TotalPost = post;
+                //ViewBag.Follow = follow;
+                //ViewBag.Follower = follower;
+
+                if (User.Identity.IsAuthenticated)
                 {
-                    ViewBag.CheckStockExist = "Y";
+                    ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                    ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
+                    ViewBag.CureentUserId = currentUser.UserExtentLogin.Id;
+                    ViewBag.UserName = currentUser.UserName;
+                    ViewBag.AvataImageUrl = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage + "?width=46&height=46&mode=crop";
                 }
                 else
                 {
-                    ViewBag.CheckStockExist = "N";
+                    ViewBag.AvataEmage = ImageURLAvataDefault;
                 }
-                ViewBag.TotalPost = post;
-                ViewBag.Follow = follow;
-                ViewBag.Follower = follower;
-                            
-                ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
+                
 
                 // End thong tin menu ben trai
 
@@ -73,31 +85,30 @@ namespace PhimHang.Controllers
                 ViewBag.StockName = company == null ? StatusSymbol.NF.ToString() : company.ShortName;
                 ViewBag.LongName = company == null ? StatusSymbol.NF.ToString() : company.LongName;
                 ViewBag.MarketName = company == null ? StatusSymbol.NF.ToString() : company.IndexName;
-                ViewBag.CureentUserId = currentUser.UserExtentLogin.Id;
-                ViewBag.UserName = currentUser.UserName;
-                ViewBag.AvataImageUrl = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage + "?width=46&height=46&mode=crop";
+                
+                
                 
                 #endregion
 
 
 
                 #region danh muc dau tu
-                var followstocks = await db.FollowStocks.Where(f => f.UserId == currentUser.UserExtentLogin.Id).ToListAsync();
-                var listfollowstocksString = (from sf in followstocks
-                                              select sf.StockFollowed).ToList();
-                var DMDTShortName = (from fs in db.FollowStocks.ToList()
-                                     join s in db.StockCodes.ToList() on fs.StockFollowed equals s.Code
-                                     where listfollowstocksString.Contains(fs.StockFollowed)
-                                     select new StockDetail
-                                     {
-                                         Stock = fs.StockFollowed,
-                                         ShortName = s.ShortName
-                                     }).ToList();
-                ViewBag.HotStockDMDT = DMDTShortName;//_stockRealtime.GetAllStocksTestList(listfollowstocksString).Result;
+                //var followstocks = await db.FollowStocks.Where(f => f.UserId == currentUser.UserExtentLogin.Id).ToListAsync();
+                //var listfollowstocksString = (from sf in followstocks
+                //                              select sf.StockFollowed).ToList();
+                //var DMDTShortName = (from fs in db.FollowStocks.ToList()
+                //                     join s in db.StockCodes.ToList() on fs.StockFollowed equals s.Code
+                //                     where listfollowstocksString.Contains(fs.StockFollowed)
+                //                     select new StockDetail
+                //                     {
+                //                         Stock = fs.StockFollowed,
+                //                         ShortName = s.ShortName
+                //                     }).ToList();
+                //ViewBag.HotStockDMDT = DMDTShortName;//_stockRealtime.GetAllStocksTestList(listfollowstocksString).Result;
                 #endregion
 
-                //return View(_stockRealtime.GetAllStocksTestList((List<string>)Session["listStock"]).Result);
-                return View(currentUser);
+                ////return View(_stockRealtime.GetAllStocksTestList((List<string>)Session["listStock"]).Result);
+                return View();
             
         }
         #region Extent

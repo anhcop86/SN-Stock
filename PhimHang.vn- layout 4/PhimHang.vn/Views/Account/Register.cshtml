@@ -83,7 +83,7 @@
     <!-- Root element of template can't be <body>; see angular issue #1459 --><div id="signup">
         <div id="aside"><div class="imo-logo-wrapper"></div><h1 class="big-title ng-scope" translate="">Join with millions of people</h1><p class="subtitle ng-scope" translate="">Join millions of people using imo for free messaging, voice and video calls.</p></div><div id="login-register-container" register-login="">
             <div class="header"><a href="/Account/Register" class="tab register selected" ng-click="selectTab(REGISTER)" ng-class="{selected: selectedForm == REGISTER}" translate="">Register</a><a href="/Account/Login" class=" tab login" ng-click="selectTab(LOGIN)" ng-class="{selected: selectedForm == LOGIN}" translate="">login</a></div><!-- ngIf: selectedForm == LOGIN -->
-            @*<login ng-if="selectedForm == LOGIN" class="ng-scope">
+            <login ng-if="selectedForm == LOGIN" class="ng-scope">
                 <div class="col-md-8">
                     <section id="loginForm">
                         @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
@@ -124,7 +124,7 @@
                         }
                     </section>
                 </div>
-            </login>*@
+            </login>
             <modals class="ng-scope"></modals>
         </div>
     </div>

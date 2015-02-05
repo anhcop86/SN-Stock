@@ -85,8 +85,8 @@ namespace PhimHang.Controllers
         public ActionResult Register()
         {
             return View();
-        }
-
+        }        
+        
         //
         // POST: /Account/Register
         [HttpPost]

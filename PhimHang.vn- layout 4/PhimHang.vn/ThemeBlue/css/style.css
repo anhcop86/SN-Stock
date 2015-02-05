@@ -1338,7 +1338,7 @@ a.category-tab:hover{
 .ui-dialog {    
     position: fixed;
     top:30px !important;
-    max-height: 630px!important;
+    max-height: 700px!important;
 } 
 .scroll-div {    
     max-height: 330px!important;

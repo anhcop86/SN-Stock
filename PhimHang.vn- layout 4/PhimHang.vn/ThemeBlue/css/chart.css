@@ -17,3 +17,34 @@
 .legend table {
 	border-spacing: 5px;
 }
+
+.chartImage {
+ display:none;
+border: 1px solid while;
+height: 50px;
+width: 50px;
+position: absolute;
+left: 50px;
+text-align: center;
+top: -7px;
+z-index: 2;
+}
+
+.chart-close{
+background-position: 3px -9px;
+border-radius: 3px;
+padding: 3px;
+right: 2px;
+top: -1px;
+z-index: 3;
+float: right;
+}
+
+.mb3-chart-thumb {
+    vertical-align: middle;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    text-align: center;
+    top: 0px;
+}

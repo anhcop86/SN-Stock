@@ -43,7 +43,7 @@
      
      <div id="top-banner" class="w100p bg-blue">
          <div class="f-left" id="top-banner-left">
-             <a href="#" class="logo" title="Cùng Phím">
+             <a href="/" class="logo" title="Cùng Phím">
                  <img src="/img/logo.png" alt="Cùng Phím">
              </a>
          </div>
@@ -61,7 +61,11 @@
                          <li><a href="#1">Profile</a></li>
                          <li><a href="#2">Setting</a></li>                         
                          <li class="dropdown-divider"></li>
-                         <li><a href="#3">Logout</a></li>
+                         @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                         {
+                             @Html.AntiForgeryToken()
+                             <li><a href="javascript:document.getElementById('logoutForm').submit()">Logout</a></li>
+                         }
                      </ul>
                  </div>
              </div>
@@ -96,8 +100,8 @@
                      </a>
                  </li>
                  <li class="hidden-xs">
-                     <a href="/Ticker/MSM">
-                         $MSM
+                     <a href="/Ticker/VND">
+                         $VND
                      </a>
                  </li>
                  <li class="hidden-xs">
@@ -190,26 +194,7 @@
      </div>
      <div class="content-main content-main2">
          <div class="area-left">
-             <div class="cp-banner">
-                 <div class="cp-top">
-                     <span>VNM</span>
-                     <span class="bullish cp-index">
-                         999(+2)
-                     </span>
-                 </div>
-                 <div class="cp-detail clear">
-                     <h4>Công ty cổ phần Sữa Việt Nam</h4>
-                     <div class="cp-detail-sub">
-                         <div class="f-left">
-                             <div style="margin-top: 5px;"><b>Bài Phím:</b> 99999</div>
-                             <div><b>Được theo dõi:</b> 99999</div>
-                         </div>
-                         <div class="cp-detail-sub-fl f-right">
-                             <a href="#" class="follow-button1"><i class="fa fa-plus"></i> Theo dõi</a>
-                         </div>
-                     </div>
-                 </div>
-             </div>
+            @Html.Partial("_Partial_Area_Left_Stock_Ticker")
          </div>
          
          @RenderBody()

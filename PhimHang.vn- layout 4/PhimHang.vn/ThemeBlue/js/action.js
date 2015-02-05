@@ -6,8 +6,8 @@
 $(document).ready(function () {
     dialog = $("#dialog").dialog({
         modal: true,
-        width: 650,
-        resizable: false,
+        width: 650,        
+        //resizable: false,
         autoOpen: false,
     });
     $(".ui-dialog-titlebar").hide();
@@ -155,4 +155,6 @@ $(document).ready(function () {
             return false;
         }
     });
+
+   
 });

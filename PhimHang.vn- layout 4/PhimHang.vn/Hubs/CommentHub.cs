@@ -48,7 +48,7 @@ namespace PhimHang.Hubs
             }
         }*/
 
-        public async Task AddPost(Post post, string stockCurrent, int currentUserId, string userName, string avataImageUrl, byte nhanDinh)
+        public async Task AddPost(Post post, string stockCurrent, int currentUserId, string userName, string avataImageUrl, byte nhanDinh, string chartImage)
         {
            
             #region format message
@@ -79,6 +79,11 @@ namespace PhimHang.Hubs
             post.PostedDate = DateTime.Now;
             post.StockPrimary = stockCurrent;
             post.NhanDinh = nhanDinh;
+            if (!string.IsNullOrWhiteSpace(chartImage))
+            {
+                post.ChartYN = true;
+                post.ChartImageURL = chartImage.Replace("?width=50&height=50&mode=crop", "");
+            }
             
             var listStock = new List<string>();
             
@@ -127,14 +132,16 @@ namespace PhimHang.Hubs
 
                 var ret = new
                 {
-                    Message = post.Message,
+                    //Message = post.Message,
+                    Message = post.ChartYN == true ? post.Message + "<br/><img src='" + post.ChartImageURL + "?width=215&height=120&mode=crop' >" : post.Message,
                     //PostedBy = post.PostedBy,
                     PostedByName = userName,
                     PostedByAvatar = avataImageUrl.Replace("amp;", ""),
                     PostedDate = post.PostedDate,
                     PostId = post.PostId,
                     StockPrimary = post.StockPrimary,
-                    Stm = post.NhanDinh
+                    Stm = post.NhanDinh,
+                    ChartYN = post.ChartYN
                 };
                
                await Clients.Groups(listStock).addPost(ret);

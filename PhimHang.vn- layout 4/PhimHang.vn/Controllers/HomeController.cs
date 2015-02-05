@@ -10,7 +10,8 @@ namespace PhimHang.Controllers
     {
         public ActionResult Index()
         {
-            return RedirectToAction("", "MyProfile");
+            //return RedirectToAction("", "MyProfile");
+            return View();
         }     
 
         public ActionResult About()
