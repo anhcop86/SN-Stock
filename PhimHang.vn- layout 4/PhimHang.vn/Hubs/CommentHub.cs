@@ -18,8 +18,8 @@ namespace PhimHang.Hubs
     {
          
         // GET: /Post/
-        
-        private const string ImageURLAvataDefault = "/img/avatar_default.jpg";
+
+        private const string ImageURLAvataDefault = "/img/avatar2.jpg"; 
         private const string ImageURLAvata = "/images/avatar/";
 
         /*
@@ -141,10 +141,12 @@ namespace PhimHang.Hubs
                     PostId = post.PostId,
                     StockPrimary = post.StockPrimary,
                     Stm = post.NhanDinh,
-                    ChartYN = post.ChartYN
+                    ChartYN = post.ChartYN,
+                    PostBy = post.PostedBy
                 };
                
                await Clients.Groups(listStock).addPost(ret);
+               await Clients.All.addPostGlobal(ret);
             }
         }
 
@@ -208,6 +210,7 @@ namespace PhimHang.Hubs
         ///////////////////////////////////////////////////// profile
         //reply
         /////////////////////////////////////////////////////
+        /*
         public async Task AddReply(PostComment postcomment, string stockCurrent, int currentUserId, string userName, string avataImageUrl, long postid)
         {
             #region format message
@@ -263,6 +266,7 @@ namespace PhimHang.Hubs
                 await Clients.OthersInGroups(listStock).newReplyNoti(1, postid);
             }
         }
+         * */
 
     }
 }

@@ -2,7 +2,7 @@
 
 @model ApplicationUser
 
-
+<!--
 <div class="user-info">
     <div class="cover-img">
         <img src="~/@ViewBag.CoverImage?width=280&height=91&mode=crop" alt="cover">
@@ -126,3 +126,33 @@
         </div>
     </div>
 </div>
+-->
+
+<div class="user-info">
+    <div class="cover-img">
+        <img src="@ViewBag.CoverImage?width=280&height=91&mode=crop" alt="cover">
+    </div>
+    <div class="user-profile">
+        <div class="user-img">
+            <img src="@ViewBag.AvataEmage?width=62&height=62&mode=crop" alt="cover">
+        </div>
+        <div class="user-name">
+            <a href="/user/@ViewBag.UserName/tab/1"> @Model.UserExtentLogin.FullName.ToUpper() </a>
+            <i class="fa  fa-check-circle">&nbsp;</i>
+        </div>
+    </div>
+    <div class="user-sumary-info">
+        <span>
+            Bài Phím<br>
+            <a href="/user/@ViewBag.UserName/tab/1">@ViewBag.TotalPost </a>
+        </span>
+        <span>
+            Theo dõi<br>
+            <a href="/user/@ViewBag.UserName/tab/3">@ViewBag.Follow</a>
+        </span>
+        <span>
+            Được theo dõi<br>
+            <a href="/user/@ViewBag.UserName/tab/4">@ViewBag.Follower</a>
+        </span>
+    </div>
+</div>  

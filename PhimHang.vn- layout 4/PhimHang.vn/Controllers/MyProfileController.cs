@@ -12,12 +12,12 @@ using System.Data.Entity;
 namespace PhimHang.Controllers
 {
 
-        [Authorize]
+    [Authorize]
     public class MyProfileController : Controller
     {
         //
         // GET: /MyProfile/
-       private readonly FilterKeyworkSingleton _keyword;
+        private readonly FilterKeyworkSingleton _keyword;
         public MyProfileController()
             : this(FilterKeyworkSingleton.Instance, new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
@@ -27,175 +27,457 @@ namespace PhimHang.Controllers
             _keyword = KeyworkSing;
             UserManager = userManager;
         }
-       
+
 
         public UserManager<ApplicationUser> UserManager { get; private set; }
 
-        private testEntities db;
-        private const string ImageURLAvataDefault = "img/avatar_default.jpg";
-        private const string ImageURLCoverDefault = "img/cover_default.jpg";
-        private const string ImageURLAvata = "images/avatar/";
+        private testEntities db = new testEntities();
+        private const string ImageURLAvataDefault = "/img/avatar2.jpg"; 
+        private const string ImageURLCoverDefault = "/img/cover_default.jpg";
+        private const string ImageURLAvata = "/images/avatar/";
         private const string ImageURLCover = "images/cover/";
 
         public async Task<ActionResult> Index()
         {
             // get user info
-            Session["DataTimeVistProfile"] = DateTime.Now;
 
+            var company = new StockCode();
+            ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+
+            #region danh muc co phieu dang follow
+
+
+            #endregion
+
+            #region Thong tin menu ben trai
+             //Thong tin menu ben trai
+            var post = await db.Posts.CountAsync(p => p.PostedBy == currentUser.UserExtentLogin.Id);
+            var follow = await db.FollowUsers.CountAsync(f => f.UserId == currentUser.UserExtentLogin.Id);
+            var follower = await db.FollowUsers.CountAsync(f => f.UserIdFollowed == currentUser.UserExtentLogin.Id);
+
+            //var countStockFollowr = await db.FollowStocks.CountAsync(f => f.UserId == currentUser.UserExtentLogin.Id && f.StockFollowed == symbolName);
+            //if (countStockFollowr == 1)
+            //{
+            //    ViewBag.CheckStockExist = "Y";
+            //}
+            //else
+            //{
+            //    ViewBag.CheckStockExist = "N";
+            //}
+            ViewBag.TotalPost = post;
+            ViewBag.Follow = follow;
+            ViewBag.Follower = follower;           
+                        
+            ViewBag.CureentUserId = currentUser.UserExtentLogin.Id;
+            ViewBag.UserName = currentUser.UserName;
+
+            ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : "/images/avatar/" + currentUser.UserExtentLogin.AvataImage;
+            ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataCover) == true ? ImageURLCoverDefault : "/images/cover/" + currentUser.UserExtentLogin.AvataCover;
+            ViewBag.AvataImageUrl = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage + "?width=46&height=46&mode=crop";
+            //ViewBag.AvataImageUrl = ViewBag.AvataEmage;
+            var listPersonFollow = (from userFollow in db.FollowUsers.ToList()
+                                    where userFollow.UserId == currentUser.UserExtentLogin.Id
+                                    select userFollow.UserIdFollowed
+                                 ).ToArray();
+
+            ViewBag.ListFollow = listPersonFollow as int[];
+
+            var listStock = (from followStock in db.FollowStocks.ToList()
+                             orderby followStock.StockFollowed ascending
+                             where followStock.UserId == currentUser.UserExtentLogin.Id
+                             select followStock.StockFollowed
+                                ).ToList();
+
+            ViewBag.listStockFollow = listStock as List<string>;
+            // End thong tin menu ben trai
+
+
+            #endregion
+
+            return View(currentUser);
+
+        }
+        [HttpGet]
+        public async Task<dynamic> GetPostsGlobal()
+        {
+            //var fjdsf = WebSecurity.CurrentUserId;
             using (db = new testEntities())
             {
+                var ret = (from stockRelate in await db.Posts.ToListAsync()                           
+                           orderby stockRelate.PostedDate descending
+                           select new
+                           {
+                               Message = stockRelate.ChartYN == true ? stockRelate.Message + "<br/><img src='" + stockRelate.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Message,
+                               //PostedBy = stockRelate.Post.PostedDate,
+                               PostedByName = stockRelate.UserLogin.UserNameCopy,
+                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
+                               PostedDate = stockRelate.PostedDate,
+                               PostId = stockRelate.PostId,
+                               StockPrimary = stockRelate.StockPrimary,
+                               Stm = stockRelate.NhanDinh,
+                               ChartYN = stockRelate.ChartYN
+                           }).Take(10).ToArray();
+                //var listStock = new List<string>();              
+                var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
+                return result;
+            }
+        }
+
+
+        public async Task<dynamic> GetPostsGlobalByFilter(string filter)
+        {
+            //var fjdsf = WebSecurity.CurrentUserId;
+            if (filter == "" || filter == "ALL")
+            {
+                var ret = (from stockRelate in await db.Posts.ToListAsync()                           
+                           orderby stockRelate.PostedDate descending
+                           select new
+                           {
+                               Message = stockRelate.ChartYN == true ? stockRelate.Message + "<br/><img src='" + stockRelate.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Message,
+                               //PostedBy = stockRelate.Post.PostedDate,
+                               PostedByName = stockRelate.UserLogin.UserNameCopy,
+                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
+                               PostedDate = stockRelate.PostedDate,
+                               PostId = stockRelate.PostId,
+                               StockPrimary = stockRelate.StockPrimary,
+                               Stm = stockRelate.NhanDinh,
+                               ChartYN = stockRelate.ChartYN
+                           }).Take(10).ToArray();
+                //var listStock = new List<string>();              
+                var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
+                return result;
+            }
+            if (filter == "CHA")
+            {
+                var ret = (from stockRelate in await db.Posts.ToListAsync()
+                           where stockRelate.ChartYN == true
+                           orderby stockRelate.PostedDate descending
+                           select new
+                           {
+                               Message = stockRelate.ChartYN == true ? stockRelate.Message + "<br/><img src='" + stockRelate.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Message,
+                               //PostedBy = stockRelate.Post.PostedDate,
+                               PostedByName = stockRelate.UserLogin.UserNameCopy,
+                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
+                               PostedDate = stockRelate.PostedDate,
+                               PostId = stockRelate.PostId,
+                               StockPrimary = stockRelate.StockPrimary,
+                               Stm = stockRelate.NhanDinh,
+                               ChartYN = stockRelate.ChartYN
+                           }).Take(10).ToArray();
+                //var listStock = new List<string>();              
+                var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
+                return result;
+            }
+            if (filter == "STM")
+            {
+                var ret = (from stockRelate in await db.Posts.ToListAsync()
+                           where stockRelate.NhanDinh > 0
+                           orderby stockRelate.PostedDate descending
+                           select new
+                           {
+                               Message = stockRelate.ChartYN == true ? stockRelate.Message + "<br/><img src='" + stockRelate.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Message,
+                               //PostedBy = stockRelate.Post.PostedDate,
+                               PostedByName = stockRelate.UserLogin.UserNameCopy,
+                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
+                               PostedDate = stockRelate.PostedDate,
+                               PostId = stockRelate.PostId,
+                               StockPrimary = stockRelate.StockPrimary,
+                               Stm = stockRelate.NhanDinh,
+                               ChartYN = stockRelate.ChartYN
+                           }).Take(10).ToArray();
+                //var listStock = new List<string>();              
+                var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
+                return result;
+            }
+            if (filter == "DIS")
+            {
+                 var ret = (from stockRelate in await db.Posts.ToListAsync()
+                           where stockRelate.NhanDinh !=1 && stockRelate.NhanDinh !=2  && stockRelate.ChartYN != true
+                           orderby stockRelate.PostedDate descending
+                           select new
+                           {
+                               Message = stockRelate.ChartYN == true ? stockRelate.Message + "<br/><img src='" + stockRelate.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Message,
+                               //PostedBy = stockRelate.Post.PostedDate,
+                               PostedByName = stockRelate.UserLogin.UserNameCopy,
+                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
+                               PostedDate = stockRelate.PostedDate,
+                               PostId = stockRelate.PostId,
+                               StockPrimary = stockRelate.StockPrimary,
+                               Stm = stockRelate.NhanDinh,
+                               ChartYN = stockRelate.ChartYN
+                           }).Take(10).ToArray();
+                //var listStock = new List<string>();              
+                var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
+                return result;
+            }
+            if (filter == "VIP")
+            {
+                var ret = (from stockRelate in await db.PinStocks.ToListAsync()                           
+                           orderby stockRelate.Post.PostedDate descending
+                           select new
+                           {
+                               Message = stockRelate.Post.ChartYN == true ? stockRelate.Post.Message + "<br/><img src='" + stockRelate.Post.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Post.Message,
+                               //PostedBy = stockRelate.Post.PostedDate,
+                               PostedByName = stockRelate.Post.UserLogin.UserNameCopy,
+                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
+                               PostedDate = stockRelate.Post.PostedDate,
+                               PostId = stockRelate.PostId,
+                               StockPrimary = stockRelate.Post.StockPrimary,
+                               Stm = stockRelate.Post.NhanDinh,
+                               ChartYN = stockRelate.Post.ChartYN
+                           }).Take(10).ToArray();
+                //var listStock = new List<string>();              
+                var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
+                return result;
+            }
+            if (filter == "PEF")
+            {
                 ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                var listPersonFollow = (from userFollow in db.FollowUsers.ToList()
+                                        where userFollow.UserId == currentUser.UserExtentLogin.Id
+                                        select userFollow.UserIdFollowed
+                                 ).ToList();
+                                    
 
-                #region Thong tin menu ben trai
-                // thong tin bai phim
-                var post = await db.Posts.CountAsync(p => p.PostedBy == currentUser.UserExtentLogin.Id);
-                var follow = await db.FollowUsers.CountAsync(f => f.UserId == currentUser.UserExtentLogin.Id);
-                var follower = await db.FollowUsers.CountAsync(f => f.UserIdFollowed == currentUser.UserExtentLogin.Id);
-
-
-                ViewBag.TotalPost = post;
-                ViewBag.Follow = follow;
-                ViewBag.Follower = follower;
-                ViewBag.CureentUserId = currentUser.UserExtentLogin.Id;
-                ViewBag.UserName = currentUser.UserName;
-                ViewBag.AvataImageUrl = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage + "?width=46&height=46&mode=crop"; 
-                ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataCover) == true ? ImageURLCoverDefault : ImageURLCover + currentUser.UserExtentLogin.AvataCover;
-                ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
-                // End thong tin menu ben trai
-                #endregion
-
-                #region danh muc co phieu vua moi xem duoc luu troong cookie
-               /* //var cookie = new HttpCookie("cookiename");
-
-                if (Request.Cookies["HotStockCookie" + currentUser.Id] == null)
-                {
-                    Response.Cookies.Clear();
-                    Response.Cookies["HotStockCookie" + currentUser.Id].Value = "";
-                    Response.Cookies["HotStockCookie" + currentUser.Id].Expires = DateTime.Now.AddDays(1);
-                }
-                string[] listHotStock = Request.Cookies["HotStockCookie" + currentUser.Id].Value.Split('|');
-
-                List<string> listHotStockToArray = new List<string>();
-                foreach (var item in listHotStock)
-                {
-                    listHotStockToArray.Add(item);
-                }
-                //var hotStockPrice = _stockRealtime.GetAllStocksTestList(listHotStockToArray).Result;
-
-                //ViewBag.HotStockPriceList = hotStockPrice.Count() == 0 ? new List<StockRealTime>() : hotStockPrice;
-                * */
-                #endregion
-
-                #region danh muc dau tu
-                var followstocks = await db.FollowStocks.Where(f => f.UserId == currentUser.UserExtentLogin.Id).ToListAsync();
-                var listfollowstocksString = (from sf in followstocks                                              
-                                             select sf.StockFollowed).ToList();
-
-                var DMDTShortName = (from fs in db.FollowStocks.ToList()
-                                           join s in db.StockCodes.ToList() on fs.StockFollowed equals s.Code
-                                           where listfollowstocksString.Contains(fs.StockFollowed)
-                                           select new StockDetail
-                                           {
-                                               Stock = fs.StockFollowed,
-                                               ShortName = s.ShortName
-                                           }).ToList();
-
-                ViewBag.HotStockDMDT =  DMDTShortName;//_stockRealtime.GetAllStocksTestList(listfollowstocksString).Result;                        
-                #endregion
-
-                #region nhung tin nam trong danh muc dau tu
-                
-                #endregion
-
-                return View(currentUser);
+                var ret = (from stockRelate in await db.Posts.ToListAsync()
+                           where listPersonFollow.Contains(stockRelate.PostedBy)                       
+                           orderby stockRelate.PostedDate descending
+                           select new
+                           {
+                               Message = stockRelate.ChartYN == true ? stockRelate.Message + "<br/><img src='" + stockRelate.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Message,
+                               //PostedBy = stockRelate.Post.PostedDate,
+                               PostedByName = stockRelate.UserLogin.UserNameCopy,
+                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
+                               PostedDate = stockRelate.PostedDate,
+                               PostId = stockRelate.PostId,
+                               StockPrimary = stockRelate.StockPrimary,
+                               Stm = stockRelate.NhanDinh,
+                               ChartYN = stockRelate.ChartYN
+                           }).Take(10).ToArray();                     
+                var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
+                return result;
             }
-        }
-
-       
-            
-
-        //
-        // GET: /MyProfile/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        //
-        // GET: /MyProfile/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        //
-        // POST: /MyProfile/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
+            if (filter == "STF")
             {
-                // TODO: Add insert logic here
+                ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                var listStock = (from followStock in db.FollowStocks.ToList()
+                                 where followStock.UserId == currentUser.UserExtentLogin.Id
+                                 select followStock.StockFollowed
+                                 ).ToList();
 
-                return RedirectToAction("Index");
+
+                var ret = (from stockRelate in await db.Posts.ToListAsync()
+                           where listStock.Contains(stockRelate.StockPrimary)
+                           orderby stockRelate.PostedDate descending
+                           select new
+                           {
+                               Message = stockRelate.ChartYN == true ? stockRelate.Message + "<br/><img src='" + stockRelate.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Message,
+                               //PostedBy = stockRelate.Post.PostedDate,
+                               PostedByName = stockRelate.UserLogin.UserNameCopy,
+                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
+                               PostedDate = stockRelate.PostedDate,
+                               PostId = stockRelate.PostId,
+                               StockPrimary = stockRelate.StockPrimary,
+                               Stm = stockRelate.NhanDinh,
+                               ChartYN = stockRelate.ChartYN
+                           }).Take(10).ToArray();
+                var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
+                return result;
             }
-            catch
+            else
             {
-                return View();
+                return null;
+            }
+
+
+        }
+        [HttpGet]
+        public async Task<dynamic> GetMorePostsGlobal(int skipposition, string filter)
+        {
+            //var fjdsf = WebSecurity.CurrentUserId;
+            if (filter == "" || filter == "ALL")
+            {
+                var ret = (from stockRelate in await db.Posts.ToListAsync()
+                           orderby stockRelate.PostedDate descending
+                           select new
+                           {
+                               Message = stockRelate.ChartYN == true ? stockRelate.Message + "<br/><img src='" + stockRelate.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Message,
+                               //PostedBy = stockRelate.Post.PostedDate,
+                               PostedByName = stockRelate.UserLogin.UserNameCopy,
+                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
+                               PostedDate = stockRelate.PostedDate,
+                               PostId = stockRelate.PostId,
+                               StockPrimary = stockRelate.StockPrimary,
+                               Stm = stockRelate.NhanDinh,
+                               ChartYN = stockRelate.ChartYN
+                           }).Skip(skipposition).Take(10).ToArray();
+                //var listStock = new List<string>();              
+                var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
+                return result;
+            }
+            if (filter == "CHA")
+            {
+                var ret = (from stockRelate in await db.Posts.ToListAsync()
+                           where stockRelate.ChartYN == true
+                           orderby stockRelate.PostedDate descending
+                           select new
+                           {
+                               Message = stockRelate.ChartYN == true ? stockRelate.Message + "<br/><img src='" + stockRelate.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Message,
+                               //PostedBy = stockRelate.Post.PostedDate,
+                               PostedByName = stockRelate.UserLogin.UserNameCopy,
+                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
+                               PostedDate = stockRelate.PostedDate,
+                               PostId = stockRelate.PostId,
+                               StockPrimary = stockRelate.StockPrimary,
+                               Stm = stockRelate.NhanDinh,
+                               ChartYN = stockRelate.ChartYN
+                           }).Skip(skipposition).Take(10).ToArray();
+                //var listStock = new List<string>();              
+                var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
+                return result;
+            }
+            if (filter == "STM")
+            {
+                var ret = (from stockRelate in await db.Posts.ToListAsync()
+                           where stockRelate.NhanDinh > 0
+                           orderby stockRelate.PostedDate descending
+                           select new
+                           {
+                               Message = stockRelate.ChartYN == true ? stockRelate.Message + "<br/><img src='" + stockRelate.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Message,
+                               //PostedBy = stockRelate.Post.PostedDate,
+                               PostedByName = stockRelate.UserLogin.UserNameCopy,
+                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
+                               PostedDate = stockRelate.PostedDate,
+                               PostId = stockRelate.PostId,
+                               StockPrimary = stockRelate.StockPrimary,
+                               Stm = stockRelate.NhanDinh,
+                               ChartYN = stockRelate.ChartYN
+                           }).Skip(skipposition).Take(10).ToArray();
+                //var listStock = new List<string>();              
+                var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
+                return result;
+            }
+            if (filter == "DIS")
+            {
+                var ret = (from stockRelate in await db.Posts.ToListAsync()
+                           where stockRelate.NhanDinh != 1 && stockRelate.NhanDinh != 2 && stockRelate.ChartYN != true
+                           orderby stockRelate.PostedDate descending
+                           select new
+                           {
+                               Message = stockRelate.ChartYN == true ? stockRelate.Message + "<br/><img src='" + stockRelate.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Message,
+                               //PostedBy = stockRelate.Post.PostedDate,
+                               PostedByName = stockRelate.UserLogin.UserNameCopy,
+                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
+                               PostedDate = stockRelate.PostedDate,
+                               PostId = stockRelate.PostId,
+                               StockPrimary = stockRelate.StockPrimary,
+                               Stm = stockRelate.NhanDinh,
+                               ChartYN = stockRelate.ChartYN
+                           }).Skip(skipposition).Take(10).ToArray();
+                //var listStock = new List<string>();              
+                var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
+                return result;
+            }
+            if (filter == "VIP")
+            {
+                var ret = (from stockRelate in await db.PinStocks.ToListAsync()
+                           orderby stockRelate.Post.PostedDate descending
+                           select new
+                           {
+                               Message = stockRelate.Post.ChartYN == true ? stockRelate.Post.Message + "<br/><img src='" + stockRelate.Post.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Post.Message,
+                               //PostedBy = stockRelate.Post.PostedDate,
+                               PostedByName = stockRelate.Post.UserLogin.UserNameCopy,
+                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
+                               PostedDate = stockRelate.Post.PostedDate,
+                               PostId = stockRelate.PostId,
+                               StockPrimary = stockRelate.Post.StockPrimary,
+                               Stm = stockRelate.Post.NhanDinh,
+                               ChartYN = stockRelate.Post.ChartYN
+                           }).Skip(skipposition).Take(10).ToArray();
+                //var listStock = new List<string>();              
+                var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
+                return result;
+            }
+            if (filter == "PEF")
+            {
+                ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                var listPersonFollow = (from userFollow in db.FollowUsers.ToList()
+                                        where userFollow.UserId == currentUser.UserExtentLogin.Id
+                                        select userFollow.UserIdFollowed
+                                 ).ToList();
+
+
+                var ret = (from stockRelate in await db.Posts.ToListAsync()
+                           where listPersonFollow.Contains(stockRelate.PostedBy)
+                           orderby stockRelate.PostedDate descending
+                           select new
+                           {
+                               Message = stockRelate.ChartYN == true ? stockRelate.Message + "<br/><img src='" + stockRelate.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Message,
+                               //PostedBy = stockRelate.Post.PostedDate,
+                               PostedByName = stockRelate.UserLogin.UserNameCopy,
+                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
+                               PostedDate = stockRelate.PostedDate,
+                               PostId = stockRelate.PostId,
+                               StockPrimary = stockRelate.StockPrimary,
+                               Stm = stockRelate.NhanDinh,
+                               ChartYN = stockRelate.ChartYN
+                           }).Skip(skipposition).Take(10).ToArray();
+                var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
+                return result;
+            }
+            if (filter == "STF")
+            {
+                ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                var listStock = (from followStock in db.FollowStocks.ToList()
+                                 where followStock.UserId == currentUser.UserExtentLogin.Id
+                                 select followStock.StockFollowed
+                                 ).ToList();
+
+
+                var ret = (from stockRelate in await db.Posts.ToListAsync()
+                           where listStock.Contains(stockRelate.StockPrimary)
+                           orderby stockRelate.PostedDate descending
+                           select new
+                           {
+                               Message = stockRelate.ChartYN == true ? stockRelate.Message + "<br/><img src='" + stockRelate.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Message,
+                               //PostedBy = stockRelate.Post.PostedDate,
+                               PostedByName = stockRelate.UserLogin.UserNameCopy,
+                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
+                               PostedDate = stockRelate.PostedDate,
+                               PostId = stockRelate.PostId,
+                               StockPrimary = stockRelate.StockPrimary,
+                               Stm = stockRelate.NhanDinh,
+                               ChartYN = stockRelate.ChartYN
+                           }).Skip(skipposition).Take(10).ToArray();
+                var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
+                return result;
+            }
+            else
+            {
+                return null;
             }
         }
 
-        //
-        // GET: /MyProfile/Edit/5
-        public ActionResult Edit(int id)
+
+
+        #region extention
+        protected override void Dispose(bool disposing)
         {
-            return View();
-        }
-
-        //
-        // POST: /MyProfile/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
+            if (disposing && UserManager != null)
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                UserManager.Dispose();
+                UserManager = null;
             }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /MyProfile/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /MyProfile/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            base.Dispose(disposing);
         }
     }
-        public class StockDetail
-        {
-            public string Stock { get; set; }
-            public string ShortName { get; set; }
-        }
+
+
+
+    public class StockDetail
+    {
+        public string Stock { get; set; }
+        public string ShortName { get; set; }
+    }
+#endregion
 }

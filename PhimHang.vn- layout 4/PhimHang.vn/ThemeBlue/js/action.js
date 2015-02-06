@@ -156,5 +156,10 @@ $(document).ready(function () {
         }
     });
 
-   
+    //Array.prototype.contains = function containsArray(needle) {
+    //    for (i in this) {
+    //        if (this[i] == needle) return true;
+    //    }
+    //    return false;
+    //}
 });

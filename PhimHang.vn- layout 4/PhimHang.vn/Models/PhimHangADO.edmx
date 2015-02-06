@@ -50,6 +50,7 @@
           <Property Name="StockCodePin" Type="varchar" MaxLength="16" />
           <Property Name="PostId" Type="bigint" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+          <Property Name="WhoPost" Type="int" />
         </EntityType>
         <EntityType Name="PostComments">
           <Key>
@@ -822,6 +823,7 @@
           <Property Name="PostId" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Post" Relationship="PHDBContext.FK_Posts_PinStock" FromRole="PinStock" ToRole="Post" />
           <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+          <Property Name="WhoPost" Type="Int32" />
         </EntityType>
         <Association Name="FK_Posts_PinStock">
           <End Type="PHDBContext.Post" Role="Post" Multiplicity="1" />
@@ -1007,6 +1009,7 @@
           <EntitySetMapping Name="PinStocks">
             <EntityTypeMapping TypeName="PHDBContext.PinStock">
               <MappingFragment StoreEntitySet="PinStock">
+                <ScalarProperty Name="WhoPost" ColumnName="WhoPost" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="PostId" ColumnName="PostId" />
                 <ScalarProperty Name="StockCodePin" ColumnName="StockCodePin" />

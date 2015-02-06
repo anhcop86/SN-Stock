@@ -65,7 +65,7 @@
                 <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('ALL')" href="#" class="active">Tất cả</a> </div>
                 <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('CHA')" href="#">Theo biểu đồ</a> </div>
                 <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('STM')" href="#">Theo nhận định</a></div>
-                <div class="toSpan filer-bar-item">
+                @*<div class="toSpan filer-bar-item">
                     <a id="btn-option-more" href="#" data-dropdown="#dropdown-2">
                         Tùy chọn khác
                         <i class="fa fa-caret-down"></i>
@@ -77,7 +77,7 @@
                             <li><a href="#5">Item 6</a></li>
                         </ul>
                     </div>
-                </div>
+                </div>*@
             </div>
         </div>
 
@@ -257,7 +257,7 @@
   
     function uploadPreview(files) {
         file = files[0];
-        console.log(file);
+        
         if (file.size > 3000000) {
             alert("File hình thật là lớn, nhỏ lại thôi?");
             return;
@@ -411,7 +411,7 @@
             if (charImage == null || charImage == '') {
                 charImage = "";
             }
-            console.log(charImage);
+            
             commenthub.server.addPost({ "Message": self.newMessage() }, '@ViewBag.StockCode', '@ViewBag.CureentUserId', '@ViewBag.UserName', '@ViewBag.AvataImageUrl', nhanDinh, charImage)
                 .fail(function (err) {
                     self
@@ -436,7 +436,7 @@
             if (checkLoadFirst == 1) {
                 filterhere = stringFilter;
                 self.posts([]);
-                
+                self.newPosts([]);
                     $.ajax({
                         cache: false,
                         type: "GET",
@@ -457,7 +457,7 @@
                     });
                 }
                 
-                console.log(filterhere);
+                
             }
            
         /////////////////////////////////////////////////////////////

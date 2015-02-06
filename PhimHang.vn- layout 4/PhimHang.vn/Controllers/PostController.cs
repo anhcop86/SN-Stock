@@ -301,9 +301,7 @@ namespace PhimHang.Controllers
         private const string ChartImageDirectory = "/Chart/";
         [HttpPost]
         public string UploadFileChart()
-        {
-            #region check valid file
-
+        {          
             var httpPostedFile = HttpContext.Request.Files["UploadedImage"];
             if (httpPostedFile != null)
             {
@@ -324,12 +322,6 @@ namespace PhimHang.Controllers
             {
                 return "error"; // return name file error
             }
-
-           
-
-
-            #endregion
-
         }
 
         public async Task<dynamic> GetPostsByStockByFilter(string stockCurrent, string filter)
