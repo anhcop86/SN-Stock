@@ -836,14 +836,14 @@ input[name=BullBear]{
 }*/
 .list-item-control-cm a > i,
 .list-item-control a > i{
-    color:#295477;
+    color:#FF7171;
     font-size:14px;
 }
 .list-item-control-cm a:hover,
 .list-item-control-cm a:hover > i,
 .list-item-control a:hover,
 .list-item-control a:hover > i{
-    color:#000;
+    color:#295477;
     background-color: #eee;
 }
 .danphim{

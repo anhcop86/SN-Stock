@@ -98,7 +98,7 @@
                             <span data-bind="html : Stm"></span>
                             <div class="list-item-status-content" data-bind="html : Message"></div>
                             <div class="list-item-control">
-                                <a class="button" href="#"><i class="fa fa-comments"></i></a>
+                                <a style="border-color:transparent; background-color:transparent" class="button" href="#"><i data-bind="text :notification, visible: notification() > 0" class="fa fa-comments"></i></a>
                                 <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
                                 <a class="button" href="#" title="Thích">Thích</a>
                                 <a class="button btnMore" href="#" title="..." data-dropdown="#cm-3">
@@ -140,7 +140,7 @@
                             <span data-bind="html : Stm"></span>
                             <div class="list-item-status-content" data-bind="html : Message"></div>
                             <div class="list-item-control">
-                                <a class="button" href="#"><i class="fa fa-comments"></i></a>
+                                <a style="border-color:transparent; background-color:transparent" class="button" href="#"><i data-bind="text :notification, visible: notification() > 0" class="fa fa-comments"></i></a>
                                 <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
                                 <a class="button" href="#" title="Thích">Thích</a>
                                 <a class="button btnMore" href="#" title="..." data-dropdown="#cm-3">
@@ -526,6 +526,7 @@
             $("#idPostMessenge").html(data.Message);
             $("#idStmDetail").html(data.Stm);            
             postidCurrent = data.PostId;
+            data.notification(0);
             // load 10 reply gan nhat
             $.ajax({
                 cache: false,
@@ -574,12 +575,29 @@
 
         // notification of reply
         commenthub.client.newReplyNoti = function (num, postid) {
-            var replysfind = ko.utils.arrayFirst(self.posts(), function (item) {
-                return item.PostId === postid;
-            });
-            if (replysfind != null) {
-                replysfind.notification(replysfind.notification() + num);
-            }
+            //
+                var replysfind = ko.utils.arrayFirst(self.posts(), function (item) {
+                    return item.PostId === postid;
+                });
+                if (replysfind != null) {
+                    replysfind.notification(replysfind.notification() + num);
+                }
+            //
+                var replysfindPin = ko.utils.arrayFirst(self.postPins(), function (item) {
+                    return item.PostId === postid;
+                });
+                if (replysfindPin != null) {
+                    replysfindPin.notification(replysfindPin.notification() + num);
+                }
+            //
+                var replysfindNewPost = ko.utils.arrayFirst(self.newPosts(), function (item) {
+                    return item.PostId === postid;
+                });
+                if (replysfindNewPost != null) {
+                    replysfindNewPost.notification(replysfindNewPost.notification() + num);
+                }
+            
+            
             //alert(self.notification());
         }
         // end

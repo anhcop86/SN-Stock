@@ -172,7 +172,7 @@ namespace PhimHang.Hubs
                     PostCommentsId = reply.PostCommentsId
                 };
                 await Clients.Caller.addReply(ret);
-                //await Clients.OthersInGroups(listStock).newReplyNoti(1, reply.PostedBy);
+                await Clients.AllExcept(Context.ConnectionId).newReplyNoti(1, reply.PostedBy);
             }
         }
 
