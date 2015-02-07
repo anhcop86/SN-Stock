@@ -286,7 +286,7 @@ ul.top-panel-left2 > li:not(:first-child):hover{
     color:#000; 
     /*    background-color: #F6FBF6;*/
     background-color: #DDDDDD;
-    border-radius:4px;
+    /*border-radius:4px;*/
     font-size: 12px;
 }
 .divBull.switch3button-select{
@@ -313,7 +313,7 @@ ul.top-panel-left2 > li:not(:first-child):hover{
     padding:5px; 
     border:1px solid #ddd; 
     color:#000; 
-    border-radius:4px;
+    /*border-radius:4px;*/
     /*    background-color: #FFF8E9;*/
     background-color: #DDDDDD;
     font-size: 12px;
@@ -567,14 +567,14 @@ a.follow-button-mini:hover{
     display:inline-block;      
     color:#2696C0;
     padding: 4px 9px 4px 9px;
-    border: 1px solid #E5F2F8;
+    border: 1px solid #328AC5;
 }
 .choose_file i{
     font-size:1.6rem;
 }
 .choose_file:hover{
-    border: 1px solid #B7DBE9;
-    border-radius: 4px;
+    /*border: 1px solid #B7DBE9;*/
+    /*border-radius: 4px;*/
 }
 .choose_file input[type="file"]{
     -webkit-appearance:none; 
@@ -618,8 +618,8 @@ input[name=BullBear]{
     color:#666;
 }
 .filer-bar-label{
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 11px;
+    /*font-weight: bold;*/
 }
 .filer-bar-item{
     font-size: 11px;
@@ -756,7 +756,7 @@ input[name=BullBear]{
     border: 1px solid #ddd;
 }
 .list-item-status{    
-    padding: 5px 5px 10px 5px;
+    padding: 5px 5px 4px 5px;
     position: relative;
     display: inline-block;
 }
@@ -811,7 +811,7 @@ input[name=BullBear]{
     font-size: 14px;
     line-height: 18px;
     letter-spacing: 0px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 .list-item-control-cm,
 .list-item-control{
@@ -1481,7 +1481,7 @@ button:disabled
      padding: 5px 15px 5px 15px;
     background-color: #B7DCEA;
     color:#EAF5F9!important;
-    border-radius: 5px;
+    /*border-radius: 5px;*/
     border-color: transparent;
 }
 
@@ -1491,6 +1491,6 @@ button
     padding: 5px 15px 5px 15px;
     background-color: #2696C0;
     color:#fff!important;
-    border-radius: 5px;
+    /*border-radius: 5px;*/
     border-color: transparent;
 }

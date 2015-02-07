@@ -43,7 +43,7 @@
         </div>
         <div class="bg-white" style="padding-top: 10px; padding-bottom: 3px;">
             <div class="filer-bar">
-                <div class="toSpan filer-bar-label">BỘ LỌC: </div>
+                <div class="toSpan filer-bar-label">Hiển thị theo: </div>
                 <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('ALL')" href="#" class="active">Tất cả</a> </div>
                 <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('CHA')" href="#">Biểu đồ</a> </div>
                 <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('STM')" href="#">Nhận định</a></div>
@@ -70,15 +70,15 @@
         <div class="list-status">
             <!--So bai phim moi-->
             <!---->
-            <div class="bg-white-custom">
+            <div class="bg-white-custom" data-bind="visible :newPosts().length > 0 ">
                 <div class="filer-new-status">
                     <div class="filer-new-status-button-bar">
                         <div class="text-label">
-                            <a href="#" style="font-size: 14px;" data-bind="click : loadNewPosts"> <strong data-bind="text: newPosts().length"></strong> bài phím mới </a>
+                            Hiển thị <a href="#" style="font-size: 14px;" data-bind=" click : loadNewPosts"> <strong data-bind="text: newPosts().length"></strong> bài phím mới </a>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> 
             <div data-bind="foreach : posts">
                 <div class="bg-white">
                     <div class="list-item-status" tabindex="-1" data-bind=" click: function(data, event) { $parent.detailPost(data, event); }">                        
@@ -111,8 +111,9 @@
                 </div>
             </div>
         </div>
+        <div class="ajaxLoadingImage" style="text-align:center"></div>
     </div>
-    <div id="ajaxLoadingImage"></div>
+    <div class="ajaxLoadingImage"></div>
     <!--post detail & reply-->
     <div id="dialog" title="Basic dialog">
         <div class="bg-white open">
@@ -558,6 +559,7 @@
             });
             if (replysfind != null) {
                 replysfind.notification(replysfind.notification() + num);
+                return;
             }
             //            
            
@@ -566,12 +568,14 @@
             });
             if (replysfindNewPost != null) {
                 replysfindNewPost.notification(replysfindNewPost.notification() + num);
+                return;
             }
             //alert(self.notification());
         }
         // end
         $(window).scroll(function () { // scroll endpage load more
             if ($(window).scrollTop() + $(window).height() == $(document).height() && checkLoadFirst == 1) {
+                $('.ajaxLoadingImage').html('<img src="/images/ajax-loader_cungphim.gif" />');
                 $.ajax({
                     cache: false,
                     type: "GET",
@@ -579,7 +583,7 @@
                     data: { skipposition: self.posts().length + self.newPosts().length, filter: filterhere },
                     beforeSend: function (xhr) {
                         //Add your image loader here
-                        $('.ajaxLoadingImage').html('<img src="/images/ajax-loader_cungphim.gif" />');
+                      
                     },
                     success: function (data) {
                         $('.ajaxLoadingImage').html('');

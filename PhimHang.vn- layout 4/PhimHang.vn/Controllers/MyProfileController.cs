@@ -86,7 +86,7 @@ namespace PhimHang.Controllers
                              orderby followStock.StockFollowed ascending
                              where followStock.UserId == currentUser.UserExtentLogin.Id
                              select followStock.StockFollowed
-                                ).ToList();
+                                ).Take(4).ToList();
 
             ViewBag.listStockFollow = listStock as List<string>;
             // End thong tin menu ben trai

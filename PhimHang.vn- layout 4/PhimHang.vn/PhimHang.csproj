@@ -353,7 +353,9 @@
     <Content Include="images\avatar\default_avatar_medium.jpg" />
     <Content Include="images\company_logo.jpg" />
     <Content Include="images\cover\cover-defaut.jpg" />
+    <Content Include="images\likecp.png" />
     <Content Include="images\Login_Image.jpg" />
+    <Content Include="images\pintab.png" />
     <Content Include="img\avata3.jpg" />
     <Content Include="img\avatar.jpg" />
     <Content Include="img\avatar_default.jpg" />
@@ -1149,7 +1151,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>1848</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
