@@ -281,7 +281,7 @@ ul.top-panel-left2 > li:not(:first-child):hover{
     font-weight: bold;
 }
 .divBull{
-    padding:5px; 
+    padding:7px; 
     border:1px solid #ddd; 
     color:#000; 
     /*    background-color: #F6FBF6;*/
@@ -295,7 +295,7 @@ ul.top-panel-left2 > li:not(:first-child):hover{
     border:1px solid #D9E5D9;
     font-family: Arial,sans-serif;    
     font-weight: bold;
-    padding: 6px 5px 5px 5px;
+    padding: 7px;
 }
 .divBull-cm{
     /*background: none repeat scroll 0px 0px #2CCD32;*/        
@@ -310,7 +310,7 @@ ul.top-panel-left2 > li:not(:first-child):hover{
     float:right;
 }
 .divBear{
-    padding:5px; 
+    padding:7px; 
     border:1px solid #ddd; 
     color:#000; 
     /*border-radius:4px;*/
@@ -324,7 +324,7 @@ ul.top-panel-left2 > li:not(:first-child):hover{
     border: 1px solid #EFE0E0;
     font-family: Arial,sans-serif;    
     font-weight: bold;
-    padding: 6px 5px 5px 5px;
+    padding: 7px;
     border-width: 0px;
     font-weight: bold;
 }
@@ -558,7 +558,7 @@ a.follow-button-mini:hover{
 /*status controler*/
 .status-control{
     float:left;
-    margin-top: 10px;
+    margin-top: 9px;
     width: 100%;
     display: none;
 }
@@ -566,7 +566,7 @@ a.follow-button-mini:hover{
     position:relative;
     display:inline-block;      
     color:#2696C0;
-    padding: 4px 9px 4px 9px;
+    padding: 5px 9px 5px 9px;
     border: 1px solid #328AC5;
 }
 .choose_file i{
@@ -585,7 +585,7 @@ a.follow-button-mini:hover{
     width: 40px;
 }
 #btnPhim{
-    padding: 5px 0px 5px 0px;
+    padding: 0px 0px 0px 0px;
 }
 #btnPhim > span{
     color:#999;
@@ -594,7 +594,7 @@ a.follow-button-mini:hover{
 }
 .switch3button{
     margin-left: 150px;
-    margin-top:3px;
+    margin-top:5px;
 }
 .button-phim.disable{
     padding: 5px 15px 5px 15px;
@@ -659,6 +659,7 @@ input[name=BullBear]{
     color:#666;
     line-height: 30px;
     margin-right: 10px;
+    font-weight:bold;
 }
 .filer-bar-dropdown{
     margin-top: 10px;    
@@ -776,7 +777,7 @@ input[name=BullBear]{
     /*border: 2px solid #ddd;*/
 }
 .avata-genaral-size img{
-    width:100%;
+    /*width:100%;*/
 }
 .list-item-detail{
     float: left;
@@ -827,7 +828,7 @@ input[name=BullBear]{
     font-size: 1.2rem;
 }
 .list-item-control a:first-child{
-    padding:2px 0px 2px 5px;
+    padding:2px 3px 2px 5px;
 }
 /*.list-item-control a{
     color:#000;
@@ -866,14 +867,14 @@ input[name=BullBear]{
 }
 .list-comment .avata-genaral-size,.avata-comment{
     float:left;
-    width: 46px;
-    height: 46px;
+    width: 50px;
+    height: 50px;
     margin: 5px;
     /*border-radius: 3px;*/
     /*border: 2px solid #ddd;*/
 }
 .avata-genaral-size img,.avata-comment img{
-    width:100%;
+    /*width:100%;*/
 }
 .input-comment-text{
     margin-top: 5px;    

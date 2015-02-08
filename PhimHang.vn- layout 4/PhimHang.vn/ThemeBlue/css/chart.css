@@ -21,13 +21,14 @@
 .chartImage {
  display:none;
 border: 1px solid while;
-height: 50px;
-width: 50px;
+/*height: 50px;
+width: 50px;*/
 position: absolute;
-left: 50px;
+left: 80px;
 text-align: center;
-top: -7px;
+
 z-index: 2;
+bottom:13px;
 }
 
 .chart-close{
@@ -38,6 +39,8 @@ right: 2px;
 top: -1px;
 z-index: 3;
 float: right;
+background-color: #328AC5;
+color: white;
 }
 
 .mb3-chart-thumb {
@@ -47,4 +50,18 @@ float: right;
     position: absolute;
     text-align: center;
     top: 0px;
+}
+
+.likeAndPin
+{
+     float:right;border-color:transparent; background-color:transparent
+
+}
+
+.logoutbutton {
+    padding: 5px 15px 5px 15px;
+    background-color: #2696C0;
+    color: #fff !important;
+    font-weight: bold;
+font-size: 12px;
 }

@@ -73,22 +73,24 @@ namespace PhimHang.Controllers
 
             ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : "/images/avatar/" + currentUser.UserExtentLogin.AvataImage;
             ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataCover) == true ? ImageURLCoverDefault : "/images/cover/" + currentUser.UserExtentLogin.AvataCover;
-            ViewBag.AvataImageUrl = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage + "?width=46&height=46&mode=crop";
-            //ViewBag.AvataImageUrl = ViewBag.AvataEmage;
+            ViewBag.AvataImageUrl = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + currentUser.UserExtentLogin.AvataImage + "?width=50&height=50&mode=crop";
+            
+            // cac post duoc loc tu danh muc nguoi theo doi => dc load o duoi client san
             var listPersonFollow = (from userFollow in db.FollowUsers.ToList()
                                     where userFollow.UserId == currentUser.UserExtentLogin.Id
                                     select userFollow.UserIdFollowed
                                  ).ToArray();
 
-            ViewBag.ListFollow = listPersonFollow as int[];
+            ViewBag.ListFollow = listPersonFollow as int[]; //client
 
+            // cac post dc loc tu danh muc dau tu => dc load o duoc client san
             var listStock = (from followStock in db.FollowStocks.ToList()
                              orderby followStock.StockFollowed ascending
                              where followStock.UserId == currentUser.UserExtentLogin.Id
                              select followStock.StockFollowed
-                                ).Take(4).ToList();
+                                ).ToList();
 
-            ViewBag.listStockFollow = listStock as List<string>;
+            ViewBag.listStockFollow = listStock as List<string>; // client
             // End thong tin menu ben trai
 
 

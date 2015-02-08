@@ -38,15 +38,22 @@
 
     <div id="top-banner" class="w100p bg-blue">
         <div class="f-left" id="top-banner-left">
-            <a href="/" class="logo" title="Cùng Phím">
+            <a href="/myprofile" class="logo" title="Cùng Phím">
                 <img src="/img/logo.png" alt="Cùng Phím">
             </a>
         </div>
         <div class="f-left" id="top-banner-center">
-            <div class="toSpan top-banner-icon f-left">
-                <a href="/myprofile"><i class="fa fa-home"></i></a>
-            </div>
-            <div class="toSpan top-banner-icon f-left"><a href="#"><i class="fa fa-comments-o"></i></a></div>
+            @{
+                if (User.Identity.IsAuthenticated)
+                {
+                    <div class="toSpan top-banner-icon f-left">
+                        <a href="/user/@ViewBag.UserName/tab/1"><i class="fa fa-home"></i></a>
+                    </div>
+                    <div class="toSpan top-banner-icon f-left">
+                        <a href="#"><i class="fa fa-comments-o"></i></a>
+                    </div>
+                }
+            }
             <div class="toSpan top-banner-icon f-left">
                 <a id="btn-config" href="#" data-dropdown="#dropdown-1">
                     <span style="padding-right: 5px;"><i class="fa fa-cog"></i></span>

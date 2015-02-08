@@ -27,7 +27,7 @@
                                     <i class="fa fa-camera"></i>
                                     <input id="idchartFileUpload" name="Select File" accept="image/*" type="file" onchange="uploadPreview(files)" />
                                     <div class="chartImage">
-                                        <a class="mb3-close chart-close" onclick="removeFileChart()" href="javascript:void(0)">X</a>
+                                        <a class="mb3-close chart-close" onclick="removeFileChart()" href="javascript:void(0)">x</a>
                                         <img class="mb3-chart-thumb" src="">
                                     </div>
                                 </div>
@@ -48,11 +48,12 @@
                             else
                             {
                                 // must login
+                                   
+                                    <div id="btnPhim" class="f-right">                                        
+                                        <a class="logoutbutton" href="/Account/Register?ReturnUrl=/Ticker/@ViewBag.StockCode">REGISTER</a>
+                                        <a class="logoutbutton" href="/Account/Login?ReturnUrl=/Ticker/@ViewBag.StockCode">LOGIN</a>
+                                    </div>
                                 
-                                <div style="float: right; text-align:left">
-                                    Để được đăng bài viết bạn vui lòng <a href="/Account/Login?ReturnUrl=/Ticker/@ViewBag.StockCode">Đăng nhập</a> <br />
-                                    Nếu chưa có tài khoản bạn vui lòng <a href="/Account/Register?ReturnUrl=/Ticker/@ViewBag.StockCode">Đăng ký</a>
-                                </div>
                             }
                         }
                     </div>
@@ -79,6 +80,7 @@
                     </div>
                 </div>*@
             </div>
+            <div class="ajaxLoadingInit" style="text-align:center"><img src="~/images/ajax-loader_cungphim.gif" /></div>
         </div>
 
         <div class="list-status">
@@ -101,7 +103,7 @@
                             </span>
                             <div class="list-item-status-content" data-bind="html : Message"></div>
                             <div class="list-item-control">
-                                <a style="border-color:transparent; background-color:transparent" class="button" href="#"><i data-bind="text :notification, visible: notification() > 0" class="fa fa-comments"></i></a>
+                                @*<a style="border-color:transparent; background-color:transparent" class="button" href="#"><i data-bind="text :notification, visible: notification() > 0" class="fa fa-comments"></i></a>*@
                                 <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
                                <a class="button" href="#" title="Thích">Chia sẽ</a>
                                 <a class="button btnMore" href="#" title="..." data-dropdown="#cm-3">
@@ -113,7 +115,7 @@
                                         <li><a href="#" title="Vi phạm">Vi phạm</a></li>
                                     </ul>
                                 </div>
-                                <span style="float:right;border-color:transparent; background-color:transparent">
+                                <span class="likeAndPin">
                                     <a class="button" href="#" title="Pin"><img src="/images/pintab.png" /></a>
                                     <a class="button" href="#" title="Pin"><img src="/images/likecp.png" /></a>
                                 </span>
@@ -127,7 +129,7 @@
                 <div class="filer-new-status">
                     <div class="filer-new-status-button-bar">
                         <div class="text-label">
-                            Hiển thị <a href="#" style="font-size: 14px;" data-bind=" click : loadNewPosts"> <strong data-bind="text: newPosts().length"></strong> bài phím mới </a>
+                            <a href="#" style="font-size: 14px;" data-bind=" click : loadNewPosts"> <strong data-bind="text: newPosts().length"></strong> bài phím mới </a>
                         </div>
                     </div>
                 </div>
@@ -147,7 +149,7 @@
                             <span data-bind="html : Stm"></span>
                             <div class="list-item-status-content" data-bind="html : Message"></div>
                             <div class="list-item-control">
-                                <a style="border-color:transparent; background-color:transparent" class="button" href="#"><i data-bind="text :notification, visible: notification() > 0" class="fa fa-comments"></i></a>
+                                @*<a style="border-color:transparent; background-color:transparent" class="button" href="#"><i data-bind="text :notification, visible: notification() > 0" class="fa fa-comments"></i></a>*@
                                 <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
                                 <a class="button" href="#" title="Thích">Chia sẽ</a>
                                 <a class="button btnMore" href="#" title="..." data-dropdown="#cm-3">
@@ -159,7 +161,7 @@
                                         <li><a href="#" title="Vi phạm">Vi phạm</a></li>
                                     </ul>
                                 </div>
-                                <span style="float:right;border-color:transparent; background-color:transparent">                                   
+                                <span class="likeAndPin">
                                     <a class="button" href="#" title="Thích"><img src="/images/likecp.png" /></a>
                                 </span>
                             </div>
@@ -212,17 +214,17 @@
                                     {
                                            <div id="btnPhim" class="f-right">
                                             <span data-bind="text : countReply"></span>
-                                            <button id="btAddPost" style="cursor:pointer" class="button-phim" data-bind=" enable: enablePhimHangReply , click : addReply ">PHÍM</button>
+                                            <button id="btAddPost" style="cursor:pointer" class="button-phim" data-bind=" enable: enablePhimHangReply , click : addReply ">Trả lời</button>
                                         </div>
                                     }
                                     else
                                     {
-                                        <div style="float: right; text-align:left">
-                                            Để được đăng bài viết bạn vui lòng <a style="color: #328AC5" href="/Account/Login?ReturnUrl=/Ticker/@ViewBag.StockCode">Đăng nhập</a> <br />
-                                            Nếu chưa có tài khoản bạn vui lòng <a style="color: #328AC5" href="/Account/Register?ReturnUrl=/Ticker/@ViewBag.StockCode">Đăng ký</a>
+                                        <div id="btnPhim" class="f-right">
+                                            <a class="logoutbutton" href="/Account/Register?ReturnUrl=/Ticker/@ViewBag.StockCode">REGISTER</a>
+                                            <a class="logoutbutton" href="/Account/Login?ReturnUrl=/Ticker/@ViewBag.StockCode">LOGIN</a>
                                         </div>
                                     }
-                                }
+}
                              
                             </div>
                         </form>
@@ -346,7 +348,7 @@
         self.PostedByAvatar = data.PostedByAvatar || "";
         self.PostedDate = getTimeAgo(data.PostedDate);
         self.StockPrimary = data.StockPrimary;
-        self.notification = ko.observable(0);
+        //self.notification = ko.observable(0);
         self.Stm = (data.Stm === 1 ? "<span class='divBear-cm'>Giảm</span>" : data.Stm === 2 ? "<span class='divBull-cm'>Tăng</span>" : "") || "";
         self.ChartYN = data.ChartYN || 0;
     }
@@ -534,10 +536,10 @@
             $("#idPostedDateDetail").html(data.PostedDate);
             $("#idPostNameDetail").html(data.PostedByName);
             $("#idImgPostDetail").attr('src', data.PostedByAvatar);
-            $("#idPostMessenge").html(data.Message);
+            $("#idPostMessenge").html(data.Message.replace("?width=215&height=120&mode=crop", "?maxwidth=475&maxheight=200&mode=crop"));//=200&s.grayscale=true|" 
             $("#idStmDetail").html(data.Stm);            
             postidCurrent = data.PostId;
-            data.notification(0);
+            //data.notification(0);
             // load 10 reply gan nhat
             $.ajax({
                 cache: false,
@@ -585,6 +587,7 @@
         });
 
         // notification of reply
+        /*
         commenthub.client.newReplyNoti = function (num, postid) {
             //
                 var replysfind = ko.utils.arrayFirst(self.posts(), function (item) {
@@ -613,7 +616,7 @@
             
             
             //alert(self.notification());
-        }
+        }*/
         // end
         $(window).scroll(function () { // scroll endpage load more
             if ($(window).scrollTop() + $(window).height() == $(document).height() && checkLoadFirst == 1) {
@@ -663,8 +666,9 @@
     var vmPost = new viewModel();
     ko.applyBindings(vmPost, document.getElementById("CommentForKoLoad"));
     $.connection.hub.start({ transport: ['webSockets', 'serverSentEvents', 'longPolling'] })
-                            .done(function () {
+                            .done(function () {                                
                                 vmPost.init();
+                                $('.ajaxLoadingInit').html('');
 
                             }).fail(function (fail) {
                                 console.log('Không thể mở kết nối đến server' + fail);
