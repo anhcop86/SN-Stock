@@ -430,7 +430,7 @@ ul.top-panel-left2 > li:not(:first-child):hover{
     color:#0877bf;
 }
 .second-left-banner{
-    margin-top: 10px;
+    margin-top: 0px;
     position: relative;
     background-color: #fff;
     padding: 5px;

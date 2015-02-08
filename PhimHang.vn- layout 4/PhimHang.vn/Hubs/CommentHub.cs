@@ -154,8 +154,8 @@ namespace PhimHang.Hubs
         {
             reply.CommentBy = currentUserId;
             reply.PostedDate = DateTime.Now;
-            var listStock = new List<string>();
-            listStock.Add(stockCurrent.ToUpper());
+            //var listStock = new List<string>();
+            //listStock.Add(stockCurrent.ToUpper());
             using (testEntities db = new testEntities())
             {
                 db.PostComments.Add(reply);
@@ -166,7 +166,7 @@ namespace PhimHang.Hubs
                     ReplyMessage = reply.Message,
                     //PostedBy = post.PostedBy,
                     ReplyByName = userName,
-                    ReplyByAvatar = avataImageUrl.Replace("amp;", ""),
+                    ReplyByAvatar = avataImageUrl + "?width=46&height=46&mode=crop",
                     ReplyDate = reply.PostedDate,
                     ReplyId = reply.PostCommentsId,
                     PostCommentsId = reply.PostCommentsId

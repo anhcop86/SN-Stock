@@ -150,8 +150,9 @@ namespace PhimHang.Controllers
             base.Dispose(disposing);
         }
         private const string ImageURLAvataDefault = "/img/avatar2.jpg";
-        private const string ImageURLAvata = "/images/avatar/";        
-        [AllowAnonymous]
+        private const string ImageURLAvata = "/images/avatar/";
+
+        /*[AllowAnonymous]
         [HttpGet]
         public async Task<dynamic> GetPostsByStock(string stockCurrent)
         {
@@ -177,7 +178,7 @@ namespace PhimHang.Controllers
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
                 return result;
             }
-        }
+        }*/
 
         [AllowAnonymous]
         [HttpGet]
@@ -244,7 +245,7 @@ namespace PhimHang.Controllers
                            orderby stockRelate.Post.PostedDate descending
                            select new
                            {
-                               Message = stockRelate.Post.Message,
+                               Message = stockRelate.Post.ChartYN == true ? stockRelate.Post.Message + "<br/><img src='" + stockRelate.Post.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Post.Message,
                                PostedByName = stockRelate.Post.UserLogin.UserNameCopy,
                                PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
                                PostedDate = stockRelate.Post.PostedDate,
@@ -262,7 +263,7 @@ namespace PhimHang.Controllers
                            orderby stockRelate.Post.PostedDate descending
                            select new
                            {
-                               Message = stockRelate.Post.Message,
+                               Message = stockRelate.Post.ChartYN == true ? stockRelate.Post.Message + "<br/><img src='" + stockRelate.Post.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Post.Message,
                                PostedByName = stockRelate.Post.UserLogin.UserNameCopy,
                                PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
                                PostedDate = stockRelate.Post.PostedDate,
@@ -280,7 +281,7 @@ namespace PhimHang.Controllers
                            orderby stockRelate.Post.PostedDate descending
                            select new
                            {
-                               Message = stockRelate.Post.Message,
+                               Message = stockRelate.Post.ChartYN == true ? stockRelate.Post.Message + "<br/><img src='" + stockRelate.Post.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Post.Message,
                                PostedByName = stockRelate.Post.UserLogin.UserNameCopy,
                                PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
                                PostedDate = stockRelate.Post.PostedDate,
@@ -323,7 +324,7 @@ namespace PhimHang.Controllers
                 return "error"; // return name file error
             }
         }
-
+        /*
         public async Task<dynamic> GetPostsByStockByFilter(string stockCurrent, string filter)
         {
             //var fjdsf = WebSecurity.CurrentUserId;
@@ -396,7 +397,7 @@ namespace PhimHang.Controllers
             }
                 
             
-        }
+        }*/
 
 
     }

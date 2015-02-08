@@ -396,8 +396,10 @@
             $.ajax({
                 cache: false,
                 type: "GET",
-                url: '@Url.Action("GetPostsByStock", "Post")',
-                data: { stockCurrent: '@ViewBag.StockCode' },
+                @*url: '@Url.Action("GetPostsByStock", "Post")',
+                data: { stockCurrent: '@ViewBag.StockCode' },*@
+                url: '@Url.Action("GetMorePostsByStock", "Post")',
+                data: { stockCurrent: '@ViewBag.StockCode', skipposition: 0, filter: "ALL" },
                 beforeSend: function (xhr) {
                     //Add your image loader here
                     //$('.ajaxLoadingImage').html('<img src="/images/ajax-loader_cungphim.gif" />');
@@ -453,8 +455,11 @@
                     $.ajax({
                         cache: false,
                         type: "GET",
-                        url: '@Url.Action("GetPostsByStockByFilter", "Post")',
-                        data: { stockCurrent: '@ViewBag.StockCode', filter: filterhere },
+                        @*url: '@Url.Action("GetPostsByStockByFilter", "Post")',
+                        data: { stockCurrent: '@ViewBag.StockCode', filter: filterhere },*@
+
+                        url: '@Url.Action("GetMorePostsByStock", "Post")',
+                        data: { stockCurrent: '@ViewBag.StockCode', skipposition: 0, filter: filterhere },
                         beforeSend: function (xhr) {
                             //Add your image loader here
                             //$('.ajaxLoadingImage').html('<img src="/images/ajax-loader_cungphim.gif" />');

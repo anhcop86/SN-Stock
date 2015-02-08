@@ -4,120 +4,136 @@
 
     <title>@ViewBag.Title</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Jquery-->
     <script src="~/Scripts/jquery-2.1.1.min.js"></script>
+    <!---->
+    <script src="~/ThemeBlue/js/jquery/jquery.js"></script>
+    <!--Knockout for refesh ui-->
     <script src="~/Scripts/knockout-3.2.0.js"></script>
     <script src="~/Scripts/knockout.mapping-latest.js"></script>
-    
+    <!---->
+    <!--For realtime-->
     <script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>
     <script src="~/signalr/hubs"></script>
-    <!--For desgin-->
+    <!---->
+    <!--For desgin layout-->
 
-
-    <link href="~/Scripts/jquery-ui/jquery-ui.css" rel="stylesheet" />
-
-    <link href="~/Content/font-awesome/css/font-awesome.css" rel="stylesheet" />
-
-    @*<script src="js/jquery/jquery.js"></script> da co tren min*@
-
-    <link href="~/Content/style.css" rel="stylesheet" />
-    <script src="~/Scripts/MyProfile/jquery-ui.min.js"></script>
-    <script src="~/Scripts/MyProfile/action.js"></script>
+    <link href="~/ThemeBlue/css/jquery-ui/jquery-ui.css" rel="stylesheet">
+    <!--for chart-->
+    <link href="~/ThemeBlue/css/chart.css" rel="stylesheet" type="text/css">
+    <!--End-->
+    <link href="~/ThemeBlue/css/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="~/ThemeBlue/css/jquery.dropdown.css" rel="stylesheet">
+    <link href="~/ThemeBlue/css/style.css" rel="stylesheet">
+    <script src="~/ThemeBlue/js/jquery/jquery-ui.js"></script>
+    <script src="~/ThemeBlue/js/jquery.dropdown.js"></script>
+    <script src="~/ThemeBlue/js/action.js"></script>
 
     <!-- End For desgin-->
+
+   
 </head>
-<body style="background-color: #f5f8fa;">
+<body style="background-color: #f5f8fa;">    
     <div id="top-banner" class="w100p bg-blue">
-        <div class="f-left" id="top-banner-left">
-            <a href="/MyProfile" class="logo">
-                Phím Hàng
+        <div class="f-left" id="top-banner-left">           
+            <a href="/myprofile" class="logo" title="Cùng Phím">
+                <img src="/img/logo.png?width=113&height=40&mode=crop" alt="Cùng Phím">
             </a>
         </div>
-        <div class="f-right" id="top-banner-right">
-            <div class="toSpan top-banner-icon f-right">
-                <a id="btn-config" href="#"><i class="fa fa-cog"></i></a>
-                <div class="dropdownlist">
-                    <div class="dropdown-item">
-                        <a href="/MyProfile"><span class="todiv"><i class="fa fa-adn"></i> Profile</span></a>
+        <div class="f-left" id="top-banner-center">
+            @{
+                if (User.Identity.IsAuthenticated)
+                {
+                    <div class="toSpan top-banner-icon f-left">
+                        <a href="/user/@User.Identity.Name/tab/1"><i class="fa fa-home"></i></a>
                     </div>
-                    <div class="dropdown-item">
-                        <a href="/Account/Profile"><span class="todiv"><i class="fa fa-cog"></i> Setting</span></a>
+                    <div class="toSpan top-banner-icon f-left">
+                        <a href="#"><i class="fa fa-comments-o"></i></a>
                     </div>
-                    <div class="dropdown-item">
-                        <a href="/Account/Manage"><span class="todiv"><i class="fa fa-cog"></i> Change password</span></a>
-                    </div>
-                    <div class="dropdown-item">
+                }
+            }
+            <div class="toSpan top-banner-icon f-left">
+                <a id="btn-config" href="#" data-dropdown="#dropdown-1">
+                    <span style="padding-right: 5px;"><i class="fa fa-cog"></i></span>
+                </a>
+                <div id="dropdown-1" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
+                    <ul class="dropdown-menu">
+                        <li><a href="/myprofile">Profile</a></li>
+                        <li><a href="#2">Setting</a></li>
+                        <li class="dropdown-divider"></li>
                         @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
                         {
                             @Html.AntiForgeryToken()
-                            <a href="javascript:document.getElementById('logoutForm').submit()"><span class="todiv"><i class="fa fa-sign-out"></i> Logout</span></a>
+                            <li><a href="javascript:document.getElementById('logoutForm').submit()">Logout</a></li>
                         }
-
-                    </div>
+                    </ul>
                 </div>
             </div>
+        </div>
+        <div class="f-right" id="top-banner-right">
             <div class="toSpan f-right">
-
-                @Html.Partial("_Partial_Area_Search_Profile")
-
-            </div>
-            <div class="toSpan top-banner-icon f-right"><a href="#"><i class="fa fa-envelope"></i></a></div>
-            <div class="toSpan top-banner-icon f-right">
-                <a href="#"><i class="fa fa-home"></i></a>
+                <form id="frmSearch">
+                    <span id="search_box_top">
+                        <input name="q" id="kq" placeholder="MÃ CỔ PHIẾU ($VNM) hoặc USERNAME" title="Search" autocomplete="off" type="text">
+                        <i class="fa fa-search"></i>
+                    </span>
+                </form>
             </div>
         </div>
     </div>
-
     <div class="menu-top-bar">
-        <div class="top-menu-2">
+        <div class="top-menu-2 top-menu-2-custom">
             <ul class="nav navbar-nav top-panel-left2">
                 <li class="hidden-xs">
-                    <a href="#" class="link-menu-top-active bold">
+                    <a href="/" class="link-menu-top-active bold">
                         CỔ PHIẾU NÓNG
                     </a>
                 </li>
                 <li class="hidden-xs">
-                    <a href="/Symbol/VNM">
+                    <a href="/Ticker/VNM">
                         $VNM
                     </a>
                 </li>
                 <li class="hidden-xs">
-                    <a href="/Symbol/GAS">
+                    <a href="/Ticker/GAS">
                         $GAS
                     </a>
                 </li>
                 <li class="hidden-xs">
-                    <a href="/Symbol/KLF">
-                        $KLF
+                    <a href="/Ticker/VND">
+                        $VND
                     </a>
                 </li>
                 <li class="hidden-xs">
-                    <a href="/Symbol/ACB">
-                        $ACB
+                    <a href="/Ticker/TIG">
+                        $TIG
                     </a>
                 </li>
                 <li class="hidden-xs">
-                    <a href="/Symbol/REE">
+                    <a href="/Ticker/REE">
                         $REE
                     </a>
                 </li>
                 <li class="hidden-xs">
-                    <a href="/Symbol/SSI">
+                    <a href="/Ticker/SSI">
                         $SSI
                     </a>
                 </li>
                 <li class="hidden-xs">
-                    <a href="/Symbol/HAG">
+                    <a href="/Ticker/ACB">
+                        $ACB
+                    </a>
+                </li>
+                <li class="hidden-xs">
+                    <a href="/Ticker/HAG">
                         $HAG
                     </a>
                 </li>
                 <li class="hidden-xs">
-                    <a href="/Symbol/KBC">
-                        $KBC
-                    </a>
-                </li>
-                <li class="hidden-xs">
-                    <a href="/Symbol/TIG">
-                        $TIG
+                    <a href="/Ticker/KDC">
+                        $KDC
                     </a>
                 </li>
             </ul>
@@ -126,8 +142,8 @@
                     <a href="index.html" class="top-menu-2-active">CHỈ SỐ</a>
                 </li>
                 <li class="hidden-xs">
-                    <a href="/Symbol/VnIndex">
-                        VNI
+                    <a href="index.html">
+                        <strong>VNI</strong>
                         <span class="bullish">
                             <!--<i class="fa  fa-sort-up "></i>-->
                             &nbsp;
@@ -152,7 +168,7 @@
                     </a>
                 </li>
                 <li class="hidden-xs">
-                    <a href="/Symbol/HNXIndex">
+                    <a href="index.html">
                         HNI
                         <span class="none-bullish-bearish">
                             <!--<i class="fa fa-unsorted"></i>-->
@@ -178,30 +194,24 @@
             </ul>
         </div>
     </div>
-
-    <div class="menu-top-bar2">
-        @Html.Partial("_Partial_Area_MenuBar_User")
+    <div style="margin-top: 80px;">
+        <div class="menu-top-bar2">
+            <div class="top-menu-2">
+                @Html.Partial("_Partial_Area_MenuBar_User")
+            </div>
+        </div>
+        <div class="content-main" style="margin-top: 0px;">
+            <div class="area-left">
+                @Html.Partial("_Partial_Area_Left_User")
+            </div>
+            <div class="area-center">
+                @RenderBody()
+            </div>
+            <div class="area-right">
+                @Html.Partial("_Partial_Area_Right_User1")
+            </div>
+        </div>
     </div>
-
-    <div class="content-main">
-
-        <div class="area-left">
-            @Html.Partial("_Partial_Area_Left_User")
-        </div>
-
-        <div class="area-center">
-            <!--render body here-->
-            @RenderBody()
-            <!--end render body here-->
-        </div>
-
-        <div class="area-right">
-            @Html.Partial("_Partial_Area_Right_User1")
-        </div>
-
-    </div>
-
-    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>

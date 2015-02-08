@@ -214,7 +214,7 @@ namespace PhimHang.Controllers
             }
             if (filter == "VIP")
             {
-                var ret = (from stockRelate in await db.PinStocks.ToListAsync()                           
+                var ret = (from stockRelate in await db.PinStocks.ToListAsync()
                            orderby stockRelate.Post.PostedDate descending
                            select new
                            {
@@ -290,8 +290,6 @@ namespace PhimHang.Controllers
             {
                 return null;
             }
-
-
         }
         [HttpGet]
         public async Task<dynamic> GetMorePostsGlobal(int skipposition, string filter)
