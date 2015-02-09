@@ -265,7 +265,7 @@
         self.ReplyId = data.ReplyId;
         self.ReplyMessage = data.ReplyMessage || "";
         self.ReplyByName = data.ReplyByName || "";
-        self.ReplyByAvatar = data.ReplyByAvatar || "";
+        self.ReplyByAvatar = data.ReplyByAvatar + '?width=46&height=46&mode=crop' || "";
         self.ReplyDate = getTimeAgo(data.ReplyDate);
         self.PostCommentsId = data.PostCommentsId;
     }
@@ -578,8 +578,10 @@
             //alert(self.notification());
         } */
         // end
+        var loadSlow = 'Y';
         $(window).scroll(function () { // scroll endpage load more
-            if ($(window).scrollTop() + $(window).height() == $(document).height() && checkLoadFirst == 1) {
+            if ($(window).scrollTop() + $(window).height() == $(document).height() && checkLoadFirst == 1 && loadSlow == 'Y') {
+                loadSlow = 'N';
                 $('.ajaxLoadingImage').html('<img src="/images/ajax-loader_cungphim.gif" />');
                 $.ajax({
                     cache: false,
@@ -596,6 +598,7 @@
                         $(mappedPosts).each(function (index, element) {
                             self.posts.push(element);
                         });
+                        loadSlow = 'Y';
                     }
                 })
             }

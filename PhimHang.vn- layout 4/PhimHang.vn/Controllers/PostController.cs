@@ -195,7 +195,7 @@ namespace PhimHang.Controllers
                            {
                                ReplyMessage = reply.Message,
                                ReplyByName = reply.UserLogin.UserNameCopy,
-                               ReplyByAvatar = string.IsNullOrEmpty(reply.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + reply.UserLogin.AvataImage + "?width=46&height=46&mode=crop",
+                               ReplyByAvatar = string.IsNullOrEmpty(reply.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + reply.UserLogin.AvataImage,
                                ReplyDate = reply.PostedDate,
                                ReplyId = reply.PostCommentsId,
                                PostCommentsId = reply.PostCommentsId

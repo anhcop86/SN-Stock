@@ -25,12 +25,10 @@ namespace PhimHang.Controllers
         }
        
         public UserManager<ApplicationUser> UserManager { get; private set; }
-
         private testEntities db = new testEntities();
         private const string ImageURLAvataDefault = "/img/avatar2.jpg";        
         private const string ImageURLAvata = "/images/avatar/";
-
-
+        
         public async Task<ActionResult> Index(string username, int tabid)
         {
 
@@ -48,11 +46,33 @@ namespace PhimHang.Controllers
                 ViewBag.CureentUserId = userLogin.UserExtentLogin.Id;
                 ViewBag.UserName = userLogin.UserName;
                 ViewBag.AvataImageUrl = string.IsNullOrEmpty(userLogin.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + userLogin.UserExtentLogin.AvataImage;
+
+                #region follow user
+                if (userLogin.UserExtentLogin.Id == currentUser.Id)
+                {
+                    ViewBag.CheckUserExist = "E";
+                }
+                else
+                {
+                    var checkUser = db.FollowUsers.Count(f => f.UserId == userLogin.UserExtentLogin.Id && f.UserIdFollowed == currentUser.Id);
+                    if (checkUser == 1)
+                    {
+                        ViewBag.CheckUserExist = "Y";
+                    }
+                    else
+                    {
+                        ViewBag.CheckUserExist = "N";
+                    }
+
+                }
+              
+                #endregion
             }
             else
             {
                 ViewBag.AvataEmage = ImageURLAvataDefault;
             }
+
             ViewBag.UserName = username;
             ViewBag.AvataImageUrlCurrent = string.IsNullOrEmpty(currentUser.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.AvataImage;
             ViewBag.UserId = currentUser.Id;
@@ -68,10 +88,13 @@ namespace PhimHang.Controllers
             #endregion
 
             ViewBag.TabId = tabid;
+            #region tab bai phim
             if (tabid == 1)
             {
 
             }
+            #endregion
+            #region tab danh muc dau tu
             else if (tabid == 2)
             {
                 // load danh muc dau tu
@@ -82,6 +105,8 @@ namespace PhimHang.Controllers
                 ViewBag.FollowStockList = followStockList.Result;
 
             }
+            #endregion
+            #region tab theo doi
             else if (tabid == 3)
             {
                 // load danh muc theo doi
@@ -98,6 +123,8 @@ namespace PhimHang.Controllers
                 ViewBag.FollowList = followList.Result;
 
             }
+            #endregion
+            #region tan duoc theo doi
             else if (tabid == 4)
             {
                 // load danh muc duoc theo doi
@@ -112,7 +139,7 @@ namespace PhimHang.Controllers
 
                 ViewBag.FollowerList = followerList.Result;
             }
-
+            #endregion
             return View(currentUser);
 
 

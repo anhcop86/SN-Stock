@@ -1,6 +1,6 @@
 ﻿<div class="cp-banner">
     <div class="cp-top">
-        <span>@ViewBag.StockCode </span> <br />
+        <span>@ViewBag.StockCode </span> <br />        
         <span class="bullish cp-index">
             999(+2)
         </span>
@@ -9,12 +9,60 @@
         <h4>@ViewBag.StockName</h4>
         <div class="cp-detail-sub">
             <div class="f-left">
-                <div style="margin-top: 5px;"><b>Bài Phím:</b> 99999</div>
-                <div><b>Được theo dõi:</b> 99999</div>
+                <div style="margin-top: 5px;margin-bottom:5px"><b>Bài Phím:</b> @ViewBag.PostNumber</div>
+                <div><b>Được theo dõi:</b> @ViewBag.StockFollowNumber</div>
             </div>
             <div class="cp-detail-sub-fl f-right">                
-                <a href="#" class="button-flow"><i class="fa fa-plus"></i>Theo dõi</a>
+                @{
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        if (ViewBag.CheckStockExist == "Y")
+                        {
+                            <a href="#" class="button-flow"><i class="fa fa-minus"></i>Đang theo dõi</a>
+                        }
+                        else
+                        {
+                            <a href="#" class="button-flow"><i class="fa fa-plus"></i>Theo dõi</a>
+                        }
+                    }
+                    else
+                    {
+                        <a href="/Account/Login?ReturnUrl=/Ticker/@ViewBag.StockCode" class="button-flow"><i class="fa fa-plus"></i>Theo dõi</a>
+
+                    }                    
+                }
+                
             </div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+        $(document).ready(function () {
+            $(".button-flow").click(function () {
+                var stock = $('#stockHidenPage').val();
+                $.ajax({
+                    cache: false,
+                    type: "POST",
+                    url: '@Url.Action("Create", "FollowStock")',
+                    data: { stock: stock},
+                    beforeSend: function (xhr) {
+                        //Add your image loader here
+
+                    },
+                    success: function (data) {
+                        if (data == "A") {
+                            alert('Thêm vào danh sách so sánh thành công');
+                            $(".button-flow").html("<i class='fa fa-minus'></i>Đang theo dõi");
+                        }
+                        else if (data == "R") {
+                            alert('Loại khỏi danh sách so sánh thành công');
+                            $(".button-flow").html("<i class='fa fa-plus'></i>Theo dõi");
+                        } else {
+                            alert('Lỗi');
+                        }
+                    }
+                })
+            });
+        });
+    </script>
