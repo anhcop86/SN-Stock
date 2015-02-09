@@ -1,0 +1,16 @@
+﻿.NotificationCenter{
+    height:25px;
+    width: 100%;
+    top:0px;
+    text-align: center;
+    position:fixed;
+    background:#e5f2f8;
+    color:green;
+    overflow:hidden;
+    z-index:10003;
+    display:none;
+}
+
+#textNoti{
+    top:3px;
+}

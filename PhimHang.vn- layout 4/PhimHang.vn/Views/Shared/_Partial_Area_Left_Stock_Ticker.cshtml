@@ -38,7 +38,11 @@
 </div>
 
 <script type="text/javascript">
-        $(document).ready(function () {
+    $(document).ready(function () {
+        function showNotification(text) {
+            $('#textNoti').html(text);
+            $('.NotificationCenter').fadeIn(300).fadeOut(3000);
+        }
             $(".button-flow").click(function () {
                 var stock = $('#stockHidenPage').val();
                 $.ajax({
@@ -52,11 +56,12 @@
                     },
                     success: function (data) {
                         if (data == "A") {
-                            alert('Thêm vào danh sách so sánh thành công');
+                            
+                            showNotification('Đã thêm vào danh mục theo dõi');
                             $(".button-flow").html("<i class='fa fa-minus'></i>Đang theo dõi");
                         }
                         else if (data == "R") {
-                            alert('Loại khỏi danh sách so sánh thành công');
+                            showNotification('Đã loại khỏi danh mục theo dõi');
                             $(".button-flow").html("<i class='fa fa-plus'></i>Theo dõi");
                         } else {
                             alert('Lỗi');

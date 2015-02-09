@@ -33,9 +33,12 @@
 
 
     <!-- End For desgin-->
+    <link href="~/ThemeBlue/css/Notification.css" rel="stylesheet" />
 </head>
 <body>
-
+    <div class="NotificationCenter">
+        <span id="textNoti"></span>
+    </div>
     <div id="top-banner" class="w100p bg-blue">
         <div class="f-left" id="top-banner-left">
             <a href="/myprofile" class="logo" title="Cùng Phím">
@@ -63,10 +66,19 @@
                         <li><a href="/myprofile">Profile</a></li>
                         <li><a href="#2">Setting</a></li>
                         <li class="dropdown-divider"></li>
-                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-                        {
-                            @Html.AntiForgeryToken()
-                            <li><a href="javascript:document.getElementById('logoutForm').submit()">Logout</a></li>
+                        @{
+                            if (User.Identity.IsAuthenticated)
+                            {
+                                @: @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Logout</a></li>
+                                }
+                                                     }
+                            else
+                            {
+                                <li><a href="/Account/Login">Login</a></li>
+                            }
                         }
                     </ul>
                 </div>

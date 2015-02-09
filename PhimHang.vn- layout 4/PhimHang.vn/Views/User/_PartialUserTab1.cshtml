@@ -201,7 +201,10 @@
 <!-- Comment-->
 
 <script type="text/javascript">
-
+    function showNotification(text) {
+        $('#textNoti').html(text);
+        $('.NotificationCenter').fadeIn(300).fadeOut(4000);
+    }
     function removeFileChart() {
         if(confirm("Bạn muốn xóa file hình này?"))
         {
@@ -337,33 +340,16 @@
                 }
             });
         }
-   /////////////////////////////////////////////////////
-        self.addPost = function () { // them post
-            self.error(null);
-            $('#btAddPost').attr("disabled", true); // disble ngay khong de click them
-            var nhanDinh = $("input:radio[name='BullBear']:checked").val();
-            if (nhanDinh == null) {
-                nhanDinh = 0;
-            }
-            var charImage = $('.mb3-chart-thumb').attr("src");
-            if (charImage == null || charImage == '') {
-                charImage = "";
-            }
-
-            commenthub.server.addPost({ "Message": self.newMessage() }, '@ViewBag.StockCode', '@ViewBag.CureentUserId', '@ViewBag.UserName', '@ViewBag.AvataImageUrl', nhanDinh, charImage)
-                .fail(function (err) {
-                    self
-                        .error(err);
-                });
-            checkpost = 'Y';
-            self.newMessage('$@ViewBag.StockCode ');//
-            setDefaultAfterPost();
-        }
+   /////////////////////////////////////////////////////        
 
         self.addReply = function () { // them tra loi
-            commenthub.server.addReply({ "Message": self.newReply(), "PostedBy": postidCurrent },'USER',   '@ViewBag.CureentUserId', '@ViewBag.UserName', '@ViewBag.AvataImageUrl').fail(function (err) {
-                self.error(err);
-            });
+            commenthub.server.addReply({ "Message": self.newReply(), "PostedBy": postidCurrent }, 'USER', '@ViewBag.CureentUserId', '@ViewBag.UserName', '@ViewBag.AvataImageUrl')
+                   .done(function () {
+                       showNotification('Bạn đã trả lời thành công!');
+                   })
+                .fail(function (err) {
+                    self.error(err);
+                });
             checkreply = 'Y';
             self.newReply('');
         }
