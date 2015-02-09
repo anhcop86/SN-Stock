@@ -118,36 +118,36 @@ $(document).ready(function () {
  
 
 
-    $("#tab-baiphim").click(function () {
-        if (!$(this).hasClass('category-tab-active')) {
-            $('.category-tab-active').removeClass('category-tab-active');
-            $(this).addClass('category-tab-active');
-            $('#page3-tab1').show();
-            $('#page3-tab2').hide();
-            $('#page3-tab3').hide();
-        }
-        return false;
-    });
-    $("#tab-DauTu").click(function () {
-        if (!$(this).hasClass('category-tab-active')) {
-            $('.category-tab-active').removeClass('category-tab-active');
-            $(this).addClass('category-tab-active');
-            $('#page3-tab1').hide();
-            $('#page3-tab2').show();
-            $('#page3-tab3').hide();
-        }
-        return false;
-    });
-    $("#tab-TheoDoi").click(function () {
-        if (!$(this).hasClass('category-tab-active')) {
-            $('.category-tab-active').removeClass('category-tab-active');
-            $(this).addClass('category-tab-active');
-            $('#page3-tab1').hide();
-            $('#page3-tab2').hide();
-            $('#page3-tab3').show();
-        }
-        return false;
-    });
+    //$("#tab-baiphim").click(function () {
+    //    if (!$(this).hasClass('category-tab-active')) {
+    //        $('.category-tab-active').removeClass('category-tab-active');
+    //        $(this).addClass('category-tab-active');
+    //        //$('#page3-tab1').show();
+    //        //$('#page3-tab2').hide();
+    //        //$('#page3-tab3').hide();
+    //    }
+    //    //return false;
+    //});
+    //$("#tab-DauTu").click(function () {
+    //    if (!$(this).hasClass('category-tab-active')) {
+    //        $('.category-tab-active').removeClass('category-tab-active');
+    //        $(this).addClass('category-tab-active');
+    //        //$('#page3-tab1').hide();
+    //        //$('#page3-tab2').show();
+    //        //$('#page3-tab3').hide();
+    //    }
+    //    //return false;
+    //});
+    //$("#tab-TheoDoi").click(function () {
+    //    if (!$(this).hasClass('category-tab-active')) {
+    //        $('.category-tab-active').removeClass('category-tab-active');
+    //        $(this).addClass('category-tab-active');
+    //        //$('#page3-tab1').hide();
+    //        //$('#page3-tab2').hide();
+    //        //$('#page3-tab3').show();
+    //    }
+    //    //return false;
+    //});
     $(".filer-bar-item a").on('click', function (e) {
         $(".filer-bar-item a").removeClass("active");
         $(this).addClass("active");

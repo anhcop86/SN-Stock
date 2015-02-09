@@ -11,16 +11,16 @@
     {
         @Html.Partial("_PartialUserTab1")
     }
-     if(ViewBag.TabId == 2)
+    else if(ViewBag.TabId == 2)
     {
         @Html.Partial("_PartialUserTab2")
     }
-     if(ViewBag.TabId == 3)
+    else if(ViewBag.TabId == 3)
     {
         @Html.Partial("_PartialUserTab3")
     }
-     if(ViewBag.TabId == 4)
+    else
     {
         @Html.Partial("_PartialUserTab4")
     }
-}
+    }

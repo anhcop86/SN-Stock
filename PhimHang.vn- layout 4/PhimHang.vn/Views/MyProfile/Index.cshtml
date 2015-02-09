@@ -318,9 +318,9 @@
             // lay danh muc thuong
             $.ajax({
                 cache: false,
-                type: "GET",
-                url: '@Url.Action("GetPostsGlobal", "MyProfile")',
-                data: { stockCurrent: '@ViewBag.StockCode' },
+                type: "GET",              
+                url: '@Url.Action("GetMorePostsGlobal", "MyProfile")',
+                data: { skipposition: 0, filter: "ALL" },
                 beforeSend: function (xhr) {
                     //Add your image loader here
                     //$('.ajaxLoadingImage').html('<img src="/images/ajax-loader_cungphim.gif" />');
@@ -376,9 +376,9 @@
                 document.title = "Nhà của tôi!";
                 $.ajax({
                     cache: false,
-                    type: "GET",
-                    url: '@Url.Action("GetPostsGlobalByFilter", "MyProfile")',
-                    data: { filter: filterhere },
+                    type: "GET",              
+                    url: '@Url.Action("GetMorePostsGlobal", "MyProfile")',
+                    data: { skipposition: 0, filter: filterhere },
                     beforeSend: function (xhr) {
                         //Add your image loader here
                         //$('.ajaxLoadingImage').html('<img src="/images/ajax-loader_cungphim.gif" />');

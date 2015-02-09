@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PhimHang.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace PhimHang.Controllers
 {
     public class SearchController : Controller
     {
+        private testEntities db = new testEntities();
         //
         // GET: /Search/
         public ActionResult Index(string q)
@@ -18,8 +20,21 @@ namespace PhimHang.Controllers
             }
             else
             {
-                return RedirectToAction("", "Symbol/" + q.ToUpper());
+                //var search = db.StockCodes.FirstOrDefault(s => s.Code.StartsWith(q.Replace("$", ""))).Code;
+                var search = (from sc in db.StockCodes
+                             where sc.Code.StartsWith(q.Replace("$", ""))
+                             select sc.Code).FirstOrDefault();
+                if (search != null)
+                {
+                    return RedirectToAction("/" + search, "Ticker");    
+                }
+                else
+                {
+                    return RedirectToAction("Helper");
+                }
+                
             }
+
         }
         public ActionResult Helper()
         {

@@ -1,57 +1,7 @@
 ﻿
 <div id="CommentForKoLoad">
     <div class="area-center">
-        <div id="top-status-box" class="bg-white status-box">
-            <div class="avata-comment">
-                <img src="@ViewBag.AvataEmage?width=35&height=35&mode=crop" class="img-rounded" alt="avatar">
-            </div>
-            <div class="input-status">
-                <form id="frmStatus" name="frmStatus" method="GET">
-                    <div id="input-status-text" class="input-status-text">
-                        <textarea data-bind="value : newMessage, valueUpdate : 'afterkeydown' , limitCharacters : 140" class="status-cm" name="status" rows="5" placeholder="$Mã cổ phiếu ($VNM, $GAS); Username" id="status" title="Search" autocomplete="off" rows="5"></textarea>
-                    </div>
-                    <div class="status-control">
-                        @{
-                            if (User.Identity.IsAuthenticated)
-                            {
-
-                                <div class="choose_file f-left">
-                                    <i class="fa fa-camera"></i>
-                                    <input id="idchartFileUpload" name="Select File" accept="image/*" type="file" onchange="uploadPreview(files)" />
-                                    <div class="chartImage">
-                                        <a class="mb3-close chart-close" onclick="removeFileChart()" href="javascript:void(0)">x</a>
-                                        <img class="mb3-chart-thumb" src="">
-                                    </div>
-                                </div>
-
-                                <div id="radio" class="switch3button f-left">
-                                    <input type="radio" id="radio1" name="BullBear" value="2">
-                                    <label for="radio1" class="divBull ">Tăng</label>
-                                    <input type="radio" id="radio3" name="BullBear" value="1">
-                                    <label for="radio3" class="divBear">Giảm</label>
-
-
-                                </div>
-                                <div id="btnPhim" class="f-right">
-                                    <span data-bind="text : count"></span>
-                                    <button id="btAddPost" style="cursor:pointer" class="button-phim" data-bind="click : addPost,  enable: enablePhimHang ">PHÍM</button>
-                                </div>
-                            }
-                            else
-                            {
-                                // must login
-
-                                <div id="btnPhim" class="f-right">
-                                    <a class="logoutbutton" href="/Account/Register?ReturnUrl=/Ticker/@ViewBag.StockCode">REGISTER</a>
-                                    <a class="logoutbutton" href="/Account/Login?ReturnUrl=/Ticker/@ViewBag.StockCode">LOGIN</a>
-                                </div>
-
-                            }
-                        }
-                    </div>
-                </form>
-            </div>
-        </div>
+        
         <div class="bg-white" style="padding-top: 10px; padding-bottom: 3px;">
             <div class="filer-bar">
                 <div class="toSpan filer-bar-label">Hiển thị theo: </div>

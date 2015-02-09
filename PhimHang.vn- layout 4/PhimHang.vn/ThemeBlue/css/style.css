@@ -1006,16 +1006,17 @@ a.follow-button1:hover{
     font-size: 1.2rem;
 }
 .cp-top{
+    text-align:center;
     margin-bottom: 5px;
     overflow: hidden;
     width: 100%;
-    padding: 15px 0px 15px 20px;
+    padding: 15px 0px 5px 20px;
     font-size: 4.2rem; 
     font-weight: bold; 
     line-height: 30px;
 }
 .cp-index{
-    vertical-align: top; 
+    /*vertical-align: top;*/ 
     line-height: 20px; 
     font-weight: normal; 
     font-size: 3.0rem;

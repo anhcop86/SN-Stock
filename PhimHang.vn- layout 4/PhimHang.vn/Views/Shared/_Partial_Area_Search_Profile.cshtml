@@ -1,5 +1,5 @@
 ﻿
-<form id="frmSearch" action="@Url.Action("","Search")" method="get">
+@*<form id="frmSearch" action="@Url.Action("","Search")" method="get">
     <span id="search_box_top">
         <input name="q" id="searchUserNameOrStock" placeholder="MÃ CỔ PHIẾU ($VNM) hoặc USERNAME" title="Search" autocomplete="off" type="text">
         <input type="submit" style="display:none" />
@@ -13,10 +13,15 @@
             Nhập $ cho cổ phiếu hoặc <br />
             Nhập $ cho tìm kiếm user
         </p>
-        @*<p>
+        <p>
               Currently using <b>36% of your storage space</b>.
             </p>
-        *@
-    </div>
+        
+    </div>*@
 
- 
+ <form id="frmSearch" action="@Url.Action("","Search")" method="get">
+    <span id="search_box_top">
+        <input name="q" id="kq" placeholder="MÃ CỔ PHIẾU ($VNM) hoặc USERNAME" title="Search" autocomplete="off" type="text">
+        <i class="fa fa-search"></i>
+    </span>
+</form>

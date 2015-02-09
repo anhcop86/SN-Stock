@@ -1,115 +1,31 @@
-﻿<div id="page3-tab2" class="banner-right-first" style="display: none;">
+﻿<div id="page3-tab2" class="banner-right-first">
     <div class="banner-header-white banner-header-white-page3">Danh mục đầu tư</div>
-    <div class="banner-item1">
-        <div class="item-left">
-            <a href="#">$GAS<br><span>PV GAS</span></a>
-        </div>
-        <div class="item-right item-right-trang3-tab2">
-            <strong>108.66</strong>
-            <span class="bearish">
-                <i class="fa fa-sort-down"></i><br>
-                <span class="top-menu-point">
-                    0.35 (0,32%)
-                </span>
-            </span>
-        </div>
-    </div>
-    <div class="banner-item1">
-        <div class="item-left">
-            <a href="#">$GAS<br><span>PV GAS</span></a>
-        </div>
-        <div class="item-right item-right-trang3-tab2">
-            <strong>108.66</strong>
-            <span class="bullish">
-                <i class="fa fa-sort-up"></i><br>
-                <span class="top-menu-point">
-                    0.35 (0,32%)
-                </span>
-            </span>
-        </div>
-    </div>
-    <div class="banner-item1">
-        <div class="item-left">
-            <a href="#">$GAS<br><span>PV GAS</span></a>
-        </div>
-        <div class="item-right item-right-trang3-tab2">
-            <strong>108.66</strong>
-            <span class="bearish">
-                <i class="fa fa-sort-down"></i><br>
-                <span class="top-menu-point">
-                    0.35 (0,32%)
-                </span>
-            </span>
-        </div>
-    </div>
-    <div class="banner-item1">
-        <div class="item-left">
-            <a href="#">$VAV<br><span>PV GAS</span></a>
-        </div>
-        <div class="item-right item-right-trang3-tab2">
-            <strong>108.66</strong>
-            <span class="bullish">
-                <i class="fa fa-sort-up"></i><br>
-                <span class="top-menu-point">
-                    0.35 (0,32%)
-                </span>
-            </span>
-        </div>
-    </div>
-    <div class="banner-item1">
-        <div class="item-left">
-            <a href="#">$JAV<br><span>Japan anti virut</span></a>
-        </div>
-        <div class="item-right item-right-trang3-tab2">
-            <strong>108.66</strong>
-            <span class="bearish">
-                <i class="fa fa-sort-down"></i><br>
-                <span class="top-menu-point">
-                    0.35 (0,32%)
-                </span>
-            </span>
-        </div>
-    </div>
-    <div class="banner-item1">
-        <div class="item-left">
-            <a href="#">$VNG<br><span>Vinagame</span></a>
-        </div>
-        <div class="item-right item-right-trang3-tab2">
-            <strong>108.66</strong>
-            <span class="bearish">
-                <i class="fa fa-sort-down"></i><br>
-                <span class="top-menu-point">
-                    0.35 (0,32%)
-                </span>
-            </span>
-        </div>
-    </div>
-    <div class="banner-item1">
-        <div class="item-left">
-            <a href="#">$FGF<br><span>Cùng Phím</span></a>
-        </div>
-        <div class="item-right item-right-trang3-tab2">
-            <strong>108.66</strong>
-            <span class="bullish">
-                <i class="fa fa-sort-up"></i><br>
-                <span class="top-menu-point">
-                    0.35 (0,32%)
-                </span>
-            </span>
-        </div>
-    </div>
-    <div class="banner-item1">
-        <div class="item-left">
-            <a href="#">$VOV<br><span>VOV Giao Thông</span></a>
-        </div>
-        <div class="item-right item-right-trang3-tab2">
-            <strong>108.66</strong>
-            <span class="bullish">
-                <i class="fa fa-sort-up"></i><br>
-                <span class="top-menu-point">
-                    0.35 (0,32%)
-                </span>
-            </span>
-        </div>
-    </div>
+    @{
+        foreach (var item in ViewBag.FollowStockList as List<string>)
+        {
+             <div class="banner-item1">
+                <div class="item-left">
+                    <a href="#">$@item<br><span>PV GAS</span></a>
+                </div>
+                <div class="item-right item-right-trang3-tab2">
+                    <strong>108.66</strong>
+                    <span class="bearish">
+                        <i class="fa fa-sort-down"></i><br>
+                        <span class="top-menu-point">
+                            0.35 (0,32%)
+                        </span>
+                    </span>
+                </div>
+            </div>
+        }
+    }
+   
+    
+    
 </div>
+<script>
+    $(function () {
+        $('.category-tab-active').removeClass('category-tab-active');
+        $('#tab-DauTu').addClass('category-tab-active');
+    });
+    </script>

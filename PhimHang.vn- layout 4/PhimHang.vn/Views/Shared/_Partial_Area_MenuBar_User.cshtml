@@ -39,25 +39,25 @@
 <div class="area-left"></div>
 <div class="area-center">
     <div class="category-top">
-        <a href="/user/@Model.UserNameCopy/tab/1" id="tab-baiphim" class="category-tab category-tab-active">
+        <a href="/user/@ViewBag.UserName/tab/1" id="tab-baiphim" class="category-tab category-tab-active">
             <span>
                 <span class="category-tab-name">Bài phím</span>
                 <span class="strong">@ViewBag.TotalPost</span>
             </span>
         </a>
-        <a href="#" id="tab-DauTu" class="category-tab" style="width: 130px;">
+        <a href="/user/@ViewBag.UserName/tab/2" id="tab-DauTu" class="category-tab" style="width: 130px;">
             <span>
                 <span class="category-tab-name">Danh mục đầu tư</span>
                 <span class="strong">@ViewBag.followStock</span>
             </span>
         </a>
-        <a href="#" id="tab-TheoDoi" class="category-tab">
+        <a href="/user/@ViewBag.UserName/tab/3" id="tab-TheoDoi" class="category-tab">
             <span>
                 <span class="category-tab-name">Theo dõi</span>
                 <span class="strong">@ViewBag.Follow</span>
             </span>
         </a>
-        <a href="#" class="category-tab">
+        <a href="/user/@ViewBag.UserName/tab/4" id="tab-DuocTheoDoi" class="category-tab">
             <span>
                 <span class="category-tab-name">Được theo dõi</span>
                 <span class="strong">@ViewBag.Follower</span>

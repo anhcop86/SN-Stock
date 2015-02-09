@@ -29,61 +29,93 @@ namespace PhimHang.Controllers
         private testEntities db = new testEntities();
         private const string ImageURLAvataDefault = "/img/avatar2.jpg";        
         private const string ImageURLAvata = "/images/avatar/";
-        
+
 
         public async Task<ActionResult> Index(string username, int tabid)
         {
-            
-                var currentUser = await db.UserLogins.FirstOrDefaultAsync(u => u.UserNameCopy == username); //db.UserLogins.FirstOrDefaultAsync(u => u.UserNameCopy == username);
 
-                if (currentUser == null || string.IsNullOrEmpty(username) || tabid > 5 || tabid < 0)
-                {
-                    return RedirectToAction("","Search");
-                }
-                #region thong tin user
-                if (User.Identity.IsAuthenticated)
-                {
-                    ApplicationUser userLogin = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-                    ViewBag.AvataEmage = string.IsNullOrEmpty(userLogin.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + userLogin.UserExtentLogin.AvataImage;                    
-                    ViewBag.CureentUserId = userLogin.UserExtentLogin.Id;
-                    ViewBag.UserName = userLogin.UserName;
-                    ViewBag.AvataImageUrl = string.IsNullOrEmpty(userLogin.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + userLogin.UserExtentLogin.AvataImage;
-                }
-                ViewBag.UserName = username;
-                ViewBag.AvataImageUrlCurrent = string.IsNullOrEmpty(currentUser.AvataImage) == true ? ImageURLAvataDefault  : ImageURLAvata + currentUser.AvataImage;
-                ViewBag.UserId = currentUser.Id;
-                var post = await db.Posts.CountAsync(p => p.PostedBy == currentUser.Id);
-                var follow = await db.FollowUsers.CountAsync(f => f.UserId == currentUser.Id);
-                var follower = await db.FollowUsers.CountAsync(f => f.UserIdFollowed == currentUser.Id);
-                var followStock = await db.FollowStocks.CountAsync(f => f.UserId == currentUser.Id);
+            var currentUser = await db.UserLogins.FirstOrDefaultAsync(u => u.UserNameCopy == username); //db.UserLogins.FirstOrDefaultAsync(u => u.UserNameCopy == username);
 
-                ViewBag.TotalPost = post;
-                ViewBag.Follow = follow;
-                ViewBag.Follower = follower;
-                ViewBag.followStock = followStock;
-                #endregion
+            if (currentUser == null || string.IsNullOrEmpty(username) || tabid > 5 || tabid < 0)
+            {
+                return RedirectToAction("", "Search");
+            }
+            #region thong tin user
+            if (User.Identity.IsAuthenticated)
+            {
+                ApplicationUser userLogin = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                ViewBag.AvataEmage = string.IsNullOrEmpty(userLogin.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + userLogin.UserExtentLogin.AvataImage;
+                ViewBag.CureentUserId = userLogin.UserExtentLogin.Id;
+                ViewBag.UserName = userLogin.UserName;
+                ViewBag.AvataImageUrl = string.IsNullOrEmpty(userLogin.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + userLogin.UserExtentLogin.AvataImage;
+            }
+            else
+            {
+                ViewBag.AvataEmage = ImageURLAvataDefault;
+            }
+            ViewBag.UserName = username;
+            ViewBag.AvataImageUrlCurrent = string.IsNullOrEmpty(currentUser.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.AvataImage;
+            ViewBag.UserId = currentUser.Id;
+            var post = await db.Posts.CountAsync(p => p.PostedBy == currentUser.Id);
+            var follow = await db.FollowUsers.CountAsync(f => f.UserId == currentUser.Id);
+            var follower = await db.FollowUsers.CountAsync(f => f.UserIdFollowed == currentUser.Id);
+            var followStock = await db.FollowStocks.CountAsync(f => f.UserId == currentUser.Id);
 
-                ViewBag.TabId = tabid;
-                if (tabid == 1)
-                {
-                    
-                }
-                else if (tabid == 2)
-                {
+            ViewBag.TotalPost = post;
+            ViewBag.Follow = follow;
+            ViewBag.Follower = follower;
+            ViewBag.followStock = followStock;
+            #endregion
 
-                }
-                else if (tabid == 3)
-                {
+            ViewBag.TabId = tabid;
+            if (tabid == 1)
+            {
 
-                }
-                else if (tabid == 4)
-                {
+            }
+            else if (tabid == 2)
+            {
+                // load danh muc dau tu
+                var followStockList = (from sl in db.FollowStocks
+                                       where sl.UserId == currentUser.Id
+                                       select sl.StockFollowed).ToListAsync();
 
-                }
-                
-                return View(currentUser);
-            
-            
+                ViewBag.FollowStockList = followStockList.Result;
+
+            }
+            else if (tabid == 3)
+            {
+                // load danh muc theo doi
+                //var follow = await db.FollowUsers.CountAsync(f => f.UserId == currentUser.Id);
+                var followList = (from fl in db.FollowUsers
+                                  where fl.UserId == currentUser.Id
+                                  select new UserFollowView
+                {
+                    UserId = fl.UserLogin1.Id,
+                    UserName = fl.UserLogin1.UserNameCopy,
+                    Avata = string.IsNullOrEmpty(fl.UserLogin1.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + fl.UserLogin1.AvataImage
+                }).ToListAsync();
+
+                ViewBag.FollowList = followList.Result;
+
+            }
+            else if (tabid == 4)
+            {
+                // load danh muc duoc theo doi
+                var followerList = (from fl in db.FollowUsers
+                                    where fl.UserIdFollowed == currentUser.Id
+                                    select new UserFollowView
+                                    {
+                                        UserId = fl.UserLogin.Id,
+                                        UserName = fl.UserLogin.UserNameCopy,
+                                        Avata = string.IsNullOrEmpty(fl.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + fl.UserLogin.AvataImage
+                                    }).ToListAsync();
+
+                ViewBag.FollowerList = followerList.Result;
+            }
+
+            return View(currentUser);
+
+
         }
        
         public async Task<dynamic> GetPostMoreByUserId(int userid, int skipposition, string filter)
@@ -236,5 +268,12 @@ namespace PhimHang.Controllers
                 return View();
             }
         }
+    }
+    public class UserFollowView
+    {
+        public int UserId { get; set; }
+        public string UserName { get; set; }
+        public string Avata { get; set; }
+        public string Status { get; set; }
     }
 }
