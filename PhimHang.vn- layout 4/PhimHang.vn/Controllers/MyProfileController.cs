@@ -93,7 +93,7 @@ namespace PhimHang.Controllers
             ViewBag.listStockFollow = listStock as List<string>; // client
             // End thong tin menu ben trai
             //so luong tin cua User
-            var numberMessegeNew = db.NotificationMesseges.Where(nm => nm.UserReciver == currentUser.UserExtentLogin.Id).Sum(mn => mn.NumNoti);
+            var numberMessegeNew = db.NotificationMesseges.Where(nm => nm.UserReciver == currentUser.UserExtentLogin.Id && nm.NumNoti > 0).Sum(mn => mn.NumNoti);
             ViewBag.NewMessege = numberMessegeNew;
 
 
@@ -109,7 +109,9 @@ namespace PhimHang.Controllers
             ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());           
             ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : "/images/avatar/" + currentUser.UserExtentLogin.AvataImage;
             ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataCover) == true ? ImageURLCoverDefault : "/images/cover/" + currentUser.UserExtentLogin.AvataCover;
+            ViewBag.AvataImageUrl = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
             ViewBag.CureentUserId = currentUser.UserExtentLogin.Id;
+            ViewBag.UserName = currentUser.UserName;
             #endregion
             #region thong tin co phieu ben phai
             var listStock = (from followStock in db.FollowStocks.ToList()
@@ -155,10 +157,10 @@ namespace PhimHang.Controllers
                            {
                                Message = stockRelate.Post.ChartYN == true ? stockRelate.Post.Message + "<br/><img src='" + stockRelate.Post.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Post.Message,
                                //PostedBy = stockRelate.Post.PostedDate,
-                               PostedByName = stockRelate.UserLogin.UserNameCopy,
-                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.UserLogin.AvataImage,
+                               PostedByName = stockRelate.Post.UserLogin.UserNameCopy,
+                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage,
                                PostedDate = stockRelate.Post.PostedDate,
-                               PostId = stockRelate.PostId,
+                               PostId = stockRelate.Post.PostId,
                                StockPrimary = stockRelate.Post.StockPrimary,
                                Stm = stockRelate.Post.NhanDinh,
                                ChartYN = stockRelate.Post.ChartYN                               

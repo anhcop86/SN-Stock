@@ -66,7 +66,7 @@ namespace PhimHang.Controllers
 
                 }
                 // so luong tin nhan
-                var numberMessegeNew = db.NotificationMesseges.Where(nm => nm.UserReciver == userLogin.UserExtentLogin.Id).Sum(mn => mn.NumNoti);
+                var numberMessegeNew = db.NotificationMesseges.Where(nm => nm.UserReciver == userLogin.UserExtentLogin.Id && nm.NumNoti > 0).Sum(mn => mn.NumNoti);
                 ViewBag.NewMessege = numberMessegeNew;
                 #endregion
             }

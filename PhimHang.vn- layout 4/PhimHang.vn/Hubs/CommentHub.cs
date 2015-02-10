@@ -10,6 +10,7 @@ using PhimHang.Models;
 using System.Security.Principal;
 using Microsoft.AspNet.SignalR.Hubs;
 using System.Text.RegularExpressions;
+using System.Data.Entity;
 
 namespace PhimHang.Hubs
 {
@@ -155,8 +156,8 @@ namespace PhimHang.Hubs
                     PostBy = post.PostedBy
                 };
 
-                await Clients.Groups(listStock).addPost(ret);
-                await Clients.All.addPostGlobal(ret);
+                await Clients.Groups(listStock).addPost(ret); // ad group
+                await Clients.All.addPostGlobal(ret); // add vào profile
                 if (listUsersendMessege.Count > 0)
                 {
                     await Clients.Users(listUsersendMessege).MessegeOfUserPost(1);
@@ -172,6 +173,61 @@ namespace PhimHang.Hubs
             //listStock.Add(stockCurrent.ToUpper());
             using (testEntities db = new testEntities())
             {
+                var listUsersendMessege = new List<string>();
+                ///////////////////////////////////////////
+                #region gui tin cho chu da post bài
+                var getPost = db.Posts.Find(reply.PostedBy);
+                if (getPost.PostedBy != currentUserId)
+                {
+
+
+                    var nMRecive = db.NotificationMesseges.FirstOrDefault(nm => nm.UserReciver == getPost.UserLogin.Id && nm.PostId == reply.PostedBy);
+                    if (nMRecive == null)
+                    {
+                        NotificationMessege nM = new NotificationMessege { UserPost = currentUserId, UserReciver = getPost.UserLogin.Id, PostId = reply.PostedBy, NumNoti = 1, TypeNoti = "R", CreateDate = DateTime.Now };
+                        db.NotificationMesseges.Add(nM);
+                    }
+                    else
+                    {
+                        // get messge and update 
+                        nMRecive.NumNoti += 1;
+                        nMRecive.CreateDate = DateTime.Now;
+                        db.Entry(nMRecive).State = EntityState.Modified;
+                    }
+                    listUsersendMessege.Add(getPost.UserLogin.UserNameCopy);
+                }
+                ///////////////////////////////////////////
+                #endregion
+
+
+                #region reply có đề cập đến user nào không ??
+                List<string> listMessegeSplit = reply.Message.Split(' ').ToList().FindAll(p => p.Contains("$") || p.Contains("@"));
+                foreach (var item in listMessegeSplit)
+                {
+                    if (item.Contains("@")) //find the user with @
+                    {
+                        string user = item.Replace("@", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToLower();
+                        var finduser = db.UserLogins.FirstOrDefault(ul => ul.UserNameCopy == user);
+                        if (finduser != null)
+                        {
+                            var nMuser = db.NotificationMesseges.FirstOrDefault(nm => nm.UserReciver == finduser.Id && nm.PostId == reply.PostedBy);
+                            if (nMuser == null)
+                            {
+                                NotificationMessege nM = new NotificationMessege { UserPost = currentUserId, UserReciver = finduser.Id, PostId = reply.PostedBy, NumNoti = 1, TypeNoti = "R", CreateDate = DateTime.Now };
+                                db.NotificationMesseges.Add(nM);
+                            }
+                            else
+                            {
+                                // get messge and update 
+                                nMuser.NumNoti += 1;
+                                nMuser.CreateDate = DateTime.Now;
+                                db.Entry(nMuser).State = EntityState.Modified;
+                            }
+                            listUsersendMessege.Add(user);
+                        }
+                    }
+                }
+                #endregion
                 db.PostComments.Add(reply);
                 await db.SaveChangesAsync();
 
@@ -180,12 +236,18 @@ namespace PhimHang.Hubs
                     ReplyMessage = reply.Message,
                     //PostedBy = post.PostedBy,
                     ReplyByName = userName,
-                    ReplyByAvatar = avataImageUrl + "?width=46&height=46&mode=crop",
+                    ReplyByAvatar = avataImageUrl,
                     ReplyDate = reply.PostedDate,
                     ReplyId = reply.PostCommentsId,
                     PostCommentsId = reply.PostCommentsId
                 };
-                await Clients.Caller.addReply(ret);
+
+
+                await Clients.Caller.addReply(ret); // chính người đã reply
+                if (listUsersendMessege.Count > 0)
+                {
+                    await Clients.Users(listUsersendMessege).MessegeOfUserPost(1);
+                }
                 //await Clients.AllExcept(Context.ConnectionId).newReplyNoti(1, reply.PostedBy);
             }
         }

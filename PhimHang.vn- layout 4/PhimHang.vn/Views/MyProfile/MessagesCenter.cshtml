@@ -14,7 +14,7 @@
         <input type="hidden" value="@ViewBag.CureentUserId" id="hiddenCureentUserId" />
         <div class="bg-white" style="padding-top: 10px; padding-bottom: 3px;">
             <div class="filer-bar">                
-                <div class="toSpan filer-bar-item"> <a href="#" class="active">Tin nhắn của bạn</a> </div>                
+                <div class="toSpan filer-bar-item"> <a href="#" class="active">Trung tâm tin nhắn</a> </div>                
             </div>
             <div class="ajaxLoadingInit" style="text-align:center"><img src="~/images/ajax-loader_cungphim.gif" /></div>
         </div>
@@ -60,16 +60,7 @@
                     </div>
                 </div>
             </div>
-            <!---->
-            <div class="bg-white-custom" data-bind="visible :newPosts().length > 0 ">
-                <div class="filer-new-status">
-                    <div class="filer-new-status-button-bar">
-                        <div class="text-label">
-                            <a href="#" style="font-size: 14px;" data-bind=" click : loadNewPosts"> <strong data-bind="text: newPosts().length"></strong> bài phím mới </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!---->         
             <div data-bind="foreach : posts">
                 <div class="bg-white">
                     <div class="list-item-status" tabindex="-1" data-bind=" click: function(data, event) { $parent.detailPost(data, event); }">
@@ -330,10 +321,10 @@
                 }
             });
         }
-   /////////////////////////////////////////////////////
-
+        /////////////////////////////////////////////////////
+        
         self.addReply = function () { // them tra loi
-            commenthub.server.addReply({ "Message": self.newReply(), "PostedBy": postidCurrent }, 'USER', '@ViewBag.CureentUserId', '@ViewBag.UserName', '@ViewBag.AvataImageUrl')
+            commenthub.server.addReply({ "Message": self.newReply(), "PostedBy": postidCurrent }, 'MC', '@ViewBag.CureentUserId', '@ViewBag.UserName', '@ViewBag.AvataImageUrl')
                    .done(function () {
                        showNotification('Bạn đã trả lời thành công!');
                    })
@@ -344,90 +335,25 @@
             self.newReply('');
         }
 
-        //////////////// load lại filter nè
-        var filterhere = "";
-        self.FilterAll = function (stringFilter) {
-            if (checkLoadFirst == 1) {
-                filterhere = stringFilter;
-                self.posts([]);
-                    $.ajax({
-                        cache: false,
-                        type: "GET",
-                        url: '@Url.Action("GetMessagesByUserId", "MyProfile")',
-                        data: { userid: '@ViewBag.UserId', skipposition: 0, filter: filterhere },
-                        beforeSend: function (xhr) {
-                            //Add your image loader here
-                            //$('.ajaxLoadingImage').html('<img src="/images/ajax-loader_cungphim.gif" />');
-                        },
-                        success: function (data) {
-                            //$('.ajaxLoadingImage').html('');
-                            var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item); });
-                            $(mappedPosts).each(function (index, element) {
-                                self.posts.push(element);
-                            });
-                            checkLoadFirst = 1;
-                        }
-                    });
-                }
-
-
-            }
-
-        /////////////////////////////////////////////////////////////
-        // recieve the post from server
-        commenthub.client.addPost = function (post) {
-            if (checkpost == 'Y') {
-                //filter here
-                if (filterhere == "" || filterhere == "ALL") {
-                    self.posts.splice(0, 0, new Post(post));
-                }
-                if (filterhere == "CHA") {
-                    if (post.ChartYN) {
-                        self.posts.splice(0, 0, new Post(post));
-                    }
-                }
-                if (filterhere == "STM") {
-                    if (post.Stm > 0) {
-                        self.posts.splice(0, 0, new Post(post));
-                    }
-                }
-
-            }
-            else {
-                //filter here
-                if (filterhere == "" || filterhere == "ALL") {
-                    self.newPosts.splice(0, 0, new Post(post));
-                    document.title = '(' + self.newPosts().length + ') ' + $('#titleHidenPage').val();
-                }
-                if (filterhere == "CHA") {
-                    if (post.ChartYN) {
-                        self.newPosts.splice(0, 0, new Post(post));
-                        document.title = '(' + self.newPosts().length + ') ' + $('#titleHidenPage').val();
-                    }
-                }
-                if (filterhere == "STM") {
-                    if (post.Stm > 0) {
-                        self.newPosts.splice(0, 0, new Post(post));
-                        document.title = '(' + self.newPosts().length + ') ' + $('#titleHidenPage').val();
-                    }
-                }
-
-            }
-            checkpost = 'N';
-        }
-
+        // nhan reply từ user
         commenthub.client.addReply = function (reply) {
             self.replys.unshift(new Reply(reply));
             //self.replys.splice(0, 0, new Reply(reply));
         }
 
-        /////////////////////
-
-        self.loadNewPosts = function () {
-            self.posts(self.newPosts().concat(self.posts()));
-            self.newPosts([]);
-            document.title =  $('#titleHidenPage').val();
+        // nhan dc notification tu user khac
+        commenthub.client.MessegeOfUserPost = function (number) {
+            var num = $(".MessegeNofity").html();
+            if (num != null) {
+                $(".MessegeNofity").html(parseInt(num) + number);
+            }
+            else {
+                $("#CreateMesseger").html("<span class='MessegeNofity'>1</span>");
+            }
         }
+        /////////////////////////////////////////////////////////////
+        // recieve the post from server
+
 
         self.detailPost = function (data, e) { // chi tiet post bao gom tra loi
 
@@ -460,13 +386,13 @@
             });
 
             if (!$(e.target).hasClass('btnMore')) {
-                        document.body.style.overflow = 'hidden';
-                        dialog.dialog("open");
-                        $(".ui-widget-overlay").click(function () {
-                            dialog.dialog('close');
-                            document.body.style.overflow = 'auto';
-                            //self.replys('');
-                        })
+                document.body.style.overflow = 'hidden';
+                dialog.dialog("open");
+                $(".ui-widget-overlay").click(function () {
+                    dialog.dialog('close');
+                    document.body.style.overflow = 'auto';
+                    //self.replys('');
+                })
             }
         }
 
@@ -526,8 +452,8 @@
                 $.ajax({
                     cache: false,
                     type: "GET",
-                    url: '@Url.Action("GetPostMoreByUserId", "User")',
-                    data: { userid: '@ViewBag.UserId', skipposition: self.posts().length, filter: filterhere },
+                    url: '@Url.Action("GetMessagesByUserId", "MyProfile")',
+                    data: { userid: $('#hiddenCureentUserId').val(), skipposition: self.posts().length, filter: "ALL" },                    
                     beforeSend: function (xhr) {
                         //Add your image loader here
 

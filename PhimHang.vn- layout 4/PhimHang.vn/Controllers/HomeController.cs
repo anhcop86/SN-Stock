@@ -34,7 +34,7 @@ namespace PhimHang.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-                var numberMessegeNew = db.NotificationMesseges.Where(nm => nm.UserReciver == currentUser.UserExtentLogin.Id).Sum(mn => mn.NumNoti);
+                var numberMessegeNew = db.NotificationMesseges.Where(nm => nm.UserReciver == currentUser.UserExtentLogin.Id && nm.NumNoti > 0).Sum(mn => mn.NumNoti);
                 ViewBag.NewMessege = numberMessegeNew;
                 
                 
