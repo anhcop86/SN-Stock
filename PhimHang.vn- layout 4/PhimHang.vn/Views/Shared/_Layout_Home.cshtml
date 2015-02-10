@@ -30,14 +30,13 @@
     <link href="~/ThemeBlue/css/jquery.dropdown.css" rel="stylesheet">
     <link href="~/ThemeBlue/css/style.css" rel="stylesheet">    
     <script src="~/ThemeBlue/js/jquery/jquery-ui.js"></script>
-    <script src="~/ThemeBlue/js/jquery.dropdown.js"></script>
-    <script src="~/ThemeBlue/plugins/flot/jquery.flot.js"></script>
+    <script src="~/ThemeBlue/js/jquery.dropdown.js"></script>    
     <script src="~/ThemeBlue/js/action.js"></script>
-    <script src="~/ThemeBlue/js/chart/realtime_chart.js"></script>
-    <script src="~/ThemeBlue/js/chart/sample_line_chart.js"></script>
+    
     
     
     <!-- End For desgin-->
+    <link href="~/ThemeBlue/css/Notification.css" rel="stylesheet" />
 </head>
  <body>
      
@@ -54,8 +53,18 @@
                      <div class="toSpan top-banner-icon f-left">
                          <a href="/user/@User.Identity.Name/tab/1"><i class="fa fa-home"></i></a>
                      </div>
-                     <div class="toSpan top-banner-icon f-left">
-                         <a href="#"><i class="fa fa-comments-o"></i></a>
+                     <div class="toSpan top-banner-icon f-left">                         
+                         <a href="/myprofile/MessagesCenter"><i class="fa fa-comments-o"></i></a>
+                         @if (ViewBag.NewMessege > 0)
+                         {
+                             <span id="CreateMesseger">
+                                 <span class="MessegeNofity">@ViewBag.NewMessege</span>
+                             </span>
+                         }
+                         else
+                         {
+                             <span id="CreateMesseger"></span>
+                         }                      
                      </div>
                  }
              }

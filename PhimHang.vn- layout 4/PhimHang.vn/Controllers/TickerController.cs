@@ -54,29 +54,14 @@ namespace PhimHang.Controllers
                 {
                     ViewBag.CheckStockExist = "N";
                 }
+                // so luong tin nhan
+                var numberMessegeNew = db.NotificationMesseges.Where(nm => nm.UserReciver == currentUser.UserExtentLogin.Id).Sum(mn => mn.NumNoti);
+                ViewBag.NewMessege = numberMessegeNew;
             }
 
             #endregion
 
-            #region Thong tin menu ben trai
-            // Thong tin menu ben trai
-            //var post = await db.Posts.CountAsync(p => p.PostedBy == currentUser.UserExtentLogin.Id);
-            //var follow = await db.FollowUsers.CountAsync(f => f.UserId == currentUser.UserExtentLogin.Id);
-            //var follower = await db.FollowUsers.CountAsync(f => f.UserIdFollowed == currentUser.UserExtentLogin.Id);
-
-            //var countStockFollowr = await db.FollowStocks.CountAsync(f => f.UserId == currentUser.UserExtentLogin.Id && f.StockFollowed == symbolName);
-            //if (countStockFollowr == 1)
-            //{
-            //    ViewBag.CheckStockExist = "Y";
-            //}
-            //else
-            //{
-            //    ViewBag.CheckStockExist = "N";
-            //}
-            //ViewBag.TotalPost = post;
-            //ViewBag.Follow = follow;
-            //ViewBag.Follower = follower;
-
+            #region Thong tin menu ben trai           
             if (User.Identity.IsAuthenticated)
             {
                 ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());

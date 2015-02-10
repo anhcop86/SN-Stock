@@ -6,6 +6,7 @@
 @section scripts{   
     @*<link href="~/Content/StockPrice.css" rel="stylesheet" />*@
     <script src="~/Scripts/jquery.timeago.js"></script>   
+    <script src="~/ThemeBlue/js/Extention.js"></script>
 }
 <div id="CommentForKoLoad">
     <div class="area-center">
@@ -190,11 +191,7 @@
 <!-- gia co phieu real time-->
 <!-- Comment-->
 
-<script type="text/javascript">
-    function showNotification(text) {
-        $('#textNoti').html(text);
-        $('.NotificationCenter').fadeIn(300).fadeOut(4000);
-    }
+<script type="text/javascript">    
     function removeFileChart() {
         if (confirm("Bạn muốn xóa file hình này?")) {
             $('.chartImage').hide();
@@ -278,7 +275,7 @@
         self.PostId = data.PostId;
         self.Message = data.Message || "";
         self.PostedByName = data.PostedByName || "";
-        self.PostedByAvatar = data.PostedByAvatar || "";
+        self.PostedByAvatar = data.PostedByAvatar + '?width=50&height=50&mode=crop' || "";
         self.PostedDate = getTimeAgo(data.PostedDate);
         self.StockPrimary = data.StockPrimary;
         //self.notification = ko.observable(0);
@@ -375,7 +372,16 @@
             checkreply = 'Y';
             self.newReply('');
         }
-
+        // nhan dc notification tu user khac
+        commenthub.client.MessegeOfUserPost = function (number) {
+            var num = $(".MessegeNofity").html();
+            if (num != null) {
+                $(".MessegeNofity").html(parseInt(num) + number);
+            }
+            else {
+                $("#CreateMesseger").html("<span class='MessegeNofity'>1</span>");
+            }
+        }
         //////////////// load lại filter nè
         var filterhere = "";
         self.FilterAll = function (stringFilter) {

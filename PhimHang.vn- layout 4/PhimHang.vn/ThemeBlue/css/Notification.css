@@ -14,3 +14,12 @@
 #textNoti{
     top:3px;
 }
+
+.MessegeNofity {
+    color: white;
+    background: #FA2B42;
+    border-radius: 5px;
+    padding: 0px 3px 0px 3px;
+    left: -10px;
+    top: -10px;
+}

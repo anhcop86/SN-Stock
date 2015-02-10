@@ -86,7 +86,7 @@ namespace PhimHang.Hubs
             }
             
             var listStock = new List<string>();
-            
+            var listUsersendMessege = new List<string>();
             #region explan this passing messege to stockcode and username list
 
             List<string> listMessegeSplit = messagedefault.Split(' ').ToList().FindAll(p => p.Contains("$") || p.Contains("@"));
@@ -110,22 +110,32 @@ namespace PhimHang.Hubs
                 /* add post with stockrelate list */
                 foreach (var item in listMessegeSplit)
                 {
-                    string stockcode = item.Replace("$", "").ToUpper();
+                    string stockcode = item.Replace("$", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToUpper();
                     if (item.Contains("$") && !listStock.Contains(stockcode)) // find the stock with $
                     {
-                        
+
                         StockRelate stockRelateLasts = new StockRelate();
                         stockRelateLasts.PostId = post.PostId;
                         stockRelateLasts.StockCodeRelate = stockcode;
                         db.StockRelates.Add(stockRelateLasts); // add to database
                         listStock.Add(stockcode); // group of hub for client 
                     }
-                    else //find the user with @
+                    else if(item.Contains("@")) //find the user with @
                     {
                         // code later
+
+                        string user = item.Replace("@", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToLower();
+                        var finduser = db.UserLogins.FirstOrDefault(ul => ul.UserNameCopy == user);
+                        if (finduser != null)
+                        {
+                            NotificationMessege nM = new NotificationMessege { UserPost = currentUserId, UserReciver = finduser.Id, PostId = post.PostId, NumNoti = 1, TypeNoti = "U", CreateDate = DateTime.Now };
+                            db.NotificationMesseges.Add(nM);
+                            listUsersendMessege.Add(user);
+                        }
+
                     }
                 }
-               
+
 
                 /* add stockrelate */
                 await db.SaveChangesAsync();
@@ -136,7 +146,7 @@ namespace PhimHang.Hubs
                     Message = post.ChartYN == true ? post.Message + "<br/><img src='" + post.ChartImageURL + "?width=215&height=120&mode=crop' >" : post.Message,
                     //PostedBy = post.PostedBy,
                     PostedByName = userName,
-                    PostedByAvatar = avataImageUrl.Replace("amp;", ""),
+                    PostedByAvatar = avataImageUrl,
                     PostedDate = post.PostedDate,
                     PostId = post.PostId,
                     StockPrimary = post.StockPrimary,
@@ -144,9 +154,13 @@ namespace PhimHang.Hubs
                     ChartYN = post.ChartYN,
                     PostBy = post.PostedBy
                 };
-               
-               await Clients.Groups(listStock).addPost(ret);
-               await Clients.All.addPostGlobal(ret);
+
+                await Clients.Groups(listStock).addPost(ret);
+                await Clients.All.addPostGlobal(ret);
+                if (listUsersendMessege.Count > 0)
+                {
+                    await Clients.Users(listUsersendMessege).MessegeOfUserPost(1);
+                }
             }
         }
 

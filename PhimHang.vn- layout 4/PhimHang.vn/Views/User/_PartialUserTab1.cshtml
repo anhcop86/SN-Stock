@@ -1,7 +1,6 @@
 ﻿
 <div id="CommentForKoLoad">
-    <div class="area-center">
-        
+    <div class="area-center">        
         <div class="bg-white" style="padding-top: 10px; padding-bottom: 3px;">
             <div class="filer-bar">
                 <div class="toSpan filer-bar-label">Hiển thị theo: </div>
@@ -201,10 +200,6 @@
 <!-- Comment-->
 
 <script type="text/javascript">
-    function showNotification(text) {
-        $('#textNoti').html(text);
-        $('.NotificationCenter').fadeIn(300).fadeOut(4000);
-    }
     function removeFileChart() {
         if(confirm("Bạn muốn xóa file hình này?"))
         {
@@ -290,7 +285,7 @@
         self.PostId = data.PostId;
         self.Message = data.Message || "";
         self.PostedByName = data.PostedByName || "";
-        self.PostedByAvatar = data.PostedByAvatar || "";
+        self.PostedByAvatar = data.PostedByAvatar + '?width=50&height=50&mode=crop' || "";
         self.PostedDate = getTimeAgo(data.PostedDate);
         self.StockPrimary = data.StockPrimary;
         //self.notification = ko.observable(0);
@@ -429,6 +424,16 @@
         commenthub.client.addReply = function (reply) {
             self.replys.unshift(new Reply(reply));
             //self.replys.splice(0, 0, new Reply(reply));
+        }
+        // nhan dc notification tu user khac
+        commenthub.client.MessegeOfUserPost = function (number) {          
+            var num = $(".MessegeNofity").html();
+            if (num != null) {
+                $(".MessegeNofity").html(parseInt(num) + number);
+            }
+            else {
+                $("#CreateMesseger").html("<span class='MessegeNofity'>1</span>");
+            }
         }
 
         /////////////////////
@@ -588,18 +593,10 @@
                             });
 
     $.connection.hub.disconnected(function () {
-        setTimeout(function () {
-            if (tryingToReconnect) {
+        setTimeout(function () {           
                 $.connection.hub.start().done(function () {
                     commenthub.server.joinRoom('@ViewBag.StockCode');
                 });
-            }
-            else {
-                $.connection.hub.start().done(function () {
-                    vmPost.init();
-                });
-            }
-
         }, 10000); // Restart connection after 10 seconds.
     });
     $.connection.hub.connectionSlow(function () {

@@ -152,33 +152,6 @@ namespace PhimHang.Controllers
         private const string ImageURLAvataDefault = "/img/avatar2.jpg";
         private const string ImageURLAvata = "/images/avatar/";
 
-        /*[AllowAnonymous]
-        [HttpGet]
-        public async Task<dynamic> GetPostsByStock(string stockCurrent)
-        {
-            //var fjdsf = WebSecurity.CurrentUserId;
-            using (db = new testEntities())
-            {
-                var ret = (from stockRelate in await db.StockRelates.ToListAsync()
-                           where stockRelate.StockCodeRelate == stockCurrent
-                           orderby stockRelate.Post.PostedDate descending
-                           select new
-                           {
-                               Message = stockRelate.Post.ChartYN == true ? stockRelate.Post.Message + "<br/><img src='" + stockRelate.Post.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Post.Message,
-                               //PostedBy = stockRelate.Post.PostedDate,
-                               PostedByName = stockRelate.Post.UserLogin.UserNameCopy,
-                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
-                               PostedDate = stockRelate.Post.PostedDate,
-                               PostId = stockRelate.PostId,
-                               StockPrimary = stockRelate.Post.StockPrimary,
-                               Stm = stockRelate.Post.NhanDinh,
-                               ChartYN = stockRelate.Post.ChartYN
-                           }).Take(10).ToArray();
-                //var listStock = new List<string>();              
-                var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
-                return result;
-            }
-        }*/
 
         [AllowAnonymous]
         [HttpGet]
@@ -221,7 +194,7 @@ namespace PhimHang.Controllers
                                Message = stockRelate.Post.Message,
                                //PostedBy = stockRelate.Post.PostedDate,
                                PostedByName = stockRelate.Post.UserLogin.UserNameCopy,
-                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
+                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage,
                                PostedDate = stockRelate.Post.PostedDate,
                                PostId = stockRelate.PostId,
                                StockPrimary = stockRelate.Post.StockPrimary,
@@ -247,7 +220,7 @@ namespace PhimHang.Controllers
                            {
                                Message = stockRelate.Post.ChartYN == true ? stockRelate.Post.Message + "<br/><img src='" + stockRelate.Post.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Post.Message,
                                PostedByName = stockRelate.Post.UserLogin.UserNameCopy,
-                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
+                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage,
                                PostedDate = stockRelate.Post.PostedDate,
                                PostId = stockRelate.PostId,
                                StockPrimary = stockRelate.Post.StockPrimary,
@@ -265,7 +238,7 @@ namespace PhimHang.Controllers
                            {
                                Message = stockRelate.Post.ChartYN == true ? stockRelate.Post.Message + "<br/><img src='" + stockRelate.Post.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Post.Message,
                                PostedByName = stockRelate.Post.UserLogin.UserNameCopy,
-                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
+                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage,
                                PostedDate = stockRelate.Post.PostedDate,
                                PostId = stockRelate.PostId,
                                StockPrimary = stockRelate.Post.StockPrimary,
@@ -283,7 +256,7 @@ namespace PhimHang.Controllers
                            {
                                Message = stockRelate.Post.ChartYN == true ? stockRelate.Post.Message + "<br/><img src='" + stockRelate.Post.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Post.Message,
                                PostedByName = stockRelate.Post.UserLogin.UserNameCopy,
-                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
+                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage,
                                PostedDate = stockRelate.Post.PostedDate,
                                PostId = stockRelate.PostId,
                                StockPrimary = stockRelate.Post.StockPrimary,
@@ -324,81 +297,6 @@ namespace PhimHang.Controllers
                 return "error"; // return name file error
             }
         }
-        /*
-        public async Task<dynamic> GetPostsByStockByFilter(string stockCurrent, string filter)
-        {
-            //var fjdsf = WebSecurity.CurrentUserId;
-            if (filter == "" ||  filter == "ALL" )
-            {
-                var ret = (from stockRelate in await db.StockRelates.ToListAsync()
-                           where stockRelate.StockCodeRelate == stockCurrent
-                           orderby stockRelate.Post.PostedDate descending
-                           select new
-                           {
-                               Message = stockRelate.Post.ChartYN == true ? stockRelate.Post.Message + "<br/><img src='" + stockRelate.Post.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Post.Message,
-                               //PostedBy = stockRelate.Post.PostedDate,
-                               PostedByName = stockRelate.Post.UserLogin.UserNameCopy,
-                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
-                               PostedDate = stockRelate.Post.PostedDate,
-                               PostId = stockRelate.PostId,
-                               StockPrimary = stockRelate.Post.StockPrimary,
-                               Stm = stockRelate.Post.NhanDinh,
-                               ChartYN = stockRelate.Post.ChartYN
-                           }).Take(10).ToArray();
-                //var listStock = new List<string>();              
-                var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
-                return result;
-            }
-            if (filter == "CHA")
-            {
-                var ret = (from stockRelate in await db.StockRelates.ToListAsync()
-                           where stockRelate.StockCodeRelate == stockCurrent && stockRelate.Post.ChartYN == true
-                           orderby stockRelate.Post.PostedDate descending
-                           select new
-                           {
-                               Message = stockRelate.Post.ChartYN == true ? stockRelate.Post.Message + "<br/><img src='" + stockRelate.Post.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Post.Message,
-                               //PostedBy = stockRelate.Post.PostedDate,
-                               PostedByName = stockRelate.Post.UserLogin.UserNameCopy,
-                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
-                               PostedDate = stockRelate.Post.PostedDate,
-                               PostId = stockRelate.PostId,
-                               StockPrimary = stockRelate.Post.StockPrimary,
-                               Stm = stockRelate.Post.NhanDinh,
-                               ChartYN = stockRelate.Post.ChartYN
-                           }).Take(10).ToArray();
-                //var listStock = new List<string>();              
-                var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
-                return result;
-            }
-            if (filter == "STM")
-            {
-                var ret = (from stockRelate in await db.StockRelates.ToListAsync()
-                           where stockRelate.StockCodeRelate == stockCurrent && stockRelate.Post.NhanDinh > 0
-                           orderby stockRelate.Post.PostedDate descending
-                           select new
-                           {
-                               Message = stockRelate.Post.ChartYN == true ? stockRelate.Post.Message + "<br/><img src='" + stockRelate.Post.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Post.Message,
-                               //PostedBy = stockRelate.Post.PostedDate,
-                               PostedByName = stockRelate.Post.UserLogin.UserNameCopy,
-                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
-                               PostedDate = stockRelate.Post.PostedDate,
-                               PostId = stockRelate.PostId,
-                               StockPrimary = stockRelate.Post.StockPrimary,
-                               Stm = stockRelate.Post.NhanDinh,
-                               ChartYN = stockRelate.Post.ChartYN
-                           }).Take(10).ToArray();
-                //var listStock = new List<string>();              
-                var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
-                return result;
-            }
-            else
-            {
-                return null;
-            }
-                
-            
-        }*/
-
-
+        
     }
 }

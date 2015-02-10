@@ -20,6 +20,7 @@ namespace PhimHang.Models
             this.StockRelates = new HashSet<StockRelate>();
             this.UserRelates = new HashSet<UserRelate>();
             this.PinStocks = new HashSet<PinStock>();
+            this.NotificationMesseges = new HashSet<NotificationMessege>();
         }
     
         public long PostId { get; set; }
@@ -37,5 +38,6 @@ namespace PhimHang.Models
         public virtual ICollection<StockRelate> StockRelates { get; set; }
         public virtual ICollection<UserRelate> UserRelates { get; set; }
         public virtual ICollection<PinStock> PinStocks { get; set; }
+        public virtual ICollection<NotificationMessege> NotificationMesseges { get; set; }
     }
 }

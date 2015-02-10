@@ -276,6 +276,9 @@
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ModelHelpers.cs" />
+    <Compile Include="Models\NotificationMessege.cs">
+      <DependentUpon>PhimHangADO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PhimHangADO.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -515,6 +518,7 @@
     <Content Include="ThemeBlue\js\action.js" />
     <Content Include="ThemeBlue\js\chart\realtime_chart.js" />
     <Content Include="ThemeBlue\js\chart\sample_line_chart.js" />
+    <Content Include="ThemeBlue\js\Extention.js" />
     <Content Include="ThemeBlue\js\jquery.dropdown.js" />
     <Content Include="ThemeBlue\js\jquery\jquery-ui.js" />
     <Content Include="ThemeBlue\js\jquery\jquery-ui.min.js" />
@@ -1125,6 +1129,7 @@
     <Content Include="Views\User\_PartialUserTab2.cshtml" />
     <Content Include="Views\User\_PartialUserTab4.cshtml" />
     <Content Include="Views\User\_PartialUserTab3.cshtml" />
+    <Content Include="Views\MyProfile\MessagesCenter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

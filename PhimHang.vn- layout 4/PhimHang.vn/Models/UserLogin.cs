@@ -26,6 +26,8 @@ namespace PhimHang.Models
             this.UserViewLastests1 = new HashSet<UserViewLastest>();
             this.AspNetUsers = new HashSet<AspNetUser>();
             this.Posts = new HashSet<Post>();
+            this.NotificationMesseges = new HashSet<NotificationMessege>();
+            this.NotificationMesseges1 = new HashSet<NotificationMessege>();
         }
     
         public int Id { get; set; }
@@ -52,5 +54,7 @@ namespace PhimHang.Models
         public virtual ICollection<UserViewLastest> UserViewLastests1 { get; set; }
         public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
+        public virtual ICollection<NotificationMessege> NotificationMesseges { get; set; }
+        public virtual ICollection<NotificationMessege> NotificationMesseges1 { get; set; }
     }
 }

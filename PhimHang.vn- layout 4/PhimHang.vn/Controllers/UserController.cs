@@ -65,7 +65,9 @@ namespace PhimHang.Controllers
                     }
 
                 }
-              
+                // so luong tin nhan
+                var numberMessegeNew = db.NotificationMesseges.Where(nm => nm.UserReciver == userLogin.UserExtentLogin.Id).Sum(mn => mn.NumNoti);
+                ViewBag.NewMessege = numberMessegeNew;
                 #endregion
             }
             else
@@ -157,7 +159,7 @@ namespace PhimHang.Controllers
                                Message = stockRelate.ChartYN == true ? stockRelate.Message + "<br/><img src='" + stockRelate.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Message,
                                //PostedBy = stockRelate.Post.PostedDate,
                                PostedByName = stockRelate.UserLogin.UserNameCopy,
-                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
+                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.UserLogin.AvataImage ,
                                PostedDate = stockRelate.PostedDate,
                                PostId = stockRelate.PostId,
                                StockPrimary = stockRelate.StockPrimary,
@@ -178,7 +180,7 @@ namespace PhimHang.Controllers
                                Message = stockRelate.ChartYN == true ? stockRelate.Message + "<br/><img src='" + stockRelate.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Message,
                                //PostedBy = stockRelate.Post.PostedDate,
                                PostedByName = stockRelate.UserLogin.UserNameCopy,
-                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
+                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.UserLogin.AvataImage,
                                PostedDate = stockRelate.PostedDate,
                                PostId = stockRelate.PostId,
                                StockPrimary = stockRelate.StockPrimary,
@@ -199,7 +201,7 @@ namespace PhimHang.Controllers
                                Message = stockRelate.ChartYN == true ? stockRelate.Message + "<br/><img src='" + stockRelate.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Message,
                                //PostedBy = stockRelate.Post.PostedDate,
                                PostedByName = stockRelate.UserLogin.UserNameCopy,
-                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.UserLogin.AvataImage) ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + stockRelate.UserLogin.AvataImage + "?width=50&height=50&mode=crop",
+                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.UserLogin.AvataImage,
                                PostedDate = stockRelate.PostedDate,
                                PostId = stockRelate.PostId,
                                StockPrimary = stockRelate.StockPrimary,
