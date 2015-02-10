@@ -14,14 +14,16 @@ namespace PhimHang.Controllers
     [Authorize]
     public class TickerController : Controller
     {
+        private readonly StockRealTimeTicker _stockRealtime;
         public TickerController()
-            : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
+            : this(StockRealTimeTicker.Instance,new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
         }
-        public TickerController(UserManager<ApplicationUser> userManager)
+        public TickerController(StockRealTimeTicker stockTicker, UserManager<ApplicationUser> userManager)
         {
-            //_stockRealtime = stockTicker;
+            _stockRealtime = stockTicker;
             UserManager = userManager;
+          
         }
 
         public UserManager<ApplicationUser> UserManager { get; private set; }

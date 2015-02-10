@@ -17,7 +17,7 @@ namespace PhimHang.Models
     public class StockRealTimeTicker
     {
         // Singleton instance
-        private readonly static Lazy<StockRealTimeTicker> _instance = new Lazy<StockRealTimeTicker>(() => new StockRealTimeTicker(GlobalHost.ConnectionManager.GetHubContext<RealTimePriceHub>().Clients));
+        private readonly static Lazy<StockRealTimeTicker> _instance = new Lazy<StockRealTimeTicker>(() => new StockRealTimeTicker());//=> new StockRealTimeTicker(GlobalHost.ConnectionManager.GetHubContext<RealTimePriceHub>().Clients));
         private readonly List<StockRealTime> _stocks = new List<StockRealTime>();
         //private string _stockSymbol = "";
 
@@ -26,25 +26,17 @@ namespace PhimHang.Models
         //stock can go up or down by a percentage of this factor on each change        
 
         private readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(60000);
-        private readonly Random _updateOrNotRandom = new Random();
+        //private readonly Random _updateOrNotRandom = new Random();
 
         private readonly Timer _timer;
         private volatile bool _updatingStockPrices = false;
-        private StockRealTimeTicker(IHubConnectionContext<dynamic> clients)
-        {
-            
-            Clients = clients;            
-            GetStockPriceFromApi();
+        private StockRealTimeTicker()
+        { 
+            //GetStockPriceFromApi();
             _timer = new Timer(UpdateStockPrices, null, _updateInterval, _updateInterval);
 
         }
-
-        private IHubConnectionContext<dynamic> Clients
-        {
-            get;
-            set;
-        }
-
+              
         public static StockRealTimeTicker Instance
         {
             get
@@ -108,21 +100,10 @@ namespace PhimHang.Models
                 if (!_updatingStockPrices)
                 {
                     _updatingStockPrices = true;
-
                     GetStockPriceFromApi();
-                    BroadcastStockPriceGroup();
-
                     _updatingStockPrices = false;
                 }
             }
-        }
-
-        private void BroadcastStockPriceGroup()
-        {
-            foreach (var item in _stocks)
-            {
-                Clients.Group(item.CompanyID.ToUpper()).updateStockPrice(_stocks.FirstOrDefault(s => s.CompanyID == item.CompanyID));
-            }    
         }
 
     }
