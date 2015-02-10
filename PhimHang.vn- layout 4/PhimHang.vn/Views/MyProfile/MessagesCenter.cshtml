@@ -77,17 +77,11 @@
                             <div class="list-item-status-content" data-bind="html : Message"></div>
                             <div class="list-item-control">
                                 @*<a style="border-color:transparent; background-color:transparent" class="button" href="#"><i data-bind="text :notification, visible: notification() > 0" class="fa fa-comments"></i></a>*@
-                                <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
-                                <a class="button" href="#" title="Thích">Chia sẽ</a>
-                                <a class="button btnMore" href="#" title="..." data-dropdown="#cm-3">
-                                    ...
-                                </a>
-                                <div id="cm-3" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#" title="Chia sẻ">Chia sẻ</a></li>
-                                        <li><a href="#" title="Vi phạm">Vi phạm</a></li>
-                                    </ul>
-                                </div>
+                                <span class="StarRedNew">
+                                    <i class="fa fa-star-o" data-bind="visible: XemYN > 0"></i>
+                                </span>
+                                <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>                                
+                                
                                 <span class="likeAndPin">
                                     <a class="button" href="#" title="Thích"><img src="/images/likecp.png" /></a>
                                 </span>
@@ -277,6 +271,7 @@
         //self.notification = ko.observable(0);
         self.Stm = (data.Stm === 1 ? "<span class='divBear-cm'>Giảm</span>" : data.Stm === 2 ? "<span class='divBull-cm'>Tăng</span>" : "") || "";
         self.ChartYN = data.ChartYN || 0;
+        self.XemYN = data.XemYN; // == 1 ? "New" : "" || "";
     }
     var commenthub = $.connection.CommentHub;
     function viewModel() {
@@ -318,6 +313,18 @@
                         self.posts.push(element);
                     });
                     checkLoadFirst = 1;
+                }
+            });
+
+            // xóa các messenges đã đọc
+            $.ajax({
+                cache: false,
+                type: "POST",
+                url: '@Url.Action("ChangeStatusMessege", "MyProfile")',
+                data: { userid: $('#hiddenCureentUserId').val() },
+                beforeSend: function (xhr) {                   
+                },
+                success: function () {                    
                 }
             });
         }

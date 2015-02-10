@@ -124,20 +124,7 @@ namespace PhimHang.Controllers
             #region reset lai so luong tin nhan
             ViewBag.NewMessege = 0;
             // luu database
-            List<NotificationMessege> listUpdate = new List<NotificationMessege>();
-            listUpdate = db.NotificationMesseges.Where(nm => nm.UserReciver == currentUser.UserExtentLogin.Id).ToList();
-            if (listUpdate.Count > 0)
-            {
-                foreach (var item in listUpdate)
-                {
-                    item.NumNoti = 0;
-                    db.Entry(item).State = EntityState.Modified;
-                }
-                
-                await db.SaveChangesAsync();
-            }
-
-
+           
             //
             #endregion
 
@@ -163,7 +150,8 @@ namespace PhimHang.Controllers
                                PostId = stockRelate.Post.PostId,
                                StockPrimary = stockRelate.Post.StockPrimary,
                                Stm = stockRelate.Post.NhanDinh,
-                               ChartYN = stockRelate.Post.ChartYN                               
+                               ChartYN = stockRelate.Post.ChartYN,
+                               XemYN = stockRelate.XemYN
                            }).Skip(skipposition).Take(10).ToArray();
                 //var listStock = new List<string>();              
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
@@ -173,6 +161,23 @@ namespace PhimHang.Controllers
             {
                 return null;
             }
+        }
+        [HttpPost]
+        public async Task ChangeStatusMessege(int userid)
+        {
+            var listUpdate = db.NotificationMesseges.Where(nm => nm.UserReciver == userid && nm.XemYN == true).ToList();            
+            if (listUpdate.Count > 0)
+            {
+                foreach (var item in listUpdate)
+                {
+                    item.NumNoti = 0;
+                    item.XemYN = false;
+                    db.Entry(item).State = EntityState.Modified;
+                }
+                await db.SaveChangesAsync();
+            }
+
+
         }
         #endregion
 

@@ -129,7 +129,7 @@ namespace PhimHang.Hubs
                         var finduser = db.UserLogins.FirstOrDefault(ul => ul.UserNameCopy == user);
                         if (finduser != null)
                         {
-                            NotificationMessege nM = new NotificationMessege { UserPost = currentUserId, UserReciver = finduser.Id, PostId = post.PostId, NumNoti = 1, TypeNoti = "U", CreateDate = DateTime.Now };
+                            NotificationMessege nM = new NotificationMessege { UserPost = currentUserId, UserReciver = finduser.Id, PostId = post.PostId, NumNoti = 1, TypeNoti = "U", CreateDate = DateTime.Now, XemYN = true };
                             db.NotificationMesseges.Add(nM);
                             listUsersendMessege.Add(user);
                         }
@@ -184,13 +184,14 @@ namespace PhimHang.Hubs
                     var nMRecive = db.NotificationMesseges.FirstOrDefault(nm => nm.UserReciver == getPost.UserLogin.Id && nm.PostId == reply.PostedBy);
                     if (nMRecive == null)
                     {
-                        NotificationMessege nM = new NotificationMessege { UserPost = currentUserId, UserReciver = getPost.UserLogin.Id, PostId = reply.PostedBy, NumNoti = 1, TypeNoti = "R", CreateDate = DateTime.Now };
+                        NotificationMessege nM = new NotificationMessege { UserPost = currentUserId, UserReciver = getPost.UserLogin.Id, PostId = reply.PostedBy, NumNoti = 1, TypeNoti = "R", CreateDate = DateTime.Now, XemYN = true };
                         db.NotificationMesseges.Add(nM);
                     }
                     else
                     {
                         // get messge and update 
                         nMRecive.NumNoti += 1;
+                        nMRecive.XemYN = true;
                         nMRecive.CreateDate = DateTime.Now;
                         db.Entry(nMRecive).State = EntityState.Modified;
                     }
@@ -213,13 +214,14 @@ namespace PhimHang.Hubs
                             var nMuser = db.NotificationMesseges.FirstOrDefault(nm => nm.UserReciver == finduser.Id && nm.PostId == reply.PostedBy);
                             if (nMuser == null)
                             {
-                                NotificationMessege nM = new NotificationMessege { UserPost = currentUserId, UserReciver = finduser.Id, PostId = reply.PostedBy, NumNoti = 1, TypeNoti = "R", CreateDate = DateTime.Now };
+                                NotificationMessege nM = new NotificationMessege { UserPost = currentUserId, UserReciver = finduser.Id, PostId = reply.PostedBy, NumNoti = 1, TypeNoti = "R", CreateDate = DateTime.Now, XemYN = true };
                                 db.NotificationMesseges.Add(nM);
                             }
                             else
                             {
                                 // get messge and update 
                                 nMuser.NumNoti += 1;
+                                nMuser.XemYN = true;
                                 nMuser.CreateDate = DateTime.Now;
                                 db.Entry(nMuser).State = EntityState.Modified;
                             }
