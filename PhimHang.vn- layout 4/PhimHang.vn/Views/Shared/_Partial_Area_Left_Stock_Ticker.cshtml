@@ -1,9 +1,29 @@
-﻿<div class="cp-banner">
+﻿@model PhimHang.Models.StockRealTime
+<div class="cp-banner">
     <div class="cp-top">
         <span>@ViewBag.StockCode </span> <br />        
-        <span class="bullish cp-index">
-            999(+2)
-        </span>
+        
+        @{
+            if (Model.Diff == 0)
+            {
+                <span class="NoChangeTicker cp-index">
+                    @decimal.Round(@Model.FinishPrice, 1) (@Model.DiffRate%)
+                </span>
+            }
+            else if (Model.Diff > 0)
+            {
+                <span class="bullishTicker cp-index">
+                    @decimal.Round(@Model.FinishPrice, 1) (@Model.DiffRate%)
+                </span>
+            }
+            else
+            {
+                <span class="bearishTicker cp-index">
+                    @decimal.Round(@Model.FinishPrice, 1) (@Model.DiffRate%)
+                </span>
+            }
+        }
+
     </div>
     <div class="cp-detail clear">
         <h4>@ViewBag.StockName</h4>

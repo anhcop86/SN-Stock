@@ -14,37 +14,37 @@ namespace PhimHang.Hubs
     public class RealTimePriceHub : Hub
     {
 
-        private readonly StockRealTimeTicker _stockRealtime;
+        //private readonly StockRealTimeTicker _stockRealtime;
 
-        public RealTimePriceHub()
-            : this(StockRealTimeTicker.Instance)
-        {
-        }
-        public RealTimePriceHub(StockRealTimeTicker stockTicker)
-        {
-            _stockRealtime = stockTicker;
-        }
+        //public RealTimePriceHub()
+        //    : this(StockRealTimeTicker.Instance)
+        //{
+        //}
+        //public RealTimePriceHub(StockRealTimeTicker stockTicker)
+        //{
+        //    _stockRealtime = stockTicker;
+        //}
 
 
-        public StockRealTime GetStock(string stock)
-        {            
-            return _stockRealtime.GetAllStocksTest(stock).Result;
-        }
+        //public StockRealTime GetStock(string stock)
+        //{            
+        //    return _stockRealtime.GetAllStocksTest(stock).Result;
+        //}
 
-        public List<StockRealTime> GetStockList(List<string> stock)
-        {            
-            return _stockRealtime.GetAllStocksTestList(stock).Result;
-        }
+        //public List<StockRealTime> GetStockList(List<string> stock)
+        //{            
+        //    return _stockRealtime.GetAllStocksTestList(stock).Result;
+        //}
 
-        public Task JoinRoom(string groupStock)
-        {
-            return Groups.Add(Context.ConnectionId, groupStock);
-        }
+        //public Task JoinRoom(string groupStock)
+        //{
+        //    return Groups.Add(Context.ConnectionId, groupStock);
+        //}
 
-        public Task LeaveRoom(string groupStock)
-        {
-            return Groups.Remove(Context.ConnectionId, groupStock);
-        }
+        //public Task LeaveRoom(string groupStock)
+        //{
+        //    return Groups.Remove(Context.ConnectionId, groupStock);
+        //}
 
       
 

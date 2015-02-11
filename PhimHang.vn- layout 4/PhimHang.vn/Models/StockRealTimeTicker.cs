@@ -32,7 +32,7 @@ namespace PhimHang.Models
         private volatile bool _updatingStockPrices = false;
         private StockRealTimeTicker()
         { 
-            //GetStockPriceFromApi();
+            GetStockPriceFromApi();
             _timer = new Timer(UpdateStockPrices, null, _updateInterval, _updateInterval);
 
         }
@@ -45,13 +45,13 @@ namespace PhimHang.Models
             }
         }
 
-        public async Task<StockRealTime> GetAllStocksTest(string stock)
+        public async Task<StockRealTime> GetStocksByTicker(string stock)
         {
             var CompanyResult = Task.FromResult(_stocks.FirstOrDefault(s => s.CompanyID.ToUpper() == stock.ToUpper()));
             return await CompanyResult;
         }
 
-        public Task<List<StockRealTime>> GetAllStocksTestList(List<string> stock)
+        public Task<List<StockRealTime>> GetAllStocksList(List<string> stock)
         {
             var CompanyResult = Task.FromResult(_stocks.Where(s => stock.Contains(s.CompanyID) ).ToList());
             return  CompanyResult;
@@ -74,22 +74,31 @@ namespace PhimHang.Models
 
                 var parameter = new { PI_tickerList = "KEYSECRET" };
 
-                var response = client.PostAsJsonAsync("/api/StockRealTime", parameter).Result;
-
-                if (response.IsSuccessStatusCode)
+                
+                try
                 {
-                    var list = await response.Content.ReadAsAsync<List<StockRealTime>>();
-                    if (list.Count > 0)
+                    var response = client.PostAsJsonAsync("/api/StockRealTime", parameter).Result;
+                    if (response.IsSuccessStatusCode)
                     {
-                        _stocks.Clear();
-                        list.ForEach(stock => _stocks.Add(stock));
+                        var list = await response.Content.ReadAsAsync<List<StockRealTime>>();
+                        if (list.Count > 0)
+                        {
+                            _stocks.Clear();
+                            list.ForEach(stock => _stocks.Add(stock));
+                        }
+                        //return list;
                     }
-                    //return list;
+                    else
+                    {
+                        //return new List<StockPrice>();
+                    }
                 }
-                else
+                catch (Exception)
                 {
-                    //return new List<StockPrice>();
+                    
+                    
                 }
+                
             }
         }
 

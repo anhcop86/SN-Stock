@@ -1496,3 +1496,35 @@ button
     /*border-radius: 5px;*/
     border-color: transparent;
 }
+
+
+.bullishTicker {    
+    color: #14e808;
+}
+
+.bearishTicker{
+    color: #D81D35;
+}
+
+.NoChangeTicker
+{
+    color: #DE7710;
+}
+
+
+
+.bullishIndex {    
+    color: #14e808;
+    font-weight:bold;
+}
+
+.bearishIndex{
+    color: #D81D35;
+    font-weight:bold;
+}
+
+.NoChangeIndex
+{
+    color: #DE7710;
+    font-weight:bold;
+}

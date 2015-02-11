@@ -34,13 +34,12 @@ namespace PhimHang.Controllers
 
         [AllowAnonymous]
         public async Task<ViewResult> Index(string symbolName)
-        {
-            var company = new StockCode();
+        {            
             //ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
 
             #region danh muc co phieu dang follow
-            var postNumber = await db.StockRelates.CountAsync(s => s.StockCodeRelate == symbolName);
-            var stockFollowNumber = await db.FollowStocks.CountAsync(sf => sf.StockFollowed == symbolName);
+            var postNumber = await db.StockRelates.CountAsync(s => s.StockCodeRelate == symbolName); // so luong bai viet cua cổ phiếu này
+            var stockFollowNumber = await db.FollowStocks.CountAsync(sf => sf.StockFollowed == symbolName); // bao nhieu nguoi da theo doi co phieu nay
             ViewBag.PostNumber = postNumber;
             ViewBag.StockFollowNumber = stockFollowNumber;
             // function follow stock
@@ -48,7 +47,7 @@ namespace PhimHang.Controllers
             {
                 ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
                 var countStockFollowr = await db.FollowStocks.CountAsync(f => f.UserId == currentUser.UserExtentLogin.Id && f.StockFollowed == symbolName);
-                if (countStockFollowr == 1)
+                if (countStockFollowr == 1) // kiem tra user nay co follow ma nay khong
                 {
                     ViewBag.CheckStockExist = "Y";
                 }
@@ -64,7 +63,7 @@ namespace PhimHang.Controllers
             #endregion
 
             #region Thong tin menu ben trai           
-            if (User.Identity.IsAuthenticated)
+            if (User.Identity.IsAuthenticated) // thong tin user dang nhap
             {
                 ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
                 ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
@@ -84,19 +83,18 @@ namespace PhimHang.Controllers
             #endregion
 
             #region thong tin co phieu
+            var company = new StockCode();
             company = await db.StockCodes.FirstOrDefaultAsync(m => m.Code.ToUpper() == symbolName.ToUpper());
             ViewBag.StockCode = company == null ? StatusSymbol.NF.ToString() : symbolName.ToUpper();
             ViewBag.StockName = company == null ? StatusSymbol.NF.ToString() : company.ShortName;
             ViewBag.LongName = company == null ? StatusSymbol.NF.ToString() : company.LongName;
             ViewBag.MarketName = company == null ? StatusSymbol.NF.ToString() : company.IndexName;
-
-
-
+                        
             #endregion
 
 
 
-            #region danh muc dau tu
+            #region gia co phieu
             //var followstocks = await db.FollowStocks.Where(f => f.UserId == currentUser.UserExtentLogin.Id).ToListAsync();
             //var listfollowstocksString = (from sf in followstocks
             //                              select sf.StockFollowed).ToList();
@@ -109,10 +107,22 @@ namespace PhimHang.Controllers
             //                         ShortName = s.ShortName
             //                     }).ToList();
             //ViewBag.HotStockDMDT = DMDTShortName;//_stockRealtime.GetAllStocksTestList(listfollowstocksString).Result;
+            StockRealTime stockprice = new StockRealTime();
+            stockprice = _stockRealtime.GetStocksByTicker(symbolName).Result;
+            if (stockprice == null)
+            {
+                stockprice = new StockRealTime();
+                stockprice.CompanyID = symbolName;
+            }
+            var listIndex = new List<string>();
+            listIndex.Add("VnIndex");
+            listIndex.Add("HNXIndex");
+            ViewBag.ListIndex = _stockRealtime.GetAllStocksList(listIndex).Result;
+            //ViewBag.PriceOfTicker = stockprice;
             #endregion
 
             ////return View(_stockRealtime.GetAllStocksTestList((List<string>)Session["listStock"]).Result);
-            return View();
+            return View(stockprice);
 
         }
         #region Extent

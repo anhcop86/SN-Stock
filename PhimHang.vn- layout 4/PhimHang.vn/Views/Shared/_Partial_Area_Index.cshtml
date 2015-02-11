@@ -1,0 +1,47 @@
+﻿
+<li class="hidden-xs">
+    <a href="index.html" class="top-menu-2-active">CHỈ SỐ</a>
+</li>
+@{
+    foreach (var item in ViewBag.ListIndex as List<PhimHang.Models.StockRealTime>)
+    {
+        <li class="hidden-xs">
+            <a href="index.html">
+                <strong>@item.CompanyID</strong>
+                @if (item.Diff == 0)
+                {
+                    <span class="NoChangeIndex ">
+                        <!--<i class="fa  fa-sort-up "></i>-->
+                        &nbsp;
+                        <span class="top-menu-point">
+                            @item.FinishPrice
+                        </span>
+                    </span>
+                }
+                else if (item.Diff > 0)
+                {
+                    <span class="bullishIndex">
+                        <!--<i class="fa  fa-sort-up "></i>-->
+                        &nbsp;
+                        <span class="top-menu-point">
+                            @item.FinishPrice
+                        </span>
+                    </span>
+                }
+                else
+                {
+                    <span class="bearishIndex">
+                        <!--<i class="fa  fa-sort-up "></i>-->
+                        &nbsp;
+                        <span class="top-menu-point">
+                            @item.FinishPrice
+                        </span>
+                    </span>
+                }
+                
+
+                </a>
+            </li>
+        }
+}
+
