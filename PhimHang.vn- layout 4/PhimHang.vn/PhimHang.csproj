@@ -1132,6 +1132,7 @@
     <Content Include="Views\User\_PartialUserTab3.cshtml" />
     <Content Include="Views\MyProfile\MessagesCenter.cshtml" />
     <Content Include="Views\Shared\_Partial_Area_Index.cshtml" />
+    <Content Include="Views\Shared\_Partial_Area_Right_Stock_Ticker.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

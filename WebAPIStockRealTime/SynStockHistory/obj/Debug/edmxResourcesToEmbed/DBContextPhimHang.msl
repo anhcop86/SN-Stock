@@ -4,6 +4,7 @@
     <EntitySetMapping Name="StockPrices">
       <EntityTypeMapping TypeName="testModel.StockPrice">
         <MappingFragment StoreEntitySet="StockPrice">
+          <ScalarProperty Name="Totalshare" ColumnName="Totalshare" />
           <ScalarProperty Name="TradingDate" ColumnName="TradingDate" />
           <ScalarProperty Name="ClosePrice" ColumnName="ClosePrice" />
           <ScalarProperty Name="LowPrice" ColumnName="LowPrice" />

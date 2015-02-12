@@ -125,6 +125,7 @@ namespace PhimHang.Controllers
             return View(stockprice);
 
         }
+       
         #region Extent
         public enum StatusSymbol
         {

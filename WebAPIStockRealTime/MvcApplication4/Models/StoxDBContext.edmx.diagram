@@ -5,11 +5,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="504178dfe1ad4aa683e58dd4740d4586" Name="Diagram1" ZoomLevel="68">
-        <EntityTypeShape EntityType="StoxDataModel.stox_tb_HOSE_Trading" Width="3.25" PointX="26" PointY="12.5" />
-        <EntityTypeShape EntityType="StoxDataModel.stox_tb_StocksInfo" Width="3.25" PointX="21.625" PointY="15.5" />
-        <EntityTypeShape EntityType="StoxDataModel.stox_tb_HOSE_TotalTrading" Width="3.125" PointX="26.625" PointY="16.5" />
         <EntityTypeShape EntityType="StoxDataModel.Stox_tb_MarketInfo" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="StoxDataModel.stox_tb_Company" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="StoxDataModel.stox_tb_HOSE_Trading" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="StoxDataModel.stox_tb_StocksInfo" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="StoxDataModel.stox_tb_HOSE_TotalTrading" Width="1.5" PointX="0.75" PointY="8.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

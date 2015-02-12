@@ -25,6 +25,7 @@ namespace PorfolioInvesment.Models
 
         public DateTime? TradingDate { get; set; }
 
+        public decimal? Totalshare { get; set; }
 
 
     }

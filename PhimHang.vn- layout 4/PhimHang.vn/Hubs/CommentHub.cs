@@ -59,9 +59,15 @@ namespace PhimHang.Hubs
             string messageFromatHTML = "";
             foreach (var item in listMessege)
             {
-                if (item.Contains("$") || item.Contains("@"))
+                if (item.Contains("$"))
                 {
-                    messageFromatHTML += "<b>" + item + "</b>" + " ";
+                    string ticker = item.Replace("$", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToUpper();
+                    messageFromatHTML += "<b><a onclick=selectMe(event,\"#\") target='_blank' href='/ticker/" + ticker + "'>" + item + "</a></b>" + " ";
+                }
+                else if (item.Contains("@"))
+                {
+                    string user = item.Replace("@", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToLower();
+                    messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='/user/" + user + "/tab/1'>" + item + "</a>" + " ";
                 }
                 else if (item.Contains("http") || item.Contains("www."))
                 {
@@ -139,7 +145,15 @@ namespace PhimHang.Hubs
 
 
                 /* add stockrelate */
-                await db.SaveChangesAsync();
+                try
+                {
+                    await db.SaveChangesAsync();
+                }
+                catch (Exception)
+                {
+                    // log                    
+                }
+                
 
                 var ret = new
                 {

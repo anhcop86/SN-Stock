@@ -1,0 +1,154 @@
+﻿
+<script src="http://code.highcharts.com/stock/highstock.js"></script>
+<script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
+<div id="tabs">
+    
+        <div id="container" style="height: 300px; min-width: 275px">
+
+        </div>
+    
+</div>
+<script>
+        $(function () {
+            //$.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=aapl-ohlcv.json&callback=?', function (data) {
+              $.getJSON('@Url.Action("GetStockPriChart", "Search")', function (data) {
+                // split the data set into ohlc and volume
+                var ohlc = [],
+                    volume = [],
+                    dataLength = data.length,
+                    // set the allowed units for data grouping
+                    groupingUnits = [[
+                        'week',                         // unit name
+                        [1]                             // allowed multiples
+                    ], [
+                        'month',
+                        [1, 2, 3, 4, 6]
+                    ]],
+
+                    i = 0;
+
+                for (i; i < dataLength; i += 1) {
+                    ohlc.push([
+                        data[i][0], // the date
+                        data[i][1], // open
+                        data[i][2], // high
+                        data[i][3], // low
+                        data[i][4] // close
+                    ]);
+
+                    volume.push([
+                        data[i][0], // the date
+                        data[i][5] // the volume
+                    ]);
+                }
+
+
+                // create the chart
+                $('#container').highcharts('StockChart', {
+                    chart: {
+                        height: 300, width: 278, style: { fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif'" }, /*plotBackgroundImage: "/assets/web2/270x163.png", */ animation: !1, panning: !1
+                    }, navigator: {
+                        enabled: !1
+                    }, scrollbar: {
+                        enabled: !1
+                    }, plotOptions: {
+                        candlestick: { color: "#db4c3c", upColor: "#00B746", lineColor: "#db4c3c", upLineColor: "#00B746" }
+                    }, navigation: {
+                        buttonOptions: { enabled: !1 }
+                    }, rangeSelector: {
+                        //enabled: !1,
+                        inputEnabled: !1
+                    }, exporting: {
+                        chartOptions: { rangeSelector: { enabled: !1 } }
+                    },
+                    credits: {
+                        enabled: false
+                    },
+                    yAxis: [{                       
+                        height: '70%',
+                        lineWidth: 2
+                    }, {                        
+                        top: '60%',
+                        height: '40%',
+                        offset: 0,
+                        lineWidth: 2
+                    }],
+
+                    series: [{
+                        type: 'candlestick',
+                        name: 'AAPL',
+                        data: ohlc,
+                        dataGrouping: {
+                            units: groupingUnits
+                        }
+                    }, {
+                        type: 'column',
+                        name: 'Volume',
+                        data: volume,
+                        yAxis: 1,
+                        dataGrouping: {
+                            units: groupingUnits
+                        }
+                    }]
+                });
+            });
+        });
+    </script>
+
+@*<script>
+    $(function () {
+        $.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=aapl-ohlcv.json&callback=?', function (data) {
+
+            // split the data set into ohlc and volume
+            var ohlc = [],
+                volume = [],
+                dataLength = data.length,
+                // set the allowed units for data grouping
+                groupingUnits = [[
+                    'week',                         // unit name
+                    [1]                             // allowed multiples
+                ], [
+                    'month',
+                    [1, 2, 3, 4, 6]
+                ]],
+
+                i = 0;
+
+            for (i; i < dataLength; i += 1) {
+                ohlc.push([
+                    data[i][0], // the date
+                    data[i][1], // open
+                    data[i][2], // high
+                    data[i][3], // low
+                    data[i][4] // close
+                ]);
+
+                volume.push([
+                    data[i][0], // the date
+                    data[i][5] // the volume
+                ]);
+            }
+
+            t = new Date().getTime();
+            // create the chart
+            $('#container').highcharts('StockChart', {
+                chart: {
+                    height: 215, width: 295, style: { fontFamily: "'Helvetica Neue', Helvetica, Arial, sans-serif'" }, plotBackgroundImage: "/assets/web2/270x163.png", animation: !1, panning: !1
+                }, navigator: {
+                    enabled: !1
+                }, scrollbar: {
+                    enabled: !1
+                }, plotOptions: {
+                    candlestick: { color: "#db4c3c", upColor: "#00B746", lineColor: "#db4c3c", upLineColor: "#00B746" }
+                }, navigation: {
+                    buttonOptions: { enabled: !1 }
+                }, rangeSelector: {
+                    enabled: !1
+                }, exporting: {
+                    chartOptions: { rangeSelector: { enabled: !1 } }
+                }
+
+            });
+        });
+    });
+</script>*@

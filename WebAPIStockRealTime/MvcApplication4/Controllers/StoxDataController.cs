@@ -58,8 +58,8 @@ namespace PorfolioInvesment.Controllers
                 using (db = new StoxDataEntities())
                 {
                     var historyHOSE = (from h in db.stox_tb_HOSE_Trading
-                                       where h.DateReport >= new DateTime(2014, 12, 01) && h.DateReport <= new DateTime(2014, 12, 02)
-                                   select new StockHis
+                                       where h.DateReport >= new DateTime(2014, 12, 01) && h.DateReport <= new DateTime(2014, 12, 07)
+                                   select new 
                                    {
                                        CeilingPrice = h.Ceiling *10,
                                        ClosePrice = h.Last * 10,
@@ -69,55 +69,59 @@ namespace PorfolioInvesment.Controllers
                                        HighPrice = h.Highest * 10,
                                        LowPrice = h.Lowest * 10,
                                        OpenPrice = h.OpenPrice * 10,
-                                       TradingDate = h.DateReport
-                                   });
-                    var historyHNX = (from h in db.stox_tb_StocksInfo
-                                      where h.trading_date >= new DateTime(2014, 12, 01) && h.trading_date <= new DateTime(2014, 12, 02)
-                                   select new StockHis
-                                   {
-                                       CeilingPrice = h.ceiling_price,
-                                       ClosePrice = h.close_price,
-                                       Code = h.code,
-                                       DiffPrice = h.basic_price,
-                                       FloorPrice = h.floor_price,
-                                       HighPrice = h.highest_price,
-                                       LowPrice = h.lowest_price,
-                                       OpenPrice = h.open_price,
-                                       TradingDate = h.trading_date
-                                   });
+                                       TradingDate = h.DateReport,
+                                       Totalshare = h.Totalshare * 10
+                                   }).ToList();
+                    //var historyHNX = (from h in db.stox_tb_StocksInfo
+                    //                  where h.trading_date >= new DateTime(2014, 12, 01) && h.trading_date <= new DateTime(2014, 12, 02)
+                    //               select new 
+                    //               {
+                    //                   CeilingPrice = h.ceiling_price,
+                    //                   ClosePrice = h.close_price,
+                    //                   Code = h.code,
+                    //                   DiffPrice = h.basic_price,
+                    //                   FloorPrice = h.floor_price,
+                    //                   HighPrice = h.highest_price,
+                    //                   LowPrice = h.lowest_price,
+                    //                   OpenPrice = h.open_price,
+                    //                   TradingDate = h.trading_date,
+                    //                   Totalshare = h.nm_total_traded_qtty
+                    //               }).ToList();
 
-                    var historyHNXIndex = (from h in db.Stox_tb_MarketInfo
-                                           where h.TRADING_DATE >= new DateTime(2014, 12, 01) && h.TRADING_DATE <= new DateTime(2014, 12, 02)
-                                      select new StockHis
-                                      {
-                                          CeilingPrice = 0,
-                                          ClosePrice = h.MARKET_INDEX,
-                                          Code = "HNXIndex",
-                                          DiffPrice = h.PRIOR_MARKET_INDEX,
-                                          FloorPrice = 0,
-                                          HighPrice = h.HIGHTEST,
-                                          LowPrice = h.LOWEST,
-                                          OpenPrice = h.OPEN_INDEX,
-                                          TradingDate = h.TRADING_DATE
-                                      });
-                    var historyVNIndex = (from h in db.stox_tb_HOSE_TotalTrading
-                                          where h.DateReport >= new DateTime(2014, 12, 01) && h.DateReport <= new DateTime(2014, 12, 02)
-                                           select new StockHis
-                                           {
-                                               CeilingPrice = 0,
-                                               ClosePrice = h.VNIndex,
-                                               Code = "VNIndex",
-                                               DiffPrice = h.PreVNIndex,
-                                               FloorPrice = 0,
-                                               HighPrice = h.Hightest,
-                                               LowPrice = h.Lowest,
-                                               OpenPrice = h.OpenIndex,
-                                               TradingDate = h.DateReport
-                                           });
+                    //var historyHNXIndex = (from h in db.Stox_tb_MarketInfo
+                    //                       where h.TRADING_DATE >= new DateTime(2014, 12, 01) && h.TRADING_DATE <= new DateTime(2014, 12, 02)
+                    //                  select new 
+                    //                  {
+                    //                      CeilingPrice = 0,
+                    //                      ClosePrice = h.MARKET_INDEX,
+                    //                      Code = "HNXIndex",
+                    //                      DiffPrice = h.PRIOR_MARKET_INDEX,
+                    //                      FloorPrice = 0,
+                    //                      HighPrice = h.HIGHTEST,
+                    //                      LowPrice = h.LOWEST,
+                    //                      OpenPrice = h.OPEN_INDEX,
+                    //                      TradingDate = h.TRADING_DATE,
+                    //                      Totalshare = h.TOTAL_QTTY
+                    //                  }).ToList();
+                    //var historyVNIndex = (from h in db.stox_tb_HOSE_TotalTrading
+                    //                      where h.DateReport >= new DateTime(2014, 12, 01) && h.DateReport <= new DateTime(2014, 12, 02)
+                    //                       select new 
+                    //                       {
+                    //                           CeilingPrice = 0,
+                    //                           ClosePrice = h.VNIndex,
+                    //                           Code = "VNIndex",
+                    //                           DiffPrice = h.PreVNIndex,
+                    //                           FloorPrice = 0,
+                    //                           HighPrice = h.Hightest,
+                    //                           LowPrice = h.Lowest,
+                    //                           OpenPrice = h.OpenIndex,
+                    //                           TradingDate = h.DateReport,
+                    //                           Totalshare = h.TotalTrade
+                    //                       }).ToList();
 
-                    var UnionTowList = historyHOSE.Union(historyHNX).Union(historyHNXIndex).Union(historyVNIndex);
+                   // var UnionTowList = historyHOSE.Union(historyHNX).Union(historyHNXIndex).Union(historyVNIndex);
                     //var countUnion = test.Count();
-                    return UnionTowList.ToList();
+                    return historyHOSE;
                 }
             }
             else

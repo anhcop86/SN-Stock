@@ -612,7 +612,9 @@ input[name=BullBear]{
     display: none;
 }
 /*end*/
-
+.filer-toSpan {
+    display:inline;
+}
 .filer-bar{
     padding:0px 10px 10px 10px;
     color:#666;
@@ -622,19 +624,26 @@ input[name=BullBear]{
     /*font-weight: bold;*/
 }
 .filer-bar-item{
-    font-size: 11px;
+    font-size: 12px;
     color:#328ac5;
-    padding: 0px 5px 0px 5px;
-    border-left: 1px solid #ddd;    
+    padding: 5px 10px 5px 10px;
+    /*border: 1px solid #328ac5;*/
 }
 .filer-bar-item a{
     padding:2px 5px 2px 5px;
 }
-.filer-bar-item a.active{
-    padding:2px 5px 2px 5px;
-    font-size: 20px;
-    border-bottom: 3px solid #328AC5;
-}
+.filer-bar-item a.active {
+        border: 1px solid #328ac5;
+        padding: 5px 14px 5px 14px;
+        background: #328ac5;
+        color: white;
+        font-weight:bold;
+        border-radius:2px;
+    }
+.filer-bar-item a:hover {
+        border: 1px solid #328ac5;        
+        border-radius:2px;                
+    }
 .bg-white-custom{
     background-color: #fff;
     padding: 2px 3px 2px 3px;
@@ -766,13 +775,13 @@ input[name=BullBear]{
     position: relative;
 }
 .list-status .bg-white:hover{    
-    background-color: #E9F4F9;    
+    background-color: #FEF2BE;    
 }
 .avata-genaral-size{
     float:left;
     width: 50px;
     height: 50px;
-    margin: 5px;
+    margin: 5px 5px 5px 15px;
     /*border-radius: 3px;*/
     /*border: 2px solid #ddd;*/
 }
@@ -1527,4 +1536,8 @@ button
 {
     color: #DE7710;
     font-weight:bold;
+}
+
+#tabs text{
+    color:white;
 }

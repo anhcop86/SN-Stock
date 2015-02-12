@@ -1,9 +1,13 @@
-﻿using PhimHang.Models;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using PhimHang.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace PhimHang.Controllers
 {
@@ -40,5 +44,24 @@ namespace PhimHang.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public async Task<dynamic> GetStockPriChart(string chart)
+        {
+            var ret = from sp in db.StockPrices
+                      orderby sp.TradingDate
+                      where sp.Code == "SFG"
+                      select new
+                      {
+                          sp.TradingDate,
+                          sp.OpenPrice,
+                          sp.HighPrice,
+                          sp.LowPrice,
+                          sp.ClosePrice,
+                          sp.Totalshare
+                      };
+
+            return Json(ret, JsonRequestBehavior.AllowGet);
+        }
+
 	}
 }

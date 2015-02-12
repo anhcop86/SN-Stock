@@ -18,6 +18,7 @@
     <Property Name="LowPrice" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="ClosePrice" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="TradingDate" Type="DateTime" Precision="7" />
+    <Property Name="Totalshare" Type="Decimal" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="StockCode">
     <Key>

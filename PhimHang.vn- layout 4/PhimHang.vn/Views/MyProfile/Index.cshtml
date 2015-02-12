@@ -44,7 +44,7 @@
         </div>
         <div class="bg-white" style="padding-top: 10px; padding-bottom: 3px;">
             <div class="filer-bar">
-                <div class="toSpan filer-bar-label">Hiển thị theo: </div>
+                @*<div class="toSpan filer-bar-label">Hiển thị theo: </div>*@
                 <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('ALL')" href="#" class="active">Tất cả</a> </div>
                 <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('CHA')" href="#">Biểu đồ</a> </div>
                 <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('STM')" href="#">Nhận định</a></div>
@@ -146,7 +146,7 @@
             <div style="display: block;" class="list-comment">
                 <div class="comment-item">
                     <div class="avata-genaral-size">
-                        <img src="@ViewBag.AvataEmage?width=35&height=35&mode=crop" class="img-rounded" alt="avatar">
+                        <img style="left:15px" src="@ViewBag.AvataEmage?width=35&height=35&mode=crop" class="img-rounded" alt="avatar">
                     </div>
                     <div id="input-comment" class="input-status">
                         <form name="frmComment">
