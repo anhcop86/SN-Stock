@@ -124,6 +124,7 @@
           <Property Name="ClosePrice" Type="money" />
           <Property Name="TradingDate" Type="datetime2" Precision="7" />
           <Property Name="Totalshare" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="StringDate" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="StockRelate">
           <Key>
@@ -615,6 +616,7 @@
           <Property Name="ClosePrice" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="TradingDate" Type="DateTime" Precision="7" />
           <Property Name="Totalshare" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="StringDate" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="StockRelate">
           <Key>
@@ -1019,6 +1021,7 @@
           <EntitySetMapping Name="StockPrices">
             <EntityTypeMapping TypeName="PHDBContext.StockPrice">
               <MappingFragment StoreEntitySet="StockPrice">
+                <ScalarProperty Name="StringDate" ColumnName="StringDate" />
                 <ScalarProperty Name="Totalshare" ColumnName="Totalshare" />
                 <ScalarProperty Name="TradingDate" ColumnName="TradingDate" />
                 <ScalarProperty Name="ClosePrice" ColumnName="ClosePrice" />

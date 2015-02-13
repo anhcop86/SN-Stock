@@ -96,7 +96,9 @@ namespace SynStockHistory
                     //bool stockExists = db.StockPrices.Any(m => m.Code == item.Code && m.TradingDate == item.TradingDate);
                     //if (!stockExists)
                     //{
-                        db.StockPrices.Add(item);
+
+                    //item.StringDate = item.TradingDate.
+                    db.StockPrices.Add(item);
                     //}
 
                 }

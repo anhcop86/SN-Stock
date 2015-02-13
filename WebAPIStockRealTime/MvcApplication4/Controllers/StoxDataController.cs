@@ -58,7 +58,8 @@ namespace PorfolioInvesment.Controllers
                 using (db = new StoxDataEntities())
                 {
                     var historyHOSE = (from h in db.stox_tb_HOSE_Trading
-                                       where h.DateReport >= new DateTime(2014, 12, 01) && h.DateReport <= new DateTime(2014, 12, 07)
+                                       where h.DateReport >= new DateTime(2011, 01, 01) && h.DateReport <= new DateTime(2015, 01, 01)
+                                       && h.StockSymbol == "HAG"
                                    select new 
                                    {
                                        CeilingPrice = h.Ceiling *10,

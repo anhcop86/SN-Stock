@@ -23,7 +23,8 @@ namespace SynStockHistory
         public Nullable<decimal> HighPrice { get; set; }
         public Nullable<decimal> LowPrice { get; set; }
         public Nullable<decimal> ClosePrice { get; set; }
-        public Nullable<System.DateTime> TradingDate { get; set; }
+        public System.DateTime TradingDate { get; set; }
         public Nullable<decimal> Totalshare { get; set; }
+        public string StringDate { get; set; }
     }
 }
