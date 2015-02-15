@@ -804,7 +804,7 @@ input[name=BullBear]{
     color:#FFBD00;
 }
 .bg-white > .list-item-status > .list-item-detail{
-    width:490px;
+    width:480px;
 }
 .list-item-username{
     font-size: 14px;

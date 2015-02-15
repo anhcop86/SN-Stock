@@ -25,6 +25,5 @@ namespace PhimHang.Models
         public Nullable<decimal> ClosePrice { get; set; }
         public Nullable<System.DateTime> TradingDate { get; set; }
         public Nullable<decimal> Totalshare { get; set; }
-        public string StringDate { get; set; }
     }
 }

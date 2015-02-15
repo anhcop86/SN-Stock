@@ -81,7 +81,7 @@ namespace PhimHang.Hubs
 
             #endregion
             //messageFromatHTML += "</a>";
-            post.Message = messageFromatHTML;
+            post.Message = AppHelper.FilteringWord( messageFromatHTML);            
             post.PostedBy = currentUserId;
             post.PostedDate = DateTime.Now;
             post.StockPrimary = stockCurrent;
@@ -183,6 +183,7 @@ namespace PhimHang.Hubs
         {
             reply.CommentBy = currentUserId;
             reply.PostedDate = DateTime.Now;
+            reply.Message = AppHelper.FilteringWord(reply.Message);
             //var listStock = new List<string>();
             //listStock.Add(stockCurrent.ToUpper());
             using (testEntities db = new testEntities())

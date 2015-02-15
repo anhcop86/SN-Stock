@@ -13,14 +13,14 @@ namespace PhimHang.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly FilterKeyworkSingleton _keyword;
+        //private readonly FilterKeyworkSingleton _keyword;
         public HomeController()
-            : this(FilterKeyworkSingleton.Instance, new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
+            : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
         }
-        public HomeController(FilterKeyworkSingleton KeyworkSing, UserManager<ApplicationUser> userManager)
+        public HomeController(UserManager<ApplicationUser> userManager)
         {
-            _keyword = KeyworkSing;
+            //_keyword = KeyworkSing;
             UserManager = userManager;
         }
 

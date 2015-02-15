@@ -12,11 +12,12 @@ namespace PhimHang.Models
         static FilterKeyworkSingleton instance = null;
         static readonly object padlock = new object();
         private readonly Timer _timer;
-        private readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(30000);
+        private readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(200000);
         private readonly List<string> listFilter = new List<string>();
 
         FilterKeyworkSingleton()
-        {            
+        {
+            getListFilterFromDatabase("");
             _timer = new Timer(getListFilterFromDatabase, null, _updateInterval, _updateInterval);
         }
 
@@ -31,11 +32,15 @@ namespace PhimHang.Models
                         if (instance == null)
                         {
                             instance = new FilterKeyworkSingleton();
-                        }                        
+                        }
                     }
                 }
                 return instance;
             }
+        }
+        public List<string> getListKeyWord()
+        {
+            return listFilter;
         }
         private void getListFilterFromDatabase(object state)
         {

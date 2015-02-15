@@ -29,7 +29,6 @@ namespace PhimHang.Models
         public virtual DbSet<FollowUser> FollowUsers { get; set; }
         public virtual DbSet<PostComment> PostComments { get; set; }
         public virtual DbSet<Setting> Settings { get; set; }
-        public virtual DbSet<StockPrice> StockPrices { get; set; }
         public virtual DbSet<StockRelate> StockRelates { get; set; }
         public virtual DbSet<StockViewLastest> StockViewLastests { get; set; }
         public virtual DbSet<UserRelate> UserRelates { get; set; }
@@ -38,8 +37,9 @@ namespace PhimHang.Models
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<StockCode> StockCodes { get; set; }
         public virtual DbSet<FilterKeyWord> FilterKeyWords { get; set; }
-        public virtual DbSet<Post> Posts { get; set; }
         public virtual DbSet<PinStock> PinStocks { get; set; }
         public virtual DbSet<NotificationMessege> NotificationMesseges { get; set; }
+        public virtual DbSet<Post> Posts { get; set; }
+        public virtual DbSet<StockPrice> StockPrices { get; set; }
     }
 }

@@ -80,7 +80,7 @@
             <PropertyRef Name="PostId" />
           </Key>
           <Property Name="PostId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Message" Type="varchar" MaxLength="2048" />
+          <Property Name="Message" Type="nvarchar" MaxLength="2048" />
           <Property Name="PostedBy" Type="int" Nullable="false" />
           <Property Name="PostedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="ChartImageURL" Type="nvarchar" MaxLength="128" />
@@ -124,7 +124,6 @@
           <Property Name="ClosePrice" Type="money" />
           <Property Name="TradingDate" Type="datetime2" Precision="7" />
           <Property Name="Totalshare" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="StringDate" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="StockRelate">
           <Key>
@@ -478,7 +477,6 @@
           <EntitySet Name="FollowUsers" EntityType="PHDBContext.FollowUser" />
           <EntitySet Name="PostComments" EntityType="PHDBContext.PostComment" />
           <EntitySet Name="Settings" EntityType="PHDBContext.Setting" />
-          <EntitySet Name="StockPrices" EntityType="PHDBContext.StockPrice" />
           <EntitySet Name="StockRelates" EntityType="PHDBContext.StockRelate" />
           <EntitySet Name="StockViewLastests" EntityType="PHDBContext.StockViewLastest" />
           <EntitySet Name="UserRelates" EntityType="PHDBContext.UserRelate" />
@@ -523,7 +521,25 @@
           </AssociationSet>
           <EntitySet Name="StockCodes" EntityType="PHDBContext.StockCode" />
           <EntitySet Name="FilterKeyWords" EntityType="PHDBContext.FilterKeyWord" />
+          <EntitySet Name="PinStocks" EntityType="PHDBContext.PinStock" />
+          <EntitySet Name="NotificationMesseges" EntityType="PHDBContext.NotificationMessege" />
+          <AssociationSet Name="FK_UserPost_User" Association="PHDBContext.FK_UserPost_User">
+            <End Role="UserLogin" EntitySet="UserLogins" />
+            <End Role="NotificationMessege" EntitySet="NotificationMesseges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPost_UserReciver" Association="PHDBContext.FK_UserPost_UserReciver">
+            <End Role="UserLogin" EntitySet="UserLogins" />
+            <End Role="NotificationMessege" EntitySet="NotificationMesseges" />
+          </AssociationSet>
           <EntitySet Name="Posts" EntityType="PHDBContext.Post" />
+          <AssociationSet Name="FK_Posts_User" Association="PHDBContext.FK_Posts_User">
+            <End Role="Post" EntitySet="Posts" />
+            <End Role="NotificationMessege" EntitySet="NotificationMesseges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Posts_PinStock" Association="PHDBContext.FK_Posts_PinStock">
+            <End Role="Post" EntitySet="Posts" />
+            <End Role="PinStock" EntitySet="PinStocks" />
+          </AssociationSet>
           <AssociationSet Name="FK_PostComments_Posts" Association="PHDBContext.FK_PostComments_Posts">
             <End Role="Post" EntitySet="Posts" />
             <End Role="PostComment" EntitySet="PostComments" />
@@ -540,24 +556,7 @@
             <End Role="Post" EntitySet="Posts" />
             <End Role="UserRelate" EntitySet="UserRelates" />
           </AssociationSet>
-          <EntitySet Name="PinStocks" EntityType="PHDBContext.PinStock" />
-          <AssociationSet Name="FK_Posts_PinStock" Association="PHDBContext.FK_Posts_PinStock">
-            <End Role="Post" EntitySet="Posts" />
-            <End Role="PinStock" EntitySet="PinStocks" />
-          </AssociationSet>
-          <EntitySet Name="NotificationMesseges" EntityType="PHDBContext.NotificationMessege" />
-          <AssociationSet Name="FK_Posts_User" Association="PHDBContext.FK_Posts_User">
-            <End Role="Post" EntitySet="Posts" />
-            <End Role="NotificationMessege" EntitySet="NotificationMesseges" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserPost_User" Association="PHDBContext.FK_UserPost_User">
-            <End Role="UserLogin" EntitySet="UserLogins" />
-            <End Role="NotificationMessege" EntitySet="NotificationMesseges" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserPost_UserReciver" Association="PHDBContext.FK_UserPost_UserReciver">
-            <End Role="UserLogin" EntitySet="UserLogins" />
-            <End Role="NotificationMessege" EntitySet="NotificationMesseges" />
-          </AssociationSet>
+          <EntitySet Name="StockPrices" EntityType="PHDBContext.StockPrice" />
           </EntityContainer>
         <EntityType Name="FollowStock">
           <Key>
@@ -601,23 +600,6 @@
           <Property Name="Value" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="CreatedDate" Type="DateTime" Precision="7" />
         </EntityType>
-        <EntityType Name="StockPrice">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Code" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
-          <Property Name="CeilingPrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="FloorPrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="DiffPrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="OpenPrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="HighPrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="LowPrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="ClosePrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="TradingDate" Type="DateTime" Precision="7" />
-          <Property Name="Totalshare" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="StringDate" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="StockRelate">
           <Key>
             <PropertyRef Name="ID" />
@@ -625,8 +607,8 @@
           <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="StockCodeRelate" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
           <Property Name="PostId" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="Post" Relationship="PHDBContext.FK_StockRelate_Posts" FromRole="StockRelate" ToRole="Post" />
           <Property Name="PinTab" Type="Boolean" />
+          <NavigationProperty Name="Post" Relationship="PHDBContext.FK_StockRelate_Posts" FromRole="StockRelate" ToRole="Post" />
         </EntityType>
         <EntityType Name="StockViewLastest">
           <Key>
@@ -685,9 +667,9 @@
           <NavigationProperty Name="AspNetUsers" Relationship="PHDBContext.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" FromRole="UserLogin" ToRole="AspNetUser" />
           <Property Name="UserNameCopy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Posts" Relationship="PHDBContext.FK_Posts_UserLogins" FromRole="UserLogin" ToRole="Post" />
           <NavigationProperty Name="NotificationMesseges" Relationship="PHDBContext.FK_UserPost_User" FromRole="UserLogin" ToRole="NotificationMessege" />
           <NavigationProperty Name="NotificationMesseges1" Relationship="PHDBContext.FK_UserPost_UserReciver" FromRole="UserLogin" ToRole="NotificationMessege" />
+          <NavigationProperty Name="Posts" Relationship="PHDBContext.FK_Posts_UserLogins" FromRole="UserLogin" ToRole="Post" />
         </EntityType>
         <Association Name="FK_FollowStock_UserLogins">
           <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />
@@ -828,12 +810,63 @@
           <Property Name="KeyWord" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="CreateDate" Type="DateTime" Precision="7" />
         </EntityType>
+        <EntityType Name="PinStock">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StockCodePin" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="PostId" Type="Int64" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+          <Property Name="WhoPost" Type="Int32" />
+          <NavigationProperty Name="Post" Relationship="PHDBContext.FK_Posts_PinStock" FromRole="PinStock" ToRole="Post" />
+        </EntityType>
+        <EntityType Name="NotificationMessege">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserPost" Type="Int32" Nullable="false" />
+          <Property Name="UserReciver" Type="Int32" Nullable="false" />
+          <Property Name="PostId" Type="Int64" />
+          <Property Name="NumNoti" Type="Int32" />
+          <Property Name="TypeNoti" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_UserPost_User" FromRole="NotificationMessege" ToRole="UserLogin" />
+          <NavigationProperty Name="UserLogin1" Relationship="PHDBContext.FK_UserPost_UserReciver" FromRole="NotificationMessege" ToRole="UserLogin" />
+          <Property Name="XemYN" Type="Boolean" />
+          <NavigationProperty Name="Post" Relationship="PHDBContext.FK_Posts_User" FromRole="NotificationMessege" ToRole="Post" />
+        </EntityType>
+        <Association Name="FK_UserPost_User">
+          <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />
+          <End Type="PHDBContext.NotificationMessege" Role="NotificationMessege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogin">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NotificationMessege">
+              <PropertyRef Name="UserPost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPost_UserReciver">
+          <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />
+          <End Type="PHDBContext.NotificationMessege" Role="NotificationMessege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogin">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NotificationMessege">
+              <PropertyRef Name="UserReciver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="Post">
           <Key>
             <PropertyRef Name="PostId" />
           </Key>
           <Property Name="PostId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Message" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
           <Property Name="PostedBy" Type="Int32" Nullable="false" />
           <Property Name="PostedDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="ChartImageURL" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
@@ -841,13 +874,37 @@
           <Property Name="Vir" Type="Boolean" />
           <Property Name="StockPrimary" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
           <Property Name="ChartYN" Type="Boolean" />
+          <NavigationProperty Name="NotificationMesseges" Relationship="PHDBContext.FK_Posts_User" FromRole="Post" ToRole="NotificationMessege" />
+          <NavigationProperty Name="PinStocks" Relationship="PHDBContext.FK_Posts_PinStock" FromRole="Post" ToRole="PinStock" />
           <NavigationProperty Name="PostComments" Relationship="PHDBContext.FK_PostComments_Posts" FromRole="Post" ToRole="PostComment" />
           <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_Posts_UserLogins" FromRole="Post" ToRole="UserLogin" />
           <NavigationProperty Name="StockRelates" Relationship="PHDBContext.FK_StockRelate_Posts" FromRole="Post" ToRole="StockRelate" />
           <NavigationProperty Name="UserRelates" Relationship="PHDBContext.FK_UserRelate_Posts" FromRole="Post" ToRole="UserRelate" />
-          <NavigationProperty Name="PinStocks" Relationship="PHDBContext.FK_Posts_PinStock" FromRole="Post" ToRole="PinStock" />
-          <NavigationProperty Name="NotificationMesseges" Relationship="PHDBContext.FK_Posts_User" FromRole="Post" ToRole="NotificationMessege" />
         </EntityType>
+        <Association Name="FK_Posts_User">
+          <End Type="PHDBContext.Post" Role="Post" Multiplicity="0..1" />
+          <End Type="PHDBContext.NotificationMessege" Role="NotificationMessege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="NotificationMessege">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Posts_PinStock">
+          <End Type="PHDBContext.Post" Role="Post" Multiplicity="1" />
+          <End Type="PHDBContext.PinStock" Role="PinStock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="PinStock">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PostComments_Posts">
           <End Type="PHDBContext.Post" Role="Post" Multiplicity="1" />
           <End Type="PHDBContext.PostComment" Role="PostComment" Multiplicity="*" />
@@ -896,81 +953,22 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="PinStock">
+        <EntityType Name="StockPrice">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StockCodePin" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
-          <Property Name="PostId" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="Post" Relationship="PHDBContext.FK_Posts_PinStock" FromRole="PinStock" ToRole="Post" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
-          <Property Name="WhoPost" Type="Int32" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="CeilingPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="FloorPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DiffPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="OpenPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="HighPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="LowPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ClosePrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TradingDate" Type="DateTime" Precision="7" />
+          <Property Name="Totalshare" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
-        <Association Name="FK_Posts_PinStock">
-          <End Type="PHDBContext.Post" Role="Post" Multiplicity="1" />
-          <End Type="PHDBContext.PinStock" Role="PinStock" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Post">
-              <PropertyRef Name="PostId" />
-            </Principal>
-            <Dependent Role="PinStock">
-              <PropertyRef Name="PostId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="NotificationMessege">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserPost" Type="Int32" Nullable="false" />
-          <Property Name="UserReciver" Type="Int32" Nullable="false" />
-          <Property Name="PostId" Type="Int64" />
-          <Property Name="NumNoti" Type="Int32" />
-          <Property Name="TypeNoti" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="7" />
-          <NavigationProperty Name="Post" Relationship="PHDBContext.FK_Posts_User" FromRole="NotificationMessege" ToRole="Post" />
-          <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_UserPost_User" FromRole="NotificationMessege" ToRole="UserLogin" />
-          <NavigationProperty Name="UserLogin1" Relationship="PHDBContext.FK_UserPost_UserReciver" FromRole="NotificationMessege" ToRole="UserLogin" />
-          <Property Name="XemYN" Type="Boolean" />
-        </EntityType>
-        <Association Name="FK_Posts_User">
-          <End Type="PHDBContext.Post" Role="Post" Multiplicity="0..1" />
-          <End Type="PHDBContext.NotificationMessege" Role="NotificationMessege" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Post">
-              <PropertyRef Name="PostId" />
-            </Principal>
-            <Dependent Role="NotificationMessege">
-              <PropertyRef Name="PostId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserPost_User">
-          <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />
-          <End Type="PHDBContext.NotificationMessege" Role="NotificationMessege" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserLogin">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="NotificationMessege">
-              <PropertyRef Name="UserPost" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserPost_UserReciver">
-          <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />
-          <End Type="PHDBContext.NotificationMessege" Role="NotificationMessege" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserLogin">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="NotificationMessege">
-              <PropertyRef Name="UserReciver" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1015,24 +1013,6 @@
                 <ScalarProperty Name="Value" ColumnName="Value" />
                 <ScalarProperty Name="Key" ColumnName="Key" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="StockPrices">
-            <EntityTypeMapping TypeName="PHDBContext.StockPrice">
-              <MappingFragment StoreEntitySet="StockPrice">
-                <ScalarProperty Name="StringDate" ColumnName="StringDate" />
-                <ScalarProperty Name="Totalshare" ColumnName="Totalshare" />
-                <ScalarProperty Name="TradingDate" ColumnName="TradingDate" />
-                <ScalarProperty Name="ClosePrice" ColumnName="ClosePrice" />
-                <ScalarProperty Name="LowPrice" ColumnName="LowPrice" />
-                <ScalarProperty Name="HighPrice" ColumnName="HighPrice" />
-                <ScalarProperty Name="OpenPrice" ColumnName="OpenPrice" />
-                <ScalarProperty Name="DiffPrice" ColumnName="DiffPrice" />
-                <ScalarProperty Name="FloorPrice" ColumnName="FloorPrice" />
-                <ScalarProperty Name="CeilingPrice" ColumnName="CeilingPrice" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1127,21 +1107,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Posts">
-            <EntityTypeMapping TypeName="PHDBContext.Post">
-              <MappingFragment StoreEntitySet="Posts">
-                <ScalarProperty Name="ChartYN" ColumnName="ChartYN" />
-                <ScalarProperty Name="StockPrimary" ColumnName="StockPrimary" />
-                <ScalarProperty Name="Vir" ColumnName="Vir" />
-                <ScalarProperty Name="NhanDinh" ColumnName="NhanDinh" />
-                <ScalarProperty Name="ChartImageURL" ColumnName="ChartImageURL" />
-                <ScalarProperty Name="PostedDate" ColumnName="PostedDate" />
-                <ScalarProperty Name="PostedBy" ColumnName="PostedBy" />
-                <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="PostId" ColumnName="PostId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PinStocks">
             <EntityTypeMapping TypeName="PHDBContext.PinStock">
               <MappingFragment StoreEntitySet="PinStock">
@@ -1164,6 +1129,38 @@
                 <ScalarProperty Name="UserReciver" ColumnName="UserReciver" />
                 <ScalarProperty Name="UserPost" ColumnName="UserPost" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Posts">
+            <EntityTypeMapping TypeName="PHDBContext.Post">
+              <MappingFragment StoreEntitySet="Posts">
+                <ScalarProperty Name="ChartYN" ColumnName="ChartYN" />
+                <ScalarProperty Name="StockPrimary" ColumnName="StockPrimary" />
+                <ScalarProperty Name="Vir" ColumnName="Vir" />
+                <ScalarProperty Name="NhanDinh" ColumnName="NhanDinh" />
+                <ScalarProperty Name="ChartImageURL" ColumnName="ChartImageURL" />
+                <ScalarProperty Name="PostedDate" ColumnName="PostedDate" />
+                <ScalarProperty Name="PostedBy" ColumnName="PostedBy" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockPrices">
+            <EntityTypeMapping TypeName="PHDBContext.StockPrice">
+              <MappingFragment StoreEntitySet="StockPrice">
+                <ScalarProperty Name="Totalshare" ColumnName="Totalshare" />
+                <ScalarProperty Name="TradingDate" ColumnName="TradingDate" />
+                <ScalarProperty Name="ClosePrice" ColumnName="ClosePrice" />
+                <ScalarProperty Name="LowPrice" ColumnName="LowPrice" />
+                <ScalarProperty Name="HighPrice" ColumnName="HighPrice" />
+                <ScalarProperty Name="OpenPrice" ColumnName="OpenPrice" />
+                <ScalarProperty Name="DiffPrice" ColumnName="DiffPrice" />
+                <ScalarProperty Name="FloorPrice" ColumnName="FloorPrice" />
+                <ScalarProperty Name="CeilingPrice" ColumnName="CeilingPrice" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

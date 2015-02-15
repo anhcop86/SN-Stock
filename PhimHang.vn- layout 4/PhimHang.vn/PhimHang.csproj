@@ -260,6 +260,7 @@
     <Compile Include="Hubs\CommentHub.cs" />
     <Compile Include="Hubs\RealTimePriceHub.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AppHelper.cs" />
     <Compile Include="Models\AspNetUser.cs">
       <DependentUpon>PhimHangADO.tt</DependentUpon>
     </Compile>
@@ -519,7 +520,9 @@
     <Content Include="ThemeBlue\js\Chartcp.js" />
     <Content Include="ThemeBlue\js\chart\realtime_chart.js" />
     <Content Include="ThemeBlue\js\chart\sample_line_chart.js" />
+    <Content Include="ThemeBlue\js\exporting.js" />
     <Content Include="ThemeBlue\js\Extention.js" />
+    <Content Include="ThemeBlue\js\highstock.js" />
     <Content Include="ThemeBlue\js\jquery.dropdown.js" />
     <Content Include="ThemeBlue\js\jquery\jquery-ui.js" />
     <Content Include="ThemeBlue\js\jquery\jquery-ui.min.js" />

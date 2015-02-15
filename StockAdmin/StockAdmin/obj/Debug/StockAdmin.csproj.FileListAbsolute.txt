@@ -26,3 +26,31 @@ E:\IT Project\StockAdmin\StockAdmin\bin\System.Web.WebPages.Razor.xml
 E:\IT Project\StockAdmin\StockAdmin\obj\Debug\StockAdmin.csprojResolveAssemblyReference.cache
 E:\IT Project\StockAdmin\StockAdmin\obj\Debug\StockAdmin.dll
 E:\IT Project\StockAdmin\StockAdmin\obj\Debug\StockAdmin.pdb
+E:\Working\SN-Stock\StockAdmin\StockAdmin\bin\StockAdmin.dll.config
+E:\Working\SN-Stock\StockAdmin\StockAdmin\bin\StockAdmin.dll
+E:\Working\SN-Stock\StockAdmin\StockAdmin\bin\StockAdmin.pdb
+E:\Working\SN-Stock\StockAdmin\StockAdmin\bin\Microsoft.Web.Infrastructure.dll
+E:\Working\SN-Stock\StockAdmin\StockAdmin\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+E:\Working\SN-Stock\StockAdmin\StockAdmin\bin\Newtonsoft.Json.dll
+E:\Working\SN-Stock\StockAdmin\StockAdmin\bin\System.Net.Http.Formatting.dll
+E:\Working\SN-Stock\StockAdmin\StockAdmin\bin\System.Web.Helpers.dll
+E:\Working\SN-Stock\StockAdmin\StockAdmin\bin\System.Web.Http.dll
+E:\Working\SN-Stock\StockAdmin\StockAdmin\bin\System.Web.Http.WebHost.dll
+E:\Working\SN-Stock\StockAdmin\StockAdmin\bin\System.Web.Mvc.dll
+E:\Working\SN-Stock\StockAdmin\StockAdmin\bin\System.Web.Razor.dll
+E:\Working\SN-Stock\StockAdmin\StockAdmin\bin\System.Web.WebPages.Deployment.dll
+E:\Working\SN-Stock\StockAdmin\StockAdmin\bin\System.Web.WebPages.dll
+E:\Working\SN-Stock\StockAdmin\StockAdmin\bin\System.Web.WebPages.Razor.dll
+E:\Working\SN-Stock\StockAdmin\StockAdmin\bin\Newtonsoft.Json.xml
+E:\Working\SN-Stock\StockAdmin\StockAdmin\bin\System.Net.Http.Formatting.xml
+E:\Working\SN-Stock\StockAdmin\StockAdmin\bin\System.Web.Helpers.xml
+E:\Working\SN-Stock\StockAdmin\StockAdmin\bin\System.Web.Http.xml
+E:\Working\SN-Stock\StockAdmin\StockAdmin\bin\System.Web.Http.WebHost.xml
+E:\Working\SN-Stock\StockAdmin\StockAdmin\bin\System.Web.Mvc.xml
+E:\Working\SN-Stock\StockAdmin\StockAdmin\bin\System.Web.Razor.xml
+E:\Working\SN-Stock\StockAdmin\StockAdmin\bin\System.Web.WebPages.xml
+E:\Working\SN-Stock\StockAdmin\StockAdmin\bin\System.Web.WebPages.Deployment.xml
+E:\Working\SN-Stock\StockAdmin\StockAdmin\bin\System.Web.WebPages.Razor.xml
+E:\Working\SN-Stock\StockAdmin\StockAdmin\obj\Debug\StockAdmin.csprojResolveAssemblyReference.cache
+E:\Working\SN-Stock\StockAdmin\StockAdmin\obj\Debug\StockAdmin.dll
+E:\Working\SN-Stock\StockAdmin\StockAdmin\obj\Debug\StockAdmin.pdb
