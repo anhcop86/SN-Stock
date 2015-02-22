@@ -26,32 +26,35 @@ namespace PhimHang.Controllers
         public UserManager<ApplicationUser> UserManager { get; private set; }
 
         private testEntities db = new testEntities();
-        private const string ImageURLAvataDefault = "img/avatar_default.jpg";
-        private const string ImageURLCoverDefault = "img/cover_default.jpg";
-        private const string ImageURLAvata = "images/avatar/";
-        private const string ImageURLCover = "images/cover/";
+        private const string ImageURLAvataDefault = "/img/avatar2.jpg";
+        private const string ImageURLAvata = "/images/avatar/";
  
 
-        public async Task<ActionResult> Index(long postid, string stock)
+        public async Task<ActionResult> Index(long postid)
         {
             using (db = new testEntities())
             {
-                ApplicationUser currentUser = new ApplicationUser();
-                if(User.Identity.IsAuthenticated)
+
+                if (User.Identity.IsAuthenticated)
                 {
+                    ApplicationUser currentUser = new ApplicationUser();
                     currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
                 }
 
-                var post = await db.Posts.Include(p => p.UserLogin).FirstOrDefaultAsync(p => p.PostId == postid);
-                ViewBag.AvataEmagebyPost = string.IsNullOrEmpty(post.UserLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + post.UserLogin.AvataImage;
-                ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
-                ViewBag.StockPrimary = stock;
-                // tham so hub
-                ViewBag.AvataImageUrl = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage + "?width=46&height=46&mode=crop";
-                ViewBag.UserName = currentUser.UserName;
-                ViewBag.CureentUserId = currentUser.UserExtentLogin.Id;
+                var post = await db.Posts.FirstOrDefaultAsync(p => p.PostId == postid);
+
+                ViewBag.Message = post.ChartYN == true ? post.Message + "<br/><img src='" + post.ChartImageURL + "?width=215&height=120&mode=crop' >" : post.Message;
+                ViewBag.PostedByName = post.UserLogin.UserNameCopy;
+                ViewBag.PostedByAvatar = string.IsNullOrEmpty(post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + post.UserLogin.AvataImage;
+                ViewBag.PostedDate = post.PostedDate;
+                ViewBag.PostId = post.PostId;
+                ViewBag.StockPrimary = post.StockPrimary;
+                ViewBag.Stm = post.NhanDinh;
+                ViewBag.ChartYN = post.ChartYN;
+                ViewBag.PostBy = post.PostedBy;
+
                 // end
-                return View(post);
+                return View();
             }
             
         }

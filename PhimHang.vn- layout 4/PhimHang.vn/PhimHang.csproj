@@ -1129,13 +1129,16 @@
     <Content Include="ThemeBlue\plugins\xcharts\LICENSE" />
     <Content Include="ThemeBlue\plugins\xcharts\README.md" />
     <Content Include="Views\Shared\_Layout_Home.cshtml" />
-    <Content Include="Views\Shared\_Partial_Area_Left_Stock_Ticker.cshtml" />
+    <Content Include="Views\Shared\_Partial_Area_Left_Post_Detail.cshtml" />
     <Content Include="Views\User\_PartialUserTab2.cshtml" />
     <Content Include="Views\User\_PartialUserTab4.cshtml" />
     <Content Include="Views\User\_PartialUserTab3.cshtml" />
     <Content Include="Views\MyProfile\MessagesCenter.cshtml" />
     <Content Include="Views\Shared\_Partial_Area_Index.cshtml" />
     <Content Include="Views\Shared\_Partial_Area_Right_Stock_Ticker.cshtml" />
+    <Content Include="Views\Shared\_Layout_Post_Detail.cshtml" />
+    <Content Include="Views\Shared\_Partial_Area_Left_Stock_Ticker.cshtml" />
+    <Content Include="Views\Shared\_Partial_Area_Index_Post_Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -127,7 +127,19 @@
                 </div>
             </div>
             <!---->
-            <div class="bg-white-custom" data-bind="visible :newPosts().length > 0 ">
+            @*
+    <div class="bg-white-custom" data-bind="visible :newPosts().length > 0 ">
+        <div class="filer-new-status">
+            <div class="filer-new-status-button-bar">
+                <div class="text-label">
+                    <a href="#" style="font-size: 14px;" data-bind=" click : loadNewPosts"> <strong data-bind="text: newPosts().length"></strong> bài phím mới </a>
+                </div>
+            </div>
+        </div>
+    </div>     *@       
+            <!---->
+            
+            <div class="bg-white-custom">
                 <div class="filer-new-status">
                     <div class="filer-new-status-button-bar">
                         <div class="text-label">
@@ -135,8 +147,9 @@
                         </div>
                     </div>
                 </div>
-            </div>            
-            <div data-bind="foreach : posts">
+            </div> 
+            
+            <div data-bind="foreach : {data: posts, afterAdd: afterAdd }">
                 <div class="bg-white">
                     <div class="list-item-status" tabindex="-1" data-bind=" click: function(data, event) { $parent.detailPost(data, event); }">
                         @*click: function(data, event) { $parent.detailPost; event.stopPropagation(); }*@
@@ -552,6 +565,13 @@
             self.newPosts([]);
             document.title = $('#titleHidenPage').val();
         }
+
+        self.afterAdd = function (elem) {
+            if (checkLoadFirst == 1) {
+                //$(elem).hide().slideDown('slow');
+                $(elem).hide().slideDown('slow')
+            }            
+        };
 
         self.detailPost = function (data, e) { // chi tiet post bao gom tra loi
 

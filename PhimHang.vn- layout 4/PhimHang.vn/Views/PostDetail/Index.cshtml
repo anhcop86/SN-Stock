@@ -1,167 +1,190 @@
-﻿@model PhimHang.Models.Post
+﻿
 @{
     ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_Layout_Reply_Ad.cshtml";
+    Layout = "~/Views/Shared/_Layout_Post_Detail.cshtml";
 }
 
 @section scripts{
     <link href="~/Content/StockPrice.css" rel="stylesheet" />
     <script src="~/Scripts/jquery.timeago.js"></script>
-    @*<script src="~/Scripts/StockPrice.js"></script>*@
+
 }
 
 
-<div class="bg-white">
-    <div class="list-status">
-        <!--list comment here location.href='/Symbol/Details/' +-->
-        <div class="list-item-status">
-            <div class="avata-genaral-size">
-                <img class="img-rounded" alt="avatar" src="/@ViewBag.AvataEmagebyPost?width=48&height=48&mode=crop">
-            </div>
-            <div class="list-item-detail">
-                <div class="list-item-date">@Model.PostedDate</div>
-                <div class="list-item-username">@Model.UserLogin.UserNameCopy</div>
-                <div style="cursor:pointer" class="list-item-status-content">@Html.Raw(@Model.Message)</div>
-            </div>
+<div class="area-center">
+    <div id="top-status-box" class="bg-white status-box">
+        <div class="avata-comment">
+            <img src="@ViewBag.AvataEmage?width=35&height=35&mode=crop" class="img-rounded" alt="avatar">
         </div>
-
-        <!--end list comment-->
-
-    </div>
-</div>
-<div class="bg-white" id="CommentForKoLoad">
-    <div class="list-status">
-        <!--list comment here location.href='/Symbol/Details/' +-->
-        <div class="list-item-status" data-bind="foreach : replys">
-            <div class="avata-genaral-size">
-                <img class="img-rounded" alt="avatar" data-bind="attr: { src: ReplyByAvatar }">
-            </div>
-            <div class="list-item-detail">
-                <div class="list-item-date" data-bind="text : ReplyDate"></div>
-                <div class="list-item-username" data-bind="text : ReplyByName"></div>
-                <div style="cursor:pointer" class="list-item-status-content" data-bind="html : ReplyMessage "></div>
-                <div class="list-item-control">
-                    @*<a class="button"><i class="fa fa-comments"></i>1</a>
-                    <a style="cursor:pointer" class="button" data-bind="click : function() {  location.href='/PostDetail?postid='+ PostId +'&stock=' + StockPrimary }">Trả lời</a>
-                    <a class="button">Chia sẻ</a>
-                    <a class="button">Thích</a>*@
-                    <a class="button">Báo cáo vi phạm</a>
-                </div>
-            </div>
-        </div>
-
-        <!--end list comment-->
-
-    </div>
-    
-        <div class="status-box">
-            <div class="avatar-small">
-                <img src="/@ViewBag.AvataEmage?width=28&height=28&mode=crop" class="img-rounded" alt="avatar">
-            </div>
-            <div class="input-status">
-
+        <div class="input-status">
+            <form id="frmStatus" name="frmStatus" method="GET">
                 <div id="input-status-text" class="input-status-text">
-                    <textarea data-bind="value : newMessage, valueUpdate : 'afterkeydown' , limitCharacters : 140" name="status" rows="5" placeholder="Nhập để trả lời" id="status" title="Search"></textarea>
+                    <textarea data-bind="value : newMessage, valueUpdate : 'afterkeydown' , limitCharacters : 140" class="status-cm" name="status" rows="5" placeholder="$Mã cổ phiếu ($VNM, $GAS); Username" id="status" title="Search" autocomplete="off" rows="5"></textarea>
                 </div>
                 <div class="status-control">
-                    <div id="btnPhim" class="f-right">
-                        <span data-bind="text : count"></span>
-                        @*<a href="javascript:void(0)" class="button-phim" data-bind="click : addPost"><span>PHÍM</span></a>*@
-                        <input type="button" style="cursor:pointer" class="button-phim" value="Trả lời" data-bind="click : addReply,  enable: enablePhimHang " />
+                    @{
+                        if (User.Identity.IsAuthenticated)
+                        {
+
+                            <div class="choose_file f-left">
+                                <i class="fa fa-camera"></i>
+                                <input id="idchartFileUpload" name="Select File" accept="image/*" type="file" onchange="uploadPreview(files)" />
+                                <div class="chartImage">
+                                    <a class="mb3-close chart-close" onclick="removeFileChart()" href="javascript:void(0)">x</a>
+                                    <img class="mb3-chart-thumb" src="">
+                                </div>
+                            </div>
+
+                            <div id="radio" class="switch3button f-left">
+                                <input type="radio" id="radio1" name="BullBear" value="2">
+                                <label for="radio1" class="divBull ">Tăng</label>
+                                <input type="radio" id="radio3" name="BullBear" value="1">
+                                <label for="radio3" class="divBear">Giảm</label>
+
+
+                            </div>
+                            <div id="btnPhim" class="f-right">
+                                <span data-bind="text : count"></span>
+                                <button id="btAddPost" style="cursor:pointer" class="button-phim" data-bind="click : addPost,  enable: enablePhimHang ">PHÍM</button>
+                            </div>
+                        }
+                        else
+                        {
+                            // must login
+
+                            <div id="btnPhim" class="f-right">
+                                <a class="logoutbutton" href="/Account/Register?ReturnUrl=/Ticker/@ViewBag.StockCode">REGISTER</a>
+                                <a class="logoutbutton" href="/Account/Login?ReturnUrl=/Ticker/@ViewBag.StockCode">LOGIN</a>
+                            </div>
+
+                        }
+                    }
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="bg-white" style="padding-top: 10px; padding-bottom: 3px;">
+        <div class="filer-bar">
+            @*<div class="toSpan filer-bar-label">Hiển thị theo: </div>*@
+            <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('ALL')" href="#" class="active">Tất cả</a> </div>
+            <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('CHA')" href="#">Biểu đồ</a> </div>
+            <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('STM')" href="#">Nhận định</a></div>
+            @*<div class="toSpan filer-bar-item">
+                    <a id="btn-option-more" href="#" data-dropdown="#dropdown-2">
+                        Tùy chọn khác
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                    <div id="dropdown-2" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
+                        <ul class="dropdown-menu">
+                            <li><a href="#4">Item 4</a></li>
+                            <li><a href="#5">Item 5</a></li>
+                            <li><a href="#5">Item 6</a></li>
+                        </ul>
+                    </div>
+                </div>*@
+        </div>
+        <div class="ajaxLoadingInit" style="text-align:center"><img src="~/images/ajax-loader_cungphim.gif" /></div>
+    </div>
+
+    <div class="list-status">
+        <!--pin ma co phieu o day-->
+        <div data-bind="foreach : postPins">
+            <div class="bg-white">
+                <div class="list-item-status" tabindex="-1" data-bind=" click: function(data, event) { $parent.detailPost(data, event); }">
+                    @*click: function(data, event) { $parent.detailPost; event.stopPropagation(); }*@
+                    <div class="avata-genaral-size">
+                        <img data-bind="attr: { src: PostedByAvatar },click : function() {  location.href='/user/' + PostedByName + '/tab/1' }" class="img-rounded" alt="avatar">
+                    </div>
+                    <div class="list-item-detail">
+                        <div class="list-item-date" data-bind="text : PostedDate"></div>
+                        <div class="list-item-username" style="width:0%">
+                            <div style="cursor:pointer" onclick='selectMe(event,"#")' data-bind="text : PostedByName, click : function() {  location.href='/user/' + PostedByName + '/tab/1'  }"></div>
+                        </div>
+                        <span>
+                            <span data-bind="html : Stm"></span>
+
+                        </span>
+                        <div class="list-item-status-content" data-bind="html : Message"></div>
+                        <div class="list-item-control">
+                            @*<a style="border-color:transparent; background-color:transparent" class="button" href="#"><i data-bind="text :notification, visible: notification() > 0" class="fa fa-comments"></i></a>*@
+                            <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
+                            <a class="button" href="#" title="Thích">Chia sẽ</a>
+                            <a class="button btnMore" href="#" title="..." data-dropdown="#cm-3">
+                                ...
+                            </a>
+                            <div id="cm-3" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" title="Chia sẻ">Chia sẻ</a></li>
+                                    <li><a href="#" title="Vi phạm">Vi phạm</a></li>
+                                </ul>
+                            </div>
+                            <span class="likeAndPin">
+                                <a class="button" href="#" title="Pin"><img src="/images/pintab.png" /></a>
+                                <a class="button" href="#" title="Pin"><img src="/images/likecp.png" /></a>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    
+        <!---->
+        @*
+            <div class="bg-white-custom" data-bind="visible :newPosts().length > 0 ">
+                <div class="filer-new-status">
+                    <div class="filer-new-status-button-bar">
+                        <div class="text-label">
+                            <a href="#" style="font-size: 14px;" data-bind=" click : loadNewPosts"> <strong data-bind="text: newPosts().length"></strong> bài phím mới </a>
+                        </div>
+                    </div>
+                </div>
+            </div>     *@
+        <!---->
 
+        <div class="bg-white-custom">
+            <div class="filer-new-status">
+                <div class="filer-new-status-button-bar">
+                    <div class="text-label">
+                        <a href="#" style="font-size: 14px;" data-bind=" click : loadNewPosts"> <strong data-bind="text: newPosts().length"></strong> bài phím mới </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div data-bind="foreach : {data: posts, afterAdd: afterAdd }">
+            <div class="bg-white">
+                <div class="list-item-status" tabindex="-1" data-bind=" click: function(data, event) { $parent.detailPost(data, event); }">
+                    @*click: function(data, event) { $parent.detailPost; event.stopPropagation(); }*@
+                    <div class="avata-genaral-size">
+                        <img data-bind="attr: { src: PostedByAvatar },click : function() {  location.href='/user/' + PostedByName + '/tab/1' }" class="img-rounded" alt="avatar">
+                    </div>
+                    <div class="list-item-detail">
+                        <div class="list-item-date" data-bind="text : PostedDate"></div>
+                        <div class="list-item-username" style="width:0%">
+                            <div style="cursor:pointer" onclick='selectMe(event,"#")' data-bind="text : PostedByName, click : function() {  location.href='/user/' + PostedByName + '/tab/1'  }"></div>
+                        </div>
+                        <span data-bind="html : Stm"></span>
+                        <div class="list-item-status-content" data-bind="html : Message"></div>
+                        <div class="list-item-control">
+                            @*<a style="border-color:transparent; background-color:transparent" class="button" href="#"><i data-bind="text :notification, visible: notification() > 0" class="fa fa-comments"></i></a>*@
+                            <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
+                            <a class="button" href="#" title="Thích">Chia sẽ</a>
+                            <a class="button btnMore" href="#" title="..." data-dropdown="#cm-3">
+                                ...
+                            </a>
+                            <div id="cm-3" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" title="Chia sẻ">Chia sẻ</a></li>
+                                    <li><a href="#" title="Vi phạm">Vi phạm</a></li>
+                                </ul>
+                            </div>
+                            <span class="likeAndPin">
+                                <a class="button" href="#" title="Thích"><img src="/images/likecp.png" /></a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ajaxLoadingImage" style="text-align:center"></div>
 </div>
-<script type="text/javascript">
-    function getTimeAgo(varDate) {
-        if (varDate) {
-            return $.timeago(varDate);
-        }
-        else {
-            return '';
-        }
-    }
-    function Post(data, hub) {
-        var self = this;
-        data = data || {};
-        self.PostId = data.PostId;
-        self.ReplyMessage = ko.observable(data.ReplyMessage || "");
-        self.ReplyByName = data.ReplyByName || "";
-        self.ReplyByAvatar = data.ReplyByAvatar || "";
-        self.ReplyDate = getTimeAgo(data.ReplyDate);
-
-        //self.error = ko.observable();
-        self.hub = hub;
-
-    }
-    function viewModel() {
-        var self = this;
-        self.replys = ko.observableArray();
-        self.newMessage = ko.observable('');
-        self.error = ko.observable();
-
-        // SignalR related
-        //self.newPosts = ko.observableArray();
-        // Reference the proxy for the hub.
-        self.hub = $.connection.CommentHub;
-
-        self.init = function () {
-            self.error(null);
-            //self.hub.server.joinRoom('@ViewBag.StockCode');
-            $.get('@Url.Action("GetReplyByPostId", "PostDetail")',
-            {
-                replyid: '@Model.PostId'
-            }, function (data) {
-                var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item, self.hub); });
-                $(mappedPosts).each(function (index, element) {
-                    self.replys.push(element);
-                });
-            })
-        }
-
-
-        self.addReply = function () { // khi click nut tra loi
-            self.error(null);
-            //var nhanDinh = $('input[name=BullBear]:checked').val();
-            
-            self.hub.server.addReply({ "Message": self.newMessage() }, '@Model.StockPrimary', '@ViewBag.CureentUserId', '@ViewBag.UserName', '@ViewBag.AvataImageUrl', '@Model.PostId').fail(function (err) {
-                self.error(err);
-            });            
-        }
-
-        self.hub.client.addReply = function (post) {
-            self.replys.push(new Post(post, self.hub));
-            self.newMessage('');
-        }
-
-        self.count = ko.computed(function () {
-            var countNum = 140 - self.newMessage().length;
-            return countNum;
-        });
-
-
-        self.enablePhimHang = ko.computed(function () {
-            return self.newMessage().length <= 140 && self.newMessage().length >= 6;
-        });
-
-
-    }
-
-    ko.bindingHandlers.limitCharacters = {
-        update: function (element, valueAccessor, allBindingsAccessor, viewModel) {
-            element.value = element.value.substr(0, valueAccessor());
-            allBindingsAccessor().value(element.value.substr(0, valueAccessor()));
-        }
-    };
-
-    var vmPost = new viewModel();
-    ko.applyBindings(vmPost, document.getElementById("CommentForKoLoad"));
-    $.connection.hub.start().done(function () {
-        vmPost.init();
-    });
-
-    $.connection.hub.logging = true;
-</script>
