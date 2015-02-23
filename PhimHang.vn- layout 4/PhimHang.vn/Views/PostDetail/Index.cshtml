@@ -9,12 +9,10 @@
     <script src="~/Scripts/jquery.timeago.js"></script>
 
 }
-
-
 <div class="area-center">
     <div id="top-status-box" class="bg-white status-box">
         <div class="avata-comment">
-            <img src="@ViewBag.AvataEmage?width=35&height=35&mode=crop" class="img-rounded" alt="avatar">
+            <img src="@ViewBag.PostedByAvatar?width=35&height=35&mode=crop" class="img-rounded" alt="avatar">
         </div>
         <div class="input-status">
             <form id="frmStatus" name="frmStatus" method="GET">
@@ -25,7 +23,6 @@
                     @{
                         if (User.Identity.IsAuthenticated)
                         {
-
                             <div class="choose_file f-left">
                                 <i class="fa fa-camera"></i>
                                 <input id="idchartFileUpload" name="Select File" accept="image/*" type="file" onchange="uploadPreview(files)" />
@@ -69,19 +66,7 @@
             <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('ALL')" href="#" class="active">Tất cả</a> </div>
             <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('CHA')" href="#">Biểu đồ</a> </div>
             <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('STM')" href="#">Nhận định</a></div>
-            @*<div class="toSpan filer-bar-item">
-                    <a id="btn-option-more" href="#" data-dropdown="#dropdown-2">
-                        Tùy chọn khác
-                        <i class="fa fa-caret-down"></i>
-                    </a>
-                    <div id="dropdown-2" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
-                        <ul class="dropdown-menu">
-                            <li><a href="#4">Item 4</a></li>
-                            <li><a href="#5">Item 5</a></li>
-                            <li><a href="#5">Item 6</a></li>
-                        </ul>
-                    </div>
-                </div>*@
+            
         </div>
         <div class="ajaxLoadingInit" style="text-align:center"><img src="~/images/ajax-loader_cungphim.gif" /></div>
     </div>
@@ -127,17 +112,6 @@
                 </div>
             </div>
         </div>
-        <!---->
-        @*
-            <div class="bg-white-custom" data-bind="visible :newPosts().length > 0 ">
-                <div class="filer-new-status">
-                    <div class="filer-new-status-button-bar">
-                        <div class="text-label">
-                            <a href="#" style="font-size: 14px;" data-bind=" click : loadNewPosts"> <strong data-bind="text: newPosts().length"></strong> bài phím mới </a>
-                        </div>
-                    </div>
-                </div>
-            </div>     *@
         <!---->
 
         <div class="bg-white-custom">
