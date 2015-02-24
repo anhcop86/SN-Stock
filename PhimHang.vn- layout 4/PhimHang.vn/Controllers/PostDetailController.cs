@@ -39,11 +39,16 @@ namespace PhimHang.Controllers
                 {
                     ApplicationUser currentUser = new ApplicationUser();
                     currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                    ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
+                }
+                else
+                {
+                    ViewBag.AvataEmage = ImageURLAvataDefault;
                 }
 
                 var post = await db.Posts.FirstOrDefaultAsync(p => p.PostId == postid);
 
-                ViewBag.Message = post.ChartYN == true ? post.Message + "<br/><img src='" + post.ChartImageURL + "?width=215&height=120&mode=crop' >" : post.Message;
+                ViewBag.Message = post.ChartYN == true ? post.Message + "<br/><br/>" + post.ChartImageURL : post.Message;
                 ViewBag.PostedByName = post.UserLogin.UserNameCopy;
                 ViewBag.PostedByAvatar = string.IsNullOrEmpty(post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + post.UserLogin.AvataImage;
                 ViewBag.PostedDate = post.PostedDate;
@@ -59,24 +64,24 @@ namespace PhimHang.Controllers
             
         }
 
+        [AllowAnonymous]
+        [HttpGet]
         public async Task<dynamic> GetReplyByPostId(long replyid)
         {
-
             using (db = new testEntities())
             {
-
                 var ret = (from reply in await db.PostComments.ToListAsync()
                            where reply.PostedBy == replyid
-                           orderby reply.PostedDate ascending
+                           orderby reply.PostedDate descending
                            select new
                            {
                                ReplyMessage = reply.Message,
                                ReplyByName = reply.UserLogin.UserNameCopy,
-                               ReplyByAvatar = string.IsNullOrEmpty(reply.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + reply.UserLogin.AvataImage + "?width=46&height=46&mode=crop",
+                               ReplyByAvatar = string.IsNullOrEmpty(reply.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + reply.UserLogin.AvataImage,
                                ReplyDate = reply.PostedDate,
                                ReplyId = reply.PostCommentsId,
-                           }).Take(100).ToArray();
-                //return await Task.FromResult(ret);
+                               PostCommentsId = reply.PostCommentsId
+                           }).ToArray();               
 
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
                 return result;

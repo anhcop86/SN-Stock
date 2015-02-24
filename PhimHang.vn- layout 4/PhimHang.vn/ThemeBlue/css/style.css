@@ -1541,3 +1541,10 @@ button
 #tabs text{
     color:white;
 }
+
+.list-item-detail-post{
+    float: left;
+    width: 470px;
+    position: relative;
+    margin-left: 10px;
+}

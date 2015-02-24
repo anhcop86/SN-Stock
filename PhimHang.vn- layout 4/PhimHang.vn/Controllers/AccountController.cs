@@ -32,7 +32,7 @@ namespace PhimHang.Controllers
         }
         public UserManager<ApplicationUser> UserManager { get; private set; }
 
-        private testEntities db;// = new testEntities();
+        //private testEntities db;// = new testEntities();
         [AllowAnonymous]
         public ActionResult Index(string returnUrl)
         {
