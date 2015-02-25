@@ -908,7 +908,10 @@ input[name=BullBear]{
     width: 100%;    
 }
 .comment-loadmore{
-    padding: 15px 10px 15px 70px;
+    padding: 15px 10px 15px 70px;    
+}
+#IdLoadMoreConversation{
+    color:#328AC5;
 }
 /*right*/
 .banner-right-first{

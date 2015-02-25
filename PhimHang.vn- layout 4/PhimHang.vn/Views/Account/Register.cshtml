@@ -2,47 +2,6 @@
 @{
     ViewBag.Title = "Register";
 }
-
-@*<h2>@ViewBag.Title.</h2>
-
-    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-    {
-        @Html.AntiForgeryToken()
-        <h4>Create a new account.</h4>
-        <hr />
-        @Html.ValidationSummary()
-         <div class="form-group">
-            @Html.LabelFor(m => m.FullName, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.FullName, new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" class="btn btn-default" value="Register" />
-            </div>
-        </div>
-    }*@
-
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
@@ -50,83 +9,123 @@
     Layout = null;
 }
 
-<!DOCTYPE html>
-<!-- saved from url=(0020)https://imo.im/login -->
-<html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <style type="text/css">
-        .ng-cloak, .x-ng-cloak, .ng-hide {
-            display: none !important;
-        }
+@*<h2>@ViewBag.Title.</h2>
 
-        ng\:form {
-            display: block;
-        }
-    </style>
-    <!--[if lt IE 9]><script src="/s/assets/lib/html5shiv.d3d35aa8.js"></script><script>
-    document.createElement('input-container');
-    document.createElement('spinner');</script><![endif]-->
-    <title>Đăng ký tài khoản</title>
-    <meta content="Stay in touch with your family and friends with imo&#39;s free text, voice and video chat." name="description">
-    @*<link href="https://plus.google.com/108102764218883471843" id="gplus" rel="publisher">*@
-    <meta content="chrome=1" http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"><!-- fb -->
-
-
-    <link href="~/Content/ThirtParty/imo.css" rel="stylesheet" />
-
-
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
-</head><!-- IE8 fix -->
-<body main="" class="ng-scope" style="background-image: url( '/images/Login_Image.jpg');">
-    <!-- Root element of template can't be <body>; see angular issue #1459 --><div id="signup">
-        <div id="aside"><div class="imo-logo-wrapper"></div><h1 class="big-title ng-scope" translate="">Join with millions of people</h1><p class="subtitle ng-scope" translate="">Join millions of people using imo for free messaging, voice and video calls.</p></div><div id="login-register-container" register-login="">
-            <div class="header"><a href="/Account/Register" class="tab register selected" ng-click="selectTab(REGISTER)" ng-class="{selected: selectedForm == REGISTER}" translate="">Register</a><a href="/Account/Login" class=" tab login" ng-click="selectTab(LOGIN)" ng-class="{selected: selectedForm == LOGIN}" translate="">login</a></div><!-- ngIf: selectedForm == LOGIN -->
-            <login ng-if="selectedForm == LOGIN" class="ng-scope">
-                <div class="col-md-8">
-                    <section id="loginForm">
-                        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                        {
-                            @Html.AntiForgeryToken()
-                            <h4>Tạo tài khoản mới nào</h4>
-                            <hr />
-                            @Html.ValidationSummary()
-                            <div class="form-group">
-                                @Html.LabelFor(m => m.FullName, new { @class = "col-md-2 control-label" })
-                                <div class="col-md-10">
-                                    @Html.TextBoxFor(m => m.FullName, new { @class = "form-control" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
-                                <div class="col-md-10">
-                                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                                <div class="col-md-10">
-                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-                                <div class="col-md-10">
-                                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" class="btn btn-default" value="Register" />
-                                </div>
-                            </div>
-                        }
-                    </section>
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <h4>Create a new account.</h4>
+            <hr />
+            @Html.ValidationSummary()
+             <div class="form-group">
+                @Html.LabelFor(m => m.FullName, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.FullName, new { @class = "form-control" })
                 </div>
-            </login>
-            <modals class="ng-scope"></modals>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-default" value="Register" />
+                </div>
+            </div>
+        }
+
+
+
+    <!DOCTYPE html>
+    <!-- saved from url=(0020)https://imo.im/login -->
+    <html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style type="text/css">
+            .ng-cloak, .x-ng-cloak, .ng-hide {
+                display: none !important;
+            }
+
+            ng\:form {
+                display: block;
+            }
+        </style>
+        <!--[if lt IE 9]><script src="/s/assets/lib/html5shiv.d3d35aa8.js"></script><script>
+        document.createElement('input-container');
+        document.createElement('spinner');</script><![endif]-->
+        <title>Đăng ký tài khoản</title>
+        <meta content="Stay in touch with your family and friends with imo&#39;s free text, voice and video chat." name="description">
+        <meta content="chrome=1" http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"><!-- fb -->
+
+
+        <link href="~/Content/ThirtParty/imo.css" rel="stylesheet" />
+
+
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    </head><!-- IE8 fix -->
+    <body main="" class="ng-scope" style="background-image: url( '/images/Login_Image.jpg');">
+        <!-- Root element of template can't be <body>; see angular issue #1459 --><div id="signup">
+            <div id="aside"><div class="imo-logo-wrapper"></div><h1 class="big-title ng-scope" translate="">Join with millions of people</h1><p class="subtitle ng-scope" translate="">Join millions of people using imo for free messaging, voice and video calls.</p></div><div id="login-register-container" register-login="">
+                <div class="header"><a href="/Account/Register" class="tab register selected" ng-click="selectTab(REGISTER)" ng-class="{selected: selectedForm == REGISTER}" translate="">Register</a><a href="/Account/Login" class=" tab login" ng-click="selectTab(LOGIN)" ng-class="{selected: selectedForm == LOGIN}" translate="">login</a></div><!-- ngIf: selectedForm == LOGIN -->
+                <login ng-if="selectedForm == LOGIN" class="ng-scope">
+                    <div class="col-md-8">
+                        <section id="loginForm">
+                            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <h4>Tạo tài khoản mới nào</h4>
+                                <hr />
+                                @Html.ValidationSummary()
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.FullName, new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-10">
+                                        @Html.TextBoxFor(m => m.FullName, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-10">
+                                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-10">
+                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-10">
+                                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" class="btn btn-default" value="Register" />
+                                    </div>
+                                </div>
+                            }
+                        </section>
+                    </div>
+                </login>
+                <modals class="ng-scope"></modals>
+            </div>
         </div>
-    </div>
-</body>
-</html>
+    </body>
+    </html>*@

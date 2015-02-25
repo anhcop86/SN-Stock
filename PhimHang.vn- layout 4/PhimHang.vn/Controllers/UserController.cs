@@ -11,6 +11,7 @@ using System.Data.Entity;
 
 namespace PhimHang.Controllers
 {
+    [Authorize] // xoa khi public
     public class UserController : Controller
     {
         //

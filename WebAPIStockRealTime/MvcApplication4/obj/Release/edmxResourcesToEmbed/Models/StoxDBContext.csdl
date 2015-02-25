@@ -1,55 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="StoxDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="StoxDataEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Stox_tb_MarketInfo" EntityType="StoxDataModel.Stox_tb_MarketInfo" />
+    <EntitySet Name="stox_tb_Company" EntityType="StoxDataModel.stox_tb_Company" />
     <EntitySet Name="stox_tb_HOSE_Trading" EntityType="StoxDataModel.stox_tb_HOSE_Trading" />
     <EntitySet Name="stox_tb_StocksInfo" EntityType="StoxDataModel.stox_tb_StocksInfo" />
     <EntitySet Name="stox_tb_HOSE_TotalTrading" EntityType="StoxDataModel.stox_tb_HOSE_TotalTrading" />
-    <EntitySet Name="Stox_tb_MarketInfo" EntityType="StoxDataModel.Stox_tb_MarketInfo" />
-    <EntitySet Name="stox_tb_Company" EntityType="StoxDataModel.stox_tb_Company" />
   </EntityContainer>
-  <EntityType Name="stox_tb_HOSE_Trading">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="StockSymbol" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="true" />
-    <Property Name="Ceiling" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="Floor" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="PriorClosePrice" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="OpenPrice" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="Last" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="Highest" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="Lowest" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="DateReport" Type="DateTime" Precision="3" />
-  </EntityType>
-  <EntityType Name="stox_tb_StocksInfo">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="trading_date" Nullable="false" Precision="3" Type="DateTime" />
-    <Property Name="code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-    <Property Name="stock_type" Type="Byte" Nullable="false" />
-    <Property Name="basic_price" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="open_price" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="close_price" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="highest_price" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="lowest_price" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="ceiling_price" Type="Decimal" Precision="18" Scale="0" />
-    <Property Name="floor_price" Type="Decimal" Precision="18" Scale="0" />
-  </EntityType>
-  <EntityType Name="stox_tb_HOSE_TotalTrading">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="VNIndex" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="DateReport" Type="DateTime" Precision="3" />
-    <Property Name="PreVNIndex" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="Lowest" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="Hightest" Type="Decimal" Precision="19" Scale="4" />
-    <Property Name="OpenIndex" Type="Decimal" Precision="19" Scale="4" />
-  </EntityType>
   <EntityType Name="Stox_tb_MarketInfo">
     <Key>
       <PropertyRef Name="ID" />
@@ -152,5 +109,206 @@
     <Property Name="eCompanyPromise" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="eBusinessRisk" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="freefloat" Type="Double" />
+  </EntityType>
+  <EntityType Name="stox_tb_HOSE_Trading">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StockNo" Type="Int32" />
+    <Property Name="StockSymbol" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="true" />
+    <Property Name="StockType" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Name="Ceiling" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Floor" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="BigLotValue" Type="Double" />
+    <Property Name="SecurityName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="SectorNo" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Name="Designated" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Name="Suspension" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Name="Delist" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Name="HaltResumeFlag" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Name="Split" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Name="Benefit" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Name="Meeting" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Name="Notice" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Name="ClientIDRequest" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Name="CouponRate" Type="Int32" />
+    <Property Name="IssueDate" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="MatureDate" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="AvrPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="ParValue" Type="Int32" />
+    <Property Name="SDCFlag" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Name="PriorClosePrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="PriorCloseDate" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ProjectOpen" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="OpenPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Last" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="LastVol" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="LastVal" Type="Double" />
+    <Property Name="Highest" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Lowest" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Totalshare" Type="Double" />
+    <Property Name="TotalValue" Type="Double" />
+    <Property Name="AccumulateDeal" Type="Int32" />
+    <Property Name="BigDeal" Type="Int32" />
+    <Property Name="BigVol" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="BigVal" Type="Double" />
+    <Property Name="OddDeal" Type="Int32" />
+    <Property Name="OddVol" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="OddVal" Type="Double" />
+    <Property Name="Best1Bid" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Best1BidVolume" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Best2Bid" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Best2BidVolume" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Best3Bid" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Best3BidVolume" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Best1Offer" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Best1OfferVolume" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Best2Offer" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Best2OfferVolume" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Best3Offer" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Best3OfferVolume" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="DateReport" Type="DateTime" Precision="3" />
+    <Property Name="CurrentRoom" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TotalRoom" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Match1" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="MatchVolume1" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Match2" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="MatchVolume2" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Other_room" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Room" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="SellPrice3" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="SellPrice2" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="SellPrice1" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="BuyPrice3" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="BuyPrice2" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="BuyPrice1" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="SellQtty3" Type="Int32" />
+    <Property Name="SellQtty2" Type="Int32" />
+    <Property Name="SellQtty1" Type="Int32" />
+    <Property Name="BuyQtty3" Type="Int32" />
+    <Property Name="BuyQtty2" Type="Int32" />
+    <Property Name="BuyQtty1" Type="Int32" />
+    <Property Name="ChangePrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="ClosePrice_Adjusted" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Rate_Adjusted" Type="Double" />
+    <Property Name="Highest_Adjusted" Type="Double" />
+    <Property Name="Lowest_Adjusted" Type="Double" />
+    <Property Name="KLGD_ThoaThuan" Type="Double" />
+    <Property Name="GTGD_ThoaThuan" Type="Double" />
+    <Property Name="OpenPrice_Adjusted" Type="Double" />
+  </EntityType>
+  <EntityType Name="stox_tb_StocksInfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="stock_info_id" Type="Int32" />
+    <Property Name="trading_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="time" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="stock_id" Type="Int32" />
+    <Property Name="code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="stock_type" Type="Byte" Nullable="false" />
+    <Property Name="total_listing_qtty" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="trading_unit" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="listting_status" Type="Byte" />
+    <Property Name="adjust_qtty" Type="Decimal" Precision="19" Scale="0" />
+    <Property Name="reference_status" Type="Byte" />
+    <Property Name="adjust_rate" Type="Double" />
+    <Property Name="divident_rate" Type="Double" />
+    <Property Name="status" Type="Byte" />
+    <Property Name="total_room" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="current_room" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="basic_price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="open_price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="close_price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="current_price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="current_qtty" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="highest_price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="lowest_price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="best_offer_price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="best_bid_price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ceiling_price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="floor_price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="total_offer_qtty" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="total_bid_qtty" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="best_offer_qtty" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="best_bid_qtty" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="prior_price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="prior_close_price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="match_price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="match_qtty" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="deleted" Type="Byte" />
+    <Property Name="date_created" Type="DateTime" Precision="3" />
+    <Property Name="date_modified" Type="DateTime" Precision="3" />
+    <Property Name="modified_by" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="created_by" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="parvalue" Type="Int32" />
+    <Property Name="floor_code" Type="Int32" />
+    <Property Name="match_value" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="is_calcindex" Type="Byte" />
+    <Property Name="is_determinecl" Type="Byte" />
+    <Property Name="date_no" Type="Int32" />
+    <Property Name="offer_count" Type="Int32" />
+    <Property Name="bid_count" Type="Int32" />
+    <Property Name="average_price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="index_price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="prev_prior_price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="yieldmat" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="prev_prior_close_price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="nm_total_traded_qtty" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="nm_total_traded_value" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="pt_match_qtty" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="pt_match_price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="pt_total_traded_qtty" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="pt_total_traded_value" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="total_buy_trading_qtty" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="buy_count" Type="Int32" />
+    <Property Name="total_buy_trading_value" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="total_sell_trading_qtty" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="sell_count" Type="Int32" />
+    <Property Name="total_sell_trading_value" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="total_trading_qtty" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="total_trading_value" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="buy_foreign_qtty" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="buy_foreign_value" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="sell_foreign_qtty" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="sell_foreign_value" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="remain_foreign_qtty" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="pt_yieldmat" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="dateReport" Type="DateTime" Precision="3" />
+    <Property Name="ClosePrice_Adjusted" Type="Double" />
+    <Property Name="Rate_Adjusted" Type="Double" />
+    <Property Name="Highest_Adjusted" Type="Double" />
+    <Property Name="Lowest_Adjusted" Type="Double" />
+    <Property Name="OpenPrice_Adjusted" Type="Double" />
+  </EntityType>
+  <EntityType Name="stox_tb_HOSE_TotalTrading">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VNIndex" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TotalTrade" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TotalShares" Type="Double" />
+    <Property Name="TotalValues" Type="Double" />
+    <Property Name="UpVolume" Type="Double" />
+    <Property Name="DownVolume" Type="Double" />
+    <Property Name="NoChangeVolume" Type="Double" />
+    <Property Name="Advances" Type="Int32" />
+    <Property Name="Declines" Type="Int32" />
+    <Property Name="NoChange" Type="Int32" />
+    <Property Name="VN50Index" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="MarketID" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Name="Filter" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Name="Time" Type="Int32" />
+    <Property Name="DateReport" Type="DateTime" Precision="3" />
+    <Property Name="PreVNIndex" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="IndexChange" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="LiveID" Type="Int32" />
+    <Property Name="Lowest" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Hightest" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="OpenIndex" Type="Decimal" Precision="19" Scale="4" />
   </EntityType>
 </Schema>

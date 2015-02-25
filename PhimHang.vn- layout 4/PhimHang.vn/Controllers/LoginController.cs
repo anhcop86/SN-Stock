@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace PhimHang.Controllers
 {
+    [Authorize] // xoa khi public
     public class LoginController : Controller
     {
         //

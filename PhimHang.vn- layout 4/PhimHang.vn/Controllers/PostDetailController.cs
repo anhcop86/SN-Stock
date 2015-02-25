@@ -8,12 +8,14 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using System.Text.RegularExpressions;
 
 namespace PhimHang.Controllers
 {
+    [Authorize] // xoa khi public
     public class PostDetailController : Controller
     {
-        //
+        
         public PostDetailController()
             : this( new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
@@ -38,17 +40,19 @@ namespace PhimHang.Controllers
                 if (User.Identity.IsAuthenticated)
                 {
                     ApplicationUser currentUser = new ApplicationUser();
-                    currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-                    ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
+                    currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());                    
+                    ViewBag.CureentUserId = currentUser.UserExtentLogin.Id;
+                    ViewBag.UserName = currentUser.UserName;
+                    ViewBag.AvataImageUrl = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault: ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
                 }
                 else
                 {
-                    ViewBag.AvataEmage = ImageURLAvataDefault;
+                    ViewBag.AvataImageUrl = ImageURLAvataDefault;
                 }
 
                 var post = await db.Posts.FirstOrDefaultAsync(p => p.PostId == postid);
 
-                ViewBag.Message = post.ChartYN == true ? post.Message + "<br/><br/>" + post.ChartImageURL : post.Message;
+                ViewBag.Message = post.ChartYN == true ? post.Message + "<br/><br/>" + post.ChartImageURL : post.Message;               
                 ViewBag.PostedByName = post.UserLogin.UserNameCopy;
                 ViewBag.PostedByAvatar = string.IsNullOrEmpty(post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + post.UserLogin.AvataImage;
                 ViewBag.PostedDate = post.PostedDate;
@@ -64,7 +68,7 @@ namespace PhimHang.Controllers
             
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet]
         public async Task<dynamic> GetReplyByPostId(long replyid)
         {

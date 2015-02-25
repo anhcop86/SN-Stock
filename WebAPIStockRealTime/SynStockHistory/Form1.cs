@@ -110,5 +110,64 @@ namespace SynStockHistory
 
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            
+            using (Source_StoxDataEntities dbstox = new Source_StoxDataEntities())
+            {
+                var listHose = (from lh in dbstox.stox_tb_Company
+                                where lh.ExchangeID == 0
+                                select new
+                                {
+                                    lh.Ticker
+                                }).ToList();
+                foreach (var itemticker in listHose)
+                {
+                    string ticker = itemticker.ToString();
+                    var historyHOSE = (from h in dbstox.stox_tb_HOSE_Trading
+                                       where h.DateReport >= new DateTime(2009, 01, 01) && h.DateReport <= new DateTime(2016, 01, 01)
+                                       && h.StockSymbol == ticker
+                                       select new
+                                       {
+                                           CeilingPrice = h.Ceiling * 10,
+                                           ClosePrice = h.Last * 10,
+                                           Code = h.StockSymbol,
+                                           DiffPrice = h.PriorClosePrice * 10,
+                                           FloorPrice = h.Floor * 10,
+                                           HighPrice = h.Highest * 10,
+                                           LowPrice = h.Lowest * 10,
+                                           OpenPrice = h.OpenPrice * 10,
+                                           TradingDate = h.DateReport,
+                                           Totalshare = h.Totalshare * 10
+                                       }).ToList();
+                    using (Target_StockChart_Hieu_SVR_17 dbtarget = new Target_StockChart_Hieu_SVR_17())
+                    {
+                        foreach (var item in historyHOSE)
+                        {
+                            StockPrice sp = new StockPrice
+                            {
+                                CeilingPrice = item.CeilingPrice,
+                                ClosePrice = item.ClosePrice,
+                                Code = item.Code,
+                                DiffPrice = item.DiffPrice,
+                                FloorPrice = item.FloorPrice,
+                                HighPrice = item.HighPrice,
+                                LowPrice = item.LowPrice,
+                                OpenPrice = item.OpenPrice,
+                                Totalshare = item.Totalshare,
+                                TradingDate = item.TradingDate
+                            };
+                            dbtarget.StockPrices.Add(sp);
+
+                        }
+                        dbtarget.SaveChanges();
+                    }
+                }
+                
+               
+            }
+           
+        }
+
     }
 }

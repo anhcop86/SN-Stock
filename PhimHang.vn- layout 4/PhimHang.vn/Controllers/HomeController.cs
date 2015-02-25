@@ -11,9 +11,11 @@ using System.Data.Entity;
 
 namespace PhimHang.Controllers
 {
+    [Authorize] // xoa khi public
     public class HomeController : Controller
     {
         //private readonly FilterKeyworkSingleton _keyword;
+        
         public HomeController()
             : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {

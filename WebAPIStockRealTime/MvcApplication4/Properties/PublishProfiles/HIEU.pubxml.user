@@ -151,7 +151,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/17/2014 09:25:30</publishTime>
     </File>
     <File Include="bin/PorfolioInvesment.dll">
-      <publishTime>12/19/2014 10:43:06</publishTime>
+      <publishTime>02/25/2015 15:10:34</publishTime>
     </File>
     <File Include="bin/ru/Microsoft.Data.Edm.resources.dll">
       <publishTime>12/17/2014 09:25:29</publishTime>
@@ -184,13 +184,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/18/2010 19:31:26</publishTime>
     </File>
     <File Include="bin/System.Net.Http.dll">
-      <publishTime>07/09/2013 11:04:48</publishTime>
+      <publishTime>07/10/2012 12:07:38</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
       <publishTime>12/17/2014 09:25:27</publishTime>
     </File>
     <File Include="bin/System.Net.Http.WebRequest.dll">
-      <publishTime>07/09/2013 11:04:48</publishTime>
+      <publishTime>07/10/2012 12:07:38</publishTime>
     </File>
     <File Include="bin/System.Spatial.dll">
       <publishTime>12/17/2014 09:25:30</publishTime>
@@ -484,7 +484,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/17/2014 09:25:21</publishTime>
     </File>
     <File Include="Models/StoxDBContext.edmx.diagram">
-      <publishTime>12/19/2014 09:03:23</publishTime>
+      <publishTime>02/12/2015 16:23:52</publishTime>
+    </File>
+    <File Include="Models/TargetPrice_SVR_17.edmx.diagram">
+      <publishTime>02/25/2015 14:46:43</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>12/17/2014 09:25:25</publishTime>
@@ -547,7 +550,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/17/2014 09:25:21</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/19/2014 10:52:24</publishTime>
+      <publishTime>02/25/2015 15:10:35</publishTime>
     </File>
   </ItemGroup>
 </Project>

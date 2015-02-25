@@ -181,7 +181,7 @@
                     </div>
                 </div>
                 <div class="comment-loadmore">
-                    <a href="#">View more in conversation →</a>
+                    <a id="IdLoadMoreConversation" href="#" target="_blank">Xem thêm</a>
                 </div>
             </div>
         </div>
@@ -524,6 +524,7 @@
             $("#idPostMessenge").html(data.Message.replace("?width=215&height=120&mode=crop", "?maxwidth=475&maxheight=200&mode=crop"));
             $("#idStmDetail").html(data.Stm);
             postidCurrent = data.PostId;
+            $("#IdLoadMoreConversation").attr('href', '/PostDetail?postid=' + postidCurrent);
             //data.notification(0);
             // load 10 reply gan nhat
             $.ajax({

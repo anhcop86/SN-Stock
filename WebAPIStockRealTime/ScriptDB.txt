@@ -1,0 +1,13 @@
+  CREATE TABLE [dbo].[StockPrice](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	[Code] [varchar](16) NOT NULL,
+	[CeilingPrice] [money] NULL,
+	[FloorPrice] [money] NULL,
+	[DiffPrice] [money] NULL,
+	[OpenPrice] [money] NULL,
+	[HighPrice] [money] NULL,
+	[LowPrice] [money] NULL,
+	[ClosePrice] [money] NULL,
+	[TradingDate] [datetime2](7) NULL,
+	Totalshare float
+)

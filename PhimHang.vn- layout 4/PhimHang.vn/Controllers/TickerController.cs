@@ -11,7 +11,7 @@ using System.Data.Entity;
 
 namespace PhimHang.Controllers
 {
-    [Authorize]
+    [Authorize] // xoa khi public
     public class TickerController : Controller
     {
         private readonly StockRealTimeTicker _stockRealtime;
@@ -32,7 +32,7 @@ namespace PhimHang.Controllers
         private const string ImageURLAvataDefault = "/img/avatar2.jpg";
         private const string ImageURLAvata = "/images/avatar/";
 
-        [AllowAnonymous]
+        
         public async Task<ViewResult> Index(string symbolName)
         {            
             //ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());

@@ -220,6 +220,7 @@
     <Compile Include="Controllers\StockRealTimeController.cs" />
     <Compile Include="Controllers\StocksController.cs" />
     <Compile Include="Controllers\StoxDataController.cs" />
+    <Compile Include="Controllers\TickerPriceController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -232,6 +233,9 @@
     <Compile Include="Models\ParaProxy.cs" />
     <Compile Include="Models\ParaStock.cs" />
     <Compile Include="Models\StockHis.cs" />
+    <Compile Include="Models\StockPrice.cs">
+      <DependentUpon>TargetPrice_SVR_17.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\StoxDBContext.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -261,6 +265,21 @@
     </Compile>
     <Compile Include="Models\stox_tb_StocksInfo.cs">
       <DependentUpon>StoxDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TargetPrice_SVR_17.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TargetPrice_SVR_17.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TargetPrice_SVR_17.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TargetPrice_SVR_17.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TargetPrice_SVR_17.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TargetPrice_SVR_17.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -349,6 +368,23 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>StoxDBContext.edmx</DependentUpon>
       <LastGenOutput>StoxDBContext.cs</LastGenOutput>
+    </Content>
+    <EntityDeploy Include="Models\TargetPrice_SVR_17.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TargetPrice_SVR_17.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\TargetPrice_SVR_17.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TargetPrice_SVR_17.edmx</DependentUpon>
+      <LastGenOutput>TargetPrice_SVR_17.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\TargetPrice_SVR_17.edmx.diagram">
+      <DependentUpon>TargetPrice_SVR_17.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\TargetPrice_SVR_17.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TargetPrice_SVR_17.edmx</DependentUpon>
+      <LastGenOutput>TargetPrice_SVR_17.cs</LastGenOutput>
     </Content>
     <None Include="Properties\PublishProfiles\HIEU.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />

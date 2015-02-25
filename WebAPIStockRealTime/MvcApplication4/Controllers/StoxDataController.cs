@@ -135,7 +135,7 @@ namespace PorfolioInvesment.Controllers
         public void Put(int id, [FromBody]string value)
         {
         }
-
+        
         // DELETE api/stoxdata/5
         public void Delete(int id)
         {
