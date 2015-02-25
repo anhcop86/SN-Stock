@@ -38,11 +38,11 @@ E:\Working\SN-Stock\WebAPIStockRealTime\SynStockHistory\obj\Debug\SynStockHistor
 E:\Working\SN-Stock\WebAPIStockRealTime\SynStockHistory\obj\Debug\SynStockHistory.csproj.GenerateResource.Cache
 E:\Working\SN-Stock\WebAPIStockRealTime\SynStockHistory\obj\Debug\SynStockHistory.exe
 E:\Working\SN-Stock\WebAPIStockRealTime\SynStockHistory\obj\Debug\SynStockHistory.pdb
+F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\SynStockHistory\bin\Debug\SynStockHistory.exe
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\SynStockHistory\bin\Debug\EntityFramework.dll
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\SynStockHistory\bin\Debug\EntityFramework.SqlServer.dll
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\SynStockHistory\bin\Debug\Newtonsoft.Json.dll
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\SynStockHistory\bin\Debug\SynStockHistory.exe.config
-F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\SynStockHistory\bin\Debug\SynStockHistory.exe
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\SynStockHistory\bin\Debug\SynStockHistory.pdb
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\SynStockHistory\bin\Debug\System.Net.Http.Extensions.dll
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\SynStockHistory\bin\Debug\System.Net.Http.Primitives.dll

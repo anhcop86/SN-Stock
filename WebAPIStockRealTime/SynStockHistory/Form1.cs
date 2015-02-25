@@ -119,11 +119,11 @@ namespace SynStockHistory
                                 where lh.ExchangeID == 0
                                 select new
                                 {
-                                    lh.Ticker
+                                    ticker = lh.Ticker
                                 }).ToList();
                 foreach (var itemticker in listHose)
                 {
-                    string ticker = itemticker.ToString();
+                    string ticker = itemticker.ticker.ToString().Trim();
                     var historyHOSE = (from h in dbstox.stox_tb_HOSE_Trading
                                        where h.DateReport >= new DateTime(2009, 01, 01) && h.DateReport <= new DateTime(2016, 01, 01)
                                        && h.StockSymbol == ticker

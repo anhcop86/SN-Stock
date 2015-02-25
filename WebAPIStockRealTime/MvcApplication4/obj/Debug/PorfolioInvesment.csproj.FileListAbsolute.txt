@@ -301,7 +301,6 @@ E:\Working\SN-Stock\WebAPIStockRealTime\MvcApplication4\obj\Debug\PorfolioInvesm
 E:\Working\SN-Stock\WebAPIStockRealTime\MvcApplication4\obj\Debug\PorfolioInvesment.pdb
 E:\Working\SN-Stock\WebAPIStockRealTime\MvcApplication4\obj\Debug\PorfolioInvesment.csprojResolveAssemblyReference.cache
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\MvcApplication4\obj\Debug\PorfolioInvesment.csprojResolveAssemblyReference.cache
-F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\MvcApplication4\obj\Debug\PorfolioInvesment.dll
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\MvcApplication4\bin\PorfolioInvesment.dll.config
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\MvcApplication4\bin\PorfolioInvesment.dll
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\MvcApplication4\bin\PorfolioInvesment.pdb
@@ -400,4 +399,5 @@ F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\MvcApplication4\bin\ko\Syst
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\MvcApplication4\bin\ru\System.Spatial.resources.dll
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\MvcApplication4\bin\zh-Hans\System.Spatial.resources.dll
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\MvcApplication4\bin\zh-Hant\System.Spatial.resources.dll
+F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\MvcApplication4\obj\Debug\PorfolioInvesment.dll
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\MvcApplication4\obj\Debug\PorfolioInvesment.pdb

@@ -26,6 +26,6 @@ E:\Working\SN-Stock\WebAPIStockRealTime\Entities\obj\Debug\Entities.pdb
 E:\Working\SN-Stock\WebAPIStockRealTime\Entities\obj\Debug\Entities.csprojResolveAssemblyReference.cache
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Component\Entities.dll
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Component\Entities.pdb
-F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Entities\obj\Debug\Entities.csprojResolveAssemblyReference.cache
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Entities\obj\Debug\Entities.dll
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Entities\obj\Debug\Entities.pdb
+F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Entities\obj\Debug\Entities.csprojResolveAssemblyReference.cache
