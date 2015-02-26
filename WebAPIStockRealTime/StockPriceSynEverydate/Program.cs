@@ -1,133 +1,62 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Threading;
 
-namespace SynStockHistory
+namespace StockPriceSynEverydate
 {
-    public partial class Form1 : Form
+    class Program
     {
-        public Form1()
+        static void Main(string[] args)
         {
-            InitializeComponent();
-        }
-        private testEntities db;
-        private async void button1_Click(object sender, EventArgs e)
-        {
+            // get max date to syn
 
-            Uri uri = new Uri("http://www.vfs.com.vn:6789/api/stoxdata/GetCompany");
-            //Uri uri = new Uri("http://localhost:9999/api/stoxdata/GetCompany");
-        
-
-            ParaStock para = new ParaStock { PI_tickerList = "KEYSECRET" };
-            var company = new List<StockCode>();
-            using (var client = new HttpClient())
+            while (true)
             {
-                var serializedProduct = JsonConvert.SerializeObject(para);
-                var content = new StringContent(serializedProduct, Encoding.UTF8, "application/json");
-
-                var respone = await client.PostAsync(uri, content);
-                if (respone.IsSuccessStatusCode)
+                try
                 {
-                    var productJsonString = await respone.Content.ReadAsStringAsync();
-                    company = JsonConvert.DeserializeObject<List<StockCode>>(productJsonString).ToList();
-                }
-
-            }
-
-            company.Add(new StockCode { Code = "HNXIndex", LongName = "Chỉ số Index của Hà Nội", ShortName = "Chỉ số Index của Hà Nội", MarketType = 10, IndexName = "HNXIndex" });
-            company.Add(new StockCode { Code = "VnIndex", LongName = "Chỉ số Index của Hồ Chí Minh", ShortName = "Chỉ số Index của Hồ Chí Minh", MarketType = 11, IndexName = "VnIndex" });
-
-            using (db = new testEntities())
-            {
-                foreach (var item in company)
-                {
-
-                    bool stockExists = db.StockCodes.Any(m => m.Code == item.Code);
-                    if (!stockExists)
+                    if (DateTime.Now.Hour == 7)
                     {
-                        db.StockCodes.Add(item);
+
+                        var maxdate = new DateTime?();
+                        using (StockChart_HieuEntities dbtarget = new StockChart_HieuEntities())
+                        {
+                            maxdate = (from mindate in dbtarget.StockPrices select mindate.TradingDate).Max();
+                        }
+                        if (maxdate != new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day - 1))
+                        {
+                            SyncPrice(new DateTime(((DateTime)maxdate).Year, ((DateTime)maxdate).Month, ((DateTime)maxdate).Day + 1), new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day - 1));
+                            Console.WriteLine("updated {0}", DateTime.Now.ToString());
+                        }
+                        else
+                        {
+                            Console.WriteLine("no update {0}", DateTime.Now.ToString());
+                        }
+                        Thread.Sleep(30 * 1000 * 60);
                     }
-
+                    else
+                    {
+                        Console.WriteLine("start khong dung gio {0}", DateTime.Now.ToString());
+                        Thread.Sleep(30 * 1000 * 60);
+                    }
                 }
-
-                await db.SaveChangesAsync();
+                catch (Exception ex)
+                {
+                    Console.WriteLine("no update {0}", ex);
+                }
             }
-           
-            
-
 
         }
 
-        private async void button2_Click(object sender, EventArgs e)
-        {
-            //Uri uri = new Uri("http://www.vfs.com.vn:6789/api/stoxdata/getHistory");
-            Uri uri = new Uri("http://localhost:9999/api/stoxdata/getHistory");
-            ParaStock para = new ParaStock { PI_tickerList = "KEYSECRET" };
-            var company = new List<StockPrice>();
-            using (var client = new HttpClient())
-            {
-                var serializedProduct = JsonConvert.SerializeObject(para);
-                var content = new StringContent(serializedProduct, Encoding.UTF8, "application/json");
-
-                var respone = await client.PostAsync(uri, content);
-                if (respone.IsSuccessStatusCode)
-                {
-                    var productJsonString = await respone.Content.ReadAsStringAsync();
-                    company = JsonConvert.DeserializeObject<List<StockPrice>>(productJsonString).ToList();
-                }
-
-            }
-
-            using (db = new testEntities())
-            {
-                //var AllListStockPrice = db.StockPrices;
-                foreach (var item in company)
-                {
-
-                    //bool stockExists = db.StockPrices.Any(m => m.Code == item.Code && m.TradingDate == item.TradingDate);
-                    //if (!stockExists)
-                    //{
-
-                    //item.StringDate = item.TradingDate.
-                    db.StockPrices.Add(item);
-                    //}
-
-                }
-
-                await db.SaveChangesAsync();
-            }
-           
-            
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
+        static void SyncPrice(DateTime fromdate, DateTime todate)
         {
             #region syndata hose
-            /*
-            using (Source_StoxDataEntities dbstox = new Source_StoxDataEntities())
-            {
-                var listHose = (from lh in dbstox.stox_tb_Company
-                                where lh.ExchangeID == 0
-                                select new
-                                {
-                                    ticker = lh.Ticker
-                                }).ToList();
-                foreach (var itemticker in listHose)
-                {
-                    string ticker = itemticker.ticker.ToString().Trim();
+            
+            using (StoxDataEntities dbstox = new StoxDataEntities())
+            {       
                     var historyHOSE = (from h in dbstox.stox_tb_HOSE_Trading
-                                       where h.DateReport >= new DateTime(2009, 01, 01) && h.DateReport <= DateTime(2015, 02, 24)
-                                       && h.StockSymbol == ticker
+                                       where h.DateReport >= fromdate && h.DateReport <= todate                                       
                                        select new
                                        {
                                            CeilingPrice = h.Ceiling * 10,
@@ -141,7 +70,7 @@ namespace SynStockHistory
                                            TradingDate = h.DateReport,
                                            Totalshare = h.Totalshare * 10
                                        }).ToList();
-                    using (Target_StockChart_Hieu_SVR_17 dbtarget = new Target_StockChart_Hieu_SVR_17())
+                    using (StockChart_HieuEntities dbtarget = new StockChart_HieuEntities())
                     {
                         foreach (var item in historyHOSE)
                         {
@@ -152,7 +81,7 @@ namespace SynStockHistory
                                 Code = item.Code,
                                 DiffPrice = item.DiffPrice,
                                 FloorPrice = item.FloorPrice,
-                                HighPrice = item.HighPrice == 0 ? item.ClosePrice : item.HighPrice,,
+                                HighPrice = item.HighPrice == 0 ? item.ClosePrice : item.HighPrice,
                                 LowPrice = item.LowPrice == 0 ? item.ClosePrice : item.LowPrice,
                                 OpenPrice = item.OpenPrice == 0 ? item.ClosePrice : item.OpenPrice,
                                 Totalshare = item.Totalshare,
@@ -163,27 +92,18 @@ namespace SynStockHistory
                         }
                         dbtarget.SaveChanges();
                     }
-                }
+                
             }
-            */
+            
             #endregion
 
             #region syndata hnx from 2009
-            /*
-            using (Source_StoxDataEntities dbstox = new Source_StoxDataEntities())
-            {
-                var listHose = (from lh in dbstox.stox_tb_Company
-                                where lh.ExchangeID == 1
-                                select new
-                                {
-                                    ticker = lh.Ticker
-                                }).ToList();
-                foreach (var itemticker in listHose)
-                {
-                    string ticker = itemticker.ticker.ToString().Trim();
+            
+            using (StoxDataEntities dbstox = new StoxDataEntities())
+            {               
+                    
                     var historyHNX = (from h in dbstox.stox_tb_StocksInfo
-                                      where h.trading_date >= new DateTime(2009, 01, 01) && h.trading_date <= new DateTime(2015, 02, 24)
-                                      && h.code == ticker
+                                      where h.trading_date >= fromdate && h.trading_date <= todate                                    
                                       select new
                                       {
                                           CeilingPrice = h.ceiling_price,
@@ -198,7 +118,7 @@ namespace SynStockHistory
                                           Totalshare = h.nm_total_traded_qtty
                                       }).ToList();
 
-                    using (Target_StockChart_Hieu_SVR_17 dbtarget = new Target_StockChart_Hieu_SVR_17())
+                    using (StockChart_HieuEntities dbtarget = new StockChart_HieuEntities())
                     {
                         foreach (var item in historyHNX)
                         {
@@ -219,17 +139,17 @@ namespace SynStockHistory
 
                         }
                         dbtarget.SaveChanges();
-                    }
+                    
                 }
-            } */
+            } 
             #endregion
 
             #region syndata index-hnx from 2006
-            /*
-            using (Source_StoxDataEntities dbstox = new Source_StoxDataEntities())
+            
+            using (StoxDataEntities dbstox = new StoxDataEntities())
             {
                     var historyHNXIndex = (from h in dbstox.Stox_tb_MarketInfo
-                                           where h.TRADING_DATE >= new DateTime(2006, 01, 01) && h.TRADING_DATE <= new DateTime(2015, 02, 24)
+                                           where h.TRADING_DATE >= fromdate && h.TRADING_DATE <= todate
                                            select new
                                            {
                                                CeilingPrice = 0,
@@ -243,7 +163,7 @@ namespace SynStockHistory
                                                TradingDate = h.TRADING_DATE,
                                                Totalshare = h.TOTAL_QTTY
                                            }).ToList();
-                    using (Target_StockChart_Hieu_SVR_17 dbtarget = new Target_StockChart_Hieu_SVR_17())
+                    using (StockChart_HieuEntities dbtarget = new StockChart_HieuEntities())
                     {
                         foreach (var item in historyHNXIndex)
                         {
@@ -265,15 +185,15 @@ namespace SynStockHistory
                         }
                         dbtarget.SaveChanges();
                     }                
-            } */
+            } 
             #endregion
 
             #region syndata index-hsx from 2006
 
-            using (Source_StoxDataEntities dbstox = new Source_StoxDataEntities())
+            using (StoxDataEntities dbstox = new StoxDataEntities())
             {
                 var historyVNIndex = (from h in dbstox.stox_tb_HOSE_TotalTrading
-                                      where h.DateReport >= new DateTime(2006, 01, 01) && h.DateReport <= new DateTime(2015, 02, 24)
+                                      where h.DateReport >= fromdate && h.DateReport <= todate
                                       select new
                                       {
                                           CeilingPrice = 0,
@@ -288,7 +208,7 @@ namespace SynStockHistory
                                           Totalshare = h.TotalShares
                                       }).ToList();
 
-                using (Target_StockChart_Hieu_SVR_17 dbtarget = new Target_StockChart_Hieu_SVR_17())
+                using (StockChart_HieuEntities dbtarget = new StockChart_HieuEntities())
                 {
                     foreach (var item in historyVNIndex)
                     {
@@ -298,7 +218,7 @@ namespace SynStockHistory
                             Code = item.Code,
                             DiffPrice = item.DiffPrice,
                             FloorPrice = item.FloorPrice,
-                            ClosePrice = item.ClosePrice/100,
+                            ClosePrice = item.ClosePrice / 100,
                             HighPrice = item.HighPrice == 0 ? item.ClosePrice : item.HighPrice,
                             LowPrice = item.LowPrice == 0 ? item.ClosePrice : item.LowPrice,
                             OpenPrice = item.OpenPrice == 0 ? item.ClosePrice : item.OpenPrice,
@@ -313,6 +233,5 @@ namespace SynStockHistory
             }
             #endregion
         }
-
     }
 }

@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SVR_17StockChartModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="StockPrice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="CeilingPrice" Type="money" />
+          <Property Name="FloorPrice" Type="money" />
+          <Property Name="DiffPrice" Type="money" />
+          <Property Name="OpenPrice" Type="money" />
+          <Property Name="HighPrice" Type="money" />
+          <Property Name="LowPrice" Type="money" />
+          <Property Name="ClosePrice" Type="money" />
+          <Property Name="TradingDate" Type="datetime2" Precision="7" />
+          <Property Name="Totalshare" Type="float" />
+        </EntityType>
+        <EntityContainer Name="SVR_17StockChartModelStoreContainer">
+          <EntitySet Name="StockPrice" EntityType="Self.StockPrice" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SVR_17StockChartModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="StockPrice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CeilingPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="FloorPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DiffPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="OpenPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="HighPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="LowPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ClosePrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TradingDate" Type="DateTime" Precision="7" />
+          <Property Name="Totalshare" Type="Double" />
+        </EntityType>
+        <EntityContainer Name="StockChart_HieuEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="StockPrices" EntityType="Self.StockPrice" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SVR_17StockChartModelStoreContainer" CdmEntityContainer="StockChart_HieuEntities">
+          <EntitySetMapping Name="StockPrices">
+            <EntityTypeMapping TypeName="SVR_17StockChartModel.StockPrice">
+              <MappingFragment StoreEntitySet="StockPrice">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="CeilingPrice" ColumnName="CeilingPrice" />
+                <ScalarProperty Name="FloorPrice" ColumnName="FloorPrice" />
+                <ScalarProperty Name="DiffPrice" ColumnName="DiffPrice" />
+                <ScalarProperty Name="OpenPrice" ColumnName="OpenPrice" />
+                <ScalarProperty Name="HighPrice" ColumnName="HighPrice" />
+                <ScalarProperty Name="LowPrice" ColumnName="LowPrice" />
+                <ScalarProperty Name="ClosePrice" ColumnName="ClosePrice" />
+                <ScalarProperty Name="TradingDate" ColumnName="TradingDate" />
+                <ScalarProperty Name="Totalshare" ColumnName="Totalshare" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

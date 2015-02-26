@@ -6,7 +6,7 @@
     foreach (var item in ViewBag.ListIndex as List<PhimHang.Models.StockRealTime>)
     {
         <li class="hidden-xs">
-            <a href="index.html">
+            <a href="/Ticker/@item.CompanyID">
                 <strong>@item.CompanyID</strong>
                 @if (item.Diff == 0)
                 {
@@ -38,9 +38,9 @@
                         </span>
                     </span>
                 }
-                
 
-                </a>
+
+            </a>
             </li>
         }
 }

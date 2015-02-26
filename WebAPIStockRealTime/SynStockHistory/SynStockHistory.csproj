@@ -129,7 +129,16 @@
     <Compile Include="stox_tb_Company.cs">
       <DependentUpon>SourceDB_stox.tt</DependentUpon>
     </Compile>
+    <Compile Include="stox_tb_HOSE_TotalTrading.cs">
+      <DependentUpon>SourceDB_stox.tt</DependentUpon>
+    </Compile>
     <Compile Include="stox_tb_HOSE_Trading.cs">
+      <DependentUpon>SourceDB_stox.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Stox_tb_MarketInfo.cs">
+      <DependentUpon>SourceDB_stox.tt</DependentUpon>
+    </Compile>
+    <Compile Include="stox_tb_StocksInfo.cs">
       <DependentUpon>SourceDB_stox.tt</DependentUpon>
     </Compile>
     <Compile Include="TargetDB_SVR-17.Context.cs">

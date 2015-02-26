@@ -63,7 +63,7 @@ namespace PhimHang.Models
             //http://www.vfs.com.vn:6789/api/stocks
             //{PI_tickerList:'KLS|OGC|KBC'}
             //var client = new RestClient("http://www.vfs.com.vn:6789/api/");
-            Uri uri = new Uri("http://www.vfs.com.vn:6789/api");
+            Uri uri = new Uri("https://congdongchungkhoan.com/api");
             //Uri uri = new Uri("http://localhost:9999/api");
             //Uri uri = new Uri("http://125.234.253.11:6789/api");
             using (var client = new HttpClient())

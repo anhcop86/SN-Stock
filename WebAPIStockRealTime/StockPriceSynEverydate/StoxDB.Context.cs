@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SynStockHistory
+namespace StockPriceSynEverydate
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Source_StoxDataEntities : DbContext
+    public partial class StoxDataEntities : DbContext
     {
-        public Source_StoxDataEntities()
-            : base("name=Source_StoxDataEntities")
+        public StoxDataEntities()
+            : base("name=StoxDataEntities")
         {
         }
     
@@ -25,10 +25,10 @@ namespace SynStockHistory
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<stox_tb_HOSE_Trading> stox_tb_HOSE_Trading { get; set; }
         public virtual DbSet<stox_tb_Company> stox_tb_Company { get; set; }
-        public virtual DbSet<stox_tb_StocksInfo> stox_tb_StocksInfo { get; set; }
-        public virtual DbSet<Stox_tb_MarketInfo> Stox_tb_MarketInfo { get; set; }
         public virtual DbSet<stox_tb_HOSE_TotalTrading> stox_tb_HOSE_TotalTrading { get; set; }
+        public virtual DbSet<stox_tb_HOSE_Trading> stox_tb_HOSE_Trading { get; set; }
+        public virtual DbSet<Stox_tb_MarketInfo> Stox_tb_MarketInfo { get; set; }
+        public virtual DbSet<stox_tb_StocksInfo> stox_tb_StocksInfo { get; set; }
     }
 }
