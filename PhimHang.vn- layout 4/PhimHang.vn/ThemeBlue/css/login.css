@@ -1,0 +1,218 @@
+﻿body, input, textarea, select, button, .normal {
+font-family: "Open Sans","lucida grande","Segoe UI",arial,verdana,"lucida sans unicode",tahoma,sans-serif;
+font-size: 13px;
+color: #3d464d;
+font-weight: normal;
+}
+
+#outer-frame{
+    width:990px;
+    margin: 0px auto;
+}
+
+#page-content {
+    padding-bottom: 2em;
+    min-height: 425px;
+    
+}
+
+.login-register-container {
+    width: 350px;
+}
+#login-or-register-page-content {
+    text-align: center;
+}
+
+#login-or-register-page-content .login-or-register-img, #login-or-register-page-content .login-register-container {
+    display: inline-block;
+    vertical-align: middle;
+  /*  position:relative;
+    top:100px;
+    right:100px;
+    float:right;
+      */
+}
+
+html[xmlns] .clearfix {
+    display: block;
+}
+.clearfix:before, .clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+.login-register-container .login-register-header {
+float: left;
+font-size: 18px;
+font-weight: normal;
+}
+
+.login-register-container .login-register-switch {
+    float: right;
+    margin-top: 5px;
+    line-height: normal;
+}
+
+a {
+color: #2895f1;
+text-decoration: none;
+}
+
+a, a * {
+cursor: pointer;
+outline: none;
+}
+
+.login-register-container .login-form-container {
+    width: 100%;
+}
+
+.login-form-container {
+    position: relative;
+    text-align: left;
+    width: 350px;
+}
+
+form {
+padding: 0;
+margin: 0;
+}
+
+.login-form-container .text-input {
+width: 100%;
+}
+
+.text-input {
+line-height: normal;
+width: 250px;
+}
+
+.text-input .text-input-error-wrapper {
+        color: #dd3b38;
+        font-size: 12px;
+        min-height: 17px;
+}
+
+.text-input .text-input-wrapper {
+    position: relative;
+}
+
+    .text-input .text-input-wrapper input, .text-input .text-input-wrapper textarea {
+        border: 1px solid #bdc4c9;
+        font-size: 16px;
+        padding: 5px 6px;
+        width: 100%;
+        margin: 2px 0 5px;
+        min-height: 34px;
+        line-height: normal;
+        box-sizing: border-box;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;
+        -webkit-appearance: none;
+    }
+
+input:not([type]), input[type="email" i], input[type="number" i], input[type="password" i], input[type="tel" i], input[type="url" i], input[type="text" i] {
+    padding: 1px 0px;
+}
+.login-form-container .sso-description {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #888;
+    font-size: 14px;
+}
+
+.checkbox.checkbox-inline {
+    display: inline-block;
+    margin-top: 13px;
+    vertical-align: bottom;
+}
+
+.checkbox {
+    margin: 2px 0 5px;
+    min-height: 34px;
+    line-height: normal;
+    box-sizing: border-box;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-appearance: none;
+    padding: 6px 0;
+    height: auto;
+}
+.checkbox input {
+cursor: pointer;
+height: 14px;
+width: 14px;
+margin: 0;
+padding: 0;
+vertical-align: middle;
+}
+
+.checkbox label {
+cursor: pointer;
+margin-left: 7px;
+vertical-align: middle;
+}
+
+.login-form-container .login-button {
+float: right;
+}
+
+.freshbutton, .freshbutton-red, .freshbutton-blue, .freshbutton-lightblue, .freshbutton-blue-on-gray, .freshbutton-gray, .freshbutton-silver, .freshbutton-green, .freshbutton-no-hover, .button-primary, .button-secondary, .button-tertiary {
+    display: inline-block;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    overflow: visible;
+    text-decoration: none;
+}
+.freshbutton-blue, .button-primary, a.button-primary {
+    background: #007ee5;
+    background: -o-linear-gradient(top, #168add 0%,#007ee5 100%);
+    background: -ms-linear-gradient(top, #168add 0%,#007ee5 100%);
+    background: -moz-linear-gradient(top, #168add 0%,#007ee5 100%);
+    background: -webkit-linear-gradient(top, #168add 0%,#007ee5 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #168add), color-stop(100%, #007ee5));
+    background: linear-gradient(to bottom, #168add 0%,#007ee5 100%);
+    border: 1px solid #0c6ebe;
+    color: white;
+}
+
+.button-primary, .button-secondary, .button-tertiary {
+margin: 2px 0 5px;
+min-height: 34px;
+line-height: normal;
+box-sizing: border-box;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+-webkit-appearance: none;
+margin-top: 16px;
+padding: 6px 16px;
+}
+.login-form-container .login-need-help, .login-form-container .two-factor-need-help {
+margin-top: 13px;
+}
+
+#login-or-register-page-content .login-or-register-img {
+    margin-right: 90px;
+    margin-top: 80px;
+    margin-bottom: 110px;
+}
+
+#login-or-register-page-content .login-or-register-img, #login-or-register-page-content .login-register-container {
+display: inline-block;
+vertical-align: middle;
+}

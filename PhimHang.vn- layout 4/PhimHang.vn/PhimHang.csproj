@@ -360,6 +360,8 @@
     <Content Include="images\likecp.png" />
     <Content Include="images\Login_Image.jpg" />
     <Content Include="images\pintab.png" />
+    <Content Include="images\sign-in-vflchypbO.png" />
+    <Content Include="images\Untitled.png" />
     <Content Include="img\avata3.jpg" />
     <Content Include="img\avatar.jpg" />
     <Content Include="img\avatar_default.jpg" />
@@ -504,6 +506,7 @@
     <Content Include="ThemeBlue\css\jquery-ui\jquery-ui.theme.css" />
     <Content Include="ThemeBlue\css\jquery-ui\jquery-ui.theme.min.css" />
     <Content Include="ThemeBlue\css\jquery.dropdown.css" />
+    <Content Include="ThemeBlue\css\login.css" />
     <Content Include="ThemeBlue\css\Notification.css" />
     <Content Include="ThemeBlue\css\style.css" />
     <Content Include="ThemeBlue\css\walt_disney\license.txt" />
@@ -1139,6 +1142,7 @@
     <Content Include="Views\Shared\_Layout_Post_Detail.cshtml" />
     <Content Include="Views\Shared\_Partial_Area_Left_Stock_Ticker.cshtml" />
     <Content Include="Views\Shared\_Partial_Area_Index_Post_Detail.cshtml" />
+    <Content Include="Views\Account\Login - bk.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
