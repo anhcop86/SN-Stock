@@ -15,14 +15,15 @@ namespace PhimHang.Controllers
     public class HomeController : Controller
     {
         //private readonly FilterKeyworkSingleton _keyword;
-        
+        private readonly StockRealTimeTicker _stockRealtime;
         public HomeController()
-            : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
+            : this(StockRealTimeTicker.Instance, new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
         }
-        public HomeController(UserManager<ApplicationUser> userManager)
+        public HomeController(StockRealTimeTicker stockTicker, UserManager<ApplicationUser> userManager)
         {
             //_keyword = KeyworkSing;
+            _stockRealtime = stockTicker;
             UserManager = userManager;
         }
 
@@ -38,10 +39,15 @@ namespace PhimHang.Controllers
                 ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
                 var numberMessegeNew = db.NotificationMesseges.Where(nm => nm.UserReciver == currentUser.UserExtentLogin.Id && nm.NumNoti > 0).Sum(mn => mn.NumNoti);
                 ViewBag.NewMessege = numberMessegeNew;
-                
-                
+
+
             }
-            
+            #region gia chi so index va hnxindex
+            var listIndex = new List<string>();
+            listIndex.Add("VnIndex");
+            listIndex.Add("HNXIndex");
+            ViewBag.ListIndex = _stockRealtime.GetAllStocksList(listIndex).Result;
+            #endregion
             return View();
         }     
 

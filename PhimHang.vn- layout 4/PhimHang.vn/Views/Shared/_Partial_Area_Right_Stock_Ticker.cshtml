@@ -11,10 +11,10 @@
 <script>
     $(function () {
         function parseJsonDateToTimeStamp(value) {
-            return parseInt(value.substr(6), 10); // The 6 is for trimming '/Date('
+            return parseInt(value.substr(6), 10) + 25200000; @* The 6 is for trimming '/Date(' 25200000 là GTM + 7 cộng thêm 1 ngày*@
         }
         //$.getJSON('http://www.highcharts.com/samples/data/jsonp.php?filename=aapl-ohlcv.json&callback=?', function (data) {
-        $.getJSON('http://www.vfs.com.vn:6789/TickerPrice/GetStockPriChart?chart=@ViewBag.StockCode', function (data) {
+        $.getJSON('https://congdongchungkhoan.com/TickerPrice/GetStockPriChart?chart=@ViewBag.StockCode', function (data) {
             // split the data set into ohlc and volume
             var ohlc = [],
                 volume = [],
@@ -125,7 +125,7 @@
             });
         });
     });
-    </script>
+</script>
 
 @*<script>
     $(function () {
