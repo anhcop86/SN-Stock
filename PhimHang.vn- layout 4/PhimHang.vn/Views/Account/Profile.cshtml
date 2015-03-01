@@ -1,19 +1,156 @@
 ﻿
 @{
     ViewBag.Title = "Profile";
-    Layout = "~/Views/Shared/_Layout_MyProfile_Setting.cshtml";
+    Layout = null;
 }
 
 
-<link href="~/Content/Profile.css" rel="stylesheet" />
-@Html.Partial("_UploadAvata")
+<link href="https://jabbr.net/Content/JabbR_917A58EE3646DF8AA7B0F5CABC87938C.css" rel="stylesheet" />
+@*<link href="~/Content/Profile.css" rel="stylesheet" />*@
+
+@*@Html.Partial("_UploadAvata")
 <hr />
 @Html.Partial("_UploadCover")
 
-@Html.Partial("_UpdateProfile")
+@Html.Partial("_UpdateProfile")*@
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+<body class="user-profile">
+    <section id="page" role="application">
+        <header id="heading" role="heading">
+            <div class="banner" role="banner">
+                <h1>cungphim.com</h1>
+            </div>
+            <div style="clear: both"></div>
+        </header>
+        <div class="container">
+            <div class="row" style="padding-top: 75px;">
 
+                <div class="row">
+                    <div class="span12">
+                        <div class="user-details">
+                            <img class="gravatar" src="https://secure.gravatar.com/avatar/?s=48&d=mm" />
+                            <span class="name">anhcop86</span>
+                        </div>
+                        <hr />
+                    </div>
+                </div>
+                <div class="tabbable tabs-left">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
+                        <li><a href="#changeUsername" data-toggle="tab">Username</a></li>
+                        <li><a href="#changePassword" data-toggle="tab">Password</a></li>
+                        <li><a href="#identityProviders" data-toggle="tab">Identity Providers</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="account-details tab-pane active" id="profile">
+                            <form class="form-horizontal">
+                                <fieldset>
+                                    <legend>General Settings</legend>
+                                    <div class="control-group">
+                                        <label class="control-label label-align-left" for="note">Note</label>
+                                        <div class="controls">
+                                            <div class="alert alert-info">To set your note, type /note [message]</div>
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label label-align-left" for="country">Country</label>
+                                        <div class="controls">
+                                            <div class="alert alert-info">To set your country, type /flag [iso-3366-2 code] <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">ISO Reference Chart</a></div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                        <div class="account-details tab-pane hide" id="changeUsername">
+                            <form class="form-horizontal" action="/account/changeusername#changeUsername" method="POST">
 
+                                <div class="control-group">
+                                    <label class="control-label" for="username">Username</label>
+                                    <div class="controls">
+                                        <input type="text" id="username" name="username" value="" class="input-xlarge" placeholder="Username" />
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="confirmUsername">Confirm Username</label>
+                                    <div class="controls">
+                                        <input type="text" id="confirmUsername" name="confirmUsername" value="" class="input-xlarge" placeholder="Confirm Username" />
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <input type="submit" class="btn" value="Change Username" />
+                                    </div>
+                                </div>
+                                <input type="hidden" name="NCSRF" value="AAEAAAD/////AQAAAAAAAAAMAgAAAD1OYW5jeSwgVmVyc2lvbj0wLjIwLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsBQEAAAAYTmFuY3kuU2VjdXJpdHkuQ3NyZlRva2VuAwAAABw8UmFuZG9tQnl0ZXM+a19fQmFja2luZ0ZpZWxkHDxDcmVhdGVkRGF0ZT5rX19CYWNraW5nRmllbGQVPEhtYWM+a19fQmFja2luZ0ZpZWxkBwAHAg0CAgAAAAkDAAAAk/GSDhMi0ogJBAAAAA8DAAAACgAAAAIhJHrM9PYEPWobDwQAAAAgAAAAApeKncJ9tbcCqigxPVvcCAkmwrkl/Spsov8hnPfBtJZfCwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" />
+                            </form>
+                        </div>
+                        <div class="account-details tab-pane hide" id="changePassword">
+                            <form class="form-horizontal" action="/account/changepassword#changePassword" method="POST">
+
+                                <div class="control-group">
+                                    <label class="control-label" for="oldPassword">Current Password</label>
+                                    <div class="controls">
+                                        <input type="password" id="oldPassword" name="oldPassword" value="" class="input-xlarge" placeholder="Current Password" />
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="password">Password</label>
+                                    <div class="controls">
+                                        <input type="password" id="password" name="password" value="" class="input-xlarge" placeholder="Password" />
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="confirmPassword">Confirm Password</label>
+                                    <div class="controls">
+                                        <input type="password" id="confirmPassword" name="confirmPassword" value="" class="input-xlarge" placeholder="Confirm Password" />
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <input type="submit" class="btn" value="Change Password" />
+                                    </div>
+                                </div>
+                                <input type="hidden" name="NCSRF" value="AAEAAAD/////AQAAAAAAAAAMAgAAAD1OYW5jeSwgVmVyc2lvbj0wLjIwLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsBQEAAAAYTmFuY3kuU2VjdXJpdHkuQ3NyZlRva2VuAwAAABw8UmFuZG9tQnl0ZXM+a19fQmFja2luZ0ZpZWxkHDxDcmVhdGVkRGF0ZT5rX19CYWNraW5nRmllbGQVPEhtYWM+a19fQmFja2luZ0ZpZWxkBwAHAg0CAgAAAAkDAAAAk/GSDhMi0ogJBAAAAA8DAAAACgAAAAIhJHrM9PYEPWobDwQAAAAgAAAAApeKncJ9tbcCqigxPVvcCAkmwrkl/Spsov8hnPfBtJZfCwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" />
+                            </form>
+                        </div>
+                        <div class="account-details tab-pane hide" id="identityProviders">
+                            <div class="control-group">
+                                <div class="controls">
+                                    <form action="/account/unlink" method="POST">
+                                        <ul class="inline">
+                                            <li><a class="btn btn-provider" href="/authentication/redirect/facebook"><i class="icon-facebook"></i> Facebook</a></li>
+                                        </ul>
+                                        <ul class="inline">
+                                            <li><a class="btn btn-provider" href="/authentication/redirect/twitter"><i class="icon-twitter"></i> Twitter</a></li>
+                                        </ul>
+                                        <ul class="inline">
+                                            <li><a class="btn btn-provider" href="/authentication/redirect/google"><i class="icon-google"></i> Google</a></li>
+                                        </ul>
+                                        <input type="hidden" name="NCSRF" value="AAEAAAD/////AQAAAAAAAAAMAgAAAD1OYW5jeSwgVmVyc2lvbj0wLjIwLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsBQEAAAAYTmFuY3kuU2VjdXJpdHkuQ3NyZlRva2VuAwAAABw8UmFuZG9tQnl0ZXM+a19fQmFja2luZ0ZpZWxkHDxDcmVhdGVkRGF0ZT5rX19CYWNraW5nRmllbGQVPEhtYWM+a19fQmFja2luZ0ZpZWxkBwAHAg0CAgAAAAkDAAAAk/GSDhMi0ogJBAAAAA8DAAAACgAAAAIhJHrM9PYEPWobDwQAAAAgAAAAApeKncJ9tbcCqigxPVvcCAkmwrkl/Spsov8hnPfBtJZfCwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" />
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="~/Scripts/jquery-2.1.1.min.js"></script>
+    <script src="https://jabbr.net/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            // set the selected tab based on the hash
+            var currentSection = document.location.hash || "#profile";
+            $('a[href="' + currentSection + '"]').tab('show');
+
+            // always set the hash when we change tabs
+            $('a[data-toggle="tab"]').on('shown', function (e) {
+                document.location.hash = e.target.hash;
+            });
+
+            // make sure errors look pretty and bootstrap-y
+            $('input.error').closest('.control-group').addClass('error');
+        }(jQuery));
+    </script>
+</body>
