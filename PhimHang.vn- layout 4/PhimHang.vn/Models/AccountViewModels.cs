@@ -72,8 +72,7 @@ namespace PhimHang.Models
 
         [Display(Name = "Tên đăng nhập")]
         public string UserName { get; set; }
-
-        [Required]
+                
         [StringLength(256, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [Display(Name = "Tên đầy đủ")]
         public string FullName { get; set; }
@@ -97,5 +96,12 @@ namespace PhimHang.Models
 
         [StringLength(128)]
         public string Status { get; set; }
+
+        [Display(Name = "Mobile")]
+        [StringLength(16, ErrorMessage = "Số điện thoại phải ít nhất 10, lớn nhất 16 ký tự", MinimumLength = 10)]
+        public string Mobile { get; set; }
+
+        public string Avata { get; set; }
+
     }
 }

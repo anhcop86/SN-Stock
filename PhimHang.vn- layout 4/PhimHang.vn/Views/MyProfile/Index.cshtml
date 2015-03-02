@@ -348,7 +348,7 @@
                 charImage = "";
             }
 
-            commenthub.server.addPost({ "Message": self.newMessage() }, "KEYMYPROFILE", '@ViewBag.CureentUserId', '@ViewBag.UserName', '@ViewBag.AvataImageUrl', nhanDinh, charImage)
+            commenthub.server.addPost({ "Message": self.newMessage() }, "KEYMYPROFILE", '@ViewBag.CureentUserId', '@ViewBag.UserName', '@ViewBag.AvataEmage', nhanDinh, charImage)
                 .done(function () {
                     showNotification('Bạn đã đăng bài thành công!');
                 })
@@ -362,7 +362,7 @@
         }
 
         self.addReply = function () { // them tra loi
-            commenthub.server.addReply({ "Message": self.newReply(), "PostedBy": postidCurrent }, "KEYMYPROFILE", '@ViewBag.CureentUserId', '@ViewBag.UserName', '@ViewBag.AvataImageUrl')
+            commenthub.server.addReply({ "Message": self.newReply(), "PostedBy": postidCurrent }, "KEYMYPROFILE", '@ViewBag.CureentUserId', '@ViewBag.UserName', '@ViewBag.AvataEmage')
                 .done(function () {
                     showNotification('Bạn đã trả lời thành công!');
                 })

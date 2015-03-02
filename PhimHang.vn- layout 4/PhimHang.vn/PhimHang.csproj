@@ -481,10 +481,10 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\StockPrice.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="ThemeBlue\bootstrap-twiter\css\bootstrap.min.css" />
     <Content Include="ThemeBlue\bootstrap-twiter\css\bootstrap-theme.css" />
     <Content Include="ThemeBlue\bootstrap-twiter\css\bootstrap-theme.min.css" />
     <Content Include="ThemeBlue\bootstrap-twiter\css\bootstrap.css" />
-    <Content Include="ThemeBlue\bootstrap-twiter\css\bootstrap.min.css" />
     <Content Include="ThemeBlue\bootstrap-twiter\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="ThemeBlue\bootstrap-twiter\js\bootstrap.js" />
     <Content Include="ThemeBlue\bootstrap-twiter\js\bootstrap.min.js" />
@@ -1151,7 +1151,7 @@
     <Content Include="Views\Shared\_Partial_Area_Left_Stock_Ticker.cshtml" />
     <Content Include="Views\Shared\_Partial_Area_Index_Post_Detail.cshtml" />
     <Content Include="Views\Account\Login - bk.cshtml" />
-    <Content Include="Views\Account\Profile - Copy.cshtml" />
+    <Content Include="Views\Account\Profile_bk.cshtml" />
     <Content Include="ThemeBlue\bootstrap-twiter\css\bootstrap-theme.css.map" />
     <Content Include="ThemeBlue\bootstrap-twiter\css\bootstrap.css.map" />
     <Content Include="ThemeBlue\bootstrap-twiter\fonts\glyphicons-halflings-regular.eot" />

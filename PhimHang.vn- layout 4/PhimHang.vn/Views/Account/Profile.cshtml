@@ -1,11 +1,14 @@
-﻿
+﻿@using Microsoft.AspNet.Identity
+@model PhimHang.Models.ProfileUserViewModel
+
 @{
     ViewBag.Title = "Profile";
     Layout = null;
 }
 
 
-<link href="https://jabbr.net/Content/JabbR_917A58EE3646DF8AA7B0F5CABC87938C.css" rel="stylesheet" />
+<link href="~/ThemeBlue/bootstrap-twiter/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/ThemeBlue/bootstrap-twiter/css/bootstrap-theme.min.css" rel="stylesheet" />
 @*<link href="~/Content/Profile.css" rel="stylesheet" />*@
 
 @*@Html.Partial("_UploadAvata")
@@ -18,7 +21,7 @@
     <section id="page" role="application">
         <header id="heading" role="heading">
             <div class="banner" role="banner">
-                <h1>cungphim.com</h1>
+                <h1><a href="/">cungphim.com</a></h1>
             </div>
             <div style="clear: both"></div>
         </header>
@@ -28,57 +31,110 @@
                 <div class="row">
                     <div class="span12">
                         <div class="user-details">
-                            <img class="gravatar" src="https://secure.gravatar.com/avatar/?s=48&d=mm" />
-                            <span class="name">anhcop86</span>
+                            @{
+                                string avata = Model.Avata;
+                            }
+                            <img class="gravatar" src="@avata?width=48&height=48&mode=crop" />
+                            <span class="name">@Model.UserName</span>
                         </div>
                         <hr />
                     </div>
                 </div>
                 <div class="tabbable tabs-left">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
-                        <li><a href="#changeUsername" data-toggle="tab">Username</a></li>
-                        <li><a href="#changePassword" data-toggle="tab">Password</a></li>
-                        <li><a href="#identityProviders" data-toggle="tab">Identity Providers</a></li>
+                        <li class="active"><a href="#profile" data-toggle="tab">Hồ sơ cá nhân</a></li>
+                        <li><a href="#philosophy" data-toggle="tab">Trường phái đầu tư</a></li>
+                        <li><a href="#changePassword" data-toggle="tab">Mật khẩu</a></li>
+                        @*<li><a href="#identityProviders" data-toggle="tab">Identity Providers</a></li>*@
                     </ul>
                     <div class="tab-content">
-                        <div class="account-details tab-pane active" id="profile">
-                            <form class="form-horizontal">
-                                <fieldset>
-                                    <legend>General Settings</legend>
-                                    <div class="control-group">
-                                        <label class="control-label label-align-left" for="note">Note</label>
-                                        <div class="controls">
-                                            <div class="alert alert-info">To set your note, type /note [message]</div>
-                                        </div>
+                        <div class="account-details tab-pane active" id="profile">     
+                            @using (Html.BeginForm("Profile", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="control-group">
+                                    <label class="control-label" for="username">Avata:</label>
+                                    <div class="controls">
+                                        <input type="file" id="avataInput" name="username" value="" class="input-xlarge" placeholder="Username" />
                                     </div>
-                                    <div class="control-group">
-                                        <label class="control-label label-align-left" for="country">Country</label>
-                                        <div class="controls">
-                                            <div class="alert alert-info">To set your country, type /flag [iso-3366-2 code] <a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2" target="_blank">ISO Reference Chart</a></div>
-                                        </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="confirmUsername">Cover:</label>
+                                    <div class="controls">
+                                        <input type="file" id="coverInput" name="confirmUsername" value="" class="input-xlarge" placeholder="Confirm Username" />
                                     </div>
-                                </fieldset>
-                            </form>
-                        </div>
-                        <div class="account-details tab-pane hide" id="changeUsername">
-                            <form class="form-horizontal" action="/account/changeusername#changeUsername" method="POST">
+                                </div>
 
                                 <div class="control-group">
-                                    <label class="control-label" for="username">Username</label>
+                                    <label class="control-label" for="username">Họ và tên:</label>
                                     <div class="controls">
-                                        <input type="text" id="username" name="username" value="" class="input-xlarge" placeholder="Username" />
+                                        @*<input type="text" id="mobileInput" name="username" value="" class="input-xlarge" />*@
+                                        @Html.TextBoxFor(m => m.FullName, new { @class = "input-xlarge" })
                                     </div>
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label" for="confirmUsername">Confirm Username</label>
+                                    <label class="control-label" for="username">Điện thoại:</label>
+                                    <div class="controls">                                        
+                                        @Html.TextBoxFor(m => m.Mobile, new { @class = "input-xlarge" })
+                                        @Html.ValidationMessageFor(m => m.Mobile, "", new { @style = "color: #D81D35;" })
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="username">Email:</label>
                                     <div class="controls">
-                                        <input type="text" id="confirmUsername" name="confirmUsername" value="" class="input-xlarge" placeholder="Confirm Username" />
+                                        <input type="text" id="emailInput" name="username" value="" class="input-xlarge" />
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="username">Nghề nghiệp:</label>
+                                    <div class="controls">
+                                        <input type="text" id="jobInput" name="username" value="" class="input-xlarge" />
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="username">Status:</label>
+                                    <div class="controls">
+                                        <textarea id="statusInput" name="statustextArea" class="form-control" placeholder="Chia sẽ cảm nghĩ về thị trường?" rows="3" style="width:500px"></textarea>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="username">Home facebook:</label>
+                                    <div class="controls">
+                                        <input type="text" id="username" name="username" value="" class="input-xlarge" />
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="username">Giới thiệu bản thân:</label>
+                                    <div class="controls">
+                                        <textarea id="statusInput" name="statustextArea" class="form-control" placeholder="Sở thích, thế mạnh...?" rows="3" style="width:500px"></textarea>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <div class="controls">
-                                        <input type="submit" class="btn" value="Change Username" />
+                                        <input type="submit" class="btn" value="Lưu lại" />
+                                        <p class="text-success">@ViewBag.StatusMessage</p>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="NCSRF" value="" />
+                            }
+                        </div>
+                        <div class="account-details tab-pane hide" id="philosophy">
+                            <form class="form-horizontal" action="" method="POST">
+                                <div class="control-group">
+                                    <label class="control-label" for="username">Trải nghiệm thị trường:</label>
+                                    <div class="controls">
+                                        <input type="text" id="username" name="username" value="" class="input-xlarge"/>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="confirmUsername">Trường phái giao dịch:</label>
+                                    <div class="controls">
+                                        <input type="text" id="confirmUsername" name="confirmUsername" value="" class="input-xlarge"/>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <div class="controls">
+                                        <input type="submit" class="btn" value="Lưu lại" />
                                     </div>
                                 </div>
                                 <input type="hidden" name="NCSRF" value="AAEAAAD/////AQAAAAAAAAAMAgAAAD1OYW5jeSwgVmVyc2lvbj0wLjIwLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsBQEAAAAYTmFuY3kuU2VjdXJpdHkuQ3NyZlRva2VuAwAAABw8UmFuZG9tQnl0ZXM+a19fQmFja2luZ0ZpZWxkHDxDcmVhdGVkRGF0ZT5rX19CYWNraW5nRmllbGQVPEhtYWM+a19fQmFja2luZ0ZpZWxkBwAHAg0CAgAAAAkDAAAAk/GSDhMi0ogJBAAAAA8DAAAACgAAAAIhJHrM9PYEPWobDwQAAAAgAAAAApeKncJ9tbcCqigxPVvcCAkmwrkl/Spsov8hnPfBtJZfCwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" />
@@ -107,13 +163,13 @@
                                 </div>
                                 <div class="control-group">
                                     <div class="controls">
-                                        <input type="submit" class="btn" value="Change Password" />
+                                        <input type="submit" class="btn" value="Lưu lại" />
                                     </div>
                                 </div>
-                                <input type="hidden" name="NCSRF" value="AAEAAAD/////AQAAAAAAAAAMAgAAAD1OYW5jeSwgVmVyc2lvbj0wLjIwLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsBQEAAAAYTmFuY3kuU2VjdXJpdHkuQ3NyZlRva2VuAwAAABw8UmFuZG9tQnl0ZXM+a19fQmFja2luZ0ZpZWxkHDxDcmVhdGVkRGF0ZT5rX19CYWNraW5nRmllbGQVPEhtYWM+a19fQmFja2luZ0ZpZWxkBwAHAg0CAgAAAAkDAAAAk/GSDhMi0ogJBAAAAA8DAAAACgAAAAIhJHrM9PYEPWobDwQAAAAgAAAAApeKncJ9tbcCqigxPVvcCAkmwrkl/Spsov8hnPfBtJZfCwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" />
+                                <input type="hidden" name="NCSRF" value="" />
                             </form>
                         </div>
-                        <div class="account-details tab-pane hide" id="identityProviders">
+                        @*<div class="account-details tab-pane hide" id="identityProviders">
                             <div class="control-group">
                                 <div class="controls">
                                     <form action="/account/unlink" method="POST">
@@ -130,14 +186,14 @@
                                     </form>
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <script src="~/Scripts/jquery-2.1.1.min.js"></script>
-    <script src="https://jabbr.net/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-2.1.1.min.js"></script>    
+    <script src="~/ThemeBlue/bootstrap-twiter/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         (function ($) {
             // set the selected tab based on the hash

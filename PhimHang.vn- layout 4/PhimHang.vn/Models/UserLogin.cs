@@ -43,6 +43,12 @@ namespace PhimHang.Models
         public int LockAccount { get; set; }
         public string UserNameCopy { get; set; }
         public string Status { get; set; }
+        public string Mobile { get; set; }
+        public string JobTitle { get; set; }
+        public string URLFacebook { get; set; }
+        public string CVInfo { get; set; }
+        public Nullable<byte> NumberExMarketYear { get; set; }
+        public Nullable<byte> PhilosophyMarket { get; set; }
     
         public virtual ICollection<FollowStock> FollowStocks { get; set; }
         public virtual ICollection<FollowUser> FollowUsers { get; set; }

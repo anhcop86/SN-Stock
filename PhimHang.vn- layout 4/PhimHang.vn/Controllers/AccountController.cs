@@ -17,7 +17,9 @@ namespace PhimHang.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        private const string ImageURLAvata = "images/avatar/";
+        private const string ImageURLAvataDefault = "/img/avatar2.jpg";
+        private const string ImageURLCoverDefault = "/img/cover_default.jpg";
+        private const string ImageURLAvata = "/images/avatar/";
         private const string ImageURLCover = "images/cover/";
        
          
@@ -161,14 +163,16 @@ namespace PhimHang.Controllers
             else // user not null
             {
                 profile.UserName = user.UserName;
+                profile.Mobile = user.UserExtentLogin.Mobile;
                 profile.FullName = user.UserExtentLogin.FullName;
                 profile.Email = user.UserExtentLogin.Email;
                 profile.BirthDay = user.UserExtentLogin.BirthDate;
                 profile.CreatedDate = user.UserExtentLogin.CreatedDate.ToString("dd/MM/yyyy");
                 profile.Verify = user.UserExtentLogin.Verify;//== null? Verify.NO: Verify.YES;
                 profile.Status = user.UserExtentLogin.Status;
+                profile.Avata = string.IsNullOrEmpty(user.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + user.UserExtentLogin.AvataImage;
             }
-            ViewBag.ImageUrl = ImageURLAvata + user.UserExtentLogin.AvataImage;
+            ViewBag.AvataEmage = string.IsNullOrEmpty(user.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + user.UserExtentLogin.AvataImage;
             ViewBag.ImageUrlCover = ImageURLCover + user.UserExtentLogin.AvataCover;
             return View(profile);
         }
@@ -182,6 +186,7 @@ namespace PhimHang.Controllers
                 if (user != null)
                 {
                     user.UserExtentLogin.FullName = model.FullName;
+                    user.UserExtentLogin.Mobile = model.Mobile;
                     user.UserExtentLogin.Email = model.Email;
                     user.UserExtentLogin.BirthDate = model.BirthDay;
                     user.UserExtentLogin.Status = model.Status;

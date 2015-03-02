@@ -80,7 +80,7 @@
             <PropertyRef Name="PostId" />
           </Key>
           <Property Name="PostId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Message" Type="nvarchar" MaxLength="2048" />
+          <Property Name="Message" Type="varchar" MaxLength="2048" />
           <Property Name="PostedBy" Type="int" Nullable="false" />
           <Property Name="PostedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="ChartImageURL" Type="nvarchar" MaxLength="128" />
@@ -124,6 +124,7 @@
           <Property Name="ClosePrice" Type="money" />
           <Property Name="TradingDate" Type="datetime2" Precision="7" />
           <Property Name="Totalshare" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="StringDate" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="StockRelate">
           <Key>
@@ -160,6 +161,12 @@
           <Property Name="AccountType" Type="int" Nullable="false" />
           <Property Name="LockAccount" Type="int" Nullable="false" />
           <Property Name="Status" Type="nvarchar" MaxLength="128" />
+          <Property Name="Mobile" Type="varchar" MaxLength="16" />
+          <Property Name="JobTitle" Type="nvarchar" MaxLength="256" />
+          <Property Name="URLFacebook" Type="nvarchar" MaxLength="256" />
+          <Property Name="CVInfo" Type="nvarchar" MaxLength="512" />
+          <Property Name="NumberExMarketYear" Type="tinyint" />
+          <Property Name="PhilosophyMarket" Type="tinyint" />
         </EntityType>
         <EntityType Name="UserRelate">
           <Key>
@@ -670,6 +677,12 @@
           <NavigationProperty Name="NotificationMesseges" Relationship="PHDBContext.FK_UserPost_User" FromRole="UserLogin" ToRole="NotificationMessege" />
           <NavigationProperty Name="NotificationMesseges1" Relationship="PHDBContext.FK_UserPost_UserReciver" FromRole="UserLogin" ToRole="NotificationMessege" />
           <NavigationProperty Name="Posts" Relationship="PHDBContext.FK_Posts_UserLogins" FromRole="UserLogin" ToRole="Post" />
+          <Property Name="Mobile" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="JobTitle" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="URLFacebook" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="CVInfo" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="NumberExMarketYear" Type="Byte" />
+          <Property Name="PhilosophyMarket" Type="Byte" />
         </EntityType>
         <Association Name="FK_FollowStock_UserLogins">
           <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />
@@ -866,7 +879,7 @@
             <PropertyRef Name="PostId" />
           </Key>
           <Property Name="PostId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Message" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" />
           <Property Name="PostedBy" Type="Int32" Nullable="false" />
           <Property Name="PostedDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="ChartImageURL" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
@@ -968,6 +981,7 @@
           <Property Name="ClosePrice" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="TradingDate" Type="DateTime" Precision="7" />
           <Property Name="Totalshare" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="StringDate" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1058,6 +1072,12 @@
           <EntitySetMapping Name="UserLogins">
             <EntityTypeMapping TypeName="PHDBContext.UserLogin">
               <MappingFragment StoreEntitySet="UserLogins">
+                <ScalarProperty Name="PhilosophyMarket" ColumnName="PhilosophyMarket" />
+                <ScalarProperty Name="NumberExMarketYear" ColumnName="NumberExMarketYear" />
+                <ScalarProperty Name="CVInfo" ColumnName="CVInfo" />
+                <ScalarProperty Name="URLFacebook" ColumnName="URLFacebook" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="UserNameCopy" ColumnName="UserNameCopy" />
                 <ScalarProperty Name="LockAccount" ColumnName="LockAccount" />
@@ -1150,6 +1170,7 @@
           <EntitySetMapping Name="StockPrices">
             <EntityTypeMapping TypeName="PHDBContext.StockPrice">
               <MappingFragment StoreEntitySet="StockPrice">
+                <ScalarProperty Name="StringDate" ColumnName="StringDate" />
                 <ScalarProperty Name="Totalshare" ColumnName="Totalshare" />
                 <ScalarProperty Name="TradingDate" ColumnName="TradingDate" />
                 <ScalarProperty Name="ClosePrice" ColumnName="ClosePrice" />

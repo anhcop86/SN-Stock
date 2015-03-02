@@ -51,7 +51,7 @@ namespace PhimHang.Models
         [StringLength(128)]
         public string Status { get; set; }
 
-
+        public string Mobile { get; set; }
 
     }
 
