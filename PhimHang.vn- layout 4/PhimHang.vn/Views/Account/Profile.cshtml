@@ -6,7 +6,13 @@
     Layout = null;
 }
 
-
+<script src="~/Scripts/jquery-2.1.1.min.js"></script>
+@* validate - phai có 2 key trong webconfig <add key="ClientValidationEnabled" value="true" />
+    <add key="UnobtrusiveJavaScriptEnabled" value="true"/> *@
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+ @*end validate  *@
+<script src="~/ThemeBlue/bootstrap-twiter/js/bootstrap.min.js"></script>
 <link href="~/ThemeBlue/bootstrap-twiter/css/bootstrap.min.css" rel="stylesheet" />
 <link href="~/ThemeBlue/bootstrap-twiter/css/bootstrap-theme.min.css" rel="stylesheet" />
 @*<link href="~/Content/Profile.css" rel="stylesheet" />*@
@@ -31,10 +37,7 @@
                 <div class="row">
                     <div class="span12">
                         <div class="user-details">
-                            @{
-                                string avata = Model.Avata;
-                            }
-                            <img class="gravatar" src="@avata?width=48&height=48&mode=crop" />
+                            <img class="gravatar" id="AvataImage" src="@Model.Avata?width=48&height=48&mode=crop" />
                             <span class="name">@Model.UserName</span>
                         </div>
                         <hr />
@@ -82,7 +85,9 @@
                                 <div class="control-group">
                                     <label class="control-label" for="username">Email:</label>
                                     <div class="controls">
-                                        <input type="text" id="emailInput" name="username" value="" class="input-xlarge" />
+                                        @*<input type="text" id="emailInput" name="username" value="" class="input-xlarge" />*@
+                                        @Html.TextBoxFor(m => m.Email, new { @class = "input-xlarge", @type="email" })
+                                        @Html.ValidationMessageFor(m => m.Email, "", new { @style = "color: #D81D35;" })
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -192,10 +197,11 @@
             </div>
         </div>
     </section>
-    <script src="~/Scripts/jquery-2.1.1.min.js"></script>    
-    <script src="~/ThemeBlue/bootstrap-twiter/js/bootstrap.min.js"></script>
+
     <script type="text/javascript">
         (function ($) {
+            console.log($('#hiddenAvataImage').val());
+            $('#AvataImage').attr('src', $('#hiddenAvataImage').val());
             // set the selected tab based on the hash
             var currentSection = document.location.hash || "#profile";
             $('a[href="' + currentSection + '"]').tab('show');

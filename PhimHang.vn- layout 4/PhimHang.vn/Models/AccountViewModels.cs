@@ -99,6 +99,7 @@ namespace PhimHang.Models
 
         [Display(Name = "Mobile")]
         [StringLength(16, ErrorMessage = "Số điện thoại phải ít nhất 10, lớn nhất 16 ký tự", MinimumLength = 10)]
+        [RegularExpression("^[0-9]*$",ErrorMessage="Số điện thoại là số")]
         public string Mobile { get; set; }
 
         public string Avata { get; set; }
