@@ -3,18 +3,10 @@
 
 @{
     ViewBag.Title = "Profile";
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout_MyProfile_Setting.cshtml";
 }
 
-<script src="~/Scripts/jquery-2.1.1.min.js"></script>
-@* validate - phai có 2 key trong webconfig <add key="ClientValidationEnabled" value="true" />
-    <add key="UnobtrusiveJavaScriptEnabled" value="true"/> *@
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
- @*end validate  *@
-<script src="~/ThemeBlue/bootstrap-twiter/js/bootstrap.min.js"></script>
-<link href="~/ThemeBlue/bootstrap-twiter/css/bootstrap.min.css" rel="stylesheet" />
-<link href="~/ThemeBlue/bootstrap-twiter/css/bootstrap-theme.min.css" rel="stylesheet" />
+
 @*<link href="~/Content/Profile.css" rel="stylesheet" />*@
 
 @*@Html.Partial("_UploadAvata")
@@ -23,7 +15,7 @@
 
 @Html.Partial("_UpdateProfile")*@
 
-<body class="user-profile">
+@*<body class="user-profile">
     <section id="page" role="application">
         <header id="heading" role="heading">
             <div class="banner" role="banner">
@@ -48,13 +40,28 @@
                         <li class="active"><a href="#profile" data-toggle="tab">Hồ sơ cá nhân</a></li>
                         <li><a href="#philosophy" data-toggle="tab">Trường phái đầu tư</a></li>
                         <li><a href="#changePassword" data-toggle="tab">Mật khẩu</a></li>
-                        @*<li><a href="#identityProviders" data-toggle="tab">Identity Providers</a></li>*@
+                        <li><a href="#identityProviders" data-toggle="tab">Identity Providers</a></li>
                     </ul>
-                    <div class="tab-content">
+                    <div class="tab-content">*@
+                @*<div class="row">
+                    <div class="span12">
+                        <div class="user-details">
+                            <img class="gravatar" id="AvataImage" src="@ViewBag.AvataEmage?width=48&height=48&mode=crop" />
+                            <span class="name">@Model.UserName</span>
+                        </div>
+                        <hr />
+                    </div>
+                </div>*@
                         <div class="account-details tab-pane active" id="profile">     
                             @using (Html.BeginForm("Profile", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                             {
                                 @Html.AntiForgeryToken()
+                                <div class="control-group">
+                                    <label class="control-label" for="username">Image:</label>
+                                    <div class="controls">
+                                        <img class="gravatar" id="AvataImage" src="@Model.Avata?width=48&height=48&mode=crop" />                                       
+                                    </div>
+                                </div>
                                 <div class="control-group">
                                     <label class="control-label" for="username">Avata:</label>
                                     <div class="controls">
@@ -73,6 +80,14 @@
                                     <div class="controls">
                                         @*<input type="text" id="mobileInput" name="username" value="" class="input-xlarge" />*@
                                         @Html.TextBoxFor(m => m.FullName, new { @class = "input-xlarge" })
+                                        @Html.ValidationMessageFor(m => m.FullName, "", new { @style = "color: #D81D35;" })
+                                    </div>
+                                </div>
+                                      <div class="control-group">
+                                    <label class="control-label" for="username">Ngày sinh:</label>
+                                    <div class="controls">                                        
+                                        @Html.TextBoxFor(m => m.BirthDay, new { @class = "input-xlarge", @type = "date" })
+                                        @Html.ValidationMessageFor(m => m.BirthDay, "", new { @style = "color: #D81D35;"})
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -93,25 +108,45 @@
                                 <div class="control-group">
                                     <label class="control-label" for="username">Nghề nghiệp:</label>
                                     <div class="controls">
-                                        <input type="text" id="jobInput" name="username" value="" class="input-xlarge" />
+                                        @*<input type="text" id="jobInput" name="username" value="" class="input-xlarge" />*@
+                                        @Html.DropDownListFor(m => m.JobTitle, ViewBag.ListJob as SelectList, string.Empty)
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label" for="username">Status:</label>
                                     <div class="controls">
-                                        <textarea id="statusInput" name="statustextArea" class="form-control" placeholder="Chia sẽ cảm nghĩ về thị trường?" rows="3" style="width:500px"></textarea>
+                                        @*<textarea id="statusInput" name="statustextArea" class="form-control" placeholder="Chia sẽ cảm nghĩ về thị trường?" rows="3" style="width:500px"></textarea>*@
+                                        @Html.TextAreaFor(m => m.Status, new { @class="form-control" ,@placeholder="Chia sẽ cảm nghĩ về thị trường?", @rows="3" ,@style="width:500px" })
+                                        @Html.ValidationMessageFor(m => m.Status , "", new { @style = "color: #D81D35;" })
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label" for="username">Home facebook:</label>
                                     <div class="controls">
-                                        <input type="text" id="username" name="username" value="" class="input-xlarge" />
+                                        @Html.TextBoxFor(m => m.URLFacebook, new { @class = "input-xlarge" })
+                                        @Html.ValidationMessageFor(m => m.URLFacebook, "", new { @style = "color: #D81D35;" })
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label" for="username">Giới thiệu bản thân:</label>
                                     <div class="controls">
-                                        <textarea id="statusInput" name="statustextArea" class="form-control" placeholder="Sở thích, thế mạnh...?" rows="3" style="width:500px"></textarea>
+                                        @*<textarea id="statusInput" name="statustextArea" class="form-control" placeholder="Sở thích, thế mạnh...?" rows="3" style="width:500px"></textarea>*@
+                                        @Html.TextAreaFor(m => m.CVInfo, new { @class = "form-control", @placeholder = "Sở thích, thế mạnh...?", @rows = "3", @style = "width:500px" })
+                                        @Html.ValidationMessageFor(m => m.CVInfo, "", new { @style = "color: #D81D35;" })
+                                    </div>
+                                </div>
+                                  <div class="control-group">
+                                    <label class="control-label" for="username">Số năm kinh nghiệm:</label>
+                                    <div class="controls">
+                                        @*<input type="text" id="jobInput" name="username" value="" class="input-xlarge" />*@
+                                        @Html.DropDownListFor(m => m.NumberExMarketYear, ViewBag.ListNumberExMarketYear as SelectList, string.Empty)
+                                    </div>
+                                </div>
+                                  <div class="control-group">
+                                    <label class="control-label" for="username">Trường phái đầu tư:</label>
+                                    <div class="controls">
+                                        @*<input type="text" id="jobInput" name="username" value="" class="input-xlarge" />*@
+                                        @Html.DropDownListFor(m => m.PhilosophyMarket, ViewBag.ListPhilosophyMarket as SelectList, string.Empty)
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -120,10 +155,10 @@
                                         <p class="text-success">@ViewBag.StatusMessage</p>
                                     </div>
                                 </div>
-                                <input type="hidden" name="NCSRF" value="" />
+                                
                             }
                         </div>
-                        <div class="account-details tab-pane hide" id="philosophy">
+                        @*<div class="account-details tab-pane hide" id="philosophy">
                             <form class="form-horizontal" action="" method="POST">
                                 <div class="control-group">
                                     <label class="control-label" for="username">Trải nghiệm thị trường:</label>
@@ -144,36 +179,8 @@
                                 </div>
                                 <input type="hidden" name="NCSRF" value="AAEAAAD/////AQAAAAAAAAAMAgAAAD1OYW5jeSwgVmVyc2lvbj0wLjIwLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsBQEAAAAYTmFuY3kuU2VjdXJpdHkuQ3NyZlRva2VuAwAAABw8UmFuZG9tQnl0ZXM+a19fQmFja2luZ0ZpZWxkHDxDcmVhdGVkRGF0ZT5rX19CYWNraW5nRmllbGQVPEhtYWM+a19fQmFja2luZ0ZpZWxkBwAHAg0CAgAAAAkDAAAAk/GSDhMi0ogJBAAAAA8DAAAACgAAAAIhJHrM9PYEPWobDwQAAAAgAAAAApeKncJ9tbcCqigxPVvcCAkmwrkl/Spsov8hnPfBtJZfCwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" />
                             </form>
-                        </div>
-                        <div class="account-details tab-pane hide" id="changePassword">
-                            <form class="form-horizontal" action="/account/changepassword#changePassword" method="POST">
-
-                                <div class="control-group">
-                                    <label class="control-label" for="oldPassword">Current Password</label>
-                                    <div class="controls">
-                                        <input type="password" id="oldPassword" name="oldPassword" value="" class="input-xlarge" placeholder="Current Password" />
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="password">Password</label>
-                                    <div class="controls">
-                                        <input type="password" id="password" name="password" value="" class="input-xlarge" placeholder="Password" />
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="confirmPassword">Confirm Password</label>
-                                    <div class="controls">
-                                        <input type="password" id="confirmPassword" name="confirmPassword" value="" class="input-xlarge" placeholder="Confirm Password" />
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <div class="controls">
-                                        <input type="submit" class="btn" value="Lưu lại" />
-                                    </div>
-                                </div>
-                                <input type="hidden" name="NCSRF" value="" />
-                            </form>
-                        </div>
+                        </div>*@
+                       
                         @*<div class="account-details tab-pane hide" id="identityProviders">
                             <div class="control-group">
                                 <div class="controls">
@@ -191,28 +198,28 @@
                                     </form>
                                 </div>
                             </div>
-                        </div>*@
+                        </div>
                     </div>
-                </div>
+                @*</div>
             </div>
         </div>
     </section>
-
+*@
     <script type="text/javascript">
         (function ($) {
-            console.log($('#hiddenAvataImage').val());
-            $('#AvataImage').attr('src', $('#hiddenAvataImage').val());
-            // set the selected tab based on the hash
-            var currentSection = document.location.hash || "#profile";
-            $('a[href="' + currentSection + '"]').tab('show');
+            
+            //// set the selected tab based on the hash
+            //var currentSection = document.location.hash || "#profile";
+            //$('a[href="' + currentSection + '"]').tab('show');
 
-            // always set the hash when we change tabs
-            $('a[data-toggle="tab"]').on('shown', function (e) {
-                document.location.hash = e.target.hash;
-            });
+            //// always set the hash when we change tabs
+            //$('a[data-toggle="tab"]').on('shown', function (e) {
+            //    document.location.hash = e.target.hash;
+            //});
 
-            // make sure errors look pretty and bootstrap-y
-            $('input.error').closest('.control-group').addClass('error');
+            //// make sure errors look pretty and bootstrap-y
+            //$('input.error').closest('.control-group').addClass('error');
+            $('#profileli').addClass("active");
+
         }(jQuery));
     </script>
-</body>

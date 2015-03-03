@@ -1158,6 +1158,7 @@
     <Content Include="ThemeBlue\bootstrap-twiter\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="ThemeBlue\bootstrap-twiter\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="ThemeBlue\bootstrap-twiter\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Views\Account\_ChangePasswordPartial - bk.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

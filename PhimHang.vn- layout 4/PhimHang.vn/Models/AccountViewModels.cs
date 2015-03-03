@@ -72,20 +72,23 @@ namespace PhimHang.Models
 
         [Display(Name = "Tên đăng nhập")]
         public string UserName { get; set; }
-                
-        [StringLength(256, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+
+        [System.Web.Mvc.AllowHtml]
+        [RegularExpression(@"[^<>]*", ErrorMessage = "Bạn nhập sai định dạng")]
+        [Required(ErrorMessage="Vui lòng nhập tên của bạn")]
+        [StringLength(100, ErrorMessage = "Tên của bạn phải từ 6 đến 100 ký tự", MinimumLength = 6)]
         [Display(Name = "Tên đầy đủ")]
         public string FullName { get; set; }
 
         [Display(Name = "Email")]
-        [StringLength(256, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "Email từ 6 đến 100 ký tự", MinimumLength = 6)]
         public string Email { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:MM-dd-yyyy}", ApplyFormatInEditMode = true)]
 
         [Display(Name = "Ngày sinh")]
-        public System.Nullable<System.DateTime> BirthDay { get; set; }
+        public System.DateTime BirthDay { get; set; }
 
         
         [Display(Name = "Ngày tham gia")]
@@ -94,7 +97,9 @@ namespace PhimHang.Models
         [Display(Name = "Xác thực user")]
         public Verify Verify { get; set; }
 
-        [StringLength(128)]
+        [System.Web.Mvc.AllowHtml]
+        [RegularExpression(@"[^<>]*", ErrorMessage = "Bạn nhập sai định dạng")]
+        [StringLength(128, ErrorMessage="Tối đa 128 ký tự")]        
         public string Status { get; set; }
 
         [Display(Name = "Mobile")]
@@ -102,7 +107,20 @@ namespace PhimHang.Models
         [RegularExpression("^[0-9]*$",ErrorMessage="Số điện thoại là số")]
         public string Mobile { get; set; }
 
-        public string Avata { get; set; }
+        public string Avata { get; set; }        
+        public byte? JobTitle { get; set; }
 
+        [System.Web.Mvc.AllowHtml]
+        [RegularExpression(@"[^<>]*", ErrorMessage = "Bạn nhập sai định dạng")]
+        [StringLength(256, ErrorMessage = "Tối đa 256 ký tự")]     
+        public string URLFacebook { get; set; }
+
+        [System.Web.Mvc.AllowHtml]
+        [RegularExpression(@"[^<>]*", ErrorMessage = "Bạn nhập sai định dạng")]
+        [StringLength(512, ErrorMessage = "Tối đa 512 ký tự")]
+        public string CVInfo { get; set; }
+
+        public byte? NumberExMarketYear { get; set; }
+        public byte? PhilosophyMarket { get; set; }
     }
 }

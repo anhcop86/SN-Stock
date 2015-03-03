@@ -162,27 +162,34 @@ namespace PhimHang.Controllers
             }
             else // user not null
             {
+                loadInfoUser(user);
                 profile.UserName = user.UserName;
                 profile.Mobile = user.UserExtentLogin.Mobile;
                 profile.FullName = user.UserExtentLogin.FullName;
                 profile.Email = user.UserExtentLogin.Email;
-                profile.BirthDay = user.UserExtentLogin.BirthDate;
+                profile.BirthDay = (DateTime)user.UserExtentLogin.BirthDate;
                 profile.CreatedDate = user.UserExtentLogin.CreatedDate.ToString("dd/MM/yyyy");
                 profile.Verify = user.UserExtentLogin.Verify;//== null? Verify.NO: Verify.YES;
                 profile.Status = user.UserExtentLogin.Status;
-                profile.Avata = string.IsNullOrEmpty(user.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + user.UserExtentLogin.AvataImage;
+                profile.Avata= string.IsNullOrEmpty(user.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + user.UserExtentLogin.AvataImage;
+                profile.JobTitle = user.UserExtentLogin.JobTitle;
+                profile.URLFacebook = user.UserExtentLogin.URLFacebook;
+                profile.CVInfo = user.UserExtentLogin.CVInfo;
+                profile.PhilosophyMarket = user.UserExtentLogin.PhilosophyMarket;
+                profile.NumberExMarketYear = user.UserExtentLogin.NumberExMarketYear;
             }
             ViewBag.AvataEmage = string.IsNullOrEmpty(user.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + user.UserExtentLogin.AvataImage;
             ViewBag.ImageUrlCover = ImageURLCover + user.UserExtentLogin.AvataCover;
             return View(profile);
         }
+       
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]        
         public async Task<ActionResult> Profile(ProfileUserViewModel model)
         {
+            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
             if (ModelState.IsValid)
-            {
-                ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+            {                
                 if (user != null)
                 {
                     user.UserExtentLogin.FullName = model.FullName;
@@ -190,6 +197,11 @@ namespace PhimHang.Controllers
                     user.UserExtentLogin.Email = model.Email;
                     user.UserExtentLogin.BirthDate = model.BirthDay;
                     user.UserExtentLogin.Status = model.Status;
+                    user.UserExtentLogin.JobTitle = model.JobTitle;
+                    user.UserExtentLogin.URLFacebook = model.URLFacebook;
+                    user.UserExtentLogin.CVInfo = model.CVInfo;
+                    user.UserExtentLogin.NumberExMarketYear = model.NumberExMarketYear;
+                    user.UserExtentLogin.PhilosophyMarket = model.PhilosophyMarket;
                 }
                 else
                 {
@@ -205,9 +217,47 @@ namespace PhimHang.Controllers
                     AddErrors(result);
                 }
             }
+            loadInfoUser(user);
             return View(model);
         }
+        private void loadInfoUser(ApplicationUser user)
+        {
+            var listJob = new List<dynamic>
+                    {                         
+                        new { Id = 1, Name = "Sinh viên" },
+                        new { Id = 2, Name = "Thợ rèn" },
+                        new { Id = 3, Name = "Nông trại" }                        
+                    }.ToList();
 
+            var listNumberExMarketYear = new List<dynamic>
+                    {                         
+                        new { Id = 1, Name = "1 năm" },
+                        new { Id = 2, Name = "2 năm" },
+                        new { Id = 3, Name = "3 năm" },
+                        new { Id = 4, Name = "4 năm" },
+                        new { Id = 5, Name = "5 năm" },
+                        new { Id = 6, Name = "Nhiều năm" } 
+                        
+                    }.ToList();
+
+            var listPhilosophyMarket = new List<dynamic>
+                    {                         
+                        new { Id = 1, Name = "Cơ bản" },
+                        new { Id = 2, Name = "Kỹ thuật" },
+                        new { Id = 3, Name = "Cơ bản và kỹ thuật" },
+                        new { Id = 4, Name = "Theo tin đồn" },
+                        new { Id = 5, Name = "Lái gió" },
+                        new { Id = 6, Name = "Lái mây" } 
+                        
+                    }.ToList();
+
+
+            ViewBag.ListJob = new SelectList(listJob, "Id", "Name");
+            ViewBag.ListNumberExMarketYear = new SelectList(listNumberExMarketYear, "Id", "Name");
+            ViewBag.ListPhilosophyMarket = new SelectList(listPhilosophyMarket, "Id", "Name");
+            
+        }
+       
         [HttpPost]
         public async Task<string> AvataUpload(HttpPostedFileBase uploadfileid_avata)
         {

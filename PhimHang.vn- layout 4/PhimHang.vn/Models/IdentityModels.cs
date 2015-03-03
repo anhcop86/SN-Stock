@@ -53,6 +53,15 @@ namespace PhimHang.Models
 
         public string Mobile { get; set; }
 
+        public Nullable<byte> JobTitle { get; set; }
+
+        public string URLFacebook { get; set; }
+
+        public string CVInfo { get; set; }
+
+        public Nullable<byte> NumberExMarketYear { get; set; }
+
+        public Nullable<byte> PhilosophyMarket { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

@@ -80,7 +80,7 @@
             <PropertyRef Name="PostId" />
           </Key>
           <Property Name="PostId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Message" Type="varchar" MaxLength="2048" />
+          <Property Name="Message" Type="nvarchar" MaxLength="2048" />
           <Property Name="PostedBy" Type="int" Nullable="false" />
           <Property Name="PostedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="ChartImageURL" Type="nvarchar" MaxLength="128" />
@@ -162,7 +162,7 @@
           <Property Name="LockAccount" Type="int" Nullable="false" />
           <Property Name="Status" Type="nvarchar" MaxLength="128" />
           <Property Name="Mobile" Type="varchar" MaxLength="16" />
-          <Property Name="JobTitle" Type="nvarchar" MaxLength="256" />
+          <Property Name="JobTitle" Type="tinyint" />
           <Property Name="URLFacebook" Type="nvarchar" MaxLength="256" />
           <Property Name="CVInfo" Type="nvarchar" MaxLength="512" />
           <Property Name="NumberExMarketYear" Type="tinyint" />
@@ -488,7 +488,17 @@
           <EntitySet Name="StockViewLastests" EntityType="PHDBContext.StockViewLastest" />
           <EntitySet Name="UserRelates" EntityType="PHDBContext.UserRelate" />
           <EntitySet Name="UserViewLastests" EntityType="PHDBContext.UserViewLastest" />
+          <EntitySet Name="AspNetUsers" EntityType="PHDBContext.AspNetUser" />
+          <EntitySet Name="StockCodes" EntityType="PHDBContext.StockCode" />
+          <EntitySet Name="FilterKeyWords" EntityType="PHDBContext.FilterKeyWord" />
+          <EntitySet Name="PinStocks" EntityType="PHDBContext.PinStock" />
+          <EntitySet Name="NotificationMesseges" EntityType="PHDBContext.NotificationMessege" />
+          <EntitySet Name="StockPrices" EntityType="PHDBContext.StockPrice" />
           <EntitySet Name="UserLogins" EntityType="PHDBContext.UserLogin" />
+          <AssociationSet Name="FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" Association="PHDBContext.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id">
+            <End Role="UserLogin" EntitySet="UserLogins" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
           <AssociationSet Name="FK_FollowStock_UserLogins" Association="PHDBContext.FK_FollowStock_UserLogins">
             <End Role="UserLogin" EntitySet="UserLogins" />
             <End Role="FollowStock" EntitySet="FollowStocks" />
@@ -500,6 +510,14 @@
           <AssociationSet Name="FK_FollowUser_UserLogins1" Association="PHDBContext.FK_FollowUser_UserLogins1">
             <End Role="UserLogin" EntitySet="UserLogins" />
             <End Role="FollowUser" EntitySet="FollowUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPost_User" Association="PHDBContext.FK_UserPost_User">
+            <End Role="UserLogin" EntitySet="UserLogins" />
+            <End Role="NotificationMessege" EntitySet="NotificationMesseges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPost_UserReciver" Association="PHDBContext.FK_UserPost_UserReciver">
+            <End Role="UserLogin" EntitySet="UserLogins" />
+            <End Role="NotificationMessege" EntitySet="NotificationMesseges" />
           </AssociationSet>
           <AssociationSet Name="FK_PostComments_UserLogins" Association="PHDBContext.FK_PostComments_UserLogins">
             <End Role="UserLogin" EntitySet="UserLogins" />
@@ -520,23 +538,6 @@
           <AssociationSet Name="FK_UserViewLastest_UserLogins1" Association="PHDBContext.FK_UserViewLastest_UserLogins1">
             <End Role="UserLogin" EntitySet="UserLogins" />
             <End Role="UserViewLastest" EntitySet="UserViewLastests" />
-          </AssociationSet>
-          <EntitySet Name="AspNetUsers" EntityType="PHDBContext.AspNetUser" />
-          <AssociationSet Name="FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" Association="PHDBContext.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id">
-            <End Role="UserLogin" EntitySet="UserLogins" />
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
-          </AssociationSet>
-          <EntitySet Name="StockCodes" EntityType="PHDBContext.StockCode" />
-          <EntitySet Name="FilterKeyWords" EntityType="PHDBContext.FilterKeyWord" />
-          <EntitySet Name="PinStocks" EntityType="PHDBContext.PinStock" />
-          <EntitySet Name="NotificationMesseges" EntityType="PHDBContext.NotificationMessege" />
-          <AssociationSet Name="FK_UserPost_User" Association="PHDBContext.FK_UserPost_User">
-            <End Role="UserLogin" EntitySet="UserLogins" />
-            <End Role="NotificationMessege" EntitySet="NotificationMesseges" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserPost_UserReciver" Association="PHDBContext.FK_UserPost_UserReciver">
-            <End Role="UserLogin" EntitySet="UserLogins" />
-            <End Role="NotificationMessege" EntitySet="NotificationMesseges" />
           </AssociationSet>
           <EntitySet Name="Posts" EntityType="PHDBContext.Post" />
           <AssociationSet Name="FK_Posts_User" Association="PHDBContext.FK_Posts_User">
@@ -563,7 +564,6 @@
             <End Role="Post" EntitySet="Posts" />
             <End Role="UserRelate" EntitySet="UserRelates" />
           </AssociationSet>
-          <EntitySet Name="StockPrices" EntityType="PHDBContext.StockPrice" />
           </EntityContainer>
         <EntityType Name="FollowStock">
           <Key>
@@ -648,20 +648,88 @@
           <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_UserViewLastest_UserLogins" FromRole="UserViewLastest" ToRole="UserLogin" />
           <NavigationProperty Name="UserLogin1" Relationship="PHDBContext.FK_UserViewLastest_UserLogins1" FromRole="UserViewLastest" ToRole="UserLogin" />
           </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Discriminator" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserExtentLogin_Id" Type="Int32" />
+          <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" FromRole="AspNetUser" ToRole="UserLogin" />
+        </EntityType>
+        <EntityType Name="StockCode">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="ShortName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LongName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="MarketType" Type="Int16" />
+          <Property Name="IndexName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FilterKeyWord">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KeyWord" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="7" />
+        </EntityType>
+        <EntityType Name="PinStock">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StockCodePin" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="PostId" Type="Int64" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+          <Property Name="WhoPost" Type="Int32" />
+          <NavigationProperty Name="Post" Relationship="PHDBContext.FK_Posts_PinStock" FromRole="PinStock" ToRole="Post" />
+        </EntityType>
+        <EntityType Name="NotificationMessege">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserPost" Type="Int32" Nullable="false" />
+          <Property Name="UserReciver" Type="Int32" Nullable="false" />
+          <Property Name="PostId" Type="Int64" />
+          <Property Name="NumNoti" Type="Int32" />
+          <Property Name="TypeNoti" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="XemYN" Type="Boolean" />
+          <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_UserPost_User" FromRole="NotificationMessege" ToRole="UserLogin" />
+          <NavigationProperty Name="UserLogin1" Relationship="PHDBContext.FK_UserPost_UserReciver" FromRole="NotificationMessege" ToRole="UserLogin" />
+          <NavigationProperty Name="Post" Relationship="PHDBContext.FK_Posts_User" FromRole="NotificationMessege" ToRole="Post" />
+        </EntityType>
+        <EntityType Name="StockPrice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="CeilingPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="FloorPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DiffPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="OpenPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="HighPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="LowPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ClosePrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TradingDate" Type="DateTime" Precision="7" />
+          <Property Name="Totalshare" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="StringDate" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="UserLogin">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="KeyLogin" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="FollowStocks" Relationship="PHDBContext.FK_FollowStock_UserLogins" FromRole="UserLogin" ToRole="FollowStock" />
-          <NavigationProperty Name="FollowUsers" Relationship="PHDBContext.FK_FollowUser_UserLogins" FromRole="UserLogin" ToRole="FollowUser" />
-          <NavigationProperty Name="FollowUsers1" Relationship="PHDBContext.FK_FollowUser_UserLogins1" FromRole="UserLogin" ToRole="FollowUser" />
-          <NavigationProperty Name="PostComments" Relationship="PHDBContext.FK_PostComments_UserLogins" FromRole="UserLogin" ToRole="PostComment" />
-          <NavigationProperty Name="StockViewLastests" Relationship="PHDBContext.FK_StockViewLastest_UserLogins" FromRole="UserLogin" ToRole="StockViewLastest" />
-          <NavigationProperty Name="UserRelates" Relationship="PHDBContext.FK_UserRelate_UserLogins" FromRole="UserLogin" ToRole="UserRelate" />
-          <NavigationProperty Name="UserViewLastests" Relationship="PHDBContext.FK_UserViewLastest_UserLogins" FromRole="UserLogin" ToRole="UserViewLastest" />
-          <NavigationProperty Name="UserViewLastests1" Relationship="PHDBContext.FK_UserViewLastest_UserLogins1" FromRole="UserLogin" ToRole="UserViewLastest" />
+          <Property Name="UserNameCopy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="BirthDate" Type="DateTime" Precision="3" />
           <Property Name="AvataImage" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="AvataCover" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
@@ -671,19 +739,38 @@
           <Property Name="Verify" Type="Int32" Nullable="false" />
           <Property Name="AccountType" Type="Int32" Nullable="false" />
           <Property Name="LockAccount" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="AspNetUsers" Relationship="PHDBContext.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" FromRole="UserLogin" ToRole="AspNetUser" />
-          <Property Name="UserNameCopy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="NotificationMesseges" Relationship="PHDBContext.FK_UserPost_User" FromRole="UserLogin" ToRole="NotificationMessege" />
-          <NavigationProperty Name="NotificationMesseges1" Relationship="PHDBContext.FK_UserPost_UserReciver" FromRole="UserLogin" ToRole="NotificationMessege" />
-          <NavigationProperty Name="Posts" Relationship="PHDBContext.FK_Posts_UserLogins" FromRole="UserLogin" ToRole="Post" />
           <Property Name="Mobile" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
-          <Property Name="JobTitle" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="JobTitle" Type="Byte" />
           <Property Name="URLFacebook" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="CVInfo" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
           <Property Name="NumberExMarketYear" Type="Byte" />
           <Property Name="PhilosophyMarket" Type="Byte" />
+          <NavigationProperty Name="AspNetUsers" Relationship="PHDBContext.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" FromRole="UserLogin" ToRole="AspNetUser" />
+          <NavigationProperty Name="FollowStocks" Relationship="PHDBContext.FK_FollowStock_UserLogins" FromRole="UserLogin" ToRole="FollowStock" />
+          <NavigationProperty Name="FollowUsers" Relationship="PHDBContext.FK_FollowUser_UserLogins" FromRole="UserLogin" ToRole="FollowUser" />
+          <NavigationProperty Name="FollowUsers1" Relationship="PHDBContext.FK_FollowUser_UserLogins1" FromRole="UserLogin" ToRole="FollowUser" />
+          <NavigationProperty Name="NotificationMesseges" Relationship="PHDBContext.FK_UserPost_User" FromRole="UserLogin" ToRole="NotificationMessege" />
+          <NavigationProperty Name="NotificationMesseges1" Relationship="PHDBContext.FK_UserPost_UserReciver" FromRole="UserLogin" ToRole="NotificationMessege" />
+          <NavigationProperty Name="PostComments" Relationship="PHDBContext.FK_PostComments_UserLogins" FromRole="UserLogin" ToRole="PostComment" />
+          <NavigationProperty Name="StockViewLastests" Relationship="PHDBContext.FK_StockViewLastest_UserLogins" FromRole="UserLogin" ToRole="StockViewLastest" />
+          <NavigationProperty Name="UserRelates" Relationship="PHDBContext.FK_UserRelate_UserLogins" FromRole="UserLogin" ToRole="UserRelate" />
+          <NavigationProperty Name="UserViewLastests" Relationship="PHDBContext.FK_UserViewLastest_UserLogins" FromRole="UserLogin" ToRole="UserViewLastest" />
+          <NavigationProperty Name="UserViewLastests1" Relationship="PHDBContext.FK_UserViewLastest_UserLogins1" FromRole="UserLogin" ToRole="UserViewLastest" />
+          <NavigationProperty Name="Posts" Relationship="PHDBContext.FK_Posts_UserLogins" FromRole="UserLogin" ToRole="Post" />
         </EntityType>
+        <Association Name="FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id">
+          <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="0..1" />
+          <End Type="PHDBContext.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogin">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUser">
+              <PropertyRef Name="UserExtentLogin_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_FollowStock_UserLogins">
           <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />
           <End Type="PHDBContext.FollowStock" Role="FollowStock" Multiplicity="*" />
@@ -717,6 +804,30 @@
             </Principal>
             <Dependent Role="FollowUser">
               <PropertyRef Name="UserIdFollowed" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPost_User">
+          <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />
+          <End Type="PHDBContext.NotificationMessege" Role="NotificationMessege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogin">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NotificationMessege">
+              <PropertyRef Name="UserPost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPost_UserReciver">
+          <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />
+          <End Type="PHDBContext.NotificationMessege" Role="NotificationMessege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogin">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NotificationMessege">
+              <PropertyRef Name="UserReciver" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -780,106 +891,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="AspNetUser">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Discriminator" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="UserExtentLogin_Id" Type="Int32" />
-          <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" FromRole="AspNetUser" ToRole="UserLogin" />
-        </EntityType>
-        <Association Name="FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id">
-          <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="0..1" />
-          <End Type="PHDBContext.AspNetUser" Role="AspNetUser" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserLogin">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUser">
-              <PropertyRef Name="UserExtentLogin_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="StockCode">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Code" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
-          <Property Name="ShortName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="LongName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="MarketType" Type="Int16" />
-          <Property Name="IndexName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="FilterKeyWord">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="KeyWord" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="CreateDate" Type="DateTime" Precision="7" />
-        </EntityType>
-        <EntityType Name="PinStock">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StockCodePin" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
-          <Property Name="PostId" Type="Int64" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
-          <Property Name="WhoPost" Type="Int32" />
-          <NavigationProperty Name="Post" Relationship="PHDBContext.FK_Posts_PinStock" FromRole="PinStock" ToRole="Post" />
-        </EntityType>
-        <EntityType Name="NotificationMessege">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserPost" Type="Int32" Nullable="false" />
-          <Property Name="UserReciver" Type="Int32" Nullable="false" />
-          <Property Name="PostId" Type="Int64" />
-          <Property Name="NumNoti" Type="Int32" />
-          <Property Name="TypeNoti" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="7" />
-          <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_UserPost_User" FromRole="NotificationMessege" ToRole="UserLogin" />
-          <NavigationProperty Name="UserLogin1" Relationship="PHDBContext.FK_UserPost_UserReciver" FromRole="NotificationMessege" ToRole="UserLogin" />
-          <Property Name="XemYN" Type="Boolean" />
-          <NavigationProperty Name="Post" Relationship="PHDBContext.FK_Posts_User" FromRole="NotificationMessege" ToRole="Post" />
-        </EntityType>
-        <Association Name="FK_UserPost_User">
-          <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />
-          <End Type="PHDBContext.NotificationMessege" Role="NotificationMessege" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserLogin">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="NotificationMessege">
-              <PropertyRef Name="UserPost" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserPost_UserReciver">
-          <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />
-          <End Type="PHDBContext.NotificationMessege" Role="NotificationMessege" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserLogin">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="NotificationMessege">
-              <PropertyRef Name="UserReciver" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Post">
           <Key>
             <PropertyRef Name="PostId" />
           </Key>
           <Property Name="PostId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Message" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
           <Property Name="PostedBy" Type="Int32" Nullable="false" />
           <Property Name="PostedDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="ChartImageURL" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
@@ -966,23 +983,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="StockPrice">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Code" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
-          <Property Name="CeilingPrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="FloorPrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="DiffPrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="OpenPrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="HighPrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="LowPrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="ClosePrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="TradingDate" Type="DateTime" Precision="7" />
-          <Property Name="Totalshare" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="StringDate" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1069,31 +1069,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UserLogins">
-            <EntityTypeMapping TypeName="PHDBContext.UserLogin">
-              <MappingFragment StoreEntitySet="UserLogins">
-                <ScalarProperty Name="PhilosophyMarket" ColumnName="PhilosophyMarket" />
-                <ScalarProperty Name="NumberExMarketYear" ColumnName="NumberExMarketYear" />
-                <ScalarProperty Name="CVInfo" ColumnName="CVInfo" />
-                <ScalarProperty Name="URLFacebook" ColumnName="URLFacebook" />
-                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
-                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="UserNameCopy" ColumnName="UserNameCopy" />
-                <ScalarProperty Name="LockAccount" ColumnName="LockAccount" />
-                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
-                <ScalarProperty Name="Verify" ColumnName="Verify" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="AvataCover" ColumnName="AvataCover" />
-                <ScalarProperty Name="AvataImage" ColumnName="AvataImage" />
-                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-                <ScalarProperty Name="KeyLogin" ColumnName="KeyLogin" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="AspNetUsers">
             <EntityTypeMapping TypeName="PHDBContext.AspNetUser">
               <MappingFragment StoreEntitySet="AspNetUsers">
@@ -1152,21 +1127,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Posts">
-            <EntityTypeMapping TypeName="PHDBContext.Post">
-              <MappingFragment StoreEntitySet="Posts">
-                <ScalarProperty Name="ChartYN" ColumnName="ChartYN" />
-                <ScalarProperty Name="StockPrimary" ColumnName="StockPrimary" />
-                <ScalarProperty Name="Vir" ColumnName="Vir" />
-                <ScalarProperty Name="NhanDinh" ColumnName="NhanDinh" />
-                <ScalarProperty Name="ChartImageURL" ColumnName="ChartImageURL" />
-                <ScalarProperty Name="PostedDate" ColumnName="PostedDate" />
-                <ScalarProperty Name="PostedBy" ColumnName="PostedBy" />
-                <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="PostId" ColumnName="PostId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="StockPrices">
             <EntityTypeMapping TypeName="PHDBContext.StockPrice">
               <MappingFragment StoreEntitySet="StockPrice">
@@ -1182,6 +1142,46 @@
                 <ScalarProperty Name="CeilingPrice" ColumnName="CeilingPrice" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLogins">
+            <EntityTypeMapping TypeName="PHDBContext.UserLogin">
+              <MappingFragment StoreEntitySet="UserLogins">
+                <ScalarProperty Name="PhilosophyMarket" ColumnName="PhilosophyMarket" />
+                <ScalarProperty Name="NumberExMarketYear" ColumnName="NumberExMarketYear" />
+                <ScalarProperty Name="CVInfo" ColumnName="CVInfo" />
+                <ScalarProperty Name="URLFacebook" ColumnName="URLFacebook" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="LockAccount" ColumnName="LockAccount" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+                <ScalarProperty Name="Verify" ColumnName="Verify" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="AvataCover" ColumnName="AvataCover" />
+                <ScalarProperty Name="AvataImage" ColumnName="AvataImage" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="UserNameCopy" ColumnName="UserNameCopy" />
+                <ScalarProperty Name="KeyLogin" ColumnName="KeyLogin" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Posts">
+            <EntityTypeMapping TypeName="PHDBContext.Post">
+              <MappingFragment StoreEntitySet="Posts">
+                <ScalarProperty Name="ChartYN" ColumnName="ChartYN" />
+                <ScalarProperty Name="StockPrimary" ColumnName="StockPrimary" />
+                <ScalarProperty Name="Vir" ColumnName="Vir" />
+                <ScalarProperty Name="NhanDinh" ColumnName="NhanDinh" />
+                <ScalarProperty Name="ChartImageURL" ColumnName="ChartImageURL" />
+                <ScalarProperty Name="PostedDate" ColumnName="PostedDate" />
+                <ScalarProperty Name="PostedBy" ColumnName="PostedBy" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

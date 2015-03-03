@@ -13,31 +13,31 @@
         <EntityTypeShape EntityType="PHDBContext.StockViewLastest" Width="1.5" PointX="3" PointY="14.625" />
         <EntityTypeShape EntityType="PHDBContext.UserRelate" Width="1.5" PointX="5.25" PointY="4" />
         <EntityTypeShape EntityType="PHDBContext.UserViewLastest" Width="1.5" PointX="3" PointY="17.375" />
-        <EntityTypeShape EntityType="PHDBContext.UserLogin" Width="1.5" PointX="0.75" PointY="10.125" />
+        <EntityTypeShape EntityType="PHDBContext.AspNetUser" Width="1.5" PointX="3" PointY="8.5" />
+        <EntityTypeShape EntityType="PHDBContext.StockCode" Width="1.5" PointX="7.75" PointY="6" />
+        <EntityTypeShape EntityType="PHDBContext.FilterKeyWord" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="PHDBContext.PinStock" Width="1.5" PointX="5.25" PointY="13.125" />
+        <EntityTypeShape EntityType="PHDBContext.NotificationMessege" Width="1.5" PointX="8.25" PointY="9.625" />
+        <EntityTypeShape EntityType="PHDBContext.StockPrice" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="PHDBContext.UserLogin" Width="1.5" PointX="0.75" PointY="8.125" />
+        <AssociationConnector Association="PHDBContext.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" />
         <AssociationConnector Association="PHDBContext.FK_FollowStock_UserLogins" />
         <AssociationConnector Association="PHDBContext.FK_FollowUser_UserLogins" />
         <AssociationConnector Association="PHDBContext.FK_FollowUser_UserLogins1" />
+        <AssociationConnector Association="PHDBContext.FK_UserPost_User" />
+        <AssociationConnector Association="PHDBContext.FK_UserPost_UserReciver" />
         <AssociationConnector Association="PHDBContext.FK_PostComments_UserLogins" />
         <AssociationConnector Association="PHDBContext.FK_StockViewLastest_UserLogins" />
         <AssociationConnector Association="PHDBContext.FK_UserRelate_UserLogins" />
         <AssociationConnector Association="PHDBContext.FK_UserViewLastest_UserLogins" />
         <AssociationConnector Association="PHDBContext.FK_UserViewLastest_UserLogins1" />
-        <EntityTypeShape EntityType="PHDBContext.AspNetUser" Width="1.5" PointX="3" PointY="8.5" />
-        <AssociationConnector Association="PHDBContext.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" />
-        <EntityTypeShape EntityType="PHDBContext.StockCode" Width="1.5" PointX="7.75" PointY="6" />
-        <EntityTypeShape EntityType="PHDBContext.FilterKeyWord" Width="1.5" PointX="0.75" PointY="5.75" />
-        <EntityTypeShape EntityType="PHDBContext.PinStock" Width="1.5" PointX="5.25" PointY="13.125" />
-        <EntityTypeShape EntityType="PHDBContext.NotificationMessege" Width="1.5" PointX="8.25" PointY="9.625" />
-        <AssociationConnector Association="PHDBContext.FK_UserPost_User" />
-        <AssociationConnector Association="PHDBContext.FK_UserPost_UserReciver" />
-        <EntityTypeShape EntityType="PHDBContext.Post" Width="1.5" PointX="3" PointY="3.125" />
+        <EntityTypeShape EntityType="PHDBContext.Post" Width="1.5" PointX="3" PointY="3.625" />
         <AssociationConnector Association="PHDBContext.FK_Posts_User" />
         <AssociationConnector Association="PHDBContext.FK_Posts_PinStock" />
         <AssociationConnector Association="PHDBContext.FK_PostComments_Posts" />
         <AssociationConnector Association="PHDBContext.FK_Posts_UserLogins" />
         <AssociationConnector Association="PHDBContext.FK_StockRelate_Posts" />
         <AssociationConnector Association="PHDBContext.FK_UserRelate_Posts" />
-        <EntityTypeShape EntityType="PHDBContext.StockPrice" Width="1.5" PointX="10.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
