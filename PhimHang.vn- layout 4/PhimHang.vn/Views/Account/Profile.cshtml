@@ -85,9 +85,8 @@
                                 </div>
                                       <div class="control-group">
                                     <label class="control-label" for="username">Ngày sinh:</label>
-                                    <div class="controls">                                        
-                                        @Html.TextBoxFor(m => m.BirthDay, new { @class = "input-xlarge", @type = "date" })
-                                        @Html.ValidationMessageFor(m => m.BirthDay, "", new { @style = "color: #D81D35;"})
+                                    <div class="controls"> 
+                                        @*@Html.EditorFor(model => model.BirthDay) (tháng/ngày/năm)*@
                                     </div>
                                 </div>
                                 <div class="control-group">

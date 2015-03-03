@@ -167,7 +167,7 @@ namespace PhimHang.Controllers
                 profile.Mobile = user.UserExtentLogin.Mobile;
                 profile.FullName = user.UserExtentLogin.FullName;
                 profile.Email = user.UserExtentLogin.Email;
-                profile.BirthDay = (DateTime)user.UserExtentLogin.BirthDate;
+                profile.BirthDay =  user.UserExtentLogin.BirthDate;
                 profile.CreatedDate = user.UserExtentLogin.CreatedDate.ToString("dd/MM/yyyy");
                 profile.Verify = user.UserExtentLogin.Verify;//== null? Verify.NO: Verify.YES;
                 profile.Status = user.UserExtentLogin.Status;

@@ -26,7 +26,7 @@ namespace PhimHang.Models
 
         [StringLength(256)]
         public string UserNameCopy { get; set; }
-        public Nullable<DateTime> BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
 
         [StringLength(256)]
         public String AvataImage { get; set; }

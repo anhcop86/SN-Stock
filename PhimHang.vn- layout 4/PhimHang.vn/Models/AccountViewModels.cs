@@ -85,10 +85,9 @@ namespace PhimHang.Models
         public string Email { get; set; }
 
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:MM-dd-yyyy}", ApplyFormatInEditMode = true)]
-
-        [Display(Name = "Ngày sinh")]
-        public System.DateTime BirthDay { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+        
+        public System.DateTime? BirthDay { get; set; }
 
         
         [Display(Name = "Ngày tham gia")]
