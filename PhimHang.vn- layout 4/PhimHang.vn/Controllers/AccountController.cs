@@ -34,7 +34,7 @@ namespace PhimHang.Controllers
         }
         public UserManager<ApplicationUser> UserManager { get; private set; }
 
-        //private testEntities db;// = new testEntities();
+        private testEntities db = new testEntities();
         [AllowAnonymous]
         public ActionResult Index(string returnUrl)
         {
@@ -222,12 +222,12 @@ namespace PhimHang.Controllers
         }
         private void loadInfoUser(ApplicationUser user)
         {
-            var listJob = new List<dynamic>
-                    {                         
-                        new { Id = 1, Name = "Sinh viên" },
-                        new { Id = 2, Name = "Thợ rèn" },
-                        new { Id = 3, Name = "Nông trại" }                        
-                    }.ToList();
+            var listJob = db.JobTitiles.ToList();
+                    //{                         
+                    //    new { Id = 1, Name = "Quản lý" },
+                    //    new { Id = 2, Name = "Thợ rèn" },
+                    //    new { Id = 3, Name = "Nông trại" }                        
+                    //}.ToList();
 
             var listNumberExMarketYear = new List<dynamic>
                     {                         
@@ -240,28 +240,19 @@ namespace PhimHang.Controllers
                         
                     }.ToList();
 
-            var listPhilosophyMarket = new List<dynamic>
-                    {                         
-                        new { Id = 1, Name = "Cơ bản" },
-                        new { Id = 2, Name = "Kỹ thuật" },
-                        new { Id = 3, Name = "Cơ bản và kỹ thuật" },
-                        new { Id = 4, Name = "Theo tin đồn" },
-                        new { Id = 5, Name = "Lái gió" },
-                        new { Id = 6, Name = "Lái mây" } 
-                        
-                    }.ToList();
+            var listPhilosophyMarket = db.Philosophies.ToList();
 
 
-            ViewBag.ListJob = new SelectList(listJob, "Id", "Name");
+            ViewBag.ListJob = new SelectList(listJob, "IdJob", "JobName");
             ViewBag.ListNumberExMarketYear = new SelectList(listNumberExMarketYear, "Id", "Name");
-            ViewBag.ListPhilosophyMarket = new SelectList(listPhilosophyMarket, "Id", "Name");
+            ViewBag.ListPhilosophyMarket = new SelectList(listPhilosophyMarket, "Id", "PhilosophyName");
             
         }
        
         [HttpPost]
-        public async Task<string> AvataUpload(HttpPostedFileBase uploadfileid_avata)
+        public async Task<string> AvataUpload()
         {
-
+            var uploadfileid_avata = HttpContext.Request.Files["UploadedImage"];
             #region check valid file
 
             var validImageTypes = new string[]
@@ -332,11 +323,11 @@ namespace PhimHang.Controllers
             }
 
         }
-
+        
         [HttpPost]
-        public async Task<string> CoverUpload(HttpPostedFileBase uploadfileid_cover)
+        public async Task<string> CoverUpload()
         {
-
+            var uploadfileid_cover = HttpContext.Request.Files["UploadedImage"];
             #region check valid file
 
             var validImageTypes = new string[]

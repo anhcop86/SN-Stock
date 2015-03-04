@@ -39,22 +39,78 @@
         @Model.FullName   
         <i class="fa  fa-check-circle">&nbsp;</i>
     </div>
-    <div class="user-position">
-        Trưởng phòng mô giới<br>
-        Công ty chứng khoán Hải Phòng
-    </div>
+    
     <div class="user-info-detail">
-        <div><i class="fa fa-map-marker"></i> &nbsp;Trưởng phái đầu tư: Cơ bản</div>
-        <div><i class="fa fa-unlink"></i> Kinh nghiệm chứng trường: 9 năm</div>
-        <div><i class="fa fa-clock-o"></i> Giới thiệu bản thân</div>
         <div class="user-info-intro">
-            Tôi là một trong những nhà đầu tư thành công nhất Việt Nam
+            <div title="Cập nhật trong hồ sơ cá nhân của bạn"><b>STATUS</b></div>
+            <hr />
+            @{
+                if (string.IsNullOrEmpty(Model.Status))
+                {
+                    @: ...
+                }
+                else
+                {
+                    @: @Model.Status
+                }
+            }            
+        </div>
+        <div><i class="fa fa-map-marker"></i>&nbsp;Trường phái đầu tư: 
+        @{
+            if (Model.PhilosophyMarket != null)
+            {
+                @: @Model.Philosophy.PhilosophyName
+            }
+            else
+            {
+                @: ...
+            }
+        }
+        </div>
+        <div>
+            <i class="fa fa-map-marker"></i> &nbsp;Nghề nghiệp:
+            @{
+                if (Model.JobTitle != null)
+                {
+                    @: @Model.JobTitile.JobName
+                }
+                else
+                {
+                    @: ...
+                }
+            }
+        </div>
+        <div><i class="fa fa-unlink"></i> Kinh nghiệm chứng trường: 
+            @{
+               
+                if (Model.NumberExMarketYear != null)
+                {
+                     @:@Model.NumberExMarketYear năm
+                }
+                else
+                {
+                    @: ...
+                }
+            }
+        </div>
+        <div><i class="fa fa-clock-o"></i> Giới thiệu bản thân</div>
+        <div class="user-info-intro">          
+            @{
+                if (string.IsNullOrEmpty(Model.CVInfo))
+                {
+                    @: ...
+                }
+                else
+                {
+                    @: @Model.CVInfo
+                }
+            }
         </div>
         <div class="user-info-mypage">
-            <p><i class="fa fa-home"></i> Homepage:</p>
-            <a href="#">www.facebook.com/abc</a>
-            <a href="#">www.twitter.com/abc</a>
-            <a href="#">www.bbc.co.uk/abc</a>
+            <p><i class="fa fa-home"></i> Homepage:</p>            
+            @{
+                @: <a target="_blank" href="@Model.URLFacebook">@Model.URLFacebook</a>
+            }
         </div>
     </div>
 </div>

@@ -276,8 +276,14 @@
       <DependentUpon>PhimHangADO.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\JobTitile.cs">
+      <DependentUpon>PhimHangADO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ModelHelpers.cs" />
     <Compile Include="Models\NotificationMessege.cs">
+      <DependentUpon>PhimHangADO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Philosophy.cs">
       <DependentUpon>PhimHangADO.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PhimHangADO.Context.cs">

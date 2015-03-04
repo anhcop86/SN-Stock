@@ -42,6 +42,14 @@
           <Property Name="UserIdFollowed" Type="int" Nullable="false" />
           <Property Name="CreatedDate" Type="datetime2" Precision="7" />
         </EntityType>
+        <EntityType Name="JobTitile">
+          <Key>
+            <PropertyRef Name="IdJob" />
+          </Key>
+          <Property Name="IdJob" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobName" Type="nvarchar" MaxLength="256" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+        </EntityType>
         <EntityType Name="NotificationMessege">
           <Key>
             <PropertyRef Name="ID" />
@@ -54,6 +62,14 @@
           <Property Name="TypeNoti" Type="varchar" MaxLength="1" />
           <Property Name="CreateDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="XemYN" Type="bit" />
+        </EntityType>
+        <EntityType Name="Philosophy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PhilosophyName" Type="nvarchar" MaxLength="256" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" />
         </EntityType>
         <EntityType Name="PinStock">
           <Key>
@@ -233,6 +249,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_JobTitile_JobTitle">
+          <End Role="JobTitile" Type="Self.JobTitile" Multiplicity="0..1" />
+          <End Role="UserLogins" Type="Self.UserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobTitile">
+              <PropertyRef Name="IdJob" />
+            </Principal>
+            <Dependent Role="UserLogins">
+              <PropertyRef Name="JobTitle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PostComments_Posts">
           <End Role="Posts" Type="Self.Posts" Multiplicity="1" />
           <End Role="PostComments" Type="Self.PostComments" Multiplicity="*" />
@@ -317,6 +345,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UserLogins_Philosophy">
+          <End Role="Philosophy" Type="Self.Philosophy" Multiplicity="0..1" />
+          <End Role="UserLogins" Type="Self.UserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Philosophy">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserLogins">
+              <PropertyRef Name="PhilosophyMarket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UserPost_User">
           <End Role="UserLogins" Type="Self.UserLogins" Multiplicity="1" />
           <End Role="NotificationMessege" Type="Self.NotificationMessege" Multiplicity="*" />
@@ -394,7 +434,9 @@
           <EntitySet Name="FilterKeyWord" EntityType="Self.FilterKeyWord" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FollowStock" EntityType="Self.FollowStock" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FollowUser" EntityType="Self.FollowUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobTitile" EntityType="Self.JobTitile" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NotificationMessege" EntityType="Self.NotificationMessege" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Philosophy" EntityType="Self.Philosophy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PinStock" EntityType="Self.PinStock" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PostComments" EntityType="Self.PostComments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Posts" EntityType="Self.Posts" Schema="dbo" store:Type="Tables" />
@@ -421,6 +463,10 @@
           <AssociationSet Name="FK_FollowUser_UserLogins1" Association="Self.FK_FollowUser_UserLogins1">
             <End Role="UserLogins" EntitySet="UserLogins" />
             <End Role="FollowUser" EntitySet="FollowUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobTitile_JobTitle" Association="Self.FK_JobTitile_JobTitle">
+            <End Role="JobTitile" EntitySet="JobTitile" />
+            <End Role="UserLogins" EntitySet="UserLogins" />
           </AssociationSet>
           <AssociationSet Name="FK_PostComments_Posts" Association="Self.FK_PostComments_Posts">
             <End Role="Posts" EntitySet="Posts" />
@@ -449,6 +495,10 @@
           <AssociationSet Name="FK_StockViewLastest_UserLogins" Association="Self.FK_StockViewLastest_UserLogins">
             <End Role="UserLogins" EntitySet="UserLogins" />
             <End Role="StockViewLastest" EntitySet="StockViewLastest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserLogins_Philosophy" Association="Self.FK_UserLogins_Philosophy">
+            <End Role="Philosophy" EntitySet="Philosophy" />
+            <End Role="UserLogins" EntitySet="UserLogins" />
           </AssociationSet>
           <AssociationSet Name="FK_UserPost_User" Association="Self.FK_UserPost_User">
             <End Role="UserLogins" EntitySet="UserLogins" />
@@ -563,6 +613,16 @@
           <AssociationSet Name="FK_UserRelate_Posts" Association="PHDBContext.FK_UserRelate_Posts">
             <End Role="Post" EntitySet="Posts" />
             <End Role="UserRelate" EntitySet="UserRelates" />
+          </AssociationSet>
+          <EntitySet Name="JobTitiles" EntityType="PHDBContext.JobTitile" />
+          <AssociationSet Name="FK_JobTitile_JobTitle" Association="PHDBContext.FK_JobTitile_JobTitle">
+            <End Role="JobTitile" EntitySet="JobTitiles" />
+            <End Role="UserLogin" EntitySet="UserLogins" />
+          </AssociationSet>
+          <EntitySet Name="Philosophies" EntityType="PHDBContext.Philosophy" />
+          <AssociationSet Name="FK_UserLogins_Philosophy" Association="PHDBContext.FK_UserLogins_Philosophy">
+            <End Role="Philosophy" EntitySet="Philosophies" />
+            <End Role="UserLogin" EntitySet="UserLogins" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="FollowStock">
@@ -758,7 +818,9 @@
           <NavigationProperty Name="UserViewLastests" Relationship="PHDBContext.FK_UserViewLastest_UserLogins" FromRole="UserLogin" ToRole="UserViewLastest" />
           <NavigationProperty Name="UserViewLastests1" Relationship="PHDBContext.FK_UserViewLastest_UserLogins1" FromRole="UserLogin" ToRole="UserViewLastest" />
           <NavigationProperty Name="Posts" Relationship="PHDBContext.FK_Posts_UserLogins" FromRole="UserLogin" ToRole="Post" />
-        </EntityType>
+          <NavigationProperty Name="JobTitile" Relationship="PHDBContext.FK_JobTitile_JobTitle" FromRole="UserLogin" ToRole="JobTitile" />
+          <NavigationProperty Name="Philosophy" Relationship="PHDBContext.FK_UserLogins_Philosophy" FromRole="UserLogin" ToRole="Philosophy" />
+          </EntityType>
         <Association Name="FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id">
           <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="0..1" />
           <End Type="PHDBContext.AspNetUser" Role="AspNetUser" Multiplicity="*" />
@@ -983,6 +1045,48 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="JobTitile">
+          <Key>
+            <PropertyRef Name="IdJob" />
+          </Key>
+          <Property Name="IdJob" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="UserLogins" Relationship="PHDBContext.FK_JobTitile_JobTitle" FromRole="JobTitile" ToRole="UserLogin" />
+        </EntityType>
+        <Association Name="FK_JobTitile_JobTitle">
+          <End Type="PHDBContext.JobTitile" Role="JobTitile" Multiplicity="0..1" />
+          <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobTitile">
+              <PropertyRef Name="IdJob" />
+            </Principal>
+            <Dependent Role="UserLogin">
+              <PropertyRef Name="JobTitle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Philosophy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PhilosophyName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="UserLogins" Relationship="PHDBContext.FK_UserLogins_Philosophy" FromRole="Philosophy" ToRole="UserLogin" />
+        </EntityType>
+        <Association Name="FK_UserLogins_Philosophy">
+          <End Type="PHDBContext.Philosophy" Role="Philosophy" Multiplicity="0..1" />
+          <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Philosophy">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserLogin">
+              <PropertyRef Name="PhilosophyMarket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1182,6 +1286,24 @@
                 <ScalarProperty Name="PostedBy" ColumnName="PostedBy" />
                 <ScalarProperty Name="Message" ColumnName="Message" />
                 <ScalarProperty Name="PostId" ColumnName="PostId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobTitiles">
+            <EntityTypeMapping TypeName="PHDBContext.JobTitile">
+              <MappingFragment StoreEntitySet="JobTitile">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="JobName" ColumnName="JobName" />
+                <ScalarProperty Name="IdJob" ColumnName="IdJob" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Philosophies">
+            <EntityTypeMapping TypeName="PHDBContext.Philosophy">
+              <MappingFragment StoreEntitySet="Philosophy">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="PhilosophyName" ColumnName="PhilosophyName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

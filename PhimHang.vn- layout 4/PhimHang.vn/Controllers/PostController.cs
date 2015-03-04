@@ -277,6 +277,31 @@ namespace PhimHang.Controllers
         public string UploadFileChart()
         {          
             var httpPostedFile = HttpContext.Request.Files["UploadedImage"];
+            #region check valid file
+
+            var validImageTypes = new string[]
+                                                {
+                                                    "image/gif",
+                                                    "image/jpeg",
+                                                    "image/pjpeg",
+                                                    "image/png"
+                                                };
+            if (httpPostedFile == null || httpPostedFile.ContentLength == 0) // check file null or file corrupt
+            {
+                return "Chưa chọn file upload";
+            }
+
+            if (!validImageTypes.Contains(httpPostedFile.ContentType)) // check file type
+            {
+                return "Please choose either a GIF, JPG or PNG image.";
+            }
+
+            if (httpPostedFile.ContentLength > 716800) // check file size
+            {
+                return "File's very larg: File must be less than 700KB";
+            }
+
+            #endregion
             if (httpPostedFile != null)
             {
                 // upload iamge

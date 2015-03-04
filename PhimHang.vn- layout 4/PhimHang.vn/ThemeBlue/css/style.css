@@ -1283,14 +1283,26 @@ a.category-tab:hover{
 .user-info-intro{
     margin: 5px 10px;
     padding: 5px 10px;
-    background-color: #78c6f9;
+    /*background-color: #78c6f9;*/
     color: #000;
+    border: 1px solid #78c6f9;
 }
+.user-info-intro div{
+  text-align:center;
+  margin-bottom:2px;
+  color:#666;
+}
+.user-info-intro hr{
+  text-align:center;
+  margin-bottom:2px;
+  /*border: 1px solid #666;*/
+}
+
 .user-info-mypage{
     margin-top: 10px;
 }
 .user-info-mypage a{
-    margin-left: 30px;
+    margin-left: 0px;
 }
 /*custom new tab in page 3*/
 .banner-header-white-page3{

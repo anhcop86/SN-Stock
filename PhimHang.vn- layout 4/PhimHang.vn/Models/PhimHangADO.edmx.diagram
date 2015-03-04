@@ -38,7 +38,11 @@
         <AssociationConnector Association="PHDBContext.FK_Posts_UserLogins" />
         <AssociationConnector Association="PHDBContext.FK_StockRelate_Posts" />
         <AssociationConnector Association="PHDBContext.FK_UserRelate_Posts" />
-      </Diagram>
+        <EntityTypeShape EntityType="PHDBContext.JobTitile" Width="1.5" PointX="0.75" PointY="17.125" />
+        <AssociationConnector Association="PHDBContext.FK_JobTitile_JobTitle" />
+        <EntityTypeShape EntityType="PHDBContext.Philosophy" Width="1.5" PointX="0.75" PointY="2.875" />
+        <AssociationConnector Association="PHDBContext.FK_UserLogins_Philosophy" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

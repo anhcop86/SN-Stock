@@ -62,5 +62,7 @@ namespace PhimHang.Models
         public virtual ICollection<UserViewLastest> UserViewLastests { get; set; }
         public virtual ICollection<UserViewLastest> UserViewLastests1 { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
+        public virtual JobTitile JobTitile { get; set; }
+        public virtual Philosophy Philosophy { get; set; }
     }
 }

@@ -6,56 +6,10 @@
     Layout = "~/Views/Shared/_Layout_MyProfile_Setting.cshtml";
 }
 
-
-@*<link href="~/Content/Profile.css" rel="stylesheet" />*@
-
-@*@Html.Partial("_UploadAvata")
-<hr />
-@Html.Partial("_UploadCover")
-
-@Html.Partial("_UpdateProfile")*@
-
-@*<body class="user-profile">
-    <section id="page" role="application">
-        <header id="heading" role="heading">
-            <div class="banner" role="banner">
-                <h1><a href="/">cungphim.com</a></h1>
-            </div>
-            <div style="clear: both"></div>
-        </header>
-        <div class="container">
-            <div class="row" style="padding-top: 75px;">
-
-                <div class="row">
-                    <div class="span12">
-                        <div class="user-details">
-                            <img class="gravatar" id="AvataImage" src="@Model.Avata?width=48&height=48&mode=crop" />
-                            <span class="name">@Model.UserName</span>
-                        </div>
-                        <hr />
-                    </div>
-                </div>
-                <div class="tabbable tabs-left">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#profile" data-toggle="tab">Hồ sơ cá nhân</a></li>
-                        <li><a href="#philosophy" data-toggle="tab">Trường phái đầu tư</a></li>
-                        <li><a href="#changePassword" data-toggle="tab">Mật khẩu</a></li>
-                        <li><a href="#identityProviders" data-toggle="tab">Identity Providers</a></li>
-                    </ul>
-                    <div class="tab-content">*@
-                @*<div class="row">
-                    <div class="span12">
-                        <div class="user-details">
-                            <img class="gravatar" id="AvataImage" src="@ViewBag.AvataEmage?width=48&height=48&mode=crop" />
-                            <span class="name">@Model.UserName</span>
-                        </div>
-                        <hr />
-                    </div>
-                </div>*@
+<script src="~/ThemeBlue/js/Extention.js"></script>
                         <div class="account-details tab-pane active" id="profile">     
-                            @using (Html.BeginForm("Profile", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                            {
-                                @Html.AntiForgeryToken()
+                           
+                                
                                 <div class="control-group">
                                     <label class="control-label" for="username">Image:</label>
                                     <div class="controls">
@@ -63,18 +17,20 @@
                                     </div>
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label" for="username">Avata:</label>
-                                    <div class="controls">
-                                        <input type="file" id="avataInput" name="username" value="" class="input-xlarge" placeholder="Username" />
+                                    <label class="control-label" for="username">Avatar:</label>
+                                    <div class="controls">                                        
+                                        <input id="idchartFileUpload" name="Select File" accept="image/*" type="file" onchange="uploadAvata(files)" />
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label" for="confirmUsername">Cover:</label>
                                     <div class="controls">
-                                        <input type="file" id="coverInput" name="confirmUsername" value="" class="input-xlarge" placeholder="Confirm Username" />
+                                        <input onchange="uploadCover(files)" accept="image/*" type="file" id="coverInput" name="coverInput" value="" class="input-xlarge"/>
                                     </div>
                                 </div>
-
+                                @using (Html.BeginForm("Profile", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                {
+                                 @Html.AntiForgeryToken()
                                 <div class="control-group">
                                     <label class="control-label" for="username">Họ và tên:</label>
                                     <div class="controls">
@@ -156,69 +112,100 @@
                                 </div>
                                 
                             }
-                        </div>
-                        @*<div class="account-details tab-pane hide" id="philosophy">
-                            <form class="form-horizontal" action="" method="POST">
-                                <div class="control-group">
-                                    <label class="control-label" for="username">Trải nghiệm thị trường:</label>
-                                    <div class="controls">
-                                        <input type="text" id="username" name="username" value="" class="input-xlarge"/>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="confirmUsername">Trường phái giao dịch:</label>
-                                    <div class="controls">
-                                        <input type="text" id="confirmUsername" name="confirmUsername" value="" class="input-xlarge"/>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <div class="controls">
-                                        <input type="submit" class="btn" value="Lưu lại" />
-                                    </div>
-                                </div>
-                                <input type="hidden" name="NCSRF" value="AAEAAAD/////AQAAAAAAAAAMAgAAAD1OYW5jeSwgVmVyc2lvbj0wLjIwLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsBQEAAAAYTmFuY3kuU2VjdXJpdHkuQ3NyZlRva2VuAwAAABw8UmFuZG9tQnl0ZXM+a19fQmFja2luZ0ZpZWxkHDxDcmVhdGVkRGF0ZT5rX19CYWNraW5nRmllbGQVPEhtYWM+a19fQmFja2luZ0ZpZWxkBwAHAg0CAgAAAAkDAAAAk/GSDhMi0ogJBAAAAA8DAAAACgAAAAIhJHrM9PYEPWobDwQAAAAgAAAAApeKncJ9tbcCqigxPVvcCAkmwrkl/Spsov8hnPfBtJZfCwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" />
-                            </form>
-                        </div>*@
-                       
-                        @*<div class="account-details tab-pane hide" id="identityProviders">
-                            <div class="control-group">
-                                <div class="controls">
-                                    <form action="/account/unlink" method="POST">
-                                        <ul class="inline">
-                                            <li><a class="btn btn-provider" href="/authentication/redirect/facebook"><i class="icon-facebook"></i> Facebook</a></li>
-                                        </ul>
-                                        <ul class="inline">
-                                            <li><a class="btn btn-provider" href="/authentication/redirect/twitter"><i class="icon-twitter"></i> Twitter</a></li>
-                                        </ul>
-                                        <ul class="inline">
-                                            <li><a class="btn btn-provider" href="/authentication/redirect/google"><i class="icon-google"></i> Google</a></li>
-                                        </ul>
-                                        <input type="hidden" name="NCSRF" value="AAEAAAD/////AQAAAAAAAAAMAgAAAD1OYW5jeSwgVmVyc2lvbj0wLjIwLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsBQEAAAAYTmFuY3kuU2VjdXJpdHkuQ3NyZlRva2VuAwAAABw8UmFuZG9tQnl0ZXM+a19fQmFja2luZ0ZpZWxkHDxDcmVhdGVkRGF0ZT5rX19CYWNraW5nRmllbGQVPEhtYWM+a19fQmFja2luZ0ZpZWxkBwAHAg0CAgAAAAkDAAAAk/GSDhMi0ogJBAAAAA8DAAAACgAAAAIhJHrM9PYEPWobDwQAAAAgAAAAApeKncJ9tbcCqigxPVvcCAkmwrkl/Spsov8hnPfBtJZfCwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" />
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @*</div>
-            </div>
-        </div>
-    </section>
-*@
+                        </div>                      
     <script type="text/javascript">
-        (function ($) {
-            
-            //// set the selected tab based on the hash
-            //var currentSection = document.location.hash || "#profile";
-            //$('a[href="' + currentSection + '"]').tab('show');
 
-            //// always set the hash when we change tabs
-            //$('a[data-toggle="tab"]').on('shown', function (e) {
-            //    document.location.hash = e.target.hash;
-            //});
+    $('#profileli').addClass("active");
+    function uploadAvata(files) {
+        file = files[0];
+        if (file == null) {
+            return;
+        }
+        if (file.size > 3000000) {
+            showNotification('File hình quá lớn, xin vui lòng chọn hình khác?');
+            return;
+        }
+        var ext = file.name.split('.').pop().toLowerCase();
+        if ($.inArray(ext, ['png', 'jpg', 'jpeg']) == -1) {
+            showNotification('File hình không đúng định dạng!. Chỉ hỗ trợ file hình png, jpg, jpeg');
+            return;
+        }
+        // Add the uploaded image content to the form data collection
+        if (files.length > 0) {
+            var formData = new FormData();
+            formData.append("UploadedImage", file);
+            //upload via ajax
+            $.ajax({
+                url: '/Account/AvataUpload',
+                type: 'POST',
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                crossDomain: false
+            }).done(function (data) {
+                if (data === "error") {
+                    showNotification('Có lỗi khi upload ảnh, vui lòng thử lại');
+                    $('#avataInput').val('');
+                    return
+                }
+                else {
+                    $('#AvataImage').attr("src", "../" + data.replace("YES|", "") + "?width=48&height=48&mode=crop");
+                    showNotification('Cập nhật avata thành công');
+                    $('#avataInput').val('');
+                }
 
-            //// make sure errors look pretty and bootstrap-y
-            //$('input.error').closest('.control-group').addClass('error');
-            $('#profileli').addClass("active");
+            }).fail(function () {
+                showNotification('Có lỗi khi upload ảnh, vui lòng thử lại:');
+                $('#avataInput').val('');
+            })
+        }
 
-        }(jQuery));
+    }
+    function uploadCover(files) {
+        file = files[0];
+        if (file == null) {
+            return;
+        }
+        if (file.size > 3000000) {
+            showNotification('File hình quá lớn, xin vui lòng chọn hình khác?');
+            return;
+        }
+        var ext = file.name.split('.').pop().toLowerCase();
+        if ($.inArray(ext, ['png', 'jpg', 'jpeg']) == -1) {
+            showNotification('File hình không đúng định dạng!. Chỉ hỗ trợ file hình png, jpg, jpeg');
+            return;
+        }
+        // Add the uploaded image content to the form data collection
+        if (files.length > 0) {
+            var formData = new FormData();
+            formData.append("UploadedImage", file);
+            //upload via ajax
+            $.ajax({
+                url: '/Account/CoverUpload',
+                type: 'POST',
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                crossDomain: false
+            }).done(function (data) {
+                if (data === "error") {
+                    showNotification('Có lỗi khi upload ảnh, vui lòng thử lại');
+                    $('#coverInput').val('');
+                    return
+                }
+                else {
+                    showNotification('Cập nhật hình cover thành công, có thể về profile để xem');
+                    $('#coverInput').val('');
+                }
+
+            }).fail(function () {
+                showNotification('Có lỗi khi upload ảnh, vui lòng thử lại:');
+                $('#coverInput').val('');
+            })
+        }
+
+    }
+
     </script>
