@@ -12,7 +12,7 @@ using System.Text.RegularExpressions;
 
 namespace PhimHang.Controllers
 {
-    [Authorize] // xoa khi public
+    //[Authorize] // xoa khi public
     public class PostDetailController : Controller
     {
         
@@ -52,7 +52,7 @@ namespace PhimHang.Controllers
 
                 var post = await db.Posts.FirstOrDefaultAsync(p => p.PostId == postid);
 
-                ViewBag.Message = post.ChartYN == true ? post.Message + "<br/><br/>" + post.ChartImageURL : post.Message;               
+                ViewBag.Message = post.ChartYN == true ? post.Message + "<br/><br/><img src='" + post.ChartImageURL + "?maxwidth=450' >" : post.Message;                   
                 ViewBag.PostedByName = post.UserLogin.UserNameCopy;
                 ViewBag.PostedByAvatar = string.IsNullOrEmpty(post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + post.UserLogin.AvataImage;
                 ViewBag.PostedDate = post.PostedDate;

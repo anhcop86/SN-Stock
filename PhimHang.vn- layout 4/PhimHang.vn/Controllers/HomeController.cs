@@ -11,7 +11,7 @@ using System.Data.Entity;
 
 namespace PhimHang.Controllers
 {
-    [Authorize] // xoa khi public
+    //[Authorize] // xoa khi public
     public class HomeController : Controller
     {
         //private readonly FilterKeyworkSingleton _keyword;

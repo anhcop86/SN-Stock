@@ -68,6 +68,12 @@
                 <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('ALL')" href="#" class="active">Tất cả</a> </div>
                 <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('CHA')" href="#">Biểu đồ</a> </div>
                 <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('STM')" href="#">Nhận định</a></div>
+                @*<div style="float: right; overflow: hidden; " class="fb-like" data-href="https://cungphim.com/Ticker/@ViewBag.StockCode" data-layout='button_count' data-action='like' data-show-faces='true' data-share='true'></div>*@
+                <div class="fb-like"
+                     data-share="true"
+                     data-width="450"
+                     data-show-faces="true">
+                </div>
                 @*<div class="toSpan filer-bar-item">
                     <a id="btn-option-more" href="#" data-dropdown="#dropdown-2">
                         Tùy chọn khác
@@ -127,16 +133,7 @@
                 </div>
             </div>
             <!---->
-            @*
-    <div class="bg-white-custom" data-bind="visible :newPosts().length > 0 ">
-        <div class="filer-new-status">
-            <div class="filer-new-status-button-bar">
-                <div class="text-label">
-                    <a href="#" style="font-size: 14px;" data-bind=" click : loadNewPosts"> <strong data-bind="text: newPosts().length"></strong> bài phím mới </a>
-                </div>
-            </div>
-        </div>
-    </div>     *@       
+           
             <!---->
             
             <div class="bg-white-custom">
@@ -166,10 +163,7 @@
                             <div class="list-item-control">
                                 @*<a style="border-color:transparent; background-color:transparent" class="button" href="#"><i data-bind="text :notification, visible: notification() > 0" class="fa fa-comments"></i></a>*@
                                 <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
-                                <a class="button" href="#" title="Thích">Chia sẽ</a>
-                                <a class="button btnMore" href="#" title="..." data-dropdown="#cm-3">
-                                    ...
-                                </a>
+                                <a class="button btn-answer" href="#" title="Trả lời">Chia sẽ</a>
                                 <div id="cm-3" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
                                     <ul class="dropdown-menu">
                                         <li><a href="#" title="Chia sẻ">Chia sẻ</a></li>
@@ -206,10 +200,10 @@
                  
 
                     <div class="list-item-control">
-                        <a class="button" href="#"><i class="fa fa-comments"></i></a>
-                        <a class="button btn-answer" href="#" title="Trả lời">Thích</a>
+                        @*<a class="button" href="#"><i class="fa fa-comments"></i></a>*@
+                        <div id="facebookLikeAndShare"></div>
                     
-                    </div>
+                    </div>                    
                 </div>
             </div>
             <div style="display: block;" class="list-comment">
@@ -365,7 +359,7 @@
         self.StockPrimary = data.StockPrimary;
         //self.notification = ko.observable(0);
         self.Stm = (data.Stm === 1 ? "<span class='divBear-cm'>Giảm</span>" : data.Stm === 2 ? "<span class='divBull-cm'>Tăng</span>" : "") || "";
-        self.ChartYN = data.ChartYN || 0;
+        self.ChartYN = data.ChartYN || 0;        
     }
     var commenthub = $.connection.CommentHub;
     function viewModel() {
@@ -584,6 +578,8 @@
             $("#idStmDetail").html(data.Stm);
             postidCurrent = data.PostId;            
             $("#IdLoadMoreConversation").attr('href', '/PostDetail?postid=' + postidCurrent);
+            console.log("<div style='overflow: hidden;float:right' class='fb-like' data-href='/PostDetail?postid=" + postidCurrent + "' data-layout='button_count' data-action='like' data-show-faces='true' data-share='true'></div>");
+            $("#facebookLikeAndShare").html("<script>$(document).ready(function() {try {FB.XFBML.parse();} catch (ex) { }});<\/script><div style='overflow: hidden;float:right' class='fb-like' data-href='/PostDetail?postid=" + postidCurrent + "' data-layout='button_count' data-action='like' data-show-faces='true' data-share='true'></div>");
             //data.notification(0);
             // load 10 reply gan nhat
             $.ajax({

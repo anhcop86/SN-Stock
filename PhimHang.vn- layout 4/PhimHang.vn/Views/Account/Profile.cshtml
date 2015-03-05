@@ -8,8 +8,9 @@
 
 <script src="~/ThemeBlue/js/Extention.js"></script>
                         <div class="account-details tab-pane active" id="profile">     
-                           
-                                
+                           @using (Html.BeginForm("Profile", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                            {
+                                @Html.AntiForgeryToken()
                                 <div class="control-group">
                                     <label class="control-label" for="username">Image:</label>
                                     <div class="controls">
@@ -28,9 +29,7 @@
                                         <input onchange="uploadCover(files)" accept="image/*" type="file" id="coverInput" name="coverInput" value="" class="input-xlarge"/>
                                     </div>
                                 </div>
-                                @using (Html.BeginForm("Profile", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                                {
-                                 @Html.AntiForgeryToken()
+                              
                                 <div class="control-group">
                                     <label class="control-label" for="username">Họ và tên:</label>
                                     <div class="controls">
@@ -109,8 +108,7 @@
                                         <input type="submit" class="btn" value="Lưu lại" />
                                         <p class="text-success">@ViewBag.StatusMessage</p>
                                     </div>
-                                </div>
-                                
+                                </div>                                
                             }
                         </div>                      
     <script type="text/javascript">

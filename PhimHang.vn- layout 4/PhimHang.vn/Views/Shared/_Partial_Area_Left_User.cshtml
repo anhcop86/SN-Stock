@@ -37,7 +37,7 @@
     </div>
     <div class="user-name2">
         @Model.FullName   
-        <i class="fa  fa-check-circle">&nbsp;</i>
+        
     </div>
     
     <div class="user-info-detail">
@@ -53,19 +53,20 @@
                 {
                     @: @Model.Status
                 }
-            }            
+            }
         </div>
-        <div><i class="fa fa-map-marker"></i>&nbsp;Trường phái đầu tư: 
-        @{
-            if (Model.PhilosophyMarket != null)
-            {
-                @: @Model.Philosophy.PhilosophyName
+        <div>
+            <i class="fa fa-map-marker"></i>&nbsp;Trường phái đầu tư:
+            @{
+                if (Model.PhilosophyMarket != null)
+                {
+                    @: @Model.Philosophy.PhilosophyName
             }
-            else
-            {
-                @: ...
+                else
+                {
+                    @: ...
             }
-        }
+            }
         </div>
         <div>
             <i class="fa fa-map-marker"></i> &nbsp;Nghề nghiệp:
@@ -80,12 +81,13 @@
                 }
             }
         </div>
-        <div><i class="fa fa-unlink"></i> Kinh nghiệm chứng trường: 
+        <div>
+            <i class="fa fa-unlink"></i> Kinh nghiệm chứng trường:
             @{
-               
+
                 if (Model.NumberExMarketYear != null)
                 {
-                     @:@Model.NumberExMarketYear năm
+                    @:@Model.NumberExMarketYear năm
                 }
                 else
                 {
@@ -94,7 +96,7 @@
             }
         </div>
         <div><i class="fa fa-clock-o"></i> Giới thiệu bản thân</div>
-        <div class="user-info-intro">          
+        <div class="user-info-intro">
             @{
                 if (string.IsNullOrEmpty(Model.CVInfo))
                 {
@@ -107,10 +109,21 @@
             }
         </div>
         <div class="user-info-mypage">
-            <p><i class="fa fa-home"></i> Homepage:</p>            
+            <p><i class="fa fa-home"></i> Homepage:</p>
             @{
-                @: <a target="_blank" href="@Model.URLFacebook">@Model.URLFacebook</a>
+                if (!string.IsNullOrEmpty(Model.URLFacebook))
+                {
+                    @: <a target="_blank" href="https://@Model.URLFacebook.Replace("https://", "").Replace("http://", "").Replace("www.", "")">@Model.URLFacebook</a>    
+                }
+                else
+                {
+                    @:...
+                }
+                
             }
+        </div>
+        <div class="user-info-mypage">
+            <div style="float: left; overflow: hidden" class="fb-like" data-href="/user/@ViewBag.UserName/tab/1" data-colorscheme='dark' data-layout='button_count' data-action='like' data-show-faces='true' data-share='true'></div>
         </div>
     </div>
 </div>
