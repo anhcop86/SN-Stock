@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -65,7 +66,13 @@ namespace PhimHang.Models
             "ÝỲỴỶỸ"
         };
 
-
+        public static string AbsolutePathHostName
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["AbsolutePathHostName"].ToString();
+            } 
+        }
     }
     public class PosistionFilter
     {
@@ -73,4 +80,5 @@ namespace PhimHang.Models
         public int Posistion { get; set; }
     }
 
+    
 }

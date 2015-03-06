@@ -29,10 +29,10 @@ namespace PhimHang.Controllers
         private testEntities db = new testEntities();
         private const string ImageURLAvataDefault = "/img/avatar2.jpg";        
         private const string ImageURLAvata = "/images/avatar/";
-        
+        private string AbsolutePathHostName = AppHelper.AbsolutePathHostName;
         public async Task<ActionResult> Index(string username, int tabid)
         {
-
+            ViewBag.AbsolutePathHostName = AbsolutePathHostName;
             var currentUser = await db.UserLogins.FirstOrDefaultAsync(u => u.UserNameCopy == username); //db.UserLogins.FirstOrDefaultAsync(u => u.UserNameCopy == username);
 
             if (currentUser == null || string.IsNullOrEmpty(username) || tabid > 5 || tabid < 0)
