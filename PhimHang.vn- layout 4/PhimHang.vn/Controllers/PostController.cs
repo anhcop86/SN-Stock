@@ -199,7 +199,8 @@ namespace PhimHang.Controllers
                                PostId = stockRelate.PostId,
                                StockPrimary = stockRelate.Post.StockPrimary,
                                Stm = stockRelate.Post.NhanDinh,
-                               ChartYN = stockRelate.Post.ChartYN
+                               ChartYN = stockRelate.Post.ChartYN,
+                               SumLike = stockRelate.Post.SumLike
                            }).Take(5).ToArray();
                 //var listStock = new List<string>();              
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
@@ -225,7 +226,8 @@ namespace PhimHang.Controllers
                                PostId = stockRelate.PostId,
                                StockPrimary = stockRelate.Post.StockPrimary,
                                Stm = stockRelate.Post.NhanDinh,
-                               ChartYN = stockRelate.Post.ChartYN
+                               ChartYN = stockRelate.Post.ChartYN,
+                               SumLike = stockRelate.Post.SumLike
                            }).Skip(skipposition).Take(10).ToArray();
                 return Newtonsoft.Json.JsonConvert.SerializeObject(ret);
             }
@@ -320,6 +322,17 @@ namespace PhimHang.Controllers
             else
             {
                 return "error"; // return name file error
+            }
+        }
+        [AllowAnonymous]
+        public async Task UpdateLike(long postid)
+        {
+            var postFind = await db.Posts.FirstOrDefaultAsync(p => p.PostId == postid);
+            if (postFind != null)
+            {
+                postFind.SumLike = postFind.SumLike + 1;
+                db.Entry(postFind).State = EntityState.Modified;
+                await db.SaveChangesAsync();
             }
         }
         

@@ -42,7 +42,7 @@
                                     <label for="radio1" class="divBull ">Tăng</label>
                                     <input type="radio" id="radio3" name="BullBear" value="1">
                                     <label for="radio3" class="divBear">Giảm</label>
-
+                                    
                             
                                 </div>
                                 <div id="btnPhim" class="f-right">
@@ -105,7 +105,7 @@
                         <div class="list-item-detail">
                             <div class="list-item-date" data-bind="text : PostedDate"></div>
                             <div class="list-item-username" style="width:0%">
-                                <div style="cursor:pointer" onclick='selectMe(event,"#")' data-bind="text : PostedByName, click : function() {  location.href='/user/' + PostedByName + '/tab/1'  }"></div>
+                                <a href="#" onclick='selectMe(event,"#")' data-bind="text : PostedByName, click : function() {  location.href='/user/' + PostedByName + '/tab/1'  }"></a>
                             </div>
                             <span>
                                 <span data-bind="html : Stm"></span>
@@ -115,7 +115,7 @@
                             <div class="list-item-control">
                                 @*<a style="border-color:transparent; background-color:transparent" class="button" href="#"><i data-bind="text :notification, visible: notification() > 0" class="fa fa-comments"></i></a>*@
                                 <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
-                               <a class="button" href="#" title="Thích">Chia sẽ</a>
+                                <a class="button btn-answer" target="_self" onclick="window.open(this.href, 'chia sẽ lên facebook', 'left=100,top=100,width=600,height=400,toolbar=1,resizable=0'); selectMe(event, '#'); return false;" data-bind="attr : { href : 'https://www.facebook.com/sharer/sharer.php?u=@ViewBag.AbsolutePathHostName/PostDetail?postid='+ PostId +'&display=popup&ref=plugin' }" title="Trả lời">Chia sẽ</a>
                                 <a class="button btnMore" href="#" title="..." data-dropdown="#cm-3">
                                     ...
                                 </a>
@@ -158,22 +158,25 @@
                         <div class="list-item-detail">
                             <div class="list-item-date" data-bind="text : PostedDate"></div>
                             <div class="list-item-username" style="width:0%">
-                                <div style="cursor:pointer" onclick='selectMe(event,"#")' data-bind="text : PostedByName, click : function() {  location.href='/user/' + PostedByName + '/tab/1'  }"></div>
+                                <a href="#" onclick='selectMe(event,"#")' data-bind="text : PostedByName, click : function() {  location.href='/user/' + PostedByName + '/tab/1'  }"></a>
                             </div>
                             <span data-bind="html : Stm"></span>
                             <div class="list-item-status-content" data-bind="html : Message"></div>
                             <div class="list-item-control">
                                 @*<a style="border-color:transparent; background-color:transparent" class="button" href="#"><i data-bind="text :notification, visible: notification() > 0" class="fa fa-comments"></i></a>*@
                                 <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
-                                <a class="button btn-answer" href="#" title="Trả lời">Chia sẽ</a>
+                                <!--share popup of facebook-->
+                                <a class="button btn-answer" target="_self" onclick="window.open(this.href, 'chia sẽ lên facebook', 'left=100,top=100,width=600,height=400,toolbar=1,resizable=0'); selectMe(event, '#'); return false;" data-bind="attr : { href : 'https://www.facebook.com/sharer/sharer.php?u=@ViewBag.AbsolutePathHostName/PostDetail?postid='+ PostId +'&display=popup&ref=plugin' }" title="Trả lời">Chia sẽ</a>
                                 <div id="cm-3" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
                                     <ul class="dropdown-menu">
                                         <li><a href="#" title="Chia sẻ">Chia sẻ</a></li>
                                         <li><a href="#" title="Vi phạm">Vi phạm</a></li>
                                     </ul>
                                 </div>
-                                <span class="likeAndPin">
-                                    <a class="button" href="#" title="Thích"><img src="/images/likecp.png" /></a>
+                                <span class="likeAndPin" style="">                                   
+                                    <a href="#" class="fa fa-thumbs-o-up" style="color: #929292; font-size: 12pt" data-bind=" click : function(data, event) { $parent.AddLike(data, event) ;event.preventDefault();  } , attr : {id : 'PostId' + PostId}"></a>
+                                    <span style="font-size: 9pt; color: #328ac5; font-weight:bold" data-bind="text : SumLike, visible : SumLike() > 0 "></span>
+                                    <!--click like thi doi class thanh fa fa-thumbs-o-up-->
                                 </span>
                             </div>
                         </div>
@@ -361,7 +364,8 @@
         self.StockPrimary = data.StockPrimary;
         //self.notification = ko.observable(0);
         self.Stm = (data.Stm === 1 ? "<span class='divBear-cm'>Giảm</span>" : data.Stm === 2 ? "<span class='divBull-cm'>Tăng</span>" : "") || "";
-        self.ChartYN = data.ChartYN || 0;        
+        self.ChartYN = data.ChartYN || 0;
+        self.SumLike = ko.observable(data.SumLike );
     }
     var commenthub = $.connection.CommentHub;
     function viewModel() {
@@ -568,7 +572,31 @@
                 $(elem).hide().slideDown('slow')
             }            
         };
-
+       
+        self.AddLike = function (data, e) {              
+            // ajax update  like with 
+            
+            var postRow = $('#PostId' + data.PostId);
+            //postRow.removeAttr("data-bind");
+            postRow.removeClass("fa fa-thumbs-o-up");
+            postRow.addClass("fa fa-thumbs-up");
+            e.stopPropagation();
+            $.ajax({
+                cache: false,
+                type: "POST",
+                url: '@Url.Action("UpdateLike", "Post")',
+                data: { postid: data.PostId },
+                beforeSend: function (xhr) {
+                    // disable like and chage class
+                   
+                },
+                success: function () {
+                    data.SumLike(data.SumLike() + 1); // update interface
+                }
+            });
+            return false;
+         
+        };
         self.detailPost = function (data, e) { // chi tiet post bao gom tra loi
 
             self.newReply('');
@@ -579,8 +607,7 @@
             $("#idPostMessenge").html(data.Message.replace("?width=215&height=120&mode=crop", "?maxwidth=475&maxheight=200&mode=crop"));//=200&s.grayscale=true|"
             $("#idStmDetail").html(data.Stm);
             postidCurrent = data.PostId;            
-            $("#IdLoadMoreConversation").attr('href', '/PostDetail?postid=' + postidCurrent);
-            console.log("<div style='overflow: hidden;float:right' class='fb-like' data-href='/PostDetail?postid=" + postidCurrent + "' data-layout='button_count' data-action='like' data-show-faces='true' data-share='true'></div>");
+            $("#IdLoadMoreConversation").attr('href', '/PostDetail?postid=' + postidCurrent);            
             $("#facebookLikeAndShare").html("<script>$(document).ready(function() {try {FB.XFBML.parse();} catch (ex) { }});<\/script><div style='overflow: hidden;float:right' class='fb-like' data-href='/PostDetail?postid=" + postidCurrent + "' data-layout='button_count' data-action='like' data-show-faces='true' data-share='true'></div>");
             //data.notification(0);
             // load 10 reply gan nhat

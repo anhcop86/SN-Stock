@@ -94,7 +94,8 @@ textarea {
     z-index: 10002;		
 }
 #top-banner-left{
-    width: 150px;    
+    /*width: 20px;*/   
+    /*border-radius:5px;*/ 
 }
 #top-banner-center{    
     width: 30%;   
@@ -113,6 +114,7 @@ textarea {
 .logo img{
     margin-top:5px;    
     max-height: 40px;
+    border-radius:5px;
 }
 .top-banner-icon{padding: 2px 12px 0px 12px;}
 #top-banner-center > .top-banner-icon > a > i,#top-banner-center > .top-banner-icon > a >span> i,
@@ -1563,3 +1565,5 @@ button
     position: relative;
     margin-left: 10px;
 }
+
+.likeAndPin

@@ -317,9 +317,6 @@
     <Compile Include="Models\StockCode.cs">
       <DependentUpon>PhimHangADO.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\StockPrice.cs">
-      <DependentUpon>PhimHangADO.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\StockRealTime.cs" />
     <Compile Include="Models\StockRealTimeTicker.cs" />
     <Compile Include="Models\StockRelate.cs">

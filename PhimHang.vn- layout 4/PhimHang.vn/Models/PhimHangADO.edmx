@@ -104,6 +104,7 @@
           <Property Name="Vir" Type="bit" />
           <Property Name="StockPrimary" Type="varchar" MaxLength="16" />
           <Property Name="ChartYN" Type="bit" />
+          <Property Name="SumLike" Type="int" />
         </EntityType>
         <EntityType Name="Settings">
           <Key>
@@ -124,23 +125,6 @@
           <Property Name="LongName" Type="nvarchar" MaxLength="256" />
           <Property Name="MarketType" Type="smallint" />
           <Property Name="IndexName" Type="nvarchar" MaxLength="255" />
-        </EntityType>
-        <EntityType Name="StockPrice">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Code" Type="varchar" MaxLength="16" Nullable="false" />
-          <Property Name="CeilingPrice" Type="money" />
-          <Property Name="FloorPrice" Type="money" />
-          <Property Name="DiffPrice" Type="money" />
-          <Property Name="OpenPrice" Type="money" />
-          <Property Name="HighPrice" Type="money" />
-          <Property Name="LowPrice" Type="money" />
-          <Property Name="ClosePrice" Type="money" />
-          <Property Name="TradingDate" Type="datetime2" Precision="7" />
-          <Property Name="Totalshare" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="StringDate" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="StockRelate">
           <Key>
@@ -442,7 +426,6 @@
           <EntitySet Name="Posts" EntityType="Self.Posts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StockCode" EntityType="Self.StockCode" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="StockPrice" EntityType="Self.StockPrice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StockRelate" EntityType="Self.StockRelate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StockViewLastest" EntityType="Self.StockViewLastest" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserLogins" EntityType="Self.UserLogins" Schema="dbo" store:Type="Tables" />
@@ -543,7 +526,6 @@
           <EntitySet Name="FilterKeyWords" EntityType="PHDBContext.FilterKeyWord" />
           <EntitySet Name="PinStocks" EntityType="PHDBContext.PinStock" />
           <EntitySet Name="NotificationMesseges" EntityType="PHDBContext.NotificationMessege" />
-          <EntitySet Name="StockPrices" EntityType="PHDBContext.StockPrice" />
           <EntitySet Name="UserLogins" EntityType="PHDBContext.UserLogin" />
           <AssociationSet Name="FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" Association="PHDBContext.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id">
             <End Role="UserLogin" EntitySet="UserLogins" />
@@ -766,23 +748,6 @@
           <NavigationProperty Name="UserLogin1" Relationship="PHDBContext.FK_UserPost_UserReciver" FromRole="NotificationMessege" ToRole="UserLogin" />
           <NavigationProperty Name="Post" Relationship="PHDBContext.FK_Posts_User" FromRole="NotificationMessege" ToRole="Post" />
         </EntityType>
-        <EntityType Name="StockPrice">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Code" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
-          <Property Name="CeilingPrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="FloorPrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="DiffPrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="OpenPrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="HighPrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="LowPrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="ClosePrice" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="TradingDate" Type="DateTime" Precision="7" />
-          <Property Name="Totalshare" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="StringDate" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="UserLogin">
           <Key>
             <PropertyRef Name="Id" />
@@ -972,6 +937,7 @@
           <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_Posts_UserLogins" FromRole="Post" ToRole="UserLogin" />
           <NavigationProperty Name="StockRelates" Relationship="PHDBContext.FK_StockRelate_Posts" FromRole="Post" ToRole="StockRelate" />
           <NavigationProperty Name="UserRelates" Relationship="PHDBContext.FK_UserRelate_Posts" FromRole="Post" ToRole="UserRelate" />
+          <Property Name="SumLike" Type="Int32" />
         </EntityType>
         <Association Name="FK_Posts_User">
           <End Type="PHDBContext.Post" Role="Post" Multiplicity="0..1" />
@@ -1231,24 +1197,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="StockPrices">
-            <EntityTypeMapping TypeName="PHDBContext.StockPrice">
-              <MappingFragment StoreEntitySet="StockPrice">
-                <ScalarProperty Name="StringDate" ColumnName="StringDate" />
-                <ScalarProperty Name="Totalshare" ColumnName="Totalshare" />
-                <ScalarProperty Name="TradingDate" ColumnName="TradingDate" />
-                <ScalarProperty Name="ClosePrice" ColumnName="ClosePrice" />
-                <ScalarProperty Name="LowPrice" ColumnName="LowPrice" />
-                <ScalarProperty Name="HighPrice" ColumnName="HighPrice" />
-                <ScalarProperty Name="OpenPrice" ColumnName="OpenPrice" />
-                <ScalarProperty Name="DiffPrice" ColumnName="DiffPrice" />
-                <ScalarProperty Name="FloorPrice" ColumnName="FloorPrice" />
-                <ScalarProperty Name="CeilingPrice" ColumnName="CeilingPrice" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="UserLogins">
             <EntityTypeMapping TypeName="PHDBContext.UserLogin">
               <MappingFragment StoreEntitySet="UserLogins">
@@ -1277,6 +1225,7 @@
           <EntitySetMapping Name="Posts">
             <EntityTypeMapping TypeName="PHDBContext.Post">
               <MappingFragment StoreEntitySet="Posts">
+                <ScalarProperty Name="SumLike" ColumnName="SumLike" />
                 <ScalarProperty Name="ChartYN" ColumnName="ChartYN" />
                 <ScalarProperty Name="StockPrimary" ColumnName="StockPrimary" />
                 <ScalarProperty Name="Vir" ColumnName="Vir" />

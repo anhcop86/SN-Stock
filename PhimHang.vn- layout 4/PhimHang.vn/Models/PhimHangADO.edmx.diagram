@@ -18,7 +18,6 @@
         <EntityTypeShape EntityType="PHDBContext.FilterKeyWord" Width="1.5" PointX="0.75" PointY="5.75" />
         <EntityTypeShape EntityType="PHDBContext.PinStock" Width="1.5" PointX="5.25" PointY="13.125" />
         <EntityTypeShape EntityType="PHDBContext.NotificationMessege" Width="1.5" PointX="8.25" PointY="9.625" />
-        <EntityTypeShape EntityType="PHDBContext.StockPrice" Width="1.5" PointX="10.375" PointY="0.75" />
         <EntityTypeShape EntityType="PHDBContext.UserLogin" Width="1.5" PointX="0.75" PointY="8.125" />
         <AssociationConnector Association="PHDBContext.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" />
         <AssociationConnector Association="PHDBContext.FK_FollowStock_UserLogins" />

@@ -26,55 +26,7 @@
 
         <div class="list-status">
             <!--pin ma co phieu o day-->
-            <div data-bind="foreach : postPins">
-                <div class="bg-white">
-                    <div class="list-item-status" tabindex="-1" data-bind=" click: function(data, event) { $parent.detailPost(data, event); }">
-                        @*click: function(data, event) { $parent.detailPost; event.stopPropagation(); }*@
-                        <div class="avata-genaral-size">
-                            <img data-bind="attr: { src: PostedByAvatar },click : function() {  location.href='/user/' + PostedByName + '/tab/1' }" class="img-rounded" alt="avatar">
-                        </div>
-                        <div class="list-item-detail">
-                            <div class="list-item-date" data-bind="text : PostedDate"></div>
-                            <div class="list-item-username" style="width:0%">
-                                <div style="cursor:pointer" onclick='selectMe(event,"#")' data-bind="text : PostedByName, click : function() {  location.href='/user/' + PostedByName + '/tab/1'  }"></div>
-                            </div>
-                            <span>
-                                <span data-bind="html : Stm"></span>
-
-                            </span>
-                            <div class="list-item-status-content" data-bind="html : Message"></div>
-                            <div class="list-item-control">
-                                @*<a style="border-color:transparent; background-color:transparent" class="button" href="#"><i data-bind="text :notification, visible: notification() > 0" class="fa fa-comments"></i></a>*@
-                                <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
-                                <a class="button" href="#" title="Thích">Chia sẽ</a>
-                                <a class="button btnMore" href="#" title="..." data-dropdown="#cm-3">
-                                    ...
-                                </a>
-                                <div id="cm-3" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#" title="Chia sẻ">Chia sẻ</a></li>
-                                        <li><a href="#" title="Vi phạm">Vi phạm</a></li>
-                                    </ul>
-                                </div>
-                                <span class="likeAndPin">
-                                    <a class="button" href="#" title="Pin"><img src="/images/pintab.png" /></a>
-                                    <a class="button" href="#" title="Pin"><img src="/images/likecp.png" /></a>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!---->
-            <div class="bg-white-custom" data-bind="visible :newPosts().length > 0 ">
-                <div class="filer-new-status">
-                    <div class="filer-new-status-button-bar">
-                        <div class="text-label">
-                            <a href="#" style="font-size: 14px;" data-bind=" click : loadNewPosts"> <strong data-bind="text: newPosts().length"></strong> bài phím mới </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
             <div data-bind="foreach : posts">
                 <div class="bg-white">
                     <div class="list-item-status" tabindex="-1" data-bind=" click: function(data, event) { $parent.detailPost(data, event); }">
@@ -92,7 +44,7 @@
                             <div class="list-item-control">
                                 @*<a style="border-color:transparent; background-color:transparent" class="button" href="#"><i data-bind="text :notification, visible: notification() > 0" class="fa fa-comments"></i></a>*@
                                 <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
-                                <a class="button" href="#" title="Thích">Chia sẽ</a>
+                                <a class="button btn-answer" target="_self" onclick="window.open(this.href, 'chia sẽ lên facebook', 'left=100,top=100,width=600,height=400,toolbar=1,resizable=0'); selectMe(event, '#'); return false;" data-bind="attr : { href : 'https://www.facebook.com/sharer/sharer.php?u=@ViewBag.AbsolutePathHostName/PostDetail?postid='+ PostId +'&display=popup&ref=plugin' }" title="Trả lời">Chia sẽ</a>
                                 <a class="button btnMore" href="#" title="..." data-dropdown="#cm-3">
                                     ...
                                 </a>

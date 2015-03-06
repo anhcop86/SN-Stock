@@ -38,7 +38,6 @@ namespace PhimHang.Models
         public virtual DbSet<FilterKeyWord> FilterKeyWords { get; set; }
         public virtual DbSet<PinStock> PinStocks { get; set; }
         public virtual DbSet<NotificationMessege> NotificationMesseges { get; set; }
-        public virtual DbSet<StockPrice> StockPrices { get; set; }
         public virtual DbSet<UserLogin> UserLogins { get; set; }
         public virtual DbSet<Post> Posts { get; set; }
         public virtual DbSet<JobTitile> JobTitiles { get; set; }

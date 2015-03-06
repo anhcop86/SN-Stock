@@ -94,10 +94,9 @@
                             </div>
                             <span data-bind="html : Stm"></span>
                             <div class="list-item-status-content" data-bind="html : Message"></div>
-                            <div class="list-item-control">
-                                
+                            <div class="list-item-control">                                
                                 <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
-                                <a class="button" href="#" title="Thích">Thích</a>
+                                <a class="button btn-answer" target="_self" onclick="window.open(this.href, 'chia sẽ lên facebook', 'left=100,top=100,width=600,height=400,toolbar=1,resizable=0'); selectMe(event, '#'); return false;" data-bind="attr : { href : 'https://www.facebook.com/sharer/sharer.php?u=@ViewBag.AbsolutePathHostName/PostDetail?postid='+ PostId +'&display=popup&ref=plugin' }" title="Trả lời">Chia sẽ</a>
                                 <a class="button btnMore" href="#" title="..." data-dropdown="#cm-3">
                                     ...
                                 </a>

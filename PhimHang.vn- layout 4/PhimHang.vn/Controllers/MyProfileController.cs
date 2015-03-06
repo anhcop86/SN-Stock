@@ -36,11 +36,11 @@ namespace PhimHang.Controllers
         private const string ImageURLCoverDefault = "/img/cover_default.jpg";
         private const string ImageURLAvata = "/images/avatar/";
         private const string ImageURLCover = "images/cover/";
-
+        private string AbsolutePathHostName = AppHelper.AbsolutePathHostName;
         public async Task<ActionResult> Index()
         {
             // get user info
-
+            ViewBag.AbsolutePathHostName = AbsolutePathHostName;
             var company = new StockCode();
             ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
 

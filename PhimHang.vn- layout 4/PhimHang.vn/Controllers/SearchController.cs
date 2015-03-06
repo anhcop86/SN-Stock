@@ -45,26 +45,26 @@ namespace PhimHang.Controllers
             return View();
         }
 
-        [HttpGet]
-        public async Task<dynamic> GetStockPriChart(string chart)
-        {
-            var ret = (from sp in db.StockPrices
-                       orderby sp.TradingDate
-                       where sp.Code == "HAG"
-                       select new
-                       {
-                           t = sp.TradingDate,
-                           o = sp.OpenPrice,
-                           h = sp.HighPrice,
-                           l = sp.LowPrice,
-                           c = sp.ClosePrice,
-                           s = sp.Totalshare
-                       }).ToList();
-            //var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
-            //return result;
-            return Json(ret, JsonRequestBehavior.AllowGet);
+        //[HttpGet]
+        //public async Task<dynamic> GetStockPriChart(string chart)
+        //{
+        //    var ret = (from sp in db.StockPrices
+        //               orderby sp.TradingDate
+        //               where sp.Code == "HAG"
+        //               select new
+        //               {
+        //                   t = sp.TradingDate,
+        //                   o = sp.OpenPrice,
+        //                   h = sp.HighPrice,
+        //                   l = sp.LowPrice,
+        //                   c = sp.ClosePrice,
+        //                   s = sp.Totalshare
+        //               }).ToList();
+        //    //var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
+        //    //return result;
+        //    return Json(ret, JsonRequestBehavior.AllowGet);
             
-        }
+        //}
 
 
 	}
