@@ -76,11 +76,12 @@
                     <img src="/img/logo.png" alt="Cùng Phím">
                 </a>
             </div>
-            <div class="f-left" id="top-banner-center">
+            <div class="f-right" id="top-banner-center">
                 @{
                     if (User.Identity.IsAuthenticated)
                     {
                         <div class="toSpan top-banner-icon f-left">
+                          
                             <a href="/user/@User.Identity.Name/tab/1"><i class="fa fa-home"></i></a>
                         </div>
                         <div class="toSpan top-banner-icon f-left">
@@ -95,10 +96,10 @@
                             {
                                 <span id="CreateMesseger"></span>
                             }
-
                         </div>
                     }
                 }
+
                 <div class="toSpan top-banner-icon f-left">
                     <a id="btn-config" href="#" data-dropdown="#dropdown-1">
                         <span style="padding-right: 5px;"><i class="fa fa-cog"></i></span>
@@ -116,7 +117,7 @@
                                         @Html.AntiForgeryToken()
                                         <li><a href="javascript:document.getElementById('logoutForm').submit()">Logout</a></li>
                                     }
-                                                     }
+                                                         }
                                 else
                                 {
                                     <li><a href="/Account/Login">Login</a></li>
@@ -126,18 +127,15 @@
                     </div>
                 </div>
             </div>
-            <div class="f-right" id="top-banner-right">
+            <div class="f-left" id="top-banner-right">
                 <div class="toSpan f-right">
-                    <form id="frmSearch">
-                        <span id="search_box_top">
-                            <input name="q" id="kq" placeholder="MÃ CỔ PHIẾU ($VNM) hoặc USERNAME" title="Search" autocomplete="off" type="text">
-                            <i class="fa fa-search"></i>
-                        </span>
-                    </form>
+                    <!--search-->
+                    @Html.Partial("_Partial_Area_Search_Profile")
                 </div>
             </div>
         </div>
     </div>
+
     <div class="menu-top-bar">
         <div class="top-menu-2 top-menu-2-custom">
             <ul class="nav navbar-nav top-panel-left2">

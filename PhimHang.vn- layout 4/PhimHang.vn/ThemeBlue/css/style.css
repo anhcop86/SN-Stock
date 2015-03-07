@@ -98,7 +98,7 @@ textarea {
     /*border-radius:5px;*/ 
 }
 #top-banner-center{    
-    width: 30%;   
+    /*width: 30%;*/   
     line-height: 50px;	
 }
 #top-banner-right{
@@ -273,6 +273,7 @@ ul.top-panel-left2 > li:not(:first-child):hover{
 .top-panel-left2{    
     float:left;
     font-family:Arial;
+    margin-left:-12px;
 }
 .top-panel-right2{       
     float: right;
@@ -554,7 +555,16 @@ a.follow-button-mini:hover{
     background-color: #fff;
     border:1px solid #ddd;
     float: left;
-    margin-left:15px;
+    /*margin-left:15px;*/
+}
+.input-status-text-post{
+    clear: both;
+    width: 100%;
+    padding: 3px; 
+    background-color: #fff;
+    border:1px solid #ddd;
+    float: left;
+    /*margin-left:15px;*/
 }
 .input-status-text > textarea{
     height: 25px;
@@ -570,7 +580,7 @@ a.follow-button-mini:hover{
     margin-top: 9px;
     width: 100%;
     display: none;
-    left:15px;
+    
 }
 .choose_file{
     position:relative;
@@ -890,8 +900,8 @@ input[name=BullBear]{
 }
 .list-comment .avata-genaral-size,.avata-comment{
     float:left;
-    width: 35px;
-    height: 35px;
+    /*width: 35px;*/
+    /*height: 35px;*/
     margin: 5px;
     /*border-radius: 3px;*/
     /*border: 2px solid #ddd;*/
@@ -1607,9 +1617,9 @@ button
 }*/
 
 .content-main-top {
-    width: 1200px;
+    width: 1180px;
     margin: 0px auto;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .IndexBar{
