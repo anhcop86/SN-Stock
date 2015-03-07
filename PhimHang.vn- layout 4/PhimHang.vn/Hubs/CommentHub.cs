@@ -86,6 +86,7 @@ namespace PhimHang.Hubs
             post.PostedDate = DateTime.Now;
             post.StockPrimary = stockCurrent;
             post.NhanDinh = nhanDinh;
+            post.SumLike = 0;
             if (!string.IsNullOrWhiteSpace(chartImage))
             {
                 post.ChartYN = true;
@@ -167,7 +168,8 @@ namespace PhimHang.Hubs
                     StockPrimary = post.StockPrimary,
                     Stm = post.NhanDinh,
                     ChartYN = post.ChartYN,
-                    PostBy = post.PostedBy
+                    PostBy = post.PostedBy,
+                    SumLike = 0
                 };
 
                 await Clients.Groups(listStock).addPost(ret); // ad group

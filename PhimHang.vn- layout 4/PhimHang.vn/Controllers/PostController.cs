@@ -245,7 +245,8 @@ namespace PhimHang.Controllers
                                PostId = stockRelate.PostId,
                                StockPrimary = stockRelate.Post.StockPrimary,
                                Stm = stockRelate.Post.NhanDinh,
-                               ChartYN = stockRelate.Post.ChartYN
+                               ChartYN = stockRelate.Post.ChartYN,
+                               SumLike = stockRelate.Post.SumLike
                            }).Skip(skipposition).Take(10).ToArray();
                 return Newtonsoft.Json.JsonConvert.SerializeObject(ret);
             }
@@ -263,7 +264,8 @@ namespace PhimHang.Controllers
                                PostId = stockRelate.PostId,
                                StockPrimary = stockRelate.Post.StockPrimary,
                                Stm = stockRelate.Post.NhanDinh,
-                               ChartYN = stockRelate.Post.ChartYN
+                               ChartYN = stockRelate.Post.ChartYN,
+                               SumLike = stockRelate.Post.SumLike
                            }).Skip(skipposition).Take(10).ToArray();
                 return Newtonsoft.Json.JsonConvert.SerializeObject(ret);
             }
@@ -331,8 +333,18 @@ namespace PhimHang.Controllers
             if (postFind != null)
             {
                 postFind.SumLike = postFind.SumLike + 1;
-                db.Entry(postFind).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                
+                try
+                {
+                    db.Entry(postFind).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+                }
+                catch (Exception)
+                {
+
+                    //throw;
+                }
+
             }
         }
         

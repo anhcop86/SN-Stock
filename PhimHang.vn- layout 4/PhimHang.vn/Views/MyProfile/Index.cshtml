@@ -90,7 +90,7 @@
                         <div class="list-item-detail">
                             <div class="list-item-date" data-bind="text : PostedDate"></div>
                             <div class="list-item-username" style="width:0%">
-                                <div style="cursor:pointer" onclick='selectMe(event,"#")' data-bind="text : PostedByName, click : function() {  location.href='/user/' + PostedByName + '/tab/1'  }"></div>
+                                <a style="cursor:pointer" onclick='selectMe(event,"#")' data-bind="text : PostedByName, click : function() {  location.href='/user/' + PostedByName + '/tab/1'  }"></a>
                             </div>
                             <span data-bind="html : Stm"></span>
                             <div class="list-item-status-content" data-bind="html : Message"></div>
@@ -107,7 +107,8 @@
                                     </ul>
                                 </div>
                                 <span class="likeAndPin">
-                                    <a class="button" href="#" title="Thích"><img src="/images/likecp.png" /></a>
+                                    <span data-bind="text : SumLike, visible : SumLike() > 0 "></span>
+                                    <button class="fa fa-thumbs-o-up" data-bind=" click : function(data, event) { $parent.AddLike(data, event) ;   } , attr : {id : 'PostId' + PostId} , enable : DiableLike"></button>
                                 </span>
                             </div>
                         </div>
@@ -280,6 +281,8 @@
         self.Stm = (data.Stm === 1 ? "<span class='divBear-cm'>Giảm</span>" : data.Stm === 2 ? "<span class='divBull-cm'>Tăng</span>" : "") || "";
         self.ChartYN = data.ChartYN || 0;
         self.PostBy = data.PostBy;
+        self.SumLike = ko.observable(data.SumLike);
+        self.DiableLike = ko.observable(true);
     }
     var commenthub = $.connection.CommentHub;
     function viewModel() {
@@ -511,7 +514,32 @@
             self.newPosts([]);
             document.title = "Nhà của tôi";
         }
+        self.AddLike = function (data, e) {
+            // ajax update  like with 
 
+            var postRow = $('#PostId' + data.PostId);
+            //postRow.removeAttr("data-bind");
+            postRow.attr('class', "fa fa-thumbs-up");
+            postRow.attr('data-bind', '');
+            //postRow.addClass("fa fa-thumbs-up");
+            data.DiableLike(false);
+            e.stopPropagation(); // stop popup
+
+            $.ajax({
+                cache: false,
+                type: "POST",
+                url: '@Url.Action("UpdateLike", "Post")',
+                data: { postid: data.PostId },
+                beforeSend: function (xhr) {
+                    // disable like and chage class
+
+                },
+                success: function () {
+                    data.SumLike(data.SumLike() + 1); // update interface
+                }
+            });
+
+        };
         self.detailPost = function (data, e) { // chi tiet post bao gom tra loi
 
             self.newReply('');

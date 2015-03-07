@@ -779,6 +779,9 @@ input[name=BullBear]{
 .list-status .bg-white:hover{    
     background-color: #FEF2BE;    
 }
+.list-status .bg-white a:hover{    
+    text-decoration : underline;  
+}
 .avata-genaral-size{
     float:left;
     width: 50px;
@@ -857,6 +860,7 @@ input[name=BullBear]{
 .list-item-control a:hover > i{
     color:#295477;
     background-color: #eee;
+    text-decoration:none !important;
 }
 .danphim{
     margin-bottom: 10px!important;
@@ -1566,4 +1570,32 @@ button
     margin-left: 10px;
 }
 
-.likeAndPin
+.likeAndPin span{
+    font-size: 9pt; color: #328ac5; font-weight:bold;
+}
+/* style 2*/
+.likeAndPin button {
+    font-size: 12pt; padding: 0px; color: #929292; 
+    cursor:pointer;
+    background-color : transparent !important; 
+    color: #328ac5 !important; 
+}
+.likeAndPin button:disabled {    
+    background-color : transparent !important; 
+    color: #B7DCEA !important; 
+} 
+
+ /* style 2 
+.likeAndPin button {
+    font-size: 12pt !important; padding: 0px; color: #929292; 
+    background-color : transparent !important; 
+    color: black!important;
+    cursor:pointer;
+}
+.likeAndPin button:disabled {
+    
+    color:black !important;
+    background-color : transparent !important; 
+}*/
+
+    
