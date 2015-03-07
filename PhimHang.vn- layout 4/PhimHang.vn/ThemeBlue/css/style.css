@@ -102,7 +102,7 @@ textarea {
     line-height: 50px;	
 }
 #top-banner-right{
-    width: 350px;   
+    /*width: 350px;*/   
     line-height: 50px;	
 }
 .logo{
@@ -110,11 +110,13 @@ textarea {
     font-family: 'Waltograph';    
     font-size: 3.0rem;
     line-height: 45px;	
+    
 }
 .logo img{
-    margin-top:5px;    
+    margin-top:6px;    
     max-height: 40px;
-    border-radius:5px;
+    /*border-radius:5px;*/
+    width: 38px;
 }
 .top-banner-icon{padding: 2px 12px 0px 12px;}
 #top-banner-center > .top-banner-icon > a > i,#top-banner-center > .top-banner-icon > a >span> i,
@@ -128,7 +130,7 @@ textarea {
     margin-left: 20px;
     margin-right: 15px;
     background-color: #FFF;    
-    padding: 5px;    
+    padding: 10px 5px 10px 5px;    
     /*border-radius: 5px;*/
     padding-left: 10px;
 }
@@ -137,7 +139,7 @@ textarea {
     margin-top: 4px;
     padding: 3px;   
     height: 20px;
-    width: 250px;
+    width: 280px;
 }
 #search_box_top > i{
     font-size: 14px;
@@ -188,19 +190,20 @@ textarea {
 /*
     menu second
 */
-.menu-top-bar{
+.menu-top-bar {
     width: 100%;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
-    border-radius: 0;    
-    min-height: 40px;    
+    border-radius: 0;
+    /* min-height: 40px; */
     background: #fff;
     overflow: hidden;
-    border-bottom: 1px solid #000;    
+    /* border-bottom: 1px solid #000; */
     position: fixed;
-    top:50px;
+    top: 50px;
     z-index: 10001;
-    /*    padding-top: 3px;*/
+    /* padding-top: 3px; */
+    box-shadow: 0 4px 2px -2px gray;
 }
 .menu-top-bar-fix{
     position: fixed;
@@ -219,7 +222,7 @@ ul.top-panel-left2 > li:not(:first-child):hover{
     border:1px solid #fff;
     border-top:none;
     border-bottom:none;
-    line-height: 40px;
+    line-height: 30px;
     padding-left: 10px;    
     padding-right: 10px;    
 }
@@ -254,7 +257,7 @@ ul.top-panel-left2 > li:not(:first-child):hover{
     margin: 0px auto;     
 }
 .content-main{
-    margin-top: 85px;         
+    margin-top: 76px;         
 }
 .content-main2{
     position: relative;
@@ -269,9 +272,12 @@ ul.top-panel-left2 > li:not(:first-child):hover{
 }
 .top-panel-left2{    
     float:left;
+    font-family:Arial;
 }
 .top-panel-right2{       
     float: right;
+    
+
 }
 .top-menu-2-active{
     font-weight: bold; 
@@ -548,6 +554,7 @@ a.follow-button-mini:hover{
     background-color: #fff;
     border:1px solid #ddd;
     float: left;
+    margin-left:15px;
 }
 .input-status-text > textarea{
     height: 25px;
@@ -563,13 +570,14 @@ a.follow-button-mini:hover{
     margin-top: 9px;
     width: 100%;
     display: none;
+    left:15px;
 }
 .choose_file{
     position:relative;
     display:inline-block;      
     color:#2696C0;
     padding: 5px 9px 5px 9px;
-    border: 1px solid #328AC5;
+    border: 1px solid #B6DBF4;
 }
 .choose_file i{
     font-size:1.6rem;
@@ -635,15 +643,15 @@ input[name=BullBear]{
     padding:2px 5px 2px 5px;
 }
 .filer-bar-item a.active {
-        border: 1px solid #328ac5;
+        border: 1px solid #CF000F;
         padding: 5px 14px 5px 14px;
-        background: #328ac5;
+        background: #CF000F;
         color: white;
         font-weight:bold;
         border-radius:2px;
     }
 .filer-bar-item a:hover {
-        border: 1px solid #328ac5;        
+        /*border: 1px solid #328ac5;*/        
         border-radius:2px;                
     }
 .bg-white-custom{
@@ -777,7 +785,7 @@ input[name=BullBear]{
     position: relative;
 }
 .list-status .bg-white:hover{    
-    background-color: #FEF2BE;    
+    background-color: #ECF2F5;    
 }
 .list-status .bg-white a:hover{    
     text-decoration : underline;  
@@ -882,8 +890,8 @@ input[name=BullBear]{
 }
 .list-comment .avata-genaral-size,.avata-comment{
     float:left;
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     margin: 5px;
     /*border-radius: 3px;*/
     /*border: 2px solid #ddd;*/
@@ -1368,7 +1376,7 @@ a.category-tab:hover{
     opacity: 0.8;
 }   
 .ui-dialog {    
-    position: fixed;
+    /*position: fixed;*/
     top:30px !important;
     max-height: 700px!important;
 } 
@@ -1598,4 +1606,12 @@ button
     background-color : transparent !important; 
 }*/
 
-    
+.content-main-top {
+    width: 1200px;
+    margin: 0px auto;
+    overflow: hidden;
+}
+
+.IndexBar{
+    font-size:9pt !important;
+}

@@ -1,5 +1,5 @@
 ﻿.NotificationCenter{
-    height:25px;
+    height:55px;
     width: 100%;
     top:0px;
     text-align: center;
@@ -12,7 +12,9 @@
 }
 
 #textNoti{
-    top:3px;
+   top: 15px;
+font-size: 20px;
+font-family: arial;
 }
 
 .MessegeNofity {

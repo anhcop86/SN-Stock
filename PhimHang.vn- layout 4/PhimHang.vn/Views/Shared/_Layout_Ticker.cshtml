@@ -90,65 +90,68 @@
          <span id="textNoti"></span>
      </div>
      <div id="top-banner" class="w100p bg-blue">
-         <div class="f-left" id="top-banner-left">
-             <a href="/myprofile" class="logo" title="Cùng Phím">
-                 <img src="/img/logo.png" alt="Cùng Phím">
-             </a>
-         </div>
-         <div class="f-left" id="top-banner-center">
-             @{
-                 if (User.Identity.IsAuthenticated)
-                 {
-                      <div class="toSpan top-banner-icon f-left">
-                         <a href="/user/@User.Identity.Name/tab/1"><i class="fa fa-home"></i></a>
-                     </div>
-                     <div class="toSpan top-banner-icon f-left">
-                         <a href="/myprofile/MessagesCenter"><i class="fa fa-comments-o"></i></a>
-                          @if (ViewBag.NewMessege > 0)
-                            {
-                                <span id="CreateMesseger">
-                                    <span class="MessegeNofity">@ViewBag.NewMessege</span>
-                                </span>
-                            }
-                            else
-                            {
-                                <span id="CreateMesseger"></span>
-                            }
-                     </div>
-                 }
-             }
-            
-             <div class="toSpan top-banner-icon f-left">
-                 <a id="btn-config" href="#" data-dropdown="#dropdown-1">
-                     <span style="padding-right: 5px;"><i class="fa fa-cog"></i></span>
+         <div class="content-main-top">
+             <div class="f-left" id="top-banner-left">
+                 <a href="/myprofile" class="logo" title="Cùng Phím">
+                     <img src="/img/logo.png" alt="Cùng Phím">
                  </a>
-                 <div id="dropdown-1" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
-                     <ul class="dropdown-menu">
-                         <li><a href="/myprofile">Profile</a></li>
-                         <li><a href="/account/profile">Setting</a></li>                         
-                         <li class="dropdown-divider"></li>
-                         @{
-                                if (User.Identity.IsAuthenticated)
-                                {
-                                    @: @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-                                    {
-                                        @Html.AntiForgeryToken()
-                                        <li><a href="javascript:document.getElementById('logoutForm').submit()">Logout</a></li>
-                                    }
+             </div>
+             <div class="f-right" id="top-banner-center">
+                 @{
+                     if (User.Identity.IsAuthenticated)
+                     {
+                         <div class="toSpan top-banner-icon f-left">
+                             <span>Trang chủ</span>
+                             <a href="/user/@User.Identity.Name/tab/1"><i class="fa fa-home"></i></a>
+                         </div>
+                         <div class="toSpan top-banner-icon f-left">
+                             <a href="/myprofile/MessagesCenter"><i class="fa fa-comments-o"></i></a>
+                             @if (ViewBag.NewMessege > 0)
+                             {
+                                 <span id="CreateMesseger">
+                                     <span class="MessegeNofity">@ViewBag.NewMessege</span>
+                                 </span>
+                             }
+                             else
+                             {
+                                 <span id="CreateMesseger"></span>
+                             }
+                         </div>
+                     }
+                 }
+
+                 <div class="toSpan top-banner-icon f-left">
+                     <a id="btn-config" href="#" data-dropdown="#dropdown-1">
+                         <span style="padding-right: 5px;"><i class="fa fa-cog"></i></span>
+                     </a>
+                     <div id="dropdown-1" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
+                         <ul class="dropdown-menu">
+                             <li><a href="/myprofile">Profile</a></li>
+                             <li><a href="/account/profile">Setting</a></li>
+                             <li class="dropdown-divider"></li>
+                             @{
+                                 if (User.Identity.IsAuthenticated)
+                                 {
+                                     @: @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                     {
+                                         @Html.AntiForgeryToken()
+                                         <li><a href="javascript:document.getElementById('logoutForm').submit()">Logout</a></li>
+                                     }
                                                          }
-                                else
-                                {
-                                    <li><a href="/Account/Login">Login</a></li>
-                                }
-                            }
-                     </ul>
+                                 else
+                                 {
+                                     <li><a href="/Account/Login">Login</a></li>
+                                 }
+                             }
+                         </ul>
+                     </div>
                  </div>
              </div>
-         </div>
-         <div class="f-right" id="top-banner-right">
-             <div class="toSpan f-right">
-                    <!--search-->
-                     @Html.Partial("_Partial_Area_Search_Profile")                 
+             <div class="f-left" id="top-banner-right">
+                 <div class="toSpan f-right">
+                     <!--search-->
+                     @Html.Partial("_Partial_Area_Search_Profile")
+                 </div>
              </div>
          </div>
      </div>
@@ -206,7 +209,7 @@
                      </a>
                  </li>
              </ul>
-             <ul class="nav navbar-nav pull-right top-panel-right2">
+             <ul  class="nav navbar-nav pull-right top-panel-right2">
                 @Html.Partial("_Partial_Area_Index")
              </ul>
          </div>
@@ -235,303 +238,8 @@
              </div>
          </div>
      </div>
-     <div class="alway-bottom-left">
-         <span style="font-weight: bold;">LỌC THEO MÃ CP KHÁC:</span>
-         <a href="#" id="btnBottomPrev"><span>&lt;</span></a>
-     </div>
-     <div class="alway-bottom">
-         <ul class="alpha-bottom">
-             <li>&nbsp;</li><li>
-                 <a class="btnAlpha" href="#">A</a>
-                 <div class="listCP">
-                     <ul>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                     </ul>
-                 </div>
-             </li><li> <!-- fix o cho nay anh nhe-->
-                 <a class="btnAlpha" href="#">B</a>
-                 <div class="listCP">
-                     <ul>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                     </ul>
-                 </div>
-             </li><li>
-                 <a class="btnAlpha" href="#">C</a>
-                 <div class="listCP">
-                     <ul>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                     </ul>
-                 </div>
-             </li><li>
-                 <a class="btnAlpha" href="#">D</a>
-                 <div class="listCP">
-                     <ul>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                     </ul>
-                 </div>
-             </li><li>
-                 <a class="btnAlpha" href="#">E</a>
-                 <div class="listCP">
-                     <ul>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                     </ul>
-                 </div>
-             </li><li>
-                 <a class="btnAlpha" href="#">F</a>
-                 <div class="listCP">
-                     <ul>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                     </ul>
-                 </div>
-             </li><li>
-                 <a class="btnAlpha" href="#">G</a>
-                 <div class="listCP">
-                     <ul>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                     </ul>
-                 </div>
-             </li><li>
-                 <a class="btnAlpha" href="#">H</a>
-                 <div class="listCP">
-                     <ul>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                     </ul>
-                 </div>
-             </li><li>
-                 <a class="btnAlpha" href="#">I</a>
-                 <div class="listCP">
-                     <ul>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                     </ul>
-                 </div>
-             </li><li>
-                 <a class="btnAlpha" href="#">J</a>
-                 <div class="listCP">
-                     <ul>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                     </ul>
-                 </div>
-             </li><li>
-                 <a class="btnAlpha" href="#">K</a>
-                 <div class="listCP">
-                     <ul>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-
-                     </ul>
-                 </div>
-             </li><li>
-                 <a class="btnAlpha" href="#">L</a>
-                 <div class="listCP">
-                     <ul>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-
-                     </ul>
-                 </div>
-             </li><li>
-                 <a class="btnAlpha" href="#">M</a>
-                 <div class="listCP">
-                     <ul>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-
-                     </ul>
-                 </div>
-             </li><li>
-                 <a class="btnAlpha" href="#">N</a>
-                 <div class="listCP">
-                     <ul>
-                         <li><a href="index.html">$VNM</a></li>
-                     </ul>
-                 </div>
-             </li><li>
-                 <a class="btnAlpha" href="#">O</a>
-                 <div class="listCP">
-                     <ul>
-                         <li><a href="index.html">$VNM</a></li>
-                     </ul>
-                 </div>
-             </li><li>
-                 <a class="btnAlpha" href="#">P</a>
-                 <div class="listCP">
-                     <ul>
-                         <li><a href="index.html">$VNM</a></li>
-                     </ul>
-                 </div>
-             </li><li>
-                 <a class="btnAlpha" href="#">Q</a>
-                 <div class="listCP">
-                     <ul>
-                         <li><a href="index.html">$VNM</a></li>
-                     </ul>
-                 </div>
-             </li><li>
-                 <a class="btnAlpha" href="#">R</a>
-                 <div class="listCP">
-                     <ul>
-                         <li><a href="index.html">$VNM</a></li>
-                     </ul>
-                 </div>
-             </li><li>
-                 <a class="btnAlpha" href="#">S</a>
-                 <div class="listCP">
-                     <ul>
-                         <li><a href="index.html">$VNM</a></li>
-                     </ul>
-                 </div>
-             </li><li>
-                 <a class="btnAlpha" href="#">T</a>
-                 <div class="listCP">
-                     <ul>
-                         <li><a href="index.html">$VNM</a></li>
-                     </ul>
-                 </div>
-             </li><li>
-                 <a class="btnAlpha" href="#">U</a>
-                 <div class="listCP">
-                     <ul>
-                         <li><a href="index.html">$VNM</a></li>
-                     </ul>
-                 </div>
-             </li><li>
-                 <a class="btnAlpha" href="#">V</a>
-                 <div class="listCP">
-                     <ul>
-                         <li><a href="index.html">$VNM</a></li>
-                     </ul>
-                 </div>
-             </li><li>
-                 <a class="btnAlpha" href="#">W</a>
-                 <div class="listCP">
-                     <ul>
-                         <li><a href="index.html">$VNM</a></li>
-                     </ul>
-                 </div>
-             </li><li>
-                 <a class="btnAlpha" href="#">X</a>
-                 <div class="listCP">
-                     <ul>
-                         <li><a href="index.html">$VNM</a></li>
-                     </ul>
-                 </div>
-             </li><li>
-                 <a class="btnAlpha" href="#">Y</a>
-                 <div class="listCP">
-                     <ul>
-                         <li><a href="index.html">$VNM</a></li>
-                     </ul>
-                 </div>
-             </li><li>
-                 <a class="btnAlpha" href="#">Z</a>
-                 <div class="listCP">
-                     <ul>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                         <li><a href="index.html">$VNM</a></li>
-                     </ul>
-                 </div>
-             </li><li>
-                 &nbsp;
-             </li>
-         </ul>
-     </div>
-     <div class="alway-bottom-right">
-         <span><a href="#" id="btnBottomNext">&gt;</a></span>
-     </div> 
+    
+     
         
         @RenderSection("scripts", required: false)
     </body>

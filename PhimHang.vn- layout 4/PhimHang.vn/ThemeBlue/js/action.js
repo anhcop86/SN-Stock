@@ -7,7 +7,7 @@ $(document).ready(function () {
     dialog = $("#dialog").dialog({
         modal: true,
         width: 650,        
-        //resizable: false,
+        resizable: true,
         autoOpen: false,
     });
     $(".ui-dialog-titlebar").hide();

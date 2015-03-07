@@ -156,7 +156,7 @@
                             <div class="status-control">                                    
                                         <div id="btnPhim" class="f-right">
                                             <span data-bind="text : countReply"></span>
-                                            <button id="btAddPost" style="cursor:pointer" class="button-phim" data-bind=" enable: enablePhimHangReply , click : addReply ">Trả lời</button>
+                                            <button id="btAddReply" style="cursor:pointer" class="button-phim" data-bind=" enable: enablePhimHangReply , click : addReply ">Trả lời</button>
                                         </div>                                    
                             </div>
                         </form>
@@ -363,6 +363,7 @@
         }
 
         self.addReply = function () { // them tra loi
+            $('#btAddReply').attr("disabled", true); // disble ngay khong de click them
             commenthub.server.addReply({ "Message": self.newReply(), "PostedBy": postidCurrent }, "KEYMYPROFILE", '@ViewBag.CureentUserId', '@ViewBag.UserName', '@ViewBag.AvataEmage')
                 .done(function () {
                     showNotification('Bạn đã trả lời thành công!');

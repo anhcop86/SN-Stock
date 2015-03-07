@@ -70,69 +70,71 @@
         <span id="textNoti"></span>
     </div>
     <div id="top-banner" class="w100p bg-blue">
-        <div class="f-left" id="top-banner-left">
-            <a href="/myprofile" class="logo" title="Cùng Phím">
-                <img src="/img/logo.png" alt="Cùng Phím">
-            </a>
-        </div>
-        <div class="f-left" id="top-banner-center">
-            @{
-                if (User.Identity.IsAuthenticated)
-                {
-                    <div class="toSpan top-banner-icon f-left">
-                        <a href="/user/@User.Identity.Name/tab/1"><i class="fa fa-home"></i></a>
-                    </div>
-                    <div class="toSpan top-banner-icon f-left">
-                        <a href="/myprofile/MessagesCenter"><i class="fa fa-comments-o"></i></a>
-                        @if (ViewBag.NewMessege > 0)
-                        {
-                            <span id="CreateMesseger">
-                                <span class="MessegeNofity">@ViewBag.NewMessege</span>
-                            </span>
-                        }
-                        else
-                        {
-                            <span id="CreateMesseger"></span>
-                        }
-    
-                    </div>
-                }
-            }
-            <div class="toSpan top-banner-icon f-left">
-                <a id="btn-config" href="#" data-dropdown="#dropdown-1">
-                    <span style="padding-right: 5px;"><i class="fa fa-cog"></i></span>
+        <div class="content-main-top">
+            <div class="f-left" id="top-banner-left">
+                <a href="/myprofile" class="logo" title="Cùng Phím">
+                    <img src="/img/logo.png" alt="Cùng Phím">
                 </a>
-                <div id="dropdown-1" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
-                    <ul class="dropdown-menu">
-                        <li><a href="/myprofile">Profile</a></li>
-                        <li><a href="/account/profile">Setting</a></li>  
-                        <li class="dropdown-divider"></li>
-                        @{
-                            if (User.Identity.IsAuthenticated)
+            </div>
+            <div class="f-left" id="top-banner-center">
+                @{
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        <div class="toSpan top-banner-icon f-left">
+                            <a href="/user/@User.Identity.Name/tab/1"><i class="fa fa-home"></i></a>
+                        </div>
+                        <div class="toSpan top-banner-icon f-left">
+                            <a href="/myprofile/MessagesCenter"><i class="fa fa-comments-o"></i></a>
+                            @if (ViewBag.NewMessege > 0)
                             {
-                                @: @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-                                {
-                                    @Html.AntiForgeryToken()
-                                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Logout</a></li>
-                                }
-                                                     }
+                                <span id="CreateMesseger">
+                                    <span class="MessegeNofity">@ViewBag.NewMessege</span>
+                                </span>
+                            }
                             else
                             {
-                                <li><a href="/Account/Login">Login</a></li>
+                                <span id="CreateMesseger"></span>
                             }
-                        }
-                    </ul>
+
+                        </div>
+                    }
+                }
+                <div class="toSpan top-banner-icon f-left">
+                    <a id="btn-config" href="#" data-dropdown="#dropdown-1">
+                        <span style="padding-right: 5px;"><i class="fa fa-cog"></i></span>
+                    </a>
+                    <div id="dropdown-1" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
+                        <ul class="dropdown-menu">
+                            <li><a href="/myprofile">Profile</a></li>
+                            <li><a href="/account/profile">Setting</a></li>
+                            <li class="dropdown-divider"></li>
+                            @{
+                                if (User.Identity.IsAuthenticated)
+                                {
+                                    @: @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <li><a href="javascript:document.getElementById('logoutForm').submit()">Logout</a></li>
+                                    }
+                                                     }
+                                else
+                                {
+                                    <li><a href="/Account/Login">Login</a></li>
+                                }
+                            }
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="f-right" id="top-banner-right">
-            <div class="toSpan f-right">
-                <form id="frmSearch">
-                    <span id="search_box_top">
-                        <input name="q" id="kq" placeholder="MÃ CỔ PHIẾU ($VNM) hoặc USERNAME" title="Search" autocomplete="off" type="text">
-                        <i class="fa fa-search"></i>
-                    </span>
-                </form>
+            <div class="f-right" id="top-banner-right">
+                <div class="toSpan f-right">
+                    <form id="frmSearch">
+                        <span id="search_box_top">
+                            <input name="q" id="kq" placeholder="MÃ CỔ PHIẾU ($VNM) hoặc USERNAME" title="Search" autocomplete="off" type="text">
+                            <i class="fa fa-search"></i>
+                        </span>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
