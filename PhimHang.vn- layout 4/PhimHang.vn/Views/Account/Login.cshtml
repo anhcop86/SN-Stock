@@ -6,31 +6,34 @@
 }
 @model PhimHang.Models.LoginViewModel
 <link href="~/ThemeBlue/css/login.css" rel="stylesheet" />
+<link href="~/ThemeBlue/css/HomeLoginReponesive.css" rel="stylesheet" />
 <div id="outer-frame">
     <div id="page-content">
         <div id="login-or-register-page-content">
-            <img src="/images/Untitled.png" class="login-or-register-img">
-            <div class="login-register-container  standard">
-                <div class="login-register-login-part">
-                    <div class="clearfix">
-                        <div class="login-register-header">Sign in</div>
-                        <div class="login-register-switch">or
-                            <a class="login-register-switch-link">create an account</a>
-                        </div>
+            @*<img src="/images/Untitled.png" class="login-or-register-img">*@
+            <div class="top-sidebar">
+                <div class="login-register-container  standard">
+                    <div class="login-register-login-part">
+                        <div class="clearfix">
+                            <div class="login-register-header">Sign in</div>
+                            <div class="login-register-switch">
+                                or
+                                <a class="login-register-switch-link">create an account</a>
+                            </div>
 
-                    </div>
-                    <div class="login-form-container  standard">
-                        @*<form action="/" method="post" class="clearfix login-form">*@
+                        </div>
+                        <div class="login-form-container  standard">
+                            @*<form action="/" method="post" class="clearfix login-form">*@
                             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "clearfix login-form" }))
                             {
                                 @Html.AntiForgeryToken()
 
                                 <div class="text-input login-text-input standard">
                                     <div class="text-input-error-wrapper">@Html.ValidationSummary(true) @Html.ValidationMessageFor(m => m.UserName)</div>
-                                    
+
                                     <div class="text-input-wrapper">
                                         @Html.TextBoxFor(m => m.UserName, new { @class = "text-input-input autofocus", placeholder = "Username" })
-                                       @* <input type="email" name="login_email" class="text-input-input autofocus" placeholder="User name" />*@
+                                        @* <input type="email" name="login_email" class="text-input-input autofocus" placeholder="User name" />*@
                                     </div>
                                 </div>
                                 <div class="text-input login-password login-text-input standard">
@@ -55,6 +58,7 @@
                                 <div class="login-need-help"><a href="/forgot">Forgot your password?</a></div>
                             }
                         </div>
+                    </div>
                 </div>
             </div>
         </div>

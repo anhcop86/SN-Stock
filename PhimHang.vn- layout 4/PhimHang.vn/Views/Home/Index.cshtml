@@ -4,6 +4,68 @@
     Layout = "~/Views/Shared/_Layout_Home.cshtml";
 }
 
-<div class="area-center">
+@*<div class="area-center">
     <img src="/images/company_logo.jpg?width=1200&height=650&mode=crop" />
-</div>
+</div>*@
+
+
+@model PhimHang.Models.LoginViewModel
+           @{
+               if (!User.Identity.IsAuthenticated)
+               {
+                   <div class="top-sidebar">
+                        <div class="login-register-container  standard">
+                            <div class="login-register-login-part">
+                                <div class="clearfix">
+                                    <div class="login-register-header">Sign in</div>
+                                    <div class="login-register-switch">
+                                        or
+                                        <a class="login-register-switch-link">create an account</a>
+                                    </div>
+
+                                </div>
+                                <div class="login-form-container  standard">
+                                    @*<form action="/" method="post" class="clearfix login-form">*@
+                                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = "/myprofile" }, FormMethod.Post, new { @class = "clearfix login-form" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+
+                                        <div class="text-input login-text-input standard">
+                                            <div class="text-input-error-wrapper">@Html.ValidationSummary(true) @Html.ValidationMessageFor(m => m.UserName)</div>
+
+                                            <div class="text-input-wrapper">
+                                                @Html.TextBoxFor(m => m.UserName, new { @class = "text-input-input autofocus", placeholder = "Username" })
+                                                @* <input type="email" name="login_email" class="text-input-input autofocus" placeholder="User name" />*@
+                                            </div>
+                                        </div>
+                                        <div class="text-input login-password login-text-input standard">
+                                            <div class="text-input-error-wrapper">@Html.ValidationMessageFor(m => m.Password)</div>
+                                            <div class="text-input-wrapper">
+                                                @Html.PasswordFor(m => m.Password, new { @class = "password-input text-input-input", placeholder = "Password" })
+                                                @*<input type="password" name="login_password" class="password-input text-input-input" placeholder="User name" />*@
+                                            </div>
+                                        </div>
+                                        <div class="clearfix">
+                                            <div class="sso-description"></div>
+                                            <div class="checkbox checkbox-inline standard remember-me">
+                                                <div class="text-input-error-wrapper"></div>
+                                                @Html.CheckBoxFor(m => m.RememberMe)
+                                                @*<input checked="checked" type="checkbox" name="remember_me" id="pyxl1186533921719020216">*@
+                                                <label>Remember me</label>
+                                            </div>
+                                            <button type="submit" class="login-button button-primary">
+                                                <div class="sign-in-text">Sign in</div>
+                                            </button>
+                                        </div>
+                                        <div class="login-need-help"><a href="#">Forgot your password?</a></div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+               }
+           }
+
