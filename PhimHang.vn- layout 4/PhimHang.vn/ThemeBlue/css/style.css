@@ -115,7 +115,7 @@ textarea {
 .logo img{
     margin-top:6px;    
     max-height: 40px;
-    /*border-radius:5px;*/
+    border-radius:5px;
     width: 38px;
 }
 .top-banner-icon{padding: 2px 12px 0px 12px;}
@@ -127,7 +127,7 @@ textarea {
 }
 #search_box_top {    
     width: 300px;   
-    margin-left: 20px;
+    margin-left: 10px;
     margin-right: 15px;
     background-color: #FFF;    
     padding: 10px 5px 10px 5px;    
@@ -311,7 +311,7 @@ ul.top-panel-left2 > li:not(:first-child):hover{
     background-color: #E3F0E3;
     color: #60A85F;
     border:1px solid #D9E5D9;
-    border-radius:3px;
+    /*border-radius:3px;*/
     font-family: Arial,sans-serif;
     font-size: 1.1rem;
     font-weight: bold;
@@ -345,7 +345,7 @@ ul.top-panel-left2 > li:not(:first-child):hover{
     font-size: 1.1rem;
     font-weight: bold;
     padding: 3px;    
-    border-radius:3px;
+    /*border-radius:3px;*/
     float:right;
 }
 .bearish{
@@ -662,11 +662,11 @@ input[name=BullBear]{
         background: #CF000F;
         color: white;
         font-weight:bold;
-        border-radius:2px;
+        /*border-radius:2px;*/
     }
 .filer-bar-item a:hover {
         /*border: 1px solid #328ac5;*/        
-        border-radius:2px;                
+        /*border-radius:2px;*/                
     }
 .bg-white-custom{
     background-color: #fff;
