@@ -612,7 +612,7 @@
             $("#idPostedDateDetail").html(data.PostedDate);
             $("#idPostNameDetail").html(data.PostedByName);
             $("#idImgPostDetail").attr('src', data.PostedByAvatar);
-            $("#idPostMessenge").html(data.Message.replace("?width=215&height=120&mode=crop", "?maxwidth=475&maxheight=200&mode=crop"));//=200&s.grayscale=true|"
+            $("#idPostMessenge").html(data.Message.replace("?width=215&height=120&mode=crop", "?maxwidth=475"));//=200&s.grayscale=true|"
             $("#idStmDetail").html(data.Stm);
             postidCurrent = data.PostId;            
             $("#IdLoadMoreConversation").attr('href', '/PostDetail?postid=' + postidCurrent);            
@@ -649,7 +649,7 @@
         }
 
         self.enablePhimHang = ko.computed(function () {
-            return self.newMessage().length <= 200 && self.newMessage().length >= 6;
+            return self.newMessage().length <= 200 && self.newMessage().length >= 6 && self.newMessage().indexOf('<',0) == -1;
         });
 
         self.count = ko.computed(function () {
@@ -657,7 +657,7 @@
             return countNum;
         });
         self.enablePhimHangReply = ko.computed(function () {
-            return self.newReply().length <= 140 && self.newReply().length >= 6;
+            return self.newReply().length <= 140 && self.newReply().length >= 6 && self.newReply().indexOf('<', 0) == -1;
         });
         self.countReply = ko.computed(function () {
             var countNum = 140 - self.newReply().length;

@@ -1,131 +1,76 @@
-﻿@model PhimHang.Models.RegisterViewModel
-@{
-    ViewBag.Title = "Register";
-}
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
-@{
+﻿@{
     Layout = null;
 }
+@model PhimHang.Models.RegisterViewModel    
+<link href="~/ThemeBlue/css/login.css" rel="stylesheet" />
+<link href="~/ThemeBlue/css/HomeLoginReponesive.css" rel="stylesheet" />
+<div id="outer-frame">
+    <div id="page-content">
+        <div id="login-or-register-page-content">
+            @*<img src="/images/Untitled.png" class="login-or-register-img">*@
+            <div class="top-sidebar">
+                <div class="login-register-container  standard">
+                    <div class="login-register-login-part">
+                        <div class="clearfix">
+                            <div class="login-register-header">Create an account</div>
+                            <div class="login-register-switch">
+                                
+                                <a href="/" class="login-register-switch-link">Sign in</a>
+                            </div>
 
-@*<h2>@ViewBag.Title.</h2>
-
-        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-        {
-            @Html.AntiForgeryToken()
-            <h4>Create a new account.</h4>
-            <hr />
-            @Html.ValidationSummary()
-             <div class="form-group">
-                @Html.LabelFor(m => m.FullName, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.FullName, new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" class="btn btn-default" value="Register" />
-                </div>
-            </div>
-        }
-
-
-
-    <!DOCTYPE html>
-    <!-- saved from url=(0020)https://imo.im/login -->
-    <html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <style type="text/css">
-            .ng-cloak, .x-ng-cloak, .ng-hide {
-                display: none !important;
-            }
-
-            ng\:form {
-                display: block;
-            }
-        </style>
-        <!--[if lt IE 9]><script src="/s/assets/lib/html5shiv.d3d35aa8.js"></script><script>
-        document.createElement('input-container');
-        document.createElement('spinner');</script><![endif]-->
-        <title>Đăng ký tài khoản</title>
-        <meta content="Stay in touch with your family and friends with imo&#39;s free text, voice and video chat." name="description">
-        <meta content="chrome=1" http-equiv="X-UA-Compatible">
-        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"><!-- fb -->
-
-
-        <link href="~/Content/ThirtParty/imo.css" rel="stylesheet" />
-
-
-        <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    </head><!-- IE8 fix -->
-    <body main="" class="ng-scope" style="background-image: url( '/images/Login_Image.jpg');">
-        <!-- Root element of template can't be <body>; see angular issue #1459 --><div id="signup">
-            <div id="aside"><div class="imo-logo-wrapper"></div><h1 class="big-title ng-scope" translate="">Join with millions of people</h1><p class="subtitle ng-scope" translate="">Join millions of people using imo for free messaging, voice and video calls.</p></div><div id="login-register-container" register-login="">
-                <div class="header"><a href="/Account/Register" class="tab register selected" ng-click="selectTab(REGISTER)" ng-class="{selected: selectedForm == REGISTER}" translate="">Register</a><a href="/Account/Login" class=" tab login" ng-click="selectTab(LOGIN)" ng-class="{selected: selectedForm == LOGIN}" translate="">login</a></div><!-- ngIf: selectedForm == LOGIN -->
-                <login ng-if="selectedForm == LOGIN" class="ng-scope">
-                    <div class="col-md-8">
-                        <section id="loginForm">
-                            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        </div>
+                        <div class="login-form-container  standard">
+                            @*<form action="/" method="post" class="clearfix login-form">*@
+                            @using (Html.BeginForm("Register", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "clearfix login-form" }))
                             {
                                 @Html.AntiForgeryToken()
-                                <h4>Tạo tài khoản mới nào</h4>
-                                <hr />
-                                @Html.ValidationSummary()
-                                <div class="form-group">
-                                    @Html.LabelFor(m => m.FullName, new { @class = "col-md-2 control-label" })
-                                    <div class="col-md-10">
-                                        @Html.TextBoxFor(m => m.FullName, new { @class = "form-control" })
+
+                                <div class="text-input login-text-input standard">
+                                    <div class="text-input-error-wrapper">@Html.ValidationSummary(true) @Html.ValidationMessageFor(m => m.UserName)</div>
+
+                                    <div class="text-input-wrapper">
+                                        @Html.TextBoxFor(m => m.UserName, new { @class = "text-input-input autofocus", placeholder = "Tên đăng nhập" })                                        
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
-                                    <div class="col-md-10">
-                                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                                <div class="text-input login-password login-text-input standard">
+                                    <div class="text-input-error-wrapper">@Html.ValidationMessageFor(m => m.FullName)</div>
+                                    <div class="text-input-wrapper">
+                                        @Html.TextBoxFor(m => m.FullName, new { @class = "password-input text-input-input", placeholder = "Họ và tên" })
+                                        @*<input type="password" name="login_password" class="password-input text-input-input" placeholder="User name" />*@
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                                    <div class="col-md-10">
-                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                <div class="text-input login-password login-text-input standard">
+                                    <div class="text-input-error-wrapper">@Html.ValidationMessageFor(m => m.Password)</div>
+                                    <div class="text-input-wrapper">
+                                        @Html.PasswordFor(m => m.Password, new { @class = "password-input text-input-input", placeholder = "Mật khẩu" })
+                                        @*<input type="password" name="login_password" class="password-input text-input-input" placeholder="User name" />*@
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-                                    <div class="col-md-10">
-                                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                                 <div class="text-input login-password login-text-input standard">
+                                    <div class="text-input-error-wrapper">@Html.ValidationMessageFor(m => m.ConfirmPassword)</div>
+                                    <div class="text-input-wrapper">
+                                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "password-input text-input-input", placeholder = "Nhập lại mật khẩu" })
+                                        @*<input type="password" name="login_password" class="password-input text-input-input" placeholder="User name" />*@
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-md-offset-2 col-md-10">
-                                        <input type="submit" class="btn btn-default" value="Register" />
+                                <div class="clearfix">
+                                    <div class="sso-description"></div>
+                                    <div class="checkbox checkbox-inline standard remember-me">
+                                        <div class="text-input-error-wrapper"></div>
+                                        @*@Html.CheckBoxFor(m => m.RememberMe)*@
+                                        @*<input checked="checked" type="checkbox" name="remember_me" id="pyxl1186533921719020216">*@
+                                        @*<label>Remember me</label>*@
                                     </div>
+                                    <button type="submit" class="login-button button-primary">
+                                        <div class="sign-in-text">Register</div>
+                                    </button>
                                 </div>
+                                @*<div class="login-need-help"><a href="#">Forgot your password?</a></div>*@
                             }
-                        </section>
+                        </div>
                     </div>
-                </login>
-                <modals class="ng-scope"></modals>
+                </div>
             </div>
         </div>
-    </body>
-    </html>*@
+    </div>
+</div>

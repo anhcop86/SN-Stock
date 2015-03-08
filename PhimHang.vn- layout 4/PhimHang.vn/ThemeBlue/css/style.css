@@ -366,6 +366,10 @@ ul.top-panel-left2 > li:not(:first-child):hover{
     width: 580px;    
     margin: 10px 16px 0px 16px;
 }
+.area-center-user{
+    width: 580px;    
+    /*margin: 10px 16px 0px 16px;*/
+}
 .area-right{
     width: 280px;  
     margin-top: 10px;
@@ -620,7 +624,7 @@ a.follow-button-mini:hover{
     padding: 5px 15px 5px 15px;
     background-color: #B7DCEA;
     color:#EAF5F9!important;
-    border-radius: 5px;
+    /*border-radius: 5px;*/
 }
 /*.button-phim{
     padding: 5px 15px 5px 15px;
@@ -1030,7 +1034,7 @@ a.follow-button1{
     margin-top: 5px;
     padding: 3px 5px;
     border:1px solid #ddd;
-    border-radius: 5px;
+    /*border-radius: 5px;*/
     color: #295477;
 }
 a.follow-button1:hover{
@@ -1253,7 +1257,7 @@ a.category-tab:hover{
     border: 1px solid #ddd;
     color:#000;
     background-color: #F5F5F5;
-    border-radius: 5px;
+    /*border-radius: 5px;*/
     font-size: 1.2rem;
 }
 .button-flow i{
@@ -1350,7 +1354,7 @@ a.category-tab:hover{
 .button-follow-page3{
     margin-top: 5px;
     background-color: #fff;
-    border-radius: 3px;
+    /*border-radius: 3px;*/
     padding: 5px 10px 5px 10px;
     color: #000;
     font-weight: normal;
@@ -1387,8 +1391,8 @@ a.category-tab:hover{
 }   
 .ui-dialog {    
     /*position: fixed;*/
-    top:30px !important;
-    max-height: 700px!important;
+    top:-55px !important;
+    /*max-height: 700px!important;*/
 } 
 .scroll-div {    
     max-height: 330px!important;

@@ -45,25 +45,29 @@ namespace PhimHang.Models
 
     public class RegisterViewModel
     {
-        [Required]
-        [Display(Name = "Tên đầy đủ")]
-        [StringLength(64, ErrorMessage = "Tên đầy đủ từ {2} đến {1} ký tự.", MinimumLength = 6)]
-        public string FullName { get; set; }
+        
 
-        [Required]
-        [Display(Name = "Tên đăng nhập")]
-        [StringLength(64, ErrorMessage = "Tên đăng nhập từ {2} đến {1} ký tự.", MinimumLength = 6)]
+        [Required(ErrorMessage = "Vui lòng nhập tên đăng nhập")]
+        [System.Web.Mvc.AllowHtml]
+        [RegularExpression("^[A-Za-z0-9]*$", ErrorMessage = "Bạn nhập sai định dạng hoặc có ký tự đặc biệt")]
+        [StringLength(64, ErrorMessage = "Tên đăng nhập từ 6 đến 64 ký tự", MinimumLength = 6)]
         public string UserName { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = "Vui lòng nhập họ và tên")]
+        [System.Web.Mvc.AllowHtml]
+        [RegularExpression("^[A-Za-z0-9 ]*$", ErrorMessage = "Bạn nhập sai định dạng hoặc có ký tự đặc biệt")]
+        [StringLength(64, ErrorMessage = "Tên đăng nhập từ 6 đến 64 ký tự", MinimumLength = 6)]
+        public string FullName { get; set; }
+
+        [Required(ErrorMessage = "Vui lòng nhập mật khẩu")]
+        [StringLength(100, ErrorMessage = "Mật khẩu phải ít nhất 6 ký tự", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Mật khẩu")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Nhập lại mật khẩu")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "2 mật khẩu không khớp với nhau")]
         public string ConfirmPassword { get; set; }
     }
 
@@ -76,7 +80,7 @@ namespace PhimHang.Models
         [System.Web.Mvc.AllowHtml]
         [RegularExpression(@"[^<>]*", ErrorMessage = "Bạn nhập sai định dạng")]
         [Required(ErrorMessage="Vui lòng nhập tên của bạn")]
-        [StringLength(100, ErrorMessage = "Tên của bạn phải từ 6 đến 100 ký tự", MinimumLength = 6)]
+        [StringLength(64, ErrorMessage = "Tên của bạn phải từ 6 đến 64 ký tự", MinimumLength = 6)]
         [Display(Name = "Tên đầy đủ")]
         public string FullName { get; set; }
 

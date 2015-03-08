@@ -1,6 +1,6 @@
 ﻿
 <div id="CommentForKoLoad">
-    <div class="area-center">        
+    <div class="area-center-user">
         <div class="bg-white" style="padding-top: 10px; padding-bottom: 3px;">
             <div class="filer-bar">
                 @*<div class="toSpan filer-bar-label">Hiển thị theo: </div>*@
@@ -26,7 +26,7 @@
 
         <div class="list-status">
             <!--pin ma co phieu o day-->
-            
+
             <div data-bind="foreach : posts">
                 <div class="bg-white">
                     <div class="list-item-status" tabindex="-1" data-bind=" click: function(data, event) { $parent.detailPost(data, event); }">
@@ -435,7 +435,7 @@
             $("#idPostedDateDetail").html(data.PostedDate);
             $("#idPostNameDetail").html(data.PostedByName);
             $("#idImgPostDetail").attr('src', data.PostedByAvatar);
-            $("#idPostMessenge").html(data.Message.replace("?width=215&height=120&mode=crop", "?maxwidth=475&maxheight=200&mode=crop"));//=200&s.grayscale=true|"
+            $("#idPostMessenge").html(data.Message.replace("?width=215&height=120&mode=crop", "?maxwidth=475"));//=200&s.grayscale=true|"
             $("#idStmDetail").html(data.Stm);
             postidCurrent = data.PostId;
             $("#IdLoadMoreConversation").attr('href', '/PostDetail?postid=' + postidCurrent);
@@ -461,7 +461,7 @@
             });
 
             if (!$(e.target).hasClass('btnMore')) {
-                        document.body.style.overflow = 'hidden';
+                        //document.body.style.overflow = 'hidden';
                         dialog.dialog("open");
                         $(".ui-widget-overlay").click(function () {
                             dialog.dialog('close');
@@ -471,16 +471,16 @@
             }
         }
 
-        self.enablePhimHang = ko.computed(function () {
-            return self.newMessage().length <= 200 && self.newMessage().length >= 6;
-        });
+        //self.enablePhimHang = ko.computed(function () {
+        //    return self.newMessage().length <= 200 && self.newMessage().length >= 6;
+        //});
 
-        self.count = ko.computed(function () {
-            var countNum = 200 - self.newMessage().length;
-            return countNum;
-        });
+        //self.count = ko.computed(function () {
+        //    var countNum = 200 - self.newMessage().length;
+        //    return countNum;
+        //});
         self.enablePhimHangReply = ko.computed(function () {
-            return self.newReply().length <= 140 && self.newReply().length >= 6;
+            return self.newReply().length <= 140 && self.newReply().length >= 6 && self.newReply().indexOf('<', 0) == -1;
         });
         self.countReply = ko.computed(function () {
             var countNum = 140 - self.newReply().length;

@@ -369,7 +369,7 @@
             $("#idPostedDateDetail").html(data.PostedDate);
             $("#idPostNameDetail").html(data.PostedByName);
             $("#idImgPostDetail").attr('src', data.PostedByAvatar);
-            $("#idPostMessenge").html(data.Message.replace("?width=215&height=120&mode=crop", "?maxwidth=475&maxheight=200&mode=crop"));//=200&s.grayscale=true|"
+            $("#idPostMessenge").html(data.Message.replace("?width=215&height=120&mode=crop", "?maxwidth=475"));//=200&s.grayscale=true|"
             $("#idStmDetail").html(data.Stm);
             postidCurrent = data.PostId;
             $("#IdLoadMoreConversation").attr('href', '/PostDetail?postid=' + postidCurrent);

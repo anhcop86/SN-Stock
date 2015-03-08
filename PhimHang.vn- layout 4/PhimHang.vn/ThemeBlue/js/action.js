@@ -8,7 +8,7 @@ $(document).ready(function () {
         modal: true,
         width: 650,        
         resizable: true,
-        autoOpen: false,
+        autoOpen: false
     });
     $(".ui-dialog-titlebar").hide();
     if (!$('#myonoffswitch').is(':checked')) {
