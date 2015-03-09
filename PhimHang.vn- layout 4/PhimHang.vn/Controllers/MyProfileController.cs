@@ -17,14 +17,15 @@ namespace PhimHang.Controllers
     {
         //
         // GET: /MyProfile/
-        private readonly FilterKeyworkSingleton _keyword;
+        
+        private readonly StockRealTimeTicker _stockRealtime;
         public MyProfileController()
-            : this(FilterKeyworkSingleton.Instance, new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
+            : this(StockRealTimeTicker.Instance, new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
         }
-        public MyProfileController(FilterKeyworkSingleton KeyworkSing, UserManager<ApplicationUser> userManager)
+        public MyProfileController(StockRealTimeTicker stockTicker, UserManager<ApplicationUser> userManager)
         {
-            _keyword = KeyworkSing;
+            _stockRealtime = stockTicker;
             UserManager = userManager;
         }
 
@@ -55,15 +56,6 @@ namespace PhimHang.Controllers
             var follow = await db.FollowUsers.CountAsync(f => f.UserId == currentUser.UserExtentLogin.Id);
             var follower = await db.FollowUsers.CountAsync(f => f.UserIdFollowed == currentUser.UserExtentLogin.Id);
 
-            //var countStockFollowr = await db.FollowStocks.CountAsync(f => f.UserId == currentUser.UserExtentLogin.Id && f.StockFollowed == symbolName);
-            //if (countStockFollowr == 1)
-            //{
-            //    ViewBag.CheckStockExist = "Y";
-            //}
-            //else
-            //{
-            //    ViewBag.CheckStockExist = "N";
-            //}
             ViewBag.TotalPost = post;
             ViewBag.Follow = follow;
             ViewBag.Follower = follower;
@@ -73,7 +65,7 @@ namespace PhimHang.Controllers
 
             ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
             ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataCover) == true ? ImageURLCoverDefault : ImageURLCover + currentUser.UserExtentLogin.AvataCover;
-            //ViewBag.AvataImageUrl = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
+            
 
             // cac post duoc loc tu danh muc nguoi theo doi => dc load o duoi client san
             var listPersonFollow = (from userFollow in db.FollowUsers.ToList()
@@ -98,7 +90,15 @@ namespace PhimHang.Controllers
 
 
             #endregion
-
+            #region gia cổ phieu cua cac ma dang theo doi
+            ViewBag.listStockPriceFollow = _stockRealtime.GetAllStocksList(listStock as List<string>).Result;
+            #endregion
+            #region gia chi so index va hnxindex
+            var listIndex = new List<string>();
+            listIndex.Add("VnIndex");
+            listIndex.Add("HNXIndex");
+            ViewBag.ListIndex = _stockRealtime.GetAllStocksList(listIndex).Result;
+            #endregion
             return View(currentUser);
 
         }

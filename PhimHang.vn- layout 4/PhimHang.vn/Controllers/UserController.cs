@@ -16,12 +16,14 @@ namespace PhimHang.Controllers
     {
         //
         // GET: /User/
+        private readonly StockRealTimeTicker _stockRealtime;
         public UserController()
-            : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
+            : this(StockRealTimeTicker.Instance, new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
         }
-        public UserController(UserManager<ApplicationUser> userManager)
+        public UserController(StockRealTimeTicker stockTicker, UserManager<ApplicationUser> userManager)
         {
+            _stockRealtime = stockTicker;
             UserManager = userManager;
         }
        
@@ -105,8 +107,10 @@ namespace PhimHang.Controllers
                                        where sl.UserId == currentUser.Id
                                        select sl.StockFollowed).ToListAsync();
 
-                ViewBag.FollowStockList = followStockList.Result;
-
+                //ViewBag.FollowStockList = followStockList.Result;
+                #region gia cổ phieu cua cac ma dang theo doi
+                ViewBag.listStockPriceFollow = _stockRealtime.GetAllStocksList(followStockList.Result as List<string>).Result;
+                #endregion
             }
             #endregion
             #region tab theo doi
@@ -142,6 +146,12 @@ namespace PhimHang.Controllers
 
                 ViewBag.FollowerList = followerList.Result;
             }
+            #endregion
+            #region gia chi so index va hnxindex
+            var listIndex = new List<string>();
+            listIndex.Add("VnIndex");
+            listIndex.Add("HNXIndex");
+            ViewBag.ListIndex = _stockRealtime.GetAllStocksList(listIndex).Result;
             #endregion
             return View(currentUser);
 

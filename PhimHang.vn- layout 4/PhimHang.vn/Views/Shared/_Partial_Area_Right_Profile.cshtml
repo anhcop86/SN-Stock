@@ -1,81 +1,59 @@
 ﻿@using PhimHang.Models;
 
 @model ApplicationUser
-<!--
-    <div class="banner-header-white">DANH MỤC ĐẦU TƯ</div>
-    @*
-    @{
-        foreach (var item in ViewBag.HotStockDMDT as List<PhimHang.Controllers.StockDetail>)
-        {
-             <div class="banner-item1">
-            <div class="item-left">
-                <a href="/Symbol/@item.ShortName">$@item.Stock<br><span>@item.ShortName</span></a>
-            </div>
-            <div class="item-right">
-                <strong>@item.FinishPrice</strong>
-                @if (item.Diff == 0)
-                {
-                    <span class="none-bullish-bearish">
-                        <br>
-                        <span class="top-menu-point">
-                            @item.Diff (@item.DiffRate)
-                        </span>
-                    </span>
-                }
-                else if (item.Diff > 0)
-                {
-                    <span class="bullish">
-                        <br>
-                        <span class="top-menu-point">
-                            @item.Diff (@item.DiffRate)
-                        </span>
-                    </span>
-                }
-                else
-                {
-                    <span class="bearish">
-                        <br>
-                        <span class="top-menu-point">
-                            @item.Diff (@item.DiffRate)
-                        </span>
-                    </span>
-                }
 
-            </div>
-        </div>
-        }
-    }
-
-    *@
- 
-    <div class="loadmore"><a href="#"><i class="fa  fa-angle-double-down"></i></a></div>
-
-    -->
 
 <div class="banner-right-first">
     <div class="banner-header-white">ĐANG THEO DÕI</div>
     @{
         
-        foreach (var item in ViewBag.listStockFollow as List<string>)
+        foreach (var item in ViewBag.listStockPriceFollow as List<StockRealTime>)
         {
-            
-        
-    <div class="banner-item1">
-        <div class="item-left">
-            <a href="#">$@item<br><span>PV GAS</span></a>
-        </div>
-        <div class="item-right">
-            <strong>108.66</strong>
-            <span class="bearish">
-                <i class="fa fa-sort-down"></i><br>
-                <span class="top-menu-point">
-                    0.35 (0,32%)
-                </span>
-            </span>
-        </div>
-    </div>
-    }
-   }
+            <div class="banner-item1">
+                <div class="item-left">
+                    <a href="/Ticker/@item.CompanyID">$@item.CompanyID<br></a>
+                </div>
+                @if (item.Diff == 0)
+                {                    
+                        <div class="item-right NoChangeIndex">
+                            <strong>@item.FinishPrice</strong>
+                            <span>
+                                <i ></i><br>
+                                <span class="top-menu-point">
+                                    @item.Diff (@item.DiffRate %)
+                                </span>
+                            </span>
+                        </div>
+                }
+                else if (item.Diff > 0)
+                {
+                    <div class="item-right bullishIndex">
+                    <strong>@item.FinishPrice</strong>
+                    <span>
+                        <i class="fa fa-sort-up"></i><br>
+                        <span class="top-menu-point">
+                            @item.Diff (@item.DiffRate %)
+                        </span>
+                    </span>
+                    </div>
+                }
+                else
+                {
+                    <div class="item-right bearishIndex">
+                    <strong>@item.FinishPrice</strong>
+                    <span>
+                        <i class="fa fa-sort-down"></i><br>
+                        <span class="top-menu-point">
+                            @item.Diff (@item.DiffRate %)
+                        </span>
+                    </span>
+                    </div>
+                }
+
+                
+             </div>
+        }
+}
    
     <div class="loadmore"><a href="#"><i class="fa  fa-angle-double-down"></i></a></div>
 </div>

@@ -1,21 +1,51 @@
-﻿<div id="page3-tab2" class="banner-right-first">
+﻿@using PhimHang.Models;
+<div id="page3-tab2" class="banner-right-first">
     <div class="banner-header-white banner-header-white-page3">Danh mục đầu tư</div>
     @{
-        foreach (var item in ViewBag.FollowStockList as List<string>)
+        foreach (var item in ViewBag.listStockPriceFollow as List<StockRealTime>)
         {
              <div class="banner-item1">
                 <div class="item-left">
-                    <a href="/Ticker/@item">$@item<br><span>PV GAS</span></a>
+                    <a href="/Ticker/@item.CompanyID">$@item.CompanyID<br></a>
                 </div>
-                <div class="item-right item-right-trang3-tab2">
-                    <strong>108.66</strong>
-                    <span class="bearish">
-                        <i class="fa fa-sort-down"></i><br>
-                        <span class="top-menu-point">
-                            0.35 (0,32%)
-                        </span>
-                    </span>
-                </div>
+                 @if (item.Diff == 0)
+                    {
+                        <div class="item-right item-right-trang3-tab2 NoChangeIndex">
+                            <strong>@item.FinishPrice</strong>
+                            <span class="">
+                                <i></i><br>
+                                <span class="top-menu-point">
+                                    @item.Diff (@item.DiffRate %)
+                                </span>
+                            </span>
+                        </div>
+                    }
+                     else if (item.Diff > 0)
+                     {
+                        <div class="item-right item-right-trang3-tab2 bullishIndex">
+                            <strong>@item.FinishPrice</strong>
+                            <span class="">
+                                <i class="fa fa-sort-up"></i><br>
+                                <span class="top-menu-point">
+                                    @item.Diff (@item.DiffRate %)
+                                </span>
+                            </span>
+                        </div>
+                     }
+                     else
+                     {
+                        <div class="item-right item-right-trang3-tab2 bearishIndex">
+                            <strong>@item.FinishPrice</strong>
+                            <span class="">
+                                <i class="fa fa-sort-down"></i><br>
+                                <span class="top-menu-point">
+                                    @item.Diff (@item.DiffRate %)
+                                </span>
+                            </span>
+                        </div>
+                     }
+                
+
             </div>
         }
     }

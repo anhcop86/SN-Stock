@@ -377,7 +377,7 @@
         self.posts = ko.observableArray(); // danh muc post
         self.replys = ko.observableArray(); // danh mục reply
         self.postPins = ko.observableArray(); // danh muc cac bai post dc pin len dau
-        self.newMessage = ko.observable('$@ViewBag.StockCode '); // noi dung tin post
+        self.newMessage = ko.observable('$' + $('#stockHidenPage').val()+ ' ' ); // noi dung tin post $('#stockHidenPage').val()
         self.newReply = ko.observable(''); // noi dung tin reply
         self.error = ko.observable();
         self.newPosts = ko.observableArray(); // biến tạm để luu post moi, sau khi click thi moi bung ra
@@ -461,7 +461,7 @@
 
         self.addReply = function () { // them tra loi
             $('#btAddReply').attr("disabled", true); // disble ngay khong de click them
-            
+
             commenthub.server.addReply({ "Message": self.newReply(), "PostedBy": postidCurrent }, '@ViewBag.StockCode', '@ViewBag.CureentUserId', '@ViewBag.UserName', '@ViewBag.AvataEmage')
                 .done(function () {
                     showNotification('Bạn đã trả lời thành công!');
@@ -576,12 +576,12 @@
             if (checkLoadFirst == 1) {
                 //$(elem).hide().slideDown('slow');
                 $(elem).hide().slideDown('slow')
-            }            
+            }
         };
-       
-        self.AddLike = function (data, e) {              
-            // ajax update  like with 
-            
+
+        self.AddLike = function (data, e) {
+            // ajax update  like with
+
             var postRow = $('#PostId' + data.PostId);
             //postRow.removeAttr("data-bind");
             postRow.attr('class', "fa fa-thumbs-up");
@@ -589,7 +589,7 @@
             //postRow.addClass("fa fa-thumbs-up");
             data.DiableLike(false);
             e.stopPropagation(); // stop popup
-                       
+
             $.ajax({
                 cache: false,
                 type: "POST",
@@ -597,13 +597,13 @@
                 data: { postid: data.PostId },
                 beforeSend: function (xhr) {
                     // disable like and chage class
-                   
+
                 },
                 success: function () {
                     data.SumLike(data.SumLike() + 1); // update interface
                 }
-            });            
-         
+            });
+
         };
         self.detailPost = function (data, e) { // chi tiet post bao gom tra loi
 
@@ -614,8 +614,8 @@
             $("#idImgPostDetail").attr('src', data.PostedByAvatar);
             $("#idPostMessenge").html(data.Message.replace("?width=215&height=120&mode=crop", "?maxwidth=475"));//=200&s.grayscale=true|"
             $("#idStmDetail").html(data.Stm);
-            postidCurrent = data.PostId;            
-            $("#IdLoadMoreConversation").attr('href', '/PostDetail?postid=' + postidCurrent);            
+            postidCurrent = data.PostId;
+            $("#IdLoadMoreConversation").attr('href', '/PostDetail?postid=' + postidCurrent);
             $("#facebookLikeAndShare").html("<script>$(document).ready(function() {try {FB.XFBML.parse();} catch (ex) { }});<\/script><div style='overflow: hidden;float:right' class='fb-like' data-href='/PostDetail?postid=" + postidCurrent + "' data-layout='button_count' data-action='like' data-show-faces='true' data-share='true'></div>");
             //data.notification(0);
             // load 10 reply gan nhat
@@ -649,7 +649,7 @@
         }
 
         self.enablePhimHang = ko.computed(function () {
-            return self.newMessage().length <= 200 && self.newMessage().length >= 6 && self.newMessage().indexOf('<',0) == -1;
+            return self.newMessage().length <= 200 && self.newMessage().length >= 6 && self.newMessage().indexOf('<', 0) == -1;
         });
 
         self.count = ko.computed(function () {
@@ -755,11 +755,11 @@
                                 console.log('Không thể mở kết nối đến server' + fail);
                             });
 
-     $.connection.hub.disconnected(function () {
+    $.connection.hub.disconnected(function () {
         setTimeout(function () {
-                $.connection.hub.start().done(function () {
-                    commenthub.server.joinRoom('@ViewBag.StockCode');
-                });
+            $.connection.hub.start().done(function () {
+                commenthub.server.joinRoom('@ViewBag.StockCode');
+            });
         }, 10000); // Restart connection after 10 seconds.
     });
     $.connection.hub.connectionSlow(function () {

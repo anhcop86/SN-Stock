@@ -15,13 +15,14 @@ namespace PhimHang.Controllers
     //[Authorize] // xoa khi public
     public class PostDetailController : Controller
     {
-        
+        private readonly StockRealTimeTicker _stockRealtime;
         public PostDetailController()
-            : this( new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
+            : this(StockRealTimeTicker.Instance, new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
         }
-        public PostDetailController( UserManager<ApplicationUser> userManager)
-        {            
+        public PostDetailController(StockRealTimeTicker stockTicker, UserManager<ApplicationUser> userManager)
+        {
+            _stockRealtime = stockTicker;
             UserManager = userManager;
         }
        
@@ -62,6 +63,12 @@ namespace PhimHang.Controllers
                 ViewBag.ChartYN = post.ChartYN;
                 ViewBag.PostBy = post.PostedBy;
 
+                #region gia chi so index va hnxindex
+                var listIndex = new List<string>();
+                listIndex.Add("VnIndex");
+                listIndex.Add("HNXIndex");
+                ViewBag.ListIndex = _stockRealtime.GetAllStocksList(listIndex).Result;
+                #endregion
                 // end
                 return View();
             }
