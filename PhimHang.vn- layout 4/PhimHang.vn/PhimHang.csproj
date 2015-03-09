@@ -542,6 +542,7 @@
     <Content Include="ThemeBlue\js\jquery\jquery-ui.js" />
     <Content Include="ThemeBlue\js\jquery\jquery-ui.min.js" />
     <Content Include="ThemeBlue\js\jquery\jquery.js" />
+    <Content Include="ThemeBlue\js\Ticker.js" />
     <Content Include="ThemeBlue\plugins\bootstrapvalidator\bootstrapValidator.css" />
     <Content Include="ThemeBlue\plugins\bootstrapvalidator\bootstrapValidator.js" />
     <Content Include="ThemeBlue\plugins\bootstrapvalidator\bootstrapValidator.min.css" />
