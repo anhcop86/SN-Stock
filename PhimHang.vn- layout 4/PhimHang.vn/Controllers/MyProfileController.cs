@@ -119,8 +119,16 @@ namespace PhimHang.Controllers
                              where followStock.UserId == currentUser.UserExtentLogin.Id
                              select followStock.StockFollowed
                                ).ToList();
-            ViewBag.listStockFollow = listStock as List<string>; // client
-
+            //ViewBag.listStockFollow = listStock as List<string>; // client
+            #region gia cổ phieu cua cac ma dang theo doi
+            ViewBag.listStockPriceFollow = _stockRealtime.GetAllStocksList(listStock as List<string>).Result;
+            #endregion
+            #region gia chi so index va hnxindex
+            var listIndex = new List<string>();
+            listIndex.Add("VnIndex");
+            listIndex.Add("HNXIndex");
+            ViewBag.ListIndex = _stockRealtime.GetAllStocksList(listIndex).Result;
+            #endregion
             #region reset lai so luong tin nhan
             ViewBag.NewMessege = 0;
             // luu database

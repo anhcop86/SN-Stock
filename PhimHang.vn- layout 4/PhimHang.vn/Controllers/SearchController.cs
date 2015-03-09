@@ -16,7 +16,7 @@ namespace PhimHang.Controllers
         private testEntities db = new testEntities();
         //
         // GET: /Search/
-        public ActionResult Index(string q)
+        public async Task<ActionResult> Index(string q)
         {
             if (string.IsNullOrEmpty(q))
             {
@@ -25,18 +25,28 @@ namespace PhimHang.Controllers
             else
             {
                 //var search = db.StockCodes.FirstOrDefault(s => s.Code.StartsWith(q.Replace("$", ""))).Code;
-                var search = (from sc in db.StockCodes
-                             where sc.Code.StartsWith(q.Replace("$", ""))
-                             select sc.Code).FirstOrDefault();
-                if (search != null)
+                var searstring = q.Replace("$", "").Replace("@", "").Trim();
+                var searchStockList = await (from sc in db.StockCodes
+                                             where sc.Code.Contains(searstring)
+                                       && (sc.MarketType == 0 || sc.MarketType == 1)
+                                       select sc.Code).ToListAsync();
+                var searchUser = await  (from us in db.UserLogins
+                                         where us.UserNameCopy.Contains(searstring) 
+                                  select us.UserNameCopy).ToListAsync();
+                if (searchStockList.Count == 1) // đủ 3 ký tự và tìm thấy
                 {
-                    return RedirectToAction("/" + search, "Ticker");    
+                    return RedirectToAction("/" + searchStockList[0], "Ticker");
+                }
+                else if (searchUser.Count == 1) // 
+                {
+                    return RedirectToAction("/" + searchUser[0] + "/tab/1", "user");
                 }
                 else
                 {
                     return RedirectToAction("Helper");
                 }
-                
+
+
             }
 
         }
