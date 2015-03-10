@@ -3,9 +3,8 @@
     Layout = "~/Views/Shared/_Layout_Ticker.cshtml";
 }
 @section scripts{        
-    <script src="~/Scripts/jquery.timeago.js"></script>    
-    <script src="~/ThemeBlue/js/Extention.js"></script>
-    <script src="~/ThemeBlue/js/Ticker.js"></script>
+    <script src="~/Scripts/jquery.timeago.js"></script>        
+    @Scripts.Render("~/bundles/Ticker")
 }
 
 <input type="hidden" id="titleHidenPage" value='@ViewBag.StockCode @ViewBag.StockName https://cungphim.com' />
