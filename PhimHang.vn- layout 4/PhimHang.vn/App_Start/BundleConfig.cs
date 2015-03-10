@@ -56,6 +56,21 @@ namespace PhimHang
                              "~/ThemeBlue/js/FollowStock.js"));
             #endregion
 
+            #region profile encode
+            bundles.Add(new ScriptBundle("~/bundles/Myprofile").Include(
+                             "~/ThemeBlue/js/MyProfile.js"));
+            #endregion
+
+
+            #region user encode
+            bundles.Add(new ScriptBundle("~/bundles/User").Include(
+                             "~/ThemeBlue/js/User.js"));
+            #endregion
+
+            #region user detail post
+            bundles.Add(new ScriptBundle("~/bundles/PostDetail").Include(
+                             "~/ThemeBlue/js/PostDetail.js"));
+            #endregion
 
             BundleTable.EnableOptimizations = true;
         }

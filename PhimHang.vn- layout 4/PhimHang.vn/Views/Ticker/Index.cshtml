@@ -3,8 +3,7 @@
     Layout = "~/Views/Shared/_Layout_Ticker.cshtml";
 }
 @section scripts{        
-    <script src="~/Scripts/jquery.timeago.js"></script>        
-    @Scripts.Render("~/bundles/Ticker")
+    <script src="~/Scripts/jquery.timeago.js"></script>   
 }
 
 <input type="hidden" id="titleHidenPage" value='@ViewBag.StockCode @ViewBag.StockName https://cungphim.com' />
@@ -276,5 +275,5 @@
 <!-- gia co phieu real time-->
 
 <!-- Comment-->
-
+@Scripts.Render("~/bundles/Ticker")
 

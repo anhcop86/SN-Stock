@@ -44,11 +44,11 @@ namespace PhimHang.Controllers
                     currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());                    
                     ViewBag.CureentUserId = currentUser.UserExtentLogin.Id;
                     ViewBag.UserName = currentUser.UserName;
-                    ViewBag.AvataImageUrl = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault: ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
+                    ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
                 }
                 else
                 {
-                    ViewBag.AvataImageUrl = ImageURLAvataDefault;
+                    ViewBag.AvataEmage = ImageURLAvataDefault;
                 }
 
                 var post = await db.Posts.FirstOrDefaultAsync(p => p.PostId == postid);
