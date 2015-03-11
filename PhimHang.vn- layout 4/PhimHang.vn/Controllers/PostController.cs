@@ -192,6 +192,7 @@ namespace PhimHang.Controllers
                            select new
                            {
                                Message = stockRelate.Post.Message,
+                               Chart = stockRelate.Post.ChartImageURL,
                                //PostedBy = stockRelate.Post.PostedDate,
                                PostedByName = stockRelate.Post.UserLogin.UserNameCopy,
                                PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage,
@@ -219,7 +220,8 @@ namespace PhimHang.Controllers
                            orderby stockRelate.Post.PostedDate descending
                            select new
                            {
-                               Message = stockRelate.Post.ChartYN == true ? stockRelate.Post.Message + "<br/><img src='" + stockRelate.Post.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Post.Message,
+                               Message = stockRelate.Post.Message,
+                               Chart = stockRelate.Post.ChartImageURL,
                                PostedByName = stockRelate.Post.UserLogin.UserNameCopy,
                                PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage,
                                PostedDate = stockRelate.Post.PostedDate,
@@ -238,7 +240,8 @@ namespace PhimHang.Controllers
                            orderby stockRelate.Post.PostedDate descending
                            select new
                            {
-                               Message = stockRelate.Post.ChartYN == true ? stockRelate.Post.Message + "<br/><img src='" + stockRelate.Post.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Post.Message,
+                               Message = stockRelate.Post.Message,
+                               Chart = stockRelate.Post.ChartImageURL,
                                PostedByName = stockRelate.Post.UserLogin.UserNameCopy,
                                PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage,
                                PostedDate = stockRelate.Post.PostedDate,
@@ -257,7 +260,8 @@ namespace PhimHang.Controllers
                            orderby stockRelate.Post.PostedDate descending
                            select new
                            {
-                               Message = stockRelate.Post.ChartYN == true ? stockRelate.Post.Message + "<br/><img src='" + stockRelate.Post.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Post.Message,
+                               Message = stockRelate.Post.Message,
+                               Chart = stockRelate.Post.ChartImageURL,
                                PostedByName = stockRelate.Post.UserLogin.UserNameCopy,
                                PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage,
                                PostedDate = stockRelate.Post.PostedDate,

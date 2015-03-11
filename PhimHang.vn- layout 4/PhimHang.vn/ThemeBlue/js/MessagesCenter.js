@@ -162,7 +162,7 @@ function viewModel() {
         });
 
         if (!$(e.target).hasClass('btnMore')) {
-            document.body.style.overflow = 'hidden';
+            //document.body.style.overflow = 'hidden';
             dialog.dialog("open");
             $(".ui-widget-overlay").click(function () {
                 dialog.dialog('close');

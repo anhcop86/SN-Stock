@@ -25,7 +25,7 @@
             <!--pin ma co phieu o day-->            
             <!---->         
             <div data-bind="foreach : posts">
-                <div class="bg-white">
+                <div class="bg-white" data-bind=" attr : { style : XemYN > 0 ? 'Background-color:#ECF2F5' : ''  }">
                     <div class="list-item-status" tabindex="-1" data-bind=" click: function(data, event) { $parent.detailPost(data, event); }">
                         @*click: function(data, event) { $parent.detailPost; event.stopPropagation(); }*@
                         <div class="avata-genaral-size">
@@ -40,11 +40,11 @@
                             <div class="list-item-status-content" data-bind="html : Message"></div>
                             <div class="list-item-control">
                                 @*<a style="border-color:transparent; background-color:transparent" class="button" href="#"><i data-bind="text :notification, visible: notification() > 0" class="fa fa-comments"></i></a>*@
-                                <span class="StarRedNew">
-                                    <i class="fa fa-star-o" data-bind="visible: XemYN > 0"></i>
-                                </span>
-                                <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>                                
-                                
+                                @*<span class="StarRedNew">
+                            <i class="fa fa-star-o" data-bind="visible: XemYN > 0"></i>
+                        </span>*@
+                                <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
+
                                 <span class="likeAndPin" style="">
 
                                     <span data-bind="text : SumLike, visible : SumLike() > 0 "></span>

@@ -159,7 +159,8 @@ namespace PhimHang.Hubs
                 var ret = new
                 {
                     //Message = post.Message,
-                    Message = post.ChartYN == true ? post.Message + "<br/><img src='" + post.ChartImageURL + "?width=215&height=120&mode=crop' >" : post.Message,
+                    Message =  post.Message,
+                    Chart = post.ChartImageURL,
                     //PostedBy = post.PostedBy,
                     PostedByName = userName,
                     PostedByAvatar = avataImageUrl,

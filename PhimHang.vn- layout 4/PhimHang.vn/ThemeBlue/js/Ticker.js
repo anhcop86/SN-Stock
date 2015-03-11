@@ -1,4 +1,6 @@
-﻿function removeFileChart() {
+﻿// khi sua link hinh image can chu y sua : self.Message , controller, click vao detail
+
+function removeFileChart() {
         if (confirm("Bạn muốn xóa file hình này?")) {
             $('.chartImage').hide();
             $('.mb3-chart-thumb').removeAttr("src");
@@ -81,7 +83,7 @@ function Post(data) {
     var self = this;
     data = data || {};
     self.PostId = data.PostId;
-    self.Message = data.Message || "";
+    self.Message = (data.ChartYN == 1 ? data.Message + '<br/><img src=' + data.Chart + '?width=215&height=120&mode=crop>' : data.Message) || "";
     self.PostedByName = data.PostedByName || "";
     self.PostedByAvatar = data.PostedByAvatar + '?width=50&height=50&mode=crop' || "";
     self.PostedDate = getTimeAgo(data.PostedDate);
@@ -91,6 +93,7 @@ function Post(data) {
     self.ChartYN = data.ChartYN || 0;
     self.SumLike = ko.observable(data.SumLike);
     self.DiableLike = ko.observable(true);
+    self.Chart = data.Chart || '';
 }
 var commenthub = $.connection.CommentHub;
 function viewModel() {
@@ -328,7 +331,8 @@ function viewModel() {
         $("#idPostedDateDetail").html(data.PostedDate);
         $("#idPostNameDetail").html(data.PostedByName).attr('href', '/user/' + data.PostedByName + '/tab/1');
         $("#idImgPostDetail").attr('src', data.PostedByAvatar);
-        $("#idPostMessenge").html(data.Message.replace("?width=215&height=120&mode=crop", "?maxwidth=475"));//=200&s.grayscale=true|"
+        // relace hình bỏ. bỏ hình to vào
+        $("#idPostMessenge").html(data.Message.replace('<br/><img src=' + data.Chart + '?width=215&height=120&mode=crop>', '') + '<br/><br/><a target="_blank" href=' + data.Chart + '><img src=' + data.Chart + "?maxwidth=475></a>");//=200&s.grayscale=true|"
         $("#idStmDetail").html(data.Stm);
         postidCurrent = data.PostId;
         $("#IdLoadMoreConversation").attr('href', '/PostDetail?postid=' + postidCurrent);

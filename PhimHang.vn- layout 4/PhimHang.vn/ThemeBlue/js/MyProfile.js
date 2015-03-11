@@ -232,12 +232,6 @@ commenthub.client.addPostGlobal = function (post) {
                 self.posts.splice(0, 0, new Post(post));
             }
         }
-        if (filterhere == "DIS") {
-            if (post.Stm != 1 && post.Stm != 2 && post.ChartYN != true) {
-                self.posts.splice(0, 0, new Post(post));
-            }
-        }
-
         if (filterhere == "VIP") {
             // sau khi len admin se lam tiep
         }
@@ -273,13 +267,7 @@ commenthub.client.addPostGlobal = function (post) {
                 document.title = '(' + self.newPosts().length + ') ' + "Nhà của tôi";
             }
         }
-        if (filterhere == "DIS") {
-            if (post.Stm != 1 && post.Stm != 2 && post.ChartYN != true) {
-                self.newPosts.splice(0, 0, new Post(post));
-                document.title = '(' + self.newPosts().length + ') ' + "Nhà của tôi";
-            }
-        }
-
+        
         if (filterhere == "VIP") {
             // viet sau
         }

@@ -258,29 +258,7 @@ namespace PhimHang.Controllers
                 //var listStock = new List<string>();              
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
                 return result;
-            }
-            if (filter == "DIS")
-            {
-                var ret = (from stockRelate in await db.Posts.ToListAsync()
-                           where stockRelate.NhanDinh != 1 && stockRelate.NhanDinh != 2 && stockRelate.ChartYN != true
-                           orderby stockRelate.PostedDate descending
-                           select new
-                           {
-                               Message = stockRelate.ChartYN == true ? stockRelate.Message + "<br/><img src='" + stockRelate.ChartImageURL + "?width=215&height=120&mode=crop' >" : stockRelate.Message,
-                               //PostedBy = stockRelate.Post.PostedDate,
-                               PostedByName = stockRelate.UserLogin.UserNameCopy,
-                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.UserLogin.AvataImage,
-                               PostedDate = stockRelate.PostedDate,
-                               PostId = stockRelate.PostId,
-                               StockPrimary = stockRelate.StockPrimary,
-                               Stm = stockRelate.NhanDinh,
-                               ChartYN = stockRelate.ChartYN,
-                               SumLike = stockRelate.SumLike
-                           }).Skip(skipposition).Take(10).ToArray();
-                //var listStock = new List<string>();              
-                var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
-                return result;
-            }
+            }           
             if (filter == "VIP")
             {
                 var ret = (from stockRelate in await db.PinStocks.ToListAsync()
