@@ -159,7 +159,8 @@ namespace PhimHang.Controllers
                                StockPrimary = stockRelate.Post.StockPrimary,
                                Stm = stockRelate.Post.NhanDinh,
                                ChartYN = stockRelate.Post.ChartYN,
-                               XemYN = stockRelate.XemYN
+                               XemYN = stockRelate.XemYN,
+                               SumLike = stockRelate.Post.SumLike
                            }).Skip(skipposition).Take(10).ToArray();
                 //var listStock = new List<string>();              
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);

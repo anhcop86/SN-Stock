@@ -115,16 +115,8 @@
                             <div class="list-item-control">
                                 @*<a style="border-color:transparent; background-color:transparent" class="button" href="#"><i data-bind="text :notification, visible: notification() > 0" class="fa fa-comments"></i></a>*@
                                 <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
-                                <a class="button btn-answer" target="_self" onclick="window.open(this.href, 'chia sẽ lên facebook', 'left=100,top=100,width=600,height=400,toolbar=1,resizable=0'); selectMe(event, '#'); return false;" data-bind="attr : { href : 'https://www.facebook.com/sharer/sharer.php?u=@ViewBag.AbsolutePathHostName/PostDetail?postid='+ PostId +'&display=popup&ref=plugin' }" title="Trả lời">Chia sẽ</a>
-                                <a class="button btnMore" href="#" title="..." data-dropdown="#cm-3">
-                                    ...
-                                </a>
-                                <div id="cm-3" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#" title="Chia sẻ">Chia sẻ</a></li>
-                                        <li><a href="#" title="Vi phạm">Vi phạm</a></li>
-                                    </ul>
-                                </div>
+                                <a class="button btn-answer" target="_self" onclick="window.open(this.href, 'chia sẻ lên facebook', 'left=100,top=100,width=600,height=400,toolbar=1,resizable=0'); selectMe(event, '#'); return false;" data-bind="attr : { href : 'https://www.facebook.com/sharer/sharer.php?u=@ViewBag.AbsolutePathHostName/PostDetail?postid='+ PostId +'&display=popup&ref=plugin' }" title="Chia sẻ lên facebook">Chia sẻ</a>
+                            
                                 <span class="likeAndPin">
                                     <a class="button" href="#" title="Pin"><img src="/images/pintab.png" /></a> 
                                         <span data-bind="text : SumLike, visible : SumLike() > 0 "></span>
@@ -169,7 +161,7 @@
                                 @*<a style="border-color:transparent; background-color:transparent" class="button" href="#"><i data-bind="text :notification, visible: notification() > 0" class="fa fa-comments"></i></a>*@
                                 <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
                                 <!--share popup of facebook-->
-                                <a class="button btn-answer" target="_self" onclick="window.open(this.href, 'chia sẽ lên facebook', 'left=100,top=100,width=600,height=400,toolbar=1,resizable=0'); selectMe(event, '#'); return false;" data-bind="attr : { href : 'https://www.facebook.com/sharer/sharer.php?u=@ViewBag.AbsolutePathHostName/PostDetail?postid='+ PostId +'&display=popup&ref=plugin' }" title="Trả lời">Chia sẽ</a>
+                                <a class="button btn-answer" target="_self" onclick="window.open(this.href, 'chia sẻ lên facebook', 'left=100,top=100,width=600,height=400,toolbar=1,resizable=0'); selectMe(event, '#'); return false;" data-bind="attr : { href : 'https://www.facebook.com/sharer/sharer.php?u=@ViewBag.AbsolutePathHostName/PostDetail?postid='+ PostId +'&display=popup&ref=plugin' }" title="Chia sẻ lên facebook">Chia sẻ</a>
                                 <div id="cm-3" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
                                     <ul class="dropdown-menu">
                                         <li><a href="#" title="Chia sẻ">Chia sẻ</a></li>
@@ -201,8 +193,7 @@
                 <div class="list-item-detail">
                     <div class="list-item-date" id="idPostedDateDetail" ></div>
                     <div onclick='selectMe(event,"#")' class="list-item-username" style="width:0%">
-                        <div id="idPostNameDetail"></div>
-
+                        <a target="_blank" href="#" id="idPostNameDetail"></a>
                     </div>
                     <span id="idStmDetail"></span>
                     <div class="list-item-status-content" id="idPostMessenge"></div>

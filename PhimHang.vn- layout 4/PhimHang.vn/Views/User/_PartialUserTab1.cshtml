@@ -47,7 +47,7 @@
                             <div class="list-item-control">
                                 @*<a style="border-color:transparent; background-color:transparent" class="button" href="#"><i data-bind="text :notification, visible: notification() > 0" class="fa fa-comments"></i></a>*@
                                 <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
-                                <a class="button btn-answer" target="_self" onclick="window.open(this.href, 'chia sẽ lên facebook', 'left=100,top=100,width=600,height=400,toolbar=1,resizable=0'); selectMe(event, '#'); return false;" data-bind="attr : { href : 'https://www.facebook.com/sharer/sharer.php?u=@ViewBag.AbsolutePathHostName/PostDetail?postid='+ PostId +'&display=popup&ref=plugin' }" title="Trả lời">Chia sẽ</a>
+                                <a class="button btn-answer" target="_self" onclick="window.open(this.href, 'chia sẻ lên facebook', 'left=100,top=100,width=600,height=400,toolbar=1,resizable=0'); selectMe(event, '#'); return false;" data-bind="attr : { href : 'https://www.facebook.com/sharer/sharer.php?u=@ViewBag.AbsolutePathHostName/PostDetail?postid='+ PostId +'&display=popup&ref=plugin' }" title="Trả sẻ lên facebook">Chia sẻ</a>
                                 @*<a class="button btnMore" href="#" title="..." data-dropdown="#cm-3">
                                     ...
                                 </a>
@@ -104,7 +104,7 @@
                         <form name="frmComment">
 
                             <div class="input-status-text">
-                                <textarea data-bind="value : newReply, valueUpdate : 'afterkeydown' , limitCharacters : 140" class="status-cm" id="comment-text" name="comment" rows="5" placeholder="Nhập trả lời ở đây" title="Search" autocomplete="off"></textarea>
+                                <textarea data-bind="value : newReply, valueUpdate : 'afterkeydown' , limitCharacters : 140" class="status-cm" id="comment-text" name="comment" rows="5" placeholder="Nhập trả lời ở đây" title="Nhập trả lời" autocomplete="off"></textarea>
                             </div>
                             <div class="status-control">
                                 @{

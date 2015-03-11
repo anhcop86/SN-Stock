@@ -560,6 +560,7 @@
     <Content Include="ThemeBlue\js\jquery\jquery-ui.js" />
     <Content Include="ThemeBlue\js\jquery\jquery-ui.min.js" />
     <Content Include="ThemeBlue\js\jquery\jquery.js" />
+    <Content Include="ThemeBlue\js\MessagesCenter.js" />
     <Content Include="ThemeBlue\js\MyProfile.js" />
     <Content Include="ThemeBlue\js\PostDetail.js" />
     <Content Include="ThemeBlue\js\SignalHubProxy.js" />

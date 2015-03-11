@@ -326,7 +326,7 @@ function viewModel() {
         self.newReply('');
         self.replys([]);
         $("#idPostedDateDetail").html(data.PostedDate);
-        $("#idPostNameDetail").html(data.PostedByName);
+        $("#idPostNameDetail").html(data.PostedByName).attr('href', '/user/' + data.PostedByName + '/tab/1');
         $("#idImgPostDetail").attr('src', data.PostedByAvatar);
         $("#idPostMessenge").html(data.Message.replace("?width=215&height=120&mode=crop", "?maxwidth=475"));//=200&s.grayscale=true|"
         $("#idStmDetail").html(data.Stm);

@@ -12,16 +12,16 @@ namespace PhimHang
         public static void RegisterBundles(BundleCollection bundles)
         {
             
-            //This setting is used when if you have specfied the path Using System.web.Optimization.bundle.Cdnpath then it will try to fetch data from there first
-            bundles.UseCdn = true;
-            //NullBuilder class is responsible for prevention of early applying of the item transformations and combining of code.
-            var nullBuilder = new NullBuilder();
-            //StyleTransformer and ScriptTransformer classes produce processing of stylesheets and scripts.
-            var styleTransformer = new StyleTransformer();
+            ////This setting is used when if you have specfied the path Using System.web.Optimization.bundle.Cdnpath then it will try to fetch data from there first
+            //bundles.UseCdn = true;
+            ////NullBuilder class is responsible for prevention of early applying of the item transformations and combining of code.
+            //var nullBuilder = new NullBuilder();
+            ////StyleTransformer and ScriptTransformer classes produce processing of stylesheets and scripts.
+            //var styleTransformer = new StyleTransformer();
 
-            var scriptTransformer = new ScriptTransformer();
-            //NullOrderer class disables the built-in sorting mechanism and save assets sorted in the order they are declared.
-            var nullOrderer = new NullOrderer();
+            //var scriptTransformer = new ScriptTransformer();
+            ////NullOrderer class disables the built-in sorting mechanism and save assets sorted in the order they are declared.
+            //var nullOrderer = new NullOrderer();
 
 
             bundles.Add(new ScriptBundle("~/bundles/standardCoreRT").Include(
@@ -72,7 +72,12 @@ namespace PhimHang
                              "~/ThemeBlue/js/PostDetail.js"));
             #endregion
 
-            BundleTable.EnableOptimizations = true;
+            #region Messages centre
+            bundles.Add(new ScriptBundle("~/bundles/MessagesCenter").Include(
+                             "~/ThemeBlue/js/MessagesCenter.js"));
+            #endregion
+
+            //BundleTable.EnableOptimizations = true;
         }
     }
 }

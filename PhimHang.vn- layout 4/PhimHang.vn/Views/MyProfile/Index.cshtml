@@ -99,16 +99,8 @@
                             <div class="list-item-status-content" data-bind="html : Message"></div>
                             <div class="list-item-control">                                
                                 <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
-                                <a class="button btn-answer" target="_self" onclick="window.open(this.href, 'chia sẽ lên facebook', 'left=100,top=100,width=600,height=400,toolbar=1,resizable=0'); selectMe(event, '#'); return false;" data-bind="attr : { href : 'https://www.facebook.com/sharer/sharer.php?u=@ViewBag.AbsolutePathHostName/PostDetail?postid='+ PostId +'&display=popup&ref=plugin' }" title="Trả lời">Chia sẽ</a>
-                                <a class="button btnMore" href="#" title="..." data-dropdown="#cm-3">
-                                    ...
-                                </a>
-                                <div id="cm-3" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#" title="Chia sẻ">Chia sẻ</a></li>
-                                        <li><a href="#" title="Vi phạm">Vi phạm</a></li>
-                                    </ul>
-                                </div>
+                                <a class="button btn-answer" target="_self" onclick="window.open(this.href, 'chia sẽ lên facebook', 'left=100,top=100,width=600,height=400,toolbar=1,resizable=0'); selectMe(event, '#'); return false;" data-bind="attr : { href : 'https://www.facebook.com/sharer/sharer.php?u=@ViewBag.AbsolutePathHostName/PostDetail?postid='+ PostId +'&display=popup&ref=plugin' }" title="Trả lời">Chia sẻ</a>
+                                
                                 <span class="likeAndPin">
                                     <span data-bind="text : SumLike, visible : SumLike() > 0 "></span>
                                     <button class="fa fa-thumbs-o-up" data-bind=" click : function(data, event) { $parent.AddLike(data, event) ;   } , attr : {id : 'PostId' + PostId} , enable : DiableLike"></button>

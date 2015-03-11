@@ -383,7 +383,7 @@ ul.top-panel-left2 > li:not(:first-child):hover{
     background-color: #fff;
     position: relative;
     /*border-radius:5px;*/
-    border:1px solid #ddd;
+    /*border:1px solid #ddd;*/
 }
 .cover-img{
     width: 100%;
@@ -557,7 +557,7 @@ a.follow-button-mini:hover{
     width: 100%;
     padding: 3px; 
     background-color: #fff;
-    border:1px solid #ddd;
+    border:1px solid #2696C0;
     float: left;
     /*margin-left:15px;*/
 }

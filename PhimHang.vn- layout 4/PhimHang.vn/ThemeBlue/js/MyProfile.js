@@ -384,7 +384,7 @@ self.detailPost = function (data, e) { // chi tiet post bao gom tra loi
 }
 
 self.enablePhimHang = ko.computed(function () {
-    return self.newMessage().length <= 200 && self.newMessage().length >= 6 && self.newMessage().indexOf('<', 0) == -1;;
+    return self.newMessage().length <= 200 && self.newMessage().length >= 6 && self.newMessage().indexOf('<', 0) == -1;
 });
 
 self.count = ko.computed(function () {
@@ -469,19 +469,10 @@ $.connection.hub.start({ transport: ['webSockets', 'serverSentEvents', 'longPoll
 
 $.connection.hub.disconnected(function () {
     setTimeout(function () {
-        if (tryingToReconnect) {
-            $.connection.hub.start().done(function () {
-                //commenthub.server.joinRoom('@ViewBag.StockCode');
-            });
-        }
-        else {
-            $.connection.hub.start().done(function () {
-                vmPost.init();
-            });
-        }
-
+        $.connection.hub.start();
     }, 10000); // Restart connection after 10 seconds.
 });
+
 $.connection.hub.connectionSlow(function () {
     console.log('Kết nối đến server chậm do đường truyền')
 });
