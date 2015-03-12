@@ -33,6 +33,7 @@ namespace PhimHang.Models
         public string StockPrimary { get; set; }
         public Nullable<bool> ChartYN { get; set; }
         public Nullable<int> SumLike { get; set; }
+        public int SumReply { get; set; }
     
         public virtual ICollection<NotificationMessege> NotificationMesseges { get; set; }
         public virtual ICollection<PinStock> PinStocks { get; set; }

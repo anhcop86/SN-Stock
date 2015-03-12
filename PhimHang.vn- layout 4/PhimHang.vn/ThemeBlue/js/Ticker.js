@@ -94,6 +94,7 @@ function Post(data) {
     self.SumLike = ko.observable(data.SumLike);
     self.DiableLike = ko.observable(true);
     self.Chart = data.Chart || '';
+    self.SumReply = ko.observable(data.SumReply);
 }
 var commenthub = $.connection.CommentHub;
 function viewModel() {
@@ -385,36 +386,36 @@ function viewModel() {
     });
 
     // notification of reply
-    /*
-    commenthub.client.newReplyNoti = function (num, postid) {
-        //
+    
+    commenthub.client.newReplyNoti = function (postid) {
+        // post chinh
             var replysfind = ko.utils.arrayFirst(self.posts(), function (item) {
                 return item.PostId === postid;
             });
             if (replysfind != null) {
-                replysfind.notification(replysfind.notification() + num);
+                replysfind.SumReply(replysfind.SumReply() + 1);
                 return;
             }
-        //
+        // post pin
             var replysfindPin = ko.utils.arrayFirst(self.postPins(), function (item) {
                 return item.PostId === postid;
             });
             if (replysfindPin != null) {
-                replysfindPin.notification(replysfindPin.notification() + num);
+                replysfindPin.SumReply(replysfindPin.SumReply() + 1);
                 return;
             }
-        //
+        // post nam tren local chua dc load
             var replysfindNewPost = ko.utils.arrayFirst(self.newPosts(), function (item) {
                 return item.PostId === postid;
             });
             if (replysfindNewPost != null) {
-                replysfindNewPost.notification(replysfindNewPost.notification() + num);
+                replysfindNewPost.SumReply(replysfindNewPost.SumReply() + 1);
                 return;
             }
 
 
         //alert(self.notification());
-    }*/
+    }
     // end
     var loadSlow = 'Y';
     $(window).scroll(function () { // scroll endpage load more

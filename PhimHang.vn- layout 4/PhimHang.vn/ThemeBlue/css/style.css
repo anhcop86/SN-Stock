@@ -871,16 +871,16 @@ input[name=BullBear]{
     padding:5px;
     margin:0px;
 }*/
-.list-item-control-cm a > i,
-.list-item-control a > i{
-    color:#FF7171;
+.list-item-control-cm a > i, .list-item-control a > i{
+    color:#56A8DF;
     font-size:14px;
+    margin-right: 0px !important;
 }
 .list-item-control-cm a:hover,
 .list-item-control-cm a:hover > i,
 .list-item-control a:hover,
 .list-item-control a:hover > i{
-    color:#295477;
+    color:#328ac5;
     background-color: #eee;
     text-decoration:none !important;
 }
@@ -1400,7 +1400,7 @@ a.category-tab:hover{
     /*max-height: 700px!important;*/
 } 
 .scroll-div {    
-    max-height: 330px!important;
+    /*max-height: 330px!important;*/
     overflow:auto;
     border-bottom: 1px #E0E0DD solid;
 } 

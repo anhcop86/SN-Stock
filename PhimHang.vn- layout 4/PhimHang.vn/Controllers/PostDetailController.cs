@@ -55,7 +55,7 @@ namespace PhimHang.Controllers
 
                 var post = await db.Posts.FirstOrDefaultAsync(p => p.PostId == postid);
 
-                ViewBag.Message = post.ChartYN == true ? post.Message + "<br/><br/><img src='" + post.ChartImageURL + "?maxwidth=450' >" : post.Message;                   
+                ViewBag.Message =  post.Message;                   
                 ViewBag.PostedByName = post.UserLogin.UserNameCopy;
                 ViewBag.PostedByAvatar = string.IsNullOrEmpty(post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + post.UserLogin.AvataImage;
                 ViewBag.PostedDate = post.PostedDate;
@@ -64,6 +64,8 @@ namespace PhimHang.Controllers
                 ViewBag.Stm = post.NhanDinh;
                 ViewBag.ChartYN = post.ChartYN;
                 ViewBag.PostBy = post.PostedBy;
+                ViewBag.Chart = post.ChartImageURL;
+                ViewBag.SumReply = post.SumReply;
 
                 #region gia chi so index va hnxindex
                 var listIndex = new List<string>();

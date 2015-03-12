@@ -1,4 +1,5 @@
-﻿function removeFileChart() {
+﻿//reatime sum reply:cap nhat controller them sumreply, them self.SumReply, copy bieu tuong , sua lai ham nhan reply
+function removeFileChart() {
     if (confirm("Bạn muốn xóa file hình này?")) {
         $('.chartImage').hide();
         $('.mb3-chart-thumb').removeAttr("src");
@@ -91,6 +92,7 @@ function Post(data) {
     self.SumLike = ko.observable(data.SumLike);
     self.DiableLike = ko.observable(true);
     self.Chart = data.Chart || '';
+    self.SumReply = ko.observable(data.SumReply);
 }
 var commenthub = $.connection.CommentHub;
 function viewModel() {
@@ -389,14 +391,14 @@ self.countReply = ko.computed(function () {
 });
 
 // notification of reply
-/*
-commenthub.client.newReplyNoti = function (num, postid) {
+
+commenthub.client.newReplyNoti = function (postid) {
     //
     var replysfind = ko.utils.arrayFirst(self.posts(), function (item) {
         return item.PostId === postid;
     });
     if (replysfind != null) {
-        replysfind.notification(replysfind.notification() + num);
+        replysfind.SumReply(replysfind.SumReply() + 1);
         return;
     }
     //            
@@ -405,11 +407,11 @@ commenthub.client.newReplyNoti = function (num, postid) {
         return item.PostId === postid;
     });
     if (replysfindNewPost != null) {
-        replysfindNewPost.notification(replysfindNewPost.notification() + num);
+        replysfindNewPost.SumReply(replysfindNewPost.SumReply() + 1);
         return;
     }
     //alert(self.notification());
-} */
+} 
 // end
 var loadSlow = 'Y';
 $(window).scroll(function () { // scroll endpage load more

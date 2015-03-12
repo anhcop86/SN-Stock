@@ -105,6 +105,7 @@
           <Property Name="StockPrimary" Type="varchar" MaxLength="16" />
           <Property Name="ChartYN" Type="bit" />
           <Property Name="SumLike" Type="int" />
+          <Property Name="SumReply" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Settings">
           <Key>
@@ -938,6 +939,7 @@
           <NavigationProperty Name="StockRelates" Relationship="PHDBContext.FK_StockRelate_Posts" FromRole="Post" ToRole="StockRelate" />
           <NavigationProperty Name="UserRelates" Relationship="PHDBContext.FK_UserRelate_Posts" FromRole="Post" ToRole="UserRelate" />
           <Property Name="SumLike" Type="Int32" />
+          <Property Name="SumReply" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_Posts_User">
           <End Type="PHDBContext.Post" Role="Post" Multiplicity="0..1" />
@@ -1225,6 +1227,7 @@
           <EntitySetMapping Name="Posts">
             <EntityTypeMapping TypeName="PHDBContext.Post">
               <MappingFragment StoreEntitySet="Posts">
+                <ScalarProperty Name="SumReply" ColumnName="SumReply" />
                 <ScalarProperty Name="SumLike" ColumnName="SumLike" />
                 <ScalarProperty Name="ChartYN" ColumnName="ChartYN" />
                 <ScalarProperty Name="StockPrimary" ColumnName="StockPrimary" />

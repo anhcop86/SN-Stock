@@ -116,7 +116,7 @@
                                 @*<a style="border-color:transparent; background-color:transparent" class="button" href="#"><i data-bind="text :notification, visible: notification() > 0" class="fa fa-comments"></i></a>*@
                                 <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
                                 <a class="button btn-answer" target="_self" onclick="window.open(this.href, 'chia sẻ lên facebook', 'left=100,top=100,width=600,height=400,toolbar=1,resizable=0'); selectMe(event, '#'); return false;" data-bind="attr : { href : 'https://www.facebook.com/sharer/sharer.php?u=@ViewBag.AbsolutePathHostName/PostDetail?postid='+ PostId +'&display=popup&ref=plugin' }" title="Chia sẻ lên facebook">Chia sẻ</a>
-                            
+                                <a class="button" href="#" style="cursor:text" data-bind="visible: SumReply() > 0"><i class="fa fa-comments" data-bind=" text : SumReply"></i></a>                                
                                 <span class="likeAndPin">
                                     <a class="button" href="#" title="Pin"><img src="/images/pintab.png" /></a> 
                                         <span data-bind="text : SumLike, visible : SumLike() > 0 "></span>
@@ -158,10 +158,11 @@
                             <span data-bind="html : Stm"></span>
                             <div class="list-item-status-content" data-bind="html : Message"></div>
                             <div class="list-item-control">
-                                @*<a style="border-color:transparent; background-color:transparent" class="button" href="#"><i data-bind="text :notification, visible: notification() > 0" class="fa fa-comments"></i></a>*@
+                                
                                 <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
                                 <!--share popup of facebook-->
                                 <a class="button btn-answer" target="_self" onclick="window.open(this.href, 'chia sẻ lên facebook', 'left=100,top=100,width=600,height=400,toolbar=1,resizable=0'); selectMe(event, '#'); return false;" data-bind="attr : { href : 'https://www.facebook.com/sharer/sharer.php?u=@ViewBag.AbsolutePathHostName/PostDetail?postid='+ PostId +'&display=popup&ref=plugin' }" title="Chia sẻ lên facebook">Chia sẻ</a>
+                                <a class="button" href="#" style="cursor:text" data-bind="visible: SumReply() > 0"><i class="fa fa-comments" data-bind=" text : SumReply"></i></a>
                                 <div id="cm-3" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
                                     <ul class="dropdown-menu">
                                         <li><a href="#" title="Chia sẻ">Chia sẻ</a></li>

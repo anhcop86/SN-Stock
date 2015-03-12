@@ -176,7 +176,8 @@ namespace PhimHang.Controllers
                                StockPrimary = stockRelate.StockPrimary,
                                Stm = stockRelate.NhanDinh,
                                ChartYN = stockRelate.ChartYN,
-                               SumLike = stockRelate.SumLike
+                               SumLike = stockRelate.SumLike,
+                               SumReply = stockRelate.SumReply
                            }).Skip(skipposition).Take(10).ToArray();
                 //var listStock = new List<string>();              
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
@@ -198,7 +199,8 @@ namespace PhimHang.Controllers
                                StockPrimary = stockRelate.StockPrimary,
                                Stm = stockRelate.NhanDinh,
                                ChartYN = stockRelate.ChartYN,
-                               SumLike = stockRelate.SumLike
+                               SumLike = stockRelate.SumLike,
+                               SumReply = stockRelate.SumReply
                            }).Skip(skipposition).Take(10).ToArray();
                 //var listStock = new List<string>();              
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
@@ -220,7 +222,8 @@ namespace PhimHang.Controllers
                                StockPrimary = stockRelate.StockPrimary,
                                Stm = stockRelate.NhanDinh,
                                ChartYN = stockRelate.ChartYN,
-                               SumLike = stockRelate.SumLike
+                               SumLike = stockRelate.SumLike,
+                               SumReply = stockRelate.SumReply
                            }).Skip(skipposition).Take(10).ToArray();
                 //var listStock = new List<string>();              
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);

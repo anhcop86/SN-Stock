@@ -44,7 +44,7 @@
                             <i class="fa fa-star-o" data-bind="visible: XemYN > 0"></i>
                         </span>*@
                                 <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
-
+                                <a class="button" href="#" style="cursor:text" data-bind="visible: SumReply() > 0" title="Tổng số trả lời"><i title="Tổng số trả lời" class="fa fa-comments" data-bind=" text : SumReply"></i></a>  
                                 <span class="likeAndPin" style="">
 
                                     <span data-bind="text : SumLike, visible : SumLike() > 0 "></span>
@@ -76,12 +76,6 @@
                     <span id="idStmDetail"></span>
                     <div class="list-item-status-content" id="idPostMessenge"></div>
 
-
-                    <div class="list-item-control">
-                        <a class="button" href="#"><i class="fa fa-comments"></i></a>
-                        <a class="button btn-answer" href="#" title="Trả lời">Thích</a>
-
-                    </div>
                 </div>
             </div>
             <div style="display: block;" class="list-comment">

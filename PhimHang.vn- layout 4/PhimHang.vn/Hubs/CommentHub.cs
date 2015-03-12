@@ -171,7 +171,8 @@ namespace PhimHang.Hubs
                     Stm = post.NhanDinh,
                     ChartYN = post.ChartYN,
                     PostBy = post.PostedBy,
-                    SumLike = 0
+                    SumLike = 0,
+                    SumReply =0
                 };
 
                 await Clients.Groups(listStock).addPost(ret); // ad group
@@ -194,12 +195,14 @@ namespace PhimHang.Hubs
             {
                 var listUsersendMessege = new List<string>();
                 ///////////////////////////////////////////
+                var getPost = db.Posts.Find(reply.PostedBy); // lay thong tin cua bài post đó
+                // cap nhat tong so luong reply
+                getPost.SumReply += 1;
+                
                 #region gui tin cho chu da post bài
-                var getPost = db.Posts.Find(reply.PostedBy);
+                
                 if (getPost.PostedBy != currentUserId)
                 {
-
-
                     var nMRecive = db.NotificationMesseges.FirstOrDefault(nm => nm.UserReciver == getPost.UserLogin.Id && nm.PostId == reply.PostedBy);
                     if (nMRecive == null)
                     {
@@ -249,8 +252,20 @@ namespace PhimHang.Hubs
                     }
                 }
                 #endregion
+
                 db.PostComments.Add(reply);
-                await db.SaveChangesAsync();
+                
+                try
+                {
+                    db.Entry(getPost).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+                }
+                catch (Exception)
+                {
+                    // chay tiep
+                    
+                }
+               
 
                 var ret = new
                 {
@@ -269,7 +284,7 @@ namespace PhimHang.Hubs
                 {
                     await Clients.Users(listUsersendMessege).MessegeOfUserPost(1);
                 }
-                //await Clients.AllExcept(Context.ConnectionId).newReplyNoti(1, reply.PostedBy);
+                await Clients.All.newReplyNoti(reply.PostedBy);
             }
         }
 

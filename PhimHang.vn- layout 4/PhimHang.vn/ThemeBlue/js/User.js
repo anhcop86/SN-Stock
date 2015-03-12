@@ -1,4 +1,5 @@
 ﻿// khi sua link hinh image can chu y sua : self.Message , self.Char, controller, click vao detail, 
+//cap nhat controller them sumreply, them self.SumReply, copy bieu tuong , sua lai ham nhan reply
 function selectMe(e, data) {        // khi nguoi dung click vao link trong knockout js click event
     e.stopPropagation();
 }
@@ -44,13 +45,14 @@ function Post(data) {
     self.SumLike = ko.observable(data.SumLike);
     self.DiableLike = ko.observable(true);
     self.Chart = data.Chart || '';
+    self.SumReply = ko.observable(data.SumReply);
 }
 var commenthub = $.connection.CommentHub;
 function viewModel() {
     var self = this;
     self.posts = ko.observableArray(); // danh muc post
     self.replys = ko.observableArray(); // danh mục reply
-    self.postPins = ko.observableArray(); // danh muc cac bai post dc pin len dau
+    //self.postPins = ko.observableArray(); // danh muc cac bai post dc pin len dau
     //self.newMessage = ko.observable('$@ViewBag.StockCode '); // noi dung tin post
     self.newReply = ko.observable(''); // noi dung tin reply
     self.error = ko.observable();
@@ -284,36 +286,22 @@ function viewModel() {
     });
 
     // notification of reply
-    /*
-    commenthub.client.newReplyNoti = function (num, postid) {
+    
+    commenthub.client.newReplyNoti = function (postid) {
         //
             var replysfind = ko.utils.arrayFirst(self.posts(), function (item) {
                 return item.PostId === postid;
             });
             if (replysfind != null) {
-                replysfind.notification(replysfind.notification() + num);
+                replysfind.SumReply(replysfind.SumReply() + 1);
                 return;
             }
         //
-            var replysfindPin = ko.utils.arrayFirst(self.postPins(), function (item) {
-                return item.PostId === postid;
-            });
-            if (replysfindPin != null) {
-                replysfindPin.notification(replysfindPin.notification() + num);
-                return;
-            }
-        //
-            var replysfindNewPost = ko.utils.arrayFirst(self.newPosts(), function (item) {
-                return item.PostId === postid;
-            });
-            if (replysfindNewPost != null) {
-                replysfindNewPost.notification(replysfindNewPost.notification() + num);
-                return;
-            }
+            
 
 
         //alert(self.notification());
-    }*/
+    }
     // end
     var loadSlow = 'Y';
     $(window).scroll(function () { // scroll endpage load more

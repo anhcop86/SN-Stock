@@ -45,6 +45,7 @@ function Post(data) {
     self.SumLike = ko.observable(data.SumLike);
     self.DiableLike = ko.observable(true);
     self.Chart = data.Chart || '';
+    self.SumReply = ko.observable(data.SumReply);
 }
 var commenthub = $.connection.CommentHub;
 function viewModel() {
@@ -209,36 +210,19 @@ function viewModel() {
     });
 
     // notification of reply
-    /*
-    commenthub.client.newReplyNoti = function (num, postid) {
+    
+    commenthub.client.newReplyNoti = function (postid) {
         //
-            var replysfind = ko.utils.arrayFirst(self.posts(), function (item) {
-                return item.PostId === postid;
-            });
-            if (replysfind != null) {
-                replysfind.notification(replysfind.notification() + num);
-                return;
-            }
-        //
-            var replysfindPin = ko.utils.arrayFirst(self.postPins(), function (item) {
-                return item.PostId === postid;
-            });
-            if (replysfindPin != null) {
-                replysfindPin.notification(replysfindPin.notification() + num);
-                return;
-            }
-        //
-            var replysfindNewPost = ko.utils.arrayFirst(self.newPosts(), function (item) {
-                return item.PostId === postid;
-            });
-            if (replysfindNewPost != null) {
-                replysfindNewPost.notification(replysfindNewPost.notification() + num);
-                return;
-            }
-
+        var replysfind = ko.utils.arrayFirst(self.posts(), function (item) {
+            return item.PostId === postid;
+        });
+        if (replysfind != null) {
+            replysfind.SumReply(replysfind.SumReply() + 1);
+            return;
+        }
 
         //alert(self.notification());
-    }*/
+    }
     // end
     var loadSlow = 'Y';
     $(window).scroll(function () { // scroll endpage load more
