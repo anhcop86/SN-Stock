@@ -12,9 +12,8 @@
     </div>
     
     <div class="user-info-detail">
-        <div class="user-info-intro">
-            <div title="Cập nhật trong hồ sơ cá nhân của bạn"><b>STATUS</b></div>
-            <hr />
+        <div class="user-info-intro">            
+            
             @{
                 if (string.IsNullOrEmpty(Model.Status))
                 {
@@ -27,7 +26,7 @@
             }
         </div>
         <div>
-            <i class="fa fa-map-marker"></i>&nbsp;Trường phái đầu tư:
+            <i class="fa fa-map-marker"></i>&nbsp;Trường phái:
             @{
                 if (Model.PhilosophyMarket != null)
                 {
@@ -53,7 +52,7 @@
             }
         </div>
         <div>
-            <i class="fa fa-unlink"></i> Kinh nghiệm chứng trường:
+            <i class="fa fa-unlink"></i> Kinh nghiệm:
             @{
 
                 if (Model.NumberExMarketYear != null)
@@ -66,7 +65,7 @@
                 }
             }
         </div>
-        <div><i class="fa fa-clock-o"></i> Giới thiệu bản thân:       
+        <div><i class="fa fa-clock-o"></i> Giới thiệu:       
             @{
                 if (string.IsNullOrEmpty(Model.CVInfo))
                 {
@@ -79,7 +78,7 @@
             }
      </div>
         <div class="user-info-mypage">
-            <p><i class="fa fa-home"></i> Homepage:</p>
+            <p><i class="fa fa-home"></i> Trang nhà trên facebook:</p>
             @{
                 if (!string.IsNullOrEmpty(Model.URLFacebook))
                 {

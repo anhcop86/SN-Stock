@@ -29,7 +29,8 @@ namespace PhimHang.Controllers
 
 
         public UserManager<ApplicationUser> UserManager { get; private set; }
-
+        private const string ImageURLAvataDefault = "/img/avatar2.jpg";
+        private const string ImageURLAvata = "/images/avatar/";
         private testEntities db = new testEntities();
         public async Task<ActionResult> Index()
         {
@@ -39,7 +40,7 @@ namespace PhimHang.Controllers
                 ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
                 var numberMessegeNew = db.NotificationMesseges.Where(nm => nm.UserReciver == currentUser.UserExtentLogin.Id && nm.NumNoti > 0).Sum(mn => mn.NumNoti);
                 ViewBag.NewMessege = numberMessegeNew;
-
+                ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
 
             }
             #region gia chi so index va hnxindex

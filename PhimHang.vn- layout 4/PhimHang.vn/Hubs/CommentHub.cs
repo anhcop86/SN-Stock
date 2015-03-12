@@ -12,6 +12,7 @@ using Microsoft.AspNet.SignalR.Hubs;
 using System.Text.RegularExpressions;
 using System.Data.Entity;
 
+
 namespace PhimHang.Hubs
 {
     [HubName("CommentHub")]
@@ -71,7 +72,7 @@ namespace PhimHang.Hubs
                 }
                 else if (item.Contains("http") || item.Contains("www."))
                 {
-                    messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='" + item + "'>[LINK]</a>" + " ";
+                    messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='" + item + "'>" + AppHelper.GetDomain(item) + "...</a>" + " ";
                 }
                 else
                 {

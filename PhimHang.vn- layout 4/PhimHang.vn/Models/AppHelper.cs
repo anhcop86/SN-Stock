@@ -73,6 +73,10 @@ namespace PhimHang.Models
                 return ConfigurationManager.AppSettings["AbsolutePathHostName"].ToString();
             } 
         }
+        public static string GetDomain(string domainFull)
+        {
+            return new System.Uri(domainFull).Host;
+        }
     }
     public class PosistionFilter
     {

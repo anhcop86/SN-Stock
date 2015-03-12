@@ -20,7 +20,7 @@
             <div class="input-status">
                 <form id="frmStatus" name="frmStatus" method="GET">
                     <div id="input-status-text" class="input-status-text">
-                        <textarea data-bind="value : newMessage, valueUpdate : 'afterkeydown' , limitCharacters : 140" class="status-cm" name="status" rows="5" placeholder="$Mã cổ phiếu ($VNM, $GAS); Username" id="status" title="Search" autocomplete="off" rows="5"></textarea>
+                        <textarea data-bind="value : newMessage, valueUpdate : 'afterkeydown' , limitCharacters : 140" class="status-cm" name="status" rows="5" placeholder="$Cổ phiếu | &#64;Username" id="status" title="Search" autocomplete="off" rows="5"></textarea>
                     </div>
                     <div class="status-control">
                         <div class="choose_file f-left">
@@ -52,7 +52,7 @@
                 <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('CHA')" href="#">Biểu đồ</a> </div>
                 <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('STM')" href="#">Nhận định</a></div>                
                 <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('VIP')" href="#">VIP</a></div>
-                <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('PEF')" href="#">Theo dõi</a></div>
+                <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('PEF')" href="#">Người theo dõi</a></div>
                 <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('STF')" href="#">CP theo dõi</a></div>
                 @*<div class="toSpan filer-bar-item">
                     <a id="btn-option-more" href="#" data-dropdown="#dropdown-2">

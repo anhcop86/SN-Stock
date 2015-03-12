@@ -7,19 +7,19 @@
             if (Model.Diff == 0)
             {
                 <span class="NoChangeTicker cp-index">
-                    @decimal.Round(@Model.FinishPrice, 1) (@Model.DiffRate%)
+                    @decimal.Round(@Model.FinishPrice, 1) <br/> @decimal.Round(@Model.Diff, 1) (@decimal.Round(@Model.DiffRate,1)%)
                 </span>
             }
             else if (Model.Diff > 0)
             {
                 <span class="bullishTicker cp-index">
-                    @decimal.Round(@Model.FinishPrice, 1) (@Model.DiffRate%)
+                    @decimal.Round(@Model.FinishPrice, 1) <br /> @decimal.Round(@Model.Diff, 1) (@decimal.Round(@Model.DiffRate, 1)%)
                 </span>
             }
             else
             {
                 <span class="bearishTicker cp-index">
-                    @decimal.Round(@Model.FinishPrice, 1) (@Model.DiffRate%)
+                    @decimal.Round(@Model.FinishPrice, 1) <br /> @decimal.Round(@Model.Diff, 1) (@decimal.Round(@Model.DiffRate, 1)%)
                 </span>
             }
         }

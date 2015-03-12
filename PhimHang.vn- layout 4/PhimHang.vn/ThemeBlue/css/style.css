@@ -299,9 +299,9 @@ ul.top-panel-left2 > li:not(:first-child):hover{
     font-size: 12px;
 }
 .divBull.switch3button-select{
-    background-color: #E3F0E3;
+    background-color: #CBDBCB;
     color: #60A85F;
-    border:1px solid #D9E5D9;
+    border:1px solid transparent;
     font-family: Arial,sans-serif;    
     font-weight: bold;
     padding: 7px;
@@ -994,6 +994,7 @@ input[name=BullBear]{
     padding: 5px 10px 0px 10px;
     color:#fff;
     font-size: 1.1rem;
+    text-align:center;
 }
 
 .banner-info > div{
@@ -1300,20 +1301,24 @@ a.category-tab:hover{
     margin-top: 10px;
     margin-left: 30px;
 }
-.user-info-detail{
-    margin-top: 10px;
+.user-info-detail{    
     margin-left: 60px;
     font-size: 1.3rem;
+    padding: 5px 0px 5px;
 }
 .user-info-detail > div{
     padding-top: 5px;
+    text-align:justify;
 }
 .user-info-intro{
     margin: 5px 10px;
-    padding: 5px 10px;
+    
     /*background-color: #78c6f9;*/
-    color: #000;
-    border: 1px solid #78c6f9;
+    color: #8E8E8E;
+    font-style:italic;
+    text-align:center;
+    font-weight:bold;
+    /*border: 1px solid #78c6f9;*/
 }
 .user-info-intro div{
   text-align:center;
@@ -1552,15 +1557,18 @@ button
 
 .bullishTicker {    
     color: #14e808;
+    font-size: 2.5rem;
 }
 
 .bearishTicker{
     color: #D81D35;
+    font-size: 2.5rem;
 }
 
 .NoChangeTicker
 {
     color: #DE7710;
+    font-size: 2.5rem;
 }
 
 

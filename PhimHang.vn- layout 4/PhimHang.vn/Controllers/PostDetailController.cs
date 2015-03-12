@@ -45,6 +45,8 @@ namespace PhimHang.Controllers
                     ViewBag.CureentUserId = currentUser.UserExtentLogin.Id;
                     ViewBag.UserName = currentUser.UserName;
                     ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
+                    var numberMessegeNew = db.NotificationMesseges.Where(nm => nm.UserReciver == currentUser.UserExtentLogin.Id && nm.NumNoti > 0).Sum(mn => mn.NumNoti);
+                    ViewBag.NewMessege = numberMessegeNew;
                 }
                 else
                 {
