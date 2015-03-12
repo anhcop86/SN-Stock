@@ -1,38 +1,23 @@
 ﻿<div class="second-left-banner">
     <div class="banner-header-white">DÂN PHÍM CHUYÊN NGHIỆP</div>
-    <div class="banner-item-user-detail">
-        <div class="avata-genaral-size">
-            <img src="/img/avata3.jpg?width=50&height=53&mode=crop" class="img-rounded" alt="avatar">
-        </div>
-        <div class="list-item-detail">
-            <div class="list-item-username danphim">Tom Truong <i class="fa  fa-check-circle">&nbsp;</i></div>
-            <div class="list-item-control">
-                <a href="#" class="button"><i class="fa fa-plus"></i>Theo dõi</a>
+    @{
+        foreach (var item in ViewBag.DanPhimRandom as List<PhimHang.Controllers.UserRandom>)
+        {
+            <div class="banner-item-user-detail">
+                <div class="avata-genaral-size">
+                    <img src="@item.Avata?width=50&height=53&mode=crop" class="img-rounded" alt="avatar">
+                </div>
+                <div class="list-item-detail">
+                    <div class="list-item-username danphim">@item.UserName </div>
+                    <div class="list-item-control">
+                        <a href="/user/@item.UserName/tab/1" class="button"><i class="fa fa-info"></i> Xem thêm</a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="banner-item-user-detail">
-        <div class="avata-genaral-size">
-            <img src="/img/avatar4.jpg?width=50&height=53&mode=crop" class="img-rounded" alt="avatar">
-        </div>
-        <div class="list-item-detail">
-            <div class="list-item-username danphim">Tom Truong <i class="fa  fa-check-circle">&nbsp;</i></div>
-            <div class="list-item-control">
-                <a href="#" class="button"><i class="fa fa-plus"></i>Theo dõi</a>
-            </div>
-        </div>
-    </div>
-    <div class="banner-item-user-detail">
-        <div class="avata-genaral-size">
-            <img src="/img/avatar5.jpg?width=50&height=53&mode=crop" class="img-rounded" alt="avatar">
-        </div>
-        <div class="list-item-detail">
-            <div class="list-item-username danphim">Tom Truong <i class="fa  fa-check-circle">&nbsp;</i></div>
-            <div class="list-item-control">
-                <a href="#" class="button"><i class="fa fa-plus"></i>Theo dõi</a>
-            </div>
-        </div>
-    </div>
+        }
+    }
+    
+    
     <div class="loadmore"><a href="#"><i class="fa  fa-angle-double-down"></i></a></div>
 </div>
 <div class="banner-info" style="color: #666;">

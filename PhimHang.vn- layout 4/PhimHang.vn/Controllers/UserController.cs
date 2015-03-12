@@ -118,7 +118,7 @@ namespace PhimHang.Controllers
             {
                 // load danh muc theo doi
                 //var follow = await db.FollowUsers.CountAsync(f => f.UserId == currentUser.Id);
-                var followList = (from fl in db.FollowUsers
+                var followList = await (from fl in db.FollowUsers
                                   where fl.UserId == currentUser.Id
                                   select new UserFollowView
                 {
@@ -127,7 +127,7 @@ namespace PhimHang.Controllers
                     Avata = string.IsNullOrEmpty(fl.UserLogin1.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + fl.UserLogin1.AvataImage
                 }).ToListAsync();
 
-                ViewBag.FollowList = followList.Result;
+                ViewBag.FollowList = followList;
 
             }
             #endregion
@@ -153,6 +153,15 @@ namespace PhimHang.Controllers
             listIndex.Add("HNXIndex");
             ViewBag.ListIndex = _stockRealtime.GetAllStocksList(listIndex).Result;
             #endregion
+
+            var DanPhimRandom = await (from u in db.UserLogins
+                                       orderby Guid.NewGuid()
+                                       select new UserRandom
+                                      {
+                                           Avata = string.IsNullOrEmpty(u.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + u.AvataImage,
+                                           UserName = u.UserNameCopy
+                                      }).Take(4).ToListAsync();
+            ViewBag.DanPhimRandom = DanPhimRandom;
             return View(currentUser);
 
 
@@ -321,5 +330,11 @@ namespace PhimHang.Controllers
         public string UserName { get; set; }
         public string Avata { get; set; }
         public string Status { get; set; }
+    }
+
+    public class UserRandom
+    {
+        public string UserName { get; set; }
+        public string Avata { get; set; }
     }
 }
