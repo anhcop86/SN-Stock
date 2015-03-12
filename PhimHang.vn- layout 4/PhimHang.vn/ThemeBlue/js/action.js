@@ -8,8 +8,17 @@ $(document).ready(function () {
         modal: true,
         width: 650,        
         resizable: true,
-        autoOpen: false
+        autoOpen: false,
+        open: function (event, ui) {
+            $('body').css('overflow', 'auto');
+            $(window).scrollTop(0);
+            //$('.area-center').css('height', '1000px');
+        },
+        close: function (event, ui) {
+            $('body').css('overflow', 'auto');
+        }
     });
+
     $(".ui-dialog-titlebar").hide();
     if (!$('#myonoffswitch').is(':checked')) {
         $("#msg-new-status").hide();

@@ -1,4 +1,4 @@
-﻿// khi sua link hinh image can chu y sua : self.Message , controller, click vao detail
+﻿// khi sua link hinh image can chu y sua : self.Message , self.Char, controller, click vao detail, 
 
 function removeFileChart() {
         if (confirm("Bạn muốn xóa file hình này?")) {

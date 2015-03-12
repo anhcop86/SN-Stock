@@ -192,8 +192,7 @@ namespace PhimHang.Controllers
                            select new
                            {
                                Message = stockRelate.Post.Message,
-                               Chart = stockRelate.Post.ChartImageURL,
-                               //PostedBy = stockRelate.Post.PostedDate,
+                               Chart = stockRelate.Post.ChartImageURL,                               
                                PostedByName = stockRelate.Post.UserLogin.UserNameCopy,
                                PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage,
                                PostedDate = stockRelate.Post.PostedDate,

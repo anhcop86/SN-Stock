@@ -1,4 +1,5 @@
-﻿function selectMe(e, data) {        // khi nguoi dung click vao link trong knockout js click event
+﻿// khi sua link hinh image can chu y sua : self.Message , self.Char, controller, click vao detail, 
+function selectMe(e, data) {        // khi nguoi dung click vao link trong knockout js click event
     e.stopPropagation();
 }
 
@@ -32,17 +33,18 @@ function Post(data) {
     var self = this;
     data = data || {};
     self.PostId = data.PostId;
-    self.Message = data.Message || "";
+    self.Message = (data.ChartYN == 1 ? data.Message + '<br/><img src=' + data.Chart + '?width=215&height=120&mode=crop>' : data.Message) || "";
     self.PostedByName = data.PostedByName || "";
     self.PostedByAvatar = data.PostedByAvatar + '?width=50&height=50&mode=crop' || "";
     self.PostedDate = getTimeAgo(data.PostedDate);
-    self.StockPrimary = data.StockPrimary;
+    //self.StockPrimary = data.StockPrimary;
     //self.notification = ko.observable(0);
     self.Stm = (data.Stm === 1 ? "<span class='divBear-cm'>Giảm</span>" : data.Stm === 2 ? "<span class='divBull-cm'>Tăng</span>" : "") || "";
     self.ChartYN = data.ChartYN || 0;
     self.XemYN = data.XemYN; // == 1 ? "New" : "" || "";
     self.SumLike = ko.observable(data.SumLike);
     self.DiableLike = ko.observable(true);
+    self.Chart = data.Chart || '';
 }
 var commenthub = $.connection.CommentHub;
 function viewModel() {
@@ -137,7 +139,7 @@ function viewModel() {
         $("#idPostedDateDetail").html(data.PostedDate);
         $("#idPostNameDetail").html(data.PostedByName);
         $("#idImgPostDetail").attr('src', data.PostedByAvatar);
-        $("#idPostMessenge").html(data.Message.replace("?width=215&height=120&mode=crop", "?maxwidth=475"));//=200&s.grayscale=true|"
+        $("#idPostMessenge").html(data.ChartYN == 1 ? data.Message.replace('<br/><img src=' + data.Chart + '?width=215&height=120&mode=crop>', '') + '<br/><br/><a target="_blank" href=' + data.Chart + '><img src=' + data.Chart + "?maxwidth=475></a>" : data.Message);//=200&s.grayscale=true|"
         $("#idStmDetail").html(data.Stm);
         postidCurrent = data.PostId;
         $("#IdLoadMoreConversation").attr('href', '/PostDetail?postid=' + postidCurrent);
