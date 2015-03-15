@@ -42,5 +42,6 @@ namespace PhimHang.Models
         public virtual DbSet<JobTitile> JobTitiles { get; set; }
         public virtual DbSet<Philosophy> Philosophies { get; set; }
         public virtual DbSet<PostComment> PostComments { get; set; }
+        public virtual DbSet<TickerHot> TickerHots { get; set; }
     }
 }

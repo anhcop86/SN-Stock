@@ -145,6 +145,13 @@
           <Property Name="StockCode" Type="varchar" MaxLength="16" />
           <Property Name="CreatedDate" Type="datetime2" Precision="7" />
         </EntityType>
+        <EntityType Name="TickerHot">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="THName" Type="varchar" MaxLength="16" />
+        </EntityType>
         <EntityType Name="UserLogins">
           <Key>
             <PropertyRef Name="Id" />
@@ -429,6 +436,7 @@
           <EntitySet Name="StockCode" EntityType="Self.StockCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StockRelate" EntityType="Self.StockRelate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StockViewLastest" EntityType="Self.StockViewLastest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TickerHot" EntityType="Self.TickerHot" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserLogins" EntityType="Self.UserLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRelate" EntityType="Self.UserRelate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserViewLastest" EntityType="Self.UserViewLastest" Schema="dbo" store:Type="Tables" />
@@ -607,6 +615,7 @@
             <End Role="UserLogin" EntitySet="UserLogins" />
             <End Role="PostComment" EntitySet="PostComments" />
           </AssociationSet>
+          <EntitySet Name="TickerHots" EntityType="PHDBContext.TickerHot" />
           </EntityContainer>
         <EntityType Name="FollowStock">
           <Key>
@@ -1055,6 +1064,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TickerHot">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="THName" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1256,6 +1272,14 @@
                 <ScalarProperty Name="PostedBy" ColumnName="PostedBy" />
                 <ScalarProperty Name="Message" ColumnName="Message" />
                 <ScalarProperty Name="PostCommentsId" ColumnName="PostCommentsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TickerHots">
+            <EntityTypeMapping TypeName="PHDBContext.TickerHot">
+              <MappingFragment StoreEntitySet="TickerHot">
+                <ScalarProperty Name="THName" ColumnName="THName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

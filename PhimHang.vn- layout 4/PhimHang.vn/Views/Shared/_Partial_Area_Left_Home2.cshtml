@@ -1,0 +1,56 @@
+﻿@using PhimHang.Models;
+
+<div class="banner-right-first" style=" margin-top: 10px;">
+    <div class="banner-header-white">CỔ PHIẾU NGẪU NHIÊN</div>
+    @{
+
+        foreach (var item in ViewBag.listStockRandom as List<StockRealTime>)
+        {
+            <div class="banner-item1">
+                <div class="item-left">
+                    <a href="/Ticker/@item.CompanyID">$@item.CompanyID<br></a>
+                </div>
+                @if (item.Diff == 0)
+                {
+                    <div class="item-right NoChangeIndex">
+                        <strong>@item.FinishPrice</strong>
+                        <span>
+                            <i></i><br>
+                            <span class="top-menu-point">
+                                @item.Diff (@item.DiffRate %)
+                            </span>
+                        </span>
+                    </div>
+                }
+                else if (item.Diff > 0)
+                {
+                    <div class="item-right bullishIndex">
+                        <strong>@item.FinishPrice</strong>
+                        <span>
+                            <i class="fa fa-sort-up"></i><br>
+                            <span class="top-menu-point">
+                                @item.Diff (@item.DiffRate %)
+                            </span>
+                        </span>
+                    </div>
+                }
+                else
+                {
+                    <div class="item-right bearishIndex">
+                        <strong>@item.FinishPrice</strong>
+                        <span>
+                            <i class="fa fa-sort-down"></i><br>
+                            <span class="top-menu-point">
+                                @item.Diff (@item.DiffRate %)
+                            </span>
+                        </span>
+                    </div>
+                }
+
+
+            </div>
+        }
+    }
+
+    @*<div class="loadmore"><a href="#"><i class="fa  fa-angle-double-down"></i></a></div>*@
+</div>

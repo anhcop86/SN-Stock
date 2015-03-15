@@ -1,30 +1,54 @@
 ﻿<!DOCTYPE html>
-<html lang="en-US">
-
+<html>
 <head>
     <title>@ViewBag.Title</title>
     <meta charset="UTF-8">
-    @*<meta name="viewport" content="width=device-width, initial-scale=1.0">*@
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--Jquery-->
-    
-    <!--For desgin layout-->
-
     @Scripts.Render("~/bundles/standardCoreRT")
-    @Styles.Render("~/bundles/StyleStandard")   
+
+    <!---->
+    <!--For desgin layout-->
+    @Styles.Render("~/bundles/StyleStandard")
+
     <!--for chart-->
+    <link href="~/ThemeBlue/css/chart.css" rel="stylesheet" type="text/css">
     <!--End-->
     <link href="~/ThemeBlue/css/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="~/ThemeBlue/css/jquery.dropdown.css" rel="stylesheet">   
+    <link href="~/ThemeBlue/css/jquery.dropdown.css" rel="stylesheet">
+
     <script src="~/ThemeBlue/js/jquery.dropdown.js"></script>
+    <script src="~/ThemeBlue/js/action.js"></script>
 
     <!-- End For desgin-->
     <link href="~/ThemeBlue/css/Notification.css" rel="stylesheet" />
-    <link href="~/ThemeBlue/css/HomeLoginReponesive.css" rel="stylesheet" />
-    <link href="~/ThemeBlue/css/login.css" rel="stylesheet" />
 </head>
 <body>
+    <!--facebook plugin-->
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '934180333272963',
+                xfbml: true,
+                version: 'v2.2'
+            });
+        };
 
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <div id="fb-root"></div>    
+
+    <!--facebook plugin-->
+    <div class="NotificationCenter">
+        <span id="textNoti"></span>
+    </div>
     <div id="top-banner" class="w100p bg-blue">
         <div class="content-main-top">
             <div class="f-left" id="top-banner-left">
@@ -36,12 +60,12 @@
                 @{
                     if (User.Identity.IsAuthenticated)
                     {
-                         <div class="toSpan top-banner-icon f-left">
-                            
-                             <a href="/myprofile">
-                                 <img style="margin-top: 8px;border-radius: 20px;" src="@ViewBag.AvataEmage?width=30&height=30&mode=crop" class="img-rounded" alt="avatar">
-                             </a>
-                         </div>
+                        <div class="toSpan top-banner-icon f-left">
+
+                            <a href="/myprofile">
+                                <img style="margin-top: 8px;border-radius: 20px;" src="@ViewBag.AvataEmage?width=30&height=30&mode=crop" class="img-rounded" alt="avatar">
+                            </a>
+                        </div>
                         <div class="toSpan top-banner-icon f-left">
 
                             <a href="/user/@User.Identity.Name/tab/1"><i class="fa fa-home"></i></a>
@@ -97,6 +121,7 @@
             </div>
         </div>
     </div>
+
     <div class="menu-top-bar">
         <div class="top-menu-2 top-menu-2-custom">
             <ul class="nav navbar-nav top-panel-left2">
@@ -157,9 +182,22 @@
         </div>
     </div>
     <div class="content-main content-main2">
+        <div class="area-left">
+            @Html.Partial("_Partial_Area_Left_Home")
+            @Html.Partial("_Partial_Area_Left_Home2")
+        </div>
+      
+
         @RenderBody()
+       
+            <div class="area-right">
+                @Html.Partial("_Partial_Area_Right_Home")
+               
+            </div>
+
+     
     </div>
+
     @RenderSection("scripts", required: false)
 </body>
 </html>
-

@@ -24,7 +24,7 @@ $(document).ready(function () {
     if (!$('#myonoffswitch').is(':checked')) {
         $("#msg-new-status").hide();
     }
-    $(document).scrollTop(50);
+    $(document).scrollTop(0); // set scrool top khi load lai trang
     //$("body").scrollTop(0);
     //$("#radio").buttonset();
     $('.divBull, .divBear').click(function () {

@@ -1,0 +1,37 @@
+﻿<div class="second-left-banner">
+    
+        <div class="banner-header-white">DÂN PHÍM CHUYÊN NGHIỆP</div>
+        @{
+            foreach (var item in ViewBag.DanPhimRandom as List<PhimHang.Controllers.UserRandom>)
+            {
+                <div class="banner-item-user-detail">
+                    <div class="avata-genaral-size">
+                        <img src="@item.Avata?width=50&height=53&mode=crop" class="img-rounded" alt="avatar">
+                    </div>
+                    <div class="list-item-detail">
+                        <div class="list-item-username danphim"><a href="/user/@item.UserName/tab/1"> @item.FullName </a></div>
+                        <div class="list-item-control">
+                            <a href="/user/@item.UserName/tab/1" class="button"><i class="fa fa-user"></i> Xem thêm</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+
+        @*<div class="loadmore"><a href="#"><i class="fa  fa-angle-double-down"></i></a></div>*@
+    
+</div>
+<div class="banner-info" style="color: #666;">
+    <div>
+        <a style="color: #666;" href="#">Giới thiệu</a>
+        <a style="color: #666;" href="#">Quy định</a>
+        <a style="color: #666;" href="#">Trợ giúp</a>
+        <a style="color: #666;" href="#">Liên hệ</a>
+    </div>
+    <p>
+        Bản quyền thuộc về Sài gòn Group<br>
+        Copyright © Cùng Phím
+    </p>
+</div>
+          

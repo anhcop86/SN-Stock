@@ -41,6 +41,7 @@
         <EntityTypeShape EntityType="PHDBContext.PostComment" Width="1.5" PointX="10.25" PointY="6.375" />
         <AssociationConnector Association="PHDBContext.FK_PostComments_Posts" />
         <AssociationConnector Association="PHDBContext.FK_PostComments_UserLogins" />
+        <EntityTypeShape EntityType="PHDBContext.TickerHot" Width="1.5" PointX="3.375" PointY="0.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

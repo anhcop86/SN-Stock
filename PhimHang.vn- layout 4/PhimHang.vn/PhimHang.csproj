@@ -341,6 +341,9 @@
     <Compile Include="Models\StockViewLastest.cs">
       <DependentUpon>PhimHangADO.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TickerHot.cs">
+      <DependentUpon>PhimHangADO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserLogin.cs">
       <DependentUpon>PhimHangADO.tt</DependentUpon>
     </Compile>
@@ -561,6 +564,7 @@
     <Content Include="ThemeBlue\js\jquery\jquery-ui.min.js" />
     <Content Include="ThemeBlue\js\jquery\jquery.js" />
     <Content Include="ThemeBlue\js\MessagesCenter.js" />
+    <Content Include="ThemeBlue\js\Home.js" />
     <Content Include="ThemeBlue\js\MyProfile.js" />
     <Content Include="ThemeBlue\js\PostDetail.js" />
     <Content Include="ThemeBlue\js\SignalHubProxy.js" />
@@ -1188,6 +1192,9 @@
     <Content Include="ThemeBlue\bootstrap-twiter\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Views\Account\_ChangePasswordPartial - bk.cshtml" />
     <Content Include="Views\Account\Register-bk.cshtml" />
+    <Content Include="Views\Shared\_Partial_Area_Left_Home.cshtml" />
+    <Content Include="Views\Shared\_Partial_Area_Left_Home2.cshtml" />
+    <Content Include="Views\Shared\_Partial_Area_Right_Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

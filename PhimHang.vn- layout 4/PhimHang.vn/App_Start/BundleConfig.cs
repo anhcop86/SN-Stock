@@ -77,6 +77,11 @@ namespace PhimHang
                              "~/ThemeBlue/js/MessagesCenter.js"));
             #endregion
 
+            #region Home
+            bundles.Add(new ScriptBundle("~/bundles/Home").Include(
+                             "~/ThemeBlue/js/Home.js"));
+            #endregion
+
             //BundleTable.EnableOptimizations = true;
         }
     }
