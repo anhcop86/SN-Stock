@@ -335,8 +335,7 @@ self.AddLike = function (data, e) {
 self.detailPost = function (data, e) { // chi tiet post bao gom tra loi
 
     self.newReply('');
-    self.replys([]);    
-    //$("#idPostNameDetail").click();
+    self.replys([]);       
     $("#idPostedDateDetail").html(data.PostedDate);
     $("#idPostNameDetail").html(data.PostedByName);
     $("#idImgPostDetail").attr('src', data.PostedByAvatar);
@@ -366,12 +365,9 @@ self.detailPost = function (data, e) { // chi tiet post bao gom tra loi
     });
 
     if (!$(e.target).hasClass('btnMore')) {
-        //document.body.style.overflow = 'hidden';
         dialog.dialog("open");
         $(".ui-widget-overlay").click(function () {
             dialog.dialog('close');
-            //document.body.style.overflow = 'auto';
-            //self.replys('');
         })
     }
 }

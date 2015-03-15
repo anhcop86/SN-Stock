@@ -12,6 +12,7 @@ $(document).ready(function () {
         open: function (event, ui) {
             $('body').css('overflow', 'auto');
             $(window).scrollTop(0);
+            $('.avata-genaral-size').focus(); // trang profile focus cái này
             //$('.area-center').css('height', '1000px');
         },
         close: function (event, ui) {

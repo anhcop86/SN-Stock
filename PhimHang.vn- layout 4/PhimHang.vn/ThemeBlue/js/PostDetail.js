@@ -1,4 +1,4 @@
-﻿
+﻿//cap nhat controller them sumreply, them self.SumReply, copy bieu tuong , sua lai ham nhan reply
 function selectMe(e, data) {        // khi nguoi dung click vao link trong knockout js click event
     e.stopPropagation();
 }
@@ -89,6 +89,15 @@ function viewModel() {
         commenthub.server.addReply({ "Message": self.newReply(), "PostedBy": $('#hiddenPostId').val() }, 'StockDetail', $('#HiddentCureentUserId').val(), $('#HiddentUserName').val(), $('#HiddentAvataEmage').val())
             .done(function () {
                 showNotification('Bạn đã trả lời thành công!');
+                // tổng reply +  thêm 1
+                var num = $(".list-item-control i").html();
+                if (num != null) {
+                    $(".list-item-control i").html(parseInt(num) + 1);
+                }
+                else {
+                    $(".list-item-control").html("<a class='button' href='#'><i class='fa fa-comments'>1</i></a>");
+                }
+                ///
             })
             .fail(function (err) {
                 self.error(err);

@@ -363,7 +363,7 @@ function viewModel() {
             dialog.dialog("open");
             $(".ui-widget-overlay").click(function () {
                 dialog.dialog('close');
-                document.body.style.overflow = 'auto';
+                //document.body.style.overflow = 'auto';
                 //self.replys('');
             })
         }
