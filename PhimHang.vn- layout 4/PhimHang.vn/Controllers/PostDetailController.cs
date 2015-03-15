@@ -45,7 +45,7 @@ namespace PhimHang.Controllers
                     ViewBag.CureentUserId = currentUser.UserExtentLogin.Id;
                     ViewBag.UserName = currentUser.UserName;
                     ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
-                    var numberMessegeNew = db.NotificationMesseges.Where(nm => nm.UserReciver == currentUser.UserExtentLogin.Id && nm.NumNoti > 0).Sum(mn => mn.NumNoti);
+                    var numberMessegeNew = await db.NotificationMesseges.Where(nm => nm.UserReciver == currentUser.UserExtentLogin.Id && nm.NumNoti > 0).SumAsync(mn => mn.NumNoti);
                     ViewBag.NewMessege = numberMessegeNew;
                 }
                 else
@@ -85,7 +85,7 @@ namespace PhimHang.Controllers
         {
             using (db = new testEntities())
             {
-                var ret = (from reply in await db.PostComments.ToListAsync()
+                var ret = await (from reply in db.PostComments
                            where reply.PostedBy == replyid
                            orderby reply.PostedDate descending
                            select new
@@ -96,7 +96,7 @@ namespace PhimHang.Controllers
                                ReplyDate = reply.PostedDate,
                                ReplyId = reply.PostCommentsId,
                                PostCommentsId = reply.PostCommentsId
-                           }).ToArray();               
+                           }).ToArrayAsync();               
 
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
                 return result;

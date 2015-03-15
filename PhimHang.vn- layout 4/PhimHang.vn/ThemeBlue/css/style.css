@@ -489,7 +489,8 @@ ul.top-panel-left2 > li:not(:first-child):hover{
 }
 .banner-item-user-detail > .list-item-detail{
     float: left;
-    width: 150px;
+    width: 170px;
+    height:70px;
 }
 .list-item-detail a {
     color:#328AC5;
@@ -1311,8 +1312,8 @@ a.category-tab:hover{
     padding-top: 5px;
     text-align:justify;
 }
-.user-info-detail > i{        
-    font-size: 1.3rem;    
+.user-info-detail i{        
+    font-size: 1.6rem;    
 }
 .user-info-intro{
     margin: 5px 10px;

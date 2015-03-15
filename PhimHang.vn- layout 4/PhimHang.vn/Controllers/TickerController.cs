@@ -56,7 +56,7 @@ namespace PhimHang.Controllers
                     ViewBag.CheckStockExist = "N";
                 }
                 // so luong tin nhan
-                var numberMessegeNew = db.NotificationMesseges.Where(nm => nm.UserReciver == currentUser.UserExtentLogin.Id && nm.NumNoti > 0).Sum(mn => mn.NumNoti);
+                var numberMessegeNew = await db.NotificationMesseges.Where(nm => nm.UserReciver == currentUser.UserExtentLogin.Id && nm.NumNoti > 0).SumAsync(mn => mn.NumNoti);
                 ViewBag.NewMessege = numberMessegeNew;
             }
 

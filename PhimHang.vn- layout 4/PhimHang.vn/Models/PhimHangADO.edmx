@@ -86,7 +86,7 @@
             <PropertyRef Name="PostCommentsId" />
           </Key>
           <Property Name="PostCommentsId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Message" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="1024" Nullable="false" />
           <Property Name="PostedBy" Type="bigint" Nullable="false" />
           <Property Name="CommentBy" Type="int" Nullable="false" />
           <Property Name="PostedDate" Type="datetime2" Precision="7" Nullable="false" />
@@ -516,7 +516,6 @@
         <EntityContainer Name="testEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="FollowStocks" EntityType="PHDBContext.FollowStock" />
           <EntitySet Name="FollowUsers" EntityType="PHDBContext.FollowUser" />
-          <EntitySet Name="PostComments" EntityType="PHDBContext.PostComment" />
           <EntitySet Name="Settings" EntityType="PHDBContext.Setting" />
           <EntitySet Name="StockRelates" EntityType="PHDBContext.StockRelate" />
           <EntitySet Name="StockViewLastests" EntityType="PHDBContext.StockViewLastest" />
@@ -552,10 +551,6 @@
             <End Role="UserLogin" EntitySet="UserLogins" />
             <End Role="NotificationMessege" EntitySet="NotificationMesseges" />
           </AssociationSet>
-          <AssociationSet Name="FK_PostComments_UserLogins" Association="PHDBContext.FK_PostComments_UserLogins">
-            <End Role="UserLogin" EntitySet="UserLogins" />
-            <End Role="PostComment" EntitySet="PostComments" />
-          </AssociationSet>
           <AssociationSet Name="FK_StockViewLastest_UserLogins" Association="PHDBContext.FK_StockViewLastest_UserLogins">
             <End Role="UserLogin" EntitySet="UserLogins" />
             <End Role="StockViewLastest" EntitySet="StockViewLastests" />
@@ -581,10 +576,6 @@
             <End Role="Post" EntitySet="Posts" />
             <End Role="PinStock" EntitySet="PinStocks" />
           </AssociationSet>
-          <AssociationSet Name="FK_PostComments_Posts" Association="PHDBContext.FK_PostComments_Posts">
-            <End Role="Post" EntitySet="Posts" />
-            <End Role="PostComment" EntitySet="PostComments" />
-          </AssociationSet>
           <AssociationSet Name="FK_Posts_UserLogins" Association="PHDBContext.FK_Posts_UserLogins">
             <End Role="UserLogin" EntitySet="UserLogins" />
             <End Role="Post" EntitySet="Posts" />
@@ -607,6 +598,15 @@
             <End Role="Philosophy" EntitySet="Philosophies" />
             <End Role="UserLogin" EntitySet="UserLogins" />
           </AssociationSet>
+          <EntitySet Name="PostComments" EntityType="PHDBContext.PostComment" />
+          <AssociationSet Name="FK_PostComments_Posts" Association="PHDBContext.FK_PostComments_Posts">
+            <End Role="Post" EntitySet="Posts" />
+            <End Role="PostComment" EntitySet="PostComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostComments_UserLogins" Association="PHDBContext.FK_PostComments_UserLogins">
+            <End Role="UserLogin" EntitySet="UserLogins" />
+            <End Role="PostComment" EntitySet="PostComments" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="FollowStock">
           <Key>
@@ -628,18 +628,6 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="7" />
           <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_FollowUser_UserLogins" FromRole="FollowUser" ToRole="UserLogin" />
           <NavigationProperty Name="UserLogin1" Relationship="PHDBContext.FK_FollowUser_UserLogins1" FromRole="FollowUser" ToRole="UserLogin" />
-        </EntityType>
-        <EntityType Name="PostComment">
-          <Key>
-            <PropertyRef Name="PostCommentsId" />
-          </Key>
-          <Property Name="PostCommentsId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Message" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="PostedBy" Type="Int64" Nullable="false" />
-          <Property Name="CommentBy" Type="Int32" Nullable="false" />
-          <Property Name="PostedDate" Type="DateTime" Nullable="false" Precision="7" />
-          <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_PostComments_UserLogins" FromRole="PostComment" ToRole="UserLogin" />
-          <NavigationProperty Name="Post" Relationship="PHDBContext.FK_PostComments_Posts" FromRole="PostComment" ToRole="Post" />
         </EntityType>
         <EntityType Name="Setting">
           <Key>
@@ -778,7 +766,6 @@
           <NavigationProperty Name="FollowUsers1" Relationship="PHDBContext.FK_FollowUser_UserLogins1" FromRole="UserLogin" ToRole="FollowUser" />
           <NavigationProperty Name="NotificationMesseges" Relationship="PHDBContext.FK_UserPost_User" FromRole="UserLogin" ToRole="NotificationMessege" />
           <NavigationProperty Name="NotificationMesseges1" Relationship="PHDBContext.FK_UserPost_UserReciver" FromRole="UserLogin" ToRole="NotificationMessege" />
-          <NavigationProperty Name="PostComments" Relationship="PHDBContext.FK_PostComments_UserLogins" FromRole="UserLogin" ToRole="PostComment" />
           <NavigationProperty Name="StockViewLastests" Relationship="PHDBContext.FK_StockViewLastest_UserLogins" FromRole="UserLogin" ToRole="StockViewLastest" />
           <NavigationProperty Name="UserRelates" Relationship="PHDBContext.FK_UserRelate_UserLogins" FromRole="UserLogin" ToRole="UserRelate" />
           <NavigationProperty Name="UserViewLastests" Relationship="PHDBContext.FK_UserViewLastest_UserLogins" FromRole="UserLogin" ToRole="UserViewLastest" />
@@ -786,6 +773,7 @@
           <NavigationProperty Name="Posts" Relationship="PHDBContext.FK_Posts_UserLogins" FromRole="UserLogin" ToRole="Post" />
           <NavigationProperty Name="JobTitile" Relationship="PHDBContext.FK_JobTitile_JobTitle" FromRole="UserLogin" ToRole="JobTitile" />
           <NavigationProperty Name="Philosophy" Relationship="PHDBContext.FK_UserLogins_Philosophy" FromRole="UserLogin" ToRole="Philosophy" />
+          <NavigationProperty Name="PostComments" Relationship="PHDBContext.FK_PostComments_UserLogins" FromRole="UserLogin" ToRole="PostComment" />
           </EntityType>
         <Association Name="FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id">
           <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="0..1" />
@@ -859,18 +847,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PostComments_UserLogins">
-          <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />
-          <End Type="PHDBContext.PostComment" Role="PostComment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserLogin">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PostComment">
-              <PropertyRef Name="CommentBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_StockViewLastest_UserLogins">
           <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />
           <End Type="PHDBContext.StockViewLastest" Role="StockViewLastest" Multiplicity="*" />
@@ -934,12 +910,12 @@
           <Property Name="ChartYN" Type="Boolean" />
           <NavigationProperty Name="NotificationMesseges" Relationship="PHDBContext.FK_Posts_User" FromRole="Post" ToRole="NotificationMessege" />
           <NavigationProperty Name="PinStocks" Relationship="PHDBContext.FK_Posts_PinStock" FromRole="Post" ToRole="PinStock" />
-          <NavigationProperty Name="PostComments" Relationship="PHDBContext.FK_PostComments_Posts" FromRole="Post" ToRole="PostComment" />
           <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_Posts_UserLogins" FromRole="Post" ToRole="UserLogin" />
           <NavigationProperty Name="StockRelates" Relationship="PHDBContext.FK_StockRelate_Posts" FromRole="Post" ToRole="StockRelate" />
           <NavigationProperty Name="UserRelates" Relationship="PHDBContext.FK_UserRelate_Posts" FromRole="Post" ToRole="UserRelate" />
           <Property Name="SumLike" Type="Int32" />
           <Property Name="SumReply" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PostComments" Relationship="PHDBContext.FK_PostComments_Posts" FromRole="Post" ToRole="PostComment" />
         </EntityType>
         <Association Name="FK_Posts_User">
           <End Type="PHDBContext.Post" Role="Post" Multiplicity="0..1" />
@@ -962,18 +938,6 @@
             </Principal>
             <Dependent Role="PinStock">
               <PropertyRef Name="PostId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PostComments_Posts">
-          <End Type="PHDBContext.Post" Role="Post" Multiplicity="1" />
-          <End Type="PHDBContext.PostComment" Role="PostComment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Post">
-              <PropertyRef Name="PostId" />
-            </Principal>
-            <Dependent Role="PostComment">
-              <PropertyRef Name="PostedBy" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1055,6 +1019,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="PostComment">
+          <Key>
+            <PropertyRef Name="PostCommentsId" />
+          </Key>
+          <Property Name="PostCommentsId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="PostedBy" Type="Int64" Nullable="false" />
+          <Property Name="CommentBy" Type="Int32" Nullable="false" />
+          <Property Name="PostedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Post" Relationship="PHDBContext.FK_PostComments_Posts" FromRole="PostComment" ToRole="Post" />
+          <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_PostComments_UserLogins" FromRole="PostComment" ToRole="UserLogin" />
+        </EntityType>
+        <Association Name="FK_PostComments_Posts">
+          <End Type="PHDBContext.Post" Role="Post" Multiplicity="1" />
+          <End Type="PHDBContext.PostComment" Role="PostComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="PostComment">
+              <PropertyRef Name="PostedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostComments_UserLogins">
+          <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />
+          <End Type="PHDBContext.PostComment" Role="PostComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogin">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PostComment">
+              <PropertyRef Name="CommentBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1078,17 +1078,6 @@
                 <ScalarProperty Name="UserIdFollowed" ColumnName="UserIdFollowed" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PostComments">
-            <EntityTypeMapping TypeName="PHDBContext.PostComment">
-              <MappingFragment StoreEntitySet="PostComments">
-                <ScalarProperty Name="PostedDate" ColumnName="PostedDate" />
-                <ScalarProperty Name="CommentBy" ColumnName="CommentBy" />
-                <ScalarProperty Name="PostedBy" ColumnName="PostedBy" />
-                <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="PostCommentsId" ColumnName="PostCommentsId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1256,6 +1245,17 @@
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="PhilosophyName" ColumnName="PhilosophyName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PostComments">
+            <EntityTypeMapping TypeName="PHDBContext.PostComment">
+              <MappingFragment StoreEntitySet="PostComments">
+                <ScalarProperty Name="PostedDate" ColumnName="PostedDate" />
+                <ScalarProperty Name="CommentBy" ColumnName="CommentBy" />
+                <ScalarProperty Name="PostedBy" ColumnName="PostedBy" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="PostCommentsId" ColumnName="PostCommentsId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

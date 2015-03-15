@@ -143,7 +143,8 @@
                 </div>
             </div> 
             
-            <div data-bind="foreach : {data: posts, afterAdd: afterAdd }">
+            @*<div data-bind="foreach : {data: posts, afterAdd: afterAdd }"> hieu ung slow*@ 
+            <div data-bind="foreach : {data: posts }">
                 <div class="bg-white">
                     <div class="list-item-status" tabindex="-1" data-bind=" click: function(data, event) { $parent.detailPost(data, event); }">
                         @*click: function(data, event) { $parent.detailPost; event.stopPropagation(); }*@
@@ -158,7 +159,7 @@
                             <span data-bind="html : Stm"></span>
                             <div class="list-item-status-content" data-bind="html : Message"></div>
                             <div class="list-item-control">
-                                
+
                                 <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
                                 <!--share popup of facebook-->
                                 <a class="button btn-answer" target="_self" onclick="window.open(this.href, 'chia sẻ lên facebook', 'left=100,top=100,width=600,height=400,toolbar=1,resizable=0'); selectMe(event, '#'); return false;" data-bind="attr : { href : 'https://www.facebook.com/sharer/sharer.php?u=@ViewBag.AbsolutePathHostName/PostDetail?postid='+ PostId +'&display=popup&ref=plugin' }" title="Chia sẻ lên facebook">Chia sẻ</a>
@@ -169,10 +170,10 @@
                                         <li><a href="#" title="Vi phạm">Vi phạm</a></li>
                                     </ul>
                                 </div>
-                                <span class="likeAndPin" style="">                                   
-                                    
-                                    <span  data-bind="text : SumLike, visible : SumLike() > 0 "></span>
-                                    <button class="fa fa-thumbs-o-up"  data-bind=" click : function(data, event) { $parent.AddLike(data, event) ;   } , attr : {id : 'PostId' + PostId} , enable : DiableLike"></button>
+                                <span class="likeAndPin" style="">
+
+                                    <span data-bind="text : SumLike, visible : SumLike() > 0 "></span>
+                                    <button class="fa fa-thumbs-o-up" data-bind=" click : function(data, event) { $parent.AddLike(data, event) ;   } , attr : {id : 'PostId' + PostId} , enable : DiableLike"></button>
                                     <!--click like thi doi class thanh fa fa-thumbs-o-up-->
                                 </span>
                             </div>

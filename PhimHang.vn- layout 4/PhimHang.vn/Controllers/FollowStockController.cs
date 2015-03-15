@@ -134,7 +134,7 @@ namespace PhimHang.Controllers
             }
 
         }
-
+        /**
         [AllowAnonymous]
         [HttpGet]
 
@@ -143,7 +143,7 @@ namespace PhimHang.Controllers
 
             using (db = new testEntities())
             {
-                var ret = (from stockRelate in await db.StockRelates.ToListAsync()
+                var ret = await (from stockRelate in db.StockRelates
                            where stockRelate.StockCodeRelate == stockCurrent
                            orderby stockRelate.Post.PostedDate descending
                            select new
@@ -154,12 +154,12 @@ namespace PhimHang.Controllers
                                PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage + "?width=46&height=46&mode=crop",
                                PostedDate = stockRelate.Post.PostedDate,
                                PostId = stockRelate.PostId
-                           }).Skip(skipposition).Take(10).ToArray();
+                           }).Skip(skipposition).Take(10).ToArrayAsync();
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
                 return result;
             }
             
-        }
+        } 
 
         public async Task<dynamic> GetCommentByStockFollowInProfile(int skipposition)
         {
@@ -252,7 +252,7 @@ namespace PhimHang.Controllers
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
                 return result;
             }
-        }
+        }*/
 
         // GET: /FollowStock/Edit/5
         public async Task<ActionResult> Edit(long? id)

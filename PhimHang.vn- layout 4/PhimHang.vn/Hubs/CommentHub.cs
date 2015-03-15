@@ -188,7 +188,36 @@ namespace PhimHang.Hubs
         {
             reply.CommentBy = currentUserId;
             reply.PostedDate = DateTime.Now;
-            reply.Message = AppHelper.FilteringWord(reply.Message);
+
+            #region format message
+            string messagedefault = "";
+            messagedefault = reply.Message;
+            List<string> listMessege = reply.Message.Split(' ').ToList();
+            string messageFromatHTML = "";
+            foreach (var item in listMessege)
+            {
+                if (item.Contains("$"))
+                {
+                    string ticker = item.Replace("$", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToUpper();
+                    messageFromatHTML += "<b><a onclick=selectMe(event,\"#\") target='_blank' href='/ticker/" + ticker + "'>" + item + "</a></b>" + " ";
+                }
+                else if (item.Contains("@"))
+                {
+                    string user = item.Replace("@", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToLower();
+                    messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='/user/" + user + "/tab/1'>" + item + "</a>" + " ";
+                }
+                else if (item.Contains("http") || item.Contains("www."))
+                {
+                    messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='" + item + "'>" + AppHelper.GetDomain(item) + "...</a>" + " ";
+                }
+                else
+                {
+                    messageFromatHTML += item + " ";
+                }
+            }
+
+            #endregion
+            reply.Message = AppHelper.FilteringWord(messageFromatHTML);
             //var listStock = new List<string>();
             //listStock.Add(stockCurrent.ToUpper());
             using (testEntities db = new testEntities())

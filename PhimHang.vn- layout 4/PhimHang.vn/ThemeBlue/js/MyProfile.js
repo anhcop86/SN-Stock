@@ -273,6 +273,7 @@ commenthub.client.addPostGlobal = function (post) {
         
         if (filterhere == "VIP") {
             // viet sau
+            document.title = "Bài tin được dính lên đầu các mã cổ phiếu";
         }
 
         if (filterhere == "PEF") {
@@ -334,7 +335,8 @@ self.AddLike = function (data, e) {
 self.detailPost = function (data, e) { // chi tiet post bao gom tra loi
 
     self.newReply('');
-    self.replys([]);
+    self.replys([]);    
+    //$("#idPostNameDetail").click();
     $("#idPostedDateDetail").html(data.PostedDate);
     $("#idPostNameDetail").html(data.PostedByName);
     $("#idImgPostDetail").attr('src', data.PostedByAvatar);
@@ -368,7 +370,7 @@ self.detailPost = function (data, e) { // chi tiet post bao gom tra loi
         dialog.dialog("open");
         $(".ui-widget-overlay").click(function () {
             dialog.dialog('close');
-            document.body.style.overflow = 'auto';
+            //document.body.style.overflow = 'auto';
             //self.replys('');
         })
     }
