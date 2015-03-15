@@ -449,6 +449,7 @@ ul.top-panel-left2 > li:not(:first-child):hover{
     padding: 5px;
     /*border-radius: 5px;*/
 }
+
 .banner-item1{
     background-color: #fff;
     padding: 5px 5px 5px 15px;
@@ -1309,6 +1310,9 @@ a.category-tab:hover{
 .user-info-detail > div{
     padding-top: 5px;
     text-align:justify;
+}
+.user-info-detail > i{        
+    font-size: 1.3rem;    
 }
 .user-info-intro{
     margin: 5px 10px;

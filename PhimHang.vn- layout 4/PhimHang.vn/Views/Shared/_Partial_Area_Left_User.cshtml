@@ -26,6 +26,10 @@
             }
         </div>
         <div>
+            <i class="fa fa-user"></i>&nbsp;Tên đăng nhập:
+            @Model.UserNameCopy
+        </div>
+        <div>
             <i class="fa fa-map-marker"></i>&nbsp;Trường phái:
             @{
                 if (Model.PhilosophyMarket != null)
@@ -65,7 +69,7 @@
                 }
             }
         </div>
-        <div><i class="fa fa-clock-o"></i> Giới thiệu:       
+        <div><i class="fa fa-info"></i> Giới thiệu:       
             @{
                 if (string.IsNullOrEmpty(Model.CVInfo))
                 {

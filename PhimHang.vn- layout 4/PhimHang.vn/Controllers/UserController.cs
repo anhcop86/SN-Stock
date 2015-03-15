@@ -154,6 +154,7 @@ namespace PhimHang.Controllers
             ViewBag.ListIndex = _stockRealtime.GetAllStocksList(listIndex).Result;
             #endregion
 
+            #region random dan phim chuyen nghiem
             var DanPhimRandom = await (from u in db.UserLogins
                                        orderby Guid.NewGuid()
                                        select new UserRandom
@@ -162,6 +163,7 @@ namespace PhimHang.Controllers
                                            UserName = u.UserNameCopy
                                       }).Take(4).ToListAsync();
             ViewBag.DanPhimRandom = DanPhimRandom;
+            #endregion
             return View(currentUser);
 
 
