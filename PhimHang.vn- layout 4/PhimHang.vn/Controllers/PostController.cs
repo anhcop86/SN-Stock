@@ -217,7 +217,7 @@ namespace PhimHang.Controllers
             {
                 var ret = await (from stockRelate in db.StockRelates
                            where stockRelate.StockCodeRelate == stockCurrent
-                           orderby stockRelate.Post.PostedDate descending
+                           orderby stockRelate.ID descending
                            select new
                            {
                                Message = stockRelate.Post.Message,
@@ -238,7 +238,7 @@ namespace PhimHang.Controllers
             {
                 var ret = await (from stockRelate in db.StockRelates
                            where stockRelate.StockCodeRelate == stockCurrent && stockRelate.Post.ChartYN == true
-                           orderby stockRelate.Post.PostedDate descending
+                           orderby stockRelate.ID descending
                            select new
                            {
                                Message = stockRelate.Post.Message,
@@ -259,7 +259,7 @@ namespace PhimHang.Controllers
             {
                 var ret = await (from stockRelate in db.StockRelates
                            where stockRelate.StockCodeRelate == stockCurrent && stockRelate.Post.NhanDinh > 0
-                           orderby stockRelate.Post.PostedDate descending
+                           orderby stockRelate.ID descending
                            select new
                            {
                                Message = stockRelate.Post.Message,
