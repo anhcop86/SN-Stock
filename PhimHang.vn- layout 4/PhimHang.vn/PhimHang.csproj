@@ -1065,7 +1065,6 @@
     <Content Include="Views\Symbol\Index.cshtml" />
     <Content Include="Views\Symbol\_Partial_stock-detail.cshtml" />
     <Content Include="Views\Shared\_Partial_Area_Search_Profile.cshtml" />
-    <Content Include="Views\Search\Helper.cshtml" />
     <Content Include="Views\Shared\_Partial_Area_Right_Down2.cshtml" />
     <Content Include="Views\Shared\_Layout_Symbol.cshtml" />
     <Content Include="Views\Shared\_Partial_Area_Left_Ad.cshtml" />
@@ -1195,6 +1194,9 @@
     <Content Include="Views\Shared\_Partial_Area_Left_Home.cshtml" />
     <Content Include="Views\Shared\_Partial_Area_Left_Home2.cshtml" />
     <Content Include="Views\Shared\_Partial_Area_Right_Home.cshtml" />
+    <Content Include="Views\Shared\_Layout_Search.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Shared\_Partial_HotStock.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

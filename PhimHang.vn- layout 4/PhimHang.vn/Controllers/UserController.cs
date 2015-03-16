@@ -99,6 +99,7 @@ namespace PhimHang.Controllers
 
             }
             #endregion
+
             #region tab danh muc dau tu
             else if (tabid == 2)
             {
@@ -112,6 +113,7 @@ namespace PhimHang.Controllers
                 ViewBag.listStockPriceFollow = _stockRealtime.GetAllStocksList(followStockList as List<string>).Result;
                 #endregion
             }
+
             #endregion
             #region tab theo doi
             else if (tabid == 3)
@@ -136,7 +138,7 @@ namespace PhimHang.Controllers
             else if (tabid == 4)
             {
                 // load danh muc duoc theo doi
-                var followerList = (from fl in db.FollowUsers
+                var followerList = await (from fl in db.FollowUsers
                                     where fl.UserIdFollowed == currentUser.Id
                                     select new UserFollowView
                                     {
@@ -146,7 +148,7 @@ namespace PhimHang.Controllers
                                         Avata = string.IsNullOrEmpty(fl.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + fl.UserLogin.AvataImage
                                     }).ToListAsync();
 
-                ViewBag.FollowerList = followerList.Result;
+                ViewBag.FollowerList = followerList;
             }
             #endregion
             #region gia chi so index va hnxindex

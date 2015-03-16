@@ -13,9 +13,10 @@ using System.Text.RegularExpressions;
 using System.Data.Entity;
 
 
+
 namespace PhimHang.Hubs
 {
-    [HubName("CommentHub")]
+    [HubName("CommentHub")]    
     public class CommentHub : Hub
     {
          
@@ -23,7 +24,7 @@ namespace PhimHang.Hubs
 
         private const string ImageURLAvataDefault = "/img/avatar2.jpg"; 
         private const string ImageURLAvata = "/images/avatar/";
-
+        testEntities db = new testEntities();
         /*
         public void GetPosts(string stockCurrent)
         {
@@ -49,7 +50,7 @@ namespace PhimHang.Hubs
               
             }
         }*/
-
+        [Authorize] 
         public async Task AddPost(Post post, string stockCurrent, int currentUserId, string userName, string avataImageUrl, byte nhanDinh, string chartImage)
         {
            
@@ -183,7 +184,7 @@ namespace PhimHang.Hubs
                 }
             }
         }
-
+        [Authorize] 
         public async Task AddReply(PostComment reply, string stockCurrent, int currentUserId, string userName, string avataImageUrl)
         {
             reply.CommentBy = currentUserId;
@@ -348,66 +349,27 @@ namespace PhimHang.Hubs
             return base.OnDisconnected(stopCall);
         }
 
-        ///////////////////////////////////////////////////// profile
-        //reply
-        /////////////////////////////////////////////////////
-        /*
-        public async Task AddReply(PostComment postcomment, string stockCurrent, int currentUserId, string userName, string avataImageUrl, long postid)
-        {
-            #region format message
-            string messagedefault = "";
-            messagedefault = postcomment.Message;
-            List<string> listMessege = postcomment.Message.Split(' ').ToList();
-            string messageFromatHTML = "";
-            foreach (var item in listMessege)
+        
+        public async Task AddNewLike(long postid)
+        {            
+            var postFind = await db.Posts.FirstOrDefaultAsync(p => p.PostId == postid);
+            if (postFind != null)
             {
-                if (item.Contains("$") || item.Contains("@"))
+                postFind.SumLike = postFind.SumLike + 1;
+                try
                 {
-                    messageFromatHTML += "<b>" + item + "</b>" + " ";
+                    db.Entry(postFind).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
                 }
-                else if (item.Contains("http") || item.Contains("www."))
+                catch (Exception)
                 {
-                    messageFromatHTML += "<a target='_blank' href='" + item + "'>[LINK]</a>" + " ";
+
+                    //throw;
                 }
-                else
-                {
-                    messageFromatHTML += item + " ";
-                }
-            }
+                await Clients.All.addNewLike(postid);
 
-            postcomment.Message = messageFromatHTML;
-            postcomment.PostedDate = DateTime.Now;
-            postcomment.PostedBy = postid;
-            postcomment.CommentBy = currentUserId;
-            #endregion
-
-            var listStock = new List<string>();
-            listStock.Add(stockCurrent.ToUpper());
-            #region explan this passing messege to stockcode and username list
-
-            //List<string> listMessegeSplit = messagedefault.Split(' ').ToList().FindAll(p => p.Contains("$") || p.Contains("@"));
-
-            #endregion
-
-            using (testEntities db = new testEntities())
-            {
-                db.PostComments.Add(postcomment);
-                await db.SaveChangesAsync();
-
-                var ret = new
-                {
-                    ReplyMessage = postcomment.Message,
-                    //PostedBy = post.PostedBy,
-                    ReplyByName = userName,
-                    ReplyByAvatar = "/" + avataImageUrl.Replace("amp;", ""),
-                    ReplyDate = postcomment.PostedDate,
-                    ReplyId = postcomment.PostCommentsId
-                };
-                await Clients.Client(Context.ConnectionId).addReply(ret);
-                await Clients.OthersInGroups(listStock).newReplyNoti(1, postid);
             }
         }
-         * */
 
     }
 }

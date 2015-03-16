@@ -81,6 +81,10 @@
         proxies['CommentHub'] = this.createHubProxy('CommentHub');
         proxies['CommentHub'].client = {};
         proxies['CommentHub'].server = {
+            addNewLike: function (postid) {
+                return proxies['CommentHub'].invoke.apply(proxies['CommentHub'], $.merge(["AddNewLike"], $.makeArray(arguments)));
+            },
+
             addPost: function (post, stockCurrent, currentUserId, userName, avataImageUrl, nhanDinh, chartImage) {
                 return proxies['CommentHub'].invoke.apply(proxies['CommentHub'], $.merge(["AddPost"], $.makeArray(arguments)));
             },

@@ -175,31 +175,26 @@ function viewModel() {
         }
     }
     self.AddLike = function (data, e) {
-        // ajax update  like with
+        // ajax update  like with 
 
-        var postRow = $('#PostId' + data.PostId);
-        //postRow.removeAttr("data-bind");
-        postRow.attr('class', "fa fa-thumbs-up");
-        postRow.attr('data-bind', '');
-        //postRow.addClass("fa fa-thumbs-up");
         data.DiableLike(false);
         e.stopPropagation(); // stop popup
-
-        $.ajax({
-            cache: false,
-            type: "POST",
-            url: '/Post/UpdateLike',
-            data: { postid: data.PostId },
-            beforeSend: function (xhr) {
-                // disable like and chage class
-
-            },
-            success: function () {
-                data.SumLike(data.SumLike() + 1); // update interface
-            }
-        });
+        commenthub.server.addNewLike(data.PostId)
+            .fail(function (err) {
+                self.error(err);
+            });
 
     };
+    commenthub.client.addNewLike = function (postid) {
+        var Postfind = ko.utils.arrayFirst(self.posts(), function (item) {
+            return item.PostId === postid;
+        });
+        if (Postfind != null) {
+            Postfind.SumLike(Postfind.SumLike() + 1);
+            return;
+        }
+
+    }
 
     self.enablePhimHangReply = ko.computed(function () {
         return self.newReply().length <= 140 && self.newReply().length >= 6 && self.newReply().indexOf('<', 0) == -1;

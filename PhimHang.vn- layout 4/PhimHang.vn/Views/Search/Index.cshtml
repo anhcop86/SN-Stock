@@ -1,0 +1,73 @@
+﻿@using PhimHang.Models;
+@{
+    ViewBag.Title = "Tìm kiếm cổ phiếu và người dùng";
+    Layout = "~/Views/Shared/_Layout_Search.cshtml";
+}
+<div id="page3-tab2" class="banner-right-first" style="top:10px; width:50%; margin:auto">
+    <div class="banner-header-white banner-header-white-page3">Cổ phiếu tìm được @ViewBag.NoStockFind</div>
+    @{
+        foreach (var item in ViewBag.listStockPriceFind as List<StockRealTime>)
+        {
+            <div class="banner-item1">
+                <div class="item-left">
+                    <a target="_blank" href="/Ticker/@item.CompanyID">$@item.CompanyID<br></a>
+                </div>
+                @if (item.Diff == 0)
+                {
+                    <div class="item-right item-right-trang3-tab2 NoChangeIndex">
+                        <strong>@item.FinishPrice</strong>
+                        <span class="">
+                            <i></i><br>
+                            <span class="top-menu-point">
+                                @item.Diff (@item.DiffRate %)
+                            </span>
+                        </span>
+                    </div>
+                }
+                else if (item.Diff > 0)
+                {
+                    <div class="item-right item-right-trang3-tab2 bullishIndex">
+                        <strong>@item.FinishPrice</strong>
+                        <span class="">
+                            <i class="fa fa-sort-up"></i><br>
+                            <span class="top-menu-point">
+                                @item.Diff (@item.DiffRate %)
+                            </span>
+                        </span>
+                    </div>
+                }
+                else
+                {
+                    <div class="item-right item-right-trang3-tab2 bearishIndex">
+                        <strong>@item.FinishPrice</strong>
+                        <span class="">
+                            <i class="fa fa-sort-down"></i><br>
+                            <span class="top-menu-point">
+                                @item.Diff (@item.DiffRate %)
+                            </span>
+                        </span>
+                    </div>
+                }
+
+
+            </div>
+        }
+    }
+    <div class="banner-header-white banner-header-white-page3" style="margin-top:10px">Người dùng tìm được @ViewBag.NoUserFind</div>
+    @{
+        foreach (var item in ViewBag.UserFindList as List<PhimHang.Controllers.UserFollowView>)
+        {
+            <div class="follower-item" tabindex="-1">
+                <div class="avata-genaral-size">
+                    <img src="@item.Avata?width=50&height=50&mode=crop" class="img-rounded" alt="avatar">
+                </div>
+                <div class="list-item-detail list-item-custom">
+                    @*<div class="list-item-date button-follow-page3"><a href="#" class="button"><i class="fa fa-plus"></i>Theo dõi</a></div>*@
+                    <div class="list-item-username"><a target="_blank" href="/user/@item.UserName/tab/1">@item.UserName</a></div>
+                    <div class="list-item-status-content">@item.Status</div>
+                </div>
+            </div>
+        }
+    }
+
+</div>

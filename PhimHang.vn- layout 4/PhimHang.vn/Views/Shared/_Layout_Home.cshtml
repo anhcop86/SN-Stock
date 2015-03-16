@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--Jquery-->
-    @Scripts.Render("~/bundles/standardCoreRT")
-
+    @Scripts.Render("~/bundles/standardCoreRT")    
     <!---->
+    @*<script src="~/signalr/hubs"></script>*@
     <!--For desgin layout-->
     @Styles.Render("~/bundles/StyleStandard")
 
@@ -130,51 +130,7 @@
                         CỔ PHIẾU NÓNG
                     </a>
                 </li>
-                <li class="hidden-xs">
-                    <a href="/Ticker/VNM">
-                        $VNM
-                    </a>
-                </li>
-                <li class="hidden-xs">
-                    <a href="/Ticker/GAS">
-                        $GAS
-                    </a>
-                </li>
-                <li class="hidden-xs">
-                    <a href="/Ticker/VND">
-                        $VND
-                    </a>
-                </li>
-                <li class="hidden-xs">
-                    <a href="/Ticker/TIG">
-                        $TIG
-                    </a>
-                </li>
-                <li class="hidden-xs">
-                    <a href="/Ticker/REE">
-                        $REE
-                    </a>
-                </li>
-                <li class="hidden-xs">
-                    <a href="/Ticker/SSI">
-                        $SSI
-                    </a>
-                </li>
-                <li class="hidden-xs">
-                    <a href="/Ticker/ACB">
-                        $ACB
-                    </a>
-                </li>
-                <li class="hidden-xs">
-                    <a href="/Ticker/HAG">
-                        $HAG
-                    </a>
-                </li>
-                <li class="hidden-xs">
-                    <a href="/Ticker/KDC">
-                        $KDC
-                    </a>
-                </li>
+                @Html.Partial("_Partial_HotStock")
             </ul>
             <ul class="nav navbar-nav pull-right top-panel-right2">
                 @Html.Partial("_Partial_Area_Index")

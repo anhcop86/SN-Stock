@@ -1,0 +1,13 @@
+﻿@using PhimHang.Models;
+@{
+
+    foreach (var item in ViewBag.listStockPriceFollow as List<StockRealTime>)
+    {
+        <li class="hidden-xs">
+            <a href="/Ticker/@item.CompanyID">
+                $@item.CompanyID
+            </a>
+        </li>
+
+    }
+}
