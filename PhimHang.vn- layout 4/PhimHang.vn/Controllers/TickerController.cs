@@ -89,7 +89,7 @@ namespace PhimHang.Controllers
             ViewBag.StockName = company == null ? StatusSymbol.NF.ToString() : company.ShortName;
             ViewBag.LongName = company == null ? StatusSymbol.NF.ToString() : company.LongName;
             ViewBag.MarketName = company == null ? StatusSymbol.NF.ToString() : company.IndexName;
-                        
+            ViewBag.ImgEx = ".png";
             #endregion
 
 
