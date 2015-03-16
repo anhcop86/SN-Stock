@@ -57,7 +57,7 @@ namespace PhimHang.Controllers
                 }
                 else
                 {
-                    var checkUser = db.FollowUsers.Count(f => f.UserId == userLogin.UserExtentLogin.Id && f.UserIdFollowed == currentUser.Id);
+                    var checkUser = await db.FollowUsers.CountAsync(f => f.UserId == userLogin.UserExtentLogin.Id && f.UserIdFollowed == currentUser.Id);
                     if (checkUser == 1)
                     {
                         ViewBag.CheckUserExist = "Y";
@@ -69,7 +69,7 @@ namespace PhimHang.Controllers
 
                 }
                 // so luong tin nhan
-                var numberMessegeNew = db.NotificationMesseges.Where(nm => nm.UserReciver == userLogin.UserExtentLogin.Id && nm.NumNoti > 0).Sum(mn => mn.NumNoti);
+                var numberMessegeNew = await db.NotificationMesseges.Where(nm => nm.UserReciver == userLogin.UserExtentLogin.Id && nm.NumNoti > 0).SumAsync(mn => mn.NumNoti);
                 ViewBag.NewMessege = numberMessegeNew;
                 #endregion
             }
@@ -103,13 +103,13 @@ namespace PhimHang.Controllers
             else if (tabid == 2)
             {
                 // load danh muc dau tu
-                var followStockList = (from sl in db.FollowStocks
+                var followStockList = await (from sl in db.FollowStocks
                                        where sl.UserId == currentUser.Id
                                        select sl.StockFollowed).ToListAsync();
 
                 //ViewBag.FollowStockList = followStockList.Result;
                 #region gia cổ phieu cua cac ma dang theo doi
-                ViewBag.listStockPriceFollow = _stockRealtime.GetAllStocksList(followStockList.Result as List<string>).Result;
+                ViewBag.listStockPriceFollow = _stockRealtime.GetAllStocksList(followStockList as List<string>).Result;
                 #endregion
             }
             #endregion
@@ -121,17 +121,18 @@ namespace PhimHang.Controllers
                 var followList = await (from fl in db.FollowUsers
                                   where fl.UserId == currentUser.Id
                                   select new UserFollowView
-                {
-                    UserId = fl.UserLogin1.Id,
-                    UserName = fl.UserLogin1.UserNameCopy,
-                    Avata = string.IsNullOrEmpty(fl.UserLogin1.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + fl.UserLogin1.AvataImage
-                }).ToListAsync();
+                                    {
+                                        UserId = fl.UserLogin1.Id,
+                                        UserName = fl.UserLogin1.UserNameCopy,
+                                        Avata = string.IsNullOrEmpty(fl.UserLogin1.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + fl.UserLogin1.AvataImage,
+                                        Status = fl.UserLogin1.Status
+                                    }).ToListAsync();
 
                 ViewBag.FollowList = followList;
 
             }
             #endregion
-            #region tan duoc theo doi
+            #region tab duoc theo doi
             else if (tabid == 4)
             {
                 // load danh muc duoc theo doi
@@ -141,6 +142,7 @@ namespace PhimHang.Controllers
                                     {
                                         UserId = fl.UserLogin.Id,
                                         UserName = fl.UserLogin.UserNameCopy,
+                                        Status = fl.UserLogin.Status,
                                         Avata = string.IsNullOrEmpty(fl.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + fl.UserLogin.AvataImage
                                     }).ToListAsync();
 
@@ -160,7 +162,8 @@ namespace PhimHang.Controllers
                                        select new UserRandom
                                       {
                                            Avata = string.IsNullOrEmpty(u.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + u.AvataImage,
-                                           UserName = u.UserNameCopy
+                                           UserName = u.UserNameCopy,
+                                           FullName = u.FullName
                                       }).Take(4).ToListAsync();
             ViewBag.DanPhimRandom = DanPhimRandom;
             #endregion
@@ -173,7 +176,7 @@ namespace PhimHang.Controllers
         {
             if (filter == "" || filter == "ALL")
             {
-                var ret = (from stockRelate in await db.Posts.ToListAsync()
+                var ret = await (from stockRelate in db.Posts
                            orderby stockRelate.PostedDate descending
                            where stockRelate.PostedBy == userid
                            select new
@@ -189,14 +192,14 @@ namespace PhimHang.Controllers
                                ChartYN = stockRelate.ChartYN,
                                SumLike = stockRelate.SumLike,
                                SumReply = stockRelate.SumReply
-                           }).Skip(skipposition).Take(10).ToArray();
+                           }).Skip(skipposition).Take(10).ToArrayAsync();
                 //var listStock = new List<string>();              
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
                 return result;
             }
             if (filter == "CHA")
             {
-                var ret = (from stockRelate in await db.Posts.ToListAsync()
+                var ret = await (from stockRelate in db.Posts
                            orderby stockRelate.PostedDate descending
                            where stockRelate.PostedBy == userid &&  stockRelate.ChartYN == true
                            select new
@@ -212,14 +215,14 @@ namespace PhimHang.Controllers
                                ChartYN = stockRelate.ChartYN,
                                SumLike = stockRelate.SumLike,
                                SumReply = stockRelate.SumReply
-                           }).Skip(skipposition).Take(10).ToArray();
+                           }).Skip(skipposition).Take(10).ToArrayAsync();
                 //var listStock = new List<string>();              
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
                 return result;
             }
             if (filter == "STM")
             {
-                var ret = (from stockRelate in await db.Posts.ToListAsync()
+                var ret = await (from stockRelate in db.Posts
                            orderby stockRelate.PostedDate descending
                            where stockRelate.PostedBy == userid && stockRelate.NhanDinh > 0
                            select new
@@ -235,7 +238,7 @@ namespace PhimHang.Controllers
                                ChartYN = stockRelate.ChartYN,
                                SumLike = stockRelate.SumLike,
                                SumReply = stockRelate.SumReply
-                           }).Skip(skipposition).Take(10).ToArray();
+                           }).Skip(skipposition).Take(10).ToArrayAsync();
                 //var listStock = new List<string>();              
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
                 return result;
@@ -338,5 +341,7 @@ namespace PhimHang.Controllers
     {
         public string UserName { get; set; }
         public string Avata { get; set; }
+
+        public string FullName { get; set; }
     }
 }

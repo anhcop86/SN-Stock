@@ -17,7 +17,7 @@
             @{
                 if (string.IsNullOrEmpty(Model.Status))
                 {
-                    @: ...
+                    @: Status:...
                 }
                 else
                 {
@@ -30,7 +30,7 @@
             @Model.UserNameCopy
         </div>
         <div>
-            <i class="fa fa-map-marker"></i>&nbsp;Trường phái:
+            <i class="fa fa-map-marker"></i>&nbsp;&nbsp;Trường phái:
             @{
                 if (Model.PhilosophyMarket != null)
                 {
@@ -43,7 +43,7 @@
             }
         </div>
         <div>
-            <i class="fa fa-map-marker"></i> &nbsp;Nghề nghiệp:
+            <i class="fa fa-map-marker"></i>&nbsp;&nbsp;Nghề nghiệp:
             @{
                 if (Model.JobTitle != null)
                 {
@@ -69,7 +69,7 @@
                 }
             }
         </div>
-        <div><i class="fa fa-info"></i> Giới thiệu:       
+        <div><i class="fa fa-info"></i>&nbsp;&nbsp;&nbsp;Giới thiệu:       
             @{
                 if (string.IsNullOrEmpty(Model.CVInfo))
                 {

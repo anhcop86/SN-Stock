@@ -56,6 +56,16 @@ namespace PhimHang.Models
             var CompanyResult = Task.FromResult(_stocks.Where(s => stock.Contains(s.CompanyID) ).ToList());
             return  CompanyResult;
         }
+        public Task<List<StockRealTime>> RandomStocksList(List<string> stock)
+        {
+            var stockListResult = (from s in _stocks
+                                  orderby Guid.NewGuid()
+                                  where !stock.Contains(s.CompanyID)
+                                  select s).Take(10);
+
+            return Task.FromResult(stockListResult.ToList());
+        }
+
 
         public async void GetStockPriceFromApi()
         {

@@ -12,6 +12,7 @@ $(document).ready(function () {
         open: function (event, ui) {
             $('body').css('overflow', 'auto');
             $(window).scrollTop(0);
+            $('.avata-genaral-size').focus(); // trang profile focus cái này
             //$('.area-center').css('height', '1000px');
         },
         close: function (event, ui) {
@@ -23,7 +24,7 @@ $(document).ready(function () {
     if (!$('#myonoffswitch').is(':checked')) {
         $("#msg-new-status").hide();
     }
-    $(document).scrollTop(50);
+    $(document).scrollTop(0); // set scrool top khi load lai trang
     //$("body").scrollTop(0);
     //$("#radio").buttonset();
     $('.divBull, .divBear').click(function () {

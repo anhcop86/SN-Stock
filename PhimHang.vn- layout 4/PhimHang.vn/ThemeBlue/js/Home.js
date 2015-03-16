@@ -122,7 +122,7 @@ self.init = function () {
     $.ajax({
         cache: false,
         type: "GET",              
-        url: '/MyProfile/GetMorePostsGlobal',
+        url: '/Home/GetMorePostsGlobal',
         data: { skipposition: 0, filter: "ALL" },
         beforeSend: function (xhr) {
             //Add your image loader here
@@ -138,31 +138,7 @@ self.init = function () {
         }
     });
 }
-/////////////////////////////////////////////////////
-self.addPost = function () { // them post
-    self.error(null);
-    $('#btAddPost').attr("disabled", true); // disble ngay khong de click them
-    var nhanDinh = $("input:radio[name='BullBear']:checked").val();
-    if (nhanDinh == null) {
-        nhanDinh = 0;
-    }
-    var charImage = $('.mb3-chart-thumb').attr("src");
-    if (charImage == null || charImage == '') {
-        charImage = "";
-    }
 
-    commenthub.server.addPost({ "Message": self.newMessage() }, "KEYMYPROFILE", $('#HiddentCureentUserId').val(), $('#HiddentUserName').val(), $('#HiddentAvataEmage').val(), nhanDinh, charImage)
-        .done(function () {
-            showNotification('Bạn đã đăng bài thành công!');
-        })
-        .fail(function (err) {
-            self
-                .error(err);
-        });
-    checkpost = 'Y';
-    self.newMessage('');//
-    setDefaultAfterPost();
-}
 
 self.addReply = function () { // them tra loi
     $('#btAddReply').attr("disabled", true); // disble ngay khong de click them
@@ -187,112 +163,20 @@ commenthub.client.MessegeOfUserPost = function (number) {
     }
 }
 //////////////// load lại filter nè
-var filterhere = "";
-self.FilterAll = function (stringFilter) {
-    if (checkLoadFirst == 1) {
-        filterhere = stringFilter;
-        self.newPosts([]);
-        self.posts([]);
-        document.title = "Nhà của tôi!";
-        $.ajax({
-            cache: false,
-            type: "GET",              
-            url: '/MyProfile/GetMorePostsGlobal',
-            data: { skipposition: 0, filter: filterhere },
-            beforeSend: function (xhr) {
-                //Add your image loader here
-                //$('.ajaxLoadingImage').html('<img src="/images/ajax-loader_cungphim.gif" />');
-            },
-            success: function (data) {
-                //$('.ajaxLoadingImage').html('');
-                var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item); });
-                $(mappedPosts).each(function (index, element) {
-                    self.posts.push(element);
-                });
-                checkLoadFirst = 1;
-            }
-        });
-    }
 
-
-}
 
 /////////////////////////////////////////////////////////////
 // recieve the post from server
 commenthub.client.addPostGlobal = function (post) {
-    if (checkpost == 'Y') {
-        //filter here
-        if (filterhere == "" || filterhere == "ALL") {
-            self.posts.splice(0, 0, new Post(post));
-        }
-        if (filterhere == "CHA") {
-            if (post.ChartYN) {
-                self.posts.splice(0, 0, new Post(post));
-            }
-        }
-        if (filterhere == "STM") {
-            if (post.Stm > 0) {
-                self.posts.splice(0, 0, new Post(post));
-            }
-        }
-        if (filterhere == "VIP") {
-            // sau khi len admin se lam tiep
-        }
-
-        if (filterhere == "PEF") {
-            if ($.inArray(post.PostBy, listFollow) != -1) {
-                self.posts.splice(0, 0, new Post(post));
-            }
-        }
-
-        if (filterhere == "STF") {
-            if ($.inArray(post.StockPrimary, listStockFollow) != -1) {
-                self.posts.splice(0, 0, new Post(post));
-            }
-        }
-
-    }
-    else {
-        //filter here
-        if (filterhere == "" || filterhere == "ALL") {
-            self.newPosts.splice(0, 0, new Post(post));
-            document.title = '(' + self.newPosts().length + ') ' + "Nhà của tôi";
-        }
-        if (filterhere == "CHA") {
-            if (post.ChartYN) {
-                self.newPosts.splice(0, 0, new Post(post));
-                document.title = '(' + self.newPosts().length + ') ' + "Nhà của tôi";
-            }
-        }
-        if (filterhere == "STM") {
-            if (post.Stm > 0) {
-                self.newPosts.splice(0, 0, new Post(post));
-                document.title = '(' + self.newPosts().length + ') ' + "Nhà của tôi";
-            }
-        }
-        
-        if (filterhere == "VIP") {
-            // viet sau
-            document.title = "Bài tin được dính lên đầu các mã cổ phiếu";
-        }
-
-        if (filterhere == "PEF") {
-            if ($.inArray(post.PostBy, listFollow) != -1) {
-                self.newPosts.splice(0, 0, new Post(post));
-                document.title = '(' + self.newPosts().length + ') ' + "Nhà của tôi";
-            }
-        }
-
-        if (filterhere == "STF") {
-            if ($.inArray(post.StockPrimary, listStockFollow) != -1) {
-                self.newPosts.splice(0, 0, new Post(post));
-                document.title = '(' + self.newPosts().length + ') ' + "Nhà của tôi";
-            }
-        }
-
-    }
-    checkpost = 'N';
+    self.posts.unshift(new Post(post));
 }
+
+self.afterAdd = function (elem) {
+    if (checkLoadFirst == 1) {
+        //$(elem).hide().slideDown('slow');
+        $(elem).hide().slideDown('slow')
+    }
+};
 
 commenthub.client.addReply = function (reply) {
     self.replys.unshift(new Reply(reply));
@@ -301,11 +185,7 @@ commenthub.client.addReply = function (reply) {
 
 /////////////////////
 
-self.loadNewPosts = function () {
-    self.posts(self.newPosts().concat(self.posts()));
-    self.newPosts([]);
-    document.title = "Nhà của tôi";
-}
+
 self.AddLike = function (data, e) {
     // ajax update  like with 
 
@@ -401,14 +281,7 @@ commenthub.client.newReplyNoti = function (postid) {
     }
     //            
    
-    var replysfindNewPost = ko.utils.arrayFirst(self.newPosts(), function (item) {
-        return item.PostId === postid;
-    });
-    if (replysfindNewPost != null) {
-        replysfindNewPost.SumReply(replysfindNewPost.SumReply() + 1);
-        return;
-    }
-    //alert(self.notification());
+    
 } 
 // end
 var loadSlow = 'Y';
@@ -419,7 +292,7 @@ $(window).scroll(function () { // scroll endpage load more
         $.ajax({
             cache: false,
             type: "GET",
-            url: '/MyProfile/GetMorePostsGlobal',
+            url: '/Home/GetMorePostsGlobal',
             data: { skipposition: self.posts().length + self.newPosts().length, filter: filterhere },
             beforeSend: function (xhr) {
                 //Add your image loader here

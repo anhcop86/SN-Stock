@@ -161,7 +161,7 @@ namespace PhimHang.Controllers
             using (db = new testEntities())
             {
 
-                var ret = (from reply in await db.PostComments.ToListAsync()
+                var ret = await (from reply in db.PostComments
                            where reply.PostedBy == replyid
                            orderby reply.PostedDate descending
                            select new
@@ -172,7 +172,7 @@ namespace PhimHang.Controllers
                                ReplyDate = reply.PostedDate,
                                ReplyId = reply.PostCommentsId,
                                PostCommentsId = reply.PostCommentsId
-                           }).Take(10).ToArray();
+                           }).Take(10).ToArrayAsync();
                 //return await Task.FromResult(ret);
 
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
@@ -186,7 +186,7 @@ namespace PhimHang.Controllers
             //var fjdsf = WebSecurity.CurrentUserId;
             using (db = new testEntities())
             {
-                var ret = (from stockRelate in await db.PinStocks.ToListAsync()
+                var ret = await(from stockRelate in db.PinStocks
                            where stockRelate.StockCodePin == stockCurrent
                            orderby stockRelate.CreatedDate descending
                            select new
@@ -202,7 +202,7 @@ namespace PhimHang.Controllers
                                ChartYN = stockRelate.Post.ChartYN,
                                SumLike = stockRelate.Post.SumLike,
                                SumReply = stockRelate.Post.SumReply
-                           }).Take(5).ToArray();
+                           }).Take(5).ToArrayAsync();
                 //var listStock = new List<string>();              
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
                 return result;
@@ -215,7 +215,7 @@ namespace PhimHang.Controllers
             //var fjdsf = WebSecurity.CurrentUserId;     
             if (filter == "" || filter == "ALL")
             {
-                var ret = (from stockRelate in await db.StockRelates.ToListAsync()
+                var ret = await (from stockRelate in db.StockRelates
                            where stockRelate.StockCodeRelate == stockCurrent
                            orderby stockRelate.Post.PostedDate descending
                            select new
@@ -231,12 +231,12 @@ namespace PhimHang.Controllers
                                ChartYN = stockRelate.Post.ChartYN,
                                SumLike = stockRelate.Post.SumLike,
                                SumReply = stockRelate.Post.SumReply
-                           }).Skip(skipposition).Take(10).ToArray();
+                           }).Skip(skipposition).Take(10).ToArrayAsync();
                 return Newtonsoft.Json.JsonConvert.SerializeObject(ret);
             }
             if (filter == "CHA")
             {
-                var ret = (from stockRelate in await db.StockRelates.ToListAsync()
+                var ret = await (from stockRelate in db.StockRelates
                            where stockRelate.StockCodeRelate == stockCurrent && stockRelate.Post.ChartYN == true
                            orderby stockRelate.Post.PostedDate descending
                            select new
@@ -252,12 +252,12 @@ namespace PhimHang.Controllers
                                ChartYN = stockRelate.Post.ChartYN,
                                SumLike = stockRelate.Post.SumLike,
                                SumReply = stockRelate.Post.SumReply
-                           }).Skip(skipposition).Take(10).ToArray();
+                           }).Skip(skipposition).Take(10).ToArrayAsync();
                 return Newtonsoft.Json.JsonConvert.SerializeObject(ret);
             }
             if (filter == "STM")
             {
-                var ret = (from stockRelate in await db.StockRelates.ToListAsync()
+                var ret = await (from stockRelate in db.StockRelates
                            where stockRelate.StockCodeRelate == stockCurrent && stockRelate.Post.NhanDinh > 0
                            orderby stockRelate.Post.PostedDate descending
                            select new
@@ -273,7 +273,7 @@ namespace PhimHang.Controllers
                                ChartYN = stockRelate.Post.ChartYN,
                                SumLike = stockRelate.Post.SumLike,
                                SumReply = stockRelate.Post.SumReply
-                           }).Skip(skipposition).Take(10).ToArray();
+                           }).Skip(skipposition).Take(10).ToArrayAsync();
                 return Newtonsoft.Json.JsonConvert.SerializeObject(ret);
             }
             else

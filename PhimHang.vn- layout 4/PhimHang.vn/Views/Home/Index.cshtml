@@ -3,66 +3,183 @@
     ViewBag.Title = "Mạng xã hội chứng khoán | cùng phím ®";
     Layout = "~/Views/Shared/_Layout_Home.cshtml";
 }
+@section scripts{
+    @*<link href="~/Content/StockPrice.css" rel="stylesheet" />*@
+    <script src="~/Scripts/jquery.timeago.js"></script>
 
-@*<div class="area-center">
-    <img src="/images/company_logo.jpg?width=1200&height=650&mode=crop" />
-</div>*@
+}
+<input type="hidden" id="HiddentCureentUserId" value='@ViewBag.CureentUserId' />
+<input type="hidden" id="HiddentUserName" value='@ViewBag.UserName' />
+<input type="hidden" id="HiddentAvataEmage" value='@ViewBag.AvataEmage' />
+<div id="CommentForKoLoad">
+    <div class="area-center">
+    @{
+        if (!User.Identity.IsAuthenticated)
+        {
+        <div id="top-status-box" class="bg-white status-box">
+            <div class="avata-comment">
+                <img src="@ViewBag.AvataEmage?width=35&height=35&mode=crop" class="img-rounded" alt="avatar">
+            </div>
+            <div class="input-status">
+                <form id="frmStatus" name="frmStatus" method="GET">
+                    <div id="input-status-text" class="input-status-text">
+                        <textarea onfocus=" {  location.href='/myprofile' }" data-bind="    value : newMessage, valueUpdate : 'afterkeydown' , limitCharacters : 140" class="status-cm" name="status" rows="5" placeholder="$Cổ phiếu | &#64;Username" id="status" title="Search" autocomplete="off" rows="5"></textarea>
+                    </div>
+                   
+                </form>
+            </div>
+        </div>
+        }
+    }
+        <div class="bg-white" style="padding-top: 10px; padding-bottom: 3px;">
+            <div class="filer-bar">
+                @*<div class="toSpan filer-bar-label">Hiển thị theo: </div>*@
+                <div class="toSpan filer-bar-item"> <a href="#" class="active">Toàn thị trường</a> </div>
+                @{
+                    if (!User.Identity.IsAuthenticated)
+                    {
+                        <div class="toSpan filer-bar-item-home"> <a href="/myprofile">Biểu đồ</a> </div>
+                        <div class="toSpan filer-bar-item-home"> <a href="/myprofile">Nhận định</a></div>
+                        <div class="toSpan filer-bar-item-home"> <a href="/myprofile">VIP</a></div>
+                        <div class="toSpan filer-bar-item-home"> <a href="/myprofile">Người theo dõi</a></div>
+                        <div class="toSpan filer-bar-item-home"> <a href="/myprofile">CP theo dõi</a></div>
+                    }
+                }
+                
+                @*<div class="toSpan filer-bar-item">
+                        <a id="btn-option-more" href="#" data-dropdown="#dropdown-2">
+                            Tùy chọn khác
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                        <div id="dropdown-2" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
+                            <ul class="dropdown-menu">
+                                <li><a data-bind="click : FilterAll('PEF')" href="#">Người theo dõi</a></li>
+                                <li><a data-bind="click : FilterAll('STF')" href="#">Cổ phiếu theo dõi</a></li>
+                            </ul>
+                        </div>
+                    </div>*@
+            </div>
+            <div class="ajaxLoadingInit" style="text-align:center"><img src="~/images/ajax-loader_cungphim.gif" /></div>
+        </div>
+
+        <div class="list-status">
+            <!--So bai phim moi-->
+            <!---->
+           
+            <div data-bind="foreach : {data: posts, afterAdd: afterAdd }">
+                <div class="bg-white">
+                    <div class="list-item-status" tabindex="-1" data-bind=" click: function(data, event) { $parent.detailPost(data, event); }">
+                        <div class="avata-genaral-size">
+                            <img data-bind="attr: { src: PostedByAvatar },click : function() {  location.href='/user/' + PostedByName + '/tab/1' }" class="img-rounded" alt="avatar">
+                        </div>
+                        <div class="list-item-detail">
+                            <div class="list-item-date" data-bind="text : PostedDate"></div>
+                            <div class="list-item-username" style="width:0%">
+                                <a style="cursor:pointer" onclick='selectMe(event,"#")' data-bind="text : PostedByName, click : function() {  location.href='/user/' + PostedByName + '/tab/1'  }"></a>
+                            </div>
+                            <span data-bind="html : Stm"></span>
+                            <div class="list-item-status-content" data-bind="html : Message"></div>
+                            <div class="list-item-control">
+                                <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
+                                <a class="button btn-answer" target="_self" onclick="window.open(this.href, 'chia sẽ lên facebook', 'left=100,top=100,width=600,height=400,toolbar=1,resizable=0'); selectMe(event, '#'); return false;" data-bind="attr : { href : 'https://www.facebook.com/sharer/sharer.php?u=@ViewBag.AbsolutePathHostName/PostDetail?postid='+ PostId +'&display=popup&ref=plugin' }" title="Trả lời">Chia sẻ</a>
+                                <a class="button" href="#" style="cursor:text" data-bind="visible: SumReply() > 0"><i class="fa fa-comments" data-bind=" text : SumReply"></i></a>
+                                <span class="likeAndPin">
+                                    <span data-bind="text : SumLike, visible : SumLike() > 0 "></span>
+                                    <button class="fa fa-thumbs-o-up" data-bind=" click : function(data, event) { $parent.AddLike(data, event) ;   } , attr : {id : 'PostId' + PostId} , enable : DiableLike"></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ajaxLoadingImage" style="text-align:center"></div>
+    </div>
+    <div class="ajaxLoadingImage"></div>
+    <!--post detail & reply-->
+    <div id="dialog" title="Basic dialog">
+        <div class="bg-white open">
+            <div class="list-item-status" tabindex="-1">
+                <div class="avata-genaral-size">
+                    <img id="idImgPostDetail" class="img-rounded" alt="avatar">
+                </div>
+                <div class="list-item-detail">
+                    <div class="list-item-date" id="idPostedDateDetail"></div>
+                    <div onclick='selectMe(event,"#")' class="list-item-username" style="width:0%">
+                        <div id="idPostNameDetail"></div>
+
+                    </div>
+                    <span id="idStmDetail"></span>
+                    <div tabindex="-1" class="list-item-status-content" id="idPostMessenge"></div>
 
 
-@model PhimHang.Models.LoginViewModel
-           @{
-               if (!User.Identity.IsAuthenticated)
-               {
-                   <div class="top-sidebar">
-                        <div class="login-register-container  standard">
-                            <div class="login-register-login-part">
-                                <div class="clearfix">
-                                    <div class="login-register-header">Sign in</div>
-                                    <div class="login-register-switch">
-                                        
-                                        <a href="/Account/Register" class="login-register-switch-link">create an account</a>
-                                    </div>
+                    <div class="list-item-control">
+                        <div id="facebookLikeAndShare"></div>
 
-                                </div>
-                                <div class="login-form-container  standard">
-                                    @*<form action="/" method="post" class="clearfix login-form">*@
-                                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = "/myprofile" }, FormMethod.Post, new { @class = "clearfix login-form" }))
+                    </div>
+                </div>
+            </div>
+            <div style="display: block;" class="list-comment">
+                <div class="comment-item">
+                    <div class="avata-genaral-size" tabindex="-1">
+                        <img style="left:15px" src="@ViewBag.AvataEmage?width=35&height=35&mode=crop" class="img-rounded" alt="avatar">
+                    </div>
+                    <div id="input-comment" class="input-status">
+                        <form name="frmComment">
+
+                            <div class="input-status-text">
+                                <textarea data-bind="value : newReply, valueUpdate : 'afterkeydown' , limitCharacters : 140" class="status-cm" id="comment-text" name="comment" rows="5" placeholder="Nhập trả lời ở đây" title="Search" autocomplete="off"></textarea>
+                            </div>
+                            <div class="status-control">
+                                @{
+                                    if (User.Identity.IsAuthenticated)
                                     {
-                                        @Html.AntiForgeryToken()
-
-                                        <div class="text-input login-text-input standard">
-                                            <div class="text-input-error-wrapper">@Html.ValidationSummary(true) @Html.ValidationMessageFor(m => m.UserName)</div>
-
-                                            <div class="text-input-wrapper">
-                                                @Html.TextBoxFor(m => m.UserName, new { @class = "text-input-input autofocus", placeholder = "Username" })
-                                                @* <input type="email" name="login_email" class="text-input-input autofocus" placeholder="User name" />*@
-                                            </div>
+                                        <div id="btnPhim" class="f-right">
+                                            <span data-bind="text : countReply"></span>
+                                            <button id="btAddReply" style="cursor:pointer" class="button-phim" data-bind=" enable: enablePhimHangReply , click : addReply ">Trả lời</button>
                                         </div>
-                                        <div class="text-input login-password login-text-input standard">
-                                            <div class="text-input-error-wrapper">@Html.ValidationMessageFor(m => m.Password)</div>
-                                            <div class="text-input-wrapper">
-                                                @Html.PasswordFor(m => m.Password, new { @class = "password-input text-input-input", placeholder = "Password" })
-                                                @*<input type="password" name="login_password" class="password-input text-input-input" placeholder="User name" />*@
-                                            </div>
-                                        </div>
-                                        <div class="clearfix">
-                                            <div class="sso-description"></div>
-                                            <div class="checkbox checkbox-inline standard remember-me">
-                                                <div class="text-input-error-wrapper"></div>
-                                                @Html.CheckBoxFor(m => m.RememberMe)
-                                                @*<input checked="checked" type="checkbox" name="remember_me" id="pyxl1186533921719020216">*@
-                                                <label>Remember me</label>
-                                            </div>
-                                            <button type="submit" class="login-button button-primary">
-                                                <div class="sign-in-text">Sign in</div>
-                                            </button>
-                                        </div>
-                                        <div class="login-need-help"><a href="#">Forgot your password?</a></div>
                                     }
+                                    else
+                                    {
+                                        <div id="btnPhim" class="f-right">
+                                            <a class="logoutbutton" href="/Account/Register">REGISTER</a>
+                                            <a class="logoutbutton" href="/Account/Login">LOGIN</a>
+                                        </div>
+                                    }
+                                }
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="scroll-div">
+                    <div data-bind="foreach : replys">
+                        <div class="comment-item">
+                            <div class="avata-genaral-size">
+                                <img data-bind="attr: { src: ReplyByAvatar },click : function() {  location.href='/user/' + ReplyByName + '/tab/1' }" class="img-rounded" alt="avatar">
+                            </div>
+                            <div class="list-item-detail">
+                                <div class="list-item-date" data-bind="text : ReplyDate"></div>
+                                <div class="list-item-username" data-bind="text: ReplyByName"></div>
+                                <div class="list-item-status-content" data-bind="html: ReplyMessage"></div>
+                                <div class="list-item-control-cm">
+                                    <a class="button f-right" href="#" title="Vi phạm">Vi phạm</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-               }
-           }
+                </div>
+                <div class="comment-loadmore">
+                    <a id="IdLoadMoreConversation" href="#" target="_blank">Xem thêm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+<!-- gia co phieu real time-->
+<!-- Comment-->
+@Scripts.Render("~/bundles/Home")
+<script type="text/javascript">
+       
+</script>
