@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web;
+using System.Data.Entity;
 
 namespace PhimHang.Models
 {
     public static class AppHelper
     {
+        private static testEntities db = new testEntities();
         
         public static string FilteringWord(string messege)
         {
@@ -77,6 +80,16 @@ namespace PhimHang.Models
         {
             return new System.Uri(domainFull).Host;
         }
+
+        public static async Task<List<string>> GetListHotStock()
+        {
+            using (db = new testEntities())
+            {
+                return await (from hoststock in db.TickerHots // danh sach co phieu nong trong db
+                                       select hoststock.THName).ToListAsync();                
+            }
+            
+        }     
     }
     public class PosistionFilter
     {

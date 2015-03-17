@@ -30,6 +30,6 @@ FROM  dbo.dnn_AGStock_SessionCompany
 	
 FROM  dbo.dnn_AGStock_Session
 WHERE cast(LastUpdate as date) = cast(getdate() as date)
-
+order by CompanyID
 
 GO

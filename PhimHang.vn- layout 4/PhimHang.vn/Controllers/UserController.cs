@@ -169,6 +169,10 @@ namespace PhimHang.Controllers
                                       }).Take(4).ToListAsync();
             ViewBag.DanPhimRandom = DanPhimRandom;
             #endregion
+            #region danh muc co phieu nong
+            var listHotStock = await AppHelper.GetListHotStock();
+            ViewBag.ListStockHot = listHotStock;
+            #endregion
             return View(currentUser);
 
 

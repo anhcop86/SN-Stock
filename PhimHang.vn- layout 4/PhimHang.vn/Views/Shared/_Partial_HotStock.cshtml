@@ -1,11 +1,11 @@
 ﻿@using PhimHang.Models;
 @{
 
-    foreach (var item in ViewBag.listStockPriceFollow as List<StockRealTime>)
+    foreach (var item in ViewBag.ListStockHot as List<string>)
     {
         <li class="hidden-xs">
-            <a href="/Ticker/@item.CompanyID">
-                $@item.CompanyID
+            <a href="/Ticker/@item">
+                $@item
             </a>
         </li>
 

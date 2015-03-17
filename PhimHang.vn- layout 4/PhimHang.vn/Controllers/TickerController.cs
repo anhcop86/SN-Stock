@@ -120,7 +120,10 @@ namespace PhimHang.Controllers
             ViewBag.ListIndex = _stockRealtime.GetAllStocksList(listIndex).Result;
             //ViewBag.PriceOfTicker = stockprice;
             #endregion
-
+            #region danh muc co phieu nong
+            var listHotStock = await AppHelper.GetListHotStock();
+            ViewBag.ListStockHot = listHotStock;
+            #endregion
             ////return View(_stockRealtime.GetAllStocksTestList((List<string>)Session["listStock"]).Result);
             return View(stockprice);
 

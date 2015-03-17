@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Data.Entity;
+using System.Diagnostics;
 
 namespace PhimHang.Models
 {
@@ -53,16 +54,25 @@ namespace PhimHang.Models
 
         public Task<List<StockRealTime>> GetAllStocksList(List<string> stock)
         {
-            var CompanyResult = Task.FromResult(_stocks.Where(s => stock.Contains(s.CompanyID) ).ToList());
-            return  CompanyResult;
+            // Create new stopwatch
+            //Stopwatch stopwatch = new Stopwatch();
+            //stopwatch.Start();
+            //stopwatch.Stop();
+            //var dsafd = stopwatch.Elapsed;
+            var CompanyResult = (from s in _stocks                                 
+                                 where stock.Contains(s.CompanyID)
+                                 select s);
+
+            //var CompanyResult = Task.FromResult(_stocks.Where(s => stock.Any(sl => sl == s.CompanyID)).ToList());
+            
+            return Task.FromResult(CompanyResult.ToList()); ;
         }
         public Task<List<StockRealTime>> RandomStocksList(List<string> stock)
-        {
+        {            
             var stockListResult = (from s in _stocks
                                   orderby Guid.NewGuid()
                                   where !stock.Contains(s.CompanyID)
-                                  select s).Take(10);
-
+                                  select s).Take(10);            
             return Task.FromResult(stockListResult.ToList());
         }
 

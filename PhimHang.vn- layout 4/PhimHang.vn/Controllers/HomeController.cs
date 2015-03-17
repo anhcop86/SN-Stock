@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using System.Diagnostics;
 
 namespace PhimHang.Controllers
 {
@@ -62,12 +63,11 @@ namespace PhimHang.Controllers
 
           
             #region gia cổ phieu cua cac co phieu nong
-            var listStock = await (from hoststock in db.TickerHots // danh sach co phieu nong trong db
-                                   select hoststock.THName
-                                    ).ToListAsync();
+            
+            var listStock = await AppHelper.GetListHotStock();
 
-
-            ViewBag.listStockPriceFollow = _stockRealtime.GetAllStocksList(listStock as List<string>).Result;
+            ViewBag.ListStockHot = listStock;
+            ViewBag.listStockPriceHot = _stockRealtime.GetAllStocksList(listStock as List<string>).Result;
             #endregion
 
             #region co phieu ngau ben trái
@@ -91,7 +91,9 @@ namespace PhimHang.Controllers
             ViewBag.ListIndex = _stockRealtime.GetAllStocksList(listIndex).Result;
             #endregion
             return View();
-        }     
+        }
+
+        
 
         public ActionResult About()
         {
