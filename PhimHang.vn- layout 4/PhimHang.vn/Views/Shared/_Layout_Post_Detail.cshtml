@@ -20,6 +20,20 @@
     
     <!-- End For desgin-->
     <link href="~/ThemeBlue/css/Notification.css" rel="stylesheet" />
+
+    <!-- Objects of facebook-->
+    <meta property="fb:app_id" content="934180333272963" />
+    <meta property="og:type" content="business.business" />
+    <meta property="og:url" content="@Request.Url.AbsoluteUri" />
+    <meta property="og:title" content="Tin mới nhất | cùng phím" />
+    <meta property="og:image" content="@ViewBag.AbsolutePathHostName@ViewBag.PostedByAvatar?width=200&height=200&mode=crop" />
+    <meta property="og:description" content="@ViewBag.MessageNonHtml" />
+    <meta property="business:contact_data:street_address" content="117 nguyễn Du" />
+    <meta property="business:contact_data:locality" content="Bến Thành" />
+    <meta property="business:contact_data:postal_code" content="Quận 1" />
+    <meta property="business:contact_data:country_name" content="Việt Nam" />
+
+    <!-- Objects of facebook-->
 </head>
  <body>
      <!--facebook plugin-->
@@ -93,30 +107,7 @@
                  }
 
                  <div class="toSpan top-banner-icon f-left">
-                     <a id="btn-config" href="#" data-dropdown="#dropdown-1">
-                         <span style="padding-right: 5px;"><i class="fa fa-cog"></i></span>
-                     </a>
-                     <div id="dropdown-1" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
-                         <ul class="dropdown-menu">
-                             <li><a href="/myprofile">Profile</a></li>
-                             <li><a href="/account/profile">Setting</a></li>
-                             <li class="dropdown-divider"></li>
-                             @{
-                                 if (User.Identity.IsAuthenticated)
-                                 {
-                                     @: @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-                                     {
-                                         @Html.AntiForgeryToken()
-                                         <li><a href="javascript:document.getElementById('logoutForm').submit()">Logout</a></li>
-                                     }
-                                                         }
-                                 else
-                                 {
-                                     <li><a href="/Account/Login">Login</a></li>
-                                 }
-                             }
-                         </ul>
-                     </div>
+                     @Html.Partial("_Partial_Area_Menu_Right")
                  </div>
              </div>
              <div class="f-left" id="top-banner-right">

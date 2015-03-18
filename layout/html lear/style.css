@@ -102,7 +102,11 @@ a:hover, a:active{
 	padding: 3% 5%;
 	margin-top:2%;
 }
-
+.post-info {
+	font-style: italic;
+	color: #999;
+	font-size: 90%;
+}
 .top-sidebar{
 	width:21%;
 	float:left;
@@ -113,11 +117,7 @@ a:hover, a:active{
 	margin-top: 2%;
 }
 
-.post-info {
-	font-style: italic;
-	color: #999;
-	font-size: 90%;
-}
+
 .middle-sidebar{
 	width:21%;
 	float:left;
@@ -159,7 +159,7 @@ a:hover, a:active{
 {
 	.body{		
 		width: 90%;	
-		font-size: 95%;
+		font-size: 120%;
 	}
 	
 	.mainHeader img{
@@ -175,30 +175,51 @@ a:hover, a:active{
 	}
 
 	.mainHeader nav ul li {
-		float: left;
-		display: inline;
+		width:100%;		
+		text-align: center;
 	}
 
 	.mainHeader nav a:link, .mainHeader nav a:visited {
-		color: #FFF;
-		display: inline-block;
 		padding: 10px 25px;
 		/*come back here to assign height*/
 		height: 20px;
+		display: block;
 	}
-
-	.mainHeader nav a:hover, .mainHeader nav a:active,
-	.mainHeader nav .active a:link, .mainHeader nav .active a:visited{
-		background-color: #CF5C3F;
-		text-shadow:none;
+	
+	/*main content*/
+	.mainContent{		
+		line-height: 28px;		
 		
 	}
 
-	.mainHeader nav ul li a {
-		border-radius: 5px;
-		-moz-border-radius: 5px;
-		-webkit-border-radius: 5px;
+	.content {
+		width: 100%;
+		float: left;		
+		margin-top: 2%;
 	}
+	.post-info {
+		display: none;
+	}
+
+	.topcontent{
+		background-color: #FFF;		
+		padding: 3% 5%;
+		margin-top:2%;
+		margin-bottom: 3%;
+	}
+	.bottomcontent{
+		background-color: #FFF;			
+		padding: 3% 5%;
+		margin-top:2%;
+	}
+	/* sidebar*/
+	.top-sidebar , .middle-sidebar,.bottom-sidebar{
+		width:94%;
+		float:left;
+		margin: 2% 0 2% 0;
+		padding: 2% 3%;
+	}
+
 
 }
 

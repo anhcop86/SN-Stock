@@ -141,7 +141,10 @@ namespace PhimHang.Controllers
             #endregion
 
             #endregion
-
+            #region danh muc co phieu nong
+            var listHotStock = await AppHelper.GetListHotStock();
+            ViewBag.ListStockHot = listHotStock;
+            #endregion
             return View(currentUser);
         }
         #region load messagesCenter

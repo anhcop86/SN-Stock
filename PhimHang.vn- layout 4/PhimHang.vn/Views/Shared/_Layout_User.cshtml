@@ -107,30 +107,7 @@
                 }
 
                 <div class="toSpan top-banner-icon f-left">
-                    <a id="btn-config" href="#" data-dropdown="#dropdown-1">
-                        <span style="padding-right: 5px;"><i class="fa fa-cog"></i></span>
-                    </a>
-                    <div id="dropdown-1" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
-                        <ul class="dropdown-menu">
-                            <li><a href="/myprofile">Profile</a></li>
-                            <li><a href="/account/profile">Setting</a></li>
-                            <li class="dropdown-divider"></li>
-                            @{
-                                if (User.Identity.IsAuthenticated)
-                                {
-                                    @: @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-                                    {
-                                        @Html.AntiForgeryToken()
-                                        <li><a href="javascript:document.getElementById('logoutForm').submit()">Logout</a></li>
-                                    }
-                                                         }
-                                else
-                                {
-                                    <li><a href="/Account/Login">Login</a></li>
-                                }
-                            }
-                        </ul>
-                    </div>
+                   @Html.Partial("_Partial_Area_Menu_Right")
                 </div>
             </div>
             <div class="f-left" id="top-banner-right">

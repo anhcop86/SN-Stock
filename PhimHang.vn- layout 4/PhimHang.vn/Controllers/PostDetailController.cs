@@ -31,7 +31,7 @@ namespace PhimHang.Controllers
         private testEntities db = new testEntities();
         private const string ImageURLAvataDefault = "/img/avatar2.jpg";
         private const string ImageURLAvata = "/images/avatar/";
- 
+        private string AbsolutePathHostName = AppHelper.AbsolutePathHostName;
 
         public async Task<ActionResult> Index(long postid)
         {
@@ -55,7 +55,8 @@ namespace PhimHang.Controllers
 
                 var post = await db.Posts.FirstOrDefaultAsync(p => p.PostId == postid);
 
-                ViewBag.Message =  post.Message;                   
+                ViewBag.Message =  post.Message;
+                ViewBag.MessageNonHtml = AppHelper.StripTagsCharArray(post.Message);
                 ViewBag.PostedByName = post.UserLogin.UserNameCopy;
                 ViewBag.PostedByAvatar = string.IsNullOrEmpty(post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + post.UserLogin.AvataImage;
                 ViewBag.PostedDate = post.PostedDate;
@@ -66,7 +67,7 @@ namespace PhimHang.Controllers
                 ViewBag.PostBy = post.PostedBy;
                 ViewBag.Chart = post.ChartImageURL;
                 ViewBag.SumReply = post.SumReply;
-
+                ViewBag.AbsolutePathHostName = AbsolutePathHostName;
                 #region gia chi so index va hnxindex
                 var listIndex = new List<string>();
                 listIndex.Add("VnIndex");

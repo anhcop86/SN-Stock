@@ -1197,6 +1197,7 @@
     <Content Include="Views\Shared\_Layout_Search.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Shared\_Partial_HotStock.cshtml" />
+    <Content Include="Views\Shared\_Partial_Area_Menu_Right.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
