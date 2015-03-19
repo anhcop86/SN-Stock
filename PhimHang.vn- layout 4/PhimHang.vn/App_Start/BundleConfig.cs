@@ -64,7 +64,8 @@ namespace PhimHang
 
             #region user encode
             bundles.Add(new ScriptBundle("~/bundles/User").Include(
-                             "~/ThemeBlue/js/User.js"));
+                             "~/ThemeBlue/js/User.js",
+                             "~/ThemeBlue/js/FollowUser.js"));
             #endregion
 
             #region user detail post

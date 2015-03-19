@@ -446,6 +446,7 @@
     <Content Include="Content\font-awesome\scss\_variables.scss" />
     <Content Include="Content\walt_disney\waltograph42.otf" />
     <Content Include="Content\walt_disney\waltographUI.ttf" />
+    <Content Include="bundles\walt_disney\waltograph42.otf" />
     <None Include="Properties\PublishProfiles\phimhang o nha.pubxml" />
     <None Include="Properties\PublishProfiles\phimhang.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -557,6 +558,7 @@
     <Content Include="ThemeBlue\js\chart\sample_line_chart.js" />
     <Content Include="ThemeBlue\js\exporting.js" />
     <Content Include="ThemeBlue\js\Extention.js" />
+    <Content Include="ThemeBlue\js\FollowUser.js" />
     <Content Include="ThemeBlue\js\FollowStock.js" />
     <Content Include="ThemeBlue\js\highstock.js" />
     <Content Include="ThemeBlue\js\jquery.dropdown.js" />

@@ -299,8 +299,8 @@ function viewModel() {
     }
     // end
     var loadSlow = 'Y';
-    $(window).scroll(function () { // scroll endpage load more
-        if (document.documentElement.clientHeight + $(document).scrollTop() >= document.body.offsetHeight && checkLoadFirst == 1 && loadSlow == 'Y') {
+    $(window).scroll(function () { // scroll endpage load more       
+        if (document.documentElement.clientHeight + $(document).scrollTop() >= $( document ).height() - 100 && checkLoadFirst == 1 && loadSlow == 'Y') {
             loadSlow = 'N';
             $('.ajaxLoadingImage').html('<img src="/images/ajax-loader_cungphim.gif" />');
             $.ajax({

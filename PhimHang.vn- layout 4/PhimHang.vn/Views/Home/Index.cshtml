@@ -25,7 +25,26 @@
                     <div id="input-status-text" class="input-status-text">
                         <textarea onfocus=" {  location.href='/myprofile' }" data-bind="    value : newMessage, valueUpdate : 'afterkeydown' , limitCharacters : 140" class="status-cm" name="status" rows="5" placeholder="$Cổ phiếu | &#64;Username" id="status" title="Search" autocomplete="off" rows="5"></textarea>
                     </div>
-                   
+                    <div class="status-control">
+                        <div class="choose_file f-left">
+                            <i class="fa fa-camera"></i>
+                            <input id="idchartFileUpload" name="Select File" accept="image/*" type="file" onchange="uploadPreview(files)" />
+                            <div class="chartImage">
+                                <a class="mb3-close chart-close" onclick="removeFileChart()" href="javascript:void(0)">x</a>
+                                <img class="mb3-chart-thumb" src="">
+                            </div>
+                        </div>
+                        <div id="radio" class="switch3button f-left">
+                            <input type="radio" id="radio1" name="BullBear" value="2">
+                            <label for="radio1" class="divBull ">Tăng</label>
+                            <input type="radio" id="radio3" name="BullBear" value="1">
+                            <label for="radio3" class="divBear">Giảm</label>
+                        </div>
+                        <div id="btnPhim" class="f-right">
+                            <span data-bind="text : count"></span>
+                            <button id="btAddPost" style="cursor:pointer" class="button-phim">PHÍM</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

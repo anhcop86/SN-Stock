@@ -24,13 +24,9 @@
                     @: @Model.Status
                 }
             }
-        </div>
+        </div>       
         <div>
-            <i class="fa fa-user"></i>&nbsp;Tên đăng nhập:
-            @Model.UserNameCopy
-        </div>
-        <div>
-            <i class="fa fa-map-marker"></i>&nbsp;&nbsp;Trường phái:
+            <i class="fa fa-map-marker"></i>&nbsp;Trường phái:
             @{
                 if (Model.PhilosophyMarket != null)
                 {
@@ -43,7 +39,7 @@
             }
         </div>
         <div>
-            <i class="fa fa-map-marker"></i>&nbsp;&nbsp;Nghề nghiệp:
+            <i class="fa fa-map-marker"></i>&nbsp;Nghề nghiệp:
             @{
                 if (Model.JobTitle != null)
                 {
@@ -69,7 +65,7 @@
                 }
             }
         </div>
-        <div><i class="fa fa-info"></i>&nbsp;&nbsp;&nbsp;Giới thiệu:       
+        <div><i class="fa fa-info"></i>&nbsp;&nbsp;Giới thiệu:       
             @{
                 if (string.IsNullOrEmpty(Model.CVInfo))
                 {

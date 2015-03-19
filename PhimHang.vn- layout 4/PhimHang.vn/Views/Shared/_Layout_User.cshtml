@@ -134,24 +134,27 @@
             </ul>
         </div>
     </div>
-    <div style="margin-top: 80px;">
-        <div class="menu-top-bar2">
-            <div class="top-menu-2">
-                @Html.Partial("_Partial_Area_MenuBar_User")
+    <div>
+        <div style="margin-top: 80px;">
+            <div class="menu-top-bar2">
+                <div class="top-menu-2">
+                    @Html.Partial("_Partial_Area_MenuBar_User")
+                </div>
             </div>
-        </div>
-        <div class="content-main" style="margin-top: 0px;">
-            <div class="area-left">
-                @Html.Partial("_Partial_Area_Left_User")
-            </div>
-            <div class="area-center">
-                @RenderBody()
-            </div>
-            <div class="area-right">
-                @Html.Partial("_Partial_Area_Right_User1")
+            <div class="content-main" style="margin-top: 0px;">
+                <div class="area-left">
+                    @Html.Partial("_Partial_Area_Left_User")
+                </div>
+                <div class="area-center">
+                    @RenderBody()
+                </div>
+                <div class="area-right">
+                    @Html.Partial("_Partial_Area_Right_User1")
+                </div>
             </div>
         </div>
     </div>
+    
     @RenderSection("scripts", required: false)
 </body>
 </html>
