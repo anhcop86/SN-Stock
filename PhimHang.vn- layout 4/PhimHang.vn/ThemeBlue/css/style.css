@@ -857,6 +857,8 @@ input[name=BullBear]{
     line-height: 18px;
     letter-spacing: 0px;
     margin-bottom: 10px;
+    text-align:justify;
+    width: 90%;
 }
 .list-item-control-cm,
 .list-item-control{
