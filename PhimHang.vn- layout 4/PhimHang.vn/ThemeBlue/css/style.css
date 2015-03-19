@@ -1719,6 +1719,7 @@ button
     }
     .status-control {
           margin-top: 9px;
+          margin-bottom:9px;
         width: 100%;
     }
     .switch3button {
@@ -1745,5 +1746,10 @@ button
     .list-item-custom {
           width: 100%;
     }
+    /*#dialog
+    {
+         width: 50% !important;
+    }*/
+  
 
 }
