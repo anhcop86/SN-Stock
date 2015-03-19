@@ -417,7 +417,7 @@ commenthub.client.newReplyNoti = function (postid) {
 // end
 var loadSlow = 'Y';
 $(window).scroll(function () { // scroll endpage load more
-    if ($(window).scrollTop() + $(window).height() == $(document).height() && checkLoadFirst == 1 && loadSlow == 'Y') {
+    if (document.documentElement.clientHeight + $(document).scrollTop() >= document.body.offsetHeight && checkLoadFirst == 1 && loadSlow == 'Y') {
         loadSlow = 'N';
         $('.ajaxLoadingImage').html('<img src="/images/ajax-loader_cungphim.gif" />');
         $.ajax({

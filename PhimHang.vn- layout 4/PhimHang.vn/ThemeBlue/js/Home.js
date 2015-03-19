@@ -111,217 +111,217 @@ function viewModel() {
     var postidCurrent = 0;
     var checkLoadFirst = 0;
     var filterhere = "";
-    
 
 
 
 
-self.init = function () {
-    self.error(null);
-    // lay danh muc thuong
-    $.ajax({
-        cache: false,
-        type: "GET",              
-        url: '/Home/GetMorePostsGlobal',
-        data: { skipposition: 0, filter: "ALL" },
-        beforeSend: function (xhr) {
-            //Add your image loader here
-            //$('.ajaxLoadingImage').html('<img src="/images/ajax-loader_cungphim.gif" />');
-        },
-        success: function (data) {
-            //$('.ajaxLoadingImage').html('');
-            var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item); });
-            $(mappedPosts).each(function (index, element) {
-                self.posts.push(element);
-            });
-            checkLoadFirst = 1;
-        }
-    });
-}
 
-
-self.addReply = function () { // them tra loi
-    $('#btAddReply').attr("disabled", true); // disble ngay khong de click them
-    commenthub.server.addReply({ "Message": self.newReply(), "PostedBy": postidCurrent }, "KEYMYPROFILE", $('#HiddentCureentUserId').val(), $('#HiddentUserName').val(), $('#HiddentAvataEmage').val())
-        .done(function () {
-            showNotification('Bạn đã trả lời thành công!');
-        })
-        .fail(function (err) {
-            self.error(err);
-        });
-    checkreply = 'Y';
-    self.newReply('');
-}
-// nhan dc notification tu user khac
-commenthub.client.MessegeOfUserPost = function (number) {
-    var num = $(".MessegeNofity").html();
-    if (num != null) {
-        $(".MessegeNofity").html(parseInt(num) + number);
-    }
-    else {
-        $("#CreateMesseger").html("<span class='MessegeNofity'>1</span>");
-    }
-}
-//////////////// load lại filter nè
-
-
-/////////////////////////////////////////////////////////////
-// recieve the post from server
-commenthub.client.addPostGlobal = function (post) {
-    self.posts.unshift(new Post(post));
-}
-
-self.afterAdd = function (elem) {
-    if (checkLoadFirst == 1) {
-        //$(elem).hide().slideDown('slow');
-        $(elem).hide().slideDown('slow')
-    }
-};
-
-commenthub.client.addReply = function (reply) {
-    self.replys.unshift(new Reply(reply));
-    //self.replys.splice(0, 0, new Reply(reply));
-}
-
-/////////////////////
-
-
-self.AddLike = function (data, e) {
-    // ajax update  like with 
-
-    //var postRow = $('#PostId' + data.PostId);
-    ////postRow.removeAttr("data-bind");
-    //postRow.attr('class', "fa fa-thumbs-up");
-    //postRow.attr('data-bind', '');
-    //postRow.addClass("fa fa-thumbs-up");
-    data.DiableLike(false);
-    e.stopPropagation(); // stop popup
-    commenthub.server.addNewLike(data.PostId)
-        .fail(function (err) {
-            self.error(err);
-        });
-    //$.ajax({
-    //    cache: false,
-    //    type: "POST",
-    //    url: '/Post/UpdateLike',
-    //    data: { postid: data.PostId },
-    //    beforeSend: function (xhr) {
-    //        // disable like and chage class
-
-    //    },
-    //    success: function () {
-    //        data.SumLike(data.SumLike() + 1); // update interface
-    //    }
-    //});
-
-};
-commenthub.client.addNewLike = function (postid) {
-    var Postfind = ko.utils.arrayFirst(self.posts(), function (item) {
-        return item.PostId === postid;
-    });
-    if (Postfind != null) {
-        Postfind.SumLike(Postfind.SumLike() + 1);
-        return;
-    }
-
-}
-self.detailPost = function (data, e) { // chi tiet post bao gom tra loi
-
-    self.newReply('');
-    self.replys([]);       
-    $("#idPostedDateDetail").html(data.PostedDate);
-    $("#idPostNameDetail").html(data.PostedByName);
-    $("#idImgPostDetail").attr('src', data.PostedByAvatar);
-    $("#idPostMessenge").html(data.ChartYN == 1 ? data.Message.replace('<br/><img src=' + data.Chart + '?width=215&height=120&mode=crop>', '') + '<br/><br/><a target="_blank" href=' + data.Chart + '><img src=' + data.Chart + "?maxwidth=475></a>" : data.Message);//=200&s.grayscale=true|"
-    $("#idStmDetail").html(data.Stm);
-    postidCurrent = data.PostId;
-    $("#IdLoadMoreConversation").attr('href', '/PostDetail?postid=' + postidCurrent);
-    $("#facebookLikeAndShare").html("<script>$(document).ready(function() {try {FB.XFBML.parse();} catch (ex) { }});<\/script><div style='overflow: hidden;float:right' class='fb-like' data-href='/PostDetail?postid=" + postidCurrent + "' data-layout='button_count' data-action='like' data-show-faces='true' data-share='true'></div>");
-    //data.notification(0);
-    // load 10 reply gan nhat
-    $.ajax({
-        cache: false,
-        type: "GET",
-        url: '/Post/GetReplyByPostId',
-        data: { replyid: data.PostId },
-        beforeSend: function (xhr) {
-            //Add your image loader here
-
-        },
-        success: function (data) {
-            var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Reply(item); });
-            $(mappedPosts).each(function (index, element) {
-                self.replys.push(element);
-            });
-        }
-
-    });
-
-    if (!$(e.target).hasClass('btnMore')) {
-        dialog.dialog("open");
-        $(".ui-widget-overlay").click(function () {
-            dialog.dialog('close');
-        })
-    }
-}
-
-self.enablePhimHang = ko.computed(function () {
-    return self.newMessage().length <= 200 && self.newMessage().length >= 6 && self.newMessage().indexOf('<', 0) == -1;
-});
-
-self.count = ko.computed(function () {
-    var countNum = 200 - self.newMessage().length;
-    return countNum;
-});
-self.enablePhimHangReply = ko.computed(function () {
-    return self.newReply().length <= 140 && self.newReply().length >= 6 && self.newReply().indexOf('<', 0) == -1;
-});
-self.countReply = ko.computed(function () {
-    var countNum = 140 - self.newReply().length;
-    return countNum;
-});
-
-// notification of reply
-
-commenthub.client.newReplyNoti = function (postid) {
-    //
-    var replysfind = ko.utils.arrayFirst(self.posts(), function (item) {
-        return item.PostId === postid;
-    });
-    if (replysfind != null) {
-        replysfind.SumReply(replysfind.SumReply() + 1);
-        return;
-    }
-    //            
-   
-    
-} 
-// end
-var loadSlow = 'Y';
-$(window).scroll(function () { // scroll endpage load more
-    if ($(window).scrollTop() + $(window).height() == $(document).height() && checkLoadFirst == 1 && loadSlow == 'Y') {
-        loadSlow = 'N';
-        $('.ajaxLoadingImage').html('<img src="/images/ajax-loader_cungphim.gif" />');
+    self.init = function () {
+        self.error(null);
+        // lay danh muc thuong
         $.ajax({
             cache: false,
             type: "GET",
             url: '/Home/GetMorePostsGlobal',
-            data: { skipposition: self.posts().length + self.newPosts().length, filter: filterhere },
+            data: { skipposition: 0, filter: "ALL" },
             beforeSend: function (xhr) {
                 //Add your image loader here
-                      
+                //$('.ajaxLoadingImage').html('<img src="/images/ajax-loader_cungphim.gif" />');
             },
             success: function (data) {
-                $('.ajaxLoadingImage').html('');
+                //$('.ajaxLoadingImage').html('');
                 var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item); });
                 $(mappedPosts).each(function (index, element) {
                     self.posts.push(element);
                 });
-                loadSlow = 'Y';
+                checkLoadFirst = 1;
             }
-        })
+        });
     }
-});
+
+
+    self.addReply = function () { // them tra loi
+        $('#btAddReply').attr("disabled", true); // disble ngay khong de click them
+        commenthub.server.addReply({ "Message": self.newReply(), "PostedBy": postidCurrent }, "KEYMYPROFILE", $('#HiddentCureentUserId').val(), $('#HiddentUserName').val(), $('#HiddentAvataEmage').val())
+            .done(function () {
+                showNotification('Bạn đã trả lời thành công!');
+            })
+            .fail(function (err) {
+                self.error(err);
+            });
+        checkreply = 'Y';
+        self.newReply('');
+    }
+    // nhan dc notification tu user khac
+    commenthub.client.MessegeOfUserPost = function (number) {
+        var num = $(".MessegeNofity").html();
+        if (num != null) {
+            $(".MessegeNofity").html(parseInt(num) + number);
+        }
+        else {
+            $("#CreateMesseger").html("<span class='MessegeNofity'>1</span>");
+        }
+    }
+    //////////////// load lại filter nè
+
+
+    /////////////////////////////////////////////////////////////
+    // recieve the post from server
+    commenthub.client.addPostGlobal = function (post) {
+        self.posts.unshift(new Post(post));
+    }
+
+    self.afterAdd = function (elem) {
+        if (checkLoadFirst == 1) {
+            //$(elem).hide().slideDown('slow');
+            $(elem).hide().slideDown('slow')
+        }
+    };
+
+    commenthub.client.addReply = function (reply) {
+        self.replys.unshift(new Reply(reply));
+        //self.replys.splice(0, 0, new Reply(reply));
+    }
+
+    /////////////////////
+
+
+    self.AddLike = function (data, e) {
+        // ajax update  like with 
+
+        //var postRow = $('#PostId' + data.PostId);
+        ////postRow.removeAttr("data-bind");
+        //postRow.attr('class', "fa fa-thumbs-up");
+        //postRow.attr('data-bind', '');
+        //postRow.addClass("fa fa-thumbs-up");
+        data.DiableLike(false);
+        e.stopPropagation(); // stop popup
+        commenthub.server.addNewLike(data.PostId)
+            .fail(function (err) {
+                self.error(err);
+            });
+        //$.ajax({
+        //    cache: false,
+        //    type: "POST",
+        //    url: '/Post/UpdateLike',
+        //    data: { postid: data.PostId },
+        //    beforeSend: function (xhr) {
+        //        // disable like and chage class
+
+        //    },
+        //    success: function () {
+        //        data.SumLike(data.SumLike() + 1); // update interface
+        //    }
+        //});
+
+    };
+    commenthub.client.addNewLike = function (postid) {
+        var Postfind = ko.utils.arrayFirst(self.posts(), function (item) {
+            return item.PostId === postid;
+        });
+        if (Postfind != null) {
+            Postfind.SumLike(Postfind.SumLike() + 1);
+            return;
+        }
+
+    }
+    self.detailPost = function (data, e) { // chi tiet post bao gom tra loi
+
+        self.newReply('');
+        self.replys([]);
+        $("#idPostedDateDetail").html(data.PostedDate);
+        $("#idPostNameDetail").html(data.PostedByName);
+        $("#idImgPostDetail").attr('src', data.PostedByAvatar);
+        $("#idPostMessenge").html(data.ChartYN == 1 ? data.Message.replace('<br/><img src=' + data.Chart + '?width=215&height=120&mode=crop>', '') + '<br/><br/><a target="_blank" href=' + data.Chart + '><img src=' + data.Chart + "?maxwidth=475></a>" : data.Message);//=200&s.grayscale=true|"
+        $("#idStmDetail").html(data.Stm);
+        postidCurrent = data.PostId;
+        $("#IdLoadMoreConversation").attr('href', '/PostDetail?postid=' + postidCurrent);
+        $("#facebookLikeAndShare").html("<script>$(document).ready(function() {try {FB.XFBML.parse();} catch (ex) { }});<\/script><div style='overflow: hidden;float:right' class='fb-like' data-href='/PostDetail?postid=" + postidCurrent + "' data-layout='button_count' data-action='like' data-show-faces='true' data-share='true'></div>");
+        //data.notification(0);
+        // load 10 reply gan nhat
+        $.ajax({
+            cache: false,
+            type: "GET",
+            url: '/Post/GetReplyByPostId',
+            data: { replyid: data.PostId },
+            beforeSend: function (xhr) {
+                //Add your image loader here
+
+            },
+            success: function (data) {
+                var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Reply(item); });
+                $(mappedPosts).each(function (index, element) {
+                    self.replys.push(element);
+                });
+            }
+
+        });
+
+        if (!$(e.target).hasClass('btnMore')) {
+            dialog.dialog("open");
+            $(".ui-widget-overlay").click(function () {
+                dialog.dialog('close');
+            })
+        }
+    }
+
+    self.enablePhimHang = ko.computed(function () {
+        return self.newMessage().length <= 200 && self.newMessage().length >= 6 && self.newMessage().indexOf('<', 0) == -1;
+    });
+
+    self.count = ko.computed(function () {
+        var countNum = 200 - self.newMessage().length;
+        return countNum;
+    });
+    self.enablePhimHangReply = ko.computed(function () {
+        return self.newReply().length <= 140 && self.newReply().length >= 6 && self.newReply().indexOf('<', 0) == -1;
+    });
+    self.countReply = ko.computed(function () {
+        var countNum = 140 - self.newReply().length;
+        return countNum;
+    });
+
+    // notification of reply
+
+    commenthub.client.newReplyNoti = function (postid) {
+        //
+        var replysfind = ko.utils.arrayFirst(self.posts(), function (item) {
+            return item.PostId === postid;
+        });
+        if (replysfind != null) {
+            replysfind.SumReply(replysfind.SumReply() + 1);
+            return;
+        }
+        //            
+
+
+    }
+    // end
+    var loadSlow = 'Y';
+    $(window).scroll(function () { // scroll endpage load more
+        if (document.documentElement.clientHeight + $(document).scrollTop() >= document.body.offsetHeight && checkLoadFirst == 1 && loadSlow == 'Y') {
+            loadSlow = 'N';
+            $('.ajaxLoadingImage').html('<img src="/images/ajax-loader_cungphim.gif" />');
+            $.ajax({
+                cache: false,
+                type: "GET",
+                url: '/Home/GetMorePostsGlobal',
+                data: { skipposition: self.posts().length + self.newPosts().length, filter: filterhere },
+                beforeSend: function (xhr) {
+                    //Add your image loader here
+
+                },
+                success: function (data) {
+                    $('.ajaxLoadingImage').html('');
+                    var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item); });
+                    $(mappedPosts).each(function (index, element) {
+                        self.posts.push(element);
+                    });
+                    loadSlow = 'Y';
+                }
+            })
+        }
+    });
 }
 
 ko.bindingHandlers.limitCharacters = {
