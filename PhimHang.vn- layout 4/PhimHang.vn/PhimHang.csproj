@@ -541,6 +541,7 @@
     <Content Include="ThemeBlue\css\jquery.dropdown.css" />
     <Content Include="ThemeBlue\css\login.css" />
     <Content Include="ThemeBlue\css\Notification.css" />
+    <Content Include="ThemeBlue\css\Responsive.css" />
     <Content Include="ThemeBlue\css\style.css" />
     <Content Include="ThemeBlue\css\walt_disney\license.txt" />
     <Content Include="ThemeBlue\css\walt_disney\waltograph.txt" />

@@ -41,7 +41,8 @@ namespace PhimHang
 
             bundles.Add(new StyleBundle("~/bundles/StyleStandard").Include(
                     "~/ThemeBlue/css/jquery-ui/jquery-ui.css",
-                      "~/ThemeBlue/css/style.css"
+                      "~/ThemeBlue/css/style.css",
+                      "~/ThemeBlue/css/Responsive.css"
                       ));
             #region ticker bundless and encode
             bundles.Add(new ScriptBundle("~/bundles/Ticker").Include(                
