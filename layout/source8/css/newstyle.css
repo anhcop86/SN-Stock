@@ -1,0 +1,214 @@
+/* 
+    Created on : March 21, 2015
+    Author     : AnhTuan
+*/
+body {
+     background:url(../img/bg.png);
+	 font-family: arial,tahoma,verdana,sans-serif;    
+}
+#top-banner-left
+{	
+	width:350px;
+	line-height:50px;
+}
+#top-center{
+	width:100px;
+	margin-left:250px;
+}
+#top-banner-right
+{
+	margin-right:17px;
+}
+#top-banner-right > .top-banner-icon > a > span > i,
+#top-banner-right > .top-banner-icon > a > i {
+    font-size: 3rem;
+    color: rgb(163, 163, 163);
+}
+#btn-config.dropdown-open span i{
+	color:#fff!important;
+}
+.bg-blue {
+    background:url(../img/bg.png);
+}
+.menu-top-bar ul > li, .menu-bottom-bar ul > li {
+	line-height:30px;
+}
+.menu-top-bar {
+	min-height:30px;
+	box-shadow:0 4px 2px -2px Gray;
+}
+.logo img {
+    border-radius: 50%;
+    border: 1px solid #fff;
+}
+.avatar img {
+	margin-top:5px;
+	max-height:35px;
+    border-radius: 50%;
+    border: 1px solid rgb(163, 163, 163);
+}
+.top-banner-icon2 {
+    padding: 2px 17px 0px;
+}
+.top-banner-icon {
+    padding: 5px 17px 0px 17px;
+}
+a.avatar img:hover{
+	border: 1px solid #fff;
+	border-radius: 50%;
+}
+.active_fff,
+#top-banner-right > .top-banner-icon > a:hover > span > i,
+#top-banner-right > .top-banner-icon > a:hover > i {
+	color:#fff;
+}
+#search_box_top > input{
+	background:none;
+	font-size:1.2rem;
+	color:#fff;
+}
+#search_box_top:hover,
+.search_active{
+	border-radius: 20px;
+	background:none;
+	border: 2px solid #fff!important;	
+}
+#search_box_top{
+	border-radius: 20px;
+	background:none;
+	border: 2px solid #a3a3a3;	
+	margin-left:10px;
+}
+.hidden-xs-button,.hidden-xs-button2{
+	padding:5px 10px 6px 10px;
+	background-color:#36465d;
+	font-size:10px!important;
+	border-radius: 10px;
+	margin-top:0px;
+	color:#fff!important;
+	float:left;
+	margin-top:4px;
+}
+.hidden-xs-button{
+	margin-right:53px;
+}
+.hidden-xs-button2{
+	margin-right:30px;
+	float:right;
+}
+.menu-top-bar ul > li > a, .menu-bottom-bar ul > li > a {
+	font-size:1.4rem;
+}
+.top-panel-right2 > li{
+	float:right;
+}
+.content-875{
+	margin:0px auto;
+	width:875px;
+	margin-top:100px;
+	padding:20px;
+	background-color:#fff;
+	border-radius:5px;
+}
+.list-company{
+	color:#00A2E8;
+	font-size:2rem;
+	font-weight:bold;
+	margin-left:15px;
+	margin-bottom:24px;
+}
+#alpha-list ul {
+    height: 25px;
+    line-height: 25px;
+    display: inline-block;
+    margin: 0px;
+    padding-left: 0px;
+	margin-left:15px;
+	margin-bottom:10px;
+}
+#alpha-list li {
+    display: inline;
+    list-style-type: none;
+}
+#alpha-list a, #alpha-list span {
+    color: #009EC2;
+    background: none repeat scroll 0% 0% #FFF;
+    border: 1px solid #009EC2;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 3px 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 15px;
+    transition: all 0.2s ease 0s;
+}
+#alpha-list a:hover, #alpha-list a:active {
+    background: none repeat scroll 0% 0% #009EC2;
+    color: #FFF;
+    border: 1px solid #009EC2;
+    transition: all 0.2s ease 0s;
+}
+div#alpha-list li span {
+    background: none repeat scroll 0% 0% #00BCE4;
+    color: #FFF;
+}
+.item-bearish{
+	color:#DF1D35;
+	text-align:center;
+	font-size:12px;
+}
+.item-bullish{
+	color:#73e808;
+	text-align:center;
+	font-size:12px;
+}
+.genTable{
+	margin-bottom:30px;
+}
+table#CompanylistResults{
+	width:100%;
+	border:1px solid #D1D1D1;
+	border-radius: 5px;
+}
+#CompanylistResults tr th:first-child{
+	width:170px;	
+}
+#CompanylistResults tr th{
+	text-align:left;
+	border-bottom: 1px solid #D1D1D1;
+	padding:10px 15px;
+	font-size:13px;
+}
+#CompanylistResults  tr th:nth-child(2){
+	width: 380px;	
+}
+#CompanylistResults  tr td:nth-child(2){
+  padding: 16px 15px 16px 32px;
+}
+#CompanylistResults  tr td {
+    border-bottom: 1px solid #D1D1D1;
+    padding: 8px;
+    vertical-align: top;
+    line-height: normal;
+	padding:16px 15px 16px 33px;
+	font-size: 13px;
+}
+#CompanylistResults tr td > a,
+#CompanylistResults tr th > a,
+#CompanylistResults tr th > span > a ,
+#CompanylistResults tr td > span > a {
+    color: #00a2e8;
+    text-decoration: none;
+}
+#CompanylistResults  tr td:first-child a,
+#CompanylistResults  tr td:first-child span{
+	font-weight:bold;
+	font-size:2.5rem;
+}
+#CompanylistResults  tr:last-child td{
+	border-bottom:0px;
+}
+.dropdown-tip-cm{
+	margin-top:15px!important;
+}
