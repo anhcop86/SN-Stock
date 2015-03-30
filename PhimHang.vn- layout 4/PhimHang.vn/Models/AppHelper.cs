@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Data.Entity;
+using System.Web.Helpers;
 
 namespace PhimHang.Models
 {
@@ -117,12 +118,18 @@ namespace PhimHang.Models
             }
             return new string(array, 0, arrayIndex);
         }
+        public static string Encode(string password)
+        {
+            return Crypto.HashPassword(password);
+        }
     }
     public class PosistionFilter
     {
         public int Index { get; set; }
         public int Posistion { get; set; }
     }
+
+
 
     
 }
