@@ -30,7 +30,7 @@ body {
     font-family: tahoma,verdana,arial,sans-serif;
     font-size: 1.4rem;
     color: #333; 
-    background: url('/img/bg.png')
+    background: url('/img/bg.png');
 }
 a{
     color: #328AC5;
@@ -59,7 +59,7 @@ textarea {
     display: block;
 }
 .bg-blue{
-    background: none repeat scroll 0% 0%;
+    background: none repeat scroll 0% 0% url('/img/bg.png') ;
 }
 .w100p{
     width: 100%;
