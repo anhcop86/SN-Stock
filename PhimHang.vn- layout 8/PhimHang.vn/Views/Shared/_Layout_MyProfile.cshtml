@@ -26,7 +26,7 @@
     <!-- End For desgin-->
     <link href="~/ThemeBlue/css/Notification.css" rel="stylesheet" />
 </head>
-<body>
+<body style="background: url('/img/bg.png');">
     <!--facebook plugin-->
     <script>
         window.fbAsyncInit = function () {
@@ -72,13 +72,13 @@
                     if (User.Identity.IsAuthenticated)
                     {
                         <div class="toSpan top-banner-icon f-left">
-                            
-                             <a href="/myprofile">
-                                 <img style="margin-top: 8px;border-radius: 20px;" src="@ViewBag.AvataEmage?width=30&height=30&mode=crop" class="img-rounded" alt="avatar">
-                             </a>
-                         </div>
+
+                            <a href="/myprofile">
+                                <img style="margin-top: 8px;border-radius: 20px;" src="@ViewBag.AvataEmage?width=30&height=30&mode=crop" class="img-rounded" alt="avatar">
+                            </a>
+                        </div>
                         <div class="toSpan top-banner-icon f-left">
-                          
+
                             <a href="/user/@User.Identity.Name/tab/1"><i class="fa fa-home"></i></a>
                         </div>
                         <div class="toSpan top-banner-icon f-left">
@@ -120,7 +120,7 @@
                 </li>
                 @Html.Partial("_Partial_HotStock")
             </ul>
-            <ul class="nav navbar-nav pull-right top-panel-right2">              
+            <ul class="nav navbar-nav pull-right top-panel-right2">
                 @Html.Partial("_Partial_Area_Index")
             </ul>
         </div>

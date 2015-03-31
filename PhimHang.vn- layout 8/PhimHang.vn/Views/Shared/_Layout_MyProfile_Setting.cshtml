@@ -16,7 +16,7 @@
     <link href="~/ThemeBlue/bootstrap-twiter/css/bootstrap-theme.min.css" rel="stylesheet" />
     <link href="~/ThemeBlue/css/Notification.css" rel="stylesheet" /> @*notification style*@
 </head>
-<body class="user-profile">
+<body class="user-profile" style="background: url('/img/bg.png');">
     <div class="NotificationCenter">
         <span id="textNoti"></span>
     </div>
@@ -32,7 +32,7 @@
 
                 <div class="row">
                     <div class="span12">
-                        <div class="user-details">                            
+                        <div class="user-details">
                             <span class="name">@User.Identity.Name</span>
                         </div>
                         <hr />
@@ -40,7 +40,7 @@
                 </div>
                 <div class="tabbable tabs-left">
                     <ul class="nav nav-tabs">
-                        <li id="profileli" ><a href="/account/profile">Hồ sơ cá nhân</a></li>
+                        <li id="profileli"><a href="/account/profile">Hồ sơ cá nhân</a></li>
                         @*<li><a href="#philosophy" data-toggle="tab">Trường phái đầu tư</a></li>*@
                         <li id="manageli"><a href="/account/manage">Mật khẩu</a></li>
                         @*<li><a href="#identityProviders" data-toggle="tab">Identity Providers</a></li>*@
@@ -51,7 +51,7 @@
                 </div>
             </div>
         </div>
-    </section>   
+    </section>
     @RenderSection("scripts", required: false)
 
 </body>

@@ -21,115 +21,116 @@
     <!-- End For desgin-->
     <link href="~/ThemeBlue/css/Notification.css" rel="stylesheet" />
 </head>
- <body>
-     <!--facebook plugin-->
-     <script>
-         window.fbAsyncInit = function () {
-             FB.init({
-                 appId: '934180333272963',
-                 xfbml: true,
-                 version: 'v2.2'
-             });
-         };
+<body style="background: url('/img/bg.png');">
+    <!--facebook plugin-->
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '934180333272963',
+                xfbml: true,
+                version: 'v2.2'
+            });
+        };
 
-         (function (d, s, id) {
-             var js, fjs = d.getElementsByTagName(s)[0];
-             if (d.getElementById(id)) { return; }
-             js = d.createElement(s); js.id = id;
-             js.src = "//connect.facebook.net/en_US/sdk.js";
-             fjs.parentNode.insertBefore(js, fjs);
-         }(document, 'script', 'facebook-jssdk'));
-     </script>
-     <div id="fb-root"></div>
-     <script>
-         (function (d, s, id) {
-             var js, fjs = d.getElementsByTagName(s)[0];
-             if (d.getElementById(id)) return;
-             js = d.createElement(s); js.id = id;
-             js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=934180333272963&version=v2.0";
-             fjs.parentNode.insertBefore(js, fjs);
-         }(document, 'script', 'facebook-jssdk'));
-     </script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=934180333272963&version=v2.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
 
-     <!--facebook plugin-->
-     <div class="NotificationCenter">
-         <span id="textNoti"></span>
-     </div>
-     <div id="top-banner" class="w100p bg-blue">
-         <div class="content-main-top">
-             <div class="f-left" id="top-banner-left">
-                 <a href="/" class="logo" title="Cùng Phím">
-                     <img src="/img/logo.png?width=30&height=30&mode=crop" alt="Cùng Phím">
-                 </a>
-             </div>
-             <div class="f-right" id="top-banner-center">
-                 @{
-                     if (User.Identity.IsAuthenticated)
-                     {
-                         <div class="toSpan top-banner-icon f-left">
-                            
-                             <a href="/myprofile">
-                                 <img style="margin-top: 8px;border-radius: 20px;" src="@ViewBag.AvataEmage?width=30&height=30&mode=crop" class="img-rounded" alt="avatar">
-                             </a>
-                         </div>
-                         <div class="toSpan top-banner-icon f-left">
+    <!--facebook plugin-->
+    <div class="NotificationCenter">
+        <span id="textNoti"></span>
+    </div>
+    <div id="top-banner" class="w100p bg-blue">
+        <div class="content-main-top">
+            <div class="f-left" id="top-banner-left">
+                <a href="/" class="logo" title="Cùng Phím">
+                    <img src="/img/logo.png?width=30&height=30&mode=crop" alt="Cùng Phím">
+                </a>
+            </div>
+            <div class="f-right" id="top-banner-center">
+                @{
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        <div class="toSpan top-banner-icon f-left">
 
-                             <a href="/user/@User.Identity.Name/tab/1"><i class="fa fa-home"></i></a>
-                         </div>
-                         <div class="toSpan top-banner-icon f-left">
-                             <a href="/myprofile/MessagesCenter"><i class="fa fa-comments-o"></i></a>
-                             @if (ViewBag.NewMessege > 0)
-                             {
-                                 <span id="CreateMesseger">
-                                     <span class="MessegeNofity">@ViewBag.NewMessege</span>
-                                 </span>
-                             }
-                             else
-                             {
-                                 <span id="CreateMesseger"></span>
-                             }
-                         </div>
-                     }
-                 }
+                            <a href="/myprofile">
+                                <img style="margin-top: 8px;border-radius: 20px;" src="@ViewBag.AvataEmage?width=30&height=30&mode=crop" class="img-rounded" alt="avatar">
+                            </a>
+                        </div>
+                        <div class="toSpan top-banner-icon f-left">
 
-                 <div class="toSpan top-banner-icon f-left">
-                     @Html.Partial("_Partial_Area_Menu_Right")
-                 </div>
-             </div>
-             <div class="f-left" id="top-banner-right">
-                 <div class="toSpan f-right">
-                     <!--search-->
-                     @Html.Partial("_Partial_Area_Search_Profile")
-                 </div>
-             </div>
-         </div>
-     </div>
-     <div class="menu-top-bar">
-         <div class="top-menu-2 top-menu-2-custom">
-             <ul class="nav navbar-nav top-panel-left2">
-                 <li class="hidden-xs">
-                     <a href="#" class="link-menu-top-active bold">
-                         CỔ PHIẾU NÓNG
-                     </a>
-                 </li>
-                 @Html.Partial("_Partial_HotStock")
-             </ul>
-             <ul class="nav navbar-nav pull-right top-panel-right2">
+                            <a href="/user/@User.Identity.Name/tab/1"><i class="fa fa-home"></i></a>
+                        </div>
+                        <div class="toSpan top-banner-icon f-left">
+                            <a href="/myprofile/MessagesCenter"><i class="fa fa-comments-o"></i></a>
+                            @if (ViewBag.NewMessege > 0)
+                            {
+                                <span id="CreateMesseger">
+                                    <span class="MessegeNofity">@ViewBag.NewMessege</span>
+                                </span>
+                            }
+                            else
+                            {
+                                <span id="CreateMesseger"></span>
+                            }
+                        </div>
+                    }
+                }
+
+                <div class="toSpan top-banner-icon f-left">
+                    @Html.Partial("_Partial_Area_Menu_Right")
+                </div>
+            </div>
+            <div class="f-left" id="top-banner-right">
+                <div class="toSpan f-right">
+                    <!--search-->
+                    @Html.Partial("_Partial_Area_Search_Profile")
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="menu-top-bar">
+        <div class="top-menu-2 top-menu-2-custom">
+            <ul class="nav navbar-nav top-panel-left2">
+                <li class="hidden-xs">
+                    <a href="#" class="link-menu-top-active bold">
+                        CỔ PHIẾU NÓNG
+                    </a>
+                </li>
+                @Html.Partial("_Partial_HotStock")
+            </ul>
+            <ul class="nav navbar-nav pull-right top-panel-right2">
                 @Html.Partial("_Partial_Area_Index")
-             </ul>
-         </div>
-     </div>
-     <div class="content-main content-main2">
-         <div class="area-left">
+            </ul>
+        </div>
+    </div>
+    <div class="content-main content-main2">
+        <div class="area-left">
             @*@Html.Partial("_Partial_Area_Left_Post_Detail")*@
-         </div>
-         
-         @RenderBody()
-         <div class="area-right">
-             
-     </div>
-    
-        
+        </div>
+
+        @RenderBody()
+        <div class="area-right">
+
+        </div>
+
+
         @RenderSection("scripts", required: false)
-    </body>
+</body>
+
 </html>
