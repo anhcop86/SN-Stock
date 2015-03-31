@@ -29,9 +29,8 @@ html{
 body {
     font-family: tahoma,verdana,arial,sans-serif;
     font-size: 1.4rem;
-    color: #333;
-    background-color: #36465D;
-    -webkit-text-size-adjust:100%;
+    color: #333; 
+    background: url('/img/bg.png')
 }
 a{
     color: #328AC5;
@@ -60,7 +59,7 @@ textarea {
     display: block;
 }
 .bg-blue{
-    background: none repeat scroll 0% 0% #36465D;
+    background: none repeat scroll 0% 0%;
 }
 .w100p{
     width: 100%;
