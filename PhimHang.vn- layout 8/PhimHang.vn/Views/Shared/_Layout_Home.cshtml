@@ -49,57 +49,54 @@
     <div class="NotificationCenter">
         <span id="textNoti"></span>
     </div>
-
+    <!--Top banner -->
     <div id="top-banner" class="w100p bg-blue">
         <div class="content-main-top">
             <div class="f-left" id="top-banner-left">
-                <a href="/" class="logo" title="Cùng Phím">
-                    <img src="/img/logo.png?width=30&height=30&mode=crop" alt="Cùng Phím">
-                </a>
-            </div>
-            <div class="f-right" id="top-banner-center">
-                @{
-                    if (User.Identity.IsAuthenticated)
-                    {
-                        <div class="toSpan top-banner-icon f-left">
-
-                            <a href="/myprofile">
-                                <img style="margin-top: 8px;border-radius: 20px;" src="@ViewBag.AvataEmage?width=30&height=30&mode=crop" class="img-rounded" alt="avatar">
-                            </a>
-                        </div>
-                        <div class="toSpan top-banner-icon f-left">
-
-                            <a href="/user/@User.Identity.Name/tab/1"><i class="fa fa-home"></i></a>
-                        </div>
-                        <div class="toSpan top-banner-icon f-left">
-                            <a href="/myprofile/MessagesCenter"><i class="fa fa-comments-o"></i></a>
-                            @if (ViewBag.NewMessege > 0)
-                            {
-                                <span id="CreateMesseger">
-                                    <span class="MessegeNofity">@ViewBag.NewMessege</span>
-                                </span>
-                            }
-                            else
-                            {
-                                <span id="CreateMesseger"></span>
-                            }
-                        </div>
-                    }
-                }
-
-                <div class="toSpan top-banner-icon f-left">
-                    @Html.Partial("_Partial_Area_Menu_Right")
+                <div class="toSpan f-left">
+                    <form id="frmSearch">
+                        <span id="search_box_top">
+                            <input name="q" id="kq" placeholder="MÃ CỔ PHIẾU HOẶC TÊN ĐĂNG NHẬP" title="Search" autocomplete="off" type="text">
+                            <i class="fa fa-search"></i>
+                        </span>
+                    </form>
                 </div>
             </div>
-            <div class="f-left" id="top-banner-right">
-                <div class="toSpan f-right">
-                    <!--search-->
-                    @Html.Partial("_Partial_Area_Search_Profile")
+            <div class="f-left" id='top-center'>
+                <a href="#" class="logo" title="Cùng Phím">
+                    <img src="/img/logo.jpg" alt="Cùng Phím">
+                </a>
+            </div>
+            <div class="f-right" id="top-banner-right">
+                <div class="toSpan top-banner-icon f-right">
+                    <a id="btn-config" href="#" data-dropdown="#dropdown-1">
+                        <span style="padding-right: 5px;"><i class="fa fa-cog"></i></span>
+                    </a>
+                    <div id="dropdown-1" class="dropdown dropdown-tip dropdown-anchor-right dropdown-relative">
+                        <ul class="dropdown-menu">
+                            <li><a href="#1">Profile</a></li>
+                            <li><a href="#2">Setting</a></li>
+                            <li><a href="#3">Logout</a></li>
+                            <li class="dropdown-divider"></li>
+                            <li><a href="#4">Item 4</a></li>
+                            <li><a href="#5">Item 5</a></li>
+                            <li><a href="#5">Item 6</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="toSpan top-banner-icon f-right"><a href="#"><i class="fa fa-comments-o"></i></a></div>
+                <div class="toSpan top-banner-icon f-right">
+                    <a href="#"><i class="fa fa-home"></i></a>
+                </div>
+                <div class="toSpan top-banner-icon2 f-right">
+                    <a href="#" class="avatar">
+                        <img src="/img/avata3.jpg" alt="Cùng Phím">
+                    </a>
                 </div>
             </div>
         </div>
-    </div>
-
+    </div>    
+    <!---->
     <div class="menu-top-bar">
         <div class="top-menu-2 top-menu-2-custom">
             <ul class="nav navbar-nav top-panel-left2">
