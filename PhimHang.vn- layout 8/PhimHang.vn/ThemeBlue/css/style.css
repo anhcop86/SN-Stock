@@ -101,8 +101,9 @@ textarea {
     line-height: 50px;	
 }
 #top-banner-right{
-    /*width: 350px;*/   
-    line-height: 50px;	
+  width: 350px;
+  line-height: 50px;
+    margin-right: 17px;
 }
 .logo{
     color: #fff;
@@ -111,17 +112,19 @@ textarea {
     line-height: 45px;	
     
 }
-.logo img{
-    margin-top:6px;    
+.logo img {
+    margin-top: 5px;
     max-height: 40px;
-    border-radius:5px;
-    width: 38px;
+    border-radius: 50%;
+    border: 1px solid #fff;
 }
-.top-banner-icon{padding: 2px 12px 0px 12px;}
+.top-banner-icon {
+      padding: 5px 17px 0px 17px;
+}
 #top-banner-center > .top-banner-icon > a > i,#top-banner-center > .top-banner-icon > a >span> i,
 #top-banner-right > .top-banner-icon > a > i,#top-banner-right > .top-banner-icon > a >span> i{
-    font-size: 2.4rem;
-    color:#fff;
+    font-size: 3rem;
+    color: rgb(163, 163, 163);
 
 }
 #search_box_top {
@@ -1653,6 +1656,21 @@ button
     font-size:9pt !important;
 }
 
+#top-center {
+  width: 100px;
+  margin-left: 250px;
+}
+
+.top-banner-icon2 {
+  padding: 2px 17px 0px;
+}
+
+.avatar img {
+  margin-top: 5px;
+  max-height: 35px;
+  border-radius: 50%;
+  border: 1px solid rgb(163, 163, 163);
+}
 
 
 
