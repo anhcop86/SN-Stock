@@ -386,9 +386,17 @@ function viewModel() {
     self.enablePhimHang = ko.computed(function () {
         return self.newMessage().length <= 200 && self.newMessage().length >= 6 && self.newMessage().indexOf('<', 0) == -1;
     });
-
-    self.count = ko.computed(function () {
-        var countNum = 200 - self.newMessage().length;
+    
+    var charhtml = 0;
+    var countNum = 200;
+    self.count = ko.computed(function () {        
+        
+        if (self.newMessage().indexOf('http', self.newMessage().lastIndexOf(' ')) == -1) {            
+            //indexhtml = self.newMessage().length +  indexhtml + 1;
+            charhtml = (self.newMessage().split("http").length - 1) * 10;
+            countNum = countNum - 1 - charhtml;
+        }
+       
         return countNum;
     });
     self.enablePhimHangReply = ko.computed(function () {
