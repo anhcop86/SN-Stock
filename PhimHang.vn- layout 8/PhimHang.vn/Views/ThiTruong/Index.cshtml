@@ -1,0 +1,141 @@
+﻿
+@{
+    ViewBag.Title = "Danh mục mã cổ phiếu nhóm A";
+    Layout = "~/Views/Shared/_Layout_ThiTruong.cshtml";
+}
+
+<input type="hidden" id="hiddentGroupName" value="@ViewBag.GroupName" />
+<div class="list-company">
+    DANH SÁCH CÔNG TY NIÊM YẾT
+</div>
+<div id="alpha-list">
+    <ul>
+        <li></li>
+        <li id="marketStartNameA"><a href="/ThiTruong?g=A">A</a></li>
+        <li id="marketStartNameB"><a href="/ThiTruong?g=B">B</a></li>
+        <li id="marketStartNameC"><a href="/ThiTruong?g=C">C</a></li>
+        <li id="marketStartNameD"><a href="/ThiTruong?g=D">D</a></li>
+        <li id="marketStartNameE"><a href="/ThiTruong?g=E">E</a></li>
+        <li id="marketStartNameF"><a href="/ThiTruong?g=F">F</a></li>
+        <li id="marketStartNameG"><a href="/ThiTruong?g=G">G</a></li>
+        <li id="marketStartNameH"><a href="/ThiTruong?g=H">H</a></li>
+        <li id="marketStartNameI"><a href="/ThiTruong?g=I">I</a></li>
+        <li id="marketStartNameJ"><a href="/ThiTruong?g=J">J</a></li>
+        <li id="marketStartNameK"><a href="/ThiTruong?g=K">K</a></li>
+        <li id="marketStartNameL"><a href="/ThiTruong?g=L">L</a></li>
+        <li id="marketStartNameM"><a href="/ThiTruong?g=M">M</a></li>
+        <li id="marketStartNameN"><a href="/ThiTruong?g=N">N</a></li>
+        <li id="marketStartNameO"><a href="/ThiTruong?g=O">O</a></li>
+        <li id="marketStartNameP"><a href="/ThiTruong?g=P">P</a></li>
+        <li id="marketStartNameQ"><a href="/ThiTruong?g=Q">Q</a></li>
+        <li id="marketStartNameR"><a href="/ThiTruong?g=R">R</a></li>
+        <li id="marketStartNameS"><a href="/ThiTruong?g=S">S</a></li>
+        <li id="marketStartNameT"><a href="/ThiTruong?g=T">T</a></li>
+        <li id="marketStartNameU"><a href="/ThiTruong?g=U">U</a></li>
+        <li id="marketStartNameV"><a href="/ThiTruong?g=V">V</a></li>
+        <li id="marketStartNameW"><a href="/ThiTruong?g=W">W</a></li>
+        <li id="marketStartNameX"><a href="/ThiTruong?g=X">X</a></li>
+        <li id="marketStartNameY"><a href="/ThiTruong?g=Y">Y</a></li>
+        <li id="marketStartNameZ"><a href="/ThiTruong?g=Z">Z</a></li>
+        <li id="marketStartNameUPCOM"><a href="/ThiTruong?g=UPCOM">UPCOM</a></li>
+        <li id="marketStartNameHOTSTOCK"><a href="/ThiTruong?g=HOTSTOCK">Cổ phiếu nóng</a></li>
+    </ul>
+</div>
+<div class="genTable">
+    <table id="CompanylistResults" cellspacing="0" cellpadding="0">
+        <tbody>
+            <tr>
+                <th>
+                    <a href="#" rel="nofollow">
+                        Mã Chứng Khoán
+                    </a>                  
+                </th>
+                <th>
+                    <a href="#" rel="nofollow">
+                        Tên Công Ty
+                    </a>
+                    
+                </th>
+                <th>
+                    <a href="#">
+                        Sàn Niêm Yết
+                    </a>
+                    
+                </th>
+                <th>
+                    <a href="" rel="nofollow">
+                        Giá Thị Trường
+                    </a>                    
+                </th>
+            </tr>
+            
+            @{
+             foreach (var item in ViewBag.listStockGroup as List<PhimHang.Controllers.StockCodeColunn>)
+            {
+            <tr>
+                <td>
+                    <a href="/Ticker/@item.StockCode">
+                        @item.StockCode
+                    </a>
+                </td>
+                <td><a href="/Ticker/@item.StockCode">@item.CompanyName</a></td>
+                <td>
+                    <a href="/Ticker/@item.StockCode">
+                        @item.MarketName
+                    </a>
+                </td>
+                <td>
+                @if (item.Diff == 0)
+                {
+                    <div class="item-Stock NoChangeIndex">
+                        <strong>@item.FinishPrice</strong>
+                        <span class="toSpan">
+                            <br>
+                            <span class="top-menu-point">
+                                @item.Diff (@item.DiffRate %)
+                            </span>
+                        </span>
+                    </div>
+                }
+                else if (item.Diff > 0)
+                {
+                    <div class="item-Stock bullishIndex">
+                        <strong>@item.FinishPrice</strong>
+                        <span class="toSpan">
+                            <i class="fa fa-sort-up"></i><br>
+                            <span class="top-menu-point">
+                                @item.Diff (@item.DiffRate %)
+                            </span>
+                        </span>
+                    </div>
+                }
+                else
+                {
+                    <div class="item-Stock bearishIndex">
+                        <strong>@item.FinishPrice</strong>
+                        <span class="toSpan">
+                            <i class="fa fa-sort-down"></i><br>
+                            <span class="top-menu-point">
+                                @item.Diff (@item.DiffRate %)
+                            </span>
+                        </span>
+                    </div>
+                }
+                </td>
+            </tr>
+        }
+        }      
+        </tbody>
+    </table>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#marketStartName' + $('#hiddentGroupName').val()).html('<span>' + $('#hiddentGroupName').val() + '</span>');
+    });
+</script>
+
+
+
+
+

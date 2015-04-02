@@ -268,6 +268,7 @@
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\SymbolController.cs" />
+    <Compile Include="Controllers\ThiTruongController.cs" />
     <Compile Include="Controllers\TickerController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -409,7 +410,6 @@
     <Content Include="images\avatar\7d1d425b-b859-4d51-9f3d-bb286d493627184209_avata.png" />
     <Content Include="images\avatar\7d1d425b-b859-4d51-9f3d-bb286d493627184532_avata.jpg" />
     <Content Include="images\avatar\7d1d425b-b859-4d51-9f3d-bb286d493627184547_avata.jpg" />
-    <Content Include="images\avatar\7d1d425b-b859-4d51-9f3d-bb286d493627213025_avata.jpg" />
     <Content Include="images\avatar\7d1d425b-b859-4d51-9f3d-bb286d493627223928_avata.jpg" />
     <Content Include="images\avatar\96761b1c-1e9c-4d61-9149-2447632df400162606_avata.png" />
     <Content Include="images\avatar\96761b1c-1e9c-4d61-9149-2447632df400162611_avata.png" />
@@ -605,6 +605,7 @@
     <Content Include="ThemeBlue\css\jquery-ui\jquery-ui.theme.min.css" />
     <Content Include="ThemeBlue\css\jquery.dropdown.css" />
     <Content Include="ThemeBlue\css\login.css" />
+    <Content Include="ThemeBlue\css\newstyle.css" />
     <Content Include="ThemeBlue\css\Notification.css" />
     <Content Include="ThemeBlue\css\Responsive.css" />
     <Content Include="ThemeBlue\css\style.css" />
@@ -619,6 +620,7 @@
     <Content Include="ThemeBlue\img\kindo-logo.jpg" />
     <Content Include="ThemeBlue\img\logo.png" />
     <Content Include="ThemeBlue\js\action.js" />
+    <Content Include="ThemeBlue\js\action2.js" />
     <Content Include="ThemeBlue\js\Chartcp.js" />
     <Content Include="ThemeBlue\js\chart\realtime_chart.js" />
     <Content Include="ThemeBlue\js\chart\sample_line_chart.js" />
@@ -1266,6 +1268,8 @@
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Shared\_Partial_HotStock.cshtml" />
     <Content Include="Views\Shared\_Partial_Area_Menu_Right.cshtml" />
+    <Content Include="Views\Shared\_Layout_ThiTruong.cshtml" />
+    <Content Include="Views\ThiTruong\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

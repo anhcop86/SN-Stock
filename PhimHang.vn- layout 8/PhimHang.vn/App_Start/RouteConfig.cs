@@ -12,11 +12,11 @@ namespace PhimHang
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            routes.MapRoute(
-              name: "symbol",
-              url: "Symbol/{symbolName}",
-              defaults: new { controller = "Symbol", action = "Index", symbolName = UrlParameter.Optional }
-          );
+          //  routes.MapRoute(
+          //    name: "symbol",
+          //    url: "Symbol/{symbolName}",
+          //    defaults: new { controller = "Symbol", action = "Index", symbolName = UrlParameter.Optional }
+          //);
             // map router ticker (new)
             routes.MapRoute(
               name: "ticker",

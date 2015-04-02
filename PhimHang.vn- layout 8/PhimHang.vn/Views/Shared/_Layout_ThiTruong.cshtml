@@ -11,30 +11,16 @@
 
    @Styles.Render("~/bundles/StyleStandard") 
     <!--for chart-->
-   
+
+    <link href="~/ThemeBlue/css/newstyle.css" rel="stylesheet" />
     <!--End-->
     <link href="~/ThemeBlue/css/font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="~/ThemeBlue/css/jquery.dropdown.css" rel="stylesheet">   
     <script src="~/ThemeBlue/js/jquery.dropdown.js"></script>   
     <script src="~/ThemeBlue/js/action.js"></script> 
     <script src="~/ThemeBlue/js/action2.js"></script>
-    
     <!-- End For desgin-->
     <link href="~/ThemeBlue/css/Notification.css" rel="stylesheet" />
-
-    <!-- Objects of facebook-->
-    <meta property="fb:app_id" content="934180333272963" />
-    <meta property="og:type" content="business.business" />
-    <meta property="og:url" content="@Request.Url.AbsoluteUri" />
-    <meta property="og:title" content="Tin mới nhất | cùng phím" />
-    <meta property="og:image" content="@ViewBag.AbsolutePathHostName@ViewBag.PostedByAvatar?width=200&height=200&mode=crop" />
-    <meta property="og:description" content="@ViewBag.MessageNonHtml" />
-    <meta property="business:contact_data:street_address" content="117 nguyễn Du" />
-    <meta property="business:contact_data:locality" content="Bến Thành" />
-    <meta property="business:contact_data:postal_code" content="Quận 1" />
-    <meta property="business:contact_data:country_name" content="Việt Nam" />
-
-    <!-- Objects of facebook-->
 </head>
 <body style="background: url('/img/bg.png');">
     <!--facebook plugin-->
@@ -135,33 +121,13 @@
     </div>
 
     <!---->
-    <div class="content-main content-main2">
-        <div class="area-left">
-            @*@Html.Partial("_Partial_Area_Left_Post_Detail")*@
-        </div>
-
-        @RenderBody()
-        <div class="area-right">
-            <div class="banner-right-first" style="padding: 0px; border-radius: 5px; background-color: #F8F8F8;">
-                @*@Html.Partial("_Partial_Area_Right_Stock_Ticker")*@
-            </div>
-            <div class="banner-info">
-                <div>
-                    <a href="#">Giới thiệu</a>
-                    <a href="#">Quy định</a>
-                    <a href="#">Trợ giúp</a>
-                    <a href="#">Liên hệ</a>
-                </div>
-                <p>
-                    Bản quyền thuộc về Sài gòn Group<br>
-                    Copyright © Cùng Phím
-                </p>
-            </div>
-        </div>
+    <div class="content-875">
+       @RenderBody()
     </div>
 
 
-    @RenderSection("scripts", required: false)
+        @RenderSection("scripts", required: false)
+    
 </body>
 
 </html>
