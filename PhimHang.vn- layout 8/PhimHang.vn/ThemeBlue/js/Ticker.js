@@ -107,6 +107,7 @@ function viewModel() {
     self.error = ko.observable();
     self.newPosts = ko.observableArray(); // biến tạm để luu post moi, sau khi click thi moi bung ra
     self.postDetail = ko.observableArray();
+    self.messageCount = ko.observable(0);
     // SignalR related
 
     var checkpost = '';
@@ -382,21 +383,25 @@ function viewModel() {
             })
         }
     }
-
-    self.enablePhimHang = ko.computed(function () {
-        return self.newMessage().length <= 200 && self.newMessage().length >= 6 && self.newMessage().indexOf('<', 0) == -1;
+    
+    self.enablePhimHang = ko.computed(function () {        
+        return 200 - self.messageCount() <= 200 && 200 - self.messageCount() > 6 && self.newMessage().indexOf('<', 0) == -1;
     });
     
-    var charhtml = 0;
-    var countNum = 200;
+    //var charhtml = 0;
+    
     self.count = ko.computed(function () {        
-        
-        if (self.newMessage().indexOf('http', self.newMessage().lastIndexOf(' ')) == -1) {            
-            //indexhtml = self.newMessage().length +  indexhtml + 1;
-            charhtml = (self.newMessage().split("http").length - 1) * 10;
-            countNum = countNum - 1 - charhtml;
-        }
-       
+        var countNum = 200;        
+        var arrayMessage = self.newMessage().split(' ');
+        arrayMessage.forEach(function (item) {
+            if (item.indexOf('http') != -1 ) { // tim thay http link
+                countNum = countNum - 12;
+            }
+            else { // khong thay http link
+                countNum = countNum - item.length - 1;
+            }            
+        });
+        self.messageCount(countNum);       
         return countNum;
     });
     self.enablePhimHangReply = ko.computed(function () {

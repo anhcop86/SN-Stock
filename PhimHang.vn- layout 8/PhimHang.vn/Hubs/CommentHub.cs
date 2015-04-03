@@ -24,7 +24,9 @@ namespace PhimHang.Hubs
 
         private const string ImageURLAvataDefault = "/img/avatar2.jpg"; 
         private const string ImageURLAvata = "/images/avatar/";
+        private string hostURL = AppHelper.TinyURL;
         testEntities db = new testEntities();
+        TinyURLEntities dbtinyURL = new TinyURLEntities();
         /*
         public void GetPosts(string stockCurrent)
         {
@@ -73,7 +75,18 @@ namespace PhimHang.Hubs
                 }
                 else if (item.Contains("http") || item.Contains("www."))
                 {
-                    messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='" + item + "'>" + AppHelper.GetDomain(item) + "...</a>" + " ";
+                    URLTiny tu = new URLTiny();
+                    tu.URLName = item;
+                    dbtinyURL.URLTinies.Add(tu);
+                    try
+                    {                        
+                        await dbtinyURL.SaveChangesAsync();
+                    }
+                    catch (Exception)
+                    {
+                        // log                    
+                    }
+                    messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='" + hostURL + "/" + tu.Id + "'>" + AppHelper.GetDomain(item) + "...</a>" + " ";
                 }
                 else
                 {
@@ -151,6 +164,7 @@ namespace PhimHang.Hubs
                 try
                 {
                     await db.SaveChangesAsync();
+                    await dbtinyURL.SaveChangesAsync();
                 }
                 catch (Exception)
                 {

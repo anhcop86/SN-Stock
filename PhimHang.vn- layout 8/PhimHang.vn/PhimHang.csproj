@@ -345,6 +345,24 @@
     <Compile Include="Models\TickerHot.cs">
       <DependentUpon>PhimHangADO.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TinyURLDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TinyURLDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TinyURLDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TinyURLDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TinyURLDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TinyURLDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\URLTiny.cs">
+      <DependentUpon>TinyURLDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserLogin.cs">
       <DependentUpon>PhimHangADO.tt</DependentUpon>
     </Compile>
@@ -512,6 +530,23 @@
     <Content Include="Content\walt_disney\waltograph42.otf" />
     <Content Include="Content\walt_disney\waltographUI.ttf" />
     <Content Include="bundles\walt_disney\waltograph42.otf" />
+    <EntityDeploy Include="Models\TinyURLDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TinyURLDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\TinyURLDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TinyURLDB.edmx</DependentUpon>
+      <LastGenOutput>TinyURLDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\TinyURLDB.edmx.diagram">
+      <DependentUpon>TinyURLDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\TinyURLDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TinyURLDB.edmx</DependentUpon>
+      <LastGenOutput>TinyURLDB.cs</LastGenOutput>
+    </Content>
     <None Include="Properties\PublishProfiles\phimhang o nha.pubxml" />
     <None Include="Properties\PublishProfiles\phimhang.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

@@ -77,6 +77,14 @@ namespace PhimHang.Models
                 return ConfigurationManager.AppSettings["AbsolutePathHostName"].ToString();
             } 
         }
+        public static string TinyURL
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["TinyURL"].ToString();
+            }
+        }
+
         public static string GetDomain(string domainFull)
         {
             return new System.Uri(domainFull).Host;
