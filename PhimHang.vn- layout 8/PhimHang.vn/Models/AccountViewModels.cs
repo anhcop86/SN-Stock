@@ -49,7 +49,7 @@ namespace PhimHang.Models
 
         [Required(ErrorMessage = "Vui lòng nhập tên đăng nhập")]
         [System.Web.Mvc.AllowHtml]
-        [RegularExpression("^[A-Za-z0-9]*$", ErrorMessage = "Bạn nhập sai định dạng hoặc có ký tự đặc biệt")]
+        [RegularExpression("^[A-Za-z0-9_]*$", ErrorMessage = "Bạn nhập sai định dạng hoặc có ký tự đặc biệt")]
         [StringLength(64, ErrorMessage = "Tên đăng nhập từ 6 đến 64 ký tự", MinimumLength = 6)]
         public string UserName { get; set; }
 
