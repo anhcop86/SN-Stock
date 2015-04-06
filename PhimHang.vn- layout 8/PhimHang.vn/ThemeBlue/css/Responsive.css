@@ -16,8 +16,8 @@
       width: 100%;      
     }
     .avata-genaral-size {
-        height:40px;
-        width:40px;
+        height:45px;
+        width:45px;
         margin: 5px 0px 5px 5px;
     }
     .list-item-status {
@@ -102,6 +102,9 @@
           width: 100%;
     }
     #linklikeFacebook{
+        display:none;
+    }
+    .top-banner-icon{
         display:none;
     }
 

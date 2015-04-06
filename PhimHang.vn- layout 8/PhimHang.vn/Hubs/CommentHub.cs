@@ -223,7 +223,18 @@ namespace PhimHang.Hubs
                 }
                 else if (item.Contains("http") || item.Contains("www."))
                 {
-                    messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='" + item + "'>" + AppHelper.GetDomain(item) + "...</a>" + " ";
+                    URLTiny tu = new URLTiny();
+                    tu.URLName = item;
+                    dbtinyURL.URLTinies.Add(tu);
+                    try
+                    {
+                        await dbtinyURL.SaveChangesAsync();
+                    }
+                    catch (Exception)
+                    {
+                        // log                    
+                    }
+                    messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='" + hostURL + "/" + tu.Id + "'>" + AppHelper.GetDomain(item) + "...</a>" + " ";
                 }
                 else
                 {
