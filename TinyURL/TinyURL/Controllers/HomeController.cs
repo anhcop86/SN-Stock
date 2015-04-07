@@ -32,11 +32,6 @@ namespace TinyURL.Controllers
                 }
                 
             }
-        }   
-        public async Task<ActionResult> TEST()
-        {
-            AppHelper.CheckDayOfWeekend();
-            return View();
-        }
+        }         
     }
 }

@@ -56,6 +56,7 @@ function viewModel() {
     self.error = ko.observable();
     self.newPosts = ko.observableArray(); // biến tạm để luu post moi, sau khi click thi moi bung ra
     self.postDetail = ko.observableArray();
+    self.replyCount = ko.observable(0);
     // SignalR related
 
     var checkpost = '';
@@ -197,11 +198,22 @@ function viewModel() {
     }
 
     self.enablePhimHangReply = ko.computed(function () {
-        return self.newReply().length <= 140 && self.newReply().length >= 6 && self.newReply().indexOf('<', 0) == -1;
+        return 140 - self.replyCount() <= 140 && 140 - self.replyCount() > 6 && self.newReply().indexOf('<', 0) == -1;
     });
     self.countReply = ko.computed(function () {
-        var countNum = 140 - self.newReply().length;
+        var countNum = 140;
+        var arrayMessage = self.newReply().split(' ');
+        arrayMessage.forEach(function (item) {
+            if (item.indexOf('http') != -1) { // tim thay http link
+                countNum = countNum - 12;
+            }
+            else { // khong thay http link
+                countNum = countNum - item.length - 1;
+            }
+        });
+        self.replyCount(countNum);
         return countNum;
+
     });
 
     // notification of reply

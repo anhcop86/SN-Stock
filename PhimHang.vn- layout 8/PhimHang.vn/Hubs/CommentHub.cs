@@ -110,6 +110,7 @@ namespace PhimHang.Hubs
             
             var listStock = new List<string>();
             var listUsersendMessege = new List<string>();
+
             #region explan this passing messege to stockcode and username list
 
             List<string> listMessegeSplit = messagedefault.Split(' ').ToList().FindAll(p => p.Contains("$") || p.Contains("@"));
@@ -163,8 +164,7 @@ namespace PhimHang.Hubs
                 /* add stockrelate */
                 try
                 {
-                    await db.SaveChangesAsync();
-                    await dbtinyURL.SaveChangesAsync();
+                    await db.SaveChangesAsync();                    
                 }
                 catch (Exception)
                 {
@@ -279,7 +279,7 @@ namespace PhimHang.Hubs
 
 
                 #region reply có đề cập đến user nào không ??
-                List<string> listMessegeSplit = reply.Message.Split(' ').ToList().FindAll(p => p.Contains("$") || p.Contains("@"));
+                List<string> listMessegeSplit = messagedefault.Split(' ').ToList().FindAll(p => p.Contains("$") || p.Contains("@"));
                 foreach (var item in listMessegeSplit)
                 {
                     if (item.Contains("@")) //find the user with @

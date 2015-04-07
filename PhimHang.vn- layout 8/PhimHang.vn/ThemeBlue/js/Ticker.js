@@ -384,12 +384,12 @@ function viewModel() {
             })
         }
     }
-    
+    /////////////////////////////////////////
+
     self.enablePhimHang = ko.computed(function () {        
         return 200 - self.messageCount() <= 200 && 200 - self.messageCount() > 6 && self.newMessage().indexOf('<', 0) == -1;
-    });
+    });    
     
-    //var charhtml = 0;
     
     self.count = ko.computed(function () {        
         var countNum = 200;        

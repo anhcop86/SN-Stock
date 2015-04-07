@@ -104,6 +104,8 @@ function viewModel() {
     self.error = ko.observable();
     self.newPosts = ko.observableArray(); // biến tạm để luu post moi, sau khi click thi moi bung ra
     self.postDetail = ko.observableArray();
+    self.messageCount = ko.observable(0);
+    self.replyCount = ko.observable(0);
     // SignalR related
 
     var checkpost = '';
@@ -376,22 +378,45 @@ self.detailPost = function (data, e) { // chi tiet post bao gom tra loi
     }
 }
 
-self.enablePhimHang = ko.computed(function () {
-    return self.newMessage().length <= 200 && self.newMessage().length >= 6 && self.newMessage().indexOf('<', 0) == -1;
-});
+// kiem tra user nhap du lieu vao post va reply
+    self.enablePhimHang = ko.computed(function () {
+        return 200 - self.messageCount() <= 200 && 200 - self.messageCount() > 6 && self.newMessage().indexOf('<', 0) == -1;
+    });
 
-self.count = ko.computed(function () {
-    var countNum = 200 - self.newMessage().length;
-    return countNum;
-});
-self.enablePhimHangReply = ko.computed(function () {
-    return self.newReply().length <= 140 && self.newReply().length >= 6 && self.newReply().indexOf('<', 0) == -1;
-});
-self.countReply = ko.computed(function () {
-    var countNum = 140 - self.newReply().length;
-    return countNum;
-});
 
+    self.count = ko.computed(function () {
+        var countNum = 200;
+        var arrayMessage = self.newMessage().split(' ');
+        arrayMessage.forEach(function (item) {
+            if (item.indexOf('http') != -1) { // tim thay http link
+                countNum = countNum - 12;
+            }
+            else { // khong thay http link
+                countNum = countNum - item.length - 1;
+            }
+        });
+        self.messageCount(countNum);
+        return countNum;
+    });
+    self.enablePhimHangReply = ko.computed(function () {
+        return 140 - self.replyCount() <= 140 && 140 - self.replyCount() > 6 && self.newReply().indexOf('<', 0) == -1;
+    });
+    self.countReply = ko.computed(function () {
+        var countNum = 140;
+        var arrayMessage = self.newReply().split(' ');
+        arrayMessage.forEach(function (item) {
+            if (item.indexOf('http') != -1) { // tim thay http link
+                countNum = countNum - 12;
+            }
+            else { // khong thay http link
+                countNum = countNum - item.length - 1;
+            }
+        });
+        self.replyCount(countNum);
+        return countNum;
+
+
+    });
 // notification of reply
 
 commenthub.client.newReplyNoti = function (postid) {
