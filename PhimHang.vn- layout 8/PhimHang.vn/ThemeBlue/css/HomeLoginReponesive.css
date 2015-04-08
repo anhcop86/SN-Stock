@@ -3,21 +3,41 @@
         }
 .top-sidebar {
     width: 380px;
-    float: right;
+    /*float: right;
     right: 100px;
-    position: fixed;
+    position: fixed;*/
     background: rgba(255, 255, 255, 0.8);
     padding: 10px 13px;
     margin-top: 100px;
 }
-/*@media only screen and (min-width : 150px) and (max-width : 450px) {
-    .top-sidebar {
-	 width: 380px;
-    float: right;
-    right: 100px;
-    position: fixed;
-    background: rgba(255, 255, 255, 0.8);
-    padding: 10px 13px;
-    margin-top: 100px;
+@media only screen and (min-width : 150px) and (max-width : 640px) {
+    .login-register-container{
+        width:95%;
+    }
+
+    .login-register-container .login-register-switch{
+        float: right;
+    margin-right: 15%;
+    }
+    .login-register-container .login-form-container
+    {
+        width: 88%;
+    }
+    body {
+        background:none;
+    }
+    #outer-frame{
+        width:100%;
+    }
+    #page-content{
+        min-height:100%;
+    }
+    .top-sidebar
+    {
+        width:100%;
+        margin-top:15%;
+    }
+    
+
+
 }
-}*/

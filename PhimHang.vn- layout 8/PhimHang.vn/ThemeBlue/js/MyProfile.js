@@ -345,7 +345,7 @@ self.detailPost = function (data, e) { // chi tiet post bao gom tra loi
     $("#idPostedDateDetail").html(data.PostedDate);
     $("#idPostNameDetail").html(data.PostedByName);
     $("#idImgPostDetail").attr('src', data.PostedByAvatar);
-    $("#idPostMessenge").html(data.ChartYN == 1 ? data.Message.replace('<br/><img src=' + data.Chart + '?width=215&height=120&mode=crop>', '') + '<br/><br/><a target="_blank" href=' + data.Chart + '><img src=' + data.Chart + "?maxwidth=475></a>" : data.Message);//=200&s.grayscale=true|"
+    $("#idPostMessenge").html(data.ChartYN == 1 ? data.Message.replace('<br/><img src=' + data.Chart + '?width=215&height=120&mode=crop>', '') + '<br/><br/><a target="_blank" href=' + data.Chart + '><img class="imageChartDetail" src=' + data.Chart + "?maxwidth=475></a>" : data.Message);//=200&s.grayscale=true|"
     $("#idStmDetail").html(data.Stm);
     postidCurrent = data.PostId;
     $("#IdLoadMoreConversation").attr('href', '/PostDetail?postid=' + postidCurrent);

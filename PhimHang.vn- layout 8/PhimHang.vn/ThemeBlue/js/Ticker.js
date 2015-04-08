@@ -349,7 +349,7 @@ function viewModel() {
         $("#idPostNameDetail").html(data.PostedByName).attr('href', '/user/' + data.PostedByName + '/tab/1');
         $("#idImgPostDetail").attr('src', data.PostedByAvatar);
         // relace hình bỏ. bỏ hình to vào
-        $("#idPostMessenge").html(data.ChartYN == 1 ? data.Message.replace('<br/><img src=' + data.Chart + '?width=215&height=120&mode=crop>', '') + '<br/><br/><a target="_blank" href=' + data.Chart + '><img src=' + data.Chart + "?maxwidth=475></a>" : data.Message);//=200&s.grayscale=true|"
+        $("#idPostMessenge").html(data.ChartYN == 1 ? data.Message.replace('<br/><img src=' + data.Chart + '?width=215&height=120&mode=crop>', '') + '<br/><br/><a target="_blank" href=' + data.Chart + '><img class="imageChartDetail" src=' + data.Chart + "?maxwidth=475></a>" : data.Message);//=200&s.grayscale=true|"
         $("#idStmDetail").html(data.Stm);
         postidCurrent = data.PostId;
         $("#IdLoadMoreConversation").attr('href', '/PostDetail?postid=' + postidCurrent);

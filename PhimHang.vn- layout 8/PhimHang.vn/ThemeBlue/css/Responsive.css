@@ -1,40 +1,51 @@
-﻿/*reponesive with @media only screen and (min-width: 150px) and (max-width: 600px) Iphone*/ 
+﻿/*reponesive with @media only screen and (min-width: 150px) and (max-width: 600px) Iphone*/
 
-@media only screen and (min-width: 150px) and (max-width: 640px){
+@media only screen and (min-width: 150px) and (max-width: 640px) {
     .area-center {
-      width: 100%;
-      margin: 10px 0px 0px 0px;
+        width: 100%;
+        margin: 10px 0px 0px 0px;
     }
-     .area-left, .area-right ,.filer-bar-item-home, #hotTicker,.avata-comment{
-      display:none;
+
+    .area-left, .area-right, .filer-bar-item-home, #hotTicker, .avata-comment {
+        display: none;
     }
+
     .filer-bar-item a.active {
-        display:block;
+        display: block;
         text-align: center;
     }
-     .content-main {
-      width: 100%;      
+
+    .content-main {
+        width: 100%;
     }
+
     .avata-genaral-size {
-        height:45px;
-        width:45px;
+        height: 45px;
+        width: 45px;
         margin: 5px 0px 5px 5px;
     }
+
     .list-item-status {
         width: 100%;
     }
+
     .bg-white .list-item-status .list-item-detail {
-      width: 82%;
+        width: 80%;
     }
+
     .list-item-detail {
-        margin-left:0px;
+        margin-left: 0px;
+        width: 76%;
     }
+
     .hidden-xs-button {
-        margin-right:0px;
+        margin-right: 0px;
     }
+
     .avata-genaral-size img, .avata-comment img {
-  width: 70%;
-}
+        width: 70%;
+    }
+
     #top-banner-right {
         /* width: 350px; */
         line-height: 50px;
@@ -45,174 +56,126 @@
         position: fixed;
         left: 2px;
     }
+
     #search_box_top {
-    
     }
-    #search_box_top > input
-    {
-        width:75%;
-    }
+
+        #search_box_top > input {
+            width: 75%;
+        }
+
     #top-banner {
-        padding:0px;
+        padding: 0px;
     }
-    #top-banner-left{
-        position:fixed;
+
+    #top-banner-left {
+        position: fixed;
         left: 1px;
     }
 
     .status-box {
-          width: 100%;
-          padding: 0px;
+        width: 100%;
+        padding: 0px;
     }
+
     .input-status {
-        width: 100%;
-          margin-top: 1px;
-          margin-left: 0px; 
+        width: 98%;
+        margin: 1% 1% 1% 1%;
     }
+
     .status-control {
-          margin-top: 9px;
-          margin-bottom:9px;
+        margin-top: 9px;
+        margin-bottom: 9px;
         width: 100%;
     }
+
     .switch3button {
-        margin-left: 30%;
-      margin-top: 5px;
+        margin-left: 26%;
+        margin-top: 5px;
     }
 
     .filer-bar-item {
-        display:block;
-    }
-    .filer-bar{
-        text-align:center;
+        display: block;
     }
 
-   .area-center-user {
-      width: 100%;
+    .filer-bar {
+        text-align: center;
     }
+
+    .area-center-user {
+        width: 100%;
+    }
+
     .item-right-trang3-tab2 {
-        padding-left: 0px; 
+        padding-left: 0px;
     }
+
     .banner-right-first {
         width: 100% !important;
     }
+
     .list-item-custom {
-          width: 100%;
-    } 
-    .list-item-status-content{
-          width: 100%;
-    }
-    #linklikeFacebook{
-        display:none;
-    }
-    .top-banner-icon{
-        display:none;
+        width: 100%;
     }
 
+    .list-item-status-content {
+        width: 100%;
+    }
+
+    #linklikeFacebook {
+        display: none;
+    }
+
+    .top-banner-icon {
+        display: none;
+    }
+
+    .ui-dialog {
+        width: 100% !important;
+    }
+    .imageChartDetail{
+        width:100%;
+    }    
 
 }
 
 
 /*reponesive with @media only screen and (min-width: 150px) and (max-width: 600px) IPAD*/
 
-@media only screen and (min-width: 641px) and (max-width: 1024px) {
-
-    /*.area-left {
-        display: none;
-    }
-    .area-right
-    {
-        
-    }
-     .area-center {
-     width: 70%;
-    margin: 10px 3px 0px 0px;
-    }
-      .content-main {
-      width: 100%;      
-    }
-      .list-item-status {
-        width: 98%;
-    }
-    .bg-white .list-item-status .list-item-detail {
-      width: 87%;
-    }
-    .input-status {
-        width: 80%;
-        
-    }*/
-    
-      /*.filer-bar-item a.active {
-        display:block;
-        text-align: center;
-    }    
-    
-    .list-item-status {
-        width: 100%;
-    }
-    .bg-white .list-item-status .list-item-detail {
-      width: 98%;
-    }
-    #top-banner-right {
-         width: 350px; 
-        line-height: 50px;
-        width: 40%;
-        overflow: hidden;
-        height: 50px;
-        margin-left: 30px;
-        position: fixed;
-        left: 2px;
-    }
-    #search_box_top {
-    
-    }
-    #search_box_top > input
-    {
-        width:100%;
-    }
-    #top-banner {
-        padding:0px;
+@media only screen and (min-width: 768px) and (max-width: 1000px) {
+    #top-center{
+	    width:50px;
+	    margin-left:8% !important;
     }
     #top-banner-left{
-        position:fixed;
-        left: 1px;
+        width:300px;
     }
-
-    .status-box {
-          width: 100%;
-          padding: 0px;
+    #top-banner-right{
+        width: 270px;
     }
-    .input-status {
-        width: 100%;
-          margin-top: 1px;
-          margin-left: 0px; 
+    
+}
+@media only screen and (min-width: 1001px) and (max-width: 1024px) {
+     #top-center{
+	    width:50px;
+	    margin-left:20%;
     }
-    .status-control {
-          margin-top: 9px;
-          margin-bottom:9px;
-        width: 100%;
+    #top-banner-left{
+        width:300px;
     }
-    .switch3button {
-        margin-left: 30%;
-      margin-top: 5px;
+    #top-banner-right{
+        width: 270px;
     }
-
-    .filer-bar-item {
-        display:block;
+}
+@media only screen and (min-width: 1025px) and (max-width: 1440px) {
+     #top-center{
+	    width:50px;
+	    margin-left:20%;
     }
-    .filer-bar{
-        text-align:center;
+    #top-banner-left{
+        width:300px;
     }
-
-   .area-center-user {
-      width: 100%;
+    #top-banner-right{
+        width: 270px;
     }
-    .item-right-trang3-tab2 {
-        padding-left: 0px; 
-    }
-    .banner-right-first {
-        width: 100% !important;
-    }
-    .list-item-custom {
-          width: 100%;
-    }*/ 
 }

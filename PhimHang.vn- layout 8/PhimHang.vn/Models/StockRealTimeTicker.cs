@@ -101,7 +101,7 @@ namespace PhimHang.Models
                     if (response.IsSuccessStatusCode)
                     {
                         var list = await response.Content.ReadAsAsync<List<StockRealTime>>();
-                        if (_stocks.Count == 0 || list.Count > 600 && AppHelper.CheckTimeUpdatePrice())
+                        if (_stocks.Count == 0 || (list.Count > 600 && AppHelper.CheckTimeUpdatePrice()))
                         {
                             _stocks.Clear();
                             list.ForEach(stock => _stocks.Add(stock));

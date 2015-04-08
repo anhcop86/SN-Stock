@@ -101,7 +101,7 @@ textarea {
     line-height: 50px;	
 }
 #top-banner-right{
-  width: 350px;
+  width: 270px;
   line-height: 50px;
     margin-right: 17px;
 }
@@ -1643,7 +1643,7 @@ button
 }*/
 
 .content-main-top {
-   width: 1200px;
+  max-width: 1200px;
   margin: 0px auto;
 }
 
@@ -1679,9 +1679,9 @@ a.avatar img:hover{
 
 #search_box_top:hover,
 .search_active{
-	border-radius: 20px;
+	/*border-radius: 20px;*/
 	background:none;
-	border: 2px solid #fff!important;	
+	/*border: 2px solid #fff!important;*/	
 }
 
 .hidden-xs-button {
