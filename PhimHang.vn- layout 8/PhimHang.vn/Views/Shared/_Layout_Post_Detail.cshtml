@@ -89,28 +89,7 @@
                 </div>
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <div class="toSpan top-banner-icon f-right">
-                        <a href="/myprofile/MessagesCenter"><i class="fa fa-comments-o"></i></a>
-                        @if (ViewBag.NewMessege > 0)
-                        {
-                            <span id="CreateMesseger">
-                                <span class="MessegeNofity">@ViewBag.NewMessege</span>
-                            </span>
-                        }
-                        else
-                        {
-                            <span id="CreateMesseger"></span>
-                        }
-                    </div>
-                    <div class="toSpan top-banner-icon f-right">
-                        <a href="/user/@User.Identity.Name/tab/1"><i class="fa fa-home"></i></a>
-                    </div>
-
-                    <div class="toSpan top-banner-icon2 f-right">
-                        <a href="/myprofile" class="avatar">
-                            <img src="@ViewBag.AvataEmage?width=40&height=40&mode=crop" alt="Cùng Phím">
-                        </a>
-                    </div>
+                    @Html.Partial("_Partial_Area_Right_User_Info")
                 }
             </div>
         </div>

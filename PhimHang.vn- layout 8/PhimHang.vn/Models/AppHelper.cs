@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Data.Entity;
 using System.Web.Helpers;
+using System.Net.Mail;
+using System.Net;
 
 namespace PhimHang.Models
 {
@@ -140,6 +142,40 @@ namespace PhimHang.Models
             {
                 return false;
             }
+        }
+        public static bool sendEmail(string username, string fromEmail,string fromEmailPass, String toEmail)
+        {
+            MailMessage message = new MailMessage();
+            MailAddress sender = new MailAddress(fromEmail);
+            MailAddress receiver = new MailAddress(toEmail);
+            message.From = sender;
+            message.Sender = sender;
+            message.To.Add(receiver);
+            message.Subject = "Mail đang ky";
+            message.IsBodyHtml = true;
+            message.BodyEncoding = System.Text.Encoding.UTF8;
+            message.Body = string.Format("Dear {0}! Thank you for your registration at cungphim.com", username); 
+            message.Priority = MailPriority.High;
+
+            System.Net.Mail.SmtpClient smtpClient = new SmtpClient();
+            smtpClient.Port = 25;
+            smtpClient.Host = "mail.vfs.com.vn";
+            smtpClient.UseDefaultCredentials = true;
+            smtpClient.EnableSsl = false;
+
+            smtpClient.Credentials = new NetworkCredential(fromEmail, fromEmailPass);
+
+            try
+            {
+                smtpClient.Send(message);
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            
         }
     }
     public class PosistionFilter

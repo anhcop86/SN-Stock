@@ -50,7 +50,7 @@ namespace PhimHang.Models
         [Required(ErrorMessage = "Vui lòng nhập tên đăng nhập")]
         [System.Web.Mvc.AllowHtml]
         [RegularExpression("^[A-Za-z0-9_]*$", ErrorMessage = "Bạn nhập sai định dạng hoặc có ký tự đặc biệt")]
-        [StringLength(64, ErrorMessage = "Tên đăng nhập từ 6 đến 64 ký tự", MinimumLength = 6)]
+        [StringLength(32, ErrorMessage = "Tên đăng nhập từ 6 đến 32 ký tự", MinimumLength = 6)]
         public string UserName { get; set; }
 
         [Required(ErrorMessage = "Vui lòng nhập họ và tên")]
@@ -59,14 +59,19 @@ namespace PhimHang.Models
         [StringLength(64, ErrorMessage = "Tên đăng nhập từ 6 đến 64 ký tự", MinimumLength = 6)]
         public string FullName { get; set; }
 
+        [Required(ErrorMessage = "Vui lòng nhập Email")]
+        [Display(Name = "Email")]
+        [StringLength(100, ErrorMessage = "Email từ 6 đến 100 ký tự", MinimumLength = 6)]
+        public string Email { get; set; }
+
         [Required(ErrorMessage = "Vui lòng nhập mật khẩu")]
         [StringLength(100, ErrorMessage = "Mật khẩu phải ít nhất 6 ký tự", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Mật khẩu")]
+        [Display(Name = "Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Nhập lại mật khẩu")]
+        [Display(Name = "ConfirmPassword")]
         [Compare("Password", ErrorMessage = "2 mật khẩu không khớp với nhau")]
         public string ConfirmPassword { get; set; }
     }

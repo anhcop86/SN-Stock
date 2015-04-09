@@ -1305,6 +1305,7 @@
     <Content Include="Views\Shared\_Partial_Area_Menu_Right.cshtml" />
     <Content Include="Views\Shared\_Layout_ThiTruong.cshtml" />
     <Content Include="Views\ThiTruong\Index.cshtml" />
+    <Content Include="Views\Shared\_Partial_Area_Right_User_Info.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

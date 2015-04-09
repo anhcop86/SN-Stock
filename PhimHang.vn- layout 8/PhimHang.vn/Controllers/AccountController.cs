@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using PhimHang.Models;
 using System.IO;
 using System.Drawing;
+using System.Data.Entity;
 
 namespace PhimHang.Controllers
 {
@@ -86,6 +87,7 @@ namespace PhimHang.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            //var testEmail = AppHelper.sendEmail("AnhCOpne", "hieu.nguyen@vfs.com.vn", "mylove@07", "n.hieu86@gmail.com");
             return View();
         }        
         
@@ -98,23 +100,38 @@ namespace PhimHang.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser() { UserName = model.UserName,
-                                                    //AvataImage = "default_avatar_medium.jpg",
-                                                     //FullName = model.FullName,
-                                                     //   CreatedDate = DateTime.Now,
-                                                     //   Verify = Verify.NO
-                };
-                user.UserExtentLogin = new UserExtentLogin { KeyLogin = user.Id, CreatedDate = DateTime.Now, FullName = model.FullName, Verify = Verify.NO, UserNameCopy = model.UserName };
-                
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                var user = new ApplicationUser()
                 {
-                    await SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
+                    UserName = model.UserName,
+                    //AvataImage = "default_avatar_medium.jpg",
+                    //FullName = model.FullName,
+                    //   CreatedDate = DateTime.Now,
+                    //   Verify = Verify.NO
+                };
+                user.UserExtentLogin = new UserExtentLogin { Email = model.Email, KeyLogin = user.Id, CreatedDate = DateTime.Now, FullName = model.FullName, Verify = Verify.NO, UserNameCopy = model.UserName };
+
+
+                // check email
+                var checkEmail = await db.UserLogins.FirstOrDefaultAsync(ul => ul.Email == model.Email);
+                if (checkEmail != null)
+                {
+                    OutputErrors("Email đã tồn tại trong hệ thống");
                 }
                 else
                 {
-                    AddErrors(result);
+                    var result = await UserManager.CreateAsync(user, model.Password);
+                    if (result.Succeeded)
+                    {
+                        await SignInAsync(user, isPersistent: false);
+                        //send mail
+
+                        //
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        AddErrors(result);
+                    }
                 }
             }
 
@@ -628,6 +645,10 @@ namespace PhimHang.Controllers
             {
                 ModelState.AddModelError("", error);
             }
+        }
+        private void OutputErrors(string error)
+        {
+            ModelState.AddModelError("", error);
         }
 
         private bool HasPassword()
