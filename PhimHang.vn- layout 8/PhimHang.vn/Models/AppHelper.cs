@@ -9,6 +9,8 @@ using System.Data.Entity;
 using System.Web.Helpers;
 using System.Net.Mail;
 using System.Net;
+using System.Collections.Specialized;
+using System.IO;
 
 namespace PhimHang.Models
 {
@@ -143,7 +145,7 @@ namespace PhimHang.Models
                 return false;
             }
         }
-        public static bool sendEmail(string username, string fromEmail,string fromEmailPass, String toEmail)
+        public static bool sendEmail(string username, string fromEmail,string fromEmailPass, String toEmail , string fileTemplateName)
         {
             MailMessage message = new MailMessage();
             MailAddress sender = new MailAddress(fromEmail);
@@ -151,10 +153,10 @@ namespace PhimHang.Models
             message.From = sender;
             message.Sender = sender;
             message.To.Add(receiver);
-            message.Subject = "Mail đang ky";
+            message.Subject = "Đăng ký thành công | cungphim.com";
             message.IsBodyHtml = true;
             message.BodyEncoding = System.Text.Encoding.UTF8;
-            message.Body = string.Format("Dear {0}! Thank you for your registration at cungphim.com", username); 
+            message.Body = GetContentTemplate(fileTemplateName);
             message.Priority = MailPriority.High;
 
             System.Net.Mail.SmtpClient smtpClient = new SmtpClient();
@@ -176,6 +178,34 @@ namespace PhimHang.Models
                 return false;
             }
             
+        }
+        private static string GetContentTemplate(string fileName)
+        {
+            NameValueCollection parameters = new NameValueCollection();
+            StreamReader reader = null;
+
+            reader = new StreamReader(fileName, System.Text.UTF8Encoding.UTF8);
+            string bodyText = reader.ReadToEnd();
+            reader.Close();
+
+            parameters.Add("Password", "123456789");
+            parameters.Add("UserName", "ToiLaAi");
+
+            for (int i = 0; i < parameters.Keys.Count; i++)
+            {
+                string replaceKey = "${" + parameters.GetKey(i) + "}$";
+                bodyText = bodyText.Replace(replaceKey, String.Concat(parameters.GetValues(i)));
+            }
+            return bodyText;
+
+        }
+        public static string ResetPasswordEmailTemplatePath
+        {
+            get
+            {
+                string rootPath = HttpContext.Current.Server.MapPath("~");
+                return rootPath.Substring(0, rootPath.LastIndexOf(@"\")) + ConfigurationManager.AppSettings["ResetPasswordEmailTemplatePath"];
+            }
         }
     }
     public class PosistionFilter
