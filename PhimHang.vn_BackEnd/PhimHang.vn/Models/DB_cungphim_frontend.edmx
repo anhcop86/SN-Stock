@@ -1,0 +1,1361 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="db_cungphim_FrontEnd_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar(max)" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="Discriminator" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserExtentLogin_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="FilterKeyWord">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KeyWord" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreateDate" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="FollowStock">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="StockFollowed" Type="varchar" MaxLength="16" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="FollowUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="UserIdFollowed" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="JobTitile">
+          <Key>
+            <PropertyRef Name="IdJob" />
+          </Key>
+          <Property Name="IdJob" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobName" Type="nvarchar" MaxLength="256" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="NotificationMessege">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserPost" Type="int" Nullable="false" />
+          <Property Name="UserReciver" Type="int" Nullable="false" />
+          <Property Name="PostId" Type="bigint" />
+          <Property Name="NumNoti" Type="int" />
+          <Property Name="TypeNoti" Type="varchar" MaxLength="1" />
+          <Property Name="CreateDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="XemYN" Type="bit" />
+        </EntityType>
+        <EntityType Name="Philosophy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PhilosophyName" Type="nvarchar" MaxLength="256" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="PinStock">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StockCodePin" Type="varchar" MaxLength="16" />
+          <Property Name="PostId" Type="bigint" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+          <Property Name="WhoPost" Type="int" />
+        </EntityType>
+        <EntityType Name="PostComments">
+          <Key>
+            <PropertyRef Name="PostCommentsId" />
+          </Key>
+          <Property Name="PostCommentsId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="1024" Nullable="false" />
+          <Property Name="PostedBy" Type="bigint" Nullable="false" />
+          <Property Name="CommentBy" Type="int" Nullable="false" />
+          <Property Name="PostedDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Posts">
+          <Key>
+            <PropertyRef Name="PostId" />
+          </Key>
+          <Property Name="PostId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="2048" />
+          <Property Name="PostedBy" Type="int" Nullable="false" />
+          <Property Name="PostedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="ChartImageURL" Type="nvarchar" MaxLength="128" />
+          <Property Name="NhanDinh" Type="tinyint" />
+          <Property Name="Vir" Type="bit" />
+          <Property Name="StockPrimary" Type="varchar" MaxLength="16" />
+          <Property Name="ChartYN" Type="bit" />
+          <Property Name="SumLike" Type="int" />
+          <Property Name="SumReply" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Key" Type="varchar" MaxLength="32" />
+          <Property Name="Value" Type="nvarchar" MaxLength="128" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="StockCode">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="ShortName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="LongName" Type="nvarchar" MaxLength="256" />
+          <Property Name="MarketType" Type="smallint" />
+          <Property Name="IndexName" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="StockPrice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="CeilingPrice" Type="money" />
+          <Property Name="FloorPrice" Type="money" />
+          <Property Name="DiffPrice" Type="money" />
+          <Property Name="OpenPrice" Type="money" />
+          <Property Name="HighPrice" Type="money" />
+          <Property Name="LowPrice" Type="money" />
+          <Property Name="ClosePrice" Type="money" />
+          <Property Name="TradingDate" Type="datetime2" Precision="7" />
+          <Property Name="Totalshare" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="StockRelate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StockCodeRelate" Type="varchar" MaxLength="16" />
+          <Property Name="PostId" Type="bigint" Nullable="false" />
+          <Property Name="PinTab" Type="bit" />
+        </EntityType>
+        <EntityType Name="StockViewLastest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="StockCode" Type="varchar" MaxLength="16" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="TickerHot">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="THName" Type="varchar" MaxLength="16" />
+        </EntityType>
+        <EntityType Name="UserLogins">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KeyLogin" Type="nvarchar(max)" />
+          <Property Name="UserNameCopy" Type="nvarchar" MaxLength="256" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="AvataImage" Type="nvarchar" MaxLength="256" />
+          <Property Name="AvataCover" Type="nvarchar" MaxLength="256" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="256" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="Verify" Type="int" Nullable="false" />
+          <Property Name="AccountType" Type="int" Nullable="false" />
+          <Property Name="LockAccount" Type="int" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="128" />
+          <Property Name="Mobile" Type="varchar" MaxLength="16" />
+          <Property Name="JobTitle" Type="tinyint" />
+          <Property Name="URLFacebook" Type="nvarchar" MaxLength="256" />
+          <Property Name="CVInfo" Type="nvarchar" MaxLength="512" />
+          <Property Name="NumberExMarketYear" Type="tinyint" />
+          <Property Name="PhilosophyMarket" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="UserRelate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="PostId" Type="bigint" />
+        </EntityType>
+        <EntityType Name="UserViewLastest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="UserIdLastest" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id">
+          <End Role="UserLogins" Type="Self.UserLogins" Multiplicity="0..1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUsers">
+              <PropertyRef Name="UserExtentLogin_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FollowStock_UserLogins">
+          <End Role="UserLogins" Type="Self.UserLogins" Multiplicity="1" />
+          <End Role="FollowStock" Type="Self.FollowStock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FollowStock">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FollowUser_UserLogins">
+          <End Role="UserLogins" Type="Self.UserLogins" Multiplicity="1" />
+          <End Role="FollowUser" Type="Self.FollowUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FollowUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FollowUser_UserLogins1">
+          <End Role="UserLogins" Type="Self.UserLogins" Multiplicity="1" />
+          <End Role="FollowUser" Type="Self.FollowUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FollowUser">
+              <PropertyRef Name="UserIdFollowed" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobTitile_JobTitle">
+          <End Role="JobTitile" Type="Self.JobTitile" Multiplicity="0..1" />
+          <End Role="UserLogins" Type="Self.UserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobTitile">
+              <PropertyRef Name="IdJob" />
+            </Principal>
+            <Dependent Role="UserLogins">
+              <PropertyRef Name="JobTitle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostComments_Posts">
+          <End Role="Posts" Type="Self.Posts" Multiplicity="1" />
+          <End Role="PostComments" Type="Self.PostComments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="PostComments">
+              <PropertyRef Name="PostedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostComments_UserLogins">
+          <End Role="UserLogins" Type="Self.UserLogins" Multiplicity="1" />
+          <End Role="PostComments" Type="Self.PostComments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PostComments">
+              <PropertyRef Name="CommentBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Posts_PinStock">
+          <End Role="Posts" Type="Self.Posts" Multiplicity="1" />
+          <End Role="PinStock" Type="Self.PinStock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="PinStock">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Posts_User">
+          <End Role="Posts" Type="Self.Posts" Multiplicity="0..1" />
+          <End Role="NotificationMessege" Type="Self.NotificationMessege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="NotificationMessege">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Posts_UserLogins">
+          <End Role="UserLogins" Type="Self.UserLogins" Multiplicity="1" />
+          <End Role="Posts" Type="Self.Posts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Posts">
+              <PropertyRef Name="PostedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockRelate_Posts">
+          <End Role="Posts" Type="Self.Posts" Multiplicity="1" />
+          <End Role="StockRelate" Type="Self.StockRelate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="StockRelate">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockViewLastest_UserLogins">
+          <End Role="UserLogins" Type="Self.UserLogins" Multiplicity="1" />
+          <End Role="StockViewLastest" Type="Self.StockViewLastest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StockViewLastest">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserLogins_Philosophy">
+          <End Role="Philosophy" Type="Self.Philosophy" Multiplicity="0..1" />
+          <End Role="UserLogins" Type="Self.UserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Philosophy">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserLogins">
+              <PropertyRef Name="PhilosophyMarket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPost_User">
+          <End Role="UserLogins" Type="Self.UserLogins" Multiplicity="1" />
+          <End Role="NotificationMessege" Type="Self.NotificationMessege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NotificationMessege">
+              <PropertyRef Name="UserPost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPost_UserReciver">
+          <End Role="UserLogins" Type="Self.UserLogins" Multiplicity="1" />
+          <End Role="NotificationMessege" Type="Self.NotificationMessege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NotificationMessege">
+              <PropertyRef Name="UserReciver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRelate_Posts">
+          <End Role="Posts" Type="Self.Posts" Multiplicity="0..1" />
+          <End Role="UserRelate" Type="Self.UserRelate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="UserRelate">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRelate_UserLogins">
+          <End Role="UserLogins" Type="Self.UserLogins" Multiplicity="1" />
+          <End Role="UserRelate" Type="Self.UserRelate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRelate">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserViewLastest_UserLogins">
+          <End Role="UserLogins" Type="Self.UserLogins" Multiplicity="1" />
+          <End Role="UserViewLastest" Type="Self.UserViewLastest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserViewLastest">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserViewLastest_UserLogins1">
+          <End Role="UserLogins" Type="Self.UserLogins" Multiplicity="1" />
+          <End Role="UserViewLastest" Type="Self.UserViewLastest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserViewLastest">
+              <PropertyRef Name="UserIdLastest" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="db_cungphim_FrontEnd_ModelStoreContainer">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FilterKeyWord" EntityType="Self.FilterKeyWord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FollowStock" EntityType="Self.FollowStock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FollowUser" EntityType="Self.FollowUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobTitile" EntityType="Self.JobTitile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NotificationMessege" EntityType="Self.NotificationMessege" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Philosophy" EntityType="Self.Philosophy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PinStock" EntityType="Self.PinStock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PostComments" EntityType="Self.PostComments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Posts" EntityType="Self.Posts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StockCode" EntityType="Self.StockCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StockPrice" EntityType="Self.StockPrice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StockRelate" EntityType="Self.StockRelate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StockViewLastest" EntityType="Self.StockViewLastest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TickerHot" EntityType="Self.TickerHot" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserLogins" EntityType="Self.UserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRelate" EntityType="Self.UserRelate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserViewLastest" EntityType="Self.UserViewLastest" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" Association="Self.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id">
+            <End Role="UserLogins" EntitySet="UserLogins" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FollowStock_UserLogins" Association="Self.FK_FollowStock_UserLogins">
+            <End Role="UserLogins" EntitySet="UserLogins" />
+            <End Role="FollowStock" EntitySet="FollowStock" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FollowUser_UserLogins" Association="Self.FK_FollowUser_UserLogins">
+            <End Role="UserLogins" EntitySet="UserLogins" />
+            <End Role="FollowUser" EntitySet="FollowUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FollowUser_UserLogins1" Association="Self.FK_FollowUser_UserLogins1">
+            <End Role="UserLogins" EntitySet="UserLogins" />
+            <End Role="FollowUser" EntitySet="FollowUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobTitile_JobTitle" Association="Self.FK_JobTitile_JobTitle">
+            <End Role="JobTitile" EntitySet="JobTitile" />
+            <End Role="UserLogins" EntitySet="UserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostComments_Posts" Association="Self.FK_PostComments_Posts">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="PostComments" EntitySet="PostComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostComments_UserLogins" Association="Self.FK_PostComments_UserLogins">
+            <End Role="UserLogins" EntitySet="UserLogins" />
+            <End Role="PostComments" EntitySet="PostComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Posts_PinStock" Association="Self.FK_Posts_PinStock">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="PinStock" EntitySet="PinStock" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Posts_User" Association="Self.FK_Posts_User">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="NotificationMessege" EntitySet="NotificationMessege" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Posts_UserLogins" Association="Self.FK_Posts_UserLogins">
+            <End Role="UserLogins" EntitySet="UserLogins" />
+            <End Role="Posts" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockRelate_Posts" Association="Self.FK_StockRelate_Posts">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="StockRelate" EntitySet="StockRelate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockViewLastest_UserLogins" Association="Self.FK_StockViewLastest_UserLogins">
+            <End Role="UserLogins" EntitySet="UserLogins" />
+            <End Role="StockViewLastest" EntitySet="StockViewLastest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserLogins_Philosophy" Association="Self.FK_UserLogins_Philosophy">
+            <End Role="Philosophy" EntitySet="Philosophy" />
+            <End Role="UserLogins" EntitySet="UserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPost_User" Association="Self.FK_UserPost_User">
+            <End Role="UserLogins" EntitySet="UserLogins" />
+            <End Role="NotificationMessege" EntitySet="NotificationMessege" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPost_UserReciver" Association="Self.FK_UserPost_UserReciver">
+            <End Role="UserLogins" EntitySet="UserLogins" />
+            <End Role="NotificationMessege" EntitySet="NotificationMessege" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRelate_Posts" Association="Self.FK_UserRelate_Posts">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="UserRelate" EntitySet="UserRelate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRelate_UserLogins" Association="Self.FK_UserRelate_UserLogins">
+            <End Role="UserLogins" EntitySet="UserLogins" />
+            <End Role="UserRelate" EntitySet="UserRelate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserViewLastest_UserLogins" Association="Self.FK_UserViewLastest_UserLogins">
+            <End Role="UserLogins" EntitySet="UserLogins" />
+            <End Role="UserViewLastest" EntitySet="UserViewLastest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserViewLastest_UserLogins1" Association="Self.FK_UserViewLastest_UserLogins1">
+            <End Role="UserLogins" EntitySet="UserLogins" />
+            <End Role="UserViewLastest" EntitySet="UserViewLastest" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="db_cungphim_FrontEnd_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Discriminator" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserExtentLogin_Id" Type="Int32" />
+          <NavigationProperty Name="UserLogin" Relationship="Self.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" FromRole="AspNetUsers" ToRole="UserLogins" />
+        </EntityType>
+        <EntityType Name="FilterKeyWord">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KeyWord" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="7" />
+        </EntityType>
+        <EntityType Name="FollowStock">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="StockFollowed" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="UserLogin" Relationship="Self.FK_FollowStock_UserLogins" FromRole="FollowStock" ToRole="UserLogins" />
+        </EntityType>
+        <EntityType Name="FollowUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="UserIdFollowed" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="UserLogin" Relationship="Self.FK_FollowUser_UserLogins" FromRole="FollowUser" ToRole="UserLogins" />
+          <NavigationProperty Name="UserLogin1" Relationship="Self.FK_FollowUser_UserLogins1" FromRole="FollowUser" ToRole="UserLogins" />
+        </EntityType>
+        <EntityType Name="JobTitile">
+          <Key>
+            <PropertyRef Name="IdJob" />
+          </Key>
+          <Property Name="IdJob" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="UserLogins" Relationship="Self.FK_JobTitile_JobTitle" FromRole="JobTitile" ToRole="UserLogins" />
+        </EntityType>
+        <EntityType Name="NotificationMessege">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserPost" Type="Int32" Nullable="false" />
+          <Property Name="UserReciver" Type="Int32" Nullable="false" />
+          <Property Name="PostId" Type="Int64" />
+          <Property Name="NumNoti" Type="Int32" />
+          <Property Name="TypeNoti" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="XemYN" Type="Boolean" />
+          <NavigationProperty Name="Post" Relationship="Self.FK_Posts_User" FromRole="NotificationMessege" ToRole="Posts" />
+          <NavigationProperty Name="UserLogin" Relationship="Self.FK_UserPost_User" FromRole="NotificationMessege" ToRole="UserLogins" />
+          <NavigationProperty Name="UserLogin1" Relationship="Self.FK_UserPost_UserReciver" FromRole="NotificationMessege" ToRole="UserLogins" />
+        </EntityType>
+        <EntityType Name="Philosophy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PhilosophyName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="UserLogins" Relationship="Self.FK_UserLogins_Philosophy" FromRole="Philosophy" ToRole="UserLogins" />
+        </EntityType>
+        <EntityType Name="PinStock">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StockCodePin" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="PostId" Type="Int64" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+          <Property Name="WhoPost" Type="Int32" />
+          <NavigationProperty Name="Post" Relationship="Self.FK_Posts_PinStock" FromRole="PinStock" ToRole="Posts" />
+        </EntityType>
+        <EntityType Name="PostComment">
+          <Key>
+            <PropertyRef Name="PostCommentsId" />
+          </Key>
+          <Property Name="PostCommentsId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Message" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PostedBy" Type="Int64" Nullable="false" />
+          <Property Name="CommentBy" Type="Int32" Nullable="false" />
+          <Property Name="PostedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Post" Relationship="Self.FK_PostComments_Posts" FromRole="PostComments" ToRole="Posts" />
+          <NavigationProperty Name="UserLogin" Relationship="Self.FK_PostComments_UserLogins" FromRole="PostComments" ToRole="UserLogins" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="PostId" />
+          </Key>
+          <Property Name="PostId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Message" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="PostedBy" Type="Int32" Nullable="false" />
+          <Property Name="PostedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="ChartImageURL" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="NhanDinh" Type="Byte" />
+          <Property Name="Vir" Type="Boolean" />
+          <Property Name="StockPrimary" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="ChartYN" Type="Boolean" />
+          <Property Name="SumLike" Type="Int32" />
+          <Property Name="SumReply" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NotificationMesseges" Relationship="Self.FK_Posts_User" FromRole="Posts" ToRole="NotificationMessege" />
+          <NavigationProperty Name="PinStocks" Relationship="Self.FK_Posts_PinStock" FromRole="Posts" ToRole="PinStock" />
+          <NavigationProperty Name="PostComments" Relationship="Self.FK_PostComments_Posts" FromRole="Posts" ToRole="PostComments" />
+          <NavigationProperty Name="UserLogin" Relationship="Self.FK_Posts_UserLogins" FromRole="Posts" ToRole="UserLogins" />
+          <NavigationProperty Name="StockRelates" Relationship="Self.FK_StockRelate_Posts" FromRole="Posts" ToRole="StockRelate" />
+          <NavigationProperty Name="UserRelates" Relationship="Self.FK_UserRelate_Posts" FromRole="Posts" ToRole="UserRelate" />
+        </EntityType>
+        <EntityType Name="Setting">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Key" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+        </EntityType>
+        <EntityType Name="StockCode">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ShortName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LongName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="MarketType" Type="Int16" />
+          <Property Name="IndexName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="StockPrice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CeilingPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="FloorPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DiffPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="OpenPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="HighPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="LowPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ClosePrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TradingDate" Type="DateTime" Precision="7" />
+          <Property Name="Totalshare" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="StockRelate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StockCodeRelate" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="PostId" Type="Int64" Nullable="false" />
+          <Property Name="PinTab" Type="Boolean" />
+          <NavigationProperty Name="Post" Relationship="Self.FK_StockRelate_Posts" FromRole="StockRelate" ToRole="Posts" />
+        </EntityType>
+        <EntityType Name="StockViewLastest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="StockCode" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="UserLogin" Relationship="Self.FK_StockViewLastest_UserLogins" FromRole="StockViewLastest" ToRole="UserLogins" />
+        </EntityType>
+        <EntityType Name="TickerHot">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="THName" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UserLogin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KeyLogin" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserNameCopy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="AvataImage" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="AvataCover" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Verify" Type="Int32" Nullable="false" />
+          <Property Name="AccountType" Type="Int32" Nullable="false" />
+          <Property Name="LockAccount" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="JobTitle" Type="Byte" />
+          <Property Name="URLFacebook" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="CVInfo" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Name="NumberExMarketYear" Type="Byte" />
+          <Property Name="PhilosophyMarket" Type="Byte" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" FromRole="UserLogins" ToRole="AspNetUsers" />
+          <NavigationProperty Name="FollowStocks" Relationship="Self.FK_FollowStock_UserLogins" FromRole="UserLogins" ToRole="FollowStock" />
+          <NavigationProperty Name="FollowUsers" Relationship="Self.FK_FollowUser_UserLogins" FromRole="UserLogins" ToRole="FollowUser" />
+          <NavigationProperty Name="FollowUsers1" Relationship="Self.FK_FollowUser_UserLogins1" FromRole="UserLogins" ToRole="FollowUser" />
+          <NavigationProperty Name="JobTitile" Relationship="Self.FK_JobTitile_JobTitle" FromRole="UserLogins" ToRole="JobTitile" />
+          <NavigationProperty Name="NotificationMesseges" Relationship="Self.FK_UserPost_User" FromRole="UserLogins" ToRole="NotificationMessege" />
+          <NavigationProperty Name="NotificationMesseges1" Relationship="Self.FK_UserPost_UserReciver" FromRole="UserLogins" ToRole="NotificationMessege" />
+          <NavigationProperty Name="Philosophy" Relationship="Self.FK_UserLogins_Philosophy" FromRole="UserLogins" ToRole="Philosophy" />
+          <NavigationProperty Name="PostComments" Relationship="Self.FK_PostComments_UserLogins" FromRole="UserLogins" ToRole="PostComments" />
+          <NavigationProperty Name="Posts" Relationship="Self.FK_Posts_UserLogins" FromRole="UserLogins" ToRole="Posts" />
+          <NavigationProperty Name="StockViewLastests" Relationship="Self.FK_StockViewLastest_UserLogins" FromRole="UserLogins" ToRole="StockViewLastest" />
+          <NavigationProperty Name="UserRelates" Relationship="Self.FK_UserRelate_UserLogins" FromRole="UserLogins" ToRole="UserRelate" />
+          <NavigationProperty Name="UserViewLastests" Relationship="Self.FK_UserViewLastest_UserLogins" FromRole="UserLogins" ToRole="UserViewLastest" />
+          <NavigationProperty Name="UserViewLastests1" Relationship="Self.FK_UserViewLastest_UserLogins1" FromRole="UserLogins" ToRole="UserViewLastest" />
+        </EntityType>
+        <EntityType Name="UserRelate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="PostId" Type="Int64" />
+          <NavigationProperty Name="Post" Relationship="Self.FK_UserRelate_Posts" FromRole="UserRelate" ToRole="Posts" />
+          <NavigationProperty Name="UserLogin" Relationship="Self.FK_UserRelate_UserLogins" FromRole="UserRelate" ToRole="UserLogins" />
+        </EntityType>
+        <EntityType Name="UserViewLastest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="UserIdLastest" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="UserLogin" Relationship="Self.FK_UserViewLastest_UserLogins" FromRole="UserViewLastest" ToRole="UserLogins" />
+          <NavigationProperty Name="UserLogin1" Relationship="Self.FK_UserViewLastest_UserLogins1" FromRole="UserViewLastest" ToRole="UserLogins" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id">
+          <End Role="UserLogins" Type="Self.UserLogin" Multiplicity="0..1" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUsers">
+              <PropertyRef Name="UserExtentLogin_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FollowStock_UserLogins">
+          <End Role="UserLogins" Type="Self.UserLogin" Multiplicity="1" />
+          <End Role="FollowStock" Type="Self.FollowStock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FollowStock">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FollowUser_UserLogins">
+          <End Role="UserLogins" Type="Self.UserLogin" Multiplicity="1" />
+          <End Role="FollowUser" Type="Self.FollowUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FollowUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FollowUser_UserLogins1">
+          <End Role="UserLogins" Type="Self.UserLogin" Multiplicity="1" />
+          <End Role="FollowUser" Type="Self.FollowUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FollowUser">
+              <PropertyRef Name="UserIdFollowed" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobTitile_JobTitle">
+          <End Role="JobTitile" Type="Self.JobTitile" Multiplicity="0..1" />
+          <End Role="UserLogins" Type="Self.UserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobTitile">
+              <PropertyRef Name="IdJob" />
+            </Principal>
+            <Dependent Role="UserLogins">
+              <PropertyRef Name="JobTitle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Posts_User">
+          <End Role="Posts" Type="Self.Post" Multiplicity="0..1" />
+          <End Role="NotificationMessege" Type="Self.NotificationMessege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="NotificationMessege">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPost_User">
+          <End Role="UserLogins" Type="Self.UserLogin" Multiplicity="1" />
+          <End Role="NotificationMessege" Type="Self.NotificationMessege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NotificationMessege">
+              <PropertyRef Name="UserPost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPost_UserReciver">
+          <End Role="UserLogins" Type="Self.UserLogin" Multiplicity="1" />
+          <End Role="NotificationMessege" Type="Self.NotificationMessege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NotificationMessege">
+              <PropertyRef Name="UserReciver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserLogins_Philosophy">
+          <End Role="Philosophy" Type="Self.Philosophy" Multiplicity="0..1" />
+          <End Role="UserLogins" Type="Self.UserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Philosophy">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserLogins">
+              <PropertyRef Name="PhilosophyMarket" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Posts_PinStock">
+          <End Role="Posts" Type="Self.Post" Multiplicity="1" />
+          <End Role="PinStock" Type="Self.PinStock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="PinStock">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostComments_Posts">
+          <End Role="Posts" Type="Self.Post" Multiplicity="1" />
+          <End Role="PostComments" Type="Self.PostComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="PostComments">
+              <PropertyRef Name="PostedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostComments_UserLogins">
+          <End Role="UserLogins" Type="Self.UserLogin" Multiplicity="1" />
+          <End Role="PostComments" Type="Self.PostComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PostComments">
+              <PropertyRef Name="CommentBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Posts_UserLogins">
+          <End Role="UserLogins" Type="Self.UserLogin" Multiplicity="1" />
+          <End Role="Posts" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Posts">
+              <PropertyRef Name="PostedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockRelate_Posts">
+          <End Role="Posts" Type="Self.Post" Multiplicity="1" />
+          <End Role="StockRelate" Type="Self.StockRelate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="StockRelate">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRelate_Posts">
+          <End Role="Posts" Type="Self.Post" Multiplicity="0..1" />
+          <End Role="UserRelate" Type="Self.UserRelate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="UserRelate">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockViewLastest_UserLogins">
+          <End Role="UserLogins" Type="Self.UserLogin" Multiplicity="1" />
+          <End Role="StockViewLastest" Type="Self.StockViewLastest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StockViewLastest">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRelate_UserLogins">
+          <End Role="UserLogins" Type="Self.UserLogin" Multiplicity="1" />
+          <End Role="UserRelate" Type="Self.UserRelate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRelate">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserViewLastest_UserLogins">
+          <End Role="UserLogins" Type="Self.UserLogin" Multiplicity="1" />
+          <End Role="UserViewLastest" Type="Self.UserViewLastest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserViewLastest">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserViewLastest_UserLogins1">
+          <End Role="UserLogins" Type="Self.UserLogin" Multiplicity="1" />
+          <End Role="UserViewLastest" Type="Self.UserViewLastest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserLogins">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserViewLastest">
+              <PropertyRef Name="UserIdLastest" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="db_cungphim_FrontEnd" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="FilterKeyWords" EntityType="Self.FilterKeyWord" />
+          <EntitySet Name="FollowStocks" EntityType="Self.FollowStock" />
+          <EntitySet Name="FollowUsers" EntityType="Self.FollowUser" />
+          <EntitySet Name="JobTitiles" EntityType="Self.JobTitile" />
+          <EntitySet Name="NotificationMesseges" EntityType="Self.NotificationMessege" />
+          <EntitySet Name="Philosophies" EntityType="Self.Philosophy" />
+          <EntitySet Name="PinStocks" EntityType="Self.PinStock" />
+          <EntitySet Name="PostComments" EntityType="Self.PostComment" />
+          <EntitySet Name="Posts" EntityType="Self.Post" />
+          <EntitySet Name="Settings" EntityType="Self.Setting" />
+          <EntitySet Name="StockCodes" EntityType="Self.StockCode" />
+          <EntitySet Name="StockPrices" EntityType="Self.StockPrice" />
+          <EntitySet Name="StockRelates" EntityType="Self.StockRelate" />
+          <EntitySet Name="StockViewLastests" EntityType="Self.StockViewLastest" />
+          <EntitySet Name="TickerHots" EntityType="Self.TickerHot" />
+          <EntitySet Name="UserLogins" EntityType="Self.UserLogin" />
+          <EntitySet Name="UserRelates" EntityType="Self.UserRelate" />
+          <EntitySet Name="UserViewLastests" EntityType="Self.UserViewLastest" />
+          <AssociationSet Name="FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" Association="Self.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id">
+            <End Role="UserLogins" EntitySet="UserLogins" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FollowStock_UserLogins" Association="Self.FK_FollowStock_UserLogins">
+            <End Role="UserLogins" EntitySet="UserLogins" />
+            <End Role="FollowStock" EntitySet="FollowStocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FollowUser_UserLogins" Association="Self.FK_FollowUser_UserLogins">
+            <End Role="UserLogins" EntitySet="UserLogins" />
+            <End Role="FollowUser" EntitySet="FollowUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FollowUser_UserLogins1" Association="Self.FK_FollowUser_UserLogins1">
+            <End Role="UserLogins" EntitySet="UserLogins" />
+            <End Role="FollowUser" EntitySet="FollowUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobTitile_JobTitle" Association="Self.FK_JobTitile_JobTitle">
+            <End Role="JobTitile" EntitySet="JobTitiles" />
+            <End Role="UserLogins" EntitySet="UserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Posts_User" Association="Self.FK_Posts_User">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="NotificationMessege" EntitySet="NotificationMesseges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPost_User" Association="Self.FK_UserPost_User">
+            <End Role="UserLogins" EntitySet="UserLogins" />
+            <End Role="NotificationMessege" EntitySet="NotificationMesseges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPost_UserReciver" Association="Self.FK_UserPost_UserReciver">
+            <End Role="UserLogins" EntitySet="UserLogins" />
+            <End Role="NotificationMessege" EntitySet="NotificationMesseges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserLogins_Philosophy" Association="Self.FK_UserLogins_Philosophy">
+            <End Role="Philosophy" EntitySet="Philosophies" />
+            <End Role="UserLogins" EntitySet="UserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Posts_PinStock" Association="Self.FK_Posts_PinStock">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="PinStock" EntitySet="PinStocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostComments_Posts" Association="Self.FK_PostComments_Posts">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="PostComments" EntitySet="PostComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostComments_UserLogins" Association="Self.FK_PostComments_UserLogins">
+            <End Role="UserLogins" EntitySet="UserLogins" />
+            <End Role="PostComments" EntitySet="PostComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Posts_UserLogins" Association="Self.FK_Posts_UserLogins">
+            <End Role="UserLogins" EntitySet="UserLogins" />
+            <End Role="Posts" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockRelate_Posts" Association="Self.FK_StockRelate_Posts">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="StockRelate" EntitySet="StockRelates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRelate_Posts" Association="Self.FK_UserRelate_Posts">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="UserRelate" EntitySet="UserRelates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockViewLastest_UserLogins" Association="Self.FK_StockViewLastest_UserLogins">
+            <End Role="UserLogins" EntitySet="UserLogins" />
+            <End Role="StockViewLastest" EntitySet="StockViewLastests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRelate_UserLogins" Association="Self.FK_UserRelate_UserLogins">
+            <End Role="UserLogins" EntitySet="UserLogins" />
+            <End Role="UserRelate" EntitySet="UserRelates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserViewLastest_UserLogins" Association="Self.FK_UserViewLastest_UserLogins">
+            <End Role="UserLogins" EntitySet="UserLogins" />
+            <End Role="UserViewLastest" EntitySet="UserViewLastests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserViewLastest_UserLogins1" Association="Self.FK_UserViewLastest_UserLogins1">
+            <End Role="UserLogins" EntitySet="UserLogins" />
+            <End Role="UserViewLastest" EntitySet="UserViewLastests" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="db_cungphim_FrontEnd_ModelStoreContainer" CdmEntityContainer="db_cungphim_FrontEnd">
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="db_cungphim_FrontEnd_Model.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="Discriminator" ColumnName="Discriminator" />
+                <ScalarProperty Name="UserExtentLogin_Id" ColumnName="UserExtentLogin_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FilterKeyWords">
+            <EntityTypeMapping TypeName="db_cungphim_FrontEnd_Model.FilterKeyWord">
+              <MappingFragment StoreEntitySet="FilterKeyWord">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="KeyWord" ColumnName="KeyWord" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FollowStocks">
+            <EntityTypeMapping TypeName="db_cungphim_FrontEnd_Model.FollowStock">
+              <MappingFragment StoreEntitySet="FollowStock">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="StockFollowed" ColumnName="StockFollowed" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FollowUsers">
+            <EntityTypeMapping TypeName="db_cungphim_FrontEnd_Model.FollowUser">
+              <MappingFragment StoreEntitySet="FollowUser">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserIdFollowed" ColumnName="UserIdFollowed" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobTitiles">
+            <EntityTypeMapping TypeName="db_cungphim_FrontEnd_Model.JobTitile">
+              <MappingFragment StoreEntitySet="JobTitile">
+                <ScalarProperty Name="IdJob" ColumnName="IdJob" />
+                <ScalarProperty Name="JobName" ColumnName="JobName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NotificationMesseges">
+            <EntityTypeMapping TypeName="db_cungphim_FrontEnd_Model.NotificationMessege">
+              <MappingFragment StoreEntitySet="NotificationMessege">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserPost" ColumnName="UserPost" />
+                <ScalarProperty Name="UserReciver" ColumnName="UserReciver" />
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+                <ScalarProperty Name="NumNoti" ColumnName="NumNoti" />
+                <ScalarProperty Name="TypeNoti" ColumnName="TypeNoti" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="XemYN" ColumnName="XemYN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Philosophies">
+            <EntityTypeMapping TypeName="db_cungphim_FrontEnd_Model.Philosophy">
+              <MappingFragment StoreEntitySet="Philosophy">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PhilosophyName" ColumnName="PhilosophyName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PinStocks">
+            <EntityTypeMapping TypeName="db_cungphim_FrontEnd_Model.PinStock">
+              <MappingFragment StoreEntitySet="PinStock">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StockCodePin" ColumnName="StockCodePin" />
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="WhoPost" ColumnName="WhoPost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PostComments">
+            <EntityTypeMapping TypeName="db_cungphim_FrontEnd_Model.PostComment">
+              <MappingFragment StoreEntitySet="PostComments">
+                <ScalarProperty Name="PostCommentsId" ColumnName="PostCommentsId" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="PostedBy" ColumnName="PostedBy" />
+                <ScalarProperty Name="CommentBy" ColumnName="CommentBy" />
+                <ScalarProperty Name="PostedDate" ColumnName="PostedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Posts">
+            <EntityTypeMapping TypeName="db_cungphim_FrontEnd_Model.Post">
+              <MappingFragment StoreEntitySet="Posts">
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="PostedBy" ColumnName="PostedBy" />
+                <ScalarProperty Name="PostedDate" ColumnName="PostedDate" />
+                <ScalarProperty Name="ChartImageURL" ColumnName="ChartImageURL" />
+                <ScalarProperty Name="NhanDinh" ColumnName="NhanDinh" />
+                <ScalarProperty Name="Vir" ColumnName="Vir" />
+                <ScalarProperty Name="StockPrimary" ColumnName="StockPrimary" />
+                <ScalarProperty Name="ChartYN" ColumnName="ChartYN" />
+                <ScalarProperty Name="SumLike" ColumnName="SumLike" />
+                <ScalarProperty Name="SumReply" ColumnName="SumReply" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Settings">
+            <EntityTypeMapping TypeName="db_cungphim_FrontEnd_Model.Setting">
+              <MappingFragment StoreEntitySet="Settings">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockCodes">
+            <EntityTypeMapping TypeName="db_cungphim_FrontEnd_Model.StockCode">
+              <MappingFragment StoreEntitySet="StockCode">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="LongName" ColumnName="LongName" />
+                <ScalarProperty Name="MarketType" ColumnName="MarketType" />
+                <ScalarProperty Name="IndexName" ColumnName="IndexName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockPrices">
+            <EntityTypeMapping TypeName="db_cungphim_FrontEnd_Model.StockPrice">
+              <MappingFragment StoreEntitySet="StockPrice">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="CeilingPrice" ColumnName="CeilingPrice" />
+                <ScalarProperty Name="FloorPrice" ColumnName="FloorPrice" />
+                <ScalarProperty Name="DiffPrice" ColumnName="DiffPrice" />
+                <ScalarProperty Name="OpenPrice" ColumnName="OpenPrice" />
+                <ScalarProperty Name="HighPrice" ColumnName="HighPrice" />
+                <ScalarProperty Name="LowPrice" ColumnName="LowPrice" />
+                <ScalarProperty Name="ClosePrice" ColumnName="ClosePrice" />
+                <ScalarProperty Name="TradingDate" ColumnName="TradingDate" />
+                <ScalarProperty Name="Totalshare" ColumnName="Totalshare" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockRelates">
+            <EntityTypeMapping TypeName="db_cungphim_FrontEnd_Model.StockRelate">
+              <MappingFragment StoreEntitySet="StockRelate">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StockCodeRelate" ColumnName="StockCodeRelate" />
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+                <ScalarProperty Name="PinTab" ColumnName="PinTab" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockViewLastests">
+            <EntityTypeMapping TypeName="db_cungphim_FrontEnd_Model.StockViewLastest">
+              <MappingFragment StoreEntitySet="StockViewLastest">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="StockCode" ColumnName="StockCode" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TickerHots">
+            <EntityTypeMapping TypeName="db_cungphim_FrontEnd_Model.TickerHot">
+              <MappingFragment StoreEntitySet="TickerHot">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="THName" ColumnName="THName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLogins">
+            <EntityTypeMapping TypeName="db_cungphim_FrontEnd_Model.UserLogin">
+              <MappingFragment StoreEntitySet="UserLogins">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="KeyLogin" ColumnName="KeyLogin" />
+                <ScalarProperty Name="UserNameCopy" ColumnName="UserNameCopy" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="AvataImage" ColumnName="AvataImage" />
+                <ScalarProperty Name="AvataCover" ColumnName="AvataCover" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Verify" ColumnName="Verify" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+                <ScalarProperty Name="LockAccount" ColumnName="LockAccount" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="URLFacebook" ColumnName="URLFacebook" />
+                <ScalarProperty Name="CVInfo" ColumnName="CVInfo" />
+                <ScalarProperty Name="NumberExMarketYear" ColumnName="NumberExMarketYear" />
+                <ScalarProperty Name="PhilosophyMarket" ColumnName="PhilosophyMarket" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRelates">
+            <EntityTypeMapping TypeName="db_cungphim_FrontEnd_Model.UserRelate">
+              <MappingFragment StoreEntitySet="UserRelate">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserViewLastests">
+            <EntityTypeMapping TypeName="db_cungphim_FrontEnd_Model.UserViewLastest">
+              <MappingFragment StoreEntitySet="UserViewLastest">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserIdLastest" ColumnName="UserIdLastest" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'F:\Working\StockProject\SN-Stock\KhuyenNghiDauTu\PhimHang.vn\Models\StoxConnection.edmx'. 
+﻿// T4 code generation is enabled for model 'F:\Working\StockProject\SN-Stock\PhimHang.vn_BackEnd\PhimHang.vn\Models\DB_cungphim_frontend.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

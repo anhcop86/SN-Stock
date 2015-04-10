@@ -1,0 +1,58 @@
+﻿@model PhimHang.Models.Post
+@{
+    ViewBag.Title = "Chi tiết bài phím";
+    Layout = "~/Views/Shared/_Layout_Main.cshtml";
+}
+
+<script src="~/Scripts/jquery.timeago.js"></script>
+<h2>
+    Chi tiết bài phím @Model.PostId
+</h2>
+
+<div id="example_length" class="dataTables_length1">
+    <table class="form">
+        <tr>
+            <td class="col1"><label> Người phím:</label></td>
+            <td class="col2">
+                <input type="text" id="grumble" name="StockCode" value="@Model.UserLogin.UserNameCopy" disabled />
+                <label>Ngày:  @Model.PostedDate.ToString("dd/MM/yyyy HH:mm:ss")</label>
+            </td>            
+
+        </tr>
+        <tr>
+            <td class="col1"><label> Mã cổ phiếu:</label></td>
+            <td class="col2">
+                <input type="text" id="grumble" name="StockCode" value="@Model.StockPrimary" disabled />
+            </td>           
+
+        </tr>        
+        <tr>
+            <td class="col1" style="vertical-align: top;"><label>Chi tiết:</label></td>
+            <td class="col2">
+                @Html.Raw(@Model.Message)
+            </td>
+        </tr>
+        <tr>
+            <td class="col1"><label> Tổng bình luận:</label></td>
+            <td class="col2">
+                <input type="text" id="grumble" name="StockCode" value="@Model.SumReply" disabled />
+            </td>
+
+        </tr>    
+    </table>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "","Home")
+        </div>
+    }
+</div>
+<br />
+<br />
+<!--Comment-->
+
+
+

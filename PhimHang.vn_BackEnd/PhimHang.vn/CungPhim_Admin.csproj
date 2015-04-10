@@ -260,17 +260,48 @@
     <Compile Include="Controllers\BrokerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\RecommendationController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\PostTController.cs" />
     <Compile Include="Controllers\TickerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Comment.cs">
       <DependentUpon>Local.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CommentProfileModels.cs" />
+    <Compile Include="Models\DB_cungphim_frontend.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_cungphim_frontend.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB_cungphim_frontend.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB_cungphim_frontend.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_cungphim_frontend.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FilterKeyWord.cs">
+      <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FollowStock.cs">
+      <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FollowUser.cs">
+      <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\JobTitile.cs">
+      <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Local.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -286,40 +317,52 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Local.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\NotificationMessege.cs">
+      <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Philosophy.cs">
+      <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PhimHangvnHelper.cs" />
+    <Compile Include="Models\PinStock.cs">
+      <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Post.cs">
+      <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PostComment.cs">
+      <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\RecommendationModel.cs" />
     <Compile Include="Models\RecommendStock.cs">
       <DependentUpon>Local.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\StoxConnection.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StoxConnection.Context.tt</DependentUpon>
+    <Compile Include="Models\Setting.cs">
+      <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\StoxConnection.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StoxConnection.tt</DependentUpon>
+    <Compile Include="Models\StockCode.cs">
+      <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\StoxConnection.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StoxConnection.edmx</DependentUpon>
+    <Compile Include="Models\StockPrice.cs">
+      <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\stox_tb_Company.cs">
-      <DependentUpon>StoxConnection.tt</DependentUpon>
+    <Compile Include="Models\StockRelate.cs">
+      <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\stox_tb_HOSE_Trading.cs">
-      <DependentUpon>StoxConnection.tt</DependentUpon>
+    <Compile Include="Models\StockViewLastest.cs">
+      <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\stox_tb_Ratio.cs">
-      <DependentUpon>StoxConnection.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\stox_tb_StocksInfo.cs">
-      <DependentUpon>StoxConnection.tt</DependentUpon>
+    <Compile Include="Models\TickerHot.cs">
+      <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserLogin.cs">
-      <DependentUpon>Local.tt</DependentUpon>
+      <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserRelate.cs">
+      <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserViewLastest.cs">
+      <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ValidateFileAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1311,22 +1354,22 @@
       <DependentUpon>Local.edmx</DependentUpon>
       <LastGenOutput>Local.cs</LastGenOutput>
     </Content>
-    <EntityDeploy Include="Models\StoxConnection.edmx">
+    <EntityDeploy Include="Models\DB_cungphim_frontend.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>StoxConnection.Designer.cs</LastGenOutput>
+      <LastGenOutput>DB_cungphim_frontend.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\StoxConnection.Context.tt">
+    <Content Include="Models\DB_cungphim_frontend.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>StoxConnection.edmx</DependentUpon>
-      <LastGenOutput>StoxConnection.Context.cs</LastGenOutput>
+      <DependentUpon>DB_cungphim_frontend.edmx</DependentUpon>
+      <LastGenOutput>DB_cungphim_frontend.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\StoxConnection.edmx.diagram">
-      <DependentUpon>StoxConnection.edmx</DependentUpon>
+    <Content Include="Models\DB_cungphim_frontend.edmx.diagram">
+      <DependentUpon>DB_cungphim_frontend.edmx</DependentUpon>
     </Content>
-    <Content Include="Models\StoxConnection.tt">
+    <Content Include="Models\DB_cungphim_frontend.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>StoxConnection.edmx</DependentUpon>
-      <LastGenOutput>StoxConnection.cs</LastGenOutput>
+      <DependentUpon>DB_cungphim_frontend.edmx</DependentUpon>
+      <LastGenOutput>DB_cungphim_frontend.cs</LastGenOutput>
     </Content>
     <None Include="Properties\PublishProfiles\KNKH.pubxml" />
     <None Include="Properties\PublishProfiles\phimhang o nha.pubxml" />
@@ -1423,17 +1466,16 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout_Main.cshtml" />
-    <Content Include="Views\Recommendation\Create.cshtml" />
-    <Content Include="Views\Recommendation\Delete.cshtml" />
-    <Content Include="Views\Recommendation\Details.cshtml" />
-    <Content Include="Views\Recommendation\Edit.cshtml" />
-    <Content Include="Views\Recommendation\Index.cshtml" />
     <Content Include="Views\Broker\Index.cshtml" />
     <Content Include="Views\Ticker\Index.cshtml" />
-    <Content Include="Views\Recommendation\BuyRecommend.cshtml" />
-    <Content Include="Views\Recommendation\SellRecommend.cshtml" />
-    <Content Include="Views\Recommendation\Detail.cshtml" />
     <Content Include="Views\Home\ModifyRecommend.cshtml" />
+    <Content Include="Views\Post\Index.cshtml" />
+    <Content Include="Views\Post\Detail.cshtml" />
+    <Content Include="Views\PostT\Create.cshtml" />
+    <Content Include="Views\PostT\Delete.cshtml" />
+    <Content Include="Views\PostT\Details.cshtml" />
+    <Content Include="Views\PostT\Edit.cshtml" />
+    <Content Include="Views\PostT\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

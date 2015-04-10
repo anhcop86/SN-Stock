@@ -3,12 +3,12 @@
     ViewBag.Title = "Danh sách khuyến nghị khách hàng";
     Layout = "~/Views/Shared/_Layout_Main.cshtml";
 }
-@model PagedList.IPagedList<PhimHang.Models.RecommendStock>
+@model PagedList.IPagedList<PhimHang.Models.Post>
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 <h2>
-    Danh mục khuyến nghị mua & bán
+    Danh mục bài phím
 </h2>
 <div id="example_length" class="dataTables_length1">
     <table class="form">
@@ -19,10 +19,8 @@
                 <td><input type="text" value="@ViewBag.datefilter" id="datetimepicker" name="dateFilter" /></td>
                 <td><b>Mã:</b></td>
                 <td>@Html.TextBox("stockCode", ViewBag.stockCode as string)</td>
-                <td><b>Người khuyến nghị:</b></td>
-                <td>@Html.DropDownList("postBy", @ViewBag.listUserId as SelectList, String.Empty, new { @name = "select" })</td>
-                <td><b>Loại:</b></td>
-                <td>@Html.DropDownList("recommentType", @ViewBag.listTypeRecomendation as SelectList, String.Empty, new { @name = "select" })</td>
+                <td><b>Người phím:</b></td>
+                <td>@Html.DropDownList("postBy", @ViewBag.listUserId as SelectList, String.Empty, new { @name = "select" })</td>                
                 <td></td>
                 <td><input type="submit" value="Tìm kiếm" class="btn btn-blue"></td>
 
@@ -37,11 +35,11 @@
                 <thead>
                     <tr>
                         <th>Ngày</th>
-                        <th>Mã</th>
-                        <th>Người khuyến nghị</th>
-                        <th>Loại</th>
-                        <th>Tổng bình luận</th>
-                        <th>Chart</th>
+                        <th>ID</th>
+                        <th>PostBy</th>
+                        <th>Mã CP</th>
+                        <th>Chi Tiết</th>
+                        <th>Detail</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -50,33 +48,23 @@
                     {
                         <tr>
                             <td>
-                                @item.CreatedDate.ToString("dd/MM/yyyy")
+                                @item.PostedDate.ToString("dd/MM/yyyy HH:mm:ss")
                             </td>
                             <td style="font-weight: bold; color: #328AC5">                                
-                                <a href="/Ticker?stockCode=@item.StockCode&monthReport=@item.CreatedDate.Month">@item.StockCode</a>
+                                <a href="/Post/detail?postid=@item.PostId">@item.PostId</a>
                             </td>
                             <td>
                                 
-                                <a href="/Broker?postBy=@item.UserLogin.Id&monthReport=@item.CreatedDate.Month">@item.UserLogin.UserNameCopy</a>
+                                <a href="/Broker?postBy=@item.UserLogin.Id">@item.UserLogin.UserNameCopy</a>
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.TYPERecommend)
+                                @Html.DisplayFor(modelItem => item.StockPrimary)
                             </td>
-                            <td>
-                                @item.SumComment
+                            <td style="text-align:left">
+                                @Html.Raw(@item.Message)
                             </td>
-                            <td>
-                                
-                                @if (string.IsNullOrWhiteSpace(item.ImageUrl))
-                                {
-                                    @: NO
-                                }
-                                else
-                                {
-                                    @: YES
-                                }
-                            </td>
-                            <td><a style="color: #328AC5" href="/Recommendation/Detail?id=@item.ID">chi tiết</a></td>
+                            
+                            <td><a style="color: #328AC5" href="/Post/detail?postid=@item.PostId">Detail</a></td>
                         </tr>
                     }
                 </tbody>

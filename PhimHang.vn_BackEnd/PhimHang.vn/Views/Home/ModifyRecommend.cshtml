@@ -3,7 +3,7 @@
     ViewBag.Title = "Xóa khuyến nghị";
     Layout = "~/Views/Shared/_Layout_Main.cshtml";
 }
-@model PagedList.IPagedList<PhimHang.Models.RecommendStock>
+@model PagedList.IPagedList<PhimHang.Models.Post>
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
@@ -51,34 +51,24 @@
                     {
                         <tr>
                             <td>
-                                @item.CreatedDate.ToString("dd/MM/yyyy")
+                                @item.PostedDate.ToString("dd/MM/yyyy")
                             </td>
                             <td style="font-weight: bold; color: #328AC5">
-                                <a href="/Ticker?stockCode=@item.StockCode&monthReport=@item.CreatedDate.Month">@item.StockCode</a>
+                                <a href="/Ticker?stockCode=@item.PostId">@item.PostId</a>
                             </td>
                             <td>
 
-                                <a href="/Broker?postBy=@item.UserLogin.Id&monthReport=@item.CreatedDate.Month">@item.UserLogin.UserNameCopy</a>
+                                <a href="/Broker?postBy=@item.UserLogin.Id">@item.UserLogin.UserNameCopy</a>
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.TYPERecommend)
+                                @Html.DisplayFor(modelItem => item.StockPrimary)
                             </td>
                             <td>
-                                @item.SumComment
+                                @Html.Raw(@item.Message)
                             </td>
-                            <td>
-
-                                @if (string.IsNullOrWhiteSpace(item.ImageUrl))
-                                {
-                                    @: NO
-                                }
-                                else
-                                {
-                                    @: YES
-                                }
-                            </td>
-                            <td><a style="color: #328AC5" href="/Recommendation/Detail?id=@item.ID">chi tiết</a></td>
-                            <td><a style="color: #328AC5" href="/Recommendation/Delete?id=@item.ID">X</a></td>                            
+                           
+                            <td><a style="color: #328AC5" href="/Recommendation/Detail?id=@item.PostId">chi tiết</a></td>
+                            <td>@*<a style="color: #328AC5" href="/Recommendation/Delete?id=@item.ID">X</a>*@</td>                            
                         </tr>
                     }
                 </tbody>

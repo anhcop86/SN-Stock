@@ -58,7 +58,7 @@
          <div class="grid_12 header-repeat">
              <div id="branding">
                  <div class="floatleft">
-                     <a href="/">Logo VFS</a>
+                     <a href="/">Logo</a>
                  </div>
                  <div class="floatright">
                      <div class="floatleft">
@@ -89,7 +89,7 @@
          </div>
          <div class="grid_12">
              <ul class="nav main">
-                 <li class="ic-dashboard"><a href="/"><span>Dashboard</span></a> </li>
+                 <li class="ic-dashboard"><a href="/"><span>Bài tin</span></a> </li>
                  @*<li class="ic-form-style">
                      <a href="javascript:"><span>Controls</span></a>
                      <ul>
@@ -110,14 +110,9 @@
                 </ul>
             </li>*@
                  @*<li class="ic-notifications"><a href="notifications.html"><span>Notifications</span></a></li>*@
-                 <li class="ic-form-style"><a href="/Recommendation/BuyRecommend"><span>KN MUA</span></a> </li>
-                 <li class="ic-form-style"><a href="/Recommendation/SellRecommend"><span>KN BÁN</span></a> </li>
-                 @{
-                     if (@User.Identity.GetUserName() == "long.thai")
-                     {
-                         <li class="ic-form-style"><a href="/Home/ModifyRecommend"><span>XÓA KN</span></a> </li>
-                     }
-                 }
+                 <li class="ic-form-style"><a href="/Recommendation/BuyRecommend"><span>Thêm cổ phiếu nóng</span></a> </li>                 
+                 <li class="ic-form-style"><a href="/Recommendation/SellRecommend"><span>Thêm cổ phiếu</span></a> </li>                 
+                 <li class="ic-form-style"><a href="/Recommendation/SellRecommend"><span>PIN nhanh</span></a> </li>                 
                  
              </ul>
 
@@ -129,13 +124,36 @@
                  <div class="block" id="section-menu">
                      <ul class="section menu">
                          <li>
-                             <a class="menuitem">Báo cáo theo tháng</a>
+                             <a class="menuitem">Tài khoản</a>
                              <ul class="submenu">
-                                 <li><a href="/Broker" >Theo nhân viên</a> </li> <!--class="active"-->
-                                 <li><a href="/Ticker">Theo mã</a> </li>
-                                 @*<li><a class="active">Submenu 3</a> </li>
-                                 <li><a>Submenu 4</a> </li>
-                                 <li><a>Submenu 5</a> </li>*@
+                                 <li><a href="/Broker" >Danh sách User</a> </li> <!--class="active"-->
+                                 <li><a href="/Ticker">BC tổng hợp</a> </li>                                                                 
+                             </ul>
+                         </li>
+                         <li>
+                             <a class="menuitem">Bài phím</a>
+                             <ul class="submenu">
+                                 <li><a href="/Broker">Danh sách bài phím</a> </li> <!--class="active"-->
+                                 <li><a href="/Ticker">BC tổng hợp</a> </li>
+                             </ul>
+                         </li>
+                         <li>
+                             <a class="menuitem">Cổ phiếu nóng</a>
+                             <ul class="submenu">
+                                 <li><a href="/Broker">Danh sách bài phím</a> </li> <!--class="active"-->
+                                 <li><a href="/Ticker">BC tổng hợp</a> </li>
+                             </ul>
+                         </li>
+                         <li>
+                             <a class="menuitem">Ghim bài viết</a>
+                             <ul class="submenu">
+                                 <li><a href="/Broker">Danh mục PIN</a> </li> <!--class="active"-->                                 
+                             </ul>
+                         </li>
+                         <li>
+                             <a class="menuitem">Dân phím Pro</a>
+                             <ul class="submenu">
+                                 <li><a href="/Broker">Danh mục</a> </li> <!--class="active"-->
                              </ul>
                          </li>
                          @*<li>

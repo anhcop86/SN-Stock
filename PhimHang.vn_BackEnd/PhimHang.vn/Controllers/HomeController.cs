@@ -15,25 +15,22 @@ namespace PhimHang.Controllers
     [Authorize]
     public class HomeController : Controller
     {
-        private KNDTLocalConnection db = new KNDTLocalConnection();        
-
-        public async Task<ActionResult> Index(int? page, int? postBy, string recommentType, string stockCode, string dateFilter)
+        private KNDTLocalConnection db = new KNDTLocalConnection();
+        private db_cungphim_FrontEnd dbcungphim = new db_cungphim_FrontEnd();
+        public async Task<ActionResult> Index(int? page, int? postBy, string stockCode, string dateFilter)
         {
-
+            
             if (postBy == null)
             {                
                 postBy = 0;
-            }
-            if (string.IsNullOrWhiteSpace(recommentType))
-            {
-                recommentType = "ALL";
-            }
+            }            
 
             if (string.IsNullOrWhiteSpace(stockCode))
             {
                 stockCode = "ALL";
             }
             var datetimeFilter = new DateTime();
+            var datetimeFilterTo = new DateTime();
             if (string.IsNullOrWhiteSpace(dateFilter) || dateFilter == "ALL")
             {
                 dateFilter = "ALL";
@@ -42,29 +39,28 @@ namespace PhimHang.Controllers
             else
             {
                 datetimeFilter = new DateTime(int.Parse(dateFilter.Substring(6, 4)), int.Parse(dateFilter.Substring(3, 2)), int.Parse(dateFilter.Substring(0, 2)));
+                datetimeFilterTo = datetimeFilter.AddDays(1);
             }
             
 
                 
-            ViewBag.postBy = postBy;
-            ViewBag.recommentType = recommentType;
+            ViewBag.postBy = postBy;            
             ViewBag.stockCode = stockCode;
             ViewBag.datefilter = dateFilter;
             LoadInit();
 
-            var recommendstocks = from r in db.RecommendStocks.Include(r => r.UserLogin)
-                                  orderby r.CreatedModify descending
-                                  where (r.PostBy == postBy || 0 == postBy)
-                                  && (r.TYPERecommend == recommentType || "ALL" == recommentType)
-                                  && (r.StockCode.Contains(stockCode) || "ALL"  == stockCode)
-                                  && (r.CreatedDate == datetimeFilter || new DateTime() == datetimeFilter)
-                                  select r;
-            int pageSize = 10;
+            var recommendstocks = await (from p in dbcungphim.Posts
+                                  orderby p.PostedDate descending
+                                  where (p.PostedBy == postBy || 0 == postBy)
+                                  && ((p.PostedDate >= datetimeFilter && p.PostedDate < datetimeFilterTo) || new DateTime() == datetimeFilter)
+                                   && (p.StockPrimary.Contains(stockCode) || "ALL"  == stockCode)
+                                  select p).ToListAsync();
+            int pageSize = 20;
             int pageNumber = (page ?? 1);
 
-            return View(recommendstocks.ToPagedList(pageNumber, pageSize));
+            return View(recommendstocks.ToPagedList(pageNumber, pageSize)); 
 
-            //return View();
+            return View();
         }
         public async Task<ActionResult> ModifyRecommend(int? page, int? postBy, string recommentType, string stockCode, string dateFilter)
         {
@@ -132,7 +128,7 @@ namespace PhimHang.Controllers
             //ViewBag.listStock = new SelectList(listStock, "Ticker", "Ticker");
 
 
-            ViewBag.listUserId = new SelectList(db.UserLogins, "Id", "UserNameCopy");
+            ViewBag.listUserId = new SelectList(dbcungphim.UserLogins, "Id", "UserNameCopy");
 
             var listTypeRecomendation = new List<dynamic>
                     { 
