@@ -1,0 +1,1398 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="StoxDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="stox_tb_Company">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ticker" Type="nvarchar" MaxLength="255" />
+          <Property Name="ShortName" Type="nvarchar" MaxLength="500" />
+          <Property Name="TypeID" Type="smallint" />
+          <Property Name="EnglishName" Type="nvarchar" MaxLength="500" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="CompanyTypeBeforeListed" Type="nvarchar" MaxLength="255" />
+          <Property Name="IndustryParent" Type="nvarchar" MaxLength="255" />
+          <Property Name="IndustryID" Type="nvarchar" MaxLength="500" />
+          <Property Name="PrimaryProduct" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ExchangeID" Type="smallint" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="Index" Type="nvarchar" MaxLength="255" />
+          <Property Name="ShareType" Type="nvarchar" MaxLength="255" />
+          <Property Name="ShareCirculate" Type="float" />
+          <Property Name="FirstListingDate" Type="datetime" />
+          <Property Name="ShareIssue" Type="float" />
+          <Property Name="CapitalFund" Type="float" />
+          <Property Name="ParValue" Type="float" />
+          <Property Name="PriceListed" Type="float" />
+          <Property Name="CTCKID" Type="nvarchar" MaxLength="255" />
+          <Property Name="NumberOfCDPT" Type="float" />
+          <Property Name="NumberOfEmployees" Type="float" />
+          <Property Name="WebsiteHomepage" Type="nvarchar" MaxLength="500" />
+          <Property Name="WebsiteCorporateAction" Type="nvarchar" MaxLength="500" />
+          <Property Name="WebsiteAboutCompany" Type="nvarchar" MaxLength="500" />
+          <Property Name="WebsiteInvesterRelation" Type="nvarchar" MaxLength="500" />
+          <Property Name="WebsiteProductServices" Type="nvarchar" MaxLength="500" />
+          <Property Name="WebsiteJobHunter" Type="nvarchar" MaxLength="500" />
+          <Property Name="RegistedOffice" Type="nvarchar" MaxLength="500" />
+          <Property Name="DistrictID" Type="nvarchar" MaxLength="255" />
+          <Property Name="CityID" Type="nvarchar" MaxLength="255" />
+          <Property Name="Telephone_CC" Type="nvarchar" MaxLength="255" />
+          <Property Name="Telephone_AC" Type="nvarchar" MaxLength="255" />
+          <Property Name="Telephone_Number" Type="nvarchar" MaxLength="255" />
+          <Property Name="Fax_CC" Type="nvarchar" MaxLength="255" />
+          <Property Name="Fax_AC" Type="nvarchar" MaxLength="255" />
+          <Property Name="Fax_Number" Type="nvarchar" MaxLength="255" />
+          <Property Name="NumberOfATM" Type="nvarchar" MaxLength="255" />
+          <Property Name="NumberOfSub1" Type="nvarchar" MaxLength="255" />
+          <Property Name="NumberOfTradeStation" Type="nvarchar" MaxLength="255" />
+          <Property Name="HistoryDev" Type="ntext" />
+          <Property Name="BusinessStrategies" Type="ntext" />
+          <Property Name="KeyDevelopments" Type="ntext" />
+          <Property Name="PosCompany" Type="ntext" />
+          <Property Name="CompanyProfile" Type="ntext" />
+          <Property Name="LargeInvestProject" Type="ntext" />
+          <Property Name="CompanyPromise" Type="ntext" />
+          <Property Name="BusinessRisk" Type="ntext" />
+          <Property Name="ePrimaryProduct" Type="nvarchar" MaxLength="2000" />
+          <Property Name="eRegistedOffice" Type="nvarchar" MaxLength="500" />
+          <Property Name="eDistrictID" Type="nvarchar" MaxLength="255" />
+          <Property Name="eCityID" Type="nvarchar" MaxLength="255" />
+          <Property Name="eHistoryDev" Type="ntext" />
+          <Property Name="eBusinessStrategies" Type="ntext" />
+          <Property Name="eKeyDevelopments" Type="ntext" />
+          <Property Name="ePosCompany" Type="ntext" />
+          <Property Name="eCompanyProfile" Type="ntext" />
+          <Property Name="eLargeInvestProject" Type="ntext" />
+          <Property Name="eCompanyPromise" Type="ntext" />
+          <Property Name="eBusinessRisk" Type="ntext" />
+          <Property Name="freefloat" Type="float" />
+        </EntityType>
+        <EntityType Name="stox_tb_HOSE_Trading">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StockNo" Type="int" />
+          <Property Name="StockSymbol" Type="nchar" MaxLength="8" Nullable="false" />
+          <Property Name="StockType" Type="nchar" MaxLength="1" />
+          <Property Name="Ceiling" Type="money" />
+          <Property Name="Floor" Type="money" />
+          <Property Name="BigLotValue" Type="float" />
+          <Property Name="SecurityName" Type="nvarchar" MaxLength="25" />
+          <Property Name="SectorNo" Type="nchar" MaxLength="1" />
+          <Property Name="Designated" Type="nchar" MaxLength="1" />
+          <Property Name="Suspension" Type="nchar" MaxLength="1" />
+          <Property Name="Delist" Type="nchar" MaxLength="1" />
+          <Property Name="HaltResumeFlag" Type="nchar" MaxLength="1" />
+          <Property Name="Split" Type="nchar" MaxLength="1" />
+          <Property Name="Benefit" Type="nchar" MaxLength="1" />
+          <Property Name="Meeting" Type="nchar" MaxLength="1" />
+          <Property Name="Notice" Type="nchar" MaxLength="1" />
+          <Property Name="ClientIDRequest" Type="nchar" MaxLength="1" />
+          <Property Name="CouponRate" Type="int" />
+          <Property Name="IssueDate" Type="nchar" MaxLength="10" />
+          <Property Name="MatureDate" Type="nchar" MaxLength="10" />
+          <Property Name="AvrPrice" Type="money" />
+          <Property Name="ParValue" Type="int" />
+          <Property Name="SDCFlag" Type="nchar" MaxLength="1" />
+          <Property Name="PriorClosePrice" Type="money" />
+          <Property Name="PriorCloseDate" Type="nchar" MaxLength="10" />
+          <Property Name="ProjectOpen" Type="money" />
+          <Property Name="OpenPrice" Type="money" />
+          <Property Name="Last" Type="money" />
+          <Property Name="LastVol" Type="money" />
+          <Property Name="LastVal" Type="float" />
+          <Property Name="Highest" Type="money" />
+          <Property Name="Lowest" Type="money" />
+          <Property Name="Totalshare" Type="float" />
+          <Property Name="TotalValue" Type="float" />
+          <Property Name="AccumulateDeal" Type="int" />
+          <Property Name="BigDeal" Type="int" />
+          <Property Name="BigVol" Type="money" />
+          <Property Name="BigVal" Type="float" />
+          <Property Name="OddDeal" Type="int" />
+          <Property Name="OddVol" Type="money" />
+          <Property Name="OddVal" Type="float" />
+          <Property Name="Best1Bid" Type="money" />
+          <Property Name="Best1BidVolume" Type="money" />
+          <Property Name="Best2Bid" Type="money" />
+          <Property Name="Best2BidVolume" Type="money" />
+          <Property Name="Best3Bid" Type="money" />
+          <Property Name="Best3BidVolume" Type="money" />
+          <Property Name="Best1Offer" Type="money" />
+          <Property Name="Best1OfferVolume" Type="money" />
+          <Property Name="Best2Offer" Type="money" />
+          <Property Name="Best2OfferVolume" Type="money" />
+          <Property Name="Best3Offer" Type="money" />
+          <Property Name="Best3OfferVolume" Type="money" />
+          <Property Name="DateReport" Type="datetime" />
+          <Property Name="CurrentRoom" Type="money" />
+          <Property Name="TotalRoom" Type="money" />
+          <Property Name="Match1" Type="money" />
+          <Property Name="MatchVolume1" Type="money" />
+          <Property Name="Match2" Type="money" />
+          <Property Name="MatchVolume2" Type="money" />
+          <Property Name="Other_room" Type="money" />
+          <Property Name="Room" Type="money" />
+          <Property Name="SellPrice3" Type="money" />
+          <Property Name="SellPrice2" Type="money" />
+          <Property Name="SellPrice1" Type="money" />
+          <Property Name="BuyPrice3" Type="money" />
+          <Property Name="BuyPrice2" Type="money" />
+          <Property Name="BuyPrice1" Type="money" />
+          <Property Name="SellQtty3" Type="int" />
+          <Property Name="SellQtty2" Type="int" />
+          <Property Name="SellQtty1" Type="int" />
+          <Property Name="BuyQtty3" Type="int" />
+          <Property Name="BuyQtty2" Type="int" />
+          <Property Name="BuyQtty1" Type="int" />
+          <Property Name="ChangePrice" Type="money" />
+          <Property Name="ClosePrice_Adjusted" Type="money" />
+          <Property Name="Rate_Adjusted" Type="float" />
+          <Property Name="Highest_Adjusted" Type="float" />
+          <Property Name="Lowest_Adjusted" Type="float" />
+          <Property Name="KLGD_ThoaThuan" Type="float" />
+          <Property Name="GTGD_ThoaThuan" Type="float" />
+          <Property Name="OpenPrice_Adjusted" Type="float" />
+        </EntityType>
+        <EntityType Name="stox_tb_Ratio">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BankCompany" Type="tinyint" />
+          <Property Name="Ticker" Type="nvarchar" MaxLength="50" />
+          <Property Name="LengthReport" Type="int" />
+          <Property Name="LengthReport_Cal" Type="int" />
+          <Property Name="YearReport_Cal" Type="int" />
+          <Property Name="YearReport" Type="int" />
+          <Property Name="UpdateDate" Type="smalldatetime" />
+          <Property Name="Truot4Quy" Type="bit" />
+          <Property Name="Ebit" Type="float" />
+          <Property Name="Ebitda" Type="float" />
+          <Property Name="F5_1" Type="float" />
+          <Property Name="F5_2" Type="float" />
+          <Property Name="F5_3" Type="float" />
+          <Property Name="F5_4" Type="float" />
+          <Property Name="F5_5" Type="float" />
+          <Property Name="F5_6" Type="float" />
+          <Property Name="F5_7" Type="float" />
+          <Property Name="F5_8" Type="float" />
+          <Property Name="F5_9" Type="float" />
+          <Property Name="F5_10" Type="float" />
+          <Property Name="F5_11" Type="float" />
+          <Property Name="F5_12" Type="float" />
+          <Property Name="F5_13" Type="float" />
+          <Property Name="F5_14" Type="float" />
+          <Property Name="F5_15" Type="float" />
+          <Property Name="F5_16" Type="float" />
+          <Property Name="F5_17" Type="float" />
+          <Property Name="F5_18" Type="float" />
+          <Property Name="F5_19" Type="float" />
+          <Property Name="F5_20" Type="float" />
+          <Property Name="F5_21" Type="float" />
+          <Property Name="F5_22" Type="float" />
+          <Property Name="F5_23" Type="float" />
+          <Property Name="F5_24" Type="float" />
+          <Property Name="F5_25" Type="float" />
+          <Property Name="F5_26" Type="float" />
+          <Property Name="F5_27" Type="float" />
+          <Property Name="F5_28" Type="float" />
+          <Property Name="F5_29" Type="float" />
+          <Property Name="F5_30" Type="float" />
+          <Property Name="F5_31" Type="float" />
+          <Property Name="F5_32" Type="float" />
+          <Property Name="F5_33" Type="float" />
+          <Property Name="F5_34" Type="float" />
+          <Property Name="F5_35" Type="float" />
+          <Property Name="F5_36" Type="float" />
+          <Property Name="F5_37" Type="float" />
+          <Property Name="F5_38" Type="float" />
+          <Property Name="F5_39" Type="float" />
+          <Property Name="F5_40" Type="float" />
+          <Property Name="F5_41" Type="float" />
+          <Property Name="F5_42" Type="float" />
+          <Property Name="F5_43" Type="float" />
+          <Property Name="F5_44" Type="float" />
+          <Property Name="F5_45" Type="float" />
+          <Property Name="F5_46" Type="float" />
+          <Property Name="F5_47" Type="float" />
+          <Property Name="F5_48" Type="float" />
+          <Property Name="F5_49" Type="float" />
+          <Property Name="F5_50" Type="float" />
+          <Property Name="F5_51" Type="float" />
+          <Property Name="F5_52" Type="float" />
+          <Property Name="F5_53" Type="float" />
+          <Property Name="F5_54" Type="float" />
+          <Property Name="F5_55" Type="float" />
+          <Property Name="F5_56" Type="float" />
+          <Property Name="F5_57" Type="float" />
+          <Property Name="F5_58" Type="float" />
+          <Property Name="F5_59" Type="float" />
+          <Property Name="F5_60" Type="float" />
+          <Property Name="F5_61" Type="float" />
+          <Property Name="F5_62" Type="float" />
+          <Property Name="F5_63" Type="float" />
+          <Property Name="F5_64" Type="float" />
+          <Property Name="F5_65" Type="float" />
+          <Property Name="F5_66" Type="float" />
+          <Property Name="F5_67" Type="float" />
+          <Property Name="F5_68" Type="float" />
+          <Property Name="F5_69" Type="float" />
+          <Property Name="F5_70" Type="float" />
+          <Property Name="F5_71" Type="float" />
+          <Property Name="F5_72" Type="float" />
+          <Property Name="F5_73" Type="float" />
+          <Property Name="F5_74" Type="float" />
+          <Property Name="F5_75" Type="float" />
+          <Property Name="F5_76" Type="float" />
+          <Property Name="F5_77" Type="float" />
+          <Property Name="F5_78" Type="float" />
+          <Property Name="F5_79" Type="float" />
+          <Property Name="F5_80" Type="float" />
+          <Property Name="F5_81" Type="float" />
+          <Property Name="F5_82" Type="float" />
+          <Property Name="F5_83" Type="float" />
+          <Property Name="F5_84" Type="float" />
+          <Property Name="F5_85" Type="float" />
+          <Property Name="F5_86" Type="float" />
+          <Property Name="F5_87" Type="float" />
+          <Property Name="F5_88" Type="float" />
+          <Property Name="F5_43b" Type="float" />
+          <Property Name="F5_90" Type="float" />
+          <Property Name="F5_91" Type="float" />
+          <Property Name="F5_92" Type="float" />
+          <Property Name="F5_93" Type="float" />
+          <Property Name="F5_94" Type="float" />
+          <Property Name="F5_95" Type="float" />
+          <Property Name="F5_96" Type="float" />
+          <Property Name="F5_97" Type="float" />
+          <Property Name="F5_98" Type="float" />
+          <Property Name="F5_99" Type="float" />
+          <Property Name="F5_1a" Type="float" />
+          <Property Name="F5_100" Type="float" />
+          <Property Name="F5_101" Type="float" />
+          <Property Name="F5_102" Type="float" />
+          <Property Name="F5_103" Type="float" />
+          <Property Name="F5_104" Type="float" />
+          <Property Name="F5_105" Type="float" />
+          <Property Name="F5_1b" Type="float" />
+          <Property Name="F5_61a" Type="float" />
+          <Property Name="F5_62a" Type="float" />
+          <Property Name="F5_63a" Type="float" />
+          <Property Name="F5_64a" Type="float" />
+          <Property Name="F5_65a" Type="float" />
+          <Property Name="F5_66a" Type="float" />
+          <Property Name="F5_67a" Type="float" />
+          <Property Name="F5_68a" Type="float" />
+          <Property Name="F5_69a" Type="float" />
+          <Property Name="F5_70a" Type="float" />
+          <Property Name="F5_15b" Type="float" />
+          <Property Name="F5_38b" Type="float" />
+          <Property Name="F5_106" Type="float" />
+          <Property Name="F5_107" Type="float" />
+          <Property Name="F5_108" Type="float" />
+          <Property Name="F5_109" Type="float" />
+          <Property Name="F5_110" Type="float" />
+          <Property Name="F5_111" Type="float" />
+          <Property Name="F5_112" Type="float" />
+          <Property Name="F5_113" Type="float" />
+          <Property Name="F5_114" Type="float" />
+          <Property Name="F5_115" Type="float" />
+          <Property Name="F5_116" Type="float" />
+          <Property Name="F5_117" Type="float" />
+          <Property Name="F5_118" Type="float" />
+          <Property Name="F5_119" Type="float" />
+          <Property Name="F5_120" Type="float" />
+          <Property Name="F5_121" Type="float" />
+          <Property Name="F5_122" Type="float" />
+          <Property Name="F5_123" Type="float" />
+          <Property Name="F5_124" Type="float" />
+          <Property Name="F5_125" Type="float" />
+          <Property Name="F5_126" Type="float" />
+          <Property Name="F5_127" Type="float" />
+          <Property Name="F5_128" Type="float" />
+          <Property Name="F5_129" Type="float" />
+          <Property Name="F5_130" Type="float" />
+          <Property Name="F5_131" Type="float" />
+          <Property Name="F5_132" Type="float" />
+          <Property Name="F5_133" Type="float" />
+          <Property Name="F5_134" Type="float" />
+          <Property Name="F5_135" Type="float" />
+          <Property Name="F5_136" Type="float" />
+          <Property Name="F5_137" Type="float" />
+          <Property Name="F5_138" Type="float" />
+          <Property Name="F5_139" Type="float" />
+          <Property Name="F5_140" Type="float" />
+          <Property Name="F5_141" Type="float" />
+          <Property Name="F5_142" Type="float" />
+          <Property Name="F5_143" Type="float" />
+          <Property Name="F5_144" Type="float" />
+          <Property Name="F5_145" Type="float" />
+          <Property Name="F5_146" Type="float" />
+          <Property Name="F5_147" Type="float" />
+          <Property Name="F5_148" Type="float" />
+          <Property Name="F5_149" Type="float" />
+          <Property Name="F5_150" Type="float" />
+          <Property Name="F5_151" Type="float" />
+          <Property Name="F5_152" Type="float" />
+          <Property Name="F5_153" Type="float" />
+          <Property Name="F5_154" Type="float" />
+          <Property Name="F5_155" Type="float" />
+          <Property Name="F5_156" Type="float" />
+          <Property Name="F5_157" Type="float" />
+          <Property Name="F5_158" Type="float" />
+          <Property Name="F5_159" Type="float" />
+          <Property Name="F5_160" Type="float" />
+          <Property Name="F5_161" Type="float" />
+          <Property Name="F5_162" Type="float" />
+          <Property Name="F5_163" Type="float" />
+          <Property Name="F5_164" Type="float" />
+          <Property Name="F5_165" Type="float" />
+          <Property Name="F5_166" Type="float" />
+          <Property Name="F5_167" Type="float" />
+          <Property Name="F5_168" Type="float" />
+          <Property Name="F5_169" Type="float" />
+          <Property Name="F5_170" Type="float" />
+          <Property Name="F5_171" Type="float" />
+          <Property Name="F5_172" Type="float" />
+          <Property Name="F5_173" Type="float" />
+          <Property Name="F5_174" Type="float" />
+          <Property Name="F5_175" Type="float" />
+          <Property Name="F5_176" Type="float" />
+        </EntityType>
+        <EntityType Name="stox_tb_StocksInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="stock_info_id" Type="int" />
+          <Property Name="trading_date" Type="datetime" Nullable="false" />
+          <Property Name="time" Type="nvarchar" MaxLength="8" />
+          <Property Name="stock_id" Type="int" />
+          <Property Name="code" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="stock_type" Type="tinyint" Nullable="false" />
+          <Property Name="total_listing_qtty" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="trading_unit" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="listting_status" Type="tinyint" />
+          <Property Name="adjust_qtty" Type="decimal" Precision="19" Scale="0" />
+          <Property Name="reference_status" Type="tinyint" />
+          <Property Name="adjust_rate" Type="float" />
+          <Property Name="divident_rate" Type="float" />
+          <Property Name="status" Type="tinyint" />
+          <Property Name="total_room" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="current_room" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="basic_price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="open_price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="close_price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="current_price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="current_qtty" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="highest_price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="lowest_price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="best_offer_price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="best_bid_price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ceiling_price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="floor_price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="total_offer_qtty" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="total_bid_qtty" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="best_offer_qtty" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="best_bid_qtty" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="prior_price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="prior_close_price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="match_price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="match_qtty" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="deleted" Type="tinyint" />
+          <Property Name="date_created" Type="datetime" />
+          <Property Name="date_modified" Type="datetime" />
+          <Property Name="modified_by" Type="nvarchar" MaxLength="20" />
+          <Property Name="created_by" Type="nvarchar" MaxLength="20" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" />
+          <Property Name="parvalue" Type="int" />
+          <Property Name="floor_code" Type="int" />
+          <Property Name="match_value" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="is_calcindex" Type="tinyint" />
+          <Property Name="is_determinecl" Type="tinyint" />
+          <Property Name="date_no" Type="int" />
+          <Property Name="offer_count" Type="int" />
+          <Property Name="bid_count" Type="int" />
+          <Property Name="average_price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="index_price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="prev_prior_price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="yieldmat" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="prev_prior_close_price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="nm_total_traded_qtty" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="nm_total_traded_value" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="pt_match_qtty" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="pt_match_price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="pt_total_traded_qtty" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="pt_total_traded_value" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="total_buy_trading_qtty" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="buy_count" Type="int" />
+          <Property Name="total_buy_trading_value" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="total_sell_trading_qtty" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="sell_count" Type="int" />
+          <Property Name="total_sell_trading_value" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="total_trading_qtty" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="total_trading_value" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="buy_foreign_qtty" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="buy_foreign_value" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="sell_foreign_qtty" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="sell_foreign_value" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="remain_foreign_qtty" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="pt_yieldmat" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="dateReport" Type="datetime" />
+          <Property Name="ClosePrice_Adjusted" Type="float" />
+          <Property Name="Rate_Adjusted" Type="float" />
+          <Property Name="Highest_Adjusted" Type="float" />
+          <Property Name="Lowest_Adjusted" Type="float" />
+          <Property Name="OpenPrice_Adjusted" Type="float" />
+        </EntityType>
+        <EntityContainer Name="StoxDataModelStoreContainer">
+          <EntitySet Name="stox_tb_Company" EntityType="Self.stox_tb_Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="stox_tb_HOSE_Trading" EntityType="Self.stox_tb_HOSE_Trading" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="stox_tb_Ratio" EntityType="Self.stox_tb_Ratio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="stox_tb_StocksInfo" EntityType="Self.stox_tb_StocksInfo" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StoxDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="stox_tb_Company">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ticker" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ShortName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TypeID" Type="Int16" />
+          <Property Name="EnglishName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyTypeBeforeListed" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IndustryParent" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IndustryID" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PrimaryProduct" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ExchangeID" Type="Int16" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="Index" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ShareType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ShareCirculate" Type="Double" />
+          <Property Name="FirstListingDate" Type="DateTime" Precision="3" />
+          <Property Name="ShareIssue" Type="Double" />
+          <Property Name="CapitalFund" Type="Double" />
+          <Property Name="ParValue" Type="Double" />
+          <Property Name="PriceListed" Type="Double" />
+          <Property Name="CTCKID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NumberOfCDPT" Type="Double" />
+          <Property Name="NumberOfEmployees" Type="Double" />
+          <Property Name="WebsiteHomepage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="WebsiteCorporateAction" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="WebsiteAboutCompany" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="WebsiteInvesterRelation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="WebsiteProductServices" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="WebsiteJobHunter" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="RegistedOffice" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DistrictID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CityID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone_CC" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone_AC" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone_Number" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Fax_CC" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Fax_AC" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Fax_Number" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NumberOfATM" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NumberOfSub1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NumberOfTradeStation" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="HistoryDev" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BusinessStrategies" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KeyDevelopments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PosCompany" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyProfile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LargeInvestProject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyPromise" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BusinessRisk" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ePrimaryProduct" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="eRegistedOffice" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="eDistrictID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="eCityID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="eHistoryDev" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="eBusinessStrategies" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="eKeyDevelopments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ePosCompany" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="eCompanyProfile" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="eLargeInvestProject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="eCompanyPromise" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="eBusinessRisk" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="freefloat" Type="Double" />
+        </EntityType>
+        <EntityContainer Name="StoxDataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="stox_tb_Company" EntityType="Self.stox_tb_Company" />
+          <EntitySet Name="stox_tb_Ratio" EntityType="StoxDataModel.stox_tb_Ratio" />
+          <EntitySet Name="stox_tb_HOSE_Trading" EntityType="StoxDataModel.stox_tb_HOSE_Trading" />
+          <EntitySet Name="stox_tb_StocksInfo" EntityType="StoxDataModel.stox_tb_StocksInfo" />
+        </EntityContainer>
+        <EntityType Name="stox_tb_Ratio">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BankCompany" Type="Byte" />
+          <Property Name="Ticker" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LengthReport" Type="Int32" />
+          <Property Name="LengthReport_Cal" Type="Int32" />
+          <Property Name="YearReport_Cal" Type="Int32" />
+          <Property Name="YearReport" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+          <Property Name="Truot4Quy" Type="Boolean" />
+          <Property Name="Ebit" Type="Double" />
+          <Property Name="Ebitda" Type="Double" />
+          <Property Name="F5_1" Type="Double" />
+          <Property Name="F5_2" Type="Double" />
+          <Property Name="F5_3" Type="Double" />
+          <Property Name="F5_4" Type="Double" />
+          <Property Name="F5_5" Type="Double" />
+          <Property Name="F5_6" Type="Double" />
+          <Property Name="F5_7" Type="Double" />
+          <Property Name="F5_8" Type="Double" />
+          <Property Name="F5_9" Type="Double" />
+          <Property Name="F5_10" Type="Double" />
+          <Property Name="F5_11" Type="Double" />
+          <Property Name="F5_12" Type="Double" />
+          <Property Name="F5_13" Type="Double" />
+          <Property Name="F5_14" Type="Double" />
+          <Property Name="F5_15" Type="Double" />
+          <Property Name="F5_16" Type="Double" />
+          <Property Name="F5_17" Type="Double" />
+          <Property Name="F5_18" Type="Double" />
+          <Property Name="F5_19" Type="Double" />
+          <Property Name="F5_20" Type="Double" />
+          <Property Name="F5_21" Type="Double" />
+          <Property Name="F5_22" Type="Double" />
+          <Property Name="F5_23" Type="Double" />
+          <Property Name="F5_24" Type="Double" />
+          <Property Name="F5_25" Type="Double" />
+          <Property Name="F5_26" Type="Double" />
+          <Property Name="F5_27" Type="Double" />
+          <Property Name="F5_28" Type="Double" />
+          <Property Name="F5_29" Type="Double" />
+          <Property Name="F5_30" Type="Double" />
+          <Property Name="F5_31" Type="Double" />
+          <Property Name="F5_32" Type="Double" />
+          <Property Name="F5_33" Type="Double" />
+          <Property Name="F5_34" Type="Double" />
+          <Property Name="F5_35" Type="Double" />
+          <Property Name="F5_36" Type="Double" />
+          <Property Name="F5_37" Type="Double" />
+          <Property Name="F5_38" Type="Double" />
+          <Property Name="F5_39" Type="Double" />
+          <Property Name="F5_40" Type="Double" />
+          <Property Name="F5_41" Type="Double" />
+          <Property Name="F5_42" Type="Double" />
+          <Property Name="F5_43" Type="Double" />
+          <Property Name="F5_44" Type="Double" />
+          <Property Name="F5_45" Type="Double" />
+          <Property Name="F5_46" Type="Double" />
+          <Property Name="F5_47" Type="Double" />
+          <Property Name="F5_48" Type="Double" />
+          <Property Name="F5_49" Type="Double" />
+          <Property Name="F5_50" Type="Double" />
+          <Property Name="F5_51" Type="Double" />
+          <Property Name="F5_52" Type="Double" />
+          <Property Name="F5_53" Type="Double" />
+          <Property Name="F5_54" Type="Double" />
+          <Property Name="F5_55" Type="Double" />
+          <Property Name="F5_56" Type="Double" />
+          <Property Name="F5_57" Type="Double" />
+          <Property Name="F5_58" Type="Double" />
+          <Property Name="F5_59" Type="Double" />
+          <Property Name="F5_60" Type="Double" />
+          <Property Name="F5_61" Type="Double" />
+          <Property Name="F5_62" Type="Double" />
+          <Property Name="F5_63" Type="Double" />
+          <Property Name="F5_64" Type="Double" />
+          <Property Name="F5_65" Type="Double" />
+          <Property Name="F5_66" Type="Double" />
+          <Property Name="F5_67" Type="Double" />
+          <Property Name="F5_68" Type="Double" />
+          <Property Name="F5_69" Type="Double" />
+          <Property Name="F5_70" Type="Double" />
+          <Property Name="F5_71" Type="Double" />
+          <Property Name="F5_72" Type="Double" />
+          <Property Name="F5_73" Type="Double" />
+          <Property Name="F5_74" Type="Double" />
+          <Property Name="F5_75" Type="Double" />
+          <Property Name="F5_76" Type="Double" />
+          <Property Name="F5_77" Type="Double" />
+          <Property Name="F5_78" Type="Double" />
+          <Property Name="F5_79" Type="Double" />
+          <Property Name="F5_80" Type="Double" />
+          <Property Name="F5_81" Type="Double" />
+          <Property Name="F5_82" Type="Double" />
+          <Property Name="F5_83" Type="Double" />
+          <Property Name="F5_84" Type="Double" />
+          <Property Name="F5_85" Type="Double" />
+          <Property Name="F5_86" Type="Double" />
+          <Property Name="F5_87" Type="Double" />
+          <Property Name="F5_88" Type="Double" />
+          <Property Name="F5_43b" Type="Double" />
+          <Property Name="F5_90" Type="Double" />
+          <Property Name="F5_91" Type="Double" />
+          <Property Name="F5_92" Type="Double" />
+          <Property Name="F5_93" Type="Double" />
+          <Property Name="F5_94" Type="Double" />
+          <Property Name="F5_95" Type="Double" />
+          <Property Name="F5_96" Type="Double" />
+          <Property Name="F5_97" Type="Double" />
+          <Property Name="F5_98" Type="Double" />
+          <Property Name="F5_99" Type="Double" />
+          <Property Name="F5_1a" Type="Double" />
+          <Property Name="F5_100" Type="Double" />
+          <Property Name="F5_101" Type="Double" />
+          <Property Name="F5_102" Type="Double" />
+          <Property Name="F5_103" Type="Double" />
+          <Property Name="F5_104" Type="Double" />
+          <Property Name="F5_105" Type="Double" />
+          <Property Name="F5_1b" Type="Double" />
+          <Property Name="F5_61a" Type="Double" />
+          <Property Name="F5_62a" Type="Double" />
+          <Property Name="F5_63a" Type="Double" />
+          <Property Name="F5_64a" Type="Double" />
+          <Property Name="F5_65a" Type="Double" />
+          <Property Name="F5_66a" Type="Double" />
+          <Property Name="F5_67a" Type="Double" />
+          <Property Name="F5_68a" Type="Double" />
+          <Property Name="F5_69a" Type="Double" />
+          <Property Name="F5_70a" Type="Double" />
+          <Property Name="F5_15b" Type="Double" />
+          <Property Name="F5_38b" Type="Double" />
+          <Property Name="F5_106" Type="Double" />
+          <Property Name="F5_107" Type="Double" />
+          <Property Name="F5_108" Type="Double" />
+          <Property Name="F5_109" Type="Double" />
+          <Property Name="F5_110" Type="Double" />
+          <Property Name="F5_111" Type="Double" />
+          <Property Name="F5_112" Type="Double" />
+          <Property Name="F5_113" Type="Double" />
+          <Property Name="F5_114" Type="Double" />
+          <Property Name="F5_115" Type="Double" />
+          <Property Name="F5_116" Type="Double" />
+          <Property Name="F5_117" Type="Double" />
+          <Property Name="F5_118" Type="Double" />
+          <Property Name="F5_119" Type="Double" />
+          <Property Name="F5_120" Type="Double" />
+          <Property Name="F5_121" Type="Double" />
+          <Property Name="F5_122" Type="Double" />
+          <Property Name="F5_123" Type="Double" />
+          <Property Name="F5_124" Type="Double" />
+          <Property Name="F5_125" Type="Double" />
+          <Property Name="F5_126" Type="Double" />
+          <Property Name="F5_127" Type="Double" />
+          <Property Name="F5_128" Type="Double" />
+          <Property Name="F5_129" Type="Double" />
+          <Property Name="F5_130" Type="Double" />
+          <Property Name="F5_131" Type="Double" />
+          <Property Name="F5_132" Type="Double" />
+          <Property Name="F5_133" Type="Double" />
+          <Property Name="F5_134" Type="Double" />
+          <Property Name="F5_135" Type="Double" />
+          <Property Name="F5_136" Type="Double" />
+          <Property Name="F5_137" Type="Double" />
+          <Property Name="F5_138" Type="Double" />
+          <Property Name="F5_139" Type="Double" />
+          <Property Name="F5_140" Type="Double" />
+          <Property Name="F5_141" Type="Double" />
+          <Property Name="F5_142" Type="Double" />
+          <Property Name="F5_143" Type="Double" />
+          <Property Name="F5_144" Type="Double" />
+          <Property Name="F5_145" Type="Double" />
+          <Property Name="F5_146" Type="Double" />
+          <Property Name="F5_147" Type="Double" />
+          <Property Name="F5_148" Type="Double" />
+          <Property Name="F5_149" Type="Double" />
+          <Property Name="F5_150" Type="Double" />
+          <Property Name="F5_151" Type="Double" />
+          <Property Name="F5_152" Type="Double" />
+          <Property Name="F5_153" Type="Double" />
+          <Property Name="F5_154" Type="Double" />
+          <Property Name="F5_155" Type="Double" />
+          <Property Name="F5_156" Type="Double" />
+          <Property Name="F5_157" Type="Double" />
+          <Property Name="F5_158" Type="Double" />
+          <Property Name="F5_159" Type="Double" />
+          <Property Name="F5_160" Type="Double" />
+          <Property Name="F5_161" Type="Double" />
+          <Property Name="F5_162" Type="Double" />
+          <Property Name="F5_163" Type="Double" />
+          <Property Name="F5_164" Type="Double" />
+          <Property Name="F5_165" Type="Double" />
+          <Property Name="F5_166" Type="Double" />
+          <Property Name="F5_167" Type="Double" />
+          <Property Name="F5_168" Type="Double" />
+          <Property Name="F5_169" Type="Double" />
+          <Property Name="F5_170" Type="Double" />
+          <Property Name="F5_171" Type="Double" />
+          <Property Name="F5_172" Type="Double" />
+          <Property Name="F5_173" Type="Double" />
+          <Property Name="F5_174" Type="Double" />
+          <Property Name="F5_175" Type="Double" />
+          <Property Name="F5_176" Type="Double" />
+        </EntityType>
+        <EntityType Name="stox_tb_HOSE_Trading">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StockNo" Type="Int32" />
+          <Property Name="StockSymbol" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="StockType" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="Ceiling" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Floor" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="BigLotValue" Type="Double" />
+          <Property Name="SecurityName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="SectorNo" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="Designated" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="Suspension" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="Delist" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="HaltResumeFlag" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="Split" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="Benefit" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="Meeting" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="Notice" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="ClientIDRequest" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="CouponRate" Type="Int32" />
+          <Property Name="IssueDate" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="MatureDate" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="AvrPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ParValue" Type="Int32" />
+          <Property Name="SDCFlag" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="PriorClosePrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PriorCloseDate" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ProjectOpen" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="OpenPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Last" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="LastVol" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="LastVal" Type="Double" />
+          <Property Name="Highest" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Lowest" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Totalshare" Type="Double" />
+          <Property Name="TotalValue" Type="Double" />
+          <Property Name="AccumulateDeal" Type="Int32" />
+          <Property Name="BigDeal" Type="Int32" />
+          <Property Name="BigVol" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="BigVal" Type="Double" />
+          <Property Name="OddDeal" Type="Int32" />
+          <Property Name="OddVol" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="OddVal" Type="Double" />
+          <Property Name="Best1Bid" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Best1BidVolume" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Best2Bid" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Best2BidVolume" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Best3Bid" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Best3BidVolume" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Best1Offer" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Best1OfferVolume" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Best2Offer" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Best2OfferVolume" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Best3Offer" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Best3OfferVolume" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DateReport" Type="DateTime" Precision="3" />
+          <Property Name="CurrentRoom" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TotalRoom" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Match1" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MatchVolume1" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Match2" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MatchVolume2" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Other_room" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Room" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SellPrice3" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SellPrice2" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SellPrice1" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="BuyPrice3" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="BuyPrice2" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="BuyPrice1" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SellQtty3" Type="Int32" />
+          <Property Name="SellQtty2" Type="Int32" />
+          <Property Name="SellQtty1" Type="Int32" />
+          <Property Name="BuyQtty3" Type="Int32" />
+          <Property Name="BuyQtty2" Type="Int32" />
+          <Property Name="BuyQtty1" Type="Int32" />
+          <Property Name="ChangePrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ClosePrice_Adjusted" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Rate_Adjusted" Type="Double" />
+          <Property Name="Highest_Adjusted" Type="Double" />
+          <Property Name="Lowest_Adjusted" Type="Double" />
+          <Property Name="KLGD_ThoaThuan" Type="Double" />
+          <Property Name="GTGD_ThoaThuan" Type="Double" />
+          <Property Name="OpenPrice_Adjusted" Type="Double" />
+        </EntityType>
+        <EntityType Name="stox_tb_StocksInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="stock_info_id" Type="Int32" />
+          <Property Name="trading_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="time" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="stock_id" Type="Int32" />
+          <Property Name="code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="stock_type" Type="Byte" Nullable="false" />
+          <Property Name="total_listing_qtty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="trading_unit" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="listting_status" Type="Byte" />
+          <Property Name="adjust_qtty" Type="Decimal" Precision="19" Scale="0" />
+          <Property Name="reference_status" Type="Byte" />
+          <Property Name="adjust_rate" Type="Double" />
+          <Property Name="divident_rate" Type="Double" />
+          <Property Name="status" Type="Byte" />
+          <Property Name="total_room" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="current_room" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="basic_price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="open_price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="close_price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="current_price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="current_qtty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="highest_price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="lowest_price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="best_offer_price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="best_bid_price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ceiling_price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="floor_price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="total_offer_qtty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="total_bid_qtty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="best_offer_qtty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="best_bid_qtty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="prior_price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="prior_close_price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="match_price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="match_qtty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="deleted" Type="Byte" />
+          <Property Name="date_created" Type="DateTime" Precision="3" />
+          <Property Name="date_modified" Type="DateTime" Precision="3" />
+          <Property Name="modified_by" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="created_by" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="parvalue" Type="Int32" />
+          <Property Name="floor_code" Type="Int32" />
+          <Property Name="match_value" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="is_calcindex" Type="Byte" />
+          <Property Name="is_determinecl" Type="Byte" />
+          <Property Name="date_no" Type="Int32" />
+          <Property Name="offer_count" Type="Int32" />
+          <Property Name="bid_count" Type="Int32" />
+          <Property Name="average_price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="index_price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="prev_prior_price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="yieldmat" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="prev_prior_close_price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="nm_total_traded_qtty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="nm_total_traded_value" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="pt_match_qtty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="pt_match_price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="pt_total_traded_qtty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="pt_total_traded_value" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="total_buy_trading_qtty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="buy_count" Type="Int32" />
+          <Property Name="total_buy_trading_value" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="total_sell_trading_qtty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="sell_count" Type="Int32" />
+          <Property Name="total_sell_trading_value" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="total_trading_qtty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="total_trading_value" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="buy_foreign_qtty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="buy_foreign_value" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="sell_foreign_qtty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="sell_foreign_value" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="remain_foreign_qtty" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="pt_yieldmat" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="dateReport" Type="DateTime" Precision="3" />
+          <Property Name="ClosePrice_Adjusted" Type="Double" />
+          <Property Name="Rate_Adjusted" Type="Double" />
+          <Property Name="Highest_Adjusted" Type="Double" />
+          <Property Name="Lowest_Adjusted" Type="Double" />
+          <Property Name="OpenPrice_Adjusted" Type="Double" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StoxDataModelStoreContainer" CdmEntityContainer="StoxDataEntities">
+          <EntitySetMapping Name="stox_tb_Company">
+            <EntityTypeMapping TypeName="StoxDataModel.stox_tb_Company">
+              <MappingFragment StoreEntitySet="stox_tb_Company">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Ticker" ColumnName="Ticker" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CompanyTypeBeforeListed" ColumnName="CompanyTypeBeforeListed" />
+                <ScalarProperty Name="IndustryParent" ColumnName="IndustryParent" />
+                <ScalarProperty Name="IndustryID" ColumnName="IndustryID" />
+                <ScalarProperty Name="PrimaryProduct" ColumnName="PrimaryProduct" />
+                <ScalarProperty Name="ExchangeID" ColumnName="ExchangeID" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Index" ColumnName="Index" />
+                <ScalarProperty Name="ShareType" ColumnName="ShareType" />
+                <ScalarProperty Name="ShareCirculate" ColumnName="ShareCirculate" />
+                <ScalarProperty Name="FirstListingDate" ColumnName="FirstListingDate" />
+                <ScalarProperty Name="ShareIssue" ColumnName="ShareIssue" />
+                <ScalarProperty Name="CapitalFund" ColumnName="CapitalFund" />
+                <ScalarProperty Name="ParValue" ColumnName="ParValue" />
+                <ScalarProperty Name="PriceListed" ColumnName="PriceListed" />
+                <ScalarProperty Name="CTCKID" ColumnName="CTCKID" />
+                <ScalarProperty Name="NumberOfCDPT" ColumnName="NumberOfCDPT" />
+                <ScalarProperty Name="NumberOfEmployees" ColumnName="NumberOfEmployees" />
+                <ScalarProperty Name="WebsiteHomepage" ColumnName="WebsiteHomepage" />
+                <ScalarProperty Name="WebsiteCorporateAction" ColumnName="WebsiteCorporateAction" />
+                <ScalarProperty Name="WebsiteAboutCompany" ColumnName="WebsiteAboutCompany" />
+                <ScalarProperty Name="WebsiteInvesterRelation" ColumnName="WebsiteInvesterRelation" />
+                <ScalarProperty Name="WebsiteProductServices" ColumnName="WebsiteProductServices" />
+                <ScalarProperty Name="WebsiteJobHunter" ColumnName="WebsiteJobHunter" />
+                <ScalarProperty Name="RegistedOffice" ColumnName="RegistedOffice" />
+                <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="Telephone_CC" ColumnName="Telephone_CC" />
+                <ScalarProperty Name="Telephone_AC" ColumnName="Telephone_AC" />
+                <ScalarProperty Name="Telephone_Number" ColumnName="Telephone_Number" />
+                <ScalarProperty Name="Fax_CC" ColumnName="Fax_CC" />
+                <ScalarProperty Name="Fax_AC" ColumnName="Fax_AC" />
+                <ScalarProperty Name="Fax_Number" ColumnName="Fax_Number" />
+                <ScalarProperty Name="NumberOfATM" ColumnName="NumberOfATM" />
+                <ScalarProperty Name="NumberOfSub1" ColumnName="NumberOfSub1" />
+                <ScalarProperty Name="NumberOfTradeStation" ColumnName="NumberOfTradeStation" />
+                <ScalarProperty Name="HistoryDev" ColumnName="HistoryDev" />
+                <ScalarProperty Name="BusinessStrategies" ColumnName="BusinessStrategies" />
+                <ScalarProperty Name="KeyDevelopments" ColumnName="KeyDevelopments" />
+                <ScalarProperty Name="PosCompany" ColumnName="PosCompany" />
+                <ScalarProperty Name="CompanyProfile" ColumnName="CompanyProfile" />
+                <ScalarProperty Name="LargeInvestProject" ColumnName="LargeInvestProject" />
+                <ScalarProperty Name="CompanyPromise" ColumnName="CompanyPromise" />
+                <ScalarProperty Name="BusinessRisk" ColumnName="BusinessRisk" />
+                <ScalarProperty Name="ePrimaryProduct" ColumnName="ePrimaryProduct" />
+                <ScalarProperty Name="eRegistedOffice" ColumnName="eRegistedOffice" />
+                <ScalarProperty Name="eDistrictID" ColumnName="eDistrictID" />
+                <ScalarProperty Name="eCityID" ColumnName="eCityID" />
+                <ScalarProperty Name="eHistoryDev" ColumnName="eHistoryDev" />
+                <ScalarProperty Name="eBusinessStrategies" ColumnName="eBusinessStrategies" />
+                <ScalarProperty Name="eKeyDevelopments" ColumnName="eKeyDevelopments" />
+                <ScalarProperty Name="ePosCompany" ColumnName="ePosCompany" />
+                <ScalarProperty Name="eCompanyProfile" ColumnName="eCompanyProfile" />
+                <ScalarProperty Name="eLargeInvestProject" ColumnName="eLargeInvestProject" />
+                <ScalarProperty Name="eCompanyPromise" ColumnName="eCompanyPromise" />
+                <ScalarProperty Name="eBusinessRisk" ColumnName="eBusinessRisk" />
+                <ScalarProperty Name="freefloat" ColumnName="freefloat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stox_tb_Ratio">
+            <EntityTypeMapping TypeName="StoxDataModel.stox_tb_Ratio">
+              <MappingFragment StoreEntitySet="stox_tb_Ratio">
+                <ScalarProperty Name="F5_176" ColumnName="F5_176" />
+                <ScalarProperty Name="F5_175" ColumnName="F5_175" />
+                <ScalarProperty Name="F5_174" ColumnName="F5_174" />
+                <ScalarProperty Name="F5_173" ColumnName="F5_173" />
+                <ScalarProperty Name="F5_172" ColumnName="F5_172" />
+                <ScalarProperty Name="F5_171" ColumnName="F5_171" />
+                <ScalarProperty Name="F5_170" ColumnName="F5_170" />
+                <ScalarProperty Name="F5_169" ColumnName="F5_169" />
+                <ScalarProperty Name="F5_168" ColumnName="F5_168" />
+                <ScalarProperty Name="F5_167" ColumnName="F5_167" />
+                <ScalarProperty Name="F5_166" ColumnName="F5_166" />
+                <ScalarProperty Name="F5_165" ColumnName="F5_165" />
+                <ScalarProperty Name="F5_164" ColumnName="F5_164" />
+                <ScalarProperty Name="F5_163" ColumnName="F5_163" />
+                <ScalarProperty Name="F5_162" ColumnName="F5_162" />
+                <ScalarProperty Name="F5_161" ColumnName="F5_161" />
+                <ScalarProperty Name="F5_160" ColumnName="F5_160" />
+                <ScalarProperty Name="F5_159" ColumnName="F5_159" />
+                <ScalarProperty Name="F5_158" ColumnName="F5_158" />
+                <ScalarProperty Name="F5_157" ColumnName="F5_157" />
+                <ScalarProperty Name="F5_156" ColumnName="F5_156" />
+                <ScalarProperty Name="F5_155" ColumnName="F5_155" />
+                <ScalarProperty Name="F5_154" ColumnName="F5_154" />
+                <ScalarProperty Name="F5_153" ColumnName="F5_153" />
+                <ScalarProperty Name="F5_152" ColumnName="F5_152" />
+                <ScalarProperty Name="F5_151" ColumnName="F5_151" />
+                <ScalarProperty Name="F5_150" ColumnName="F5_150" />
+                <ScalarProperty Name="F5_149" ColumnName="F5_149" />
+                <ScalarProperty Name="F5_148" ColumnName="F5_148" />
+                <ScalarProperty Name="F5_147" ColumnName="F5_147" />
+                <ScalarProperty Name="F5_146" ColumnName="F5_146" />
+                <ScalarProperty Name="F5_145" ColumnName="F5_145" />
+                <ScalarProperty Name="F5_144" ColumnName="F5_144" />
+                <ScalarProperty Name="F5_143" ColumnName="F5_143" />
+                <ScalarProperty Name="F5_142" ColumnName="F5_142" />
+                <ScalarProperty Name="F5_141" ColumnName="F5_141" />
+                <ScalarProperty Name="F5_140" ColumnName="F5_140" />
+                <ScalarProperty Name="F5_139" ColumnName="F5_139" />
+                <ScalarProperty Name="F5_138" ColumnName="F5_138" />
+                <ScalarProperty Name="F5_137" ColumnName="F5_137" />
+                <ScalarProperty Name="F5_136" ColumnName="F5_136" />
+                <ScalarProperty Name="F5_135" ColumnName="F5_135" />
+                <ScalarProperty Name="F5_134" ColumnName="F5_134" />
+                <ScalarProperty Name="F5_133" ColumnName="F5_133" />
+                <ScalarProperty Name="F5_132" ColumnName="F5_132" />
+                <ScalarProperty Name="F5_131" ColumnName="F5_131" />
+                <ScalarProperty Name="F5_130" ColumnName="F5_130" />
+                <ScalarProperty Name="F5_129" ColumnName="F5_129" />
+                <ScalarProperty Name="F5_128" ColumnName="F5_128" />
+                <ScalarProperty Name="F5_127" ColumnName="F5_127" />
+                <ScalarProperty Name="F5_126" ColumnName="F5_126" />
+                <ScalarProperty Name="F5_125" ColumnName="F5_125" />
+                <ScalarProperty Name="F5_124" ColumnName="F5_124" />
+                <ScalarProperty Name="F5_123" ColumnName="F5_123" />
+                <ScalarProperty Name="F5_122" ColumnName="F5_122" />
+                <ScalarProperty Name="F5_121" ColumnName="F5_121" />
+                <ScalarProperty Name="F5_120" ColumnName="F5_120" />
+                <ScalarProperty Name="F5_119" ColumnName="F5_119" />
+                <ScalarProperty Name="F5_118" ColumnName="F5_118" />
+                <ScalarProperty Name="F5_117" ColumnName="F5_117" />
+                <ScalarProperty Name="F5_116" ColumnName="F5_116" />
+                <ScalarProperty Name="F5_115" ColumnName="F5_115" />
+                <ScalarProperty Name="F5_114" ColumnName="F5_114" />
+                <ScalarProperty Name="F5_113" ColumnName="F5_113" />
+                <ScalarProperty Name="F5_112" ColumnName="F5_112" />
+                <ScalarProperty Name="F5_111" ColumnName="F5_111" />
+                <ScalarProperty Name="F5_110" ColumnName="F5_110" />
+                <ScalarProperty Name="F5_109" ColumnName="F5_109" />
+                <ScalarProperty Name="F5_108" ColumnName="F5_108" />
+                <ScalarProperty Name="F5_107" ColumnName="F5_107" />
+                <ScalarProperty Name="F5_106" ColumnName="F5_106" />
+                <ScalarProperty Name="F5_38b" ColumnName="F5_38b" />
+                <ScalarProperty Name="F5_15b" ColumnName="F5_15b" />
+                <ScalarProperty Name="F5_70a" ColumnName="F5_70a" />
+                <ScalarProperty Name="F5_69a" ColumnName="F5_69a" />
+                <ScalarProperty Name="F5_68a" ColumnName="F5_68a" />
+                <ScalarProperty Name="F5_67a" ColumnName="F5_67a" />
+                <ScalarProperty Name="F5_66a" ColumnName="F5_66a" />
+                <ScalarProperty Name="F5_65a" ColumnName="F5_65a" />
+                <ScalarProperty Name="F5_64a" ColumnName="F5_64a" />
+                <ScalarProperty Name="F5_63a" ColumnName="F5_63a" />
+                <ScalarProperty Name="F5_62a" ColumnName="F5_62a" />
+                <ScalarProperty Name="F5_61a" ColumnName="F5_61a" />
+                <ScalarProperty Name="F5_1b" ColumnName="F5_1b" />
+                <ScalarProperty Name="F5_105" ColumnName="F5_105" />
+                <ScalarProperty Name="F5_104" ColumnName="F5_104" />
+                <ScalarProperty Name="F5_103" ColumnName="F5_103" />
+                <ScalarProperty Name="F5_102" ColumnName="F5_102" />
+                <ScalarProperty Name="F5_101" ColumnName="F5_101" />
+                <ScalarProperty Name="F5_100" ColumnName="F5_100" />
+                <ScalarProperty Name="F5_1a" ColumnName="F5_1a" />
+                <ScalarProperty Name="F5_99" ColumnName="F5_99" />
+                <ScalarProperty Name="F5_98" ColumnName="F5_98" />
+                <ScalarProperty Name="F5_97" ColumnName="F5_97" />
+                <ScalarProperty Name="F5_96" ColumnName="F5_96" />
+                <ScalarProperty Name="F5_95" ColumnName="F5_95" />
+                <ScalarProperty Name="F5_94" ColumnName="F5_94" />
+                <ScalarProperty Name="F5_93" ColumnName="F5_93" />
+                <ScalarProperty Name="F5_92" ColumnName="F5_92" />
+                <ScalarProperty Name="F5_91" ColumnName="F5_91" />
+                <ScalarProperty Name="F5_90" ColumnName="F5_90" />
+                <ScalarProperty Name="F5_43b" ColumnName="F5_43b" />
+                <ScalarProperty Name="F5_88" ColumnName="F5_88" />
+                <ScalarProperty Name="F5_87" ColumnName="F5_87" />
+                <ScalarProperty Name="F5_86" ColumnName="F5_86" />
+                <ScalarProperty Name="F5_85" ColumnName="F5_85" />
+                <ScalarProperty Name="F5_84" ColumnName="F5_84" />
+                <ScalarProperty Name="F5_83" ColumnName="F5_83" />
+                <ScalarProperty Name="F5_82" ColumnName="F5_82" />
+                <ScalarProperty Name="F5_81" ColumnName="F5_81" />
+                <ScalarProperty Name="F5_80" ColumnName="F5_80" />
+                <ScalarProperty Name="F5_79" ColumnName="F5_79" />
+                <ScalarProperty Name="F5_78" ColumnName="F5_78" />
+                <ScalarProperty Name="F5_77" ColumnName="F5_77" />
+                <ScalarProperty Name="F5_76" ColumnName="F5_76" />
+                <ScalarProperty Name="F5_75" ColumnName="F5_75" />
+                <ScalarProperty Name="F5_74" ColumnName="F5_74" />
+                <ScalarProperty Name="F5_73" ColumnName="F5_73" />
+                <ScalarProperty Name="F5_72" ColumnName="F5_72" />
+                <ScalarProperty Name="F5_71" ColumnName="F5_71" />
+                <ScalarProperty Name="F5_70" ColumnName="F5_70" />
+                <ScalarProperty Name="F5_69" ColumnName="F5_69" />
+                <ScalarProperty Name="F5_68" ColumnName="F5_68" />
+                <ScalarProperty Name="F5_67" ColumnName="F5_67" />
+                <ScalarProperty Name="F5_66" ColumnName="F5_66" />
+                <ScalarProperty Name="F5_65" ColumnName="F5_65" />
+                <ScalarProperty Name="F5_64" ColumnName="F5_64" />
+                <ScalarProperty Name="F5_63" ColumnName="F5_63" />
+                <ScalarProperty Name="F5_62" ColumnName="F5_62" />
+                <ScalarProperty Name="F5_61" ColumnName="F5_61" />
+                <ScalarProperty Name="F5_60" ColumnName="F5_60" />
+                <ScalarProperty Name="F5_59" ColumnName="F5_59" />
+                <ScalarProperty Name="F5_58" ColumnName="F5_58" />
+                <ScalarProperty Name="F5_57" ColumnName="F5_57" />
+                <ScalarProperty Name="F5_56" ColumnName="F5_56" />
+                <ScalarProperty Name="F5_55" ColumnName="F5_55" />
+                <ScalarProperty Name="F5_54" ColumnName="F5_54" />
+                <ScalarProperty Name="F5_53" ColumnName="F5_53" />
+                <ScalarProperty Name="F5_52" ColumnName="F5_52" />
+                <ScalarProperty Name="F5_51" ColumnName="F5_51" />
+                <ScalarProperty Name="F5_50" ColumnName="F5_50" />
+                <ScalarProperty Name="F5_49" ColumnName="F5_49" />
+                <ScalarProperty Name="F5_48" ColumnName="F5_48" />
+                <ScalarProperty Name="F5_47" ColumnName="F5_47" />
+                <ScalarProperty Name="F5_46" ColumnName="F5_46" />
+                <ScalarProperty Name="F5_45" ColumnName="F5_45" />
+                <ScalarProperty Name="F5_44" ColumnName="F5_44" />
+                <ScalarProperty Name="F5_43" ColumnName="F5_43" />
+                <ScalarProperty Name="F5_42" ColumnName="F5_42" />
+                <ScalarProperty Name="F5_41" ColumnName="F5_41" />
+                <ScalarProperty Name="F5_40" ColumnName="F5_40" />
+                <ScalarProperty Name="F5_39" ColumnName="F5_39" />
+                <ScalarProperty Name="F5_38" ColumnName="F5_38" />
+                <ScalarProperty Name="F5_37" ColumnName="F5_37" />
+                <ScalarProperty Name="F5_36" ColumnName="F5_36" />
+                <ScalarProperty Name="F5_35" ColumnName="F5_35" />
+                <ScalarProperty Name="F5_34" ColumnName="F5_34" />
+                <ScalarProperty Name="F5_33" ColumnName="F5_33" />
+                <ScalarProperty Name="F5_32" ColumnName="F5_32" />
+                <ScalarProperty Name="F5_31" ColumnName="F5_31" />
+                <ScalarProperty Name="F5_30" ColumnName="F5_30" />
+                <ScalarProperty Name="F5_29" ColumnName="F5_29" />
+                <ScalarProperty Name="F5_28" ColumnName="F5_28" />
+                <ScalarProperty Name="F5_27" ColumnName="F5_27" />
+                <ScalarProperty Name="F5_26" ColumnName="F5_26" />
+                <ScalarProperty Name="F5_25" ColumnName="F5_25" />
+                <ScalarProperty Name="F5_24" ColumnName="F5_24" />
+                <ScalarProperty Name="F5_23" ColumnName="F5_23" />
+                <ScalarProperty Name="F5_22" ColumnName="F5_22" />
+                <ScalarProperty Name="F5_21" ColumnName="F5_21" />
+                <ScalarProperty Name="F5_20" ColumnName="F5_20" />
+                <ScalarProperty Name="F5_19" ColumnName="F5_19" />
+                <ScalarProperty Name="F5_18" ColumnName="F5_18" />
+                <ScalarProperty Name="F5_17" ColumnName="F5_17" />
+                <ScalarProperty Name="F5_16" ColumnName="F5_16" />
+                <ScalarProperty Name="F5_15" ColumnName="F5_15" />
+                <ScalarProperty Name="F5_14" ColumnName="F5_14" />
+                <ScalarProperty Name="F5_13" ColumnName="F5_13" />
+                <ScalarProperty Name="F5_12" ColumnName="F5_12" />
+                <ScalarProperty Name="F5_11" ColumnName="F5_11" />
+                <ScalarProperty Name="F5_10" ColumnName="F5_10" />
+                <ScalarProperty Name="F5_9" ColumnName="F5_9" />
+                <ScalarProperty Name="F5_8" ColumnName="F5_8" />
+                <ScalarProperty Name="F5_7" ColumnName="F5_7" />
+                <ScalarProperty Name="F5_6" ColumnName="F5_6" />
+                <ScalarProperty Name="F5_5" ColumnName="F5_5" />
+                <ScalarProperty Name="F5_4" ColumnName="F5_4" />
+                <ScalarProperty Name="F5_3" ColumnName="F5_3" />
+                <ScalarProperty Name="F5_2" ColumnName="F5_2" />
+                <ScalarProperty Name="F5_1" ColumnName="F5_1" />
+                <ScalarProperty Name="Ebitda" ColumnName="Ebitda" />
+                <ScalarProperty Name="Ebit" ColumnName="Ebit" />
+                <ScalarProperty Name="Truot4Quy" ColumnName="Truot4Quy" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="YearReport" ColumnName="YearReport" />
+                <ScalarProperty Name="YearReport_Cal" ColumnName="YearReport_Cal" />
+                <ScalarProperty Name="LengthReport_Cal" ColumnName="LengthReport_Cal" />
+                <ScalarProperty Name="LengthReport" ColumnName="LengthReport" />
+                <ScalarProperty Name="Ticker" ColumnName="Ticker" />
+                <ScalarProperty Name="BankCompany" ColumnName="BankCompany" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stox_tb_HOSE_Trading">
+            <EntityTypeMapping TypeName="StoxDataModel.stox_tb_HOSE_Trading">
+              <MappingFragment StoreEntitySet="stox_tb_HOSE_Trading">
+                <ScalarProperty Name="OpenPrice_Adjusted" ColumnName="OpenPrice_Adjusted" />
+                <ScalarProperty Name="GTGD_ThoaThuan" ColumnName="GTGD_ThoaThuan" />
+                <ScalarProperty Name="KLGD_ThoaThuan" ColumnName="KLGD_ThoaThuan" />
+                <ScalarProperty Name="Lowest_Adjusted" ColumnName="Lowest_Adjusted" />
+                <ScalarProperty Name="Highest_Adjusted" ColumnName="Highest_Adjusted" />
+                <ScalarProperty Name="Rate_Adjusted" ColumnName="Rate_Adjusted" />
+                <ScalarProperty Name="ClosePrice_Adjusted" ColumnName="ClosePrice_Adjusted" />
+                <ScalarProperty Name="ChangePrice" ColumnName="ChangePrice" />
+                <ScalarProperty Name="BuyQtty1" ColumnName="BuyQtty1" />
+                <ScalarProperty Name="BuyQtty2" ColumnName="BuyQtty2" />
+                <ScalarProperty Name="BuyQtty3" ColumnName="BuyQtty3" />
+                <ScalarProperty Name="SellQtty1" ColumnName="SellQtty1" />
+                <ScalarProperty Name="SellQtty2" ColumnName="SellQtty2" />
+                <ScalarProperty Name="SellQtty3" ColumnName="SellQtty3" />
+                <ScalarProperty Name="BuyPrice1" ColumnName="BuyPrice1" />
+                <ScalarProperty Name="BuyPrice2" ColumnName="BuyPrice2" />
+                <ScalarProperty Name="BuyPrice3" ColumnName="BuyPrice3" />
+                <ScalarProperty Name="SellPrice1" ColumnName="SellPrice1" />
+                <ScalarProperty Name="SellPrice2" ColumnName="SellPrice2" />
+                <ScalarProperty Name="SellPrice3" ColumnName="SellPrice3" />
+                <ScalarProperty Name="Room" ColumnName="Room" />
+                <ScalarProperty Name="Other_room" ColumnName="Other_room" />
+                <ScalarProperty Name="MatchVolume2" ColumnName="MatchVolume2" />
+                <ScalarProperty Name="Match2" ColumnName="Match2" />
+                <ScalarProperty Name="MatchVolume1" ColumnName="MatchVolume1" />
+                <ScalarProperty Name="Match1" ColumnName="Match1" />
+                <ScalarProperty Name="TotalRoom" ColumnName="TotalRoom" />
+                <ScalarProperty Name="CurrentRoom" ColumnName="CurrentRoom" />
+                <ScalarProperty Name="DateReport" ColumnName="DateReport" />
+                <ScalarProperty Name="Best3OfferVolume" ColumnName="Best3OfferVolume" />
+                <ScalarProperty Name="Best3Offer" ColumnName="Best3Offer" />
+                <ScalarProperty Name="Best2OfferVolume" ColumnName="Best2OfferVolume" />
+                <ScalarProperty Name="Best2Offer" ColumnName="Best2Offer" />
+                <ScalarProperty Name="Best1OfferVolume" ColumnName="Best1OfferVolume" />
+                <ScalarProperty Name="Best1Offer" ColumnName="Best1Offer" />
+                <ScalarProperty Name="Best3BidVolume" ColumnName="Best3BidVolume" />
+                <ScalarProperty Name="Best3Bid" ColumnName="Best3Bid" />
+                <ScalarProperty Name="Best2BidVolume" ColumnName="Best2BidVolume" />
+                <ScalarProperty Name="Best2Bid" ColumnName="Best2Bid" />
+                <ScalarProperty Name="Best1BidVolume" ColumnName="Best1BidVolume" />
+                <ScalarProperty Name="Best1Bid" ColumnName="Best1Bid" />
+                <ScalarProperty Name="OddVal" ColumnName="OddVal" />
+                <ScalarProperty Name="OddVol" ColumnName="OddVol" />
+                <ScalarProperty Name="OddDeal" ColumnName="OddDeal" />
+                <ScalarProperty Name="BigVal" ColumnName="BigVal" />
+                <ScalarProperty Name="BigVol" ColumnName="BigVol" />
+                <ScalarProperty Name="BigDeal" ColumnName="BigDeal" />
+                <ScalarProperty Name="AccumulateDeal" ColumnName="AccumulateDeal" />
+                <ScalarProperty Name="TotalValue" ColumnName="TotalValue" />
+                <ScalarProperty Name="Totalshare" ColumnName="Totalshare" />
+                <ScalarProperty Name="Lowest" ColumnName="Lowest" />
+                <ScalarProperty Name="Highest" ColumnName="Highest" />
+                <ScalarProperty Name="LastVal" ColumnName="LastVal" />
+                <ScalarProperty Name="LastVol" ColumnName="LastVol" />
+                <ScalarProperty Name="Last" ColumnName="Last" />
+                <ScalarProperty Name="OpenPrice" ColumnName="OpenPrice" />
+                <ScalarProperty Name="ProjectOpen" ColumnName="ProjectOpen" />
+                <ScalarProperty Name="PriorCloseDate" ColumnName="PriorCloseDate" />
+                <ScalarProperty Name="PriorClosePrice" ColumnName="PriorClosePrice" />
+                <ScalarProperty Name="SDCFlag" ColumnName="SDCFlag" />
+                <ScalarProperty Name="ParValue" ColumnName="ParValue" />
+                <ScalarProperty Name="AvrPrice" ColumnName="AvrPrice" />
+                <ScalarProperty Name="MatureDate" ColumnName="MatureDate" />
+                <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+                <ScalarProperty Name="CouponRate" ColumnName="CouponRate" />
+                <ScalarProperty Name="ClientIDRequest" ColumnName="ClientIDRequest" />
+                <ScalarProperty Name="Notice" ColumnName="Notice" />
+                <ScalarProperty Name="Meeting" ColumnName="Meeting" />
+                <ScalarProperty Name="Benefit" ColumnName="Benefit" />
+                <ScalarProperty Name="Split" ColumnName="Split" />
+                <ScalarProperty Name="HaltResumeFlag" ColumnName="HaltResumeFlag" />
+                <ScalarProperty Name="Delist" ColumnName="Delist" />
+                <ScalarProperty Name="Suspension" ColumnName="Suspension" />
+                <ScalarProperty Name="Designated" ColumnName="Designated" />
+                <ScalarProperty Name="SectorNo" ColumnName="SectorNo" />
+                <ScalarProperty Name="SecurityName" ColumnName="SecurityName" />
+                <ScalarProperty Name="BigLotValue" ColumnName="BigLotValue" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="Ceiling" ColumnName="Ceiling" />
+                <ScalarProperty Name="StockType" ColumnName="StockType" />
+                <ScalarProperty Name="StockSymbol" ColumnName="StockSymbol" />
+                <ScalarProperty Name="StockNo" ColumnName="StockNo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stox_tb_StocksInfo">
+            <EntityTypeMapping TypeName="StoxDataModel.stox_tb_StocksInfo">
+              <MappingFragment StoreEntitySet="stox_tb_StocksInfo">
+                <ScalarProperty Name="OpenPrice_Adjusted" ColumnName="OpenPrice_Adjusted" />
+                <ScalarProperty Name="Lowest_Adjusted" ColumnName="Lowest_Adjusted" />
+                <ScalarProperty Name="Highest_Adjusted" ColumnName="Highest_Adjusted" />
+                <ScalarProperty Name="Rate_Adjusted" ColumnName="Rate_Adjusted" />
+                <ScalarProperty Name="ClosePrice_Adjusted" ColumnName="ClosePrice_Adjusted" />
+                <ScalarProperty Name="dateReport" ColumnName="dateReport" />
+                <ScalarProperty Name="pt_yieldmat" ColumnName="pt_yieldmat" />
+                <ScalarProperty Name="remain_foreign_qtty" ColumnName="remain_foreign_qtty" />
+                <ScalarProperty Name="sell_foreign_value" ColumnName="sell_foreign_value" />
+                <ScalarProperty Name="sell_foreign_qtty" ColumnName="sell_foreign_qtty" />
+                <ScalarProperty Name="buy_foreign_value" ColumnName="buy_foreign_value" />
+                <ScalarProperty Name="buy_foreign_qtty" ColumnName="buy_foreign_qtty" />
+                <ScalarProperty Name="total_trading_value" ColumnName="total_trading_value" />
+                <ScalarProperty Name="total_trading_qtty" ColumnName="total_trading_qtty" />
+                <ScalarProperty Name="total_sell_trading_value" ColumnName="total_sell_trading_value" />
+                <ScalarProperty Name="sell_count" ColumnName="sell_count" />
+                <ScalarProperty Name="total_sell_trading_qtty" ColumnName="total_sell_trading_qtty" />
+                <ScalarProperty Name="total_buy_trading_value" ColumnName="total_buy_trading_value" />
+                <ScalarProperty Name="buy_count" ColumnName="buy_count" />
+                <ScalarProperty Name="total_buy_trading_qtty" ColumnName="total_buy_trading_qtty" />
+                <ScalarProperty Name="pt_total_traded_value" ColumnName="pt_total_traded_value" />
+                <ScalarProperty Name="pt_total_traded_qtty" ColumnName="pt_total_traded_qtty" />
+                <ScalarProperty Name="pt_match_price" ColumnName="pt_match_price" />
+                <ScalarProperty Name="pt_match_qtty" ColumnName="pt_match_qtty" />
+                <ScalarProperty Name="nm_total_traded_value" ColumnName="nm_total_traded_value" />
+                <ScalarProperty Name="nm_total_traded_qtty" ColumnName="nm_total_traded_qtty" />
+                <ScalarProperty Name="prev_prior_close_price" ColumnName="prev_prior_close_price" />
+                <ScalarProperty Name="yieldmat" ColumnName="yieldmat" />
+                <ScalarProperty Name="prev_prior_price" ColumnName="prev_prior_price" />
+                <ScalarProperty Name="index_price" ColumnName="index_price" />
+                <ScalarProperty Name="average_price" ColumnName="average_price" />
+                <ScalarProperty Name="bid_count" ColumnName="bid_count" />
+                <ScalarProperty Name="offer_count" ColumnName="offer_count" />
+                <ScalarProperty Name="date_no" ColumnName="date_no" />
+                <ScalarProperty Name="is_determinecl" ColumnName="is_determinecl" />
+                <ScalarProperty Name="is_calcindex" ColumnName="is_calcindex" />
+                <ScalarProperty Name="match_value" ColumnName="match_value" />
+                <ScalarProperty Name="floor_code" ColumnName="floor_code" />
+                <ScalarProperty Name="parvalue" ColumnName="parvalue" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="modified_by" ColumnName="modified_by" />
+                <ScalarProperty Name="date_modified" ColumnName="date_modified" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+                <ScalarProperty Name="match_qtty" ColumnName="match_qtty" />
+                <ScalarProperty Name="match_price" ColumnName="match_price" />
+                <ScalarProperty Name="prior_close_price" ColumnName="prior_close_price" />
+                <ScalarProperty Name="prior_price" ColumnName="prior_price" />
+                <ScalarProperty Name="best_bid_qtty" ColumnName="best_bid_qtty" />
+                <ScalarProperty Name="best_offer_qtty" ColumnName="best_offer_qtty" />
+                <ScalarProperty Name="total_bid_qtty" ColumnName="total_bid_qtty" />
+                <ScalarProperty Name="total_offer_qtty" ColumnName="total_offer_qtty" />
+                <ScalarProperty Name="floor_price" ColumnName="floor_price" />
+                <ScalarProperty Name="ceiling_price" ColumnName="ceiling_price" />
+                <ScalarProperty Name="best_bid_price" ColumnName="best_bid_price" />
+                <ScalarProperty Name="best_offer_price" ColumnName="best_offer_price" />
+                <ScalarProperty Name="lowest_price" ColumnName="lowest_price" />
+                <ScalarProperty Name="highest_price" ColumnName="highest_price" />
+                <ScalarProperty Name="current_qtty" ColumnName="current_qtty" />
+                <ScalarProperty Name="current_price" ColumnName="current_price" />
+                <ScalarProperty Name="close_price" ColumnName="close_price" />
+                <ScalarProperty Name="open_price" ColumnName="open_price" />
+                <ScalarProperty Name="basic_price" ColumnName="basic_price" />
+                <ScalarProperty Name="current_room" ColumnName="current_room" />
+                <ScalarProperty Name="total_room" ColumnName="total_room" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="divident_rate" ColumnName="divident_rate" />
+                <ScalarProperty Name="adjust_rate" ColumnName="adjust_rate" />
+                <ScalarProperty Name="reference_status" ColumnName="reference_status" />
+                <ScalarProperty Name="adjust_qtty" ColumnName="adjust_qtty" />
+                <ScalarProperty Name="listting_status" ColumnName="listting_status" />
+                <ScalarProperty Name="trading_unit" ColumnName="trading_unit" />
+                <ScalarProperty Name="total_listing_qtty" ColumnName="total_listing_qtty" />
+                <ScalarProperty Name="stock_type" ColumnName="stock_type" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="stock_id" ColumnName="stock_id" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="trading_date" ColumnName="trading_date" />
+                <ScalarProperty Name="stock_info_id" ColumnName="stock_info_id" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

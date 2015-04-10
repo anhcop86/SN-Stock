@@ -1,0 +1,78 @@
+﻿@*@model IEnumerable<PhimHang.Models.RecommendStock>*@
+@{
+    ViewBag.Title = "Danh sách khuyến nghị theo nhân viên";
+    Layout = "~/Views/Shared/_Layout_Main.cshtml";
+}
+@model PagedList.IPagedList<PhimHang.Models.RecommendStock>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+<h2>
+    Danh sách khuyến nghị theo nhân viên
+</h2>
+<div id="example_length" class="dataTables_length1">
+    <table class="form">
+        @using (Html.BeginForm("", "Broker", FormMethod.Get))
+        {
+            <tr>
+                
+                <td><b>Người khuyến nghị:</b></td>
+                <td>@Html.DropDownList("postBy", @ViewBag.listUserId as SelectList, String.Empty, new { @name = "select" })</td>                
+                <td><b>Khuyến nghị trong tháng:</b></td>
+                <td>@Html.DropDownList("monthReport", @ViewBag.monthReport as SelectList, new { @name = "select" })</td>
+
+                <td></td>
+                <td><input type="submit" value="Tìm kiếm" class="btn btn-blue"></td>
+
+            </tr>
+        }
+    </table>
+</div>
+<div id="mainContent">
+    <fieldset>
+        <div class="Table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ngày</th>
+                        <th>Mã</th>
+                        <th>Người khuyến nghị</th>
+                        <th>Loại</th>
+                        <th>Tổng bình luận</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.CreatedDate.ToString("dd/MM/yyyy")
+                            </td>
+                            <td style="font-weight: bold; color: #328AC5">
+                                @Html.DisplayFor(modelItem => item.StockCode)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserLogin.UserNameCopy)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TYPERecommend)
+                            </td>
+                            <td>
+                                @item.SumComment
+                            </td>
+                            <td><a style="color: #328AC5" href="/Recommendation/Detail?id=@item.ID">chi tiết</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <br />
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+            @Html.PagedListPager(Model,
+                                         page => Url.Action("Index", new { page, postBy = ViewBag.postBy, monthReport = ViewBag.monthReportV }))
+
+
+        </div>
+    </fieldset>
+</div>

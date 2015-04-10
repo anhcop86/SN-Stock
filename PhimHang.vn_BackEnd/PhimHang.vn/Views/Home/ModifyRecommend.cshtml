@@ -1,0 +1,113 @@
+﻿@*@model IEnumerable<PhimHang.Models.RecommendStock>*@
+@{
+    ViewBag.Title = "Xóa khuyến nghị";
+    Layout = "~/Views/Shared/_Layout_Main.cshtml";
+}
+@model PagedList.IPagedList<PhimHang.Models.RecommendStock>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+<h2>
+    Danh mục khuyến nghị mua & bán
+</h2>
+<div id="example_length" class="dataTables_length1">
+    <table class="form">
+        @using (Html.BeginForm("", "Home", FormMethod.Get))
+        {
+            <tr>
+                <td><b>Ngày:</b></td>
+                <td><input type="text" value="@ViewBag.datefilter" id="datetimepicker" name="dateFilter" /></td>
+                <td><b>Mã:</b></td>
+                <td>@Html.TextBox("stockCode", ViewBag.stockCode as string)</td>
+                <td><b>Người khuyến nghị:</b></td>
+                <td>@Html.DropDownList("postBy", @ViewBag.listUserId as SelectList, String.Empty, new { @name = "select" })</td>
+                <td><b>Loại:</b></td>
+                <td>@Html.DropDownList("recommentType", @ViewBag.listTypeRecomendation as SelectList, String.Empty, new { @name = "select" })</td>
+                <td></td>
+                <td><input type="submit" value="Tìm kiếm" class="btn btn-blue"></td>
+
+            </tr>
+        }
+    </table>
+</div>
+<div id="mainContent">
+    <fieldset>
+        <div class="Table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ngày</th>
+                        <th>Mã</th>
+                        <th>Người khuyến nghị</th>
+                        <th>Loại</th>
+                        <th>Tổng bình luận</th>
+                        <th>Chart</th>
+                        <th></th>
+                        <th>Xóa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.CreatedDate.ToString("dd/MM/yyyy")
+                            </td>
+                            <td style="font-weight: bold; color: #328AC5">
+                                <a href="/Ticker?stockCode=@item.StockCode&monthReport=@item.CreatedDate.Month">@item.StockCode</a>
+                            </td>
+                            <td>
+
+                                <a href="/Broker?postBy=@item.UserLogin.Id&monthReport=@item.CreatedDate.Month">@item.UserLogin.UserNameCopy</a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TYPERecommend)
+                            </td>
+                            <td>
+                                @item.SumComment
+                            </td>
+                            <td>
+
+                                @if (string.IsNullOrWhiteSpace(item.ImageUrl))
+                                {
+                                    @: NO
+                                }
+                                else
+                                {
+                                    @: YES
+                                }
+                            </td>
+                            <td><a style="color: #328AC5" href="/Recommendation/Detail?id=@item.ID">chi tiết</a></td>
+                            <td><a style="color: #328AC5" href="/Recommendation/Delete?id=@item.ID">X</a></td>                            
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <br />
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+            @Html.PagedListPager(Model,
+                                page => Url.Action("Index", new { page, postBy = ViewBag.postBy, recommentType = ViewBag.recommentType, stockCode = ViewBag.stockCode, dateFilter = ViewBag.datefilter }))
+
+
+        </div>
+    </fieldset>
+</div>
+
+<script type="text/javascript">
+    $().ready(function () {
+        $('#datetimepicker').datepicker({
+            dateFormat: 'dd/mm/yy',
+            buttonImage: '@Url.Content("~/Content/themes/calendar.gif")',
+            buttonImageOnly: true,
+            showOn: 'both',
+            //minDate: "0"
+
+
+        });
+    });
+</script>
+
+
+
+

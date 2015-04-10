@@ -1,0 +1,251 @@
+﻿
+@model PhimHang.Models.RecommendStock
+@{
+    ViewBag.Title = "Chi tiết khuyến nghị";
+    Layout = "~/Views/Shared/_Layout_Main.cshtml";
+}
+<script src="~/Scripts/jquery.timeago.js"></script>
+<h2>
+    Khuyến nghị @Model.TYPERecommend
+</h2>
+
+<div id="example_length" class="dataTables_length1">
+    <table class="form">
+        <tr>
+            <td class="col1"><label> Người khuyến nghị:</label></td>
+            <td class="col2">
+                <input type="text" id="grumble" name="StockCode" value="@Model.UserLogin.UserNameCopy" disabled />                
+                <label>Ngày:  @Model.CreatedModify.ToString("dd/MM/yyyy hh:mm:ss")</label>
+            </td>
+            <td class="col1" style="margin-left:30px"><label> PE: </label><label>@string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N2}", @ViewBag.PE)</label></td>
+            <td></td>
+            <td class="col1" style="margin-left:30px"><label> KLCPLH: </label><label>@string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N0}", @ViewBag.KLCPLH)</label></td>
+            <td></td>
+           
+        </tr>
+        <tr>
+            <td class="col1"><label> Mã cổ phiếu:</label></td>
+            <td class="col2">
+                <input type="text" id="grumble" name="StockCode" value="@Model.StockCode" disabled />
+            </td>
+            <td class="col1" style="margin-left:30px"><label> PB: </label><label>@string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N2}", @ViewBag.PB)</label></td>
+            <td></td>
+            <td class="col1" style="margin-left:30px"><label> KLNY: </label><label>@string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N0}", @ViewBag.KLNY)</label></td>
+            <td></td>
+           
+        </tr>
+        <tr>
+            <td class="col1"><label>Khuyến nghị:</label></td>
+            <td>
+                <input type="text" id="grumble" name="StockCode" value="@Model.TYPERecommend" disabled />
+            </td>
+            <td class="col1" style="margin-left:30px"><label> EPS: </label><label>@string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N0}", @ViewBag.EPS)</label></td>
+            <td></td>
+            <td class="col1" style="margin-left:30px"><label> KLBQ 10 phiên: </label><label>@string.Format(System.Globalization.CultureInfo.GetCultureInfo("en-US"), "{0,0:N0}", @ViewBag.BQ10Phien)</label></td>
+            <td></td>
+        </tr>
+        <tr>
+            @{
+                if (Model.TYPERecommend == "MUA")
+                {
+                    <td class="col1"><label> Vùng giá mua:</label></td>
+                }
+                else
+                {
+                    <td class="col1"><label> Vùng giá bán:</label></td>
+                }
+            }
+            <td class="col2">
+                <input type="text" id="grumble" name="StockCode" value="@Model.BuyPrice" disabled class="success" />
+            </td>
+            @{
+                if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
+                {
+                    <td>
+                        <div class="chartImage">
+                            <img src="@Model.ImageUrl?width=450&height=280&mode=crop" />
+                        </div>
+                    </td>
+                }
+            }
+          
+            
+        </tr>
+        @{
+            if (Model.TYPERecommend == "MUA")
+            {
+                <tr>
+                    <td class="col1"><label>Thời gian nắm giữ (ngày):</label></td>
+                    <td class="col2">
+                        <input type="text" id="grumble" name="StockCode" value="@Model.StockHoldingTime" disabled class="success" />
+                    </td>
+
+                   
+                </tr>
+
+                <tr>
+                    <td class="col1"><label>Giá bán mục tiêu:</label></td>
+                    <td class="col2">
+                        <input type="text" id="grumble" name="StockCode" value="@Model.TargetSell" disabled class="success" />
+                    </td>
+
+                  
+                </tr>
+            }
+        }
+        <tr>
+            <td class="col1" style="vertical-align: top;"><label>Chi tiết khuyến nghị:</label></td>
+            <td class="col2">
+                <textarea cols="5" disabled>@Model.Description</textarea>
+            </td>
+        </tr>
+    </table>
+    @*<input type="submit" value="Bình luận" class="btn btn-blue">*@
+</div>
+<br />
+<br />
+<!--Comment-->
+<div id="CommentForKoLoad">
+    <div class="bg-white">
+        <div class="status-box">
+            <div class="avatar-small">
+                <img src="@ViewBag.AvataEmage?width=28&height=28&mode=crop" class="img-rounded" alt="avatar">
+            </div>
+            <div class="input-status">
+
+                <div id="input-status-text" class="input-status-text">
+                    <textarea data-bind="value : newMessage, valueUpdate : 'afterkeydown' , limitCharacters : 140" name="status" rows="5" placeholder="Nhập vào ít nhất 6 ký tự để bình luận" id="status" title="Search"></textarea>
+                </div>
+                <div class="status-control">
+                    <div id="btnPhim" class="f-right">
+                        <span data-bind="text : count"></span>
+                        @*<a href="javascript:void(0)" class="button-phim" data-bind="click : addPost"><span>PHÍM</span></a>*@
+                        <input id="bntSubmitComment" type="button" style="cursor:pointer; float:right" class="btn btn-blue" value="Bình luận" data-bind="click : addReply,  enable: enablePhimHang " />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="list-status" data-bind="foreach : replys">
+            <!--list comment here location.href='/Symbol/Details/' +-->
+            <div class="list-item-status">
+                <div class="avata-genaral-size">
+                    <img class="img-rounded" alt="avatar" data-bind="attr: { src: ReplyByAvatar }">
+                </div>
+                <div class="list-item-detail">
+                    <div class="list-item-date" data-bind="text : ReplyDate"></div>
+                    <div class="list-item-username" data-bind="text : ReplyByName"></div>
+                    <div style="cursor:pointer" class="list-item-status-content" data-bind="html : ReplyMessage "></div>
+                    <div class="list-item-control">
+                        @*<a class="button"><i class="fa fa-comments"></i>1</a>
+                        <a style="cursor:pointer" class="button" data-bind="click : function() {  location.href='/PostDetail?postid='+ PostId +'&stock=' + StockPrimary }">Trả lời</a>
+                        <a class="button">Chia sẻ</a>
+                        <a class="button">Thích</a>*@
+                        <a class="button">Báo cáo vi phạm</a>
+                    </div>
+                </div>
+            </div>
+
+            <!--end list comment-->
+
+        </div>
+
+       
+    </div>
+</div>
+    <script type="text/javascript">
+        function getTimeAgo(varDate) {
+            if (varDate) {
+                return $.timeago(varDate);
+            }
+            else {
+                return '';
+            }
+        }
+        function Post(data) {
+            var self = this;
+            data = data || {};
+            self.ReplyId = data.ReplyId;
+            self.ReplyMessage = ko.observable(data.ReplyMessage || "");
+            self.ReplyByName = data.ReplyByName || "";
+            self.ReplyByAvatar = data.ReplyByAvatar || "";
+            self.ReplyDate = getTimeAgo(data.ReplyDate);
+
+           
+
+
+        }
+        function viewModel() {
+            var self = this;
+            self.replys = ko.observableArray();
+            self.newMessage = ko.observable('');
+            self.error = ko.observable();
+
+            // SignalR related
+            //self.newPosts = ko.observableArray();
+            // Reference the proxy for the hub.            
+
+            self.init = function () {
+                self.error(null);
+                //self.hub.server.joinRoom('@ViewBag.StockCode');
+                $.get('@Url.Action("GetCommentFromId", "Recommendation")',
+                {
+                    id: '@Model.ID'
+                }, function (data) {
+                    var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item); });
+                    $(mappedPosts).each(function (index, element) {
+                        self.replys.push(element);
+                    });
+                })
+            }
+
+
+            self.addReply = function () { // khi click nut tra loi
+                $('#bntSubmitComment').attr("disabled", true);
+                self.error(null);               
+                $.ajax({
+                    cache: false,
+                    type: "POST",
+                    url: '@Url.Action("AddNewComment", "Recommendation")',
+                    data: { "idkn": '@Model.ID', "messege": self.newMessage() },
+                    beforeSend: function (xhr) {
+                        //Add your image loader here
+                        $('.infoStox').html('<img src="/images/ajax-loader.gif" />');
+                    },
+                    success: function (data) {
+                        var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item); });
+                        $(mappedPosts).each(function (index, element) {
+                            self.replys.unshift(element);
+                        });
+                        self.newMessage('');
+                        //$('#bntSubmitComment').removeAttr("disabled");
+                    },
+
+                })
+
+            }
+
+            
+            self.count = ko.computed(function () {
+                var countNum = 140 - self.newMessage().length;
+                return countNum;
+            });
+
+
+            self.enablePhimHang = ko.computed(function () {
+                return self.newMessage().length <= 140 && self.newMessage().length >= 6;
+            });
+
+
+        }
+
+        ko.bindingHandlers.limitCharacters = {
+            update: function (element, valueAccessor, allBindingsAccessor, viewModel) {
+                element.value = element.value.substr(0, valueAccessor());
+                allBindingsAccessor().value(element.value.substr(0, valueAccessor()));
+            }
+        };
+        
+        var vmPost = new viewModel();
+        ko.applyBindings(vmPost, document.getElementById("CommentForKoLoad"));
+        vmPost.init();      
+    </script>

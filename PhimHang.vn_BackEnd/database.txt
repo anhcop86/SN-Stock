@@ -1,0 +1,37 @@
+CREATE TABLE RecommendStock(
+	[ID] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	[StockCode] [varchar](16) NOT NULL,
+	[TYPERecommend] [varchar](3) NOT NULL,
+	[BuyPrice] [numeric](18, 1) NULL,
+	[StockHoldingTime] int,
+	TargetSell [numeric](18, 1) NULL,
+	[Description] nvarchar(1024) NULL,
+	[CreatedDate] [datetime] NOT NULL,
+	[PostBy] int
+)
+
+CREATE TABLE [Comments](
+	[CommentsId] [bigint] IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	[Message] [nvarchar](256) NOT NULL,
+	[PostedBy] [int] NOT NULL,
+	[CommentBy] [int] NOT NULL,
+	[PostedDate] [datetime2](7) NOT NULL
+	)
+
+
+  ALTER TABLE [RecommendStock]
+  ADD CreatedModify datetime Not null
+
+ALTER TABLE [dbo].[RecommendStock]
+ADD SumComment int
+
+
+  ALTER TABLE [dbo].[RecommendStock]
+  ADD ImageUrl nvarchar(256)
+
+
+ALTER TABLE [dbo].[RecommendStock]
+DROP COLUMN [Description]
+
+ALTER TABLE [dbo].[RecommendStock]
+ADD [Description] nvarchar(max)

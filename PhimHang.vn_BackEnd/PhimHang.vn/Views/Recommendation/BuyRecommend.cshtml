@@ -1,0 +1,127 @@
+﻿@model PhimHang.Models.BuyRecommendModel
+@{
+    ViewBag.Title = "Khuyến nghị mua";
+    Layout = "~/Views/Shared/_Layout_Main.cshtml";
+}
+
+<h2>
+    Khuyến nghị MUA
+</h2>
+@using (Html.BeginForm("BuyRecommend", "Recommendation", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()    
+        <div id="example_length" class="dataTables_length1">
+            <table class="form">
+                <tr>
+                    <td class="col1"><label> Mã cổ phiếu:</label></td>
+                    <td class="col2">
+                        @Html.DropDownList("StockCode", ViewBag.listStockCode as SelectList, string.Empty, new { id = "selectStockCode" })
+                        @Html.ValidationMessageFor(model => model.StockCode)
+                    </td>                    
+                    
+                    <td class="col1" style="margin-left:30px"><label> PE: </label><label id="lbPE" class="infoStox"></label></td>
+                    <td></td>
+                    <td class="col1" style="margin-left:30px"><label> KLCPLH: </label><label id="lbKLCPLH" class="infoStox"></label></td>
+                    <td></td>
+                    
+                </tr>
+                <tr>
+                    <td class="col1"><label>Khuyến nghị:</label></td>
+                    <td>
+                        @Html.DropDownList("TYPERecommend", @ViewBag.listTypeRecomendation as SelectList, new { @name = "select", disabled = "disabled" })
+                    </td>
+                    <td class="col1" style="margin-left:30px"><label> PB: </label><label id="lbPB" class="infoStox"></label></td>
+                    <td></td>
+                    <td class="col1" style="margin-left:30px"><label> KLNY: </label><label id="lbKLNY" class="infoStox"></label></td>
+                    <td></td>
+                                    
+                </tr>
+                <tr>
+                    <td class="col1"><label> Vùng giá mua:</label></td>
+                    <td class="col2">
+                        @Html.TextBoxFor(model => model.BuyPrice, new { id = "grumble" })
+                        @Html.ValidationMessageFor(model => model.BuyPrice)
+                    </td>
+                   
+                    <td class="col1" style="margin-left:30px"><label> EPS: </label><label id="lbEPS" class="infoStox"></label></td>
+                    <td></td>
+                    <td class="col1" style="margin-left:30px"><label> KLBQ 10 phiên: </label><label id="lbBQ10Phien" class="infoStox"></label></td>
+                    <td></td>  
+                </tr>
+                <tr>
+                    <td class="col1"><label>Thời gian nắm giữ (ngày):</label></td>
+                    <td class="col2">
+                        @Html.TextBoxFor(model => model.StockHoldingTime, new { id = "grumble", type = "number" })
+                        @Html.ValidationMessageFor(model => model.StockHoldingTime)
+                    </td>
+
+                  
+                </tr>
+
+                <tr>
+                    <td class="col1"><label>Giá bán mục tiêu:</label></td>
+                    <td class="col2">
+                        @*<input type="text" id="grumble" />*@
+                        @Html.TextBoxFor(model => model.TargetSell, new { id = "grumble" })
+                        @Html.ValidationMessageFor(model => model.TargetSell)
+                    </td>
+
+                    @*<td class="col1"><label> PE:</label><label>12.3</label></td>
+                    <td></td>*@
+                </tr>
+                
+                <tr>
+                    <td class="col1" style="vertical-align: top;"><label>Chi tiết khuyến nghị:</label></td>
+                    <td class="col2">@*<textarea cols="5" style="width:400px;height:80px" ></textarea>*@
+                    @Html.TextAreaFor(model => model.Description, new { style = "width:400px;height:80px", cols = "5" })
+                        @Html.ValidationMessageFor(model => model.Description)
+                    
+                    </td>
+                                        
+                </tr>
+                <tr>
+                    <td class="col1"><label>Hình chart:</label></td>
+                    @*<td><input id="uploadchart" name="ChartImange" type="file"></td>*@
+                    <td>
+                        @Html.TextBoxFor(model => model.ChartImange, new { id = "grumble", type = "file" }) 
+                        @Html.ValidationMessageFor(model => model.ChartImange)
+                    </td>
+                </tr>
+            </table>
+            <input type="submit" value="Lưu" class="btn btn-blue">
+        </div>        
+}
+
+<script>
+    $(function () {
+        $('#selectStockCode').change(function () {
+            $.ajax({
+                cache: false,
+                type: "GET",
+                url: '@Url.Action("GetInfoStoxByAjax", "Recommendation")',
+                data: { "selectStockCode": $('#selectStockCode').val() },
+                beforeSend: function (xhr) {
+                    //Add your image loader here
+                    $('.infoStox').html('<img src="/images/ajax-loader.gif" />');
+                    
+                },
+                success: function (data) {
+                    $('.infoStox').html('');
+                    $('#lbKLCPLH').html(data.KLCPLH);
+                    $('#lbKLNY').html(data.KLNY);
+
+                    $('#lbPE').html(data.PE);
+                    $('#lbPB').html(data.PB);
+
+                    $('#lbEPS').html(data.EPS);
+                    $('#lbBQ10Phien').html(data.BQ10Phien);
+                    
+                },
+
+            })
+        });
+    });
+    $(window).load(function () {
+        $('#selectStockCode').change();
+    });
+</script>
