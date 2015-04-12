@@ -45,8 +45,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "","Home")
+            <input onclick="return confirm('Bạn muốn xóa bài phím này?');" type="submit" value="Delete" class="btn btn-default" /> |
+            <a style="color: #328AC5" href="@ViewBag.linkAbsolutePath">Back to list</a>
         </div>
     }
 </div>

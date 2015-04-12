@@ -64,7 +64,7 @@
                                 @Html.Raw(@item.Message)
                             </td>
                             
-                            <td><a style="color: #328AC5" href="/Post/detail?postid=@item.PostId">Detail</a></td>
+                            <td><a style="color: #328AC5" href="/Post/detail?postid=@item.PostId&returnUrl=@ViewBag.linkAbsolutePath">Detail</a></td>
                         </tr>
                     }
                 </tbody>

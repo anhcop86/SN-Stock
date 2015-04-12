@@ -26,6 +26,7 @@ namespace PhimHang.Controllers
         }
         public async Task<ActionResult> Detail(long postid, string returnUrl)
         {
+            ViewBag.linkAbsolutePath = Request.Url.Query.Replace("?postid=" + postid + "&returnUrl=", "");
             if (postid == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -40,8 +41,9 @@ namespace PhimHang.Controllers
 
         [HttpPost, ActionName("Detail")] // xóa phuong thuc post
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(long postid, string returnUrl)
+        public async Task<ActionResult> DeleteConfirmed(long postid)
         {
+            var url = Request.Url.Query.Replace("?postid=" + postid + "&returnUrl=", "");
             // remove notification 
             var notifications = await dbcungphim.NotificationMesseges.Where(n => n.PostId == postid).ToListAsync();
             dbcungphim.NotificationMesseges.RemoveRange(notifications);
@@ -58,7 +60,7 @@ namespace PhimHang.Controllers
             Post post = await dbcungphim.Posts.FindAsync(postid);
             dbcungphim.Posts.Remove(post);
             await dbcungphim.SaveChangesAsync();
-            return RedirectToLocal(returnUrl);
+            return RedirectToLocal(url);
             
         }
         private ActionResult RedirectToLocal(string returnUrl)

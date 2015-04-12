@@ -19,7 +19,7 @@ namespace PhimHang.Controllers
         private db_cungphim_FrontEnd dbcungphim = new db_cungphim_FrontEnd();
         public async Task<ActionResult> Index(int? page, int? postBy, string stockCode, string dateFilter)
         {
-            
+            ViewBag.linkAbsolutePath = Request.Url.PathAndQuery;
             if (postBy == null)
             {                
                 postBy = 0;
@@ -49,18 +49,17 @@ namespace PhimHang.Controllers
             ViewBag.datefilter = dateFilter;
             LoadInit();
 
-            var recommendstocks = await (from p in dbcungphim.Posts
+            var recommendstocks = from p in dbcungphim.Posts
                                   orderby p.PostedDate descending
                                   where (p.PostedBy == postBy || 0 == postBy)
                                   && ((p.PostedDate >= datetimeFilter && p.PostedDate < datetimeFilterTo) || new DateTime() == datetimeFilter)
-                                   && (p.StockPrimary.Contains(stockCode) || "ALL"  == stockCode)
-                                  select p).ToListAsync();
+                                   && (p.StockPrimary.Contains(stockCode) || "ALL" == stockCode)
+                                  select p;
             int pageSize = 20;
             int pageNumber = (page ?? 1);
 
-            return View(recommendstocks.ToPagedList(pageNumber, pageSize)); 
-
-            return View();
+            return View(Task.FromResult(recommendstocks.ToPagedList(pageNumber, pageSize)).Result); 
+         
         }
         public async Task<ActionResult> ModifyRecommend(int? page, int? postBy, string recommentType, string stockCode, string dateFilter)
         {

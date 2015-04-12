@@ -24,7 +24,7 @@ namespace TinyURL.Controllers
                                      select urllink.URLName).FirstOrDefaultAsync();
                 if (findURL != null)
                 {
-                    return Redirect(findURL); 
+                    return Redirect(findURL.Trim()); 
                 }
                 else
                 {
