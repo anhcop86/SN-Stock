@@ -49,7 +49,7 @@ namespace PhimHang.Controllers
             ViewBag.datefilter = dateFilter;
             LoadInit();
 
-            var recommendstocks = from p in dbcungphim.Posts
+            var posts = from p in dbcungphim.Posts
                                   orderby p.PostedDate descending
                                   where (p.PostedBy == postBy || 0 == postBy)
                                   && ((p.PostedDate >= datetimeFilter && p.PostedDate < datetimeFilterTo) || new DateTime() == datetimeFilter)
@@ -58,7 +58,7 @@ namespace PhimHang.Controllers
             int pageSize = 20;
             int pageNumber = (page ?? 1);
 
-            return View(Task.FromResult(recommendstocks.ToPagedList(pageNumber, pageSize)).Result); 
+            return View(Task.FromResult(posts.ToPagedList(pageNumber, pageSize)).Result); 
          
         }
         public async Task<ActionResult> ModifyRecommend(int? page, int? postBy, string recommentType, string stockCode, string dateFilter)

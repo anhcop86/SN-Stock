@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="db_cungphim_FrontEnd_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="db_cungphim_FrontEnd_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AspNetUsers">
           <Key>
             <PropertyRef Name="Id" />
@@ -191,6 +191,7 @@
           <Property Name="CVInfo" Type="nvarchar" MaxLength="512" />
           <Property Name="NumberExMarketYear" Type="tinyint" />
           <Property Name="PhilosophyMarket" Type="tinyint" />
+          <Property Name="BrokerVIP" Type="bit" />
         </EntityType>
         <EntityType Name="UserRelate">
           <Key>
@@ -534,8 +535,7 @@
             <End Role="UserViewLastest" EntitySet="UserViewLastest" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="db_cungphim_FrontEnd_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -759,6 +759,7 @@
           <NavigationProperty Name="UserRelates" Relationship="Self.FK_UserRelate_UserLogins" FromRole="UserLogins" ToRole="UserRelate" />
           <NavigationProperty Name="UserViewLastests" Relationship="Self.FK_UserViewLastest_UserLogins" FromRole="UserLogins" ToRole="UserViewLastest" />
           <NavigationProperty Name="UserViewLastests1" Relationship="Self.FK_UserViewLastest_UserLogins1" FromRole="UserLogins" ToRole="UserViewLastest" />
+          <Property Name="BrokerVIP" Type="Boolean" />
         </EntityType>
         <EntityType Name="UserRelate">
           <Key>
@@ -1294,6 +1295,7 @@
           <EntitySetMapping Name="UserLogins">
             <EntityTypeMapping TypeName="db_cungphim_FrontEnd_Model.UserLogin">
               <MappingFragment StoreEntitySet="UserLogins">
+                <ScalarProperty Name="BrokerVIP" ColumnName="BrokerVIP" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="KeyLogin" ColumnName="KeyLogin" />
                 <ScalarProperty Name="UserNameCopy" ColumnName="UserNameCopy" />

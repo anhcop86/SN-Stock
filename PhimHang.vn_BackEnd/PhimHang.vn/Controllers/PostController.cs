@@ -39,7 +39,7 @@ namespace PhimHang.Controllers
             return View(post);
         }
 
-        [HttpPost, ActionName("Detail")] // xóa phuong thuc post
+        [HttpPost, ActionName("Detail")] // xóa phuong thuc post, tạm thời để ten la detail
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(long postid)
         {

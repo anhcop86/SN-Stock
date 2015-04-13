@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "Danh mục tài khoản";
+    Layout = "~/Views/Shared/_Layout_Main.cshtml";
+}
+@using PagedList.Mvc;
+@model PagedList.IPagedList<PhimHang.Controllers.UserModel>
+
+<h2>
+    Danh mục tài khoản
+</h2>
+
+<div id="example_length" class="dataTables_length1">
+    <table class="form">
+        @using (Html.BeginForm("", "User", FormMethod.Get))
+        {
+            <tr>
+                
+                <td><b>Tên tài khoản:</b></td>
+                <td>@Html.TextBox("username", ViewBag.username as string)</td>
+                
+                <td></td>
+                <td><input type="submit" value="Tìm kiếm" class="btn btn-blue"></td>
+
+            </tr>
+        }
+    </table>
+</div>
+<div id="mainContent">
+    <fieldset>
+        <div class="Table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mã TK</th>
+                        <th>Tên</th>
+                        <th>Ngày tạo</th>
+                        <th>Update</th>                        
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td style="text-align:left">
+                                @item.UserName
+                            </td>
+                            <td style="text-align:left">
+                                @item.Name
+                            </td>
+                             
+                            <td>
+                                @item.CreatedDate.ToString("dd/MM/yyyy HH:mm:ss")
+                            </td>
+                            <td style="font-weight: bold; color: #328AC5">
+                                <a href="/User/update?userid=@item.Id&returnUrl=@ViewBag.linkAbsolutePath">detail</a>
+                            </td>
+                            
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <br />
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+            @Html.PagedListPager(Model,
+                                       page => Url.Action("Index", new { page, username = ViewBag.userName }))
+
+
+        </div>
+    </fieldset>
+</div>

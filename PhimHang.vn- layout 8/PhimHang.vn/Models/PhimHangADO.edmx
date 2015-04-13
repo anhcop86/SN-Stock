@@ -175,6 +175,7 @@
           <Property Name="CVInfo" Type="nvarchar" MaxLength="512" />
           <Property Name="NumberExMarketYear" Type="tinyint" />
           <Property Name="PhilosophyMarket" Type="tinyint" />
+          <Property Name="BrokerVIP" Type="bit" />
         </EntityType>
         <EntityType Name="UserRelate">
           <Key>
@@ -783,6 +784,7 @@
           <NavigationProperty Name="JobTitile" Relationship="PHDBContext.FK_JobTitile_JobTitle" FromRole="UserLogin" ToRole="JobTitile" />
           <NavigationProperty Name="Philosophy" Relationship="PHDBContext.FK_UserLogins_Philosophy" FromRole="UserLogin" ToRole="Philosophy" />
           <NavigationProperty Name="PostComments" Relationship="PHDBContext.FK_PostComments_UserLogins" FromRole="UserLogin" ToRole="PostComment" />
+          <Property Name="BrokerVIP" Type="Boolean" />
           </EntityType>
         <Association Name="FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id">
           <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="0..1" />
@@ -1207,6 +1209,7 @@
           <EntitySetMapping Name="UserLogins">
             <EntityTypeMapping TypeName="PHDBContext.UserLogin">
               <MappingFragment StoreEntitySet="UserLogins">
+                <ScalarProperty Name="BrokerVIP" ColumnName="BrokerVIP" />
                 <ScalarProperty Name="PhilosophyMarket" ColumnName="PhilosophyMarket" />
                 <ScalarProperty Name="NumberExMarketYear" ColumnName="NumberExMarketYear" />
                 <ScalarProperty Name="CVInfo" ColumnName="CVInfo" />

@@ -76,6 +76,7 @@ namespace PhimHang.Controllers
             #region random dan phim chuyen nghiem
             var DanPhimRandom = await (from u in db.UserLogins
                                        orderby Guid.NewGuid()
+                                       where u.BrokerVIP == true
                                        select new UserRandom
                                        {
                                            Avata = string.IsNullOrEmpty(u.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + u.AvataImage,
