@@ -1,0 +1,50 @@
+﻿@model PhimHang.Models.PinStock
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout_Main.cshtml";
+}
+
+<h2>Cập nhật PIN</h2>
+<div id="example_length" class="dataTables_length1">
+    <table class="form">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <tr>
+                <td class="col1"><label> Mã cổ phiếu:</label></td>
+                <td class="col2">
+                    <input type="text" id="grumble" name="stockCode" value="@Model.StockCodePin" />
+                </td>
+
+            </tr>
+            <tr>
+                <td class="col1" style="vertical-align: top;"><label>Chi tiết bài viết:</label></td>
+                <td class="col2">
+                    @Html.Raw(@Model.Post.Message)
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    <input onclick="return confirm('Cập nhật bài viết ưu tiên');" type="submit" value="Cập nhật" class="btn btn-default" /> |
+                    <a style="color: #328AC5" href="/TickerHot">Back/Cancel</a>
+                </td>
+            </tr>
+        }
+    </table>
+
+
+    @*<div class="form-actions no-color">
+            <input onclick="return confirm('Cập nhật tài khoản?');" type="submit" value="Cập nhật" class="btn btn-default" /> |
+            <a style="color: #328AC5" href="@ViewBag.linkAbsolutePath">Back/Cancel</a>
+        </div>*@
+
+</div>
+<br />
+<script>
+
+</script>
+
+

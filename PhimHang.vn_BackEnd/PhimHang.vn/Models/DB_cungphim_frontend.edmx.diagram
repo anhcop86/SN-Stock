@@ -12,7 +12,6 @@
         <EntityTypeShape EntityType="db_cungphim_FrontEnd_Model.JobTitile" Width="1.5" PointX="0.75" PointY="15.875" IsExpanded="true" />
         <EntityTypeShape EntityType="db_cungphim_FrontEnd_Model.NotificationMessege" Width="1.5" PointX="7.5" PointY="18.75" IsExpanded="true" />
         <EntityTypeShape EntityType="db_cungphim_FrontEnd_Model.Philosophy" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="db_cungphim_FrontEnd_Model.PinStock" Width="1.5" PointX="7.5" PointY="22.875" IsExpanded="true" />
         <EntityTypeShape EntityType="db_cungphim_FrontEnd_Model.PostComment" Width="1.5" PointX="10.5" PointY="19.125" IsExpanded="true" />
         <EntityTypeShape EntityType="db_cungphim_FrontEnd_Model.Post" Width="1.5" PointX="5.25" PointY="23.25" IsExpanded="true" />
         <EntityTypeShape EntityType="db_cungphim_FrontEnd_Model.Setting" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
@@ -33,7 +32,6 @@
         <AssociationConnector Association="db_cungphim_FrontEnd_Model.FK_UserPost_User" ManuallyRouted="false" />
         <AssociationConnector Association="db_cungphim_FrontEnd_Model.FK_UserPost_UserReciver" ManuallyRouted="false" />
         <AssociationConnector Association="db_cungphim_FrontEnd_Model.FK_UserLogins_Philosophy" ManuallyRouted="false" />
-        <AssociationConnector Association="db_cungphim_FrontEnd_Model.FK_Posts_PinStock" ManuallyRouted="false" />
         <AssociationConnector Association="db_cungphim_FrontEnd_Model.FK_PostComments_Posts" ManuallyRouted="false" />
         <AssociationConnector Association="db_cungphim_FrontEnd_Model.FK_PostComments_UserLogins" ManuallyRouted="false" />
         <AssociationConnector Association="db_cungphim_FrontEnd_Model.FK_Posts_UserLogins" ManuallyRouted="false" />
@@ -43,6 +41,8 @@
         <AssociationConnector Association="db_cungphim_FrontEnd_Model.FK_UserRelate_UserLogins" ManuallyRouted="false" />
         <AssociationConnector Association="db_cungphim_FrontEnd_Model.FK_UserViewLastest_UserLogins" ManuallyRouted="false" />
         <AssociationConnector Association="db_cungphim_FrontEnd_Model.FK_UserViewLastest_UserLogins1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="db_cungphim_FrontEnd_Model.PinStock" Width="1.5" PointX="7.5" PointY="29.25" />
+        <AssociationConnector Association="db_cungphim_FrontEnd_Model.FK_Posts_PinStock" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

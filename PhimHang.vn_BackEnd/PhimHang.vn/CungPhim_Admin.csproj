@@ -260,6 +260,7 @@
     <Compile Include="Controllers\BrokerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PinController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\PostTController.cs" />
     <Compile Include="Controllers\TickerController.cs" />
@@ -356,6 +357,7 @@
     <Compile Include="Models\TickerHot.cs">
       <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\TickerHotController.cs" />
     <Compile Include="Models\UserLogin.cs">
       <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
     </Compile>
@@ -1479,6 +1481,12 @@
     <Content Include="Views\PostT\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\update.cshtml" />
+    <Content Include="Views\TickerHot\Index.cshtml" />
+    <Content Include="Views\TickerHot\Detail.cshtml" />
+    <Content Include="Views\TickerHot\Delete.cshtml" />
+    <Content Include="Views\Pin\Index.cshtml" />
+    <Content Include="Views\Pin\Detail.cshtml" />
+    <Content Include="Views\Pin\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

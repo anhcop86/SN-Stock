@@ -17,10 +17,10 @@ namespace PhimHang.Models
         public Post()
         {
             this.NotificationMesseges = new HashSet<NotificationMessege>();
-            this.PinStocks = new HashSet<PinStock>();
             this.PostComments = new HashSet<PostComment>();
             this.StockRelates = new HashSet<StockRelate>();
             this.UserRelates = new HashSet<UserRelate>();
+            this.PinStocks = new HashSet<PinStock>();
         }
     
         public long PostId { get; set; }
@@ -36,10 +36,10 @@ namespace PhimHang.Models
         public int SumReply { get; set; }
     
         public virtual ICollection<NotificationMessege> NotificationMesseges { get; set; }
-        public virtual ICollection<PinStock> PinStocks { get; set; }
         public virtual ICollection<PostComment> PostComments { get; set; }
         public virtual UserLogin UserLogin { get; set; }
         public virtual ICollection<StockRelate> StockRelates { get; set; }
         public virtual ICollection<UserRelate> UserRelates { get; set; }
+        public virtual ICollection<PinStock> PinStocks { get; set; }
     }
 }

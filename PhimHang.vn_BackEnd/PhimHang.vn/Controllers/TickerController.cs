@@ -15,63 +15,45 @@ namespace PhimHang.Controllers
      [Authorize]
     public class TickerController : Controller
     {
-         private KNDTLocalConnection db = new KNDTLocalConnection();        
+         private db_cungphim_FrontEnd dbcungphim = new db_cungphim_FrontEnd();
         //
         // GET: /Ticker/
-         public ActionResult Index(int? page, string stockCode, int? monthReport)
+         public ActionResult Index(int? page, string stockCode, short? marketType)
          {
+             ViewBag.linkAbsolutePath = Request.Url.PathAndQuery;
              if (string.IsNullOrWhiteSpace(stockCode))
              {
                  stockCode = "ALL";
-             }
-             if (monthReport == null)
-             {
-                 monthReport = DateTime.Now.Month;
-             }
+             }            
              ViewBag.stockCode = stockCode;
-             ViewBag.monthReportV = monthReport;
+             if (marketType == null)
+             {
+                 marketType = -1;
+             }
+             ViewBag.marketType = marketType;
              LoadInit();
-             var recommendstocks = from r in db.RecommendStocks.Include(r => r.UserLogin)
-                                   orderby r.CreatedModify descending
-                                   where  (r.StockCode.Contains(stockCode) || "ALL"  == stockCode)
-                                   && (r.CreatedDate.Month == monthReport || 0 == monthReport)
-                                   && (r.CreatedDate.Year == DateTime.Now.Year)
+             var tickers = from r in dbcungphim.StockCodes
+                                   orderby r.Code ascending
+                                   where  (r.Code.Contains(stockCode) || "ALL"  == stockCode)
+                                   && (r.MarketType == marketType || -1 == marketType)
                                    select r;
-             int pageSize = 10;
+             int pageSize = 20;
              int pageNumber = (page ?? 1);
 
-             return View(recommendstocks.ToPagedList(pageNumber, pageSize));
+             return View(Task.FromResult(tickers.ToPagedList(pageNumber, pageSize)).Result); 
          }
          private async Task LoadInit()
          {
-             //var listStock = (from s in dbstox.stox_tb_Company.ToList()
-             //                 orderby s.Ticker
-             //                 where s.ExchangeID == 0
-             //                 select new
-             //                 {
-             //                     Ticker = s.Ticker
-             //                 }).ToList();
 
-             //ViewBag.listStock = new SelectList(listStock, "Ticker", "Ticker");
-
-             var monthReport = new List<dynamic>
+             var marketType = new List<dynamic>
              {
-                   new { Id = "0",Name = string.Empty  },
-                  new { Id = "1",Name = "1"  },
-                        new { Id = "2",Name = "2" },
-                        new { Id = "3",Name = "3"},
-                        new { Id = "4" ,Name = "4"},
-                        new { Id = "5" ,Name = "5"},
-                        new { Id = "6" ,Name = "6"},
-                        new { Id = "7" ,Name = "7"},
-                        new { Id = "8",Name = "8"},
-                        new { Id = "9" ,Name = "9"},
-                        new { Id = "10" ,Name = "10"},
-                        new { Id = "11" ,Name = "11"},
-                        new { Id = "12" ,Name = "12"}
+                  new { Id = "-1",Name = string.Empty  },
+                  new { Id = "0",Name = "VNI"  },
+                  new { Id = "1",Name = "HASTC Index" },
+                  new { Id = "2",Name = "OTC Index"},
+                  new { Id = "3" ,Name = "UPCOM Index"},                   
              };
-             ViewBag.monthReport = new SelectList(monthReport, "Id", "Name");
-
+             ViewBag.marketTypeList = new SelectList(marketType, "Id", "Name");
 
          }
 	}

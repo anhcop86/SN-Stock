@@ -1,0 +1,43 @@
+﻿@model IEnumerable<PhimHang.Models.TickerHot>
+@{
+    ViewBag.Title = "Danh mục cổ phiếu nóng";
+    Layout = "~/Views/Shared/_Layout_Main.cshtml";
+}
+
+<h2>Danh mục nóng</h2>
+
+
+<div id="mainContent">
+    <fieldset>
+        <div class="Table">
+            <table>
+                <thead>
+                    <tr>                        
+                        <th>Tên cổ phiếu</th>                        
+                        <th>Update</th>
+                        <th>Delete</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>                         
+                            <td style="text-align:left">
+                                @item.THName
+                            </td>                            
+                            <td style="font-weight: bold; color: #328AC5">
+                                <a href="/TickerHot/detail?tickerid=@item.Id">update</a>
+                            </td>
+                            <td style="font-weight: bold; color: #328AC5">
+                                <a href="/TickerHot/delete?tickerid=@item.Id">delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <br />
+           
+        </div>
+    </fieldset>
+</div>

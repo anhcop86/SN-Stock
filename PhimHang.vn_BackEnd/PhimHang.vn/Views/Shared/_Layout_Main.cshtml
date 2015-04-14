@@ -51,6 +51,10 @@
     <!--Phân trang-->
     <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
     <!---->
+    <!--Validate-->
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <!---->
 </head>
  <body>     
      @using Microsoft.AspNet.Identity
@@ -127,27 +131,27 @@
                              <a class="menuitem">Tài khoản</a>
                              <ul class="submenu">
                                  <li><a href="/User" >Danh sách User</a> </li> <!--class="active"-->
-                                 <li><a href="/Ticker">BC tổng hợp</a> </li>                                                                 
+                                 @*<li><a href="/User">BC tổng hợp</a> </li>*@                                                                 
                              </ul>
                          </li>
                          <li>
-                             <a class="menuitem">Bài phím</a>
+                             <a class="menuitem">Danh mục cổ phiếu</a>
                              <ul class="submenu">
-                                 <li><a href="/Broker">Danh sách bài phím</a> </li> <!--class="active"-->
-                                 <li><a href="/Ticker">BC tổng hợp</a> </li>
+                                 <li><a href="/Ticker">Danh sách</a> </li> <!--class="active"-->
+                                 @*<li><a href="/">BC tổng hợp</a> </li>*@
                              </ul>
                          </li>
                          <li>
                              <a class="menuitem">Cổ phiếu nóng</a>
                              <ul class="submenu">
-                                 <li><a href="/Broker">Danh sách bài phím</a> </li> <!--class="active"-->
-                                 <li><a href="/Ticker">BC tổng hợp</a> </li>
+                                 <li><a href="/TickerHot">Danh sách</a> </li> <!--class="active"-->
+                                 @*<li><a href="/Ticker">BC tổng hợp</a> </li>*@
                              </ul>
                          </li>
                          <li>
-                             <a class="menuitem">Ghim bài viết</a>
+                             <a class="menuitem">PIN bài viết</a>
                              <ul class="submenu">
-                                 <li><a href="/Broker">Danh mục PIN</a> </li> <!--class="active"-->                                 
+                                 <li><a href="/Pin">Danh mục PIN</a> </li> <!--class="active"-->                                 
                              </ul>
                          </li>                       
                          

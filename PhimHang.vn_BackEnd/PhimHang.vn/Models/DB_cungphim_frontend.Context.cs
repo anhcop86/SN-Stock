@@ -32,7 +32,6 @@ namespace PhimHang.Models
         public virtual DbSet<JobTitile> JobTitiles { get; set; }
         public virtual DbSet<NotificationMessege> NotificationMesseges { get; set; }
         public virtual DbSet<Philosophy> Philosophies { get; set; }
-        public virtual DbSet<PinStock> PinStocks { get; set; }
         public virtual DbSet<PostComment> PostComments { get; set; }
         public virtual DbSet<Post> Posts { get; set; }
         public virtual DbSet<Setting> Settings { get; set; }
@@ -44,5 +43,6 @@ namespace PhimHang.Models
         public virtual DbSet<UserLogin> UserLogins { get; set; }
         public virtual DbSet<UserRelate> UserRelates { get; set; }
         public virtual DbSet<UserViewLastest> UserViewLastests { get; set; }
+        public virtual DbSet<PinStock> PinStocks { get; set; }
     }
 }

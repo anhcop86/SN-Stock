@@ -1,14 +1,14 @@
-﻿@*@model IEnumerable<PhimHang.Models.RecommendStock>*@
+﻿
 @{
     ViewBag.Title = "Danh sách khuyến nghị theo mã chứng khoán";
     Layout = "~/Views/Shared/_Layout_Main.cshtml";
 }
-@model PagedList.IPagedList<PhimHang.Models.RecommendStock>
+@model PagedList.IPagedList<PhimHang.Models.StockCode>
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 <h2>
-    Danh sách khuyến nghị theo mã chứng khoán
+    Danh sách mục cổ phiếu
 </h2>
 <div id="example_length" class="dataTables_length1">
     <table class="form">
@@ -17,9 +17,9 @@
             <tr>
 
                 <td><b>Mã chứng khoán:</b></td>
-                <td>@Html.TextBox("stockCode", ViewBag.stockCode as string, new { maxlength = 10 })</td>
-                <td><b>Khuyến nghị trong tháng:</b></td>
-                <td>@Html.DropDownList("monthReport", @ViewBag.monthReport as SelectList , new { @name = "select" })</td>
+                <td>@Html.TextBox("stockCode", ViewBag.stockCode as string, new { maxlength = 10 })</td>   
+                <td><b>Sàn giao dịch:</b></td>
+                <td>@Html.DropDownList("marketType", @ViewBag.marketTypeList as SelectList, new { @name = "marketType" })</td>             
                 <td></td>
                 <td><input type="submit" value="Tìm kiếm" class="btn btn-blue"></td>
 
@@ -33,11 +33,12 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Ngày</th>
-                        <th>Mã</th>
-                        <th>Người khuyến nghị</th>
-                        <th>Loại</th>
-                        <th>Tổng bình luận</th>
+                        <th>Mã cổ phiếu</th>
+                        <th>Tên ngắn</th>
+                        <th>Tên dài</th>
+                        <th>Sàn giao dịch</th>
+                        <th>Update</th>
+                        <th>Delete</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -46,21 +47,23 @@
                     {
                         <tr>
                             <td>
-                                @item.CreatedDate.ToString("dd/MM/yyyy")
+                                @item.Code
+                            </td>
+                            <td>
+                                @item.ShortName
+                            </td>
+                            <td>
+                                @item.LongName
+                            </td>
+                            <td>
+                                @item.IndexName
                             </td>
                             <td style="font-weight: bold; color: #328AC5">
-                                @Html.DisplayFor(modelItem => item.StockCode)
+                                <a href="/Ticker/detail?tickerid=@item.Id&returnUrl=@ViewBag.linkAbsolutePath">update</a>
                             </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.UserLogin.UserNameCopy)
+                            <td style="font-weight: bold; color: #328AC5">
+                                <a href="/Ticker/delete?tickerid=@item.Id&returnUrl=@ViewBag.linkAbsolutePath">delete</a>
                             </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TYPERecommend)
-                            </td>
-                            <td>
-                                @item.SumComment
-                            </td>
-                            <td><a style="color: #328AC5" href="/Recommendation/Detail?id=@item.ID">chi tiết</a></td>
                         </tr>
                     }
                 </tbody>
@@ -69,7 +72,7 @@
             Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
             @Html.PagedListPager(Model,
-                                               page => Url.Action("Index", new { page, stockCode = ViewBag.stockCode, monthReport = ViewBag.monthReportV }))
+                                       page => Url.Action("Index", new { page, stockCode = ViewBag.stockCode, marketType = ViewBag.marketType }))
 
 
         </div>

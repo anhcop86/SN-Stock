@@ -52,36 +52,46 @@
             </td>
 
         </tr>
-        <tr>
+        @*<tr>
             <td class="col1"><label> Lock/Unlock:</label></td>
             <td class="col2">
                 <input type="text" id="grumble" name="StockCode" value="@Model.LockAccount" disabled />
             </td>
 
-        </tr>
+        </tr>*@
         <tr>
             <td class="col1" style="vertical-align: top;"><label>Status:</label></td>
             <td class="col2">
                 @Html.Raw(@Model.Status)
             </td>
         </tr>
+    @using (Html.BeginForm())
+    {
+    @Html.AntiForgeryToken()
         <tr>
             <td class="col1"><label> Môi giới VIP:</label></td>
             <td class="col2">
-                <input type="text" id="grumble" name="StockCode" value="" disabled />
+                @Html.DropDownList("typeBroker", @ViewBag.listTypeBroker as SelectList, new { @name = "typeBroker" })
             </td>
 
         </tr>
-
+    
+        <tr>
+            <td>                
+            </td>
+            <td>
+                <input onclick="return confirm('Cập nhật tài khoản?');" type="submit" value="Cập nhật" class="btn btn-default" /> |
+                <a style="color: #328AC5" href="@ViewBag.linkAbsolutePath">Back/Cancel</a>
+            </td>
+        </tr>
+    }
     </table>
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+    
 
-        <div class="form-actions no-color">
+        @*<div class="form-actions no-color">
             <input onclick="return confirm('Cập nhật tài khoản?');" type="submit" value="Cập nhật" class="btn btn-default" /> |
             <a style="color: #328AC5" href="@ViewBag.linkAbsolutePath">Back/Cancel</a>
-        </div>
-    }
+        </div>*@
+    
 </div>
 <br />

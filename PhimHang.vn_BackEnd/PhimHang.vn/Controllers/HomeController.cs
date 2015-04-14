@@ -43,7 +43,6 @@ namespace PhimHang.Controllers
             }
             
 
-                
             ViewBag.postBy = postBy;            
             ViewBag.stockCode = stockCode;
             ViewBag.datefilter = dateFilter;

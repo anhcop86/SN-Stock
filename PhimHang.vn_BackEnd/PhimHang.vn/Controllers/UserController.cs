@@ -35,7 +35,9 @@ namespace PhimHang.Controllers
                             Id  = u.Id,
                             UserName = u.UserNameCopy,
                             CreatedDate = u.CreatedDate,
-                            Name = u.FullName
+                            Name = u.FullName,
+                            BrokerType = (u.BrokerVIP == true ? "YES" : "NO"),
+                            LockAccount = (u.LockAccount == 1 ? "YES" : "NO")
                         };
                         
 
@@ -46,6 +48,48 @@ namespace PhimHang.Controllers
         }
 
         public async Task<ActionResult> update(int userid) // list user
+        {
+            var url = Request.Url.Query.Replace("?userid=" + userid + "&returnUrl=", "");
+            ViewBag.linkAbsolutePath = url;
+            var user = await dbcungphim.UserLogins.FindAsync(userid);
+            LoadInit(user);
+            return View(user);
+        }
+
+       
+
+        [HttpPost, ActionName("Update")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit(Boolean? typeBroker, int userid)
+        {
+            var url = Request.Url.Query.Replace("?userid=" + userid + "&returnUrl=", "");
+
+            var user = await dbcungphim.UserLogins.FindAsync(userid);
+            if (user != null)
+            {
+                if (user.BrokerVIP != typeBroker)
+                {
+                    user.BrokerVIP = typeBroker;
+                    try
+                    {
+                        dbcungphim.Entry(user).State = EntityState.Modified;
+                        await dbcungphim.SaveChangesAsync();
+                    }
+                    catch (Exception)
+                    {
+                        
+                        //throw;
+                    }
+                    
+                }
+
+            }
+
+
+            return Redirect(url);
+        }
+
+        private void LoadInit(UserLogin user)
         {
             // load chi box dan phim chuyen nghiep
             var setBrokerPro = new List<dynamic>
@@ -60,8 +104,7 @@ namespace PhimHang.Controllers
                 new {Id = true , Name = "True"}
             };
 
-            var user = await dbcungphim.UserLogins.FindAsync(userid);
-            return View(user);
+            ViewBag.listTypeBroker = new SelectList(setLockUser, "Id", "Name", user.BrokerVIP);
         }
     }
 
@@ -71,5 +114,7 @@ namespace PhimHang.Controllers
         public string UserName { get; set; }
         public string Name { get; set; }
         public DateTime CreatedDate { get; set; }
+        public string BrokerType { get; set; }
+        public string LockAccount { get; set; }
     }
 }

@@ -1,24 +1,26 @@
 ﻿
 @{
-    ViewBag.Title = "Danh mục tài khoản";
+    ViewBag.Title = "Danh mục PIN bài viết";
     Layout = "~/Views/Shared/_Layout_Main.cshtml";
 }
+
 @using PagedList.Mvc;
-@model PagedList.IPagedList<PhimHang.Controllers.UserModel>
+@model PagedList.IPagedList<PhimHang.Controllers.PinModel>
+
 
 <h2>
-    Danh mục tài khoản
+    PIN bài viết hay
 </h2>
 
 <div id="example_length" class="dataTables_length1">
     <table class="form">
-        @using (Html.BeginForm("", "User", FormMethod.Get))
+        @using (Html.BeginForm("", "Pin", FormMethod.Get))
         {
             <tr>
-                
-                <td><b>Tên tài khoản:</b></td>
-                <td>@Html.TextBox("username", ViewBag.username as string)</td>
-                
+
+                <td><b>Tên cổ phiếu:</b></td>
+                <td>@Html.TextBox("stockName", ViewBag.stockName as string)</td>
+
                 <td></td>
                 <td><input type="submit" value="Tìm kiếm" class="btn btn-blue"></td>
 
@@ -32,11 +34,11 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Mã TK</th>
-                        <th>Tên</th>
-                        <th>DP Chuyên nghiệp?</th>
+                        <th>Mã cổ phiếu</th>
                         <th>Ngày tạo</th>
-                        <th>Update</th>                        
+                        <th>Nội dung bài viết</th>                        
+                        <th>Update</th>
+                        <th>Xóa</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -45,22 +47,22 @@
                     {
                         <tr>
                             <td style="text-align:left">
-                                @item.UserName
-                            </td>
-                            <td style="text-align:left">
-                                @item.Name
+                                @item.StockName
                             </td>
                             <td style="text-align:center">
-                                @item.BrokerType
+                                @item.CreateDate.ToString("dd/MM/yyyy HH:mm:ss")
                             </td>
-                            
-                            <td>
-                                @item.CreatedDate.ToString("dd/MM/yyyy HH:mm:ss")
+                            <td style="text-align: left">
+                                @Html.Raw(@item.PostContain)
+                            </td>
+
+                            <td style="font-weight: bold; color: #328AC5">
+                                <a href="/Pin/detail?pinid=@item.Id&returnUrl=@ViewBag.linkAbsolutePath">update</a>
                             </td>
                             <td style="font-weight: bold; color: #328AC5">
-                                <a href="/User/update?userid=@item.Id&returnUrl=@ViewBag.linkAbsolutePath">detail</a>
+                                <a href="/Pin/delete?pinid=@item.Id&returnUrl=@ViewBag.linkAbsolutePath">delete</a>
                             </td>
-                            
+
                         </tr>
                     }
                 </tbody>
@@ -69,7 +71,7 @@
             Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
             @Html.PagedListPager(Model,
-                                       page => Url.Action("Index", new { page, username = ViewBag.userName }))
+                                      page => Url.Action("Index", new { page, username = ViewBag.stockName }))
 
 
         </div>

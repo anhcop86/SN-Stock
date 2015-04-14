@@ -78,8 +78,8 @@
           <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="StockCodePin" Type="varchar" MaxLength="16" />
           <Property Name="PostId" Type="bigint" Nullable="false" />
-          <Property Name="CreatedDate" Type="datetime2" Precision="7" />
           <Property Name="WhoPost" Type="int" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
         </EntityType>
         <EntityType Name="PostComments">
           <Key>
@@ -614,17 +614,6 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="7" />
           <NavigationProperty Name="UserLogins" Relationship="Self.FK_UserLogins_Philosophy" FromRole="Philosophy" ToRole="UserLogins" />
         </EntityType>
-        <EntityType Name="PinStock">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StockCodePin" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
-          <Property Name="PostId" Type="Int64" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
-          <Property Name="WhoPost" Type="Int32" />
-          <NavigationProperty Name="Post" Relationship="Self.FK_Posts_PinStock" FromRole="PinStock" ToRole="Posts" />
-        </EntityType>
         <EntityType Name="PostComment">
           <Key>
             <PropertyRef Name="PostCommentsId" />
@@ -653,11 +642,11 @@
           <Property Name="SumLike" Type="Int32" />
           <Property Name="SumReply" Type="Int32" Nullable="false" />
           <NavigationProperty Name="NotificationMesseges" Relationship="Self.FK_Posts_User" FromRole="Posts" ToRole="NotificationMessege" />
-          <NavigationProperty Name="PinStocks" Relationship="Self.FK_Posts_PinStock" FromRole="Posts" ToRole="PinStock" />
           <NavigationProperty Name="PostComments" Relationship="Self.FK_PostComments_Posts" FromRole="Posts" ToRole="PostComments" />
           <NavigationProperty Name="UserLogin" Relationship="Self.FK_Posts_UserLogins" FromRole="Posts" ToRole="UserLogins" />
           <NavigationProperty Name="StockRelates" Relationship="Self.FK_StockRelate_Posts" FromRole="Posts" ToRole="StockRelate" />
           <NavigationProperty Name="UserRelates" Relationship="Self.FK_UserRelate_Posts" FromRole="Posts" ToRole="UserRelate" />
+          <NavigationProperty Name="PinStocks" Relationship="db_cungphim_FrontEnd_Model.FK_Posts_PinStock" FromRole="Post" ToRole="PinStock" />
         </EntityType>
         <EntityType Name="Setting">
           <Key>
@@ -890,18 +879,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Posts_PinStock">
-          <End Role="Posts" Type="Self.Post" Multiplicity="1" />
-          <End Role="PinStock" Type="Self.PinStock" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Posts">
-              <PropertyRef Name="PostId" />
-            </Principal>
-            <Dependent Role="PinStock">
-              <PropertyRef Name="PostId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_PostComments_Posts">
           <End Role="Posts" Type="Self.Post" Multiplicity="1" />
           <End Role="PostComments" Type="Self.PostComment" Multiplicity="*" />
@@ -1018,7 +995,6 @@
           <EntitySet Name="JobTitiles" EntityType="Self.JobTitile" />
           <EntitySet Name="NotificationMesseges" EntityType="Self.NotificationMessege" />
           <EntitySet Name="Philosophies" EntityType="Self.Philosophy" />
-          <EntitySet Name="PinStocks" EntityType="Self.PinStock" />
           <EntitySet Name="PostComments" EntityType="Self.PostComment" />
           <EntitySet Name="Posts" EntityType="Self.Post" />
           <EntitySet Name="Settings" EntityType="Self.Setting" />
@@ -1066,10 +1042,6 @@
             <End Role="Philosophy" EntitySet="Philosophies" />
             <End Role="UserLogins" EntitySet="UserLogins" />
           </AssociationSet>
-          <AssociationSet Name="FK_Posts_PinStock" Association="Self.FK_Posts_PinStock">
-            <End Role="Posts" EntitySet="Posts" />
-            <End Role="PinStock" EntitySet="PinStocks" />
-          </AssociationSet>
           <AssociationSet Name="FK_PostComments_Posts" Association="Self.FK_PostComments_Posts">
             <End Role="Posts" EntitySet="Posts" />
             <End Role="PostComments" EntitySet="PostComments" />
@@ -1106,7 +1078,35 @@
             <End Role="UserLogins" EntitySet="UserLogins" />
             <End Role="UserViewLastest" EntitySet="UserViewLastests" />
           </AssociationSet>
+          <EntitySet Name="PinStocks" EntityType="db_cungphim_FrontEnd_Model.PinStock" />
+          <AssociationSet Name="FK_Posts_PinStock" Association="db_cungphim_FrontEnd_Model.FK_Posts_PinStock">
+            <End Role="Post" EntitySet="Posts" />
+            <End Role="PinStock" EntitySet="PinStocks" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="PinStock">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StockCodePin" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="PostId" Type="Int64" Nullable="false" />
+          <Property Name="WhoPost" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <NavigationProperty Name="Post" Relationship="db_cungphim_FrontEnd_Model.FK_Posts_PinStock" FromRole="PinStock" ToRole="Post" />
+        </EntityType>
+        <Association Name="FK_Posts_PinStock">
+          <End Type="db_cungphim_FrontEnd_Model.Post" Role="Post" Multiplicity="1" />
+          <End Type="db_cungphim_FrontEnd_Model.PinStock" Role="PinStock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="PinStock">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1183,17 +1183,6 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="PhilosophyName" ColumnName="PhilosophyName" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PinStocks">
-            <EntityTypeMapping TypeName="db_cungphim_FrontEnd_Model.PinStock">
-              <MappingFragment StoreEntitySet="PinStock">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="StockCodePin" ColumnName="StockCodePin" />
-                <ScalarProperty Name="PostId" ColumnName="PostId" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="WhoPost" ColumnName="WhoPost" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1334,6 +1323,17 @@
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="UserIdLastest" ColumnName="UserIdLastest" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PinStocks">
+            <EntityTypeMapping TypeName="db_cungphim_FrontEnd_Model.PinStock">
+              <MappingFragment StoreEntitySet="PinStock">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="WhoPost" ColumnName="WhoPost" />
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+                <ScalarProperty Name="StockCodePin" ColumnName="StockCodePin" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
