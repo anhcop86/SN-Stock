@@ -1473,7 +1473,7 @@
     <Content Include="Views\Ticker\Index.cshtml" />
     <Content Include="Views\Home\ModifyRecommend.cshtml" />
     <Content Include="Views\Post\Index.cshtml" />
-    <Content Include="Views\Post\Detail.cshtml" />
+    <Content Include="Views\Post\Delete.cshtml" />
     <Content Include="Views\PostT\Create.cshtml" />
     <Content Include="Views\PostT\Delete.cshtml" />
     <Content Include="Views\PostT\Details.cshtml" />
@@ -1487,6 +1487,7 @@
     <Content Include="Views\Pin\Index.cshtml" />
     <Content Include="Views\Pin\Detail.cshtml" />
     <Content Include="Views\Pin\Delete.cshtml" />
+    <Content Include="Views\Post\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

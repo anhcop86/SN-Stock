@@ -1,6 +1,6 @@
 ﻿@*@model IEnumerable<PhimHang.Models.RecommendStock>*@
 @{
-    ViewBag.Title = "Danh sách khuyến nghị khách hàng";
+    ViewBag.Title = "Danh sách bài phím";
     Layout = "~/Views/Shared/_Layout_Main.cshtml";
 }
 @model PagedList.IPagedList<PhimHang.Models.Post>
@@ -38,7 +38,8 @@
                         <th>PostBy</th>
                         <th>Mã CP</th>
                         <th>Chi Tiết</th>
-                        <th>Detail</th>
+                        <th>Update</th>
+                        <th>Delete</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -62,8 +63,8 @@
                             <td style="text-align:left">
                                 @Html.Raw(@item.Message)
                             </td>
-                            
-                            <td><a style="color: #328AC5" href="/Post/detail?postid=@item.PostId&returnUrl=@ViewBag.linkAbsolutePath">Detail</a></td>
+                            <td><a style="color: #328AC5" href="/Post/update?postid=@item.PostId&returnUrl=@ViewBag.linkAbsolutePath">update</a></td>
+                            <td><a style="color: #328AC5" href="/Post/delete?postid=@item.PostId&returnUrl=@ViewBag.linkAbsolutePath">delete</a></td>
                         </tr>
                     }
                 </tbody>

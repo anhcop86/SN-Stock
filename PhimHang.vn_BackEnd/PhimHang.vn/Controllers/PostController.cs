@@ -24,7 +24,7 @@ namespace PhimHang.Controllers
 
             return View();
         }
-        public async Task<ActionResult> Detail(long postid, string returnUrl)
+        public async Task<ActionResult> Delete(long postid)
         {
             ViewBag.linkAbsolutePath = Request.Url.Query.Replace("?postid=" + postid + "&returnUrl=", "");
             if (postid == null)
@@ -39,7 +39,7 @@ namespace PhimHang.Controllers
             return View(post);
         }
 
-        [HttpPost, ActionName("Detail")] // xóa phuong thuc post, tạm thời để ten la detail
+        [HttpPost, ActionName("Delete")] // xóa phuong thuc post, tạm thời để ten la detail
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(long postid)
         {
@@ -62,6 +62,30 @@ namespace PhimHang.Controllers
             await dbcungphim.SaveChangesAsync();
             return RedirectToLocal(url);
             
+        }
+        public async Task<ActionResult> Update(long postid)
+        {
+            ViewBag.linkAbsolutePath = Request.Url.Query.Replace("?postid=" + postid + "&returnUrl=", "");
+            if (postid == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Post post = await dbcungphim.Posts.FindAsync(postid);
+            if (post == null)
+            {
+                return HttpNotFound();
+            }
+            return View(post);
+        }
+
+        [HttpPost, ActionName("Update")] // cap nhat like
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Update(long postid, int sumLike)
+        {
+            var url = Request.Url.Query.Replace("?postid=" + postid + "&returnUrl=", "");
+            
+            return RedirectToLocal(url);
+
         }
         private ActionResult RedirectToLocal(string returnUrl)
         {

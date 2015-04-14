@@ -947,7 +947,8 @@ input[name=BullBear]{
     width: 100%;    
 }
 .comment-loadmore{
-    padding: 15px 10px 15px 70px;    
+    padding: 15px 0px 15px 0px;
+    text-align:center;    
 }
 #IdLoadMoreConversation{
     color:#328AC5;

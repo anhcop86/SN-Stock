@@ -1,0 +1,65 @@
+﻿@model PhimHang.Models.Post
+@{
+    ViewBag.Title = "Chi tiết bài phím";
+    Layout = "~/Views/Shared/_Layout_Main.cshtml";
+}
+
+<script src="~/Scripts/jquery.timeago.js"></script>
+<h2>
+    Chi tiết bài phím @Model.PostId
+</h2>
+
+<div id="example_length" class="dataTables_length1">
+    <table class="form">
+        <tr>
+            <td class="col1"><label> Người phím:</label></td>
+            <td class="col2">
+                <input type="text" id="grumble" name="StockCode" value="@Model.UserLogin.UserNameCopy" disabled />
+                <label>Ngày:  @Model.PostedDate.ToString("dd/MM/yyyy HH:mm:ss")</label>
+            </td>
+
+        </tr>
+        <tr>
+            <td class="col1"><label> Mã cổ phiếu:</label></td>
+            <td class="col2">
+                <input type="text" id="grumble" name="StockCode" value="@Model.StockPrimary" disabled />
+            </td>
+
+        </tr>
+        <tr>
+            <td class="col1" style="vertical-align: top;"><label>Chi tiết:</label></td>
+            <td class="col2">
+                @Html.Raw(@Model.Message)
+            </td>
+        </tr>
+        <tr>
+            <td class="col1"><label> Tổng bình luận:</label></td>
+            <td class="col2">
+                <input type="text" id="grumble" name="StockCode" value="@Model.SumReply" disabled />
+            </td>
+
+        </tr>
+    @using (Html.BeginForm())
+            {
+        @Html.AntiForgeryToken()
+        <tr>
+            <td class="col1"><label> Tổng LIKE:</label></td>
+            <td class="col2">
+                <input type="text" id="grumble" name="sumLike" value="@Model.SumLike" />
+            </td>
+
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input onclick="return confirm('Cập nhật cổ phiếu nóng?, chú ý không để cổ phiếu trống');" type="submit" value="Cập nhật" class="btn btn-default" /> |
+                <a style="color: #328AC5" href="/TickerHot">Back/Cancel</a>
+            </td>
+        </tr>
+    }
+    </table>
+    
+</div>
+<br />
+<br />
+<!--Comment-->
