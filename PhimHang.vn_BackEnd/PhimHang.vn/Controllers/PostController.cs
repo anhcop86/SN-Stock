@@ -63,7 +63,7 @@ namespace PhimHang.Controllers
             return RedirectToLocal(url);
             
         }
-        public async Task<ActionResult> Update(long postid)
+        public async Task<ActionResult> Update(long? postid)
         {
             ViewBag.linkAbsolutePath = Request.Url.Query.Replace("?postid=" + postid + "&returnUrl=", "");
             if (postid == null)
@@ -80,10 +80,27 @@ namespace PhimHang.Controllers
 
         [HttpPost, ActionName("Update")] // cap nhat like
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Update(long postid, int sumLike)
+        public async Task<ActionResult> Update(long postid, int? sumLike)
         {
             var url = Request.Url.Query.Replace("?postid=" + postid + "&returnUrl=", "");
-            
+            Post post = await dbcungphim.Posts.FindAsync(postid);
+            if (post != null)
+            {
+                if (post.SumLike != sumLike)
+                {
+                    post.SumLike = (sumLike == null ? 0 : sumLike);
+                    try
+                    {
+                        dbcungphim.Entry(post).State = EntityState.Modified;
+                        await dbcungphim.SaveChangesAsync();
+                    }
+                    catch (Exception)
+                    {
+
+                        //throw;
+                    }
+                }
+            }
             return RedirectToLocal(url);
 
         }

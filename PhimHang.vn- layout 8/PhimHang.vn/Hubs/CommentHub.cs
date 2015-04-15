@@ -77,6 +77,7 @@ namespace PhimHang.Hubs
                 {
                     URLTiny tu = new URLTiny();
                     tu.URLName = item;
+                    tu.PostedDate = DateTime.Now;
                     dbtinyURL.URLTinies.Add(tu);
                     try
                     {                        
@@ -225,6 +226,7 @@ namespace PhimHang.Hubs
                 {
                     URLTiny tu = new URLTiny();
                     tu.URLName = item;
+                    tu.PostedDate = DateTime.Now;
                     dbtinyURL.URLTinies.Add(tu);
                     try
                     {

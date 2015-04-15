@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using PhimHang.Models;
 using PagedList;
 using System.Data.Entity;
+using System.ComponentModel.DataAnnotations;
 
 namespace PhimHang.Controllers
 {
@@ -44,6 +45,34 @@ namespace PhimHang.Controllers
             int pageNumber = (page ?? 1);
 
             return View(Task.FromResult(pins.ToPagedList(pageNumber, pageSize)).Result);
+        }
+
+        public async Task<ActionResult> Add() // Tạo =
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Add(PinModel pinModel) // Tạo mã nóng
+        {
+            if (ModelState.IsValid)
+            {
+
+                if (dbcungphim.PinStocks.Any(t => t.StockCodePin == pinModel.StockName && t.PostId == pinModel.PostId))
+                {
+                    ModelState.AddModelError("", "Đã tồn tại PIN này trong thệ thống");
+                }
+                else
+                {
+                    dbcungphim.PinStocks.Add(new PinStock { StockCodePin = pinModel.StockName.ToUpper(), PostId = pinModel.PostId, CreatedDate = DateTime.Now });
+                    await dbcungphim.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
+
+
+            }
+            return View(pinModel);
         }
 
         public async Task<ActionResult> Detail(long? pinid) // list user
@@ -108,7 +137,13 @@ namespace PhimHang.Controllers
     {
         public long Id { get; set; }
 
+        [Required(ErrorMessage = "Vui lòng nhập Mã cổ phiếu")]
+        [StringLength(16, ErrorMessage = "Tên đăng nhập từ 3 đến 16 ký tự", MinimumLength = 3)]
         public string StockName { get; set; }
+
+        [Required]
+        [RegularExpression("^[0-9]*$", ErrorMessage = "Post Id là số")]
+        public long PostId { get; set; }
 
         public string PostContain { get; set; }
 

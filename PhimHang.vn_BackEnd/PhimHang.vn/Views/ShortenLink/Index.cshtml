@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_Main.cshtml";
+}
+@using PagedList.Mvc;
+@model PagedList.IPagedList<PhimHang.Models.URLTiny>
+
+<h2>
+    Kiểm tra link xấu
+</h2>
+
+<div id="example_length" class="dataTables_length1">
+    <table class="form">
+        @using (Html.BeginForm("", "ShortenLink", FormMethod.Get))
+        {
+            <tr>
+
+                <td><b>Tên cổ phiếu:</b></td>
+                <td>@Html.TextBox("searchContain", ViewBag.searchContain as string)</td>
+
+                <td></td>
+                <td><input type="submit" value="Tìm kiếm" class="btn btn-blue"></td>
+
+            </tr>
+        }
+    </table>
+</div>
+<div id="mainContent">
+    <fieldset>
+        <div class="Table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ngày</th>
+                        <th>Link</th>                        
+                        <th>Update</th>
+                        <th>Xóa</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>                            
+                            <td style="text-align:center">
+                                @item.PostedDate.ToString("dd/MM/yyyy HH:mm:ss")
+                            </td>
+                            <td style="text-align: left">
+                                @item.URLName
+                            </td>
+
+                            <td style="font-weight: bold; color: #328AC5">
+                                <a href="/Pin/detail?pinid=@item.Id&returnUrl=@ViewBag.linkAbsolutePath">update</a>
+                            </td>
+                            <td style="font-weight: bold; color: #328AC5">
+                                <a href="/Pin/delete?pinid=@item.Id&returnUrl=@ViewBag.linkAbsolutePath">delete</a>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <br />
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchContain = ViewBag.searchContain }))
+
+
+        </div>
+    </fieldset>
+</div>

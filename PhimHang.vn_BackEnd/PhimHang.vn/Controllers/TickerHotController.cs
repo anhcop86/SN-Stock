@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using PhimHang.Models;
 using PagedList;
 using System.Data.Entity;
+using System.ComponentModel.DataAnnotations;
 
 namespace PhimHang.Controllers
 {
@@ -24,6 +25,34 @@ namespace PhimHang.Controllers
             return View(hotTickers);
         }
 
+        public async Task<ActionResult> Add() // Tạo mã nóng
+        {     
+       
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Add(TickerHotModel tickerHot) // Tạo mã nóng
+        {
+            if (ModelState.IsValid)
+            {
+                
+                if (dbcungphim.TickerHots.Any(t=>t.THName.ToUpper() == tickerHot.THName.ToUpper()))
+                {
+                    ModelState.AddModelError("", "Đã tồn tại mã cổ phiếu này trong thệ thống");
+                }
+                else
+                {
+                    dbcungphim.TickerHots.Add(new TickerHot { THName = tickerHot.THName.ToUpper() });
+                    await dbcungphim.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
+                
+
+            }
+            return View(tickerHot);
+        }
 
         public async Task<ActionResult> Detail(int tickerid) // list user
         {
@@ -82,4 +111,5 @@ namespace PhimHang.Controllers
             return RedirectToAction("");
         }
     }
+    
 }

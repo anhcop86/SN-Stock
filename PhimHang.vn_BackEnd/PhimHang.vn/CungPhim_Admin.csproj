@@ -263,6 +263,7 @@
     <Compile Include="Controllers\PinController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\PostTController.cs" />
+    <Compile Include="Controllers\ShortenLinkController.cs" />
     <Compile Include="Controllers\TickerController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -342,6 +343,21 @@
     <Compile Include="Models\Setting.cs">
       <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ShortenLinkModels.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShortenLinkModels.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShortenLinkModels.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShortenLinkModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShortenLinkModels.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShortenLinkModels.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\StockCode.cs">
       <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
     </Compile>
@@ -358,6 +374,10 @@
       <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\TickerHotController.cs" />
+    <Compile Include="Models\TickerHotModel.cs" />
+    <Compile Include="Models\URLTiny.cs">
+      <DependentUpon>ShortenLinkModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserLogin.cs">
       <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
     </Compile>
@@ -1374,6 +1394,23 @@
       <DependentUpon>DB_cungphim_frontend.edmx</DependentUpon>
       <LastGenOutput>DB_cungphim_frontend.cs</LastGenOutput>
     </Content>
+    <EntityDeploy Include="Models\ShortenLinkModels.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ShortenLinkModels.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ShortenLinkModels.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ShortenLinkModels.edmx</DependentUpon>
+      <LastGenOutput>ShortenLinkModels.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ShortenLinkModels.edmx.diagram">
+      <DependentUpon>ShortenLinkModels.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\ShortenLinkModels.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ShortenLinkModels.edmx</DependentUpon>
+      <LastGenOutput>ShortenLinkModels.cs</LastGenOutput>
+    </Content>
     <None Include="Properties\PublishProfiles\KNKH.pubxml" />
     <None Include="Properties\PublishProfiles\phimhang o nha.pubxml" />
     <None Include="Properties\PublishProfiles\phimhang.pubxml" />
@@ -1488,6 +1525,9 @@
     <Content Include="Views\Pin\Detail.cshtml" />
     <Content Include="Views\Pin\Delete.cshtml" />
     <Content Include="Views\Post\Update.cshtml" />
+    <Content Include="Views\ShortenLink\Index.cshtml" />
+    <Content Include="Views\TickerHot\Add.cshtml" />
+    <Content Include="Views\Pin\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

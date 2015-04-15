@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Bài được pin lên đầu (bài hay)";
+    Layout = "~/Views/Shared/_Layout_Main.cshtml";
+}
+
+<h2>Bài được pin lên đầu (bài hay)</h2>
+@model PhimHang.Controllers.PinModel
+
+<div id="example_length" class="dataTables_length1">
+    <table class="form">
+
+
+        @using (Html.BeginForm("Add", "Pin", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <tr>
+                <td class="col1"><label> Mã cổ phiếu:</label></td>
+                <td class="col2">
+                    @Html.TextBoxFor(model => model.StockName, new { placeholder = "Mã cổ phiếu" })
+                </td>
+                <td>@Html.ValidationMessageFor(model => model.StockName)</td>
+            </tr>
+             <tr>
+                <td class="col1"><label> Mã của bài viết (là số):</label></td>
+                <td class="col2">
+                    @Html.TextBoxFor(model => model.PostId, new { placeholder = "Mã của bài viết (là số)" })
+                </td>
+                <td>@Html.ValidationMessageFor(model => model.PostId)</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Cập nhật" class="btn btn-default" /> |
+                    <a style="color: #328AC5" href="/Pin">Back/Cancel</a>
+                </td>
+            </tr>
+        }
+    </table>
+
+
+    @*<div class="form-actions no-color">
+            <input onclick="return confirm('Cập nhật tài khoản?');" type="submit" value="Cập nhật" class="btn btn-default" /> |
+            <a style="color: #328AC5" href="@ViewBag.linkAbsolutePath">Back/Cancel</a>
+        </div>*@
+
+</div>
+
+
+
