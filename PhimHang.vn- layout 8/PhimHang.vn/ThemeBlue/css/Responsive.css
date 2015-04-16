@@ -143,6 +143,9 @@
     #search_box_top > i {
         display:none;
     }
+    .cover-div{
+        height:100% !important;
+    }
    
 }
 

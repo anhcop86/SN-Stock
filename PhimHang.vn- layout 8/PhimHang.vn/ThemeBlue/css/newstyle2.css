@@ -117,8 +117,10 @@ a.avatar img:hover{
     height: 70px;
 }
 .cover-div{
-    height: 320px;
-    width: 100%;
+    max-height: 320px;
+    height:100%;
+    /*max-width:1600px;*/
+    /*width: 100%;*/
     margin-top: 80px;
     overflow: hidden;    
 }

@@ -31,6 +31,8 @@ namespace PhimHang.Controllers
         private testEntities db = new testEntities();
         private const string ImageURLAvataDefault = "/img/avatar2.jpg";        
         private const string ImageURLAvata = "/images/avatar/";
+        private const string ImageURLCoverDefault = "/img/cover_default.jpg";
+        private const string ImageURLCover = "/images/cover/";
         private string AbsolutePathHostName = AppHelper.AbsolutePathHostName;
         public async Task<ActionResult> Index(string username, int tabid)
         {
@@ -80,6 +82,7 @@ namespace PhimHang.Controllers
 
             ViewBag.UserName = username;
             ViewBag.AvataImageUrlCurrent = string.IsNullOrEmpty(currentUser.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.AvataImage;
+            ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.AvataCover) == true ? ImageURLCoverDefault : ImageURLCover + currentUser.AvataCover;
             ViewBag.UserId = currentUser.Id;
             var post = await db.Posts.CountAsync(p => p.PostedBy == currentUser.Id);
             var follow = await db.FollowUsers.CountAsync(f => f.UserId == currentUser.Id);
