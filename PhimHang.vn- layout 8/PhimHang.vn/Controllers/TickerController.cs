@@ -92,8 +92,6 @@ namespace PhimHang.Controllers
             ViewBag.ImgEx = ".png";
             #endregion
 
-
-
             #region gia co phieu
             //var followstocks = await db.FollowStocks.Where(f => f.UserId == currentUser.UserExtentLogin.Id).ToListAsync();
             //var listfollowstocksString = (from sf in followstocks
@@ -115,8 +113,8 @@ namespace PhimHang.Controllers
                 stockprice.CompanyID = symbolName;
             }
             var listIndex = new List<string>();
-            listIndex.Add("VnIndex");
-            listIndex.Add("HNXIndex");
+            listIndex.Add("VNINDEX");
+            listIndex.Add("HNXINDEX");
             ViewBag.ListIndex = _stockRealtime.GetAllStocksList(listIndex).Result;
             //ViewBag.PriceOfTicker = stockprice;
             #endregion

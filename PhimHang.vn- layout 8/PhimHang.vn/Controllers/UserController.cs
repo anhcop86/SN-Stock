@@ -153,14 +153,15 @@ namespace PhimHang.Controllers
             #endregion
             #region gia chi so index va hnxindex
             var listIndex = new List<string>();
-            listIndex.Add("VnIndex");
-            listIndex.Add("HNXIndex");
+            listIndex.Add("VNINDEX");
+            listIndex.Add("HNXINDEX");
             ViewBag.ListIndex = _stockRealtime.GetAllStocksList(listIndex).Result;
             #endregion
 
             #region random dan phim chuyen nghiem
             var DanPhimRandom = await (from u in db.UserLogins
                                        orderby Guid.NewGuid()
+                                       where u.BrokerVIP == true
                                        select new UserRandom
                                       {
                                            Avata = string.IsNullOrEmpty(u.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + u.AvataImage,

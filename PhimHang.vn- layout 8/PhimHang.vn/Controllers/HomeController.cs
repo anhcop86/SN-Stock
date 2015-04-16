@@ -87,8 +87,8 @@ namespace PhimHang.Controllers
             #endregion
             #region gia chi so index va hnxindex
             var listIndex = new List<string>();
-            listIndex.Add("VnIndex");
-            listIndex.Add("HNXIndex");
+            listIndex.Add("VNINDEX");
+            listIndex.Add("HNXINDEX");
             ViewBag.ListIndex = _stockRealtime.GetAllStocksList(listIndex).Result;
             #endregion
             return View();

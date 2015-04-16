@@ -475,8 +475,15 @@
     <Content Include="img\avatar5.jpg" />
     <Content Include="img\cover_default.jpg" />
     <Content Include="img\cover.jpg" />
+    <Content Include="img\default_cover_user.jpg" />
+    <Content Include="img\default_cover_user1.jpg" />
+    <Content Include="img\default_cover_user2.jpg" />
+    <Content Include="img\default_cover_user3.jpg" />
+    <Content Include="img\default_cover_user4.jpg" />
+    <Content Include="img\default_cover_user5.jpg" />
+    <Content Include="img\default_cover_user6.jpg" />
+    <Content Include="img\default_cover_user7.jpg" />
     <Content Include="img\kindo-logo.jpg" />
-    <Content Include="img\logo.jpg" />
     <Content Include="Resources\EmailTemplates\ResetPasswordEmail.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -641,6 +648,7 @@
     <Content Include="ThemeBlue\css\jquery.dropdown.css" />
     <Content Include="ThemeBlue\css\login.css" />
     <Content Include="ThemeBlue\css\newstyle.css" />
+    <Content Include="ThemeBlue\css\newstyle2.css" />
     <Content Include="ThemeBlue\css\Notification.css" />
     <Content Include="ThemeBlue\css\Responsive.css" />
     <Content Include="ThemeBlue\css\style.css" />

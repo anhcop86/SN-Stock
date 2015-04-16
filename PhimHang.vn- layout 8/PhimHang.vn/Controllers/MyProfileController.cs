@@ -45,10 +45,6 @@ namespace PhimHang.Controllers
             var company = new StockCode();
             ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
 
-            #region danh muc co phieu dang follow
-
-
-            #endregion
 
             #region Thong tin menu ben trai
             //Thong tin menu ben trai
@@ -77,10 +73,9 @@ namespace PhimHang.Controllers
 
             // cac post dc loc tu danh muc dau tu => dc load o duoc client san
             var listStock = await (from followStock in db.FollowStocks
-                             orderby followStock.StockFollowed ascending
-                             where followStock.UserId == currentUser.UserExtentLogin.Id
-                             select followStock.StockFollowed
-                                ).ToListAsync();
+                                   orderby followStock.StockFollowed ascending
+                                   where followStock.UserId == currentUser.UserExtentLogin.Id
+                                   select followStock.StockFollowed).ToListAsync();
 
             ViewBag.listStockFollow = listStock as List<string>; // client
             // End thong tin menu ben trai
@@ -90,13 +85,13 @@ namespace PhimHang.Controllers
 
 
             #endregion
-            #region gia cổ phieu cua cac ma dang theo doi
+             #region danh muc co phieu dang follow
             ViewBag.listStockPriceFollow = _stockRealtime.GetAllStocksList(listStock as List<string>).Result;
             #endregion
             #region gia chi so index va hnxindex
             var listIndex = new List<string>();
-            listIndex.Add("VnIndex");
-            listIndex.Add("HNXIndex");
+            listIndex.Add("VNINDEX");
+            listIndex.Add("HNXINDEX");
             ViewBag.ListIndex = _stockRealtime.GetAllStocksList(listIndex).Result;
             #endregion
             #region danh muc co phieu nong
@@ -129,8 +124,8 @@ namespace PhimHang.Controllers
             #endregion
             #region gia chi so index va hnxindex
             var listIndex = new List<string>();
-            listIndex.Add("VnIndex");
-            listIndex.Add("HNXIndex");
+            listIndex.Add("VNINDEX");
+            listIndex.Add("HNXINDEX");
             ViewBag.ListIndex = _stockRealtime.GetAllStocksList(listIndex).Result;
             #endregion
             #region reset lai so luong tin nhan
