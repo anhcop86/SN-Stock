@@ -20,7 +20,7 @@ FROM   dbo.[dnn_AGStock_HASTC_SessionCompany]
 UNION ALL
   
 SELECT TOP 1 
-		'HNXIndex' as IndexName,
+		'HNXINDEX' as IndexName,
 		 Index3 AS [Index],
 		 Diff3 AS Diff,
 		DiffRate3 as DiffRate 

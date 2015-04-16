@@ -23,7 +23,7 @@ FROM  dbo.dnn_AGStock_SessionCompany
  WHERE cast(UpdateLETime as date) = (SELECT MAX(cast(UpdateLETime as date) ) FROM dnn_AGStock_SessionCompany)
  UNION ALL
  SELECT TOP 1 
- 'VnIndex', 
+ 'VNINDEX', 
  [Index],
  Diff,
  DiffRate 

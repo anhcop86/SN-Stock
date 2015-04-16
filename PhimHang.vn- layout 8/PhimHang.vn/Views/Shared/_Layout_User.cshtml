@@ -20,8 +20,10 @@
     <script src="~/ThemeBlue/js/jquery.dropdown.js"></script>
     <script src="~/ThemeBlue/js/action.js"></script>
     <script src="~/ThemeBlue/js/action2.js"></script>
+
     <!-- End For desgin-->
     <link href="~/ThemeBlue/css/Notification.css" rel="stylesheet" />
+    <link href="~/ThemeBlue/css/newstyle2.css" rel="stylesheet" />
     <!-- Objects of facebook-->
     <meta property="fb:app_id" content="934180333272963" />
     <meta property="og:type" content="business.business" />
@@ -79,7 +81,7 @@
             </div>
             <div class="f-left" id='top-center'>
                 <a href="/" class="logo" title="Cùng Phím">
-                    <img src="/img/logo.jpg" alt="Cùng Phím">
+                    <img src="/img/avatar2.jpg?width=40&height=40" alt="Cùng Phím logo">
                 </a>
             </div>
             <div class="f-right" id="top-banner-right">
@@ -111,10 +113,12 @@
             </a>
         </div>
     </div>
-
+    <div class="cover-div">
+        <img alt="Ảnh bìa" src="/img/default_cover_user2.jpg?&h=600&w=1600&mode=crop&Anchor=Topleft">
+    </div>
     <!---->
     <div>
-        <div style="margin-top: 80px;">
+        @*<div style="margin-top:0px;">*@
             <div class="menu-top-bar2">
                 <div class="top-menu-2">
                     @Html.Partial("_Partial_Area_MenuBar_User")
@@ -132,7 +136,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    @*</div>*@
     
     @RenderSection("scripts", required: false)
 </body>

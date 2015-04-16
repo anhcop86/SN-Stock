@@ -32,6 +32,8 @@ namespace PhimHang.Controllers
         {
             
             UserManager = userManager;
+            UserManager.UserValidator = new UserValidator<ApplicationUser>(UserManager) { AllowOnlyAlphanumericUserNames = false };
+
         }
         public UserManager<ApplicationUser> UserManager { get; private set; }
 
@@ -126,7 +128,7 @@ namespace PhimHang.Controllers
                         //send mail
 
                         //
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "MyProfile");
                     }
                     else
                     {
