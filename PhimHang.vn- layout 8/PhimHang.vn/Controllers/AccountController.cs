@@ -126,7 +126,7 @@ namespace PhimHang.Controllers
                         //send mail
 
                         //
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "MyProfile");
                     }
                     else
                     {

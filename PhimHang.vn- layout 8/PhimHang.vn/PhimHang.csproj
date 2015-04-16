@@ -477,7 +477,6 @@
     <Content Include="img\cover.jpg" />
     <Content Include="img\kindo-logo.jpg" />
     <Content Include="img\logo.jpg" />
-    <Content Include="img\logo.png" />
     <Content Include="Resources\EmailTemplates\ResetPasswordEmail.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
