@@ -36,7 +36,7 @@ namespace PhimHang.Controllers
               int pageNumber = (page ?? 1);
 
               return View(Task.FromResult(users.ToPagedList(pageNumber, pageSize)).Result);
-              return View();
           }
+
 	}
 }

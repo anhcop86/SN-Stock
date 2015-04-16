@@ -1,0 +1,71 @@
+﻿@model PhimHang.Models.StockCodeModel
+@{
+    ViewBag.Title = "Thêm cổ phiếu";
+    Layout = "~/Views/Shared/_Layout_Main.cshtml";
+}
+
+<h2>Thêm cổ phiếu</h2>
+
+<div id="example_length" class="dataTables_length1">
+    <table class="form">
+
+
+        @using (Html.BeginForm("Add", "Ticker", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <tr>
+                <td class="col1"><label> Mã cổ phiếu:</label></td>
+                <td class="col2">
+                    @Html.TextBoxFor(model => model.Code, new { placeholder = "Mã cổ phiếu" })
+                </td>
+                <td>@Html.ValidationMessageFor(model => model.Code)</td>
+
+
+            </tr>
+            <tr>
+                <td class="col1"><label> Tên ngắn:</label></td>
+                <td class="col2">
+                    @Html.TextBoxFor(model => model.ShortName, new { placeholder = "Mã cổ phiếu" })
+                </td>
+                <td>@Html.ValidationMessageFor(model => model.ShortName)</td>
+
+
+            </tr>
+            <tr>
+                <td class="col1"><label>Tên dài:</label></td>
+                <td class="col2">
+                    @Html.TextBoxFor(model => model.LongName, new { placeholder = "Mã cổ phiếu" })
+                </td>
+                <td>@Html.ValidationMessageFor(model => model.LongName)</td>
+
+
+            </tr>
+            <tr>
+                <td class="col1"><label> Sàn cổ phiếu:</label></td>                
+                <td>@Html.DropDownListFor(model => model.MarketType, @ViewBag.marketTypeList as SelectList, new { @name = "marketType" })</td>
+                <td>@Html.ValidationMessageFor(model => model.MarketType)</td>
+
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Cập nhật" class="btn btn-default" /> |
+                    <a style="color: #328AC5" href="/TickerHot">Back/Cancel</a>
+                </td>
+            </tr>
+        }
+    </table>
+
+
+    @*<div class="form-actions no-color">
+            <input onclick="return confirm('Cập nhật tài khoản?');" type="submit" value="Cập nhật" class="btn btn-default" /> |
+            <a style="color: #328AC5" href="@ViewBag.linkAbsolutePath">Back/Cancel</a>
+        </div>*@
+
+</div>
+<br />
+<script>
+
+</script>

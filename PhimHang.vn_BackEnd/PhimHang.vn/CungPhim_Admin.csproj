@@ -361,6 +361,7 @@
     <Compile Include="Models\StockCode.cs">
       <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\StockCodeModel.cs" />
     <Compile Include="Models\StockPrice.cs">
       <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
     </Compile>
@@ -1528,6 +1529,7 @@
     <Content Include="Views\ShortenLink\Index.cshtml" />
     <Content Include="Views\TickerHot\Add.cshtml" />
     <Content Include="Views\Pin\Add.cshtml" />
+    <Content Include="Views\Ticker\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

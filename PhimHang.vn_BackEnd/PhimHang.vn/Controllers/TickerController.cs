@@ -56,5 +56,91 @@ namespace PhimHang.Controllers
              ViewBag.marketTypeList = new SelectList(marketType, "Id", "Name");
 
          }
+
+         public async Task<ActionResult> Add() // Tạo mã nóng
+         {
+             LoadInit();
+             return View();
+         }
+
+         [HttpPost]
+         [ValidateAntiForgeryToken]
+         public async Task<ActionResult> Add(StockCodeModel stockcode) // Tạo mã nóng
+         {
+             if (ModelState.IsValid)
+             {
+
+                 if (dbcungphim.StockCodes.Any(t => t.Code == stockcode.Code))
+                 {
+                     ModelState.AddModelError("", "Đã tồn tại mã cổ phiếu này trong thệ thống");
+                 }
+                 else
+                 {
+                     dbcungphim.StockCodes.Add(new StockCode { Code = stockcode.Code.ToUpper(), IndexName});
+                     await dbcungphim.SaveChangesAsync();
+                     return RedirectToAction("Index");
+                 }
+
+
+             }
+             return View(stockcode);
+         }
+
+         public async Task<ActionResult> Detail(int tickerid) // list user
+         {
+             var hotTicker = await dbcungphim.TickerHots.FindAsync(tickerid);
+             return View(hotTicker);
+         }
+         [HttpPost, ActionName("Detail")]
+         [ValidateAntiForgeryToken]
+         public async Task<ActionResult> Detail(int tickerid, string stockCode) // list user
+         {
+             var hotTicker = await dbcungphim.TickerHots.FindAsync(tickerid);
+             if (hotTicker != null)
+             {
+                 if (hotTicker.THName.ToUpper() != stockCode.ToUpper())
+                 {
+                     hotTicker.THName = stockCode;
+                     try
+                     {
+                         dbcungphim.Entry(hotTicker).State = EntityState.Modified;
+                         await dbcungphim.SaveChangesAsync();
+                     }
+                     catch (Exception)
+                     {
+
+                         //throw;
+                     }
+                 }
+             }
+             return RedirectToAction("");
+         }
+
+         public async Task<ActionResult> Delete(int? tickerid) // list user
+         {
+             var hotTicker = await dbcungphim.TickerHots.FindAsync(tickerid);
+             return View(hotTicker);
+         }
+         [HttpPost, ActionName("Delete")]
+         [ValidateAntiForgeryToken]
+         public async Task<ActionResult> Delete(int tickerid) // list user
+         {
+             var hotTicker = await dbcungphim.TickerHots.FindAsync(tickerid);
+             if (hotTicker != null)
+             {
+                 try
+                 {
+                     dbcungphim.TickerHots.Remove(hotTicker);
+                     await dbcungphim.SaveChangesAsync();
+                 }
+                 catch (Exception)
+                 {
+
+                     //throw;
+                 }
+
+             }
+             return RedirectToAction("");
+         }
 	}
 }
