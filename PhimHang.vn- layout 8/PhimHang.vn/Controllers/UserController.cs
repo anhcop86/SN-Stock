@@ -79,7 +79,7 @@ namespace PhimHang.Controllers
             {
                 ViewBag.AvataEmage = ImageURLAvataDefault;
             }
-
+            ViewBag.CurrentPositionImage = currentUser.CoverPosition;
             ViewBag.UserName = username;
             ViewBag.AvataImageUrlCurrent = string.IsNullOrEmpty(currentUser.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.AvataImage;
             ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.AvataCover) == true ? ImageURLCoverDefault : ImageURLCover + currentUser.AvataCover;

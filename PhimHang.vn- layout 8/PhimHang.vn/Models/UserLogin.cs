@@ -50,6 +50,7 @@ namespace PhimHang.Models
         public Nullable<byte> NumberExMarketYear { get; set; }
         public Nullable<byte> PhilosophyMarket { get; set; }
         public Nullable<bool> BrokerVIP { get; set; }
+        public string CoverPosition { get; set; }
     
         public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
         public virtual ICollection<FollowStock> FollowStocks { get; set; }

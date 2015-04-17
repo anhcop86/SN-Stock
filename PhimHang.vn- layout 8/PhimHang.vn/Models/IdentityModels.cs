@@ -64,6 +64,8 @@ namespace PhimHang.Models
         public Nullable<byte> PhilosophyMarket { get; set; }
 
         public bool? BrokerVIP { get; set; }
+
+        public string CoverPosition { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

@@ -21,9 +21,11 @@
                 $('input.cover-position').val(ui.position.top);
             }
         });
-    $('.covertStyle').click(function() {        
+    
+    
+    $('#SavePositionCover').click(function () {
         var formData = new FormData();
-        formData.append("positionHeight", $('input.cover-position').val());        
+        formData.append("positionHeight", $('input.cover-position').val());
         $.ajax({
             url: '/Account/resizeImage',
             type: 'POST',
@@ -32,14 +34,12 @@
             contentType: false,
             processData: false
         }).done(function (data) {
-            if (data === "error") {
-
-                showNotification('Có lỗi khi upload ảnh, vui lòng thử lại');
+            if (data === "Y") {
+                showNotification('Cập nhật vị trí ảnh nền thành công');
                 return
             }
             else {
-                $('.chartImage').show();
-                $('.mb3-chart-thumb').attr("src", data);
+                showNotification('Cập nhật thất bại');
             }
         }).fail(function () {
             showNotification('Có lỗi khi upload ảnh, vui lòng thử lại');

@@ -447,7 +447,6 @@
     <Content Include="images\avatar\e9be14ac-6acf-4a38-9517-15a85b96dd06193132_avata.JPG" />
     <Content Include="images\avatar\ff84767c-9e6f-4d9d-9ee0-3c98d0352406213253_avata.jpg" />
     <Content Include="images\company_logo.jpg" />
-    <Content Include="images\cover\69d9604a-a45e-4eff-a506-4a24c7d4f544104603_cover.jpg" />
     <Content Include="images\cover\6f389083-9ac7-4449-b7ec-0963d76effb3205815_cover.jpg" />
     <Content Include="images\cover\79a9d809-05e1-48f8-a8b6-9ae584976109150732_cover.png" />
     <Content Include="images\cover\7d1d425b-b859-4d51-9f3d-bb286d493627084735_cover.jpg" />
@@ -485,6 +484,7 @@
     <Content Include="img\default_cover_user6.jpg" />
     <Content Include="img\default_cover_user7.jpg" />
     <Content Include="img\kindo-logo.jpg" />
+    <Content Include="img\whitecam.png" />
     <Content Include="Resources\EmailTemplates\ResetPasswordEmail.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1316,6 +1316,7 @@
     <Content Include="Views\Shared\_Layout_ThiTruong.cshtml" />
     <Content Include="Views\ThiTruong\Index.cshtml" />
     <Content Include="Views\Shared\_Partial_Area_Right_User_Info.cshtml" />
+    <Content Include="Views\Shared\_Partial_Area_Cover_User.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

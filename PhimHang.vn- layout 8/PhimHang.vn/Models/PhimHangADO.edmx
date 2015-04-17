@@ -78,8 +78,8 @@
           <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="StockCodePin" Type="varchar" MaxLength="16" />
           <Property Name="PostId" Type="bigint" Nullable="false" />
-          <Property Name="CreatedDate" Type="datetime2" Precision="7" />
           <Property Name="WhoPost" Type="int" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
         </EntityType>
         <EntityType Name="PostComments">
           <Key>
@@ -176,6 +176,7 @@
           <Property Name="NumberExMarketYear" Type="tinyint" />
           <Property Name="PhilosophyMarket" Type="tinyint" />
           <Property Name="BrokerVIP" Type="bit" />
+          <Property Name="CoverPosition" Type="varchar" MaxLength="8" />
         </EntityType>
         <EntityType Name="UserRelate">
           <Key>
@@ -727,7 +728,7 @@
           <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="StockCodePin" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
           <Property Name="PostId" Type="Int64" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="7" Nullable="false" />
           <Property Name="WhoPost" Type="Int32" />
           <NavigationProperty Name="Post" Relationship="PHDBContext.FK_Posts_PinStock" FromRole="PinStock" ToRole="Post" />
         </EntityType>
@@ -785,6 +786,7 @@
           <NavigationProperty Name="Philosophy" Relationship="PHDBContext.FK_UserLogins_Philosophy" FromRole="UserLogin" ToRole="Philosophy" />
           <NavigationProperty Name="PostComments" Relationship="PHDBContext.FK_PostComments_UserLogins" FromRole="UserLogin" ToRole="PostComment" />
           <Property Name="BrokerVIP" Type="Boolean" />
+          <Property Name="CoverPosition" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
           </EntityType>
         <Association Name="FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id">
           <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="0..1" />
@@ -1209,6 +1211,7 @@
           <EntitySetMapping Name="UserLogins">
             <EntityTypeMapping TypeName="PHDBContext.UserLogin">
               <MappingFragment StoreEntitySet="UserLogins">
+                <ScalarProperty Name="CoverPosition" ColumnName="CoverPosition" />
                 <ScalarProperty Name="BrokerVIP" ColumnName="BrokerVIP" />
                 <ScalarProperty Name="PhilosophyMarket" ColumnName="PhilosophyMarket" />
                 <ScalarProperty Name="NumberExMarketYear" ColumnName="NumberExMarketYear" />

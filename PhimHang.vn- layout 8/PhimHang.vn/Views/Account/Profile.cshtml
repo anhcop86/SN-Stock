@@ -23,12 +23,12 @@
                                         <input id="idchartFileUpload" name="Select File" accept="image/*" type="file" onchange="uploadAvata(files)" />
                                     </div>
                                 </div>
-                                <div class="control-group">
+                                @*<div class="control-group">
                                     <label class="control-label" for="confirmUsername">Cover:</label>
                                     <div class="controls">
                                         <input onchange="uploadCover(files)" accept="image/*" type="file" id="coverInput" name="coverInput" value="" class="input-xlarge"/>
                                     </div>
-                                </div>
+                                </div>*@
                               
                                 <div class="control-group">
                                     <label class="control-label" for="username">Họ và tên:</label>
@@ -160,50 +160,50 @@
         }
 
     }
-    function uploadCover(files) {
-        file = files[0];
-        if (file == null) {
-            return;
-        }
-        if (file.size > 5000000) {
-            showNotification('File hình quá lớn, xin vui lòng chọn hình khác?');
-            return;
-        }
-        var ext = file.name.split('.').pop().toLowerCase();
-        if ($.inArray(ext, ['png', 'jpg', 'jpeg']) == -1) {
-            showNotification('File hình không đúng định dạng!. Chỉ hỗ trợ file hình png, jpg, jpeg');
-            return;
-        }
-        // Add the uploaded image content to the form data collection
-        if (files.length > 0) {
-            var formData = new FormData();
-            formData.append("UploadedImage", file);
-            //upload via ajax
-            $.ajax({
-                url: '/Account/CoverUpload',
-                type: 'POST',
-                data: formData,
-                cache: false,
-                contentType: false,
-                processData: false,
-                crossDomain: false
-            }).done(function (data) {
-                if (data === "error") {
-                    showNotification('Có lỗi khi upload ảnh, vui lòng thử lại');
-                    $('#coverInput').val('');
-                    return
-                }
-                else {
-                    showNotification('Cập nhật hình cover thành công, có thể về profile để xem');
-                    $('#coverInput').val('');
-                }
+    //function uploadCover(files) {
+    //    file = files[0];
+    //    if (file == null) {
+    //        return;
+    //    }
+    //    if (file.size > 5000000) {
+    //        showNotification('File hình quá lớn, xin vui lòng chọn hình khác?');
+    //        return;
+    //    }
+    //    var ext = file.name.split('.').pop().toLowerCase();
+    //    if ($.inArray(ext, ['png', 'jpg', 'jpeg']) == -1) {
+    //        showNotification('File hình không đúng định dạng!. Chỉ hỗ trợ file hình png, jpg, jpeg');
+    //        return;
+    //    }
+    //    // Add the uploaded image content to the form data collection
+    //    if (files.length > 0) {
+    //        var formData = new FormData();
+    //        formData.append("UploadedImage", file);
+    //        //upload via ajax
+    //        $.ajax({
+    //            url: '/Account/CoverUpload',
+    //            type: 'POST',
+    //            data: formData,
+    //            cache: false,
+    //            contentType: false,
+    //            processData: false,
+    //            crossDomain: false
+    //        }).done(function (data) {
+    //            if (data === "error") {
+    //                showNotification('Có lỗi khi upload ảnh, vui lòng thử lại');
+    //                $('#coverInput').val('');
+    //                return
+    //            }
+    //            else {
+    //                showNotification('Cập nhật hình cover thành công, có thể về profile để xem');
+    //                $('#coverInput').val('');
+    //            }
 
-            }).fail(function () {
-                showNotification('Có lỗi khi upload ảnh, vui lòng thử lại:');
-                $('#coverInput').val('');
-            })
-        }
+    //        }).fail(function () {
+    //            showNotification('Có lỗi khi upload ảnh, vui lòng thử lại:');
+    //            $('#coverInput').val('');
+    //        })
+    //    }
 
-    }
+    //}
 
     </script>

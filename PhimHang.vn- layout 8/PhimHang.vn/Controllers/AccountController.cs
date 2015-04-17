@@ -402,6 +402,7 @@ namespace PhimHang.Controllers
                 #region update new avata on server
 
                 user.UserExtentLogin.AvataCover = NameFiletimeupload + Path.GetExtension(uploadfileid_cover.FileName);
+                user.UserExtentLogin.CoverPosition = "";
                 IdentityResult result = await UserManager.UpdateAsync(user);
                 if (result.Succeeded)
                 {
@@ -422,12 +423,19 @@ namespace PhimHang.Controllers
         public  async Task<string> resizeImage(int positionHeight)
         {
             ApplicationUser user = UserManager.FindById(User.Identity.GetUserId()); // get user's logging
-            string uploadDir = "~" + ImageURLCover;
-            string imagePath = Path.Combine(Server.MapPath(uploadDir) + user.UserExtentLogin.AvataCover);
-            System.Drawing.Image ImageOriginal = System.Drawing.Image.FromFile(imagePath);
-            int heightFromTop = getRightHeight(ImageOriginal.Width, ImageOriginal.Height, -positionHeight);
-            AppHelper.CropImage(ImageOriginal, 600, ImageOriginal.Width, 0, 600).Save(Server.MapPath(uploadDir) + user.UserExtentLogin.AvataCover);
-            return "Y";
+            user.UserExtentLogin.CoverPosition = positionHeight + "px";
+            try
+            {
+                IdentityResult result = await UserManager.UpdateAsync(user);
+                return "Y";
+            }
+            catch (Exception)
+            {
+
+                return "N" ;
+            }
+            
+            
         }
 
         public int getRightHeight(int defaultWidth, int defaultHeight, int tyleMoi)

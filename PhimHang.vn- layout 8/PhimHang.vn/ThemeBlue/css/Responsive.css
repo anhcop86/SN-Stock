@@ -146,6 +146,13 @@
     .cover-div{
         height:100% !important;
     }
+    #CoverImageId{
+        top:0px !important;
+    }
+    .cover-div img{
+        max-width: 100%;
+        width: 100%; 
+    }
    
 }
 

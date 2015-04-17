@@ -25,9 +25,7 @@
     <link href="~/ThemeBlue/css/Notification.css" rel="stylesheet" />
     <link href="~/ThemeBlue/css/newstyle2.css" rel="stylesheet" />
     <!-- Objects of facebook-->
-    <!-- End For crop image-->
-    <script src="~/ThemeBlue/js/CropImageUser.js"></script>
-    <!-- End For crop image-->
+    
 
     <meta property="fb:app_id" content="934180333272963" />
     <meta property="og:type" content="business.business" />
@@ -118,10 +116,7 @@
         </div>
     </div>
     <div class="cover-div">
-        <img alt="Ảnh bìa" src="@ViewBag.CoverImage?w=1600&mode=crop">
-        <input class="cover-position" name="pos" value="0" type="hidden">
-
-        @*<a href="#" class="covertStyle">Lưu hình</a>*@
+        @Html.Partial("_Partial_Area_Cover_User")
     </div>    
     <!---->
     <div>
