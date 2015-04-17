@@ -11,6 +11,9 @@ using System.Net.Mail;
 using System.Net;
 using System.Collections.Specialized;
 using System.IO;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.Drawing.Drawing2D;
 
 namespace PhimHang.Models
 {
@@ -205,6 +208,51 @@ namespace PhimHang.Models
             {
                 string rootPath = HttpContext.Current.Server.MapPath("~");
                 return rootPath.Substring(0, rootPath.LastIndexOf(@"\")) + ConfigurationManager.AppSettings["ResetPasswordEmailTemplatePath"];
+            }
+        }
+        public static System.Drawing.Image CropImage(System.Drawing.Image Image, int Height, int Width, int StartAtX, int StartAtY)
+        {
+            Image outimage;
+            MemoryStream mm = null;
+            try
+            {
+                //check the image height against our desired image height
+                if (Image.Height < Height)
+                {
+                    Height = Image.Height;
+                }
+
+                if (Image.Width < Width)
+                {
+                    Width = Image.Width;
+                }
+
+                //create a bitmap window for cropping
+                Bitmap bmPhoto = new Bitmap(Width, Height, PixelFormat.Format24bppRgb);
+                bmPhoto.SetResolution(100, 100);
+
+                //create a new graphics object from our image and set properties
+                Graphics grPhoto = Graphics.FromImage(bmPhoto);
+                grPhoto.SmoothingMode = SmoothingMode.AntiAlias;
+                grPhoto.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                grPhoto.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+                //now do the crop
+                grPhoto.DrawImage(Image, new Rectangle(0, 0, Width, Height), StartAtX, StartAtY, Width, Height, GraphicsUnit.Pixel);
+
+                // Save out to memory and get an image from it to send back out the method.
+                mm = new MemoryStream();
+                bmPhoto.Save(mm, System.Drawing.Imaging.ImageFormat.Jpeg);
+                Image.Dispose();
+                bmPhoto.Dispose();
+                grPhoto.Dispose();
+                outimage = Image.FromStream(mm);
+
+                return outimage;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error cropping image, the error was: " + ex.Message);
             }
         }
     }

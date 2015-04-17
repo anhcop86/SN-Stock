@@ -447,6 +447,7 @@
     <Content Include="images\avatar\e9be14ac-6acf-4a38-9517-15a85b96dd06193132_avata.JPG" />
     <Content Include="images\avatar\ff84767c-9e6f-4d9d-9ee0-3c98d0352406213253_avata.jpg" />
     <Content Include="images\company_logo.jpg" />
+    <Content Include="images\cover\69d9604a-a45e-4eff-a506-4a24c7d4f544104603_cover.jpg" />
     <Content Include="images\cover\6f389083-9ac7-4449-b7ec-0963d76effb3205815_cover.jpg" />
     <Content Include="images\cover\79a9d809-05e1-48f8-a8b6-9ae584976109150732_cover.png" />
     <Content Include="images\cover\7d1d425b-b859-4d51-9f3d-bb286d493627084735_cover.jpg" />
@@ -673,6 +674,7 @@
     <Content Include="ThemeBlue\js\FollowStock.js" />
     <Content Include="ThemeBlue\js\highstock.js" />
     <Content Include="ThemeBlue\js\jquery.dropdown.js" />
+    <Content Include="ThemeBlue\js\CropImageUser.js" />
     <Content Include="ThemeBlue\js\jquery\jquery-ui.js" />
     <Content Include="ThemeBlue\js\jquery\jquery-ui.min.js" />
     <Content Include="ThemeBlue\js\jquery\jquery.js" />

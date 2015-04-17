@@ -27,7 +27,7 @@ namespace PhimHang
             bundles.Add(new ScriptBundle("~/bundles/standardCoreRT").Include(
                                         //<!--Jquery standard-->
                                         "~/Scripts/jquery-2.1.1.min.js",
-                                        "~/ThemeBlue/js/jquery/jquery.js",
+                                        //"~/ThemeBlue/js/jquery/jquery.js",
                                          
                                         "~/ThemeBlue/js/jquery/jquery-ui.js",
                                         //<!--For realtime UI-->

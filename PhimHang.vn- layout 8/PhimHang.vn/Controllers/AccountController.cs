@@ -21,7 +21,7 @@ namespace PhimHang.Controllers
         private const string ImageURLAvataDefault = "/img/avatar2.jpg";
         private const string ImageURLCoverDefault = "/img/cover_default.jpg";
         private const string ImageURLAvata = "/images/avatar/";
-        private const string ImageURLCover = "images/cover/";
+        private const string ImageURLCover = "/images/cover/";
        
          
          public AccountController()
@@ -198,7 +198,7 @@ namespace PhimHang.Controllers
                 profile.NumberExMarketYear = user.UserExtentLogin.NumberExMarketYear;
             }
             ViewBag.AvataEmage = string.IsNullOrEmpty(user.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + user.UserExtentLogin.AvataImage;
-            ViewBag.ImageUrlCover = ImageURLCover + user.UserExtentLogin.AvataCover;
+            //ViewBag.ImageUrlCover = ImageURLCover + user.UserExtentLogin.AvataCover;
             return View(profile);
         }
        
@@ -378,7 +378,7 @@ namespace PhimHang.Controllers
                 #region get directory
 
                 ApplicationUser user = UserManager.FindById(User.Identity.GetUserId()); // get user's logging
-                var uploadDir = "~/" + ImageURLCover;
+                var uploadDir = "~" + ImageURLCover;
                 string NameFiletimeupload = user.Id + DateTime.Now.ToString("HHmmss") + "_cover";
                 var imagePath = Path.Combine(Server.MapPath(uploadDir), NameFiletimeupload + Path.GetExtension(uploadfileid_cover.FileName));
                 var imageUrl = ImageURLCover + NameFiletimeupload + Path.GetExtension(uploadfileid_cover.FileName);
@@ -417,6 +417,26 @@ namespace PhimHang.Controllers
             }
 
         }
+
+        [HttpPost]
+        public  async Task<string> resizeImage(int positionHeight)
+        {
+            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId()); // get user's logging
+            string uploadDir = "~" + ImageURLCover;
+            string imagePath = Path.Combine(Server.MapPath(uploadDir) + user.UserExtentLogin.AvataCover);
+            System.Drawing.Image ImageOriginal = System.Drawing.Image.FromFile(imagePath);
+            int heightFromTop = getRightHeight(ImageOriginal.Width, ImageOriginal.Height, -positionHeight);
+            AppHelper.CropImage(ImageOriginal, 600, ImageOriginal.Width, 0, 600).Save(Server.MapPath(uploadDir) + user.UserExtentLogin.AvataCover);
+            return "Y";
+        }
+
+        public int getRightHeight(int defaultWidth, int defaultHeight, int tyleMoi)
+		{
+
+
+            return (defaultHeight * tyleMoi) / defaultWidth;			
+			
+		}
       
         // GET: /Account/Manage
         public ActionResult Manage(ManageMessageId? message)

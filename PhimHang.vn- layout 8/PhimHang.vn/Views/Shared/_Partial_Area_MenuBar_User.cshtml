@@ -30,29 +30,30 @@
     </div>
 </div>
 <div class="area-right">
-    <div class="btn-right-top">
-        @*<a href="#" class="button-flow"><i class="fa fa-plus"></i>Theo dõi</a>*@
-        @{
-            if (User.Identity.IsAuthenticated)
-            {
-                if (ViewBag.CheckUserExist == "E")
+    
+        <div class="btn-right-top">
+            @*<a href="#" class="button-flow"><i class="fa fa-plus"></i>Theo dõi</a>*@
+            @{
+                if (User.Identity.IsAuthenticated)
                 {
-                    
-                }
-                else if (ViewBag.CheckUserExist == "Y")
-                {
-                    <a href="#" class="button-flow"><i class="fa fa-minus"></i>Đang theo dõi</a>
+                    if (ViewBag.CheckUserExist == "E")
+                    {
+
+                    }
+                    else if (ViewBag.CheckUserExist == "Y")
+                    {
+                        <a href="#" class="button-flow"><i class="fa fa-minus"></i>Đang theo dõi</a>
+                    }
+                    else
+                    {
+                        <a href="#" class="button-flow"><i class="fa fa-plus"></i>Theo dõi</a>
+                    }
                 }
                 else
                 {
-                    <a href="#" class="button-flow"><i class="fa fa-plus"></i>Theo dõi</a>
+                    <a href="/Account/Login?ReturnUrl=/user/@ViewBag.UserName/tab/1" class="button-flow"><i class="fa fa-plus"></i>Theo dõi</a>
+
                 }
             }
-            else
-            {
-                <a href="/Account/Login?ReturnUrl=/user/@ViewBag.UserName/tab/1" class="button-flow"><i class="fa fa-plus"></i>Theo dõi</a>
-
-            }
-}
+        </div>
     </div>
-</div>
