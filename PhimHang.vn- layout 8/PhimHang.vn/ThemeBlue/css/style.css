@@ -1262,8 +1262,10 @@ a.category-tab:hover{
     color: #000;
 }
 .btn-right-top{
-    float: right;
-    padding-top: 25px;
+    /*float: right;*/
+    padding-top: 18px;
+    /*position:absolute;*/
+    right:35%;
 }
 .button-flow{
     padding: 5px 10px;

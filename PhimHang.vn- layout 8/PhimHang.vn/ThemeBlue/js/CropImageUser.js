@@ -33,7 +33,7 @@
             cache: false,
             contentType: false,
             processData: false
-        }).done(function (data) {
+        }).success(function (data) {
             if (data === "Y") {
                 showNotification('Cập nhật vị trí ảnh nền thành công');
                 return

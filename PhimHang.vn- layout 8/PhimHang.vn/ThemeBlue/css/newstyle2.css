@@ -79,3 +79,11 @@
   cursor: pointer;
   /*margin-left: -110px;*/
  }
+
+ .uploadStatus{
+     position: absolute;
+    z-index: 8000;
+    right: 42%;
+    top: 3%;
+    display:inline-flex;
+ }

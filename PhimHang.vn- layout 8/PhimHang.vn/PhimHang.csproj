@@ -484,6 +484,7 @@
     <Content Include="img\default_cover_user6.jpg" />
     <Content Include="img\default_cover_user7.jpg" />
     <Content Include="img\kindo-logo.jpg" />
+    <Content Include="img\uploading.gif" />
     <Content Include="img\whitecam.png" />
     <Content Include="Resources\EmailTemplates\ResetPasswordEmail.html" />
     <Content Include="Scripts\bootstrap.js" />
