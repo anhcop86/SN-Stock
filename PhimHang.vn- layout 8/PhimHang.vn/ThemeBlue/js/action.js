@@ -10,13 +10,19 @@ $(document).ready(function () {
         resizable: true,
         autoOpen: false,
         open: function (event, ui) {
-            $('body').css('overflow', 'auto');
-            $(window).scrollTop(0);
+            $('body').css('overflow', 'hidden');
+            //$(window).scrollTop(0);
             $('.avata-genaral-size').focus(); // trang profile focus cái này
+            if ($('#bg_dialog').length == 0) {
+                $("<div id='bg_dialog' ></div>").appendTo("body");
+                $(".ui-dialog").appendTo('#bg_dialog');
+                $('#bg_dialog').show();
+            }
             //$('.area-center').css('height', '1000px');
         },
-        close: function (event, ui) {
-            $('body').css('overflow', 'auto');
+        close: function (event, ui) {           
+            $('#bg_dialog').hide();
+            document.body.style.overflow = 'auto';
         }
     });
 

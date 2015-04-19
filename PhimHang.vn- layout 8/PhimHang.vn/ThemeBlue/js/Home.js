@@ -257,10 +257,13 @@ function viewModel() {
 
         });
 
-        if (!$(e.target).hasClass('btnMore')) {
-            dialog.dialog("open");
-            $(".ui-widget-overlay").click(function () {
-                dialog.dialog('close');
+        if (!$(e.target).hasClass('btnMore')) {                           
+            $('#bg_dialog').show();
+                dialog.dialog("open");
+                $(".ui-widget-overlay, #bg_dialog").click(function (e) {
+                if ($(e.target).parents('#bg_dialog').length == 0) {
+                    dialog.dialog('close');                   
+                }
             })
         }
     }

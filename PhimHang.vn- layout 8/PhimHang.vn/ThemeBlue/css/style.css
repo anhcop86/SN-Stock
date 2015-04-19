@@ -1413,7 +1413,7 @@ a.category-tab:hover{
 }   
 .ui-dialog {    
     /*position: fixed;*/
-    top:-55px !important;
+    top:5px !important;
     /*max-height: 700px!important;*/
 } 
 .scroll-div {    
@@ -1722,4 +1722,15 @@ a.avatar img:hover{
 .hidden-xs-button2 {
   margin-right: 30px;
   float: right;
+}
+
+#bg_dialog{
+ display:none;
+ z-index: 99998;
+ width: 100%;
+ top: 0px;
+ overflow-y: auto;
+ height: 100%;
+ position: fixed;
+ 
 }

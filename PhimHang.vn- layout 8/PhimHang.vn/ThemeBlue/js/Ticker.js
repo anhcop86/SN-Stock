@@ -375,12 +375,12 @@ function viewModel() {
         });
 
         if (!$(e.target).hasClass('btnMore')) {
-            //document.body.style.overflow = 'hidden';
+            $('#bg_dialog').show();
             dialog.dialog("open");
-            $(".ui-widget-overlay").click(function () {
-                dialog.dialog('close');
-                //document.body.style.overflow = 'auto';
-                //self.replys('');
+            $(".ui-widget-overlay, #bg_dialog").click(function (e) {
+                if ($(e.target).parents('#bg_dialog').length == 0) {
+                    dialog.dialog('close');
+                }
             })
         }
     }
