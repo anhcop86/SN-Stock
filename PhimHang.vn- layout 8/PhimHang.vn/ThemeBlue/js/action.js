@@ -14,13 +14,18 @@ $(document).ready(function () {
             //$(window).scrollTop(0);
             $('.avata-genaral-size').focus(); // trang profile focus cái này
             if ($('#bg_dialog').length == 0) {
-                $("<div id='bg_dialog' ></div>").appendTo("body");
+                $("<div id='bg_dialog'></div>").appendTo("body");                
                 $(".ui-dialog").appendTo('#bg_dialog');
                 $('#bg_dialog').show();
             }
+            if ($('#close_dialog').length == 0) {
+                $('<i id="close_dialog" class="fa fa-times-circle"></i>').appendTo("body");                
+                $('#close_dialog').show();
+            }
             //$('.area-center').css('height', '1000px');
         },
-        close: function (event, ui) {           
+        close: function (event, ui) {
+            $('#close_dialog').hide();
             $('#bg_dialog').hide();
             document.body.style.overflow = 'auto';
         }

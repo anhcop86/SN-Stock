@@ -259,13 +259,15 @@ function viewModel() {
 
         if (!$(e.target).hasClass('btnMore')) {
             $('#bg_dialog').show();
+            $('#close_dialog').show();
             dialog.dialog("open");
-            $(".ui-widget-overlay, #bg_dialog").click(function (e) {
+            $(".ui-widget-overlay, #bg_dialog, #close_dialog").click(function (e) {
                 if ($(e.target).parents('#bg_dialog').length == 0) {
                     dialog.dialog('close');
                 }
-            })
+            })            
         }
+       
     }
 
     self.enablePhimHang = ko.computed(function () {

@@ -1413,7 +1413,8 @@ a.category-tab:hover{
 }   
 .ui-dialog {    
     /*position: fixed;*/
-    top:5px !important;
+    top:22px !important;
+    margin-bottom:22px;
     /*max-height: 700px!important;*/
 } 
 .scroll-div {    
@@ -1733,4 +1734,17 @@ a.avatar img:hover{
  height: 100%;
  position: fixed;
  
+}
+
+#close_dialog {
+    opacity:0;
+    z-index: 99999;    
+    left:49%;
+    top: 0px;        
+    position: fixed;
+    font-size: 20px;
+    color:#328AC5;
+    cursor:pointer;
+    width:20px;
+    height:20px;
 }
