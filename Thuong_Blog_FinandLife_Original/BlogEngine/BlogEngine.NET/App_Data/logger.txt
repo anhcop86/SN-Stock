@@ -13,3 +13,12 @@ An attempt to download a remote file has been halted due to unknown content leng
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 Date: 04-04-2013 22:41:43
 An attempt to download a remote file has been halted due to unknown content length: http://mutualfunds.about.com/od/mutualfundglossary/a/What-Is-A-Bear-Market.htm
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 4/20/2015 9:55:26 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x0C, is an invalid character. Line 245, position 321.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 4/20/2015 9:55:30 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 4/20/2015 9:55:43 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
