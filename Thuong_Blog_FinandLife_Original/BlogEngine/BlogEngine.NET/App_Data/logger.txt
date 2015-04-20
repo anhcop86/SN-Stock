@@ -1,0 +1,15 @@
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 04-04-2013 22:35:00
+An attempt to download a remote file has been halted due to unknown content length: http://www.youtube.com/watch?v=ufu5sqJh24Q
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 04-04-2013 22:35:02
+An attempt to download a remote file has been halted due to unknown content length: http://www.huffingtonpost.com/2013/02/02/godaddy-super-bowl-commercials_n_2607450.html
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 04-04-2013 22:41:41
+An attempt to download a remote file has been halted due to unknown content length: http://mutualfunds.about.com/od/activevspassivefunds/a/Market-Correction.htm
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 04-04-2013 22:41:42
+An attempt to download a remote file has been halted due to unknown content length: http://mutualfunds.about.com/od/mutualfundglossary/a/What-Is-A-Bull-Market.htm
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 04-04-2013 22:41:43
+An attempt to download a remote file has been halted due to unknown content length: http://mutualfunds.about.com/od/mutualfundglossary/a/What-Is-A-Bear-Market.htm
