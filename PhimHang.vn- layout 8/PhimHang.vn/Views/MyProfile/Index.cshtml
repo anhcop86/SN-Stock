@@ -188,11 +188,11 @@
         var listStockFollow = [];
         @foreach (var item in ViewBag.ListFollow as int[])
         {
-        @:listFollow.push(@item);
+            @:listFollow.push(@item);
         }
-            @foreach (var item in ViewBag.listStockFollow as List<string>)
+        @foreach (var item in ViewBag.listStockFollow as List<string>)
         {
-        @:listStockFollow.push('@item');
+            @:listStockFollow.push('@item');
         }
 </script>
 @*<script>

@@ -87,7 +87,7 @@ function Post(data) {
     self.PostedByName = data.PostedByName || "";
     self.PostedByAvatar = data.PostedByAvatar + '?width=50&height=50&mode=crop' || "";
     self.PostedDate = getTimeAgo(data.PostedDate);
-    self.StockPrimary = data.StockPrimary;
+    //self.StockPrimary = data.StockPrimary;
     //self.notification = ko.observable(0);
     self.Stm = (data.Stm === 1 ? "<span class='divBear-cm'>Giảm</span>" : data.Stm === 2 ? "<span class='divBull-cm'>Tăng</span>" : "") || "";
     self.ChartYN = data.ChartYN || 0;
@@ -171,7 +171,7 @@ function viewModel() {
             charImage = "";
         }
 
-        commenthub.server.addPost({ "Message": self.newMessage() }, $('#stockHidenPage').val(), $('#HiddentCureentUserId').val(), $('#HiddentUserName').val(), $('#HiddentAvataEmage').val(), nhanDinh, charImage)
+        commenthub.server.addPost({ "Message": self.newMessage() }, $('#HiddentCureentUserId').val(), $('#HiddentUserName').val(), $('#HiddentAvataEmage').val(), nhanDinh, charImage)
             .done(function () {
                 showNotification('Bạn đã đăng bài thành công!');
             })

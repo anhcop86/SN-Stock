@@ -153,7 +153,7 @@ self.addPost = function () { // them post
         charImage = "";
     }
 
-    commenthub.server.addPost({ "Message": self.newMessage() }, "KEYMYPROFILE", $('#HiddentCureentUserId').val(), $('#HiddentUserName').val(), $('#HiddentAvataEmage').val(), nhanDinh, charImage)
+    commenthub.server.addPost({ "Message": self.newMessage() }, $('#HiddentCureentUserId').val(), $('#HiddentUserName').val(), $('#HiddentAvataEmage').val(), nhanDinh, charImage)
         .done(function () {
             showNotification('Bạn đã đăng bài thành công!');
         })
@@ -222,7 +222,7 @@ self.FilterAll = function (stringFilter) {
 /////////////////////////////////////////////////////////////
 // recieve the post from server
 commenthub.client.addPostGlobal = function (post) {
-    if (checkpost == 'Y') {
+    if (checkpost == 'Y') { // kiem tra xem co phai mình post hay ko ??
         //filter here
         if (filterhere == "" || filterhere == "ALL") {
             self.posts.splice(0, 0, new Post(post));
@@ -248,13 +248,20 @@ commenthub.client.addPostGlobal = function (post) {
         }
 
         if (filterhere == "STF") {
-            if ($.inArray(post.StockPrimary, listStockFollow) != -1) {
-                self.posts.splice(0, 0, new Post(post));
-            }
+            //if ($.inArray(post.StockPrimary, listStockFollow) != -1) {
+            //    self.posts.splice(0, 0, new Post(post));
+            //}
+            $.each(listStockFollow, function (index, value) {
+                if (post.StockPrimary.indexOf(value) != -1) {
+                    self.posts.splice(0, 0, new Post(post));
+                    return false;
+                    
+                }
+            })
         }
 
     }
-    else {
+    else { // ko phai minh post
         //filter here
         if (filterhere == "" || filterhere == "ALL") {
             self.newPosts.splice(0, 0, new Post(post));
@@ -286,10 +293,17 @@ commenthub.client.addPostGlobal = function (post) {
         }
 
         if (filterhere == "STF") {
-            if ($.inArray(post.StockPrimary, listStockFollow) != -1) {
-                self.newPosts.splice(0, 0, new Post(post));
-                document.title = '(' + self.newPosts().length + ') ' + "Nhà của tôi";
-            }
+            //if ($.inArray(post.StockPrimary, listStockFollow) != -1) {
+            //    self.newPosts.splice(0, 0, new Post(post));
+            //    document.title = '(' + self.newPosts().length + ') ' + "Nhà của tôi";
+            //}
+            $.each(listStockFollow, function (index, value) {
+                if (post.StockPrimary.indexOf(value) != -1) {
+                    self.newPosts.splice(0, 0, new Post(post));
+                    document.title = '(' + self.newPosts().length + ') ' + "Nhà của tôi";
+                    return false;
+                }
+            })
         }
 
     }

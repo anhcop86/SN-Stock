@@ -26,8 +26,8 @@ namespace PhimHang.Models
             this.UserRelates = new HashSet<UserRelate>();
             this.UserViewLastests = new HashSet<UserViewLastest>();
             this.UserViewLastests1 = new HashSet<UserViewLastest>();
-            this.Posts = new HashSet<Post>();
             this.PostComments = new HashSet<PostComment>();
+            this.Posts = new HashSet<Post>();
         }
     
         public int Id { get; set; }
@@ -62,9 +62,9 @@ namespace PhimHang.Models
         public virtual ICollection<UserRelate> UserRelates { get; set; }
         public virtual ICollection<UserViewLastest> UserViewLastests { get; set; }
         public virtual ICollection<UserViewLastest> UserViewLastests1 { get; set; }
-        public virtual ICollection<Post> Posts { get; set; }
         public virtual JobTitile JobTitile { get; set; }
         public virtual Philosophy Philosophy { get; set; }
         public virtual ICollection<PostComment> PostComments { get; set; }
+        public virtual ICollection<Post> Posts { get; set; }
     }
 }

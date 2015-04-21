@@ -28,20 +28,20 @@
         <AssociationConnector Association="PHDBContext.FK_UserRelate_UserLogins" />
         <AssociationConnector Association="PHDBContext.FK_UserViewLastest_UserLogins" />
         <AssociationConnector Association="PHDBContext.FK_UserViewLastest_UserLogins1" />
-        <EntityTypeShape EntityType="PHDBContext.Post" Width="1.5" PointX="3" PointY="3.625" />
-        <AssociationConnector Association="PHDBContext.FK_Posts_User" />
-        <AssociationConnector Association="PHDBContext.FK_Posts_PinStock" />
-        <AssociationConnector Association="PHDBContext.FK_Posts_UserLogins" />
-        <AssociationConnector Association="PHDBContext.FK_StockRelate_Posts" />
-        <AssociationConnector Association="PHDBContext.FK_UserRelate_Posts" />
         <EntityTypeShape EntityType="PHDBContext.JobTitile" Width="1.5" PointX="0.75" PointY="17.125" />
         <AssociationConnector Association="PHDBContext.FK_JobTitile_JobTitle" />
         <EntityTypeShape EntityType="PHDBContext.Philosophy" Width="1.5" PointX="0.75" PointY="2.875" />
         <AssociationConnector Association="PHDBContext.FK_UserLogins_Philosophy" />
         <EntityTypeShape EntityType="PHDBContext.PostComment" Width="1.5" PointX="10.25" PointY="6.375" />
-        <AssociationConnector Association="PHDBContext.FK_PostComments_Posts" />
         <AssociationConnector Association="PHDBContext.FK_PostComments_UserLogins" />
         <EntityTypeShape EntityType="PHDBContext.TickerHot" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="PHDBContext.Post" Width="1.5" PointX="3" PointY="23.875" />
+        <AssociationConnector Association="PHDBContext.FK_Posts_User" />
+        <AssociationConnector Association="PHDBContext.FK_Posts_PinStock" />
+        <AssociationConnector Association="PHDBContext.FK_PostComments_Posts" />
+        <AssociationConnector Association="PHDBContext.FK_Posts_UserLogins" />
+        <AssociationConnector Association="PHDBContext.FK_StockRelate_Posts" />
+        <AssociationConnector Association="PHDBContext.FK_UserRelate_Posts" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

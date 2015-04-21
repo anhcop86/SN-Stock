@@ -26,38 +26,16 @@ namespace PhimHang.Hubs
         private const string ImageURLAvata = "/images/avatar/";
         private string hostURL = AppHelper.TinyURL;
         testEntities db = new testEntities();
-        TinyURLEntities dbtinyURL = new TinyURLEntities();
-        /*
-        public void GetPosts(string stockCurrent)
-        {
-            //var fjdsf = WebSecurity.CurrentUserId;
-            using (testEntities db = new testEntities())
-            {
-                var ret = (from stockRelate in db.StockRelates.ToList()
-                           where stockRelate.StockCodeRelate == stockCurrent
-                           orderby stockRelate.Post.PostedDate descending
-                           select new
-                           {
-                               Message = stockRelate.Post.Message,
-                               //PostedBy = stockRelate.Post.PostedDate,
-                               PostedByName = stockRelate.Post.UserLogin.UserNameCopy,
-                               PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage + "?width=46&height=46&mode=crop",
-                               PostedDate = stockRelate.Post.PostedDate,
-                               PostId = stockRelate.PostId,
-                               StockPrimary = stockRelate.Post.StockPrimary
-                           }).Take(10).ToArray();
-                //var listStock = new List<string>();              
-
-                Clients.Client(Context.ConnectionId).loadPosts(ret);
-              
-            }
-        }*/
+        TinyURLEntities dbtinyURL = new TinyURLEntities();        
         [Authorize] 
-        public async Task AddPost(Post post, string stockCurrent, int currentUserId, string userName, string avataImageUrl, byte nhanDinh, string chartImage)
+        public async Task AddPost(Post post, int currentUserId, string userName, string avataImageUrl, byte nhanDinh, string chartImage)
         {
-           
+            #region user login
+            var userlogin = Context.User;
+            #endregion
             #region format message
             string messagedefault = "";
+            string stockTag = ""; // dinh dang stock|stock|stock de tim co phieu lien quan
             messagedefault = post.Message;
             List<string> listMessege = post.Message.Split(' ').ToList();
             string messageFromatHTML = "";
@@ -67,6 +45,7 @@ namespace PhimHang.Hubs
                 {
                     string ticker = item.Replace("$", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToUpper();
                     messageFromatHTML += "<b><a onclick=selectMe(event,\"#\") target='_blank' href='/ticker/" + ticker + "'>" + item + "</a></b>" + " ";
+                    stockTag += ticker + "|";
                 }
                 else if (item.Contains("@"))
                 {
@@ -100,7 +79,7 @@ namespace PhimHang.Hubs
             post.Message = AppHelper.FilteringWord( messageFromatHTML);            
             post.PostedBy = currentUserId;
             post.PostedDate = DateTime.Now;
-            post.StockPrimary = stockCurrent;
+            post.StockPrimary = stockTag;
             post.NhanDinh = nhanDinh;
             post.SumLike = 0;
             if (!string.IsNullOrWhiteSpace(chartImage))
@@ -120,25 +99,12 @@ namespace PhimHang.Hubs
 
             using (testEntities db = new testEntities())
             {
-                db.Posts.Add(post);
-                /* co phieu dau tien la chinh no */
-                if (stockCurrent != "KEYMYPROFILE")
-                {
-                    StockRelate stockRelateFirst = new StockRelate();
-                    stockRelateFirst.PostId = post.PostId;
-                    stockRelateFirst.StockCodeRelate = stockCurrent;
-                    db.StockRelates.Add(stockRelateFirst); // add to database
-                    listStock.Add(stockCurrent.ToUpper()); // group of hub for client 
-                }
-                /* END */
-                //db.Posts.Add(post);
-                /* add post with stockrelate list */
+                db.Posts.Add(post);               
                 foreach (var item in listMessegeSplit)
                 {
                     string stockcode = item.Replace("$", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToUpper();
                     if (item.Contains("$") && !listStock.Contains(stockcode)) // find the stock with $
                     {
-
                         StockRelate stockRelateLasts = new StockRelate();
                         stockRelateLasts.PostId = post.PostId;
                         stockRelateLasts.StockCodeRelate = stockcode;
@@ -146,9 +112,7 @@ namespace PhimHang.Hubs
                         listStock.Add(stockcode); // group of hub for client 
                     }
                     else if(item.Contains("@")) //find the user with @
-                    {
-                        // code later
-
+                    {                       
                         string user = item.Replace("@", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToLower();
                         var finduser = db.UserLogins.FirstOrDefault(ul => ul.UserNameCopy == user);
                         if (finduser != null)
@@ -157,11 +121,9 @@ namespace PhimHang.Hubs
                             db.NotificationMesseges.Add(nM);
                             listUsersendMessege.Add(user);
                         }
-
                     }
                 }
-
-
+                
                 /* add stockrelate */
                 try
                 {
@@ -172,13 +134,10 @@ namespace PhimHang.Hubs
                     // log                    
                 }
                 
-
                 var ret = new
-                {
-                    //Message = post.Message,
+                {                    
                     Message =  post.Message,
-                    Chart = post.ChartImageURL,
-                    //PostedBy = post.PostedBy,
+                    Chart = post.ChartImageURL,                    
                     PostedByName = userName,
                     PostedByAvatar = avataImageUrl,
                     PostedDate = post.PostedDate,
@@ -191,11 +150,11 @@ namespace PhimHang.Hubs
                     SumReply =0
                 };
 
-                await Clients.Groups(listStock).addPost(ret); // ad group
-                await Clients.All.addPostGlobal(ret); // add vào profile
+                await Clients.Groups(listStock).addPost(ret); // ad group co phieu lien quan
+                await Clients.All.addPostGlobal(ret); // add vào profile va home
                 if (listUsersendMessege.Count > 0)
                 {
-                    await Clients.Users(listUsersendMessege).MessegeOfUserPost(1);
+                    await Clients.Users(listUsersendMessege).MessegeOfUserPost(1); // gui tin bao cho user nao có @
                 }
             }
         }
