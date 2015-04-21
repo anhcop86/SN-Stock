@@ -95,7 +95,8 @@
                         <div class="list-item-detail">
                             <div class="list-item-date" data-bind="text : PostedDate"></div>
                             <div class="list-item-username" style="width:0%">
-                                <a style="cursor:pointer" onclick='selectMe(event,"#")' data-bind="text : PostedByName, click : function() {  location.href='/user/' + PostedByName + '/tab/1'  }"></a>
+                                @*<a style="cursor:pointer" onclick='selectMe(event,"#")' data-bind="text : PostedByName, click : function() {  location.href='/user/' + PostedByName + '/tab/1'  }"></a>*@
+                                <a style="cursor:pointer" onclick='selectMe(event,"#")' data-bind="attr : { href : '/user/' + PostedByName + '/tab/1' }, text : PostedByName"></a>
                             </div>
                             <span data-bind="html : Stm"></span>
                             <div class="list-item-status-content" data-bind="html : Message"></div>
