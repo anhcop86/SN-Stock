@@ -103,7 +103,7 @@ function viewModel() {
     /////////////////////////////////////////////////////
 
     self.addReply = function () { // them tra loi
-        commenthub.server.addReply({ "Message": self.newReply(), "PostedBy": postidCurrent }, 'MC', $('#HiddentCureentUserId').val(), $('#HiddentUserName').val(), $('#HiddentAvataEmage').val())
+        commenthub.server.addReply({ "Message": self.newReply(), "PostedBy": postidCurrent })
                .done(function () {
                    showNotification('Bạn đã trả lời thành công!');
                })

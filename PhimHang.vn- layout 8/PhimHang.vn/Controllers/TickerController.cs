@@ -67,7 +67,7 @@ namespace PhimHang.Controllers
             {
                 ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
                 ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
-                ViewBag.CureentUserId = currentUser.UserExtentLogin.Id;
+                ViewBag.CureentUserId = currentUser.Id;
                 ViewBag.UserName = currentUser.UserName;
                 //ViewBag.AvataImageUrl = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault + "?width=50&height=50&mode=crop" : ImageURLAvata + currentUser.UserExtentLogin.AvataImage + "?width=50&height=50&mode=crop";
             }
@@ -92,19 +92,7 @@ namespace PhimHang.Controllers
             ViewBag.ImgEx = ".png";
             #endregion
 
-            #region gia co phieu
-            //var followstocks = await db.FollowStocks.Where(f => f.UserId == currentUser.UserExtentLogin.Id).ToListAsync();
-            //var listfollowstocksString = (from sf in followstocks
-            //                              select sf.StockFollowed).ToList();
-            //var DMDTShortName = (from fs in db.FollowStocks.ToList()
-            //                     join s in db.StockCodes.ToList() on fs.StockFollowed equals s.Code
-            //                     where listfollowstocksString.Contains(fs.StockFollowed)
-            //                     select new StockDetail
-            //                     {
-            //                         Stock = fs.StockFollowed,
-            //                         ShortName = s.ShortName
-            //                     }).ToList();
-            //ViewBag.HotStockDMDT = DMDTShortName;//_stockRealtime.GetAllStocksTestList(listfollowstocksString).Result;
+            #region gia co phieu            
             StockRealTime stockprice = new StockRealTime();
             stockprice = _stockRealtime.GetStocksByTicker(symbolName).Result;
             if (stockprice == null)
@@ -116,13 +104,13 @@ namespace PhimHang.Controllers
             listIndex.Add("VNINDEX");
             listIndex.Add("HNXINDEX");
             ViewBag.ListIndex = _stockRealtime.GetAllStocksList(listIndex).Result;
-            //ViewBag.PriceOfTicker = stockprice;
+            
             #endregion
             #region danh muc co phieu nong
             var listHotStock = await AppHelper.GetListHotStock();
             ViewBag.ListStockHot = listHotStock;
             #endregion
-            ////return View(_stockRealtime.GetAllStocksTestList((List<string>)Session["listStock"]).Result);
+            
             return View(stockprice);
 
         }

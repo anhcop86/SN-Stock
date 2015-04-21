@@ -56,7 +56,7 @@ namespace PhimHang.Controllers
             ViewBag.Follow = follow;
             ViewBag.Follower = follower;
 
-            ViewBag.CureentUserId = currentUser.UserExtentLogin.Id;
+            ViewBag.CureentUserId = currentUser.Id;
             ViewBag.UserName = currentUser.UserName;
 
             ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
@@ -109,7 +109,7 @@ namespace PhimHang.Controllers
             ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : "/images/avatar/" + currentUser.UserExtentLogin.AvataImage;
             ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataCover) == true ? ImageURLCoverDefault : "/images/cover/" + currentUser.UserExtentLogin.AvataCover;
             ViewBag.AvataImageUrl = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
-            ViewBag.CureentUserId = currentUser.UserExtentLogin.Id;
+            ViewBag.CureentUserId = currentUser.Id;
             ViewBag.UserName = currentUser.UserName;
             #endregion
             #region thong tin co phieu ben phai
@@ -143,13 +143,13 @@ namespace PhimHang.Controllers
             return View(currentUser);
         }
         #region load messagesCenter
-        public async Task<dynamic> GetMessagesByUserId(int userid, int skipposition, string filter)
+        public async Task<dynamic> GetMessagesByUserId(string userid, int skipposition, string filter)
         {
             if (filter == "" || filter == "ALL")
             {
                 var ret = await (from stockRelate in db.NotificationMesseges
                            orderby stockRelate.CreateDate descending, stockRelate.XemYN descending
-                           where stockRelate.UserReciver == userid
+                           where stockRelate.UserLogin1.KeyLogin == userid
                            select new
                            {
                                Message = stockRelate.Post.Message,
@@ -175,9 +175,9 @@ namespace PhimHang.Controllers
             }
         }
         [HttpPost]
-        public async Task ChangeStatusMessege(int userid)
+        public async Task ChangeStatusMessege(string    userid)
         {
-            var listUpdate = await db.NotificationMesseges.Where(nm => nm.UserReciver == userid && nm.XemYN == true).ToListAsync();            
+            var listUpdate = await db.NotificationMesseges.Where(nm => nm.UserLogin1.KeyLogin == userid && nm.XemYN == true).ToListAsync();            
             if (listUpdate.Count > 0)
             {
                 foreach (var item in listUpdate)

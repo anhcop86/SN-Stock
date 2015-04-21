@@ -153,7 +153,7 @@ self.addPost = function () { // them post
         charImage = "";
     }
 
-    commenthub.server.addPost({ "Message": self.newMessage() }, $('#HiddentCureentUserId').val(), $('#HiddentUserName').val(), $('#HiddentAvataEmage').val(), nhanDinh, charImage)
+    commenthub.server.addPost({ "Message": self.newMessage() }, nhanDinh, charImage)
         .done(function () {
             showNotification('Bạn đã đăng bài thành công!');
         })
@@ -168,7 +168,7 @@ self.addPost = function () { // them post
 
 self.addReply = function () { // them tra loi
     $('#btAddReply').attr("disabled", true); // disble ngay khong de click them
-    commenthub.server.addReply({ "Message": self.newReply(), "PostedBy": postidCurrent }, "KEYMYPROFILE", $('#HiddentCureentUserId').val(), $('#HiddentUserName').val(), $('#HiddentAvataEmage').val())
+    commenthub.server.addReply({ "Message": self.newReply(), "PostedBy": postidCurrent })
         .done(function () {
             showNotification('Bạn đã trả lời thành công!');
         })

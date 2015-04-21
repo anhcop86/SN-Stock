@@ -48,7 +48,7 @@ namespace PhimHang.Controllers
             {
                 ApplicationUser userLogin = await UserManager.FindByIdAsync(User.Identity.GetUserId());
                 ViewBag.AvataEmage = string.IsNullOrEmpty(userLogin.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + userLogin.UserExtentLogin.AvataImage;
-                ViewBag.CureentUserId = userLogin.UserExtentLogin.Id;
+                ViewBag.CureentUserId = userLogin.Id;
                 ViewBag.UserName = userLogin.UserName;
                 ViewBag.AvataImageUrl = string.IsNullOrEmpty(userLogin.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + userLogin.UserExtentLogin.AvataImage;
 

@@ -42,7 +42,7 @@ namespace PhimHang.Controllers
                 {
                     ApplicationUser currentUser = new ApplicationUser();
                     currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());                    
-                    ViewBag.CureentUserId = currentUser.UserExtentLogin.Id;
+                    ViewBag.CureentUserId = currentUser.Id;
                     ViewBag.UserName = currentUser.UserName;
                     ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
                     var numberMessegeNew = await db.NotificationMesseges.Where(nm => nm.UserReciver == currentUser.UserExtentLogin.Id && nm.NumNoti > 0).SumAsync(mn => mn.NumNoti);

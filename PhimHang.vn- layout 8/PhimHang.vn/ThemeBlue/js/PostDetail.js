@@ -87,7 +87,7 @@ function viewModel() {
     }        
     self.addReply = function () { // them tra loi
         $('#btAddReply').attr("disabled", true); // disble ngay khong de click them
-        commenthub.server.addReply({ "Message": self.newReply(), "PostedBy": $('#hiddenPostId').val() }, 'StockDetail', $('#HiddentCureentUserId').val(), $('#HiddentUserName').val(), $('#HiddentAvataEmage').val())
+        commenthub.server.addReply({ "Message": self.newReply(), "PostedBy": $('#hiddenPostId').val() })
             .done(function () {
                 showNotification('Bạn đã trả lời thành công!');
                 // tổng reply +  thêm 1

@@ -22,84 +22,89 @@ namespace PhimHang.Hubs
          
         // GET: /Post/
 
-        private const string ImageURLAvataDefault = "/img/avatar2.jpg"; 
+        private const string ImageURLAvataDefault = "/img/avatar2.jpg";
         private const string ImageURLAvata = "/images/avatar/";
         private string hostURL = AppHelper.TinyURL;
         testEntities db = new testEntities();
-        TinyURLEntities dbtinyURL = new TinyURLEntities();        
-        [Authorize] 
-        public async Task AddPost(Post post, int currentUserId, string userName, string avataImageUrl, byte nhanDinh, string chartImage)
+        TinyURLEntities dbtinyURL = new TinyURLEntities();
+        [Authorize]
+        public async Task AddPost(Post post,  byte nhanDinh, string chartImage)
         {
-            #region user login
-            var userlogin = Context.User;
-            #endregion
-            #region format message
-            string messagedefault = "";
-            string stockTag = ""; // dinh dang stock|stock|stock de tim co phieu lien quan
-            messagedefault = post.Message;
-            List<string> listMessege = post.Message.Split(' ').ToList();
-            string messageFromatHTML = "";
-            foreach (var item in listMessege)
-            {
-                if (item.Contains("$"))
-                {
-                    string ticker = item.Replace("$", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToUpper();
-                    messageFromatHTML += "<b><a onclick=selectMe(event,\"#\") target='_blank' href='/ticker/" + ticker + "'>" + item + "</a></b>" + " ";
-                    stockTag += ticker + "|";
-                }
-                else if (item.Contains("@"))
-                {
-                    string user = item.Replace("@", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToLower();
-                    messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='/user/" + user + "/tab/1'>" + item + "</a>" + " ";
-                }
-                else if (item.Contains("http") || item.Contains("www."))
-                {
-                    URLTiny tu = new URLTiny();
-                    tu.URLName = item;
-                    tu.PostedDate = DateTime.Now;
-                    dbtinyURL.URLTinies.Add(tu);
-                    try
-                    {                        
-                        await dbtinyURL.SaveChangesAsync();
-                    }
-                    catch (Exception)
-                    {
-                        // log                    
-                    }
-                    messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='" + hostURL + "/" + tu.Id + "'>" + AppHelper.GetDomain(item) + "...</a>" + " ";
-                }
-                else
-                {
-                    messageFromatHTML += item + " ";
-                }
-            }
-
-            #endregion
-            //messageFromatHTML += "</a>";
-            post.Message = AppHelper.FilteringWord( messageFromatHTML);            
-            post.PostedBy = currentUserId;
-            post.PostedDate = DateTime.Now;
-            post.StockPrimary = stockTag;
-            post.NhanDinh = nhanDinh;
-            post.SumLike = 0;
-            if (!string.IsNullOrWhiteSpace(chartImage))
-            {
-                post.ChartYN = true;
-                post.ChartImageURL = chartImage.Replace("?width=50&height=50&mode=crop", "");
-            }
-            
-            var listStock = new List<string>();
-            var listUsersendMessege = new List<string>();
-
-            #region explan this passing messege to stockcode and username list
-
-            List<string> listMessegeSplit = messagedefault.Split(' ').ToList().FindAll(p => p.Contains("$") || p.Contains("@"));
-                        
-            #endregion
-
             using (testEntities db = new testEntities())
             {
-                db.Posts.Add(post);               
+                #region user login
+                var userlogin = db.UserLogins.FirstOrDefault(ul => ul.UserNameCopy == Context.User.Identity.Name);
+                if (userlogin == null)
+                {
+                    return;
+                }
+                #endregion
+                #region format message
+                string messagedefault = "";
+                string stockTag = ""; // dinh dang stock|stock|stock de tim co phieu lien quan
+                messagedefault = post.Message;
+                List<string> listMessege = post.Message.Split(' ').ToList();
+                string messageFromatHTML = "";
+                foreach (var item in listMessege)
+                {
+                    if (item.Contains("$"))
+                    {
+                        string ticker = item.Replace("$", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToUpper();
+                        messageFromatHTML += "<b><a onclick=selectMe(event,\"#\") target='_blank' href='/ticker/" + ticker + "'>" + item + "</a></b>" + " ";
+                        stockTag += ticker + "|";
+                    }
+                    else if (item.Contains("@"))
+                    {
+                        string user = item.Replace("@", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToLower();
+                        messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='/user/" + user + "/tab/1'>" + item + "</a>" + " ";
+                    }
+                    else if (item.Contains("http") || item.Contains("www."))
+                    {
+                        URLTiny tu = new URLTiny();
+                        tu.URLName = item;
+                        tu.PostedDate = DateTime.Now;
+                        dbtinyURL.URLTinies.Add(tu);
+                        try
+                        {
+                            await dbtinyURL.SaveChangesAsync();
+                        }
+                        catch (Exception)
+                        {
+                            // log                    
+                        }
+                        messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='" + hostURL + "/" + tu.Id + "'>" + AppHelper.GetDomain(item) + "...</a>" + " ";
+                    }
+                    else
+                    {
+                        messageFromatHTML += item + " ";
+                    }
+                }
+
+                #endregion
+                //messageFromatHTML += "</a>";
+                post.Message = AppHelper.FilteringWord(messageFromatHTML);
+                post.PostedBy = userlogin.Id;
+                post.PostedDate = DateTime.Now;
+                post.StockPrimary = stockTag;
+                post.NhanDinh = nhanDinh;
+                post.SumLike = 0;
+                if (!string.IsNullOrWhiteSpace(chartImage))
+                {
+                    post.ChartYN = true;
+                    post.ChartImageURL = chartImage.Replace("?width=50&height=50&mode=crop", "");
+                }
+
+                var listStock = new List<string>();
+                var listUsersendMessege = new List<string>();
+
+                #region explan this passing messege to stockcode and username list
+
+                List<string> listMessegeSplit = messagedefault.Split(' ').ToList().FindAll(p => p.Contains("$") || p.Contains("@"));
+
+                #endregion
+
+
+                db.Posts.Add(post);
                 foreach (var item in listMessegeSplit)
                 {
                     string stockcode = item.Replace("$", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToUpper();
@@ -111,35 +116,35 @@ namespace PhimHang.Hubs
                         db.StockRelates.Add(stockRelateLasts); // add to database
                         listStock.Add(stockcode); // group of hub for client 
                     }
-                    else if(item.Contains("@")) //find the user with @
-                    {                       
+                    else if (item.Contains("@")) //find the user with @
+                    {
                         string user = item.Replace("@", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToLower();
                         var finduser = db.UserLogins.FirstOrDefault(ul => ul.UserNameCopy == user);
                         if (finduser != null)
                         {
-                            NotificationMessege nM = new NotificationMessege { UserPost = currentUserId, UserReciver = finduser.Id, PostId = post.PostId, NumNoti = 1, TypeNoti = "U", CreateDate = DateTime.Now, XemYN = true };
+                            NotificationMessege nM = new NotificationMessege { UserPost = userlogin.Id, UserReciver = finduser.Id, PostId = post.PostId, NumNoti = 1, TypeNoti = "U", CreateDate = DateTime.Now, XemYN = true };
                             db.NotificationMesseges.Add(nM);
                             listUsersendMessege.Add(user);
                         }
                     }
                 }
-                
+
                 /* add stockrelate */
                 try
                 {
-                    await db.SaveChangesAsync();                    
+                    await db.SaveChangesAsync();
                 }
                 catch (Exception)
                 {
                     // log                    
                 }
-                
+
                 var ret = new
-                {                    
-                    Message =  post.Message,
-                    Chart = post.ChartImageURL,                    
-                    PostedByName = userName,
-                    PostedByAvatar = avataImageUrl,
+                {
+                    Message = post.Message,
+                    Chart = post.ChartImageURL,
+                    PostedByName = userlogin.UserNameCopy,
+                    PostedByAvatar = string.IsNullOrEmpty(userlogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + userlogin.AvataImage,
                     PostedDate = post.PostedDate,
                     PostId = post.PostId,
                     StockPrimary = post.StockPrimary,
@@ -147,7 +152,7 @@ namespace PhimHang.Hubs
                     ChartYN = post.ChartYN,
                     PostBy = post.PostedBy,
                     SumLike = 0,
-                    SumReply =0
+                    SumReply = 0
                 };
 
                 await Clients.Groups(listStock).addPost(ret); // ad group co phieu lien quan
@@ -158,71 +163,80 @@ namespace PhimHang.Hubs
                 }
             }
         }
-        [Authorize] 
-        public async Task AddReply(PostComment reply, string stockCurrent, int currentUserId, string userName, string avataImageUrl)
+        [Authorize]
+        public async Task AddReply(PostComment reply)
         {
-            reply.CommentBy = currentUserId;
-            reply.PostedDate = DateTime.Now;
 
-            #region format message
-            string messagedefault = "";
-            messagedefault = reply.Message;
-            List<string> listMessege = reply.Message.Split(' ').ToList();
-            string messageFromatHTML = "";
-            foreach (var item in listMessege)
-            {
-                if (item.Contains("$"))
-                {
-                    string ticker = item.Replace("$", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToUpper();
-                    messageFromatHTML += "<b><a onclick=selectMe(event,\"#\") target='_blank' href='/ticker/" + ticker + "'>" + item + "</a></b>" + " ";
-                }
-                else if (item.Contains("@"))
-                {
-                    string user = item.Replace("@", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToLower();
-                    messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='/user/" + user + "/tab/1'>" + item + "</a>" + " ";
-                }
-                else if (item.Contains("http") || item.Contains("www."))
-                {
-                    URLTiny tu = new URLTiny();
-                    tu.URLName = item;
-                    tu.PostedDate = DateTime.Now;
-                    dbtinyURL.URLTinies.Add(tu);
-                    try
-                    {
-                        await dbtinyURL.SaveChangesAsync();
-                    }
-                    catch (Exception)
-                    {
-                        // log                    
-                    }
-                    messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='" + hostURL + "/" + tu.Id + "'>" + AppHelper.GetDomain(item) + "...</a>" + " ";
-                }
-                else
-                {
-                    messageFromatHTML += item + " ";
-                }
-            }
-
-            #endregion
-            reply.Message = AppHelper.FilteringWord(messageFromatHTML);
-            //var listStock = new List<string>();
-            //listStock.Add(stockCurrent.ToUpper());
             using (testEntities db = new testEntities())
             {
+                #region user login
+                var userlogin = db.UserLogins.FirstOrDefault(ul => ul.UserNameCopy == Context.User.Identity.Name);
+                if (userlogin == null)
+                {
+                    return;
+                }
+                #endregion
+                reply.CommentBy = userlogin.Id;
+                reply.PostedDate = DateTime.Now;
+
+                #region format message
+                string messagedefault = "";
+                messagedefault = reply.Message;
+                List<string> listMessege = reply.Message.Split(' ').ToList();
+                string messageFromatHTML = "";
+                foreach (var item in listMessege)
+                {
+                    if (item.Contains("$"))
+                    {
+                        string ticker = item.Replace("$", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToUpper();
+                        messageFromatHTML += "<b><a onclick=selectMe(event,\"#\") target='_blank' href='/ticker/" + ticker + "'>" + item + "</a></b>" + " ";
+                    }
+                    else if (item.Contains("@"))
+                    {
+                        string user = item.Replace("@", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToLower();
+                        messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='/user/" + user + "/tab/1'>" + item + "</a>" + " ";
+                    }
+                    else if (item.Contains("http") || item.Contains("www."))
+                    {
+                        URLTiny tu = new URLTiny();
+                        tu.URLName = item;
+                        tu.PostedDate = DateTime.Now;
+                        dbtinyURL.URLTinies.Add(tu);
+                        try
+                        {
+                            await dbtinyURL.SaveChangesAsync();
+                        }
+                        catch (Exception)
+                        {
+                            // log                    
+                        }
+                        messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='" + hostURL + "/" + tu.Id + "'>" + AppHelper.GetDomain(item) + "...</a>" + " ";
+                    }
+                    else
+                    {
+                        messageFromatHTML += item + " ";
+                    }
+                }
+
+                #endregion
+                reply.Message = AppHelper.FilteringWord(messageFromatHTML);
+                //var listStock = new List<string>();
+                //listStock.Add(stockCurrent.ToUpper());
+
                 var listUsersendMessege = new List<string>();
                 ///////////////////////////////////////////
                 var getPost = db.Posts.Find(reply.PostedBy); // lay thong tin cua bài post đó
                 // cap nhat tong so luong reply
                 getPost.SumReply += 1;
-                
+
                 #region gui tin cho chu da post bài
-                
-                if (getPost.PostedBy != currentUserId)
+
+                if (getPost.PostedBy != userlogin.Id)
                 {
                     var nMRecive = db.NotificationMesseges.FirstOrDefault(nm => nm.UserReciver == getPost.UserLogin.Id && nm.PostId == reply.PostedBy);
                     if (nMRecive == null)
                     {
-                        NotificationMessege nM = new NotificationMessege { UserPost = currentUserId, UserReciver = getPost.UserLogin.Id, PostId = reply.PostedBy, NumNoti = 1, TypeNoti = "R", CreateDate = DateTime.Now, XemYN = true };
+                        NotificationMessege nM = new NotificationMessege { UserPost = userlogin.Id, UserReciver = getPost.UserLogin.Id, PostId = reply.PostedBy, NumNoti = 1, TypeNoti = "R", CreateDate = DateTime.Now, XemYN = true };
                         db.NotificationMesseges.Add(nM);
                     }
                     else
@@ -252,7 +266,7 @@ namespace PhimHang.Hubs
                             var nMuser = db.NotificationMesseges.FirstOrDefault(nm => nm.UserReciver == finduser.Id && nm.PostId == reply.PostedBy);
                             if (nMuser == null)
                             {
-                                NotificationMessege nM = new NotificationMessege { UserPost = currentUserId, UserReciver = finduser.Id, PostId = reply.PostedBy, NumNoti = 1, TypeNoti = "R", CreateDate = DateTime.Now, XemYN = true };
+                                NotificationMessege nM = new NotificationMessege { UserPost = userlogin.Id, UserReciver = finduser.Id, PostId = reply.PostedBy, NumNoti = 1, TypeNoti = "R", CreateDate = DateTime.Now, XemYN = true };
                                 db.NotificationMesseges.Add(nM);
                             }
                             else
@@ -270,7 +284,7 @@ namespace PhimHang.Hubs
                 #endregion
 
                 db.PostComments.Add(reply);
-                
+
                 try
                 {
                     db.Entry(getPost).State = EntityState.Modified;
@@ -279,16 +293,16 @@ namespace PhimHang.Hubs
                 catch (Exception)
                 {
                     // chay tiep
-                    
+
                 }
-               
+
 
                 var ret = new
                 {
                     ReplyMessage = reply.Message,
                     //PostedBy = post.PostedBy,
-                    ReplyByName = userName,
-                    ReplyByAvatar = avataImageUrl,
+                    ReplyByName = userlogin.UserNameCopy,
+                    ReplyByAvatar = string.IsNullOrEmpty(userlogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + userlogin.AvataImage,
                     ReplyDate = reply.PostedDate,
                     ReplyId = reply.PostCommentsId,
                     PostCommentsId = reply.PostCommentsId

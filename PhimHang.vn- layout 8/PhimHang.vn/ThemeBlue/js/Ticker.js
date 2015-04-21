@@ -171,7 +171,7 @@ function viewModel() {
             charImage = "";
         }
 
-        commenthub.server.addPost({ "Message": self.newMessage() }, $('#HiddentCureentUserId').val(), $('#HiddentUserName').val(), $('#HiddentAvataEmage').val(), nhanDinh, charImage)
+        commenthub.server.addPost({ "Message": self.newMessage() }, nhanDinh, charImage)
             .done(function () {
                 showNotification('Bạn đã đăng bài thành công!');
             })
@@ -186,7 +186,7 @@ function viewModel() {
     self.addReply = function () { // them tra loi
         $('#btAddReply').attr("disabled", true); // disble ngay khong de click them
 
-        commenthub.server.addReply({ "Message": self.newReply(), "PostedBy": postidCurrent }, $('#stockHidenPage').val(), $('#HiddentCureentUserId').val(), $('#HiddentUserName').val(), $('#HiddentAvataEmage').val())
+        commenthub.server.addReply({ "Message": self.newReply(), "PostedBy": postidCurrent })
             .done(function () {
                 showNotification('Bạn đã trả lời thành công!');
             })
