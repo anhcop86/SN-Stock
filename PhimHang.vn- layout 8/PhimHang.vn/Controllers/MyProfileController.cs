@@ -324,7 +324,7 @@ namespace PhimHang.Controllers
 
 
                 var ret = await (from stockRelate in db.Posts
-                                 where listStock.Any(ls => stockRelate.StockPrimary.IndexOf(ls)  > -1)
+                           where listStock.Any(ls => stockRelate.StockPrimary.IndexOf(ls) > -1)                                
                            orderby stockRelate.PostedDate descending
                            select new
                            {
