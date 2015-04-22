@@ -27,6 +27,14 @@ namespace PhimHang
             //GlobalHost.Configuration.KeepAlive = TimeSpan.FromSeconds(10);
             app.MapSignalR();
 
+            // login by facbook         
+
+             //app.UseFacebookAuthentication(
+             //  appId: "934180333272963",
+             //  appSecret: "340054820bdfaf4e118872ff97466c1f");
+
+            
+        
         }
     }
 }

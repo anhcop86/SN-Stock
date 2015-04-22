@@ -1,31 +1,24 @@
 ﻿@using Microsoft.Owin.Security
 
-<h4>Use another service to log in.</h4>
+<h4>Hoặc đăng nhập bằng:</h4>
 <hr />
 @{
-    var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
-    if (loginProviders.Count() == 0)
-    {
-        <div>
-            <p>There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=313242">this article</a>
-            for details on setting up this ASP.NET application to support logging in via external services.</p>
-        </div>
-    }
-    else
-    {
-        string action = Model.Action;
-        string returnUrl = Model.ReturnUrl;
-        using (Html.BeginForm(action, "Account", new { ReturnUrl = returnUrl }))
-        {
-            @Html.AntiForgeryToken()
-            <div id="socialLoginList">
-                <p>
-                @foreach (AuthenticationDescription p in loginProviders)
-                {
-                    <button type="submit" class="btn btn-default" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account">@p.AuthenticationType</button>
-                }
-                </p>
-            </div>
-        }
-    }
+    <fb:login-button show-faces="false" width="200" max-rows="1" onlogin="afterFacebookConnect();"></fb:login-button>
 }
+
+<script>
+         function afterFacebookConnect() {
+             FB.getLoginStatus(function (response) {
+                 if (response.status === 'connected') {
+                     var uid = response.authResponse.userID;
+                     var accessToken = response.authResponse.accessToken;
+                     window.location = "/Account/FacebookLogin?token=" + accessToken;                 
+                 } else if (response.status === 'not_authorized') {
+                     alert('not_authorized');
+                 } else {
+                     alert('not_authorized');
+                 }
+             });
+         }
+    
+    </script>

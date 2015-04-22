@@ -12,6 +12,8 @@ using PhimHang.Models;
 using System.IO;
 using System.Drawing;
 using System.Data.Entity;
+using System.Net;
+using Newtonsoft.Json.Linq;
 
 namespace PhimHang.Controllers
 {
@@ -524,6 +526,44 @@ namespace PhimHang.Controllers
 
         //
         // GET: /Account/ExternalLoginCallback
+        [AllowAnonymous]
+        public async Task<ActionResult> FacebookLogin(string token)
+        {
+            WebClient client = new WebClient();            
+            string JsonResult = client.DownloadString(string.Concat(
+                   "https://graph.facebook.com/me?access_token=", token));
+            // Json.Net is really helpful if you have to deal
+            // with Json from .Net http://json.codeplex.com/
+            JObject jsonUserInfo = JObject.Parse(JsonResult);
+            // you can get more user's info here. Please refer to:
+            //     http://developers.facebook.com/docs/reference/api/user/
+            string name = jsonUserInfo.Value<string>("name");
+            string email = jsonUserInfo.Value<string>("email");
+            string locale = jsonUserInfo.Value<string>("locale");
+            string facebook_userID = jsonUserInfo.Value<string>("id");            
+            string id = jsonUserInfo.Value<string>("id");
+            
+            // store user's information here...
+            var getUserFacebook = await db.AspNetUsers.FirstOrDefaultAsync(u => u.Discriminator == id);
+            if (getUserFacebook == null) // chưa có thông tin user
+            {               
+                // chạy đến view cho điền user với token id
+                return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { UserName = "", Token = token });
+            }
+            else  // đã có thông tin user
+            {
+                if (string.IsNullOrEmpty(getUserFacebook.UserName)) // thiếu username phải cho nhập user vào
+                {
+
+                }
+                else // đầy đủ thông thin
+                {
+                    // login
+
+                }
+            }
+            return View();
+        }
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {

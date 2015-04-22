@@ -7,6 +7,8 @@ namespace PhimHang.Models
         [Required]
         [Display(Name = "User name")]
         public string UserName { get; set; }
+        [Required]
+        public string Token { get; set; }
     }
 
     public class ManageUserViewModel
