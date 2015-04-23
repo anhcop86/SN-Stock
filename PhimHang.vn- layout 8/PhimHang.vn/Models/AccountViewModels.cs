@@ -4,8 +4,10 @@ namespace PhimHang.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
-        [Required]
-        [Display(Name = "User name")]
+        [Required(ErrorMessage = "Vui lòng nhập tên đăng nhập")]
+        [System.Web.Mvc.AllowHtml]
+        [RegularExpression("^[a-zA-Z][A-Za-z0-9_]*$", ErrorMessage = "Bạn nhập sai định dạng hoặc có ký tự đặc biệt")]
+        [StringLength(20, ErrorMessage = "Tên đăng nhập từ 6 đến 20 ký tự", MinimumLength = 6)]
         public string UserName { get; set; }
         [Required]
         public string Token { get; set; }
@@ -32,8 +34,10 @@ namespace PhimHang.Models
 
     public class LoginViewModel
     {
-        [Required]
-        [Display(Name = "User name")]
+        [Required(ErrorMessage = "Vui lòng nhập tên đăng nhập")]
+        [System.Web.Mvc.AllowHtml]
+        [RegularExpression("^[a-zA-Z][A-Za-z0-9_]*$", ErrorMessage = "Bạn nhập sai định dạng hoặc có ký tự đặc biệt")]
+        [StringLength(20, ErrorMessage = "Tên đăng nhập từ 6 đến 20 ký tự", MinimumLength = 6)]
         public string UserName { get; set; }
 
         [Required]

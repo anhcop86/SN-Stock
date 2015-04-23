@@ -14,7 +14,7 @@ namespace PhimHang.Models
         {
             //this.Verify = Verify.;
         }
-     
+        
         public virtual UserExtentLogin UserExtentLogin { get; set; }
          
     }
@@ -66,6 +66,8 @@ namespace PhimHang.Models
         public bool? BrokerVIP { get; set; }
 
         public string CoverPosition { get; set; }
+
+        public string IdFacebook { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

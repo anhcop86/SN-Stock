@@ -535,34 +535,30 @@ namespace PhimHang.Controllers
             // Json.Net is really helpful if you have to deal
             // with Json from .Net http://json.codeplex.com/
             JObject jsonUserInfo = JObject.Parse(JsonResult);
-            // you can get more user's info here. Please refer to:
-            //     http://developers.facebook.com/docs/reference/api/user/
-            string name = jsonUserInfo.Value<string>("name");
-            string email = jsonUserInfo.Value<string>("email");
-            string locale = jsonUserInfo.Value<string>("locale");
-            string facebook_userID = jsonUserInfo.Value<string>("id");            
+            //// you can get more user's info here. Please refer to:
+            ////     http://developers.facebook.com/docs/reference/api/user/
+            //string name = jsonUserInfo.Value<string>("name");
+            //string email = jsonUserInfo.Value<string>("email");
+            //string locale = jsonUserInfo.Value<string>("locale");
+            //string facebook_userID = jsonUserInfo.Value<string>("id");            
             string id = jsonUserInfo.Value<string>("id");
             
             // store user's information here...
-            var getUserFacebook = await db.AspNetUsers.FirstOrDefaultAsync(u => u.Discriminator == id);
-            if (getUserFacebook == null) // chưa có thông tin user
-            {               
+            var getUserFacebook = await db.UserLogins.FirstOrDefaultAsync(u => u.IdFacebook == id);
+            if (getUserFacebook!=null)
+            {
+                // login\
+                var user = await UserManager.FindAsync(getUserFacebook.UserNameCopy, "cungphim.com@9999");
+                await SignInAsync(user, false);
+                return RedirectToAction("","myprofile"); // Returun URL
+            }
+            else
+            {
                 // chạy đến view cho điền user với token id
                 return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { UserName = "", Token = token });
             }
-            else  // đã có thông tin user
-            {
-                if (string.IsNullOrEmpty(getUserFacebook.UserName)) // thiếu username phải cho nhập user vào
-                {
-
-                }
-                else // đầy đủ thông thin
-                {
-                    // login
-
-                }
-            }
-            return View();
+            
+            //return View();
         }
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
@@ -630,26 +626,60 @@ namespace PhimHang.Controllers
 
             if (ModelState.IsValid)
             {
+                WebClient client = new WebClient();
+                string JsonResult = client.DownloadString(string.Concat(
+                       "https://graph.facebook.com/me?access_token=", model.Token));
+                // Json.Net is really helpful if you have to deal
+                // with Json from .Net http://json.codeplex.com/
+                JObject jsonUserInfo = JObject.Parse(JsonResult);
+                // you can get more user's info here. Please refer to:
+                //     http://developers.facebook.com/docs/reference/api/user/
+                string name = jsonUserInfo.Value<string>("name");
+                string email = jsonUserInfo.Value<string>("email");
+                string locale = jsonUserInfo.Value<string>("locale");
+                string facebook_userID = jsonUserInfo.Value<string>("id");
+                string id = jsonUserInfo.Value<string>("id");
+
                 // Get the information about the user from the external login provider
-                var info = await AuthenticationManager.GetExternalLoginInfoAsync();
-                if (info == null)
+                var user = new ApplicationUser()
                 {
-                    return View("ExternalLoginFailure");
-                }
-                var user = new ApplicationUser() { UserName = model.UserName };
-                var result = await UserManager.CreateAsync(user);
-                if (result.Succeeded)
+                    UserName = model.UserName,
+                    PasswordHash = "cungphim.com@9999",
+                     
+                    //AvataImage = "default_avatar_medium.jpg",
+                    //FullName = model.FullName,
+                    //   CreatedDate = DateTime.Now,
+                    //   Verify = Verify.NO
+                };
+                user.UserExtentLogin = new UserExtentLogin { Email = email, KeyLogin = user.Id, CreatedDate = DateTime.Now, FullName = name, Verify = Verify.NO, UserNameCopy = model.UserName, IdFacebook = id };
+
+
+                // check email
+                if (!string.IsNullOrEmpty(email))
                 {
-                    result = await UserManager.AddLoginAsync(user.Id, info.Login);
+                    var checkEmail = await db.UserLogins.FirstOrDefaultAsync(ul => ul.Email == email);
+                    if (checkEmail != null)
+                    {
+                        OutputErrors("Email đã tồn tại trong hệ thống");
+                    }
+                }               
+                else
+                {
+                    var result = await UserManager.CreateAsync(user, user.PasswordHash);
                     if (result.Succeeded)
                     {
                         await SignInAsync(user, isPersistent: false);
-                        return RedirectToLocal(returnUrl);
+                        //send mail
+
+                        //
+                        return RedirectToAction("Index", "MyProfile");
+                    }
+                    else
+                    {
+                        AddErrors(result);
                     }
                 }
-                AddErrors(result);
-            }
-
+            }            
             ViewBag.ReturnUrl = returnUrl;
             return View(model);
         }
