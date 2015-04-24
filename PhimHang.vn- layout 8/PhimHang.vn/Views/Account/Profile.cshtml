@@ -10,19 +10,30 @@
                         <div class="account-details tab-pane active" id="profile">     
                            @using (Html.BeginForm("Profile", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                             {
-                                @Html.AntiForgeryToken()
+                                @Html.AntiForgeryToken()                               
                                 <div class="control-group">
-                                    <label class="control-label" for="username">Image:</label>
+                                    <label class="control-label" for="username">AVATAR:</label>
                                     <div class="controls">
                                         <img class="gravatar" id="AvataImage" src="@Model.Avata?width=48&height=48&mode=crop" />                                       
                                     </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="control-label" for="username">Avatar:</label>
-                                    <div class="controls">                                        
+                                    <div class="controls">
                                         <input id="idchartFileUpload" name="Select File" accept="image/*" type="file" onchange="uploadAvata(files)" />
                                     </div>
                                 </div>
+                                if (Request.Cookies["FacebookLogin"] != null)
+                                {
+                                    if (Request.Cookies["FacebookLogin"].Value == "F")
+                                    {
+                                          <div class="control-group">
+                                            <label class="control-label" for="username">Cập nhật tự động:</label>
+                                            <div class="controls" >                                        
+                                                @Html.DropDownListFor(m => m.AvatarSyn, ViewBag.ListavataSyn as SelectList, string.Empty, new { style = "width:80px" })
+                                                (Tự cập nhật hình đại diện từ Facebook)
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                              
                                 @*<div class="control-group">
                                     <label class="control-label" for="confirmUsername">Cover:</label>
                                     <div class="controls">
@@ -106,7 +117,7 @@
                                 <div class="control-group">
                                     <div class="controls">
                                         <input type="submit" class="btn" value="Lưu lại" />
-                                        <p class="text-success">@ViewBag.StatusMessage</p>
+                                        
                                     </div>
                                 </div>                                
                             }

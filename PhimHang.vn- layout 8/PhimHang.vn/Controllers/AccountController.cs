@@ -198,6 +198,7 @@ namespace PhimHang.Controllers
                 profile.CVInfo = user.UserExtentLogin.CVInfo;
                 profile.PhilosophyMarket = user.UserExtentLogin.PhilosophyMarket;
                 profile.NumberExMarketYear = user.UserExtentLogin.NumberExMarketYear;
+                profile.AvatarSyn = user.UserExtentLogin.AvatarSyn;
             }
             ViewBag.AvataEmage = string.IsNullOrEmpty(user.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + user.UserExtentLogin.AvataImage;
             //ViewBag.ImageUrlCover = ImageURLCover + user.UserExtentLogin.AvataCover;
@@ -223,6 +224,7 @@ namespace PhimHang.Controllers
                     user.UserExtentLogin.CVInfo = model.CVInfo;
                     user.UserExtentLogin.NumberExMarketYear = model.NumberExMarketYear;
                     user.UserExtentLogin.PhilosophyMarket = model.PhilosophyMarket;
+                    user.UserExtentLogin.AvatarSyn = model.AvatarSyn;
                 }
                 else
                 {
@@ -243,6 +245,11 @@ namespace PhimHang.Controllers
         }
         private void loadInfoUser(ApplicationUser user)
         {
+            var avataSyn = new List<dynamic>
+            {
+                new { Id = true, Name = "YES" },
+                new { Id = false, Name = "NO" },
+            }.ToList();
             var listJob = db.JobTitiles.ToList();
                     //{                         
                     //    new { Id = 1, Name = "Quản lý" },
@@ -267,9 +274,8 @@ namespace PhimHang.Controllers
             ViewBag.ListJob = new SelectList(listJob, "IdJob", "JobName");
             ViewBag.ListNumberExMarketYear = new SelectList(listNumberExMarketYear, "Id", "Name");
             ViewBag.ListPhilosophyMarket = new SelectList(listPhilosophyMarket, "Id", "PhilosophyName");
-            
+            ViewBag.ListavataSyn = new SelectList(avataSyn, "Id", "Name");
         }
-       
         [HttpPost]
         public async Task<string> AvataUpload()
         {
@@ -329,16 +335,25 @@ namespace PhimHang.Controllers
                 #region update new avata on server
 
                 user.UserExtentLogin.AvataImage = NameFiletimeupload + Path.GetExtension(uploadfileid_avata.FileName);
-                IdentityResult result = await UserManager.UpdateAsync(user);
-                if (result.Succeeded)
+                try
                 {
-                    //ViewBag.imageUrlAvata = imageUrl;
-                    return "YES|" + imageUrl;
+                    IdentityResult result = await UserManager.UpdateAsync(user);
+                    if (result.Succeeded)
+                    {
+                        //ViewBag.imageUrlAvata = imageUrl;
+                        return "YES|" + imageUrl;
+                    }
+                    else
+                    {
+                        return "Cập nhật dữ liệu thất bại";
+                    }
                 }
-                else
+                catch (Exception)
                 {
-                    return "Cập nhật dữ liệu thất bại";
+                    return "Cập nhật dữ liệu thất bại";                    
                 }
+                
+               
                 #endregion
 
             }
@@ -532,30 +547,30 @@ namespace PhimHang.Controllers
             WebClient client = new WebClient();            
             string JsonResult = client.DownloadString(string.Concat(
                    "https://graph.facebook.com/me?access_token=", token));
-            // Json.Net is really helpful if you have to deal
-            // with Json from .Net http://json.codeplex.com/
-            JObject jsonUserInfo = JObject.Parse(JsonResult);
-            //// you can get more user's info here. Please refer to:
-            ////     http://developers.facebook.com/docs/reference/api/user/
-            //string name = jsonUserInfo.Value<string>("name");
-            //string email = jsonUserInfo.Value<string>("email");
-            //string locale = jsonUserInfo.Value<string>("locale");
-            //string facebook_userID = jsonUserInfo.Value<string>("id");            
+          
+            JObject jsonUserInfo = JObject.Parse(JsonResult);         
             string id = jsonUserInfo.Value<string>("id");
+            string nameonFb = jsonUserInfo.Value<string>("name");
             
             // store user's information here...
             var getUserFacebook = await db.UserLogins.FirstOrDefaultAsync(u => u.IdFacebook == id);
             if (getUserFacebook!=null)
             {
+                if (getUserFacebook.AvatarSyn == true) // cập nhật avatar tự động từ facebook
+                {
+                    // update avatar
+                    await AppHelper.AvatarSyn(getUserFacebook.IdFacebook);
+                }
                 // login\
                 var user = await UserManager.FindAsync(getUserFacebook.UserNameCopy, "cungphim.com@9999");
                 await SignInAsync(user, false);
+                AppHelper.SetCookieOfFace();
                 return RedirectToAction("","myprofile"); // Returun URL
             }
             else
             {
-                // chạy đến view cho điền user với token id
-                return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { UserName = "", Token = token });
+               
+                return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { UserName = AppHelper.ConvertToNonUnicode(nameonFb.Replace(" ","")), Token = token });
             }
             
             //return View();
@@ -644,14 +659,9 @@ namespace PhimHang.Controllers
                 var user = new ApplicationUser()
                 {
                     UserName = model.UserName,
-                    PasswordHash = "cungphim.com@9999",
-                     
-                    //AvataImage = "default_avatar_medium.jpg",
-                    //FullName = model.FullName,
-                    //   CreatedDate = DateTime.Now,
-                    //   Verify = Verify.NO
+                    PasswordHash = "cungphim.com@9999",                   
                 };
-                user.UserExtentLogin = new UserExtentLogin { Email = email, KeyLogin = user.Id, CreatedDate = DateTime.Now, FullName = name, Verify = Verify.NO, UserNameCopy = model.UserName, IdFacebook = id };
+                user.UserExtentLogin = new UserExtentLogin { Email = email, KeyLogin = user.Id, CreatedDate = DateTime.Now, FullName = name, Verify = Verify.NO, UserNameCopy = model.UserName, IdFacebook = id, AvatarSyn = true };
 
 
                 // check email
@@ -670,8 +680,9 @@ namespace PhimHang.Controllers
                     {
                         await SignInAsync(user, isPersistent: false);
                         //send mail
-
-                        //
+                        // download avatar      
+                        await AppHelper.AvatarSyn(id);
+                        AppHelper.SetCookieOfFace();
                         return RedirectToAction("Index", "MyProfile");
                     }
                     else
@@ -691,6 +702,7 @@ namespace PhimHang.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
+            AppHelper.ReleaseCookieOfFace();
             return RedirectToAction("Index", "Home");
         }
 

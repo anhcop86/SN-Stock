@@ -85,9 +85,25 @@
                 @: @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
                 {
                     @Html.AntiForgeryToken()
-                    <li><a onclick=" logoutAll();">Logout</a></li>
+                    if (Request.Cookies["FacebookLogin"] != null)
+                    {
+                        if (Request.Cookies["FacebookLogin"].Value == "F")
+                        {
+                            <li><a onclick=" logoutAll();">Logout</a></li>    
+                        }
+                        else
+                        {
+                            <li><a onclick=" logoutSite();">Logout</a></li>    
+                        }
+                    }
+                    else
+                    {
+                        <li><a onclick=" logoutSite();">Logout</a></li>    
+                    }
+                    
+                    
                 }
-                                                         }
+            }
             else
             {
                 <li><a href="/Account/Login">Login</a></li>

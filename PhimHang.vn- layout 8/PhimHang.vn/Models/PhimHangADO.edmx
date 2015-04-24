@@ -178,6 +178,7 @@
           <Property Name="BrokerVIP" Type="bit" />
           <Property Name="CoverPosition" Type="varchar" MaxLength="8" />
           <Property Name="IdFacebook" Type="varchar" MaxLength="32" />
+          <Property Name="AvatarSyn" Type="bit" />
         </EntityType>
         <EntityType Name="UserRelate">
           <Key>
@@ -789,6 +790,7 @@
           <Property Name="CoverPosition" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Posts" Relationship="PHDBContext.FK_Posts_UserLogins" FromRole="UserLogin" ToRole="Post" />
           <Property Name="IdFacebook" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="AvatarSyn" Type="Boolean" />
           </EntityType>
         <Association Name="FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id">
           <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="0..1" />
@@ -1213,6 +1215,7 @@
           <EntitySetMapping Name="UserLogins">
             <EntityTypeMapping TypeName="PHDBContext.UserLogin">
               <MappingFragment StoreEntitySet="UserLogins">
+                <ScalarProperty Name="AvatarSyn" ColumnName="AvatarSyn" />
                 <ScalarProperty Name="IdFacebook" ColumnName="IdFacebook" />
                 <ScalarProperty Name="CoverPosition" ColumnName="CoverPosition" />
                 <ScalarProperty Name="BrokerVIP" ColumnName="BrokerVIP" />

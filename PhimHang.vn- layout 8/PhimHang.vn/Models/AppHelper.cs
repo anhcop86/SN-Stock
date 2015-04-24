@@ -14,6 +14,7 @@ using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
+using Newtonsoft.Json.Linq;
 
 namespace PhimHang.Models
 {
@@ -99,11 +100,11 @@ namespace PhimHang.Models
 
         public static async Task<List<string>> GetListHotStock()
         {
-            using (db = new testEntities())
-            {
+            //using (db = new testEntities())
+            //{
                 return await (from hoststock in db.TickerHots // danh sach co phieu nong trong db
                                        select hoststock.THName).ToListAsync();                
-            }
+            //}
             
         }
         public static string StripTagsCharArray(string source)
@@ -253,6 +254,81 @@ namespace PhimHang.Models
             catch (Exception ex)
             {
                 throw new Exception("Error cropping image, the error was: " + ex.Message);
+            }
+        }
+        private const string ImageURLAvata = "/images/avatar/";
+        public async static Task<dynamic> AvatarSyn(string idFacebook)
+        {
+            var getUserFacebook = await db.UserLogins.FirstOrDefaultAsync(u => u.IdFacebook == idFacebook);            
+            // facebok url to get  avartar of user 
+            //https://graph.facebook.com/542444215896363/picture?redirect=false&height=200&width=200
+            string urlFacebookAvatar = "https://graph.facebook.com/" + getUserFacebook.IdFacebook + "/picture?redirect=false&height=200&width=200";
+            WebClient webClient = new WebClient();
+            var uploadDir = "~/" + ImageURLAvata;
+            #region delete old avata image
+
+            string fullPath = HttpContext.Current.Server.MapPath(uploadDir) + getUserFacebook.AvataImage;
+            if (System.IO.File.Exists(fullPath))
+            {
+                System.IO.File.Delete(fullPath);
+            }
+
+            #endregion
+            string NameFiletimeupload = getUserFacebook.KeyLogin + DateTime.Now.ToString("HHmmss") + "_avata";
+
+            string JsonResult = webClient.DownloadString(urlFacebookAvatar);
+            JObject jsonUserInfo = JObject.Parse(JsonResult);
+            var urlData = jsonUserInfo.Value<dynamic>("data");            
+            string urlAvarta = urlData.Value<string>("url");
+
+            Uri myURI4 = new Uri(urlAvarta);
+            var fi = new FileInfo(myURI4.AbsolutePath);
+            var ext = fi.Extension;
+
+            var imagePath = Path.Combine(HttpContext.Current.Server.MapPath(uploadDir), NameFiletimeupload + ext);
+            webClient.DownloadFile(urlAvarta, imagePath);
+            //using (db = new testEntities())
+            //{
+                try // save image into database
+                {
+                    getUserFacebook.AvataImage = NameFiletimeupload + ext;
+                    db.Entry(getUserFacebook).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+                }
+                catch (Exception)
+                {
+
+
+                }    
+            //}
+                return 1;
+        }
+
+        public static void SetCookieOfFace()
+        {
+            var FacebookLogin = new HttpCookie("FacebookLogin", "F");
+            FacebookLogin.Expires.AddDays(2);
+            if (FacebookLogin == null)
+            {
+                HttpContext.Current.Response.Cookies.Add(FacebookLogin);
+            }
+            else
+            {
+                HttpContext.Current.Response.SetCookie(FacebookLogin);
+            }           
+            
+        }
+
+        public static void ReleaseCookieOfFace()
+        {
+            if (HttpContext.Current.Request.Cookies["FacebookLogin"] != null)
+            {
+                var user = new HttpCookie("FacebookLogin")
+                {
+                    Expires = DateTime.Now.AddDays(-2),
+                    Value = null
+                };
+                HttpContext.Current.Response.Cookies.Add(user);
             }
         }
     }

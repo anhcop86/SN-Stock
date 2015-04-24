@@ -68,6 +68,8 @@ namespace PhimHang.Models
         public string CoverPosition { get; set; }
 
         public string IdFacebook { get; set; }
+
+        public Nullable<bool> AvatarSyn { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
