@@ -59,9 +59,20 @@
                 </div>
             </div>
             <div class="f-left" id='top-center'>
-                <a href="/" class="logo" title="Cùng Phím">
-                    <img src="/img/avatar2.jpg?width=40&height=40" alt="Cùng Phím logo">
-                </a>
+                @{
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        <a href="/myprofile" class="logo" title="Cùng Phím">
+                            <img src="/img/avatar2.jpg?width=40&height=40" alt="Cùng Phím logo">
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="/" class="logo" title="Cùng Phím">
+                            <img src="/img/avatar2.jpg?width=40&height=40" alt="Cùng Phím logo">
+                        </a>
+                    }
+                }
             </div>
             <div class="f-right" id="top-banner-right">
                 <div class="toSpan top-banner-icon f-right">
