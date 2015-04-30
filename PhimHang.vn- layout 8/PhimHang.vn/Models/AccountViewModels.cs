@@ -95,6 +95,7 @@ namespace PhimHang.Models
         [Display(Name = "Tên đầy đủ")]
         public string FullName { get; set; }
 
+        [Required(ErrorMessage = "Vui lòng nhập email")]
         [Display(Name = "Email")]
         [StringLength(100, ErrorMessage = "Email từ 6 đến 100 ký tự", MinimumLength = 6)]
         public string Email { get; set; }

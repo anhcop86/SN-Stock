@@ -214,6 +214,12 @@ namespace PhimHang.Controllers
             {                
                 if (user != null)
                 {
+                    //if (model.Email != user.UserExtentLogin.Email)
+                    //{
+                    //    // kiem tra ton tai email trong he thong
+                    //    OutputErrors("Email đã tồn tại trong hệ thống, Vui lòng chọn Email khác");
+                    //    //return View(model);
+                    //}
                     user.UserExtentLogin.FullName = model.FullName;
                     user.UserExtentLogin.Mobile = model.Mobile;
                     user.UserExtentLogin.Email = model.Email;
@@ -230,6 +236,7 @@ namespace PhimHang.Controllers
                 {
                     return RedirectToAction("Login");
                 }
+                
                 IdentityResult result = await UserManager.UpdateAsync(user);
                 if (result.Succeeded)
                 {
@@ -651,8 +658,8 @@ namespace PhimHang.Controllers
                 //     http://developers.facebook.com/docs/reference/api/user/
                 string name = jsonUserInfo.Value<string>("name");
                 string email = jsonUserInfo.Value<string>("email");
-                string locale = jsonUserInfo.Value<string>("locale");
-                string facebook_userID = jsonUserInfo.Value<string>("id");
+                //string locale = jsonUserInfo.Value<string>("locale");
+                //string facebook_userID = jsonUserInfo.Value<string>("id");
                 string id = jsonUserInfo.Value<string>("id");
 
                 // Get the information about the user from the external login provider

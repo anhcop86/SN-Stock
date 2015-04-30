@@ -2263,6 +2263,7 @@
     <Content Include="Views\ThiTruong\Index.cshtml" />
     <Content Include="Views\Shared\_Partial_Area_Right_User_Info.cshtml" />
     <Content Include="Views\Shared\_Partial_Area_Cover_User.cshtml" />
+    <Content Include="Views\Shared\_Partial_Area_Logo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
