@@ -256,7 +256,7 @@ namespace PhimHang.Models
             }
         }
         private const string ImageURLAvata = "/images/avatar/";
-        public async static Task<dynamic> AvatarSyn(string idFacebook)
+        public async static Task<bool> AvatarSyn(string idFacebook)
         {
             using (db = new testEntities())
             {
@@ -287,10 +287,11 @@ namespace PhimHang.Models
                 //var ext = fi.Extension;
 
                 var imagePath = Path.Combine(HttpContext.Current.Server.MapPath(uploadDir), NameFiletimeupload + ".jpg");
-                webClient.DownloadFile(urlFacebookAvatar, imagePath);
+                
 
-                try // save image into database
+                try // download and save facebook image of user into database
                 {
+                    webClient.DownloadFile(urlFacebookAvatar, imagePath);
                     getUserFacebook.AvataImage = NameFiletimeupload + ".jpg";
                     db.Entry(getUserFacebook).State = EntityState.Modified;
                     await db.SaveChangesAsync();
@@ -301,7 +302,7 @@ namespace PhimHang.Models
 
                 }
 
-                return 1;
+                return true;
             }
             
         }

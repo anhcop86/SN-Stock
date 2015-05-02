@@ -1262,10 +1262,10 @@ a.category-tab:hover{
     color: #000;
 }
 .btn-right-top{
-    /*float: right;*/
-    padding-top: 18px;
+    float: right;
+    padding: 18px 5px;
     /*position:absolute;*/
-    right:35%;
+    /*right:35%;*/
 }
 .button-flow{
     padding: 5px 10px;
@@ -1414,7 +1414,7 @@ a.category-tab:hover{
 .ui-dialog {    
     /*position: fixed;*/
     top:22px !important;
-    margin-bottom:22px;
+    margin-bottom:70px;
     /*max-height: 700px!important;*/
 } 
 .scroll-div {    

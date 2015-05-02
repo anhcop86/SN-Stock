@@ -48,14 +48,15 @@
 
     #top-banner-right {
         /* width: 350px; */
-        display:none;
+        /*display:none;*/
         line-height: 50px;
-        width: 73%;
+        width: 17%;
         overflow: hidden;
         height: 50px;
-        margin-left: 30px;
+        margin-left: 0px;
         position: fixed;
-        left: 2px;
+        right:0;
+        margin-right:0px;
     }
 
     #search_box_top {
@@ -71,7 +72,8 @@
 
     #top-banner-left {
         position: fixed;
-        left: 1px;
+        left: 45px;
+        width:240px;
     }
 
     .status-box {
@@ -144,7 +146,11 @@
         display:none;
     }
     .cover-div{
-        height:100% !important;
+        display:none;
+        /*height:100% !important;*/
+        
+        /*min-width:640px;*/
+    
     }
     #CoverImageId{
         top:0px !important;
@@ -156,8 +162,20 @@
    #close_dialog{
        opacity:1;
    }
+    #top-center {
+        width: 50px;
+        margin-left: 5px;
+    }
 }
-
+@media only screen and (min-width: 641px) and (max-width: 999px) {
+    .cover-div {
+        height: 100% !important;
+        min-width: 1170px;
+    }
+     .menu-top-bar2{
+        min-width:1170px;
+    }
+}
 
 /*reponesive with @media only screen and (min-width: 150px) and (max-width: 600px) IPAD*/
 
@@ -172,7 +190,12 @@
     #top-banner-right{
         width: 270px;
     }
-    
+    .cover-div{
+        min-width:1170px;
+    }
+     .menu-top-bar2{
+        min-width:1170px;
+    }
 }
 @media only screen and (min-width: 1001px) and (max-width: 1024px) {
      #top-center{
@@ -185,6 +208,12 @@
     #top-banner-right{
         width: 270px;
     }
+    .cover-div{
+        min-width:1170px;
+    }
+     .menu-top-bar2{
+        min-width:1170px;
+    }
 }
 @media only screen and (min-width: 1025px) and (max-width: 1440px) {
      #top-center{
@@ -196,5 +225,11 @@
     }
     #top-banner-right{
         width: 290px;
+    }
+    .cover-div{
+        min-width:1170px;
+    }
+    .menu-top-bar2{
+        min-width:1170px;
     }
 }
