@@ -808,7 +808,11 @@ input[name=BullBear]{
     position: relative;
 }
 .list-status .bg-white:hover{    
-    background-color: #ECF2F5;    
+    background-color: #ECF2F5;
+        
+}
+.list-status .bg-white:hover .list-item-control a{    
+    color:#328ac5;
 }
 .list-status .bg-white a:hover{    
     text-decoration : underline;  
@@ -1387,7 +1391,12 @@ a.category-tab:hover{
     font-size: 1.2rem;    
 }
 /*Custom dialog*/
-.ui-dialog { z-index: 10009 !important ;}
+.ui-dialog {
+     z-index: 10009 !important ;
+}
+.ui-dialog a:hover{
+     text-decoration:underline;
+}
 .ui-widget-overlay.custom-overlay
 {
     background-color: black;

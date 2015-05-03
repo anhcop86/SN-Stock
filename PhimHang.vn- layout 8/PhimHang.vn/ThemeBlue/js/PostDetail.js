@@ -79,7 +79,7 @@ function viewModel() {
                 });
                 // load post
                 $("#idPostedDateDetail").html(getTimeAgo($('#HiddentPostedDate').val()));
-                $("#idPostNameDetail").html($('#HiddentPostedByName').val());
+                $("#idPostNameDetail").html('<a style="cursor:pointer" href="/user/' + $('#HiddentPostedByName').val() + '/tab/1">' + $('#HiddentPostedByName').val() + '</a>');
                 $("#idImgPostDetail").attr('src', $('#HiddentPostedByAvatar').val() + '?width=50&height=50&mode=crop');
                 $("#idStmDetail").html(data.Stm);
             }

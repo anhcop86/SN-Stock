@@ -54,30 +54,13 @@
         <div class="bg-white" style="padding-top: 10px; padding-bottom: 3px;">
             <div class="filer-bar">
                 @*<div class="toSpan filer-bar-label">Hiển thị theo: </div>*@
-                <div class="toSpan filer-bar-item"> <a href="#" class="active">Toàn thị trường</a> </div>
-                @{
-                    if (!User.Identity.IsAuthenticated)
-                    {
+                <div class="toSpan filer-bar-item"> <a href="#" class="active">Toàn thị trường</a> </div>               
                         <div class="toSpan filer-bar-item-home"> <a href="/myprofile">Biểu đồ</a> </div>
-                        <div class="toSpan filer-bar-item-home"> <a href="/myprofile">Nhận định</a></div>
-                        <div class="toSpan filer-bar-item-home"> <a href="/myprofile">VIP</a></div>
+                        <div class="toSpan filer-bar-item-home"> <a href="/myprofile">Tăng/Giảm</a></div>                     
                         <div class="toSpan filer-bar-item-home"> <a href="/myprofile">Người theo dõi</a></div>
                         <div class="toSpan filer-bar-item-home"> <a href="/myprofile">CP theo dõi</a></div>
-                    }
-                }
+                                   
                 
-                @*<div class="toSpan filer-bar-item">
-                        <a id="btn-option-more" href="#" data-dropdown="#dropdown-2">
-                            Tùy chọn khác
-                            <i class="fa fa-caret-down"></i>
-                        </a>
-                        <div id="dropdown-2" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
-                            <ul class="dropdown-menu">
-                                <li><a data-bind="click : FilterAll('PEF')" href="#">Người theo dõi</a></li>
-                                <li><a data-bind="click : FilterAll('STF')" href="#">Cổ phiếu theo dõi</a></li>
-                            </ul>
-                        </div>
-                    </div>*@
             </div>
             <div class="ajaxLoadingInit" style="text-align:center"><img src="~/images/ajax-loader_cungphim.gif" /></div>
         </div>
@@ -85,9 +68,9 @@
         <div class="list-status">
             <!--So bai phim moi-->
             <!---->
-           
+            @*onmouseover="$('.bg-white a:hover > a').css('color', '#328ac5');"*@
             <div data-bind="foreach : {data: posts, afterAdd: afterAdd }">
-                <div class="bg-white">
+                <div class="bg-white" >
                     <div class="list-item-status" tabindex="-1" data-bind=" click: function(data, event) { $parent.detailPost(data, event); }">
                         <div class="avata-genaral-size">
                             <img data-bind="attr: { src: PostedByAvatar }" class="img-rounded" alt="avatar">
@@ -163,8 +146,8 @@
                                     else
                                     {
                                         <div id="btnPhim" class="f-right">
-                                            <a class="logoutbutton" href="/Account/Register">REGISTER</a>
-                                            <a class="logoutbutton" href="/Account/Login">LOGIN</a>
+                                            <a class="logoutbutton" href="/Account/Register?ReturnUrl=/myprofile">REGISTER</a>
+                                            <a class="logoutbutton" href="/Account/Login?ReturnUrl=/myprofile">LOGIN</a>
                                         </div>
                                     }
                                 }
