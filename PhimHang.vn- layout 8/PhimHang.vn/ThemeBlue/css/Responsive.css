@@ -169,7 +169,7 @@
 }
 @media only screen and (min-width: 641px) and (max-width: 999px) {
     .cover-div {
-        height: 100% !important;
+        /*height: 100% !important;*/
         min-width: 1170px;
     }
      .menu-top-bar2{

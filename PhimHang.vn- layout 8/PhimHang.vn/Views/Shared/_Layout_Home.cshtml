@@ -47,10 +47,10 @@
                 <div class="toSpan top-banner-icon f-right">
                     @Html.Partial("_Partial_Area_Menu_Right")
                 </div>
-                @if (User.Identity.IsAuthenticated)
-                {
-                     @Html.Partial("_Partial_Area_Right_User_Info")
-                }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                         @Html.Partial("_Partial_Area_Right_User_Info")
+                    }
             </div>
         </div>
     </div>    

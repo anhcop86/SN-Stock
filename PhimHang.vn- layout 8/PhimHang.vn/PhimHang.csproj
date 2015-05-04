@@ -667,6 +667,7 @@
     <Content Include="ThemeBlue\img\logo.png" />
     <Content Include="ThemeBlue\js\action.js" />
     <Content Include="ThemeBlue\js\action2.js" />
+    <Content Include="ThemeBlue\js\allfacebook.js" />
     <Content Include="ThemeBlue\js\Chartcp.js" />
     <Content Include="ThemeBlue\js\chart\realtime_chart.js" />
     <Content Include="ThemeBlue\js\chart\sample_line_chart.js" />
