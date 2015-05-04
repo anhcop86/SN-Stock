@@ -261,11 +261,9 @@
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\FollowStockController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MyProfileController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\PostDetailController.cs" />
-    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\SymbolController.cs" />
     <Compile Include="Controllers\ThiTruongController.cs" />
@@ -1172,8 +1170,6 @@
     <Content Include="Views\FollowStock\Details.cshtml" />
     <Content Include="Views\FollowStock\Edit.cshtml" />
     <Content Include="Views\FollowStock\Index.cshtml" />
-    <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\Shared\_Layout_MyProfile.cshtml" />
     <Content Include="Views\MyProfile\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -1321,6 +1317,9 @@
     <Content Include="Views\Shared\_Partial_Area_Right_User_Info.cshtml" />
     <Content Include="Views\Shared\_Partial_Area_Cover_User.cshtml" />
     <Content Include="Views\Shared\_Partial_Area_Logo.cshtml" />
+    <Content Include="Views\User\Tickers.cshtml" />
+    <Content Include="Views\User\Followers.cshtml" />
+    <Content Include="Views\User\Following.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -173,7 +173,18 @@ namespace PhimHang.Controllers
             #endregion
             return View(currentUser);
 
-
+        }
+        public async Task<ActionResult> Tickers(string username)
+        {
+            return View();
+        }
+        public async Task<ActionResult> Followers(string username)
+        {
+            return View();
+        }
+        public async Task<ActionResult> Following(string username)
+        {
+            return View();
         }
        
         public async Task<dynamic> GetPostMoreByUserId(int userid, int skipposition, string filter)

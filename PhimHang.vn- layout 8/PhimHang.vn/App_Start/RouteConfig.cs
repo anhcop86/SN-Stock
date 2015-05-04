@@ -33,11 +33,29 @@ namespace PhimHang
 
 
             routes.MapRoute(
-             name: "user",
-             url: "{username}",
-             defaults: new { controller = "User", action = "Index", username ="" }
-             , constraints: new { controller = @"(MyProfile|Profile|Maintenance)" }            
+              "user",
+             "{username}",
+             new { controller = "User", action = "Index" }
+             , new { username = new UserNameConstraint() }
           );
+            routes.MapRoute(
+             "userTicker",
+            "{username}/tickers",
+            new { controller = "User", action = "Tickers" }
+            , new { username = new UserNameConstraint() }
+         );
+            routes.MapRoute(
+             "userFollower",
+            "{username}/followers",
+            new { controller = "User", action = "Followers" }
+            , new { username = new UserNameConstraint() }
+         );
+            routes.MapRoute(
+             "userFollowing",
+            "{username}/following",
+            new { controller = "User", action = "Following" }
+            , new { username = new UserNameConstraint() }
+         );
 
             routes.MapRoute(
                 name: "Default",
@@ -46,6 +64,14 @@ namespace PhimHang
             );
 
           
+        }
+    }
+    public class UserNameConstraint: IRouteConstraint
+    {
+        public bool Match(HttpContextBase httpContext, Route route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
+        {
+            List<string> userName = new List<string> { "myprofile", "postdetail", "search", "thitruong", "post" };        
+            return !userName.Contains(values[parameterName].ToString().ToLower());
         }
     }
 }
