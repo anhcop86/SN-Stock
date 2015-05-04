@@ -34,12 +34,12 @@ namespace PhimHang.Controllers
         private const string ImageURLCoverDefault = "/img/cover_default.jpg";
         private const string ImageURLCover = "/images/cover/";
         private string AbsolutePathHostName = AppHelper.AbsolutePathHostName;
-        public async Task<ActionResult> Index(string username, int tabid)
+        public async Task<ActionResult> Index(string username)
         {
             ViewBag.AbsolutePathHostName = AbsolutePathHostName;
             var currentUser = await db.UserLogins.FirstOrDefaultAsync(u => u.UserNameCopy == username); //db.UserLogins.FirstOrDefaultAsync(u => u.UserNameCopy == username);
 
-            if (currentUser == null || string.IsNullOrEmpty(username) || tabid > 5 || tabid < 0)
+            if (currentUser == null || string.IsNullOrEmpty(username))
             {
                 return RedirectToAction("", "Search");
             }
@@ -95,64 +95,58 @@ namespace PhimHang.Controllers
             ViewBag.followStock = followStock;
             #endregion
 
-            ViewBag.TabId = tabid;
-            #region tab bai phim
-            if (tabid == 1)
-            {
-
-            }
-            #endregion
-
+            //ViewBag.TabId = tabid;
+            
             #region tab danh muc dau tu
-            else if (tabid == 2)
-            {
-                // load danh muc dau tu
-                var followStockList = await (from sl in db.FollowStocks
-                                       where sl.UserId == currentUser.Id
-                                       select sl.StockFollowed).ToListAsync();
+            //if (tabid == 2)
+            //{
+            //    // load danh muc dau tu
+            //    var followStockList = await (from sl in db.FollowStocks
+            //                           where sl.UserId == currentUser.Id
+            //                           select sl.StockFollowed).ToListAsync();
 
-                //ViewBag.FollowStockList = followStockList.Result;
-                #region gia cổ phieu cua cac ma dang theo doi
-                ViewBag.listStockPriceFollow = _stockRealtime.GetAllStocksList(followStockList as List<string>).Result;
-                #endregion
-            }
+            //    //ViewBag.FollowStockList = followStockList.Result;
+            //    #region gia cổ phieu cua cac ma dang theo doi
+            //    ViewBag.listStockPriceFollow = _stockRealtime.GetAllStocksList(followStockList as List<string>).Result;
+            //    #endregion
+            //}
 
-            #endregion
-            #region tab theo doi
-            else if (tabid == 3)
-            {
-                // load danh muc theo doi
-                //var follow = await db.FollowUsers.CountAsync(f => f.UserId == currentUser.Id);
-                var followList = await (from fl in db.FollowUsers
-                                  where fl.UserId == currentUser.Id
-                                  select new UserFollowView
-                                    {
-                                        UserId = fl.UserLogin1.Id,
-                                        UserName = fl.UserLogin1.UserNameCopy,
-                                        Avata = string.IsNullOrEmpty(fl.UserLogin1.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + fl.UserLogin1.AvataImage,
-                                        Status = fl.UserLogin1.Status
-                                    }).ToListAsync();
+            //#endregion
+            //#region tab theo doi
+            //else if (tabid == 3)
+            //{
+            //    // load danh muc theo doi
+            //    //var follow = await db.FollowUsers.CountAsync(f => f.UserId == currentUser.Id);
+            //    var followList = await (from fl in db.FollowUsers
+            //                      where fl.UserId == currentUser.Id
+            //                      select new UserFollowView
+            //                        {
+            //                            UserId = fl.UserLogin1.Id,
+            //                            UserName = fl.UserLogin1.UserNameCopy,
+            //                            Avata = string.IsNullOrEmpty(fl.UserLogin1.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + fl.UserLogin1.AvataImage,
+            //                            Status = fl.UserLogin1.Status
+            //                        }).ToListAsync();
 
-                ViewBag.FollowList = followList;
+            //    ViewBag.FollowList = followList;
 
-            }
-            #endregion
-            #region tab duoc theo doi
-            else if (tabid == 4)
-            {
-                // load danh muc duoc theo doi
-                var followerList = await (from fl in db.FollowUsers
-                                    where fl.UserIdFollowed == currentUser.Id
-                                    select new UserFollowView
-                                    {
-                                        UserId = fl.UserLogin.Id,
-                                        UserName = fl.UserLogin.UserNameCopy,
-                                        Status = fl.UserLogin.Status,
-                                        Avata = string.IsNullOrEmpty(fl.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + fl.UserLogin.AvataImage
-                                    }).ToListAsync();
+            //}
+            //#endregion
+            //#region tab duoc theo doi
+            //else if (tabid == 4)
+            //{
+            //    // load danh muc duoc theo doi
+            //    var followerList = await (from fl in db.FollowUsers
+            //                        where fl.UserIdFollowed == currentUser.Id
+            //                        select new UserFollowView
+            //                        {
+            //                            UserId = fl.UserLogin.Id,
+            //                            UserName = fl.UserLogin.UserNameCopy,
+            //                            Status = fl.UserLogin.Status,
+            //                            Avata = string.IsNullOrEmpty(fl.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + fl.UserLogin.AvataImage
+            //                        }).ToListAsync();
 
-                ViewBag.FollowerList = followerList;
-            }
+            //    ViewBag.FollowerList = followerList;
+            //}
             #endregion
             #region gia chi so index va hnxindex
             var listIndex = new List<string>();

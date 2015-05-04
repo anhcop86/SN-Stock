@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
+
 namespace PhimHang
 {
     public class RouteConfig
@@ -24,17 +25,27 @@ namespace PhimHang
               defaults: new { controller = "Ticker", action = "Index", symbolName = UrlParameter.Optional }
           );
 
+          //  routes.MapRoute(
+          //    name: "user",
+          //    url: "User/{username}/tab/{tabid}",
+          //    defaults: new { controller = "User", action = "Index", username = UrlParameter.Optional, tabid = UrlParameter.Optional }
+          //);
+
+
             routes.MapRoute(
-              name: "user",
-              url: "User/{username}/tab/{tabid}",
-              defaults: new { controller = "User", action = "Index", username = UrlParameter.Optional, tabid = UrlParameter.Optional }
+             name: "user",
+             url: "{username}",
+             defaults: new { controller = "User", action = "Index", username ="" }
+             , constraints: new { controller = @"(MyProfile|Profile|Maintenance)" }            
           );
-    
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+          
         }
     }
 }
