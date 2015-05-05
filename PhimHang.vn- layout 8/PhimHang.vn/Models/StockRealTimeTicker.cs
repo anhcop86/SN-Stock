@@ -75,6 +75,13 @@ namespace PhimHang.Models
                                   select s).Take(10);            
             return Task.FromResult(stockListResult.ToList());
         }
+        public Task<List<StockRealTime>> RandomStocksList()
+        {
+            var stockListResult = (from s in _stocks
+                                   orderby Guid.NewGuid()                                   
+                                   select s).Take(10);
+            return Task.FromResult(stockListResult.ToList());
+        }
 
 
         public async void GetStockPriceFromApi()

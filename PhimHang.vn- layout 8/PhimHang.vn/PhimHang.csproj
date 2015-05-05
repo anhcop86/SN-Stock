@@ -459,6 +459,7 @@
     <Content Include="images\cover\cover-defaut.jpg" />
     <Content Include="images\cover\e0a4765c-47d1-46f6-b668-17c427eed556195405_cover.jpg" />
     <Content Include="images\cover\ff84767c-9e6f-4d9d-9ee0-3c98d0352406092349_cover.jpg" />
+    <Content Include="images\indicator.white.gif" />
     <Content Include="images\likecp.png" />
     <Content Include="images\Login_Image.jpg" />
     <Content Include="images\pintab.png" />

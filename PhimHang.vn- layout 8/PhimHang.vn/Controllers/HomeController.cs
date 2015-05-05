@@ -64,14 +64,15 @@ namespace PhimHang.Controllers
           
             #region gia cổ phieu cua cac co phieu nong
             
-            var listStock = await AppHelper.GetListHotStock();
-
+            var listStock = await AppHelper.GetListHotStock();            
             ViewBag.ListStockHot = listStock;
+            /*
             ViewBag.listStockPriceHot = _stockRealtime.GetAllStocksList(listStock as List<string>).Result;
+             * */
             #endregion
 
             #region co phieu ngau ben trái
-            ViewBag.listStockRandom = _stockRealtime.RandomStocksList(listStock as List<string>).Result;
+            ViewBag.listStockRandom = _stockRealtime.RandomStocksList().Result;
             #endregion
             #region random dan phim chuyen nghiem
             var DanPhimRandom = await (from u in db.UserLogins

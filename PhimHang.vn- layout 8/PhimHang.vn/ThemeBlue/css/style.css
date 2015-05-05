@@ -1423,7 +1423,7 @@ a.category-tab:hover{
 }   
 .ui-dialog {    
     /*position: fixed;*/
-    top:22px !important;
+    top:30px !important;
     margin-bottom:70px;
     /*max-height: 700px!important;*/
 } 
@@ -1757,4 +1757,5 @@ a.avatar img:hover{
     cursor:pointer;
     width:20px;
     height:20px;
+    font-size:xx-large;
 }

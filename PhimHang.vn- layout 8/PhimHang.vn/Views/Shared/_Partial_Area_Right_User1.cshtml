@@ -1,27 +1,28 @@
-﻿<div class="second-left-banner">
-    
-        <div class="banner-header-white">DÂN PHÍM CHUYÊN NGHIỆP</div>
-        @{
-            foreach (var item in ViewBag.DanPhimRandom as List<PhimHang.Controllers.UserRandom>)
-            {
-                <div class="banner-item-user-detail">
-                    <div class="avata-genaral-size">
-                        <img src="@item.Avata?width=50&height=53&mode=crop" class="img-rounded" alt="avatar">
-                    </div>
-                    <div class="list-item-detail">
-                        <div class="list-item-username danphim"><a href="/@item.UserName"> @item.FullName </a></div>
-                        <div class="list-item-control">
-                            <a href="/@item.UserName" class="button"><i class="fa fa-user"></i> Xem thêm</a>
-                        </div>
+﻿@*@model IList<PhimHang.Controllers.UserRandom>*@
+<div class="second-left-banner">
+    <div class="banner-header-white">DÂN PHÍM CHUYÊN NGHIỆP</div>
+    @{
+        foreach (var item in ViewBag.DanPhimRandom as List<PhimHang.Controllers.UserRandom>)
+        {
+            <div class="banner-item-user-detail">
+                <div class="avata-genaral-size">
+                    <img src="@item.Avata?width=50&height=53&mode=crop" class="img-rounded" alt="avatar">
+                </div>
+                <div class="list-item-detail">
+                    <div class="list-item-username danphim"><a href="/@item.UserName"> @item.FullName </a></div>
+                    <div class="list-item-control">
+                        <a href="/@item.UserName" class="button"><i class="fa fa-user"></i> Xem thêm</a>
                     </div>
                 </div>
-            }
+            </div>
         }
+    }
 
 
-        @*<div class="loadmore"><a href="#"><i class="fa  fa-angle-double-down"></i></a></div>*@
-    
+    @*<div class="loadmore"><a href="#"><i class="fa  fa-angle-double-down"></i></a></div>*@
+
 </div>
+
 <div class="banner-info" style="color: #666;">
     <div>
         <a style="color: #666;" href="#">Giới thiệu</a>

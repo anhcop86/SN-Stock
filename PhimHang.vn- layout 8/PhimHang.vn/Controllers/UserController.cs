@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using System.Threading;
 
 namespace PhimHang.Controllers
 {
@@ -93,61 +94,8 @@ namespace PhimHang.Controllers
             ViewBag.Follow = follow;
             ViewBag.Follower = follower;
             ViewBag.followStock = followStock;
-            #endregion
-
-            //ViewBag.TabId = tabid;
+            #endregion       
             
-            #region tab danh muc dau tu
-            //if (tabid == 2)
-            //{
-            //    // load danh muc dau tu
-            //    var followStockList = await (from sl in db.FollowStocks
-            //                           where sl.UserId == currentUser.Id
-            //                           select sl.StockFollowed).ToListAsync();
-
-            //    //ViewBag.FollowStockList = followStockList.Result;
-            //    #region gia cổ phieu cua cac ma dang theo doi
-            //    ViewBag.listStockPriceFollow = _stockRealtime.GetAllStocksList(followStockList as List<string>).Result;
-            //    #endregion
-            //}
-
-            //#endregion
-            //#region tab theo doi
-            //else if (tabid == 3)
-            //{
-            //    // load danh muc theo doi
-            //    //var follow = await db.FollowUsers.CountAsync(f => f.UserId == currentUser.Id);
-            //    var followList = await (from fl in db.FollowUsers
-            //                      where fl.UserId == currentUser.Id
-            //                      select new UserFollowView
-            //                        {
-            //                            UserId = fl.UserLogin1.Id,
-            //                            UserName = fl.UserLogin1.UserNameCopy,
-            //                            Avata = string.IsNullOrEmpty(fl.UserLogin1.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + fl.UserLogin1.AvataImage,
-            //                            Status = fl.UserLogin1.Status
-            //                        }).ToListAsync();
-
-            //    ViewBag.FollowList = followList;
-
-            //}
-            //#endregion
-            //#region tab duoc theo doi
-            //else if (tabid == 4)
-            //{
-            //    // load danh muc duoc theo doi
-            //    var followerList = await (from fl in db.FollowUsers
-            //                        where fl.UserIdFollowed == currentUser.Id
-            //                        select new UserFollowView
-            //                        {
-            //                            UserId = fl.UserLogin.Id,
-            //                            UserName = fl.UserLogin.UserNameCopy,
-            //                            Status = fl.UserLogin.Status,
-            //                            Avata = string.IsNullOrEmpty(fl.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + fl.UserLogin.AvataImage
-            //                        }).ToListAsync();
-
-            //    ViewBag.FollowerList = followerList;
-            //}
-            #endregion
             #region gia chi so index va hnxindex
             var listIndex = new List<string>();
             listIndex.Add("VNINDEX");
@@ -155,18 +103,6 @@ namespace PhimHang.Controllers
             ViewBag.ListIndex = _stockRealtime.GetAllStocksList(listIndex).Result;
             #endregion
 
-            #region random dan phim chuyen nghiem
-            var DanPhimRandom = await (from u in db.UserLogins
-                                       orderby Guid.NewGuid()
-                                       where u.BrokerVIP == true
-                                       select new UserRandom
-                                      {
-                                           Avata = string.IsNullOrEmpty(u.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + u.AvataImage,
-                                           UserName = u.UserNameCopy,
-                                           FullName = u.FullName
-                                      }).Take(4).ToListAsync();
-            ViewBag.DanPhimRandom = DanPhimRandom;
-            #endregion
             #region danh muc co phieu nong
             var listHotStock = await AppHelper.GetListHotStock();
             ViewBag.ListStockHot = listHotStock;
@@ -250,19 +186,6 @@ namespace PhimHang.Controllers
             listIndex.Add("VNINDEX");
             listIndex.Add("HNXINDEX");
             ViewBag.ListIndex = _stockRealtime.GetAllStocksList(listIndex).Result;
-            #endregion
-
-            #region random dan phim chuyen nghiem
-            var DanPhimRandom = await (from u in db.UserLogins
-                                       orderby Guid.NewGuid()
-                                       where u.BrokerVIP == true
-                                       select new UserRandom
-                                       {
-                                           Avata = string.IsNullOrEmpty(u.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + u.AvataImage,
-                                           UserName = u.UserNameCopy,
-                                           FullName = u.FullName
-                                       }).Take(4).ToListAsync();
-            ViewBag.DanPhimRandom = DanPhimRandom;
             #endregion
 
             #region danh muc co phieu nong
@@ -352,19 +275,6 @@ namespace PhimHang.Controllers
             listIndex.Add("VNINDEX");
             listIndex.Add("HNXINDEX");
             ViewBag.ListIndex = _stockRealtime.GetAllStocksList(listIndex).Result;
-            #endregion
-
-            #region random dan phim chuyen nghiem
-            var DanPhimRandom = await (from u in db.UserLogins
-                                       orderby Guid.NewGuid()
-                                       where u.BrokerVIP == true
-                                       select new UserRandom
-                                       {
-                                           Avata = string.IsNullOrEmpty(u.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + u.AvataImage,
-                                           UserName = u.UserNameCopy,
-                                           FullName = u.FullName
-                                       }).Take(4).ToListAsync();
-            ViewBag.DanPhimRandom = DanPhimRandom;
             #endregion
 
             #region danh muc co phieu nong
@@ -457,18 +367,6 @@ namespace PhimHang.Controllers
             ViewBag.ListIndex = _stockRealtime.GetAllStocksList(listIndex).Result;
             #endregion
 
-            #region random dan phim chuyen nghiem
-            var DanPhimRandom = await (from u in db.UserLogins
-                                       orderby Guid.NewGuid()
-                                       where u.BrokerVIP == true
-                                       select new UserRandom
-                                       {
-                                           Avata = string.IsNullOrEmpty(u.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + u.AvataImage,
-                                           UserName = u.UserNameCopy,
-                                           FullName = u.FullName
-                                       }).Take(4).ToListAsync();
-            ViewBag.DanPhimRandom = DanPhimRandom;
-            #endregion
 
             #region danh muc co phieu nong
             var listHotStock = await AppHelper.GetListHotStock();
@@ -555,6 +453,23 @@ namespace PhimHang.Controllers
             }
 
 
+        }
+        public async Task<ActionResult> RandomProBroker()
+        {
+            //Thread.Sleep(2000);
+            #region random dan phim chuyen nghiem
+            var DanPhimRandom = await (from u in db.UserLogins
+                                       orderby Guid.NewGuid()
+                                       where u.BrokerVIP == true
+                                       select new UserRandom
+                                       {
+                                           Avata = string.IsNullOrEmpty(u.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + u.AvataImage,
+                                           UserName = u.UserNameCopy,
+                                           FullName = u.FullName
+                                       }).Take(4).ToListAsync();
+            ViewBag.DanPhimRandom = DanPhimRandom;
+            #endregion
+            return PartialView("_Partial_Area_Right_User1");
         }
         //
         // GET: /User/Details/5
