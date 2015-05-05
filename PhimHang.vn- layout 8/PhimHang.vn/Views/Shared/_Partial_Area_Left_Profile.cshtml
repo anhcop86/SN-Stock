@@ -13,22 +13,22 @@
             <img src="@ViewBag.AvataEmage?width=62&height=62&mode=crop" alt="cover">
         </div>
         <div class="user-name">
-            <a href="/user/@ViewBag.UserName/tab/1"> @Model.UserExtentLogin.FullName.ToUpper() </a>
+            <a href="/@ViewBag.UserName"> @Model.UserExtentLogin.FullName.ToUpper() </a>
             <i class="fa  fa-check-circle">&nbsp;</i>
         </div>
     </div>
     <div class="user-sumary-info">
         <span>
             Bài Phím<br>
-            <a href="/user/@ViewBag.UserName/tab/1">@ViewBag.TotalPost </a>
+            <a href="/@ViewBag.UserName">@ViewBag.TotalPost </a>
         </span>
         <span>
             Theo dõi<br>
-            <a href="/user/@ViewBag.UserName/tab/3">@ViewBag.Follow</a>
+            <a href="/@ViewBag.UserName/followers">@ViewBag.Follow</a>
         </span>
         <span>
             Được theo dõi<br>
-            <a href="/user/@ViewBag.UserName/tab/4">@ViewBag.Follower</a>
+            <a href="/@ViewBag.UserName/following">@ViewBag.Follower</a>
         </span>
     </div>
 </div>  

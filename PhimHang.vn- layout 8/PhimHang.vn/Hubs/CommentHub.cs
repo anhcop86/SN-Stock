@@ -56,7 +56,7 @@ namespace PhimHang.Hubs
                     else if (item.Contains("@"))
                     {
                         string user = item.Replace("@", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToLower();
-                        messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='/user/" + user + "/tab/1'>" + item + "</a>" + " ";
+                        messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='/" + user + "'>" + item + "</a>" + " ";
                     }
                     else if (item.Contains("http") || item.Contains("www."))
                     {
@@ -194,7 +194,7 @@ namespace PhimHang.Hubs
                     else if (item.Contains("@"))
                     {
                         string user = item.Replace("@", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToLower();
-                        messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='/user/" + user + "/tab/1'>" + item + "</a>" + " ";
+                        messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='/" + user + "'>" + item + "</a>" + " ";
                     }
                     else if (item.Contains("http") || item.Contains("www."))
                     {

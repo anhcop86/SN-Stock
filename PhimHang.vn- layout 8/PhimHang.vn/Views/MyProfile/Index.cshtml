@@ -91,7 +91,7 @@
                         <div class="list-item-detail">
                             <div class="list-item-date" data-bind="text : PostedDate"></div>
                             <div class="list-item-username" style="width:0%">
-                                <a style="cursor:pointer" onclick='selectMe(event,"#")' data-bind="attr : { href : '/user/' + PostedByName + '/tab/1' }, text : PostedByName"></a>
+                                <a style="cursor:pointer" onclick='selectMe(event,"#")' data-bind="attr : { href : '/' + PostedByName }, text : PostedByName"></a>
                             </div>
                             <span data-bind="html : Stm"></span>
                             <div class="list-item-status-content" data-bind="html : Message"></div>
@@ -159,7 +159,7 @@
                     <div data-bind="foreach : replys">
                         <div class="comment-item">
                             <div class="avata-genaral-size">
-                                <img data-bind="attr: { src: ReplyByAvatar },click : function() {  location.href='/user/' + ReplyByName + '/tab/1' }" class="img-rounded" alt="avatar">
+                                <img data-bind="attr: { src: ReplyByAvatar },click : function() {  location.href='/' + ReplyByName }" class="img-rounded" alt="avatar">
                             </div>
                             <div class="list-item-detail">
                                 <div class="list-item-date" data-bind="text : ReplyDate"></div>
