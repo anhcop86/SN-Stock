@@ -29,7 +29,7 @@ namespace PhimHang
           //    name: "user",
           //    url: "User/{username}/tab/{tabid}",
           //    defaults: new { controller = "User", action = "Index", username = UrlParameter.Optional, tabid = UrlParameter.Optional }
-          //);
+            //);/tickers
 
 
             routes.MapRoute(
@@ -40,7 +40,7 @@ namespace PhimHang
           );
             routes.MapRoute(
              "userTicker",
-            "{username}/tickers",
+            "{username}/portfolio",
             new { controller = "User", action = "Tickers" }
             , new { username = new UserNameConstraint() }
          );

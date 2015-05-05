@@ -389,6 +389,7 @@ ul.top-panel-left2 > li:not(:first-child):hover{
 .cover-img{
     width: 100%;
     top: 0px;
+    height:94px;
 }
 .cover-img img{
     width:100%;
