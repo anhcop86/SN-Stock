@@ -466,10 +466,10 @@ namespace PhimHang.Controllers
                                            Avata = string.IsNullOrEmpty(u.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + u.AvataImage,
                                            UserName = u.UserNameCopy,
                                            FullName = u.FullName
-                                       }).Take(4).ToListAsync();
-            ViewBag.DanPhimRandom = DanPhimRandom;
+                                       }).Take(5).ToListAsync();
+            //ViewBag.DanPhimRandom = DanPhimRandom;
             #endregion
-            return PartialView("_Partial_Area_Right_User1");
+            return PartialView("_Partial_Area_Right_User1", DanPhimRandom);
         }
         //
         // GET: /User/Details/5

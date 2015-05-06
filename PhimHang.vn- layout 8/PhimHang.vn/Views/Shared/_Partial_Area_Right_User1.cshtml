@@ -1,8 +1,8 @@
-﻿@*@model IList<PhimHang.Controllers.UserRandom>*@
+﻿@model IList<PhimHang.Controllers.UserRandom>
 <div class="second-left-banner">
     <div class="banner-header-white">DÂN PHÍM CHUYÊN NGHIỆP</div>
     @{
-        foreach (var item in ViewBag.DanPhimRandom as List<PhimHang.Controllers.UserRandom>)
+        foreach (var item in Model)
         {
             <div class="banner-item-user-detail">
                 <div class="avata-genaral-size">

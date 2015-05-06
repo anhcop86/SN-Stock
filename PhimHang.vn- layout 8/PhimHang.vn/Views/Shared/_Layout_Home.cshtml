@@ -84,10 +84,17 @@
 
         @RenderBody()
        
-            <div class="area-right">
-                @Html.Partial("_Partial_Area_Right_Home")
-               
-            </div>
+        <div id="areaRandomProBrokerId" class="area-right">
+            <img src="/img/uploading.gif" /> Loading ... 
+        </div>
+            <script>
+                $(document).ready(function () {
+                    $("#areaRandomProBrokerId").load('/user/RandomProBroker');
+                })
+            </script>
+
+
+
 
      
     </div>
