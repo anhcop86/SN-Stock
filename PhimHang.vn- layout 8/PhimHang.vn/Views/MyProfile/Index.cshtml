@@ -5,7 +5,9 @@
 
 @section scripts{   
     @*<link href="~/Content/StockPrice.css" rel="stylesheet" />*@
-    <script src="~/Scripts/jquery.timeago.js"></script>       
+    <script src="~/Scripts/jquery.timeago.js"></script>      
+<script src="~/ThemeBlue/js/textarea-helper.js"></script>
+      
 }
 <input type="hidden" id="HiddentCureentUserId" value='@ViewBag.CureentUserId' />
 @*<input type="hidden" id="HiddentUserName" value='@ViewBag.UserName' />
@@ -195,25 +197,46 @@
         }
 
 </script>
-<script>    
-    
-   $(function() {
-       var users = [
-           "Ram",
-           "Ramesh",
-           "Rakesh",
-           "Rahul",
-           "Abhi",
-           "Karan"
-       ];
-       $('.status-cm').on('keypress', function(e){
-           if (e.keyCode === 64) {
-               console.log('fdsaf');
-               $( "#users" ).removeClass('hide');
-               $( "#users" ).autocomplete({
-                   source: users
-               });
-           }
-       });
-   });
+<script> 
+        $("document").ready(function () {
+            var availableTags = [
+                "ActionScript",
+                "AppleScript",
+                "Asp",
+                "BASIC",
+                "C",
+                "C++",
+                "Clojure",
+                "COBOL",
+                "ColdFusion",
+                "Erlang",
+                "Fortran",
+                "Groovy",
+                "Haskell",
+                "Java",
+                "JavaScript",
+                "Lisp",
+                "Perl",
+                "PHP",
+                "Python",
+                "Ruby",
+                "Scala", 
+                "Scheme"];
+
+            $(".status-cm").on("keypress", function (e) {
+                if (e.keyCode === 64) {                    
+                    var newY = $(this).textareaHelper('caretPos').top + (parseInt($(this).css('font-size'), 10) * 1.5);
+                    var newX = $(this).textareaHelper('caretPos').left;
+                    var posString = "left+" + newX + "px top+" + newY + "px";
+                    //console.log(posString);
+                    $(this).autocomplete("option", "position", {
+                        my: "left top",
+                        at: posString
+                    });
+                    $(".status-cm").autocomplete({
+                        source: availableTags
+                    });
+                }
+            });
+        });
 </script>

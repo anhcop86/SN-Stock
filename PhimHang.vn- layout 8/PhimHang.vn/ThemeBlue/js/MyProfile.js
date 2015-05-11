@@ -512,14 +512,14 @@ $.connection.hub.disconnected(function () {
 $.connection.hub.connectionSlow(function () {
     console.log('Kết nối đến server chậm do đường truyền')
 });
-window.onbeforeunload = function (e) {
+//window.onbeforeunload = function (e) {
     //$.connection.hub.stop
     //commenthub.server.stop = function () {
     //    $.connection.hub.stop();
 
     //    console.log('window.onbeforeunload');
     //};
-};
+//};
 
 
 //$.connection.hub.logging = true;
