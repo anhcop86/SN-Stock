@@ -36,7 +36,7 @@ namespace PhimHang.Controllers
         private const string ImageURLAvataDefault = "/img/avatar2.jpg";         
         private const string ImageURLAvata = "/images/avatar/";
         private const string ImageURLCoverDefault = "/img/cover_default.jpg";
-        private const string ImageURLCover = "images/cover/";
+        private const string ImageURLCover = "/images/cover/";
         private string AbsolutePathHostName = AppHelper.AbsolutePathHostName;
         public async Task<ActionResult> Index()
         {

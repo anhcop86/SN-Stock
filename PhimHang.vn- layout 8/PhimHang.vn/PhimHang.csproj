@@ -664,8 +664,6 @@
     <Content Include="ThemeBlue\img\cover.jpg" />
     <Content Include="ThemeBlue\img\kindo-logo.jpg" />
     <Content Include="ThemeBlue\img\logo.png" />
-    <Content Include="ThemeBlue\input_tag\input_tag.css" />
-    <Content Include="ThemeBlue\input_tag\input_tag.js" />
     <Content Include="ThemeBlue\js\action.js" />
     <Content Include="ThemeBlue\js\action2.js" />
     <Content Include="ThemeBlue\js\allfacebook.js" />
@@ -687,7 +685,6 @@
     <Content Include="ThemeBlue\js\MyProfile.js" />
     <Content Include="ThemeBlue\js\PostDetail.js" />
     <Content Include="ThemeBlue\js\SignalHubProxy.js" />
-    <Content Include="ThemeBlue\js\textarea-helper.js" />
     <Content Include="ThemeBlue\js\Ticker.js" />
     <Content Include="ThemeBlue\plugins\bootstrapvalidator\bootstrapValidator.css" />
     <Content Include="ThemeBlue\plugins\bootstrapvalidator\bootstrapValidator.js" />
