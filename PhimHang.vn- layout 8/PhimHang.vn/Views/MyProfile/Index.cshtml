@@ -163,7 +163,9 @@
                             </div>
                             <div class="list-item-detail">
                                 <div class="list-item-date" data-bind="text : ReplyDate"></div>
-                                <div class="list-item-username" data-bind="text: ReplyByName"></div>
+                                <div class="list-item-username">
+                                    <a style="cursor:pointer" data-bind="attr : { href : '/' + ReplyByName  }, text : ReplyByName"></a>
+                                </div>
                                 <div class="list-item-status-content" data-bind="html: ReplyMessage"></div>
                                 <div class="list-item-control-cm">
                                     <a class="button f-right" href="#" title="Vi phạm">Vi phạm</a>
