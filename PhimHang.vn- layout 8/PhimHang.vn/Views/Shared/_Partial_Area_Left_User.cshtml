@@ -3,7 +3,7 @@
 <div class="user-info2">
     <div class="user-profile">
         <div class="user-img-2">
-            <img src="@ViewBag.AvataImageUrlCurrent?width=190&height=190&mode=crop" alt="cover">
+            <img id="AvataImage" src="@ViewBag.AvataImageUrlCurrent?w=190&h=190&mode=crop" alt="cover">
             @{
                 if (User.Identity.IsAuthenticated)
                 {
@@ -41,25 +41,30 @@
                                         cache: false,
                                         contentType: false,
                                         processData: false,
-                                        crossDomain: false
-                                    }).done(function (data) {
-                                        if (data === "error") {
-                                            showNotification('Có lỗi khi upload ảnh, vui lòng thử lại');
+                                        crossDomain: false,
+                                        beforeSend: function (xhr) {
+                                            $('.uploadStatus').html('<img src="/img/uploading.gif" />');
+                                        },
+                                        success: function (data) {
+                                            if (data === "error") {
+                                                showNotification('Có lỗi khi upload ảnh, vui lòng thử lại');
+                                                $('#avataInput').val('');
+                                                return
+                                            }
+                                            else {
+                                                $('#AvataImage').attr("src", "../" + data.replace("YES|", "") + "?w=190&h=190&mode=crop");
+                                                showNotification('Cập nhật avata thành công');
+                                                $('#avataInput').val('');
+                                            }
+                                            $('.uploadStatus').html('');
+                                        },
+                                        fail: function () {
+                                            showNotification('Có lỗi khi upload ảnh, vui lòng thử lại:');
                                             $('#avataInput').val('');
-                                            return
                                         }
-                                        else {
-                                            $('#AvataImage').attr("src", "../" + data.replace("YES|", "") + "?width=48&height=48&mode=crop");
-                                            showNotification('Cập nhật avata thành công');
-                                            $('#avataInput').val('');
-                                        }
-
-                                    }).fail(function () {
-                                        showNotification('Có lỗi khi upload ảnh, vui lòng thử lại:');
-                                        $('#avataInput').val('');
                                     })
-                                }
 
+                                }
                             }
                         </script>
                     }

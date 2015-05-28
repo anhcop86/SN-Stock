@@ -17,30 +17,34 @@
                     }
             },
 
-            stop: function (event, ui) {
-                $('input.cover-position').val(ui.position.top);
-            }
+            //stop: function (event, ui) {
+            //    $('input.cover-position').val(ui.position.top);
+            //}
         });
     
     
     $('#SavePositionCover').click(function () {
         var formData = new FormData();
-        formData.append("positionHeight", $('input.cover-position').val());
+        formData.append("positionHeight", $('#CoverImageId').position().top);
         $.ajax({
             url: '/Account/resizeImage',
             type: 'POST',
             data: formData,
             cache: false,
             contentType: false,
-            processData: false
+            processData: false,
+            beforeSend: function (xhr) { // truoc khi gui du lieu len server                
+                $('#SavePositionCover').hide();
+            }
         }).success(function (data) {
             if (data === "Y") {
                 showNotification('Cập nhật vị trí ảnh nền thành công');
-                return
             }
             else {
                 showNotification('Cập nhật thất bại');
             }
+            
+            $.wait(function () { $('#SavePositionCover').fadeIn(); }, 2);
         }).fail(function () {
             showNotification('Có lỗi khi upload ảnh, vui lòng thử lại');
         })

@@ -11,7 +11,7 @@
                            @using (Html.BeginForm("Profile", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                             {
                                 @Html.AntiForgeryToken()                               
-                                <div class="control-group">
+                                @*<div class="control-group">
                                     <label class="control-label" for="username">AVATAR:</label>
                                     <div class="controls">
                                         <img class="gravatar" id="AvataImage" src="@Model.Avata?width=48&height=48&mode=crop" />                                       
@@ -19,7 +19,7 @@
                                     <div class="controls">
                                         <input id="idchartFileUpload" name="Select File" accept="image/*" type="file" onchange="uploadAvata(files)" />
                                     </div>
-                                </div>
+                                </div>*@
                                 if (Request.Cookies["FacebookLogin"] != null)
                                 {
                                     if (Request.Cookies["FacebookLogin"].Value == "F")

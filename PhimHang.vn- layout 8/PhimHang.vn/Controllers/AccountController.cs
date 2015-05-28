@@ -455,11 +455,8 @@ namespace PhimHang.Controllers
             }
             catch (Exception)
             {
-
                 return "N" ;
-            }
-            
-            
+            }            
         }
 
         public int getRightHeight(int defaultWidth, int defaultHeight, int tyleMoi)

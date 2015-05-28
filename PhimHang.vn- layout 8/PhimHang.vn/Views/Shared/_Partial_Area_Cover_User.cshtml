@@ -20,7 +20,7 @@
             {
                 if (ViewBag.CheckUserExist == "E")
                 {
-                    <a id="SavePositionCover" href="#">Lưu vị trí</a>
+                    <a id="SavePositionCover" href="#">Lưu vị trí</a> <!--thực hiện trong file file cropimageuser.js-->
                     <div class="uploadFile">
                         <input onchange="uploadCoverUser(files)" accept="image/*" type="file" id="coverInput" name="coverInput" value="" />
                     </div>
@@ -68,7 +68,7 @@
 
                                     },
                                     fail: function () {
-                                        showNotification('Có lỗi khi upload ảnh, vui lòng thử lại:');                                        
+                                        showNotification('Có lỗi khi upload ảnh, vui lòng thử lại');                                        
                                         $('.uploadStatus').html('');
                                     }
                                 })
