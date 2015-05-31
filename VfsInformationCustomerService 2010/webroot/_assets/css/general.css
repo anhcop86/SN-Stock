@@ -1,0 +1,23 @@
+﻿
+#header {
+	width: 800px;
+}
+
+
+#bodyContent {
+	width: 800px;
+}
+
+#bodyContent #left {
+	width: 200px;
+	float: left;
+}
+
+#bodyContent #right {
+	width: 580px;
+	float: right;
+}
+.ErorrText
+{
+	color:Red
+}

@@ -1,0 +1,85 @@
+# Microsoft Developer Studio Project File - Database Project
+Begin DataProject = "Database"
+   MSDTVersion = "80"
+   SccProjectName = "SAK"
+   SccLocalPath = "SAK"
+   SccAuxPath = "SAK"
+   SccProvider = "SAK"
+   Begin Folder = "Create Database Scripts"
+      Script = "AllStoredProcedures.sql"
+      Script = "WebCraweler.sql"
+   End
+   Begin DBRefFolder = "Database References"
+   End
+   Begin Folder = "Job scripts"
+   End
+   Begin Folder = "Release Change Scripts"
+   End
+   Begin Folder = "SP scripts"
+      Begin Folder = "ApprovedStockNews"
+         Script = "spApprovedStockNewsDelete.sql"
+         Script = "spApprovedStockNewsGet.sql"
+         Script = "spApprovedStockNewsGetList.sql"
+         Script = "spApprovedStockNewsInsert.sql"
+         Script = "spApprovedStockNewsUpdate.sql"
+      End
+      Begin Folder = "Customer"
+         Script = "spCustomerDelete.sql"
+         Script = "spCustomerGet.sql"
+         Script = "spCustomerGetList.sql"
+         Script = "spCustomerInsert.sql"
+         Script = "spCustomerUpdate.sql"
+      End
+      Begin Folder = "CustomerType"
+         Script = "spCustomerTypeDelete.sql"
+         Script = "spCustomerTypeGet.sql"
+         Script = "spCustomerTypeGetList.sql"
+         Script = "spCustomerTypeInsert.sql"
+         Script = "spCustomerTypeUpdate.sql"
+      End
+      Begin Folder = "Link"
+         Script = "spLinkDelete.sql"
+         Script = "spLinkGet.sql"
+         Script = "spLinkGetList.sql"
+         Script = "spLinkGetListBySource.sql"
+         Script = "spLinkInsert.sql"
+         Script = "spLinkUpdate.sql"
+      End
+      Begin Folder = "RejectedStockNews"
+         Script = "spRejectedStockNewsDelete.sql"
+         Script = "spRejectedStockNewsGet.sql"
+         Script = "spRejectedStockNewsGetList.sql"
+         Script = "spRejectedStockNewsInsert.sql"
+         Script = "spRejectedStockNewsUpdate.sql"
+      End
+      Begin Folder = "Source"
+         Script = "spSourceDelete.sql"
+         Script = "spSourceGet.sql"
+         Script = "spSourceGetList.sql"
+         Script = "spSourceInsert.sql"
+         Script = "spSourceUpdate.sql"
+      End
+      Begin Folder = "StockNews"
+         Script = "spStockNewsDelete.sql"
+         Script = "spStockNewsGet.sql"
+         Script = "spStockNewsGetList.sql"
+         Script = "spStockNewsGetListByLink.sql"
+         Script = "spStockNewsGetListBySource.sql"
+         Script = "spStockNewsInsert.sql"
+         Script = "spStockNewsUpdate.sql"
+      End
+      Begin Folder = "sysdiagrams"
+         Script = "spsysdiagramsDelete.sql"
+         Script = "spsysdiagramsGet.sql"
+         Script = "spsysdiagramsGetList.sql"
+         Script = "spsysdiagramsInsert.sql"
+         Script = "spsysdiagramsUpdate.sql"
+      End
+   End
+   Begin Folder = "Table changing scripts"
+   End
+   Begin Folder = "UDF Scripts"
+   End
+   Begin Folder = "View scripts"
+   End
+End

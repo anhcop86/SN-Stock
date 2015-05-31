@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DataAccessCreateExtensionMessageException" xml:space="preserve">
+    <value>Create ExtensionMessage Exception.</value>
+  </data>
+  <data name="DataAccessCreateExtensionMessageException1" xml:space="preserve">
+    <value>Create ExtensionMessage Exception.</value>
+  </data>
+  <data name="DataAccessCreateExtensionMessageException2" xml:space="preserve">
+    <value>Create ExtensionMessage Exception.</value>
+  </data>
+  <data name="DataAccessCreateExtensionMessageFromReaderException" xml:space="preserve">
+    <value>Create ExtensionMessage From Reader Exception.</value>
+  </data>
+  <data name="DataAccessCreateExtensionMessageFromReaderException1" xml:space="preserve">
+    <value>Create ExtensionMessage From Reader Exception.</value>
+  </data>
+  <data name="DataAccessCreateExtensionMessageFromReaderException2" xml:space="preserve">
+    <value>Create ExtensionMessage From Reader Exception.</value>
+  </data>
+  <data name="DataAccessCreateExtensionMessageLogException" xml:space="preserve">
+    <value>Create ExtensionMessageLog Exception.</value>
+  </data>
+  <data name="DataAccessCreateExtensionMessageLogException1" xml:space="preserve">
+    <value>Create ExtensionMessageLog Exception.</value>
+  </data>
+  <data name="DataAccessCreateExtensionMessageLogException2" xml:space="preserve">
+    <value>Create ExtensionMessageLog Exception.</value>
+  </data>
+  <data name="DataAccessCreateExtensionMessageLogFromReaderException" xml:space="preserve">
+    <value>Create ExtensionMessageLog From Reader Exception.</value>
+  </data>
+  <data name="DataAccessCreateExtensionMessageLogFromReaderException1" xml:space="preserve">
+    <value>Create ExtensionMessageLog From Reader Exception.</value>
+  </data>
+  <data name="DataAccessCreateExtensionMessageLogFromReaderException2" xml:space="preserve">
+    <value>Create ExtensionMessageLog From Reader Exception.</value>
+  </data>
+  <data name="DataAccessCreateRelatedMessagelogException" xml:space="preserve">
+    <value>Create RelatedMessagelog Exception.</value>
+  </data>
+  <data name="DataAccessCreateRelatedMessagelogFromReaderException" xml:space="preserve">
+    <value>Create RelatedMessagelog From Reader Exception.</value>
+  </data>
+  <data name="DataAccessCreatestock_NewException" xml:space="preserve">
+    <value>Create stock_New Exception.</value>
+  </data>
+  <data name="DataAccessCreatestock_NewFromReaderException" xml:space="preserve">
+    <value>Create stock_New From Reader Exception.</value>
+  </data>
+  <data name="DataAccessCreatestock_NewsGroupException" xml:space="preserve">
+    <value>Create stock_NewsGroup Exception.</value>
+  </data>
+  <data name="DataAccessCreatestock_NewsGroupFromReaderException" xml:space="preserve">
+    <value>Create stock_NewsGroup From Reader Exception.</value>
+  </data>
+  <data name="DataAccessCreatestock_SymbolException" xml:space="preserve">
+    <value>Create stock_Symbol Exception.</value>
+  </data>
+  <data name="DataAccessCreatestock_SymbolFromReaderException" xml:space="preserve">
+    <value>Create stock_Symbol From Reader Exception.</value>
+  </data>
+  <data name="DataAccessCreatestock_SymbolPermLongException" xml:space="preserve">
+    <value>Create stock_SymbolPermLong Exception.</value>
+  </data>
+  <data name="DataAccessCreatestock_SymbolPermLongFromReaderException" xml:space="preserve">
+    <value>Create stock_SymbolPermLong From Reader Exception.</value>
+  </data>
+  <data name="DataAccessDeleteExtensionMessageException" xml:space="preserve">
+    <value>Delete ExtensionMessage Exception.</value>
+  </data>
+  <data name="DataAccessDeleteExtensionMessageException1" xml:space="preserve">
+    <value>Delete ExtensionMessage Exception.</value>
+  </data>
+  <data name="DataAccessDeleteExtensionMessageException2" xml:space="preserve">
+    <value>Delete ExtensionMessage Exception.</value>
+  </data>
+  <data name="DataAccessDeleteExtensionMessageLogException" xml:space="preserve">
+    <value>Delete ExtensionMessageLog Exception.</value>
+  </data>
+  <data name="DataAccessDeleteExtensionMessageLogException1" xml:space="preserve">
+    <value>Delete ExtensionMessageLog Exception.</value>
+  </data>
+  <data name="DataAccessDeleteExtensionMessageLogException2" xml:space="preserve">
+    <value>Delete ExtensionMessageLog Exception.</value>
+  </data>
+  <data name="DataAccessDeleteRelatedMessagelogException" xml:space="preserve">
+    <value>Delete RelatedMessagelog Exception.</value>
+  </data>
+  <data name="DataAccessDeletestock_NewException" xml:space="preserve">
+    <value>Delete stock_New Exception.</value>
+  </data>
+  <data name="DataAccessDeletestock_NewsGroupException" xml:space="preserve">
+    <value>Delete stock_NewsGroup Exception.</value>
+  </data>
+  <data name="DataAccessDeletestock_SymbolException" xml:space="preserve">
+    <value>Delete stock_Symbol Exception.</value>
+  </data>
+  <data name="DataAccessDeletestock_SymbolPermLongException" xml:space="preserve">
+    <value>Delete stock_SymbolPermLong Exception.</value>
+  </data>
+  <data name="DataAccessGetExtensionMessageException" xml:space="preserve">
+    <value>Get ExtensionMessage Exception.</value>
+  </data>
+  <data name="DataAccessGetExtensionMessageException1" xml:space="preserve">
+    <value>Get ExtensionMessage Exception.</value>
+  </data>
+  <data name="DataAccessGetExtensionMessageException2" xml:space="preserve">
+    <value>Get ExtensionMessage Exception.</value>
+  </data>
+  <data name="DataAccessGetExtensionMessageListException" xml:space="preserve">
+    <value>Get ExtensionMessage List Exception.</value>
+  </data>
+  <data name="DataAccessGetExtensionMessageListException1" xml:space="preserve">
+    <value>Get ExtensionMessage List Exception.</value>
+  </data>
+  <data name="DataAccessGetExtensionMessageListException2" xml:space="preserve">
+    <value>Get ExtensionMessage List Exception.</value>
+  </data>
+  <data name="DataAccessGetExtensionMessageLogException" xml:space="preserve">
+    <value>Get ExtensionMessageLog Exception.</value>
+  </data>
+  <data name="DataAccessGetExtensionMessageLogException1" xml:space="preserve">
+    <value>Get ExtensionMessageLog Exception.</value>
+  </data>
+  <data name="DataAccessGetExtensionMessageLogException2" xml:space="preserve">
+    <value>Get ExtensionMessageLog Exception.</value>
+  </data>
+  <data name="DataAccessGetExtensionMessageLogListException" xml:space="preserve">
+    <value>Get ExtensionMessageLog List Exception.</value>
+  </data>
+  <data name="DataAccessGetExtensionMessageLogListException1" xml:space="preserve">
+    <value>Get ExtensionMessageLog List Exception.</value>
+  </data>
+  <data name="DataAccessGetExtensionMessageLogListException2" xml:space="preserve">
+    <value>Get ExtensionMessageLog List Exception.</value>
+  </data>
+  <data name="DataAccessGetRelatedMessagelogException" xml:space="preserve">
+    <value>Get RelatedMessagelog Exception.</value>
+  </data>
+  <data name="DataAccessGetRelatedMessagelogListException" xml:space="preserve">
+    <value>Get RelatedMessagelog List Exception.</value>
+  </data>
+  <data name="DataAccessGetstock_NewException" xml:space="preserve">
+    <value>Get stock_New Exception.</value>
+  </data>
+  <data name="DataAccessGetstock_NewListException" xml:space="preserve">
+    <value>Get stock_New List Exception.</value>
+  </data>
+  <data name="DataAccessGetstock_NewsGroupException" xml:space="preserve">
+    <value>Get stock_NewsGroup Exception.</value>
+  </data>
+  <data name="DataAccessGetstock_NewsGroupListException" xml:space="preserve">
+    <value>Get stock_NewsGroup List Exception.</value>
+  </data>
+  <data name="DataAccessGetstock_SymbolException" xml:space="preserve">
+    <value>Get stock_Symbol Exception.</value>
+  </data>
+  <data name="DataAccessGetstock_SymbolListException" xml:space="preserve">
+    <value>Get stock_Symbol List Exception.</value>
+  </data>
+  <data name="DataAccessGetstock_SymbolPermLongException" xml:space="preserve">
+    <value>Get stock_SymbolPermLong Exception.</value>
+  </data>
+  <data name="DataAccessGetstock_SymbolPermLongListException" xml:space="preserve">
+    <value>Get stock_SymbolPermLong List Exception.</value>
+  </data>
+  <data name="DataAccessUpdateExtensionMessageException" xml:space="preserve">
+    <value>Update ExtensionMessage Exception.</value>
+  </data>
+  <data name="DataAccessUpdateExtensionMessageException1" xml:space="preserve">
+    <value>Update ExtensionMessage Exception.</value>
+  </data>
+  <data name="DataAccessUpdateExtensionMessageException2" xml:space="preserve">
+    <value>Update ExtensionMessage Exception.</value>
+  </data>
+  <data name="DataAccessUpdateExtensionMessageLogException" xml:space="preserve">
+    <value>Update ExtensionMessageLog Exception.</value>
+  </data>
+  <data name="DataAccessUpdateExtensionMessageLogException1" xml:space="preserve">
+    <value>Update ExtensionMessageLog Exception.</value>
+  </data>
+  <data name="DataAccessUpdateExtensionMessageLogException2" xml:space="preserve">
+    <value>Update ExtensionMessageLog Exception.</value>
+  </data>
+  <data name="DataAccessUpdateRelatedMessagelogException" xml:space="preserve">
+    <value>Update RelatedMessagelog Exception.</value>
+  </data>
+  <data name="DataAccessUpdatestock_NewException" xml:space="preserve">
+    <value>Update stock_New Exception.</value>
+  </data>
+  <data name="DataAccessUpdatestock_NewsGroupException" xml:space="preserve">
+    <value>Update stock_NewsGroup Exception.</value>
+  </data>
+  <data name="DataAccessUpdatestock_SymbolException" xml:space="preserve">
+    <value>Update stock_Symbol Exception.</value>
+  </data>
+  <data name="DataAccessUpdatestock_SymbolPermLongException" xml:space="preserve">
+    <value>Update stock_SymbolPermLong Exception.</value>
+  </data>
+</root>

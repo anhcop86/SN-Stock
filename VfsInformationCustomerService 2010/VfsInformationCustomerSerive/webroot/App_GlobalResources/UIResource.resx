@@ -1,0 +1,816 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Add" xml:space="preserve">
+    <value>Thêm</value>
+  </data>
+  <data name="AddCustomer" xml:space="preserve">
+    <value>Thêm khách hàng</value>
+  </data>
+  <data name="AddressDetail" xml:space="preserve">
+    <value>Địa chỉ:</value>
+  </data>
+  <data name="AdjRatio" xml:space="preserve">
+    <value>Phần trăm thay đổi:</value>
+  </data>
+  <data name="AllOfFilter" xml:space="preserve">
+    <value>Tất cả</value>
+  </data>
+  <data name="ApplicationName" xml:space="preserve">
+    <value>VFS Customer Information Service </value>
+  </data>
+  <data name="Approve" xml:space="preserve">
+    <value>Duyệt</value>
+  </data>
+  <data name="approveWebsite" xml:space="preserve">
+    <value>Duyệt &amp; đưa lên Website</value>
+  </data>
+  <data name="Attachement" xml:space="preserve">
+    <value>File đính kèm</value>
+  </data>
+  <data name="BodyContentType" xml:space="preserve">
+    <value>Loại nội dung gởi:</value>
+  </data>
+  <data name="bodyContentTypeID1" xml:space="preserve">
+    <value>HTML</value>
+  </data>
+  <data name="bodyContentTypeID2" xml:space="preserve">
+    <value>Plain text</value>
+  </data>
+  <data name="BodyEncoding" xml:space="preserve">
+    <value>Kiểu Unicode:</value>
+  </data>
+  <data name="bodyEncodingID1" xml:space="preserve">
+    <value>UTF-8</value>
+  </data>
+  <data name="bodyEncodingID2" xml:space="preserve">
+    <value>Unicode</value>
+  </data>
+  <data name="BodyMessager" xml:space="preserve">
+    <value>Nội dung tin nhắn:</value>
+  </data>
+  <data name="BodyServiceType" xml:space="preserve">
+    <value>Kiểu dịch vụ:</value>
+  </data>
+  <data name="BodyTemplateType" xml:space="preserve">
+    <value>Kiểu template:</value>
+  </data>
+  <data name="BodyTemplateTypeList" xml:space="preserve">
+    <value>Kiểu dịch vụ</value>
+  </data>
+  <data name="BuyCount" xml:space="preserve">
+    <value>Lệnh mua:</value>
+  </data>
+  <data name="BuyForeignValue" xml:space="preserve">
+    <value>Tổng giá trị mua:</value>
+  </data>
+  <data name="BuyingOrder" xml:space="preserve">
+    <value>Lệnh đặt mua</value>
+  </data>
+  <data name="BuyQuantity" xml:space="preserve">
+    <value>Khối lượng mua:</value>
+  </data>
+  <data name="BuyQuatity" xml:space="preserve">
+    <value>Khối lượng mua</value>
+  </data>
+  <data name="CafeFBankNews" xml:space="preserve">
+    <value>Tin tức hoạt động tài chính ngân hàng</value>
+  </data>
+  <data name="CafeFCompanyNews" xml:space="preserve">
+    <value>Thông tin tài chính và hoạt động kinh doanh của Doanh nghiệp</value>
+  </data>
+  <data name="CafeFInternationalFinancialNews" xml:space="preserve">
+    <value>Tin tức tài chính quốc tế</value>
+  </data>
+  <data name="CafeFRealEstateNews" xml:space="preserve">
+    <value>Thông tin thị trường bất động sản Việt Nam</value>
+  </data>
+  <data name="CafeFStockNews" xml:space="preserve">
+    <value>Tin tức thị trường chứng khoán Việt Nam</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Trở về</value>
+  </data>
+  <data name="CardIdentityDetail" xml:space="preserve">
+    <value>Số CMND/Số Passport:</value>
+  </data>
+  <data name="CatalogService" xml:space="preserve">
+    <value>Danh mục dịch vụ</value>
+  </data>
+  <data name="CatalogServiceDetailTitle" xml:space="preserve">
+    <value>Chi tiết dịch vụ</value>
+  </data>
+  <data name="CheckUnsubcribe" xml:space="preserve">
+    <value>Bạn có chắc muốn từ chối nhận bản tin ngày từ VFS?</value>
+  </data>
+  <data name="CheckUnsubcribeReceiveRelatedStoxTitle" xml:space="preserve">
+    <value>Bạn có chắc muốn từ chối nhận bản tin chứng khoán liên quan</value>
+  </data>
+  <data name="ChooseServiceType" xml:space="preserve">
+    <value>Chọn loại dịch vụ:</value>
+  </data>
+  <data name="ColumnName" xml:space="preserve">
+    <value>Tên cột</value>
+  </data>
+  <data name="ConfirmDeleteServiceType" xml:space="preserve">
+    <value>Bạn muốn xóa loại dịch vụ này ?</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Nội dung</value>
+  </data>
+  <data name="ContentTemplateDetailTitle" xml:space="preserve">
+    <value>Chi tiết nội dung mẫu</value>
+  </data>
+  <data name="ContentTemplateListTitle" xml:space="preserve">
+    <value>Danh mục nội dung mẫu</value>
+  </data>
+  <data name="CoreSynchronize" xml:space="preserve">
+    <value>Đồng bộ</value>
+  </data>
+  <data name="create" xml:space="preserve">
+    <value>Tạo tin</value>
+  </data>
+  <data name="createDateMessage" xml:space="preserve">
+    <value>Ngày tạo</value>
+  </data>
+  <data name="CreateMessage" xml:space="preserve">
+    <value>Tạo Tin</value>
+  </data>
+  <data name="CreateMessageEmailStox" xml:space="preserve">
+    <value>Tạo Email Stoxpro</value>
+  </data>
+  <data name="CreateMessageFromExcel" xml:space="preserve">
+    <value>Tạo tin </value>
+  </data>
+  <data name="CreateMessageFromExcelTemplate" xml:space="preserve">
+    <value>Tạo tin từ file Excel</value>
+  </data>
+  <data name="CreateMessengerSucess" xml:space="preserve">
+    <value>Tạo tin thành công</value>
+  </data>
+  <data name="CreateSnapShot" xml:space="preserve">
+    <value>Tạo SnapShot</value>
+  </data>
+  <data name="CreateSnapShotSuccessMessage" xml:space="preserve">
+    <value>SnapShot đã được tạo thành công</value>
+  </data>
+  <data name="CreateSnapShotTitle" xml:space="preserve">
+    <value>Tạo SnapShot </value>
+  </data>
+  <data name="CurrentForeignRoom" xml:space="preserve">
+    <value>Room hiện tại:</value>
+  </data>
+  <data name="customer" xml:space="preserve">
+    <value> khách hàng.</value>
+  </data>
+  <data name="CustomerId" xml:space="preserve">
+    <value>Mã khách hàng:</value>
+  </data>
+  <data name="CustomerIdList" xml:space="preserve">
+    <value>Mã KH</value>
+  </data>
+  <data name="CustomerInfo" xml:space="preserve">
+    <value>Thông tin của khách hàng</value>
+  </data>
+  <data name="CustomerName" xml:space="preserve">
+    <value>Tên tiếng anh:</value>
+  </data>
+  <data name="CustomerNameList" xml:space="preserve">
+    <value>Tên khách hàng</value>
+  </data>
+  <data name="CustomerNameViet" xml:space="preserve">
+    <value>Tên tiếng việt:</value>
+  </data>
+  <data name="CustomerNoAccount" xml:space="preserve">
+    <value>Khách hàng chưa mở TK</value>
+  </data>
+  <data name="CustomerRegistryAccount" xml:space="preserve">
+    <value>Khách hàng đã mở TK</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Ngày (dd/mm/yyyy)</value>
+  </data>
+  <data name="DateCreateService" xml:space="preserve">
+    <value>Ngày tạo dịch vụ:</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Xóa</value>
+  </data>
+  <data name="DeleteAllYear" xml:space="preserve">
+    <value>Xóa hết</value>
+  </data>
+  <data name="DeleteAttachement" xml:space="preserve">
+    <value>Xóa file đính kèm</value>
+  </data>
+  <data name="DeleteData" xml:space="preserve">
+    <value>Xóa dữ liệu</value>
+  </data>
+  <data name="DeleteDateSuccess" xml:space="preserve">
+    <value>Xóa dữ liệu thành công</value>
+  </data>
+  <data name="DenyEmail" xml:space="preserve">
+    <value>Nhận bản tin ngày:</value>
+  </data>
+  <data name="DobDetail" xml:space="preserve">
+    <value>Ngày sinh:</value>
+  </data>
+  <data name="DobList" xml:space="preserve">
+    <value>Ngày sinh</value>
+  </data>
+  <data name="DomesticForeign" xml:space="preserve">
+    <value>Quốc tịch:</value>
+  </data>
+  <data name="Down" xml:space="preserve">
+    <value>Số mã giảm</value>
+  </data>
+  <data name="DuplicatedParameter" xml:space="preserve">
+    <value>Tên tham số trong nội dung mẫu trùng nhau, vui lòng kiểm tra lại tên các tham số</value>
+  </data>
+  <data name="EmailList" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EmptyInfo" xml:space="preserve">
+    <value>Thiếu thông tin</value>
+  </data>
+  <data name="ErrorExistNameServiceType" xml:space="preserve">
+    <value>Lỗi! tên dịch vụ đã tồn tại</value>
+  </data>
+  <data name="ErrorImport" xml:space="preserve">
+    <value>Thiếu file Import</value>
+  </data>
+  <data name="errorInContentTemplate" xml:space="preserve">
+    <value>Nội dung mẫu không có tham số, vui lòng chọn nội dung mẫu khác</value>
+  </data>
+  <data name="ErrorInfo" xml:space="preserve">
+    <value>Thiếu thông tin</value>
+  </data>
+  <data name="ErrorLoginMessage" xml:space="preserve">
+    <value>Tên người đăng nhập hoặc mật khẩu không đúng</value>
+  </data>
+  <data name="EventInput" xml:space="preserve">
+    <value>Bạn có chắc không ?</value>
+  </data>
+  <data name="ExistNameForContentTemplate" xml:space="preserve">
+    <value>Trùng Template</value>
+  </data>
+  <data name="ExistsCustomerId" xml:space="preserve">
+    <value>Trùng mã khách hàng</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Kết Xuất</value>
+  </data>
+  <data name="ExportDataForStox" xml:space="preserve">
+    <value>Kết xuất dữ liệu phân tích</value>
+  </data>
+  <data name="ExportStockPriceHistory" xml:space="preserve">
+    <value>Kết xuất thông tin lịch sử chứng khoán </value>
+  </data>
+  <data name="ExportStox" xml:space="preserve">
+    <value>Xuất dữ liệu phân tích</value>
+  </data>
+  <data name="FailedAndSuccess" xml:space="preserve">
+    <value>Chưa gởi được</value>
+  </data>
+  <data name="FailedMessages" xml:space="preserve">
+    <value>Mẫu tin không được tạo thành công</value>
+  </data>
+  <data name="FaxDetail" xml:space="preserve">
+    <value>Fax:</value>
+  </data>
+  <data name="Find" xml:space="preserve">
+    <value>Tìm được </value>
+  </data>
+  <data name="findCustomer" xml:space="preserve">
+    <value>Tìm kiếm khách hàng </value>
+  </data>
+  <data name="findMessenger" xml:space="preserve">
+    <value>Tìm kiếm theo </value>
+  </data>
+  <data name="FromDate" xml:space="preserve">
+    <value>Từ ngày:</value>
+  </data>
+  <data name="GetAutoPrice" xml:space="preserve">
+    <value>Lấy giá theo ngày</value>
+  </data>
+  <data name="HastcBondNews" xml:space="preserve">
+    <value>Tin trái phiếu</value>
+  </data>
+  <data name="HastcBondTransaction" xml:space="preserve">
+    <value>Giao dịch trái phiếu</value>
+  </data>
+  <data name="HotNews" xml:space="preserve">
+    <value>Tin nổi bật</value>
+  </data>
+  <data name="Imitate" xml:space="preserve">
+    <value>Mô phỏng</value>
+  </data>
+  <data name="ImportForeign" xml:space="preserve">
+    <value>Cập nhật thông tin giá NDTNN</value>
+  </data>
+  <data name="ImportResult" xml:space="preserve">
+    <value>Kết quả tạo tin</value>
+  </data>
+  <data name="importSucess" xml:space="preserve">
+    <value>Import thành công</value>
+  </data>
+  <data name="ImportUpdateErrorMessage" xml:space="preserve">
+    <value>Ngày cập nhật không thể trống</value>
+  </data>
+  <data name="ImportUpdateStock" xml:space="preserve">
+    <value>Cập nhật thông tin lịch sử giá</value>
+  </data>
+  <data name="ImportUpdateStockForeign" xml:space="preserve">
+    <value>Cập nhật thông tin lịch sử giá (NDTNN)</value>
+  </data>
+  <data name="ImportUpdateSuccessMessage" xml:space="preserve">
+    <value>Dữ liệu đã được cập nhật thành công</value>
+  </data>
+  <data name="infoPosNochangDown" xml:space="preserve">
+    <value>Thông tin mã tăng giảm</value>
+  </data>
+  <data name="InsubcribeTitle" xml:space="preserve">
+    <value>Từ chối bảng tin ngày</value>
+  </data>
+  <data name="InvalidTemplateContent" xml:space="preserve">
+    <value>Vui lòng chọn nội dung mẫu trước khi gửi tin mô phỏng</value>
+  </data>
+  <data name="LabelCheckmaxleng" xml:space="preserve">
+    <value>Vượt quá 320 kí tự</value>
+  </data>
+  <data name="LoggedStatus" xml:space="preserve">
+    <value>Xin chào: </value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Đăng nhập</value>
+  </data>
+  <data name="Market" xml:space="preserve">
+    <value>Thị trường</value>
+  </data>
+  <data name="MeesageSucessfullySent" xml:space="preserve">
+    <value>Tin đã được gửi thành công</value>
+  </data>
+  <data name="MessageRecieveTitle" xml:space="preserve">
+    <value>Tin đã gởi</value>
+  </data>
+  <data name="MessageSendingDetailTitle" xml:space="preserve">
+    <value>Chi tiết tin đang gởi</value>
+  </data>
+  <data name="MessageSendingTitle" xml:space="preserve">
+    <value>Tin đang gởi</value>
+  </data>
+  <data name="MessageSentDetailTitle" xml:space="preserve">
+    <value>Chi tiết tin đã gởi</value>
+  </data>
+  <data name="MessengerSending" xml:space="preserve">
+    <value>Tin đang gởi</value>
+  </data>
+  <data name="MessengerSent" xml:space="preserve">
+    <value>Tin đã gởi</value>
+  </data>
+  <data name="MissingInfor" xml:space="preserve">
+    <value>Thiếu thông tin</value>
+  </data>
+  <data name="Mobile1Detail" xml:space="preserve">
+    <value>Di động 1:</value>
+  </data>
+  <data name="Mobile1List" xml:space="preserve">
+    <value>Di động</value>
+  </data>
+  <data name="Mobile2Detail" xml:space="preserve">
+    <value>Di động 2:</value>
+  </data>
+  <data name="ModelContent" xml:space="preserve">
+    <value>Nội dung mẫu</value>
+  </data>
+  <data name="Modify" xml:space="preserve">
+    <value>Sửa</value>
+  </data>
+  <data name="ModifyDate" xml:space="preserve">
+    <value>Ngày chỉnh sữa:</value>
+  </data>
+  <data name="NameService" xml:space="preserve">
+    <value>Tên dịch vụ:</value>
+  </data>
+  <data name="NameTemplate" xml:space="preserve">
+    <value>Tên Template:</value>
+  </data>
+  <data name="NewsFromHastcTradingCenter" xml:space="preserve">
+    <value>Tin từ Sở GDCK Hà Nội </value>
+  </data>
+  <data name="NewsFromTradingCenter" xml:space="preserve">
+    <value>Tin từ Sở Giao Dịch</value>
+  </data>
+  <data name="NewsHastcIssuedOwner" xml:space="preserve">
+    <value>Tin tức từ công ty niêm yết</value>
+  </data>
+  <data name="NewsHastcSecuritiesCompany" xml:space="preserve">
+    <value>Tin tức từ thành viên</value>
+  </data>
+  <data name="NewsIssuedOwner" xml:space="preserve">
+    <value>Tin từ tổ chức niêm yết</value>
+  </data>
+  <data name="NewsSecuritiesCompany" xml:space="preserve">
+    <value>Tin từ công ty chứng khóan</value>
+  </data>
+  <data name="next" xml:space="preserve">
+    <value>Tiếp</value>
+  </data>
+  <data name="Nochange" xml:space="preserve">
+    <value>Không thay đổi</value>
+  </data>
+  <data name="NoContentTemplateSelected" xml:space="preserve">
+    <value>Bạn chưa chọn nội dung mẫu, vui lòng chọn 1 nội dung mẫu mà bạn mong muốn dùng để tạo tin </value>
+  </data>
+  <data name="NoFileSelected" xml:space="preserve">
+    <value>Bạn chưa chọn file để upload, vui lòng  chọn file trước khi tiếp tục</value>
+  </data>
+  <data name="NotDate" xml:space="preserve">
+    <value>Chưa chọn ngày</value>
+  </data>
+  <data name="NotStart" xml:space="preserve">
+    <value>Chưa gởi</value>
+  </data>
+  <data name="NotYetCheckCustomer" xml:space="preserve">
+    <value>Chưa chọn khách hàng để gởi tin</value>
+  </data>
+  <data name="OpendateDetail" xml:space="preserve">
+    <value>Ngày mở tài khoản:</value>
+  </data>
+  <data name="OtherNews" xml:space="preserve">
+    <value>Tin khác</value>
+  </data>
+  <data name="OtherSMSMessage" xml:space="preserve">
+    <value>Tạo Sms cổ tức - quyền mua ...</value>
+  </data>
+  <data name="ParamaterName" xml:space="preserve">
+    <value>Tham số</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Mật khẩu</value>
+  </data>
+  <data name="PofolioSMSMessage" xml:space="preserve">
+    <value>Gửi SMS theo Danh mục đầu tư</value>
+  </data>
+  <data name="PorfolioSMS" xml:space="preserve">
+    <value>Gửi SMS theo danh mục đầu tư</value>
+  </data>
+  <data name="Pos" xml:space="preserve">
+    <value>Số mã tăng</value>
+  </data>
+  <data name="PosNochangeDownofStokSymbol" xml:space="preserve">
+    <value>Thông tin số lượng tăng giảm của mã chứng khoán</value>
+  </data>
+  <data name="PreviewMessage" xml:space="preserve">
+    <value>Xem trước</value>
+  </data>
+  <data name="PriceAverage" xml:space="preserve">
+    <value>Giá trung bình:</value>
+  </data>
+  <data name="PriceClose" xml:space="preserve">
+    <value>Giá đóng cửa:</value>
+  </data>
+  <data name="PriceHight" xml:space="preserve">
+    <value>Giá cao:</value>
+  </data>
+  <data name="PriceLow" xml:space="preserve">
+    <value>Giá thấp:</value>
+  </data>
+  <data name="PriceOpen" xml:space="preserve">
+    <value>Giá mở cửa:</value>
+  </data>
+  <data name="PricePreviousClose" xml:space="preserve">
+    <value>Giá đóng cửa ngày hôm qua:</value>
+  </data>
+  <data name="Receiver" xml:space="preserve">
+    <value>Địa chỉ Email nhận / số di động</value>
+  </data>
+  <data name="ReceiveRelatedStockEmail" xml:space="preserve">
+    <value>Nhận bản tin liên quan qua Email:</value>
+  </data>
+  <data name="ReceiveRelatedStockSms" xml:space="preserve">
+    <value>Nhận bản tin liên quan qua SMS:</value>
+  </data>
+  <data name="ReceiverEmptyErrorMessage" xml:space="preserve">
+    <value>Địa chỉ email hoặc số điện thoại di động không thể trống</value>
+  </data>
+  <data name="ReceiverForContentTemplate" xml:space="preserve">
+    <value>Người nhận:</value>
+  </data>
+  <data name="RecieveList" xml:space="preserve">
+    <value>Người nhận</value>
+  </data>
+  <data name="Reject" xml:space="preserve">
+    <value>Từ chối</value>
+  </data>
+  <data name="ResentMessengerButton" xml:space="preserve">
+    <value>Gửi lại</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Lưu</value>
+  </data>
+  <data name="SearchButton" xml:space="preserve">
+    <value>Tìm</value>
+  </data>
+  <data name="SearchDate" xml:space="preserve">
+    <value>Từ ngày:</value>
+  </data>
+  <data name="SearchEmail" xml:space="preserve">
+    <value>Email:</value>
+  </data>
+  <data name="SelectFile" xml:space="preserve">
+    <value>Chọn file</value>
+  </data>
+  <data name="SelectOneItem" xml:space="preserve">
+    <value>&lt;--Chọn nội dung mẫu tin--&gt;</value>
+  </data>
+  <data name="SelectParameater" xml:space="preserve">
+    <value>Chọn thông tin cho mẫu tin sẽ tạo</value>
+  </data>
+  <data name="SellCount" xml:space="preserve">
+    <value>Lệnh bán:</value>
+  </data>
+  <data name="SellForeignValue" xml:space="preserve">
+    <value>Tổng giá trị bán:</value>
+  </data>
+  <data name="SellingOrder" xml:space="preserve">
+    <value>Lệnh đặt bán</value>
+  </data>
+  <data name="SellQuantity" xml:space="preserve">
+    <value>Khối lượng bán:</value>
+  </data>
+  <data name="SellQuatity" xml:space="preserve">
+    <value>Khối lượng bán</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Gửi</value>
+  </data>
+  <data name="SenderForContentTemplate" xml:space="preserve">
+    <value>Người gởi:</value>
+  </data>
+  <data name="SenderList" xml:space="preserve">
+    <value>Người gởi</value>
+  </data>
+  <data name="SendInfomationStoxpro" xml:space="preserve">
+    <value>Gởi Thông tin tài khoản Stoxpro cho khách hàng</value>
+  </data>
+  <data name="ServiceSend" xml:space="preserve">
+    <value>Dịch vụ gởi tin</value>
+  </data>
+  <data name="ServiceType" xml:space="preserve">
+    <value>Loại dịch vụ:</value>
+  </data>
+  <data name="ServiceTypeList" xml:space="preserve">
+    <value>Loại dịch vụ</value>
+  </data>
+  <data name="SessionCompanyTitle" xml:space="preserve">
+    <value>Kết xuất thông tin 3 giá</value>
+  </data>
+  <data name="SexDetail" xml:space="preserve">
+    <value>Giới tính:</value>
+  </data>
+  <data name="ShowInfoDateError" xml:space="preserve">
+    <value>Ngày xem thông tin không thể trống</value>
+  </data>
+  <data name="ShowInfoMartket" xml:space="preserve">
+    <value>Xem thông tin giá</value>
+  </data>
+  <data name="ShowWebsite" xml:space="preserve">
+    <value>Hiển thị trên website</value>
+  </data>
+  <data name="Simulation" xml:space="preserve">
+    <value>Mô phỏng</value>
+  </data>
+  <data name="SimulationError" xml:space="preserve">
+    <value>Lỗi mô phỏng gửi tin</value>
+  </data>
+  <data name="Snapshot" xml:space="preserve">
+    <value>Snapshot</value>
+  </data>
+  <data name="SnapShotErrorMessage" xml:space="preserve">
+    <value>Bạn phải chọn file SnapShot mẫu</value>
+  </data>
+  <data name="StatisticTransaction" xml:space="preserve">
+    <value>Thống kê giao dịch</value>
+  </data>
+  <data name="StatusMessage" xml:space="preserve">
+    <value>Hiện trạng</value>
+  </data>
+  <data name="StockSymbol" xml:space="preserve">
+    <value>Mã CP</value>
+  </data>
+  <data name="StoxNews" xml:space="preserve">
+    <value>Phân tích dự báo &amp; CBTT doanh nghiệp từ Stox </value>
+  </data>
+  <data name="SubjectForContentTemplate" xml:space="preserve">
+    <value>Tiêu đề:</value>
+  </data>
+  <data name="SuccessAndFinish" xml:space="preserve">
+    <value>Đã gởi</value>
+  </data>
+  <data name="SuccessMessages" xml:space="preserve">
+    <value>Mẫu tin được tạo thành công</value>
+  </data>
+  <data name="Symbol" xml:space="preserve">
+    <value>Mã cổ phiếu</value>
+  </data>
+  <data name="SymbolUpdateList" xml:space="preserve">
+    <value>Mã chứng khoán:</value>
+  </data>
+  <data name="TelDetail" xml:space="preserve">
+    <value>Số điện thoại:</value>
+  </data>
+  <data name="Template" xml:space="preserve">
+    <value>Nội dung mẫu</value>
+  </data>
+  <data name="TemplateTypeList" xml:space="preserve">
+    <value>Kiểu Template</value>
+  </data>
+  <data name="TestInfo" xml:space="preserve">
+    <value>Kiểm tra lại dữ liệu nhập vào ko phải là số hoặc thiếu thông tin</value>
+  </data>
+  <data name="ToBeAttachedDoc" xml:space="preserve">
+    <value>Đính kèm file</value>
+  </data>
+  <data name="ToDate" xml:space="preserve">
+    <value>Đến ngày:</value>
+  </data>
+  <data name="TotalTrade" xml:space="preserve">
+    <value>Khối lượng giao dịch:</value>
+  </data>
+  <data name="TotalValue" xml:space="preserve">
+    <value>Giá trị giao dịch:</value>
+  </data>
+  <data name="TrandingDate" xml:space="preserve">
+    <value>Ngày giao dịch</value>
+  </data>
+  <data name="TypeTemplate" xml:space="preserve">
+    <value>Loại nội dung mẫu</value>
+  </data>
+  <data name="Unsubcribe1" xml:space="preserve">
+    <value>Quý Khách đã chọn từ chối nhận email từ hệ thống của chúng tôi. Các Bản tin ngày sẽ không được tiếp tục gửi đến</value>
+  </data>
+  <data name="Unsubcribe2" xml:space="preserve">
+    <value>hộp thư của quý khách. Nếu Quý Khách có nhu cầu nhận Bản tin ngày, hãy </value>
+  </data>
+  <data name="UnsubcribeReceiveRelatedStoxTitle" xml:space="preserve">
+    <value>Từ chối nhận bản tin chứng khoán liên quan</value>
+  </data>
+  <data name="updateCustomer" xml:space="preserve">
+    <value>Sửa thông tin khách hàng</value>
+  </data>
+  <data name="UpdatePrice" xml:space="preserve">
+    <value>Cập nhật giá</value>
+  </data>
+  <data name="UpdatePriceHeader" xml:space="preserve">
+    <value>Cập nhật giá chứng khoán còn thiếu</value>
+  </data>
+  <data name="UpdateSeccess" xml:space="preserve">
+    <value>Cập nhật thành công</value>
+  </data>
+  <data name="UploadFileErrorMessage" xml:space="preserve">
+    <value>Thiếu File cập nhật, hệ thống không thể tạo tin</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>Tên đăng nhập</value>
+  </data>
+  <data name="VnEconomyFinancialNews" xml:space="preserve">
+    <value>Thông tin tài chính</value>
+  </data>
+  <data name="VolumeUpdatePrice" xml:space="preserve">
+    <value>Khối lượng:</value>
+  </data>
+  <data name="VsdActivityNews" xml:space="preserve">
+    <value>Thông tin về hoạt đông nghiệp vụ</value>
+  </data>
+  <data name="VsdEconomicNews" xml:space="preserve">
+    <value>Thông tin kinh tế</value>
+  </data>
+  <data name="VsdMemberNews" xml:space="preserve">
+    <value>Thông tin về thành viên</value>
+  </data>
+  <data name="VsdRegistrationNews" xml:space="preserve">
+    <value>Thông tin về tổ chức đăng ký </value>
+  </data>
+  <data name="invalidPostId" xml:space="preserve">
+    <value>Lỗi khóa chính</value>
+  </data>
+  <data name="CouldNotDeleteTemplate" xml:space="preserve">
+    <value>Lỗi</value>
+  </data>
+</root>

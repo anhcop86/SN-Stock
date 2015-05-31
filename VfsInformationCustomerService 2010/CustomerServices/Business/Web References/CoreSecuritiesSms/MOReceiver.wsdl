@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc12="http://www.w3.org/2003/05/soap-encoding" xmlns:soapenc11="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://ws.sms.gateway.vssd.com" xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope" targetNamespace="http://ws.sms.gateway.vssd.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.sms.gateway.vssd.com">
+      <xsd:element name="UserID" type="xsd:string" />
+      <xsd:element name="ServiceID" type="xsd:string" />
+      <xsd:element name="CommandCode" type="xsd:string" />
+      <xsd:element name="Message" type="xsd:string" />
+      <xsd:element name="RequestID" type="xsd:string" />
+      <xsd:element name="MoID" type="xsd:string" />
+      <xsd:element name="Username" type="xsd:string" />
+      <xsd:element name="Password" type="xsd:string" />
+      <xsd:element name="inquireout" type="xsd:string" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="messageReceiverResponse">
+    <wsdl:part name="inquireout" element="tns:inquireout" />
+  </wsdl:message>
+  <wsdl:message name="messageReceiverRequest">
+    <wsdl:part name="UserID" element="tns:UserID" />
+    <wsdl:part name="ServiceID" element="tns:ServiceID" />
+    <wsdl:part name="CommandCode" element="tns:CommandCode" />
+    <wsdl:part name="Message" element="tns:Message" />
+    <wsdl:part name="RequestID" element="tns:RequestID" />
+    <wsdl:part name="MoID" element="tns:MoID" />
+    <wsdl:part name="Username" element="tns:Username" />
+    <wsdl:part name="Password" element="tns:Password" />
+  </wsdl:message>
+  <wsdl:portType name="MOReceiverPortType">
+    <wsdl:operation name="messageReceiver">
+      <wsdl:input name="messageReceiverRequest" message="tns:messageReceiverRequest" />
+      <wsdl:output name="messageReceiverResponse" message="tns:messageReceiverResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MOReceiverHttpBinding" type="tns:MOReceiverPortType">
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="messageReceiver">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="messageReceiverRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="messageReceiverResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MOReceiver">
+    <wsdl:port name="MOReceiverHttpPort" binding="tns:MOReceiverHttpBinding">
+      <wsdlsoap:address location="http://10.1.17.1:8082/smsgateway/services/MOReceiver" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

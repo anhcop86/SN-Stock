@@ -1,0 +1,37 @@
+# Microsoft Developer Studio Project File - Database Project
+Begin DataProject = "DestinationDatabase"
+   MSDTVersion = "80"
+   DefDBRef = "svr-db.master.dbo"
+   SccProjectName = "SAK"
+   SccLocalPath = "SAK"
+   SccAuxPath = "SAK"
+   SccProvider = "SAK"
+   Begin Folder = "Change Scripts"
+   End
+   Begin Folder = "Create Scripts"
+      Begin Folder = "StoreProcedure"
+         Script = "spMarketReview.sql"
+         Begin Folder = "stock_SymbolPermLong"
+            Script = "GetUpdated_SymbolPermLongGetList.sql"
+            Script = "spStatisticTransaction.sql"
+            Script = "spstock_SymbolPermLongDelete.sql"
+            Script = "spstock_SymbolPermLongGet.sql"
+            Script = "spstock_SymbolPermLongGetList.sql"
+            Script = "spstock_SymbolPermLongInsert.sql"
+            Script = "spstock_SymbolPermLongUpdate.sql"
+         End
+      End
+      Begin Folder = "View"
+         Script = "V_LatestThirdtySections.sql"
+      End
+   End
+   Begin DBRefFolder = "Database References"
+      Begin DBRefNode = "svr-db.master.dbo"
+         ConnectStr = "Data Source=SVR-DB;User ID=sa"
+         Provider = "{91510608-8809-4020-8897-FBA057E22D54}"
+         Colorizer = 6
+      End
+   End
+   Begin Folder = "Queries"
+   End
+End

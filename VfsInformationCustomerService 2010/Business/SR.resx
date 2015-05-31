@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BusinessCreateApprovedStockNewException" xml:space="preserve">
+    <value>Create ApprovedStockNew Exception.</value>
+  </data>
+  <data name="BusinessCreateApprovedStockNewFromReaderException" xml:space="preserve">
+    <value>Create ApprovedStockNew From Reader Exception.</value>
+  </data>
+  <data name="BusinessCreateLinkException" xml:space="preserve">
+    <value>Create Link Exception.</value>
+  </data>
+  <data name="BusinessCreateLinkFromReaderException" xml:space="preserve">
+    <value>Create Link From Reader Exception.</value>
+  </data>
+  <data name="BusinessCreateRejectedStockNewException" xml:space="preserve">
+    <value>Create RejectedStockNew Exception.</value>
+  </data>
+  <data name="BusinessCreateRejectedStockNewFromReaderException" xml:space="preserve">
+    <value>Create RejectedStockNew From Reader Exception.</value>
+  </data>
+  <data name="BusinessCreateSourceException" xml:space="preserve">
+    <value>Create Source Exception.</value>
+  </data>
+  <data name="BusinessCreateSourceFromReaderException" xml:space="preserve">
+    <value>Create Source From Reader Exception.</value>
+  </data>
+  <data name="BusinessCreateStockNewException" xml:space="preserve">
+    <value>Create StockNew Exception.</value>
+  </data>
+  <data name="BusinessCreateStockNewFromReaderException" xml:space="preserve">
+    <value>Create StockNew From Reader Exception.</value>
+  </data>
+  <data name="BusinessCreatesysdiagramException" xml:space="preserve">
+    <value>Create sysdiagram Exception.</value>
+  </data>
+  <data name="BusinessCreatesysdiagramFromReaderException" xml:space="preserve">
+    <value>Create sysdiagram From Reader Exception.</value>
+  </data>
+  <data name="BusinessDeleteApprovedStockNewException" xml:space="preserve">
+    <value>Delete ApprovedStockNew Exception.</value>
+  </data>
+  <data name="BusinessDeleteLinkException" xml:space="preserve">
+    <value>Delete Link Exception.</value>
+  </data>
+  <data name="BusinessDeleteRejectedStockNewException" xml:space="preserve">
+    <value>Delete RejectedStockNew Exception.</value>
+  </data>
+  <data name="BusinessDeleteSourceException" xml:space="preserve">
+    <value>Delete Source Exception.</value>
+  </data>
+  <data name="BusinessDeleteStockNewException" xml:space="preserve">
+    <value>Delete StockNew Exception.</value>
+  </data>
+  <data name="BusinessDeletesysdiagramException" xml:space="preserve">
+    <value>Delete sysdiagram Exception.</value>
+  </data>
+  <data name="BusinessGetApprovedStockNewException" xml:space="preserve">
+    <value>Get ApprovedStockNew Exception.</value>
+  </data>
+  <data name="BusinessGetApprovedStockNewListException" xml:space="preserve">
+    <value>Get ApprovedStockNew List Exception.</value>
+  </data>
+  <data name="BusinessGetLinkException" xml:space="preserve">
+    <value>Get Link Exception.</value>
+  </data>
+  <data name="BusinessGetLinkListException" xml:space="preserve">
+    <value>Get Link List Exception.</value>
+  </data>
+  <data name="BusinessGetRejectedStockNewException" xml:space="preserve">
+    <value>Get RejectedStockNew Exception.</value>
+  </data>
+  <data name="BusinessGetRejectedStockNewListException" xml:space="preserve">
+    <value>Get RejectedStockNew List Exception.</value>
+  </data>
+  <data name="BusinessGetSourceException" xml:space="preserve">
+    <value>Get Source Exception.</value>
+  </data>
+  <data name="BusinessGetSourceListException" xml:space="preserve">
+    <value>Get Source List Exception.</value>
+  </data>
+  <data name="BusinessGetStockNewException" xml:space="preserve">
+    <value>Get StockNew Exception.</value>
+  </data>
+  <data name="BusinessGetStockNewListException" xml:space="preserve">
+    <value>Get StockNew List Exception.</value>
+  </data>
+  <data name="BusinessGetsysdiagramException" xml:space="preserve">
+    <value>Get sysdiagram Exception.</value>
+  </data>
+  <data name="BusinessGetsysdiagramListException" xml:space="preserve">
+    <value>Get sysdiagram List Exception.</value>
+  </data>
+  <data name="BusinessUpdateApprovedStockNewException" xml:space="preserve">
+    <value>Update ApprovedStockNew Exception.</value>
+  </data>
+  <data name="BusinessUpdateLinkException" xml:space="preserve">
+    <value>Update Link Exception.</value>
+  </data>
+  <data name="BusinessUpdateRejectedStockNewException" xml:space="preserve">
+    <value>Update RejectedStockNew Exception.</value>
+  </data>
+  <data name="BusinessUpdateSourceException" xml:space="preserve">
+    <value>Update Source Exception.</value>
+  </data>
+  <data name="BusinessUpdateStockNewException" xml:space="preserve">
+    <value>Update StockNew Exception.</value>
+  </data>
+  <data name="BusinessUpdatesysdiagramException" xml:space="preserve">
+    <value>Update sysdiagram Exception.</value>
+  </data>
+</root>

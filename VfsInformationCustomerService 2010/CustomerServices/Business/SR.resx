@@ -1,0 +1,468 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BusinessCreateBirthdayMessageLogException" xml:space="preserve">
+    <value>Create BirthdayMessageLog Exception.</value>
+  </data>
+  <data name="BusinessCreateBirthdayMessageLogFromReaderException" xml:space="preserve">
+    <value>Create BirthdayMessageLog From Reader Exception.</value>
+  </data>
+  <data name="BusinessCreateContentParameterException" xml:space="preserve">
+    <value>Create ContentParameter Exception.</value>
+  </data>
+  <data name="BusinessCreateContentParameterFromReaderException" xml:space="preserve">
+    <value>Create ContentParameter From Reader Exception.</value>
+  </data>
+  <data name="BusinessCreateContentTemplateAttachementException" xml:space="preserve">
+    <value>Create ContentTemplateAttachement Exception.</value>
+  </data>
+  <data name="BusinessCreateContentTemplateAttachementFromReaderException" xml:space="preserve">
+    <value>Create ContentTemplateAttachement From Reader Exception.</value>
+  </data>
+  <data name="BusinessCreateContentTemplateException" xml:space="preserve">
+    <value>Create ContentTemplate Exception.</value>
+  </data>
+  <data name="BusinessCreateContentTemplateFromReaderException" xml:space="preserve">
+    <value>Create ContentTemplate From Reader Exception.</value>
+  </data>
+  <data name="BusinessCreateCustomerException" xml:space="preserve">
+    <value>Create Customer Exception.</value>
+  </data>
+  <data name="BusinessCreateCustomerFromReaderException" xml:space="preserve">
+    <value>Create Customer From Reader Exception.</value>
+  </data>
+  <data name="BusinessCreateCustomerTypeException" xml:space="preserve">
+    <value>Create CustomerType Exception.</value>
+  </data>
+  <data name="BusinessCreateCustomerTypeFromReaderException" xml:space="preserve">
+    <value>Create CustomerType From Reader Exception.</value>
+  </data>
+  <data name="BusinessCreateExtensionMessageException" xml:space="preserve">
+    <value>Create ExtensionMessage Exception.</value>
+  </data>
+  <data name="BusinessCreateExtensionMessageFromReaderException" xml:space="preserve">
+    <value>Create ExtensionMessage From Reader Exception.</value>
+  </data>
+  <data name="BusinessCreateExtensionMessageLogException" xml:space="preserve">
+    <value>Create ExtensionMessageLog Exception.</value>
+  </data>
+  <data name="BusinessCreateExtensionMessageLogFromReaderException" xml:space="preserve">
+    <value>Create ExtensionMessageLog From Reader Exception.</value>
+  </data>
+  <data name="BusinessCreateIncomingMessageContentException" xml:space="preserve">
+    <value>Create IncomingMessageContent Exception.</value>
+  </data>
+  <data name="BusinessCreateIncomingMessageContentFromReaderException" xml:space="preserve">
+    <value>Create IncomingMessageContent From Reader Exception.</value>
+  </data>
+  <data name="BusinessCreateIncomingMessageContentSentException" xml:space="preserve">
+    <value>Create IncomingMessageContentSent Exception.</value>
+  </data>
+  <data name="BusinessCreateIncomingMessageContentSentFromReaderException" xml:space="preserve">
+    <value>Create IncomingMessageContentSent From Reader Exception.</value>
+  </data>
+  <data name="BusinessCreateMessageCommandException" xml:space="preserve">
+    <value>Create MessageCommand Exception.</value>
+  </data>
+  <data name="BusinessCreateMessageCommandFromReaderException" xml:space="preserve">
+    <value>Create MessageCommand From Reader Exception.</value>
+  </data>
+  <data name="BusinessCreateMessageContentAttachementException" xml:space="preserve">
+    <value>Create MessageContentAttachement Exception.</value>
+  </data>
+  <data name="BusinessCreateMessageContentAttachementFromReaderException" xml:space="preserve">
+    <value>Create MessageContentAttachement From Reader Exception.</value>
+  </data>
+  <data name="BusinessCreateMessageContentException" xml:space="preserve">
+    <value>Create MessageContent Exception.</value>
+  </data>
+  <data name="BusinessCreateMessageContentFromReaderException" xml:space="preserve">
+    <value>Create MessageContent From Reader Exception.</value>
+  </data>
+  <data name="BusinessCreateMessageContentSentAttachementException" xml:space="preserve">
+    <value>Create MessageContentSentAttachement Exception.</value>
+  </data>
+  <data name="BusinessCreateMessageContentSentAttachementFromReaderException" xml:space="preserve">
+    <value>Create MessageContentSentAttachement From Reader Exception.</value>
+  </data>
+  <data name="BusinessCreateMessageContentSentException" xml:space="preserve">
+    <value>Create MessageContentSent Exception.</value>
+  </data>
+  <data name="BusinessCreateMessageContentSentFromReaderException" xml:space="preserve">
+    <value>Create MessageContentSent From Reader Exception.</value>
+  </data>
+  <data name="BusinessCreateRelatedMessagelogException" xml:space="preserve">
+    <value>Create RelatedMessagelog Exception.</value>
+  </data>
+  <data name="BusinessCreateRelatedMessagelogFromReaderException" xml:space="preserve">
+    <value>Create RelatedMessagelog From Reader Exception.</value>
+  </data>
+  <data name="BusinessCreateServiceTypeException" xml:space="preserve">
+    <value>Create ServiceType Exception.</value>
+  </data>
+  <data name="BusinessCreateServiceTypeFromReaderException" xml:space="preserve">
+    <value>Create ServiceType From Reader Exception.</value>
+  </data>
+  <data name="BusinessDeleteBirthdayMessageLogException" xml:space="preserve">
+    <value>Delete BirthdayMessageLog Exception.</value>
+  </data>
+  <data name="BusinessDeleteContentParameterException" xml:space="preserve">
+    <value>Delete ContentParameter Exception.</value>
+  </data>
+  <data name="BusinessDeleteContentTemplateAttachementException" xml:space="preserve">
+    <value>Delete ContentTemplateAttachement Exception.</value>
+  </data>
+  <data name="BusinessDeleteContentTemplateException" xml:space="preserve">
+    <value>Delete ContentTemplate Exception.</value>
+  </data>
+  <data name="BusinessDeleteCustomerException" xml:space="preserve">
+    <value>Delete Customer Exception.</value>
+  </data>
+  <data name="BusinessDeleteCustomerTypeException" xml:space="preserve">
+    <value>Delete CustomerType Exception.</value>
+  </data>
+  <data name="BusinessDeleteExtensionMessageException" xml:space="preserve">
+    <value>Delete ExtensionMessage Exception.</value>
+  </data>
+  <data name="BusinessDeleteExtensionMessageLogException" xml:space="preserve">
+    <value>Delete ExtensionMessageLog Exception.</value>
+  </data>
+  <data name="BusinessDeleteIncomingMessageContentException" xml:space="preserve">
+    <value>Delete IncomingMessageContent Exception.</value>
+  </data>
+  <data name="BusinessDeleteIncomingMessageContentSentException" xml:space="preserve">
+    <value>Delete IncomingMessageContentSent Exception.</value>
+  </data>
+  <data name="BusinessDeleteMessageCommandException" xml:space="preserve">
+    <value>Delete MessageCommand Exception.</value>
+  </data>
+  <data name="BusinessDeleteMessageContentAttachementException" xml:space="preserve">
+    <value>Delete MessageContentAttachement Exception.</value>
+  </data>
+  <data name="BusinessDeleteMessageContentException" xml:space="preserve">
+    <value>Delete MessageContent Exception.</value>
+  </data>
+  <data name="BusinessDeleteMessageContentSentAttachementException" xml:space="preserve">
+    <value>Delete MessageContentSentAttachement Exception.</value>
+  </data>
+  <data name="BusinessDeleteMessageContentSentException" xml:space="preserve">
+    <value>Delete MessageContentSent Exception.</value>
+  </data>
+  <data name="BusinessDeleteRelatedMessagelogException" xml:space="preserve">
+    <value>Delete RelatedMessagelog Exception.</value>
+  </data>
+  <data name="BusinessDeleteServiceTypeException" xml:space="preserve">
+    <value>Delete ServiceType Exception.</value>
+  </data>
+  <data name="BusinessGetBirthdayMessageLogException" xml:space="preserve">
+    <value>Get BirthdayMessageLog Exception.</value>
+  </data>
+  <data name="BusinessGetBirthdayMessageLogListException" xml:space="preserve">
+    <value>Get BirthdayMessageLog List Exception.</value>
+  </data>
+  <data name="BusinessGetContentParameterException" xml:space="preserve">
+    <value>Get ContentParameter Exception.</value>
+  </data>
+  <data name="BusinessGetContentParameterListException" xml:space="preserve">
+    <value>Get ContentParameter List Exception.</value>
+  </data>
+  <data name="BusinessGetContentTemplateAttachementException" xml:space="preserve">
+    <value>Get ContentTemplateAttachement Exception.</value>
+  </data>
+  <data name="BusinessGetContentTemplateAttachementListException" xml:space="preserve">
+    <value>Get ContentTemplateAttachement List Exception.</value>
+  </data>
+  <data name="BusinessGetContentTemplateException" xml:space="preserve">
+    <value>Get ContentTemplate Exception.</value>
+  </data>
+  <data name="BusinessGetContentTemplateListException" xml:space="preserve">
+    <value>Get ContentTemplate List Exception.</value>
+  </data>
+  <data name="BusinessGetCustomerException" xml:space="preserve">
+    <value>Get Customer Exception.</value>
+  </data>
+  <data name="BusinessGetCustomerListException" xml:space="preserve">
+    <value>Get Customer List Exception.</value>
+  </data>
+  <data name="BusinessGetCustomerTypeException" xml:space="preserve">
+    <value>Get CustomerType Exception.</value>
+  </data>
+  <data name="BusinessGetCustomerTypeListException" xml:space="preserve">
+    <value>Get CustomerType List Exception.</value>
+  </data>
+  <data name="BusinessGetExtensionMessageException" xml:space="preserve">
+    <value>Get ExtensionMessage Exception.</value>
+  </data>
+  <data name="BusinessGetExtensionMessageListException" xml:space="preserve">
+    <value>Get ExtensionMessage List Exception.</value>
+  </data>
+  <data name="BusinessGetExtensionMessageLogException" xml:space="preserve">
+    <value>Get ExtensionMessageLog Exception.</value>
+  </data>
+  <data name="BusinessGetExtensionMessageLogListException" xml:space="preserve">
+    <value>Get ExtensionMessageLog List Exception.</value>
+  </data>
+  <data name="BusinessGetIncomingMessageContentException" xml:space="preserve">
+    <value>Get IncomingMessageContent Exception.</value>
+  </data>
+  <data name="BusinessGetIncomingMessageContentListException" xml:space="preserve">
+    <value>Get IncomingMessageContent List Exception.</value>
+  </data>
+  <data name="BusinessGetIncomingMessageContentSentException" xml:space="preserve">
+    <value>Get IncomingMessageContentSent Exception.</value>
+  </data>
+  <data name="BusinessGetIncomingMessageContentSentListException" xml:space="preserve">
+    <value>Get IncomingMessageContentSent List Exception.</value>
+  </data>
+  <data name="BusinessGetMessageCommandException" xml:space="preserve">
+    <value>Get MessageCommand Exception.</value>
+  </data>
+  <data name="BusinessGetMessageCommandListException" xml:space="preserve">
+    <value>Get MessageCommand List Exception.</value>
+  </data>
+  <data name="BusinessGetMessageContentAttachementException" xml:space="preserve">
+    <value>Get MessageContentAttachement Exception.</value>
+  </data>
+  <data name="BusinessGetMessageContentAttachementListException" xml:space="preserve">
+    <value>Get MessageContentAttachement List Exception.</value>
+  </data>
+  <data name="BusinessGetMessageContentException" xml:space="preserve">
+    <value>Get MessageContent Exception.</value>
+  </data>
+  <data name="BusinessGetMessageContentListException" xml:space="preserve">
+    <value>Get MessageContent List Exception.</value>
+  </data>
+  <data name="BusinessGetMessageContentSentAttachementException" xml:space="preserve">
+    <value>Get MessageContentSentAttachement Exception.</value>
+  </data>
+  <data name="BusinessGetMessageContentSentAttachementListException" xml:space="preserve">
+    <value>Get MessageContentSentAttachement List Exception.</value>
+  </data>
+  <data name="BusinessGetMessageContentSentException" xml:space="preserve">
+    <value>Get MessageContentSent Exception.</value>
+  </data>
+  <data name="BusinessGetMessageContentSentListException" xml:space="preserve">
+    <value>Get MessageContentSent List Exception.</value>
+  </data>
+  <data name="BusinessGetRelatedMessagelogException" xml:space="preserve">
+    <value>Get RelatedMessagelog Exception.</value>
+  </data>
+  <data name="BusinessGetRelatedMessagelogListException" xml:space="preserve">
+    <value>Get RelatedMessagelog List Exception.</value>
+  </data>
+  <data name="BusinessGetServiceTypeException" xml:space="preserve">
+    <value>Get ServiceType Exception.</value>
+  </data>
+  <data name="BusinessGetServiceTypeListException" xml:space="preserve">
+    <value>Get ServiceType List Exception.</value>
+  </data>
+  <data name="BusinessImport_CreateMessageWithEmailException" xml:space="preserve">
+    <value>Create CreateMessage WithEmail Exception</value>
+  </data>
+  <data name="BusinessSendSMSToCoreSecuritiesException" xml:space="preserve">
+    <value>Error in sending message to Core Securities</value>
+  </data>
+  <data name="BusinessUpdateBirthdayMessageLogException" xml:space="preserve">
+    <value>Update BirthdayMessageLog Exception.</value>
+  </data>
+  <data name="BusinessUpdateContentParameterException" xml:space="preserve">
+    <value>Update ContentParameter Exception.</value>
+  </data>
+  <data name="BusinessUpdateContentTemplateAttachementException" xml:space="preserve">
+    <value>Update ContentTemplateAttachement Exception.</value>
+  </data>
+  <data name="BusinessUpdateContentTemplateException" xml:space="preserve">
+    <value>Update ContentTemplate Exception.</value>
+  </data>
+  <data name="BusinessUpdateCustomerException" xml:space="preserve">
+    <value>Update Customer Exception.</value>
+  </data>
+  <data name="BusinessUpdateCustomerTypeException" xml:space="preserve">
+    <value>Update CustomerType Exception.</value>
+  </data>
+  <data name="BusinessUpdateExtensionMessageException" xml:space="preserve">
+    <value>Update ExtensionMessage Exception.</value>
+  </data>
+  <data name="BusinessUpdateExtensionMessageLogException" xml:space="preserve">
+    <value>Update ExtensionMessageLog Exception.</value>
+  </data>
+  <data name="BusinessUpdateIncomingMessageContentException" xml:space="preserve">
+    <value>Update IncomingMessageContent Exception.</value>
+  </data>
+  <data name="BusinessUpdateIncomingMessageContentSentException" xml:space="preserve">
+    <value>Update IncomingMessageContentSent Exception.</value>
+  </data>
+  <data name="BusinessUpdateMessageCommandException" xml:space="preserve">
+    <value>Update MessageCommand Exception.</value>
+  </data>
+  <data name="BusinessUpdateMessageContentAttachementException" xml:space="preserve">
+    <value>Update MessageContentAttachement Exception.</value>
+  </data>
+  <data name="BusinessUpdateMessageContentException" xml:space="preserve">
+    <value>Update MessageContent Exception.</value>
+  </data>
+  <data name="BusinessUpdateMessageContentSentAttachementException" xml:space="preserve">
+    <value>Update MessageContentSentAttachement Exception.</value>
+  </data>
+  <data name="BusinessUpdateMessageContentSentException" xml:space="preserve">
+    <value>Update MessageContentSent Exception.</value>
+  </data>
+  <data name="BusinessUpdateRelatedMessagelogException" xml:space="preserve">
+    <value>Update RelatedMessagelog Exception.</value>
+  </data>
+  <data name="BusinessUpdateServiceTypeException" xml:space="preserve">
+    <value>Update ServiceType Exception.</value>
+  </data>
+  <data name="DataAccessCreateIncomingMessageContentException" xml:space="preserve">
+    <value>Create IncomingMessageContent Exception.</value>
+  </data>
+  <data name="DataAccessCreateIncomingMessageContentFromReaderException" xml:space="preserve">
+    <value>Create IncomingMessageContent From Reader Exception.</value>
+  </data>
+  <data name="DataAccessCreateIncomingMessageContentSentException" xml:space="preserve">
+    <value>Create IncomingMessageContentSent Exception.</value>
+  </data>
+  <data name="DataAccessCreateIncomingMessageContentSentFromReaderException" xml:space="preserve">
+    <value>Create IncomingMessageContentSent From Reader Exception.</value>
+  </data>
+  <data name="DataAccessDeleteIncomingMessageContentException" xml:space="preserve">
+    <value>Delete IncomingMessageContent Exception.</value>
+  </data>
+  <data name="DataAccessDeleteIncomingMessageContentSentException" xml:space="preserve">
+    <value>Delete IncomingMessageContentSent Exception.</value>
+  </data>
+  <data name="DataAccessGetIncomingMessageContentException" xml:space="preserve">
+    <value>Get IncomingMessageContent Exception.</value>
+  </data>
+  <data name="DataAccessGetIncomingMessageContentListException" xml:space="preserve">
+    <value>Get IncomingMessageContent List Exception.</value>
+  </data>
+  <data name="DataAccessGetIncomingMessageContentSentException" xml:space="preserve">
+    <value>Get IncomingMessageContentSent Exception.</value>
+  </data>
+  <data name="DataAccessGetIncomingMessageContentSentListException" xml:space="preserve">
+    <value>Get IncomingMessageContentSent List Exception.</value>
+  </data>
+  <data name="DataAccessUpdateIncomingMessageContentException" xml:space="preserve">
+    <value>Update IncomingMessageContent Exception.</value>
+  </data>
+  <data name="DataAccessUpdateIncomingMessageContentSentException" xml:space="preserve">
+    <value>Update IncomingMessageContentSent Exception.</value>
+  </data>
+</root>

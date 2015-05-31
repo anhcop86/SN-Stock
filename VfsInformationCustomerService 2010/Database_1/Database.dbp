@@ -1,0 +1,39 @@
+# Microsoft Developer Studio Project File - Database Project
+Begin DataProject = "Database"
+   MSDTVersion = "80"
+   SccProjectName = "SAK"
+   SccLocalPath = "SAK"
+   SccAuxPath = "SAK"
+   SccProvider = "SAK"
+   Begin Folder = "Create Database Scripts"
+      Script = "AllStoredProcedures.sql"
+   End
+   Begin DBRefFolder = "Database References"
+   End
+   Begin Folder = "Job scripts"
+   End
+   Begin Folder = "Release Change Scripts"
+   End
+   Begin Folder = "SP scripts"
+      Begin Folder = "stock_News"
+         Script = "spstock_NewsDelete.sql"
+         Script = "spstock_NewsGet.sql"
+         Script = "spstock_NewsGetList.sql"
+         Script = "spstock_NewsInsert.sql"
+         Script = "spstock_NewsUpdate.sql"
+      End
+      Begin Folder = "stock_NewsGroups"
+         Script = "spstock_NewsGroupsDelete.sql"
+         Script = "spstock_NewsGroupsGet.sql"
+         Script = "spstock_NewsGroupsGetList.sql"
+         Script = "spstock_NewsGroupsInsert.sql"
+         Script = "spstock_NewsGroupsUpdate.sql"
+      End
+   End
+   Begin Folder = "Table changing scripts"
+   End
+   Begin Folder = "UDF Scripts"
+   End
+   Begin Folder = "View scripts"
+   End
+End

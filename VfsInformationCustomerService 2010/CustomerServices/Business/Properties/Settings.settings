@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="VfsCustomerService.Business.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="VfsCustomerService_Business_MTSpam_MTSender" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://mt.123sms.vn/MTSenderPartner.asmx</Value>
+    </Setting>
+    <Setting Name="VfsCustomerService_Business_CoreSecuritiesSms_MOReceiver" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://10.1.17.1:8082/smsgateway/services/MOReceiver</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

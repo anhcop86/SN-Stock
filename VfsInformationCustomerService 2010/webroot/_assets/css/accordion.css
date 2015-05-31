@@ -1,0 +1,62 @@
+﻿.accordion  
+{
+    font-size:8.5pt;
+    font-family:Tahoma;
+    background:url(../img/item_bg.gif);
+}
+.accordion .header 
+{
+    cursor:pointer;
+    background:url(../img/hd_bg.gif) repeat-x;
+    border-bottom:solid 1px #57566f;
+}
+.accordion .header DIV
+{
+    cursor:pointer;
+    height:30px;
+    padding-left:40px;
+    background-color:Transparent;
+    background-position:center left;
+    background-repeat:no-repeat;
+}
+.accordion .header SPAN
+{
+    cursor:pointer;
+    font-weight:bold;
+    display:block;
+    padding-top:8px;
+    color:#fff;
+}        
+.accordion .header:hover
+{
+    cursor:pointer;
+    height:31px;
+    background-color:Transparent;
+    background:url(../img/hd_hover_bg.gif) repeat-x;
+    border-bottom:none;
+}                
+.accordion UL        
+{
+    padding:0;
+    margin:5px 5px 5px 15px;
+    list-style-type:none;
+}
+.accordion LI
+{
+    background-color:Transparent;
+    background-repeat:no-repeat;
+    background-position:left center;
+    vertical-align:middle;
+    padding:6px 5px 6px 25px;
+    cursor:hand;
+}
+.accordion LI DIV
+{
+    padding-left:10px;
+    color:#666666;
+    cursor:hand;
+}
+.accordion LI:hover
+{
+    text-decoration:underline;
+}

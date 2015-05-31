@@ -1,0 +1,45 @@
+# Microsoft Developer Studio Project File - Database Project
+Begin DataProject = "Database"
+   MSDTVersion = "80"
+   SccProjectName = "SAK"
+   SccLocalPath = "SAK"
+   SccAuxPath = "SAK"
+   SccProvider = "SAK"
+   Begin Folder = "Create Database Scripts"
+      Script = "AllStoredProcedures.sql"
+   End
+   Begin DBRefFolder = "Database References"
+   End
+   Begin Folder = "Job scripts"
+   End
+   Begin Folder = "Release Change Scripts"
+   End
+   Begin Folder = "SP scripts"
+      Begin Folder = "AGStock_HASTC_SessionCompany"
+         Script = "spAGStock_HASTC_SessionCompanyGet.sql"
+      End
+      Begin Folder = "AGStock_HOSE_SessionCompany"
+         Script = "spAGStock_HOSE_SessionCompanyGet.sql"
+      End
+      Begin Folder = "Customers"
+         Script = "spCustomersDelete.sql"
+         Script = "spCustomersGet.sql"
+         Script = "spCustomersGetList.sql"
+         Script = "spCustomersInsert.sql"
+         Script = "spCustomersUpdate.sql"
+      End
+      Begin Folder = "StockPrice"
+         Script = "spStockPriceDelete.sql"
+         Script = "spStockPriceGet.sql"
+         Script = "spStockPriceGetList.sql"
+         Script = "spStockPriceInsert.sql"
+         Script = "spStockPriceUpdate.sql"
+      End
+   End
+   Begin Folder = "Table changing scripts"
+   End
+   Begin Folder = "UDF Scripts"
+   End
+   Begin Folder = "View scripts"
+   End
+End

@@ -1,0 +1,1336 @@
+﻿
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+An exception occurred during the Install phase.
+System.ComponentModel.Win32Exception: The specified service already exists
+
+The Rollback phase of the installation is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Rollback phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+An exception occurred during the Install phase.
+System.ComponentModel.Win32Exception: The specified service already exists
+
+The Rollback phase of the installation is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Rollback phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+An exception occurred during the Install phase.
+System.ComponentModel.Win32Exception: The specified service already exists
+
+The Rollback phase of the installation is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Rollback phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+An exception occurred during the Install phase.
+System.ComponentModel.Win32Exception: The specified service already exists
+
+The Rollback phase of the installation is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Rollback phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+An exception occurred during the Install phase.
+System.ComponentModel.Win32Exception: The specified service already exists
+
+The Rollback phase of the installation is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Rollback phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\LatestTemplate\EntLib2\output\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\LatestTemplate\EntLib2\output\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\LatestTemplate\EntLib2\output\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\LatestTemplate\EntLib2\output\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\LatestTemplate\EntLib2\output\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\LatestTemplate\EntLib2\output\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+An exception occurred during the Install phase.
+System.ComponentModel.Win32Exception: The specified service already exists
+
+The Rollback phase of the installation is beginning.
+See the contents of the log file for the D:\Working\LatestTemplate\EntLib2\output\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\LatestTemplate\EntLib2\output\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Rollback phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\LatestTemplate\EntLib2\output\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\LatestTemplate\EntLib2\output\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\LatestTemplate\EntLib2\output\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\LatestTemplate\EntLib2\output\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\LatestTemplate\EntLib2\output\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\LatestTemplate\EntLib2\output\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\LatestTemplate\EntLib2\output\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\LatestTemplate\EntLib2\output\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\LatestTemplate\EntLib2\output\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\LatestTemplate\EntLib2\output\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\LatestTemplate\EntLib2\output\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\LatestTemplate\EntLib2\output\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\LatestTemplate\EntLib2\output\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\LatestTemplate\EntLib2\output\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+An exception occurred during the Install phase.
+System.ComponentModel.Win32Exception: The specified service already exists
+
+The Rollback phase of the installation is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Rollback phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+An exception occurred during the Install phase.
+System.ComponentModel.Win32Exception: The specified service already exists
+
+The Rollback phase of the installation is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Rollback phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+Running a transacted installation.
+
+Beginning the Install phase of the installation.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Install phase completed successfully, and the Commit phase is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The Commit phase completed successfully.
+
+The transacted install has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.
+
+
+The uninstall is beginning.
+See the contents of the log file for the D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.exe assembly's progress.
+The file is located at D:\Working\Robot\WebCrawler\Vfs.WebCrawler.root\Vfs.WebCrawler\Working\Robot\WebCrawler\Vfs.WebCrawler\VfsInformationFeedService\bin\Debug\VfsInformationFeedService.InstallLog.
+
+The uninstall has completed.

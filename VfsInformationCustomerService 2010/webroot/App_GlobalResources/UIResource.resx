@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="approve" xml:space="preserve">
+    <value>Duyệt</value>
+  </data>
+  <data name="BodyContentType" xml:space="preserve">
+    <value>Loại nội dung gởi:</value>
+  </data>
+  <data name="bodyContentTypeID1" xml:space="preserve">
+    <value>HTML</value>
+  </data>
+  <data name="bodyContentTypeID2" xml:space="preserve">
+    <value>Plan text</value>
+  </data>
+  <data name="BodyEncoding" xml:space="preserve">
+    <value>Kiểu Unicode:</value>
+  </data>
+  <data name="bodyEncodingID1" xml:space="preserve">
+    <value>UTF-8</value>
+  </data>
+  <data name="bodyEncodingID2" xml:space="preserve">
+    <value>Unicode</value>
+  </data>
+  <data name="BodyMessager" xml:space="preserve">
+    <value>Nội dung tin nhắn:</value>
+  </data>
+  <data name="BodyServiceType" xml:space="preserve">
+    <value>Kiểu dịch vụ:</value>
+  </data>
+  <data name="BodyTemplateType" xml:space="preserve">
+    <value>Kiểu template:</value>
+  </data>
+  <data name="cafeFBankNews" xml:space="preserve">
+    <value>Tin tức hoạt động tài chính ngân hàng</value>
+  </data>
+  <data name="cafeFCompanyNews" xml:space="preserve">
+    <value>Thông tin tài chính và hoạt động kinh doanh của Doanh nghiệp</value>
+  </data>
+  <data name="cafeFInternationalFinancialNews" xml:space="preserve">
+    <value>Tin tức tài chính quốc tế</value>
+  </data>
+  <data name="cafeFRealEstateNews" xml:space="preserve">
+    <value>Thông tin thị trường bất động sản Việt Nam</value>
+  </data>
+  <data name="cafeFStockNews" xml:space="preserve">
+    <value>Tin tức thị trường chứng khoán Việt Nam</value>
+  </data>
+  <data name="CatalogService" xml:space="preserve">
+    <value>Danh mục dịch vụ</value>
+  </data>
+  <data name="ChooseServiceType" xml:space="preserve">
+    <value>Chọn loại dịch vụ:</value>
+  </data>
+  <data name="ConfirmDeleteServiceType" xml:space="preserve">
+    <value>Bạn muốn xóa loại dịch vụ này ?</value>
+  </data>
+  <data name="create" xml:space="preserve">
+    <value>Tạo tin</value>
+  </data>
+  <data name="createDateMessage" xml:space="preserve">
+    <value>Ngày tạo</value>
+  </data>
+  <data name="CreateMessage" xml:space="preserve">
+    <value>Tạo Tin</value>
+  </data>
+  <data name="date" xml:space="preserve">
+    <value>Ngày (dd/mm/yyyy)</value>
+  </data>
+  <data name="dateCreateService" xml:space="preserve">
+    <value>Ngày tạo dịch vụ:</value>
+  </data>
+  <data name="ErrorExistNameServiceType" xml:space="preserve">
+    <value>Lỗi! tên dịch vụ đã tồn tại</value>
+  </data>
+  <data name="ExistNameForContentTemplate" xml:space="preserve">
+    <value>Trùng Template</value>
+  </data>
+  <data name="export" xml:space="preserve">
+    <value>Kết Xuất</value>
+  </data>
+  <data name="ExportStockPriceHistory" xml:space="preserve">
+    <value>Kết xuất thông tin lịch sử chứng khoán </value>
+  </data>
+  <data name="FailedAndSuccess" xml:space="preserve">
+    <value>Chưa gởi được</value>
+  </data>
+  <data name="hastcBondNews" xml:space="preserve">
+    <value>Tin trái phiếu</value>
+  </data>
+  <data name="hastcBondTransaction" xml:space="preserve">
+    <value>Giao dịch trái phiếu</value>
+  </data>
+  <data name="Imitate" xml:space="preserve">
+    <value>Mô phỏng</value>
+  </data>
+  <data name="importUpdateErrorMessage" xml:space="preserve">
+    <value>Ngày cập nhật không thể trống</value>
+  </data>
+  <data name="importUpdateStock" xml:space="preserve">
+    <value>Cập nhật thông tin lịch sử giá</value>
+  </data>
+  <data name="importUpdateSuccessMessage" xml:space="preserve">
+    <value>Dữ liệu đã được cập nhật thành công</value>
+  </data>
+  <data name="market" xml:space="preserve">
+    <value>Thị trường</value>
+  </data>
+  <data name="MessengerSending" xml:space="preserve">
+    <value>Tin đang gởi</value>
+  </data>
+  <data name="MessengerSent" xml:space="preserve">
+    <value>Tin đã gởi</value>
+  </data>
+  <data name="missingInfor" xml:space="preserve">
+    <value>Thiếu thông tin</value>
+  </data>
+  <data name="ModelContent" xml:space="preserve">
+    <value>Nội dung mẫu</value>
+  </data>
+  <data name="modifyDate" xml:space="preserve">
+    <value>Ngày chỉnh sữa:</value>
+  </data>
+  <data name="nameService" xml:space="preserve">
+    <value>Tên dịch vụ:</value>
+  </data>
+  <data name="NameTemplate" xml:space="preserve">
+    <value>Tên Template:</value>
+  </data>
+  <data name="newsFromHastcTradingCenter" xml:space="preserve">
+    <value>Tin Tức Từ TTGDCKHN</value>
+  </data>
+  <data name="newsFromTradingCenter" xml:space="preserve">
+    <value>Tin từ Sở Giao Dịch</value>
+  </data>
+  <data name="newsHastcIssuedOwner" xml:space="preserve">
+    <value>Tin tức từ công ty niêm yết</value>
+  </data>
+  <data name="newsHastcSecuritiesCompany" xml:space="preserve">
+    <value>Tin tức từ thành viên</value>
+  </data>
+  <data name="newsIssuedOwner" xml:space="preserve">
+    <value>Tin từ tổ chức niêm yết</value>
+  </data>
+  <data name="newsSecuritiesCompany" xml:space="preserve">
+    <value>Tin từ công ty chứng khóan</value>
+  </data>
+  <data name="NotDate" xml:space="preserve">
+    <value>Chưa chọn ngày</value>
+  </data>
+  <data name="NotStart" xml:space="preserve">
+    <value>Chưa gởi</value>
+  </data>
+  <data name="otherNews" xml:space="preserve">
+    <value>Tin khác</value>
+  </data>
+  <data name="ReceiverForContentTemplate" xml:space="preserve">
+    <value>Người nhận:</value>
+  </data>
+  <data name="reject" xml:space="preserve">
+    <value>Từ chối</value>
+  </data>
+  <data name="selectFile" xml:space="preserve">
+    <value>Chọn file</value>
+  </data>
+  <data name="SenderForContentTemplate" xml:space="preserve">
+    <value>Người gởi:</value>
+  </data>
+  <data name="serviceType" xml:space="preserve">
+    <value>Loại dịch vụ:</value>
+  </data>
+  <data name="ShowInfoDateError" xml:space="preserve">
+    <value>Ngày xem thông tin không thể trống</value>
+  </data>
+  <data name="ShowInfoMartket" xml:space="preserve">
+    <value>Xem thông tin giá</value>
+  </data>
+  <data name="StatisticTransaction" xml:space="preserve">
+    <value>Thống kê giao dịch</value>
+  </data>
+  <data name="StatusMessage" xml:space="preserve">
+    <value>Hiện trạng</value>
+  </data>
+  <data name="SubjectForContentTemplate" xml:space="preserve">
+    <value>Tiêu đề:</value>
+  </data>
+  <data name="SuccessAndFinish" xml:space="preserve">
+    <value>Đã gởi</value>
+  </data>
+  <data name="template" xml:space="preserve">
+    <value>Nội dung mẫu</value>
+  </data>
+  <data name="TypeTemplate" xml:space="preserve">
+    <value>Loại nội dung mẫu</value>
+  </data>
+  <data name="uploadFileErrorMessage" xml:space="preserve">
+    <value>Không xác định File cập nhật, hệ thống không thể cập nhật dữ liệu</value>
+  </data>
+  <data name="vnEconomyFinancialNews" xml:space="preserve">
+    <value>Thông tin tài chính</value>
+  </data>
+  <data name="vsdActivityNews" xml:space="preserve">
+    <value>Thông tin về hoạt đông nghiệp vụ</value>
+  </data>
+  <data name="vsdEconomicNews" xml:space="preserve">
+    <value>Thông tin kinh tế</value>
+  </data>
+  <data name="vsdMemberNews" xml:space="preserve">
+    <value>Thông tin về thành viên</value>
+  </data>
+  <data name="vsdRegistrationNews" xml:space="preserve">
+    <value>Thông tin về tổ chức đăng ký </value>
+  </data>
+</root>

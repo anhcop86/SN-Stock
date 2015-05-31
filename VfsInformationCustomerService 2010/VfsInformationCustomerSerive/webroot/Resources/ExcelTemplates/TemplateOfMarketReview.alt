@@ -1,0 +1,208 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Author> </Author>
+  <LastAuthor> </LastAuthor>
+  <Created>2009-05-13T07:14:51Z</Created>
+  <Version>12.00</Version>
+ </DocumentProperties>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>7620</WindowHeight>
+  <WindowWidth>7455</WindowWidth>
+  <WindowTopX>360</WindowTopX>
+  <WindowTopY>90</WindowTopY>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s62">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s108">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s233">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Bottom"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+  </Style>
+  <Style ss:ID="s234">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s235">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s236">
+   <Alignment ss:Vertical="Bottom" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s237">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s238">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Interior/>
+  </Style>
+  <Style ss:ID="s239">
+   <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1"/>
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Interior/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="Sheet1">
+  <Table ss:ExpandedColumnCount="17" ss:ExpandedRowCount="10000" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+   <Row>
+    <Cell ss:MergeDown="1" ss:StyleID="s62"><Data ss:Type="String">Mã CK</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="s62"><Data ss:Type="String">Giá 14/4/09</Data></Cell>
+    <Cell ss:MergeAcross="1" ss:StyleID="s233"><Data ss:Type="String">30 Phiên GD</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="s62"><Data ss:Type="String">% CL giá 14/4 so 14/3 </Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="s234"><Data ss:Type="String">KLGD TB/phiên</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="s234"><Data ss:Type="String">GTGD TB/phiên (1000VND)</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="s234"><Data ss:Type="String">KL ĐM 30 phiên</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="s234"><Data ss:Type="String">KL ĐB 30 phiên</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="s234"><Data ss:Type="String">KLĐM-KLĐB 30 phiên</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="s234"><Data ss:Type="String">ĐV ĐB TB/lệnh</Data></Cell>
+    <Cell ss:MergeDown="1" ss:StyleID="s234"><Data ss:Type="String">ĐV ĐM TB/lệnh</Data></Cell>
+    <Cell ss:StyleID="s235"/>
+    <Cell ss:StyleID="s236"/>
+    <Cell ss:StyleID="s236"><Data ss:Type="String">NĐTNN</Data></Cell>
+    <Cell ss:StyleID="s237"/>
+    <Cell ss:StyleID="s238"/>
+   </Row>
+   <Row ss:Height="45">
+    <Cell ss:Index="3" ss:StyleID="s108"><Data ss:Type="String">Cao</Data></Cell>
+    <Cell ss:StyleID="s108"><Data ss:Type="String">Thấp</Data></Cell>
+    <Cell ss:Index="13" ss:StyleID="s239"><Data ss:Type="String">KL Mua 30 phiên</Data></Cell>
+    <Cell ss:StyleID="s239"><Data ss:Type="String">GT Mua 30 phiên</Data></Cell>
+    <Cell ss:StyleID="s239"><Data ss:Type="String">KL Bán 30 phiên</Data></Cell>
+    <Cell ss:StyleID="s239"><Data ss:Type="String">GT Bán 30 phiên</Data></Cell>
+    <Cell ss:StyleID="s239"><Data ss:Type="String">CL KL Mua-Bán 30 phiên</Data></Cell>
+   </Row>
+    <ad:foreach collection="#stock_SymbolPermLongExtensionCollection#" var="stock_symbolPermLongExtensionCollection">
+   <Row>     
+    <Cell><Data ss:Type="String">#stock_symbolPermLongExtensionCollection.Symbol#</Data></Cell>
+    <Cell><Data ss:Type="Number">#stock_symbolPermLongExtensionCollection.PriceClose#</Data></Cell>
+    <Cell><Data ss:Type="Number">#stock_symbolPermLongExtensionCollection.PriceHigh#</Data></Cell>
+    <Cell><Data ss:Type="Number">#stock_symbolPermLongExtensionCollection.PriceLow#</Data></Cell>
+    <Cell><Data ss:Type="Number">#stock_symbolPermLongExtensionCollection.ChenhLechGia#</Data></Cell>
+    <Cell><Data ss:Type="Number">#stock_symbolPermLongExtensionCollection.KLGDTBTrenPhien#</Data></Cell>
+    <Cell><Data ss:Type="Number">#stock_symbolPermLongExtensionCollection.GTGDTrungBinhTrenPhien#</Data></Cell>
+    <Cell><Data ss:Type="Number">#stock_symbolPermLongExtensionCollection.KLDMBaMuoiPhien#</Data></Cell>
+    <Cell><Data ss:Type="Number">#stock_symbolPermLongExtensionCollection.KLDBBaMuoiPhien#</Data></Cell>
+    <Cell><Data ss:Type="Number">#stock_symbolPermLongExtensionCollection.KLDMTruKLDBBaMuoiPhien#</Data></Cell>
+    <Cell><Data ss:Type="Number">#stock_symbolPermLongExtensionCollection.DVDMTrungBinhTrenLenh#</Data></Cell>
+    <Cell><Data ss:Type="Number">#stock_symbolPermLongExtensionCollection.DVDBTrungBinhTrenLenh#</Data></Cell>
+    <Cell><Data ss:Type="Number">#stock_symbolPermLongExtensionCollection.NDTNNKLMuaBaMuoiPhien#</Data></Cell>
+    <Cell><Data ss:Type="Number">#stock_symbolPermLongExtensionCollection.NDTNNGTMuaBaMuoiPhien#</Data></Cell>
+    <Cell><Data ss:Type="Number">#stock_symbolPermLongExtensionCollection.NDTNNKLBanBaMuoiPhien#</Data></Cell>
+    <Cell><Data ss:Type="Number">#stock_symbolPermLongExtensionCollection.NDTNNGTBanBaMuoiPhien#</Data></Cell>
+    <Cell><Data ss:Type="Number">#stock_symbolPermLongExtensionCollection.NDTNNKLMuaTruBanBaMuoiPhien#</Data></Cell>
+   </Row>
+    </ad:foreach>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <Selected/>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>11</ActiveRow>
+     <ActiveCol>4</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Sheet2">
+  <Table ss:ExpandedColumnCount="1" ss:ExpandedRowCount="1" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Sheet3">
+  <Table ss:ExpandedColumnCount="1" ss:ExpandedRowCount="1" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultRowHeight="15">
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>

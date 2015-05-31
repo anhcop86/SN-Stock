@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0FA63FB8-119A-4983-8FFF-CEEC1D07CBBB}</ProjectGuid>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>VfsCustomerService.Entities</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>VfsCustomerService.Entities</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>..\..\Components\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BirthdayMessageLog.cs" />
+    <Compile Include="BirthdayMessageLogBase.cs" />
+    <Compile Include="BirthdayMessageLogCollection.cs" />
+    <Compile Include="ContentParameter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ContentParameterBase.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>ContentParameter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ContentParameterCollection.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>ContentParameter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ContentTemplate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ContentTemplateAttachement.cs" />
+    <Compile Include="ContentTemplateAttachementBase.cs" />
+    <Compile Include="ContentTemplateAttachementCollection.cs" />
+    <Compile Include="ContentTemplateBase.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>ContentTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ContentTemplateCollection.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>ContentTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs" />
+    <Compile Include="CustomerBase.cs" />
+    <Compile Include="CustomerCollection.cs" />
+    <Compile Include="CustomerType.cs" />
+    <Compile Include="CustomerTypeBase.cs" />
+    <Compile Include="CustomerTypeCollection.cs" />
+    <Compile Include="ExtensionMessage.cs" />
+    <Compile Include="ExtensionMessageBase.cs" />
+    <Compile Include="ExtensionMessageCollection.cs" />
+    <Compile Include="ExtensionMessageLog.cs" />
+    <Compile Include="ExtensionMessageLogBase.cs" />
+    <Compile Include="ExtensionMessageLogCollection.cs" />
+    <Compile Include="IncomingMessageContent.cs" />
+    <Compile Include="IncomingMessageContentBase.cs" />
+    <Compile Include="IncomingMessageContentCollection.cs" />
+    <Compile Include="IncomingMessageContentSent.cs" />
+    <Compile Include="IncomingMessageContentSentBase.cs" />
+    <Compile Include="IncomingMessageContentSentCollection.cs" />
+    <Compile Include="MessageCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MessageCommandBase.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>MessageCommand.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MessageCommandCollection.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>MessageCommand.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MessageContent.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MessageContentAttachement.cs" />
+    <Compile Include="MessageContentAttachementBase.cs" />
+    <Compile Include="MessageContentAttachementCollection.cs" />
+    <Compile Include="MessageContentBase.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>MessageContent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MessageContentCollection.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>MessageContent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MessageContentSent.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MessageContentSentAttachement.cs" />
+    <Compile Include="MessageContentSentAttachementBase.cs" />
+    <Compile Include="MessageContentSentAttachementCollection.cs" />
+    <Compile Include="MessageContentSentBase.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>MessageContentSent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MessageContentSentCollection.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>MessageContentSent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatedMessagelog.cs" />
+    <Compile Include="RelatedMessagelogBase.cs" />
+    <Compile Include="RelatedMessagelogCollection.cs" />
+    <Compile Include="ServiceType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ServiceTypeBase.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>ServiceType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceTypeCollection.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>ServiceType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs" />
+    <Compile Include="UserBase.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

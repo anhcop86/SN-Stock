@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="doSendMT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ServiceID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CommandCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MessageType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RequestID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TotalMessage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MessageIndex" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IsMore" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ContentType" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="MoID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="doSendMTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="doSendMTResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="doSendMTSPAM">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="doSendMTSPAMResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="doSendMTSPAMResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="doSendMTVSB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MessageXML" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="doSendMTVSBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="doSendMTVSBResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="doSendMTSPAMVSB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MessageXML" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="doSendMTSPAMVSBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="doSendMTSPAMVSBResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="doSendMTSoapIn">
+    <wsdl:part name="parameters" element="tns:doSendMT" />
+  </wsdl:message>
+  <wsdl:message name="doSendMTSoapOut">
+    <wsdl:part name="parameters" element="tns:doSendMTResponse" />
+  </wsdl:message>
+  <wsdl:message name="doSendMTSPAMSoapIn">
+    <wsdl:part name="parameters" element="tns:doSendMTSPAM" />
+  </wsdl:message>
+  <wsdl:message name="doSendMTSPAMSoapOut">
+    <wsdl:part name="parameters" element="tns:doSendMTSPAMResponse" />
+  </wsdl:message>
+  <wsdl:message name="doSendMTVSBSoapIn">
+    <wsdl:part name="parameters" element="tns:doSendMTVSB" />
+  </wsdl:message>
+  <wsdl:message name="doSendMTVSBSoapOut">
+    <wsdl:part name="parameters" element="tns:doSendMTVSBResponse" />
+  </wsdl:message>
+  <wsdl:message name="doSendMTSPAMVSBSoapIn">
+    <wsdl:part name="parameters" element="tns:doSendMTSPAMVSB" />
+  </wsdl:message>
+  <wsdl:message name="doSendMTSPAMVSBSoapOut">
+    <wsdl:part name="parameters" element="tns:doSendMTSPAMVSBResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MTSenderSoap">
+    <wsdl:operation name="doSendMT">
+      <wsdl:input message="tns:doSendMTSoapIn" />
+      <wsdl:output message="tns:doSendMTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="doSendMTSPAM">
+      <wsdl:input message="tns:doSendMTSPAMSoapIn" />
+      <wsdl:output message="tns:doSendMTSPAMSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="doSendMTVSB">
+      <wsdl:input message="tns:doSendMTVSBSoapIn" />
+      <wsdl:output message="tns:doSendMTVSBSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="doSendMTSPAMVSB">
+      <wsdl:input message="tns:doSendMTSPAMVSBSoapIn" />
+      <wsdl:output message="tns:doSendMTSPAMVSBSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MTSenderSoap" type="tns:MTSenderSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="doSendMT">
+      <soap:operation soapAction="http://tempuri.org/doSendMT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doSendMTSPAM">
+      <soap:operation soapAction="http://tempuri.org/doSendMTSPAM" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doSendMTVSB">
+      <soap:operation soapAction="http://tempuri.org/doSendMTVSB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doSendMTSPAMVSB">
+      <soap:operation soapAction="http://tempuri.org/doSendMTSPAMVSB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MTSenderSoap12" type="tns:MTSenderSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="doSendMT">
+      <soap12:operation soapAction="http://tempuri.org/doSendMT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doSendMTSPAM">
+      <soap12:operation soapAction="http://tempuri.org/doSendMTSPAM" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doSendMTVSB">
+      <soap12:operation soapAction="http://tempuri.org/doSendMTVSB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="doSendMTSPAMVSB">
+      <soap12:operation soapAction="http://tempuri.org/doSendMTSPAMVSB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MTSender">
+    <wsdl:port name="MTSenderSoap" binding="tns:MTSenderSoap">
+      <soap:address location="http://mt.123sms.vn/MTSenderPartner.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MTSenderSoap12" binding="tns:MTSenderSoap12">
+      <soap12:address location="http://mt.123sms.vn/MTSenderPartner.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

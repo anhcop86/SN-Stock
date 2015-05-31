@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="UnitTestApplication.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="UnitTestApplication_Test_SBSGateway" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://svr-06/SBSGateway/SBSGateway.asmx</Value>
+    </Setting>
+    <Setting Name="UnitTestApplication_localhosttest_MOReceiver" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:9963/SmsService/MOReceiver.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

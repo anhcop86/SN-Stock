@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{12F87DEF-A617-4E76-9808-EB0033BF6403}</ProjectGuid>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>VfsCustomerService.Data</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>VfsCustomerService.Data</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>..\..\Components\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>..\..\Components\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Components\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Components\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Practices.ObjectBuilder, Version=1.0.51205.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <Reference Include="VfsCustomerService.Entities, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Components\VfsCustomerService.Entities.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BirthdayMessageLogDAO.cs" />
+    <Compile Include="BirthdayMessageLogDAOBase.cs" />
+    <Compile Include="ContentParameterDAO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ContentParameterDAOBase.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>ContentParameterDAO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ContentTemplateAttachementDAO.cs" />
+    <Compile Include="ContentTemplateAttachementDAOBase.cs" />
+    <Compile Include="ContentTemplateDAO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ContentTemplateDAOBase.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>ContentTemplateDAO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerDAO.cs" />
+    <Compile Include="CustomerDAOBase.cs" />
+    <Compile Include="CustomerTypeDAO.cs" />
+    <Compile Include="CustomerTypeDAOBase.cs" />
+    <Compile Include="ExtensionMessageDAO.cs" />
+    <Compile Include="ExtensionMessageDAOBase.cs" />
+    <Compile Include="ExtensionMessageLogDAO.cs" />
+    <Compile Include="ExtensionMessageLogDAOBase.cs" />
+    <Compile Include="IncomingMessageContentDAO.cs" />
+    <Compile Include="IncomingMessageContentDAOBase.cs" />
+    <Compile Include="IncomingMessageContentSentDAO.cs" />
+    <Compile Include="IncomingMessageContentSentDAOBase.cs" />
+    <Compile Include="MessageCommandDAO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MessageCommandDAOBase.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>MessageCommandDAO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MessageContentAttachementDAO.cs" />
+    <Compile Include="MessageContentAttachementDAOBase.cs" />
+    <Compile Include="MessageContentDAO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MessageContentDAOBase.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>MessageContentDAO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MessageContentSentAttachementDAO.cs" />
+    <Compile Include="MessageContentSentAttachementDAOBase.cs" />
+    <Compile Include="MessageContentSentDAO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MessageContentSentDAOBase.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>MessageContentSentDAO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatedMessagelogDAO.cs" />
+    <Compile Include="RelatedMessagelogDAOBase.cs" />
+    <Compile Include="ServiceTypeDAO.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ServiceTypeDAOBase.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>ServiceTypeDAO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SR.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="SR.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

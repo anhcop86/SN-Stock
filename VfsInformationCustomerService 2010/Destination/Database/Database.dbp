@@ -1,0 +1,68 @@
+# Microsoft Developer Studio Project File - Database Project
+Begin DataProject = "Database"
+   MSDTVersion = "80"
+   SccProjectName = "SAK"
+   SccLocalPath = "SAK"
+   SccAuxPath = "SAK"
+   SccProvider = "SAK"
+   Begin Folder = "Create Database Scripts"
+      Script = "AllStoredProcedures.sql"
+   End
+   Begin DBRefFolder = "Database References"
+   End
+   Begin Folder = "Job scripts"
+   End
+   Begin Folder = "Release Change Scripts"
+   End
+   Begin Folder = "SP scripts"
+      Begin Folder = "AdvanceService"
+         Script = "spGetPosNochangeDownOfStock.sql"
+      End
+      Begin Folder = "PermLong"
+         Script = "GetUpdated_SymbolPermLongGetList.sql"
+         Script = "spExportDataForMetaStox.sql"
+         Script = "spExportIndexForMetaStox.sql"
+         Script = "spIndexTestTool.sql"
+         Script = "spStatisticTransaction.sql"
+         Script = "spstock_SymbolPermLongDelete.sql"
+         Script = "spstock_SymbolPermLongGet.sql"
+         Script = "spstock_SymbolPermLongGetList.sql"
+         Script = "spstock_SymbolPermLongInsert.sql"
+         Script = "spstock_SymbolPermLongUpdate.sql"
+         Script = "spstock_SymbolPermLongUpdateDataForeign.sql"
+         Script = "spSymbolPermLongGetListTestTool.sql"
+      End
+      Begin Folder = "RelatedMessagelog"
+         Script = "spRelatedMessagelogDelete.sql"
+         Script = "spRelatedMessagelogGet.sql"
+         Script = "spRelatedMessagelogGetList.sql"
+         Script = "spRelatedMessagelogInsert.sql"
+         Script = "spRelatedMessagelogUpdate.sql"
+      End
+      Script = "spMarketReview.sql"
+      Begin Folder = "stock_News"
+         Script = "spstock_NewsDelete.sql"
+         Script = "spstock_NewsGet.sql"
+         Script = "spstock_NewsGetList.sql"
+         Script = "spstock_NewsGetListByStockCode.sql"
+         Script = "spstock_NewsInsert.sql"
+         Script = "spstock_NewsUpdate.sql"
+      End
+      Begin Folder = "stock_NewsGroups"
+         Script = "spstock_NewsGroupsDelete.sql"
+         Script = "spstock_NewsGroupsGet.sql"
+         Script = "spstock_NewsGroupsGetList.sql"
+         Script = "spstock_NewsGroupsGetListByNewsId.sql"
+         Script = "spstock_NewsGroupsInsert.sql"
+         Script = "spstock_NewsGroupsUpdate.sql"
+      End
+   End
+   Begin Folder = "Table changing scripts"
+   End
+   Begin Folder = "UDF Scripts"
+   End
+   Begin Folder = "View scripts"
+      Script = "v_PosNochangeDownOfStock.sql"
+      Script = "View_TESTTOOL.sql"
+   End
+End

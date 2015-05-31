@@ -1,0 +1,206 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>Untitled Page</title>
+      <link type="text/css" rel="Stylesheet" href="_assets/css/general.css" />
+      <link type="text/css" rel="Stylesheet" href="_assets/css/accordion.css" />
+      <link type="text/css" rel="Stylesheet" href="_assets/css/MessageContent.css" />
+      <script type="text/javascript" src="Js/NewsDetail.js"></script>
+      <script type="text/javascript" src="Js/NewsList.js"></script>
+      <script type="text/javascript" src="Js/Common.js"></script>
+       <style>
+        body
+        {
+           padding:0px;
+           font-size:10pt;
+           font-family:Tahoma;           
+           z-index: 0px;
+        }  
+        .demo
+        {
+            padding:1px; 
+            border:solid 1px #333333; 
+            width:200px;
+            float:right;
+        }         
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="header">
+        <asp:contentplaceholder id="ContentPlaceHolder1" runat="server"><div><h2>VFS news feed </h2></div> 
+        </asp:contentplaceholder>  
+    </div>
+    <div id="bodyContent">          
+        <div id="left">
+            <asp:contentplaceholder id="ContentPlaceHolder2" runat="server">
+              <div id="demo">
+            <asp:ScriptManager ID="ScriptManager1" runat="server" />   
+            <asp:ObjectDataSource ID="odsMailItems" runat="server" SelectMethod="FetchMailItems" TypeName="Vfs.WebCrawler.Utility.MailBoxItems" />
+            <asp:ObjectDataSource ID="odsNoteItems" runat="server" SelectMethod="FetchNoteItems" TypeName="Vfs.WebCrawler.Utility.MailBoxItems" />
+            <asp:ObjectDataSource ID="odsContactItems" runat="server" SelectMethod="FetchVsdNewItemItems" TypeName="Vfs.WebCrawler.Utility.VsdNewItem" />                        
+            <asp:ObjectDataSource ID="odsCafefItems" runat="server" SelectMethod="FetchCafefItems" TypeName="Vfs.WebCrawler.Utility.CafefNewItem" />                        
+            <asp:ObjectDataSource ID="odsVnEconomyItems" runat="server" SelectMethod="FetchVnEconomyItems" TypeName="Vfs.WebCrawler.Utility.VnEconomyItem" />                        
+            <asp:ObjectDataSource ID="odsExportItems" runat="server" SelectMethod="FetchExportItems" TypeName="Vfs.WebCrawler.Utility.ExportItem" />
+            <asp:ObjectDataSource ID="CustomerServiceItem" runat="server" SelectMethod="FetchCustomerServiceItem" TypeName="Vfs.WebCrawler.Utility.CustomerServiceItem" />            
+            <br />
+            <div class="demo">
+                <ajaxToolkit:Accordion 
+                    ID="accordion" runat="server" 
+                    FadeTransitions="false" FramesPerSecond="100" TransitionDuration="250" 
+                    CssClass="accordion" HeaderCssClass="header" ContentCssClass="content" 
+                    RequireOpenedPane="False" AutoSize="None" >
+                    <Panes>
+                        <ajaxToolkit:AccordionPane ID="mail" runat="server">
+                            <Header>
+                                <div style="background-image:url(_assets/img/mail_large.gif)">
+                                    <span>Hose</span>
+                                </div>
+                            </Header>
+                            <Content>
+                                <asp:ListView ID="lvMailItems" runat="server" DataSourceID="odsMailItems">
+                                    <LayoutTemplate>
+                                        <ul>
+                                            <li id="itemPlaceholder" runat="server" />
+                                        </ul>
+                                    </LayoutTemplate>
+                                    <ItemTemplate>
+                                        <!--<li style='background-image:url(<%# Eval("ImageUrl") %>)'><%# Eval("Name") %></li>-->
+                                        <asp:LinkButton runat="server" CommandName="linkItem" CommandArgument=<%# Eval("itemId") %> ID="linkItemlinkButton" PostBackUrl=<%# Eval("link") %>><li style='background-image:url(<%# Eval("ImageUrl") %>)' title='<%# Eval("Name")%>'><%# Eval("Name") %></asp:LinkButton></li>
+                                    </ItemTemplate>
+                                </asp:ListView>
+                            </Content>
+                        </ajaxToolkit:AccordionPane>
+                        <ajaxToolkit:AccordionPane ID="notes" runat="server">
+                            <Header>
+                                <div style="background-image:url(_assets/img/notes_large.gif)">
+                                    <span>Hastc</span>
+                                </div>
+                            </Header>
+                            <Content>
+                                <asp:ListView ID="lvNoteItems" runat="server" DataSourceID="odsNoteItems">
+                                    <LayoutTemplate>
+                                        <ul>
+                                            <li id="itemPlaceholder" runat="server" />
+                                        </ul>
+                                    </LayoutTemplate>
+                                    <ItemTemplate>
+                                        <li style='background-image:url(<%# Eval("ImageUrl") %>)' title='<%# Eval("Name")%>'><%# Eval("Name") %></li>
+                                    </ItemTemplate>
+                                </asp:ListView>
+                            </Content>
+                        </ajaxToolkit:AccordionPane> 
+                        <ajaxToolkit:AccordionPane ID="contacts" runat="server">
+                            <Header>
+                                <div style="background-image:url(_assets/img/contact_large.gif)">
+                                    <span>VSD</span>
+                                </div>
+                            </Header>
+                            <Content>
+                                <asp:ListView ID="lvContactItems" runat="server" DataSourceID="odsContactItems">
+                                    <LayoutTemplate>
+                                        <ul>
+                                            <li id="itemPlaceholder" runat="server" />
+                                        </ul>
+                                    </LayoutTemplate>
+                                    <ItemTemplate>
+                                        <asp:LinkButton runat="server" CommandName="linkItem" CommandArgument=<%# Eval("itemId") %> ID="linkItemlinkButton" PostBackUrl=<%# Eval("link") %>><li title='<%# Eval("Name")%>'><%# Eval("Name") %></asp:LinkButton></li>
+                                    </ItemTemplate>
+                                </asp:ListView>                        
+                            </Content>
+                        </ajaxToolkit:AccordionPane>  
+                        <ajaxToolkit:AccordionPane ID="cafeFItems" runat="server">
+                            <Header>
+                                <div style="background-image:url(_assets/img/contact_large.gif)">
+                                    <span>Cafef</span>
+                                </div>
+                            </Header>
+                            <Content>
+                                <asp:ListView ID="ListView1" runat="server" DataSourceID="odsCafefItems">
+                                    <LayoutTemplate>
+                                        <ul>
+                                            <li id="itemPlaceholder" runat="server" />
+                                        </ul>
+                                    </LayoutTemplate>
+                                    <ItemTemplate>
+                                        <asp:LinkButton runat="server" CommandName="linkItem" CommandArgument=<%# Eval("itemId") %> ID="linkItemlinkButton" PostBackUrl=<%# Eval("link") %>><li title='<%# Eval("Name")%>'><%# Eval("Name") %></asp:LinkButton></li>
+                                    </ItemTemplate>
+                                </asp:ListView>                        
+                            </Content>
+                        </ajaxToolkit:AccordionPane>  
+                        <ajaxToolkit:AccordionPane ID="AccordionPane1" runat="server">
+                            <Header>
+                                <div style="background-image:url(_assets/img/contact_large.gif)">
+                                    <span>VnEconomy</span>
+                                </div>
+                            </Header>
+                            <Content>
+                                <asp:ListView ID="ListView2" runat="server" DataSourceID="odsVnEconomyItems">
+                                    <LayoutTemplate>
+                                        <ul>
+                                            <li id="itemPlaceholder" runat="server" />
+                                        </ul>
+                                    </LayoutTemplate>
+                                    <ItemTemplate>
+                                        <asp:LinkButton runat="server" CommandName="linkItem" CommandArgument=<%# Eval("itemId") %> ID="linkItemlinkButton" PostBackUrl=<%# Eval("link") %>><li title='<%# Eval("Name")%>'><%# Eval("Name") %></asp:LinkButton></li>
+                                    </ItemTemplate>
+                                </asp:ListView>                        
+                            </Content>
+                        </ajaxToolkit:AccordionPane>
+                        <ajaxToolkit:AccordionPane ID="AccordionPane2" runat="server">
+                            <Header>
+                                <div style="background-image:url(_assets/img/contact_large.gif)">
+                                    <span>Thông tin chứng khoán</span>
+                                </div>
+                            </Header>
+                            <Content>
+                                <asp:ListView ID="ListView3" runat="server" DataSourceID="odsExportItems">
+                                    <LayoutTemplate>
+                                        <ul>
+                                            <li id="itemPlaceholder" runat="server" />
+                                        </ul>
+                                    </LayoutTemplate>
+                                    <ItemTemplate>
+                                        <asp:LinkButton runat="server" CommandName="linkItem" CommandArgument=<%# Eval("itemId") %> ID="linkItemlinkButton" PostBackUrl=<%# Eval("link") %>><li title='<%# Eval("Name")%>'><%# Eval("Name") %></asp:LinkButton></li>                                        
+                                    </ItemTemplate>
+                                </asp:ListView>                        
+                            </Content>
+                        </ajaxToolkit:AccordionPane>
+                        <ajaxToolkit:AccordionPane runat="server">
+                            <Header>
+                                <div style="background-image:url(_assets/img/contact_large.gif)">                                   
+                                    <span>Dịch vụ khách hàng</span>
+                                </div>
+                            </Header>
+                            <Content>
+                                <asp:ListView ID="ListView4" runat="server" DataSourceID="CustomerServiceItem">
+                                    <LayoutTemplate>
+                                        <ul>
+                                            <li id="itemPlaceholder" runat="server"/>
+                                        </ul>
+                                    </LayoutTemplate>
+                                    <ItemTemplate>
+                                        <asp:LinkButton runat="server" CommandName="linkItem" CommandArgument=<%# Eval("itemId") %> ID="linkItemlinkButton" PostBackUrl=<%# Eval("link") %>><li title='<%# Eval("Name")%>'><%# Eval("Name") %></asp:LinkButton></li>
+                                    </ItemTemplate>
+                                </asp:ListView>
+                            </Content>
+                        </ajaxToolkit:AccordionPane>
+                    </Panes>
+                </ajaxToolkit:Accordion>   
+            </div>
+        </div>
+            </asp:contentplaceholder>
+        </div>            
+        <div id="right">            
+            <asp:contentplaceholder id="ContentPlaceHolder3" runat="server">
+            </asp:contentplaceholder>                        
+        </div>        
+    </div>
+    </form>
+    
+</body>
+</html>

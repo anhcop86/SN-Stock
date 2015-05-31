@@ -1,0 +1,79 @@
+﻿h1
+{
+	font-size:17px;
+	text-align:center;
+}
+.button
+{
+	width:60px;
+}
+.inforError
+{
+	color:Red;
+	margin-left:5px;
+}
+
+.inforSeccessful
+{
+	color:Green;
+	margin-left:5px;
+}
+
+.borderForEditIcon
+{
+	border:0;
+}
+.widthForTable
+{
+	width:1100px;	
+}
+#page
+{
+	width:750px;
+}
+fieldset
+{	
+	width:450px;
+}
+legend
+{	
+	font-family:Times New Roman;
+	font-size:15px;
+}
+tr.title
+{
+	font-size:12px;
+	font-weight:bold;
+}
+.span
+{
+	color:Red;
+}
+.spanNoNeed
+{	
+	color:Green;
+} 
+
+.normal 
+{
+	background-color:White 
+}
+.highlight 
+{
+	background-color:#DDDDDD ;	
+}
+.createmesseng_div
+{
+	border:1px solid #DDDDDD;
+	width:750px;
+}
+
+.totalCustomer
+{
+	font-size:11px;
+	font-weight:bold;	
+}
+div table tr #Symbol
+{
+	color:Green;
+}

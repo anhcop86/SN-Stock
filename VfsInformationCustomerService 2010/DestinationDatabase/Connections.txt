@@ -1,0 +1,4 @@
+DBRefFolders found in your dbp file
+Connect String: Data Source=SVR-DB;User ID=sa
+Provider: Microsoft SQL Server
+
