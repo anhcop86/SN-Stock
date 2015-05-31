@@ -1,4 +1,0 @@
-Symbol	BuyingOrders	BuyQuantity	SellingOrders	SellQuantity
-				
-				
-094C000006	54	"76,510"	49	"92,650"

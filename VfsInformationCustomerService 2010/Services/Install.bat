@@ -1,3 +1,0 @@
-InstallUtil D:\Working\VfsInformationCustomerSerive\Services\bin\Debug\VfsInformationFeedService.exe
-net start VfsInformationFeedService
-PAUSE
