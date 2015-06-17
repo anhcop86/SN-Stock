@@ -1,0 +1,45 @@
+/* Cascading Sytle Sheet - Custom*/
+
+/*html{background:url(../images/backgroundimage.png) no-repeat center center fixed;
+        -webkit-background-size:cover;
+        -moz-background-size:cover;
+        -o-background-size:cover;
+        background-size:cover;}*/
+div.header	{background:url(../images/header.jpg) no-repeat center center transparent;
+            -webkit-background-size:cover;
+            -moz-background-size:cover;
+            -o-background-size:cover;
+            background-size:cover;}
+
+div.header a img 	{margin: auto;
+                   padding-top:15px;
+                   padding-bottom:15px;}
+
+p.footer 	{font-size:12px;
+           padding-top: 15px;}
+
+div.form-login 	{margin:auto;}
+
+p.error_message {color:red;}
+
+div.footer {display:block;
+            clear:both;
+            background-color:black;}
+.Khung{
+    width: 100%;
+    background-color: black;
+    margin-top: 45px;
+    margin-bottom: 20px;
+}
+.laguage{
+    float: right;
+    margin-top: -80px;
+}
+.txtTrongSo
+{
+	width: 30px !important;
+	background-color : #777777;
+	color : #FFF;
+	border: none;
+	text-align: right;
+}

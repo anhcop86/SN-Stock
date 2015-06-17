@@ -1,0 +1,21 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="ReportMasterPage.master.cs" Inherits="Report_ReportMasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">    
+    <asp:ContentPlaceHolder id="headerHolderId" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="ReportStyle.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager runat="server" />
+    <div>
+        <asp:ContentPlaceHolder id="ContentHolderId" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

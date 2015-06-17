@@ -1,0 +1,21 @@
+﻿body {
+    margin:auto; width:1200px;height:auto;
+    font-family:Tahoma;
+}
+
+.contentCenter{
+    margin:10px 0px 10px 0px;
+}
+
+
+.contentCenter > .tableFilter{
+    margin-bottom: 10px;
+    margin:auto;
+    width:400px;
+}
+
+table, select{
+    font-size:16px;
+    height:20px;
+}
+

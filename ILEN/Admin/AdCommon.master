@@ -1,0 +1,89 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AdCommon.master.cs" Inherits="AdCommon" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <asp:ContentPlaceHolder runat="server" ID="cphHeader"></asp:ContentPlaceHolder>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="icon" href="../images/INLEN-Half Logo.png" type="image/x-icon">
+    <meta name="keyword" content="Root INLEN">
+    <meta name="description" content="Root INLEN">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest Compiled and minified CSS -->
+    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!-- jQuery Library -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Latest Compiled Javascript -->
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!-- Customer CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+<body>
+    <form runat="server" id="frmAdMaster">
+        <div class="Khung">
+            <div class="container header">
+                <a href="https://inlen.vn/" target="_blank">
+                    <img class="img-responsive" src="../images/INLEN-Online.png" title="INLEN" alt="INLEN" height="180"></a>
+                <a class="laguage" href="javascript:return void(0);">
+                    <img src="../images/en.png" alt="" />Vietnamese</a>
+            </div>
+
+        </div>
+
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="javascript:return void(0);">HOMEPAGE</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/Admin/QLVTCV.aspx">QL VTCV</a></li>
+                        <li><a href="/Admin/QLBoPhan.aspx">QL Bộ Phận</a></li>
+                        <li><a href="/Admin/QLChuKyDG.aspx">QL Chu Kỳ ĐG</a></li>
+                        <li><a href="/Admin/QLBieuMau.aspx">QL Biểu Mẫu</a></li>
+                        <li><a href="/Admin/Admin.aspx">QL Tài Khoản</a></li>
+                        <li><a href="/Admin/QLThangDiem.aspx">QL Thang Điểm</a></li>
+                        <li><a href="/Admin/PhanQuyen.aspx">Phân Quyền</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>Welcome Admin ! <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#"><span class="glyphicon glyphicon-pencil"></span>Edit your profile</a></li>
+                                <li><a href="#"><span class="glyphicon glyphicon-picture"></span>Change your profile picture</a></li>
+                                <li><a href="#"><span class="glyphicon glyphicon-lock"></span>Reset your password</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../user/login.html"><span class="glyphicon glyphicon-off"></span>Log out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 thumbnail">
+                    <img src="../images/INLEN-Logo.jpg" class="img-responsive" alt="Your Profile Picture" title="Your Profile Picture" width="190">
+                    <h5 class="text-center text-muted">Mr. Nguyen Van Do - IL2020</h5>
+                </div>
+                <div class="col-sm-9">
+                    <asp:ContentPlaceHolder runat="server" ID="cphMenu"></asp:ContentPlaceHolder>
+                </div>
+            </div>
+            <div class="panel panel-primary">
+                <asp:ContentPlaceHolder runat="server" ID="cphMainContent"></asp:ContentPlaceHolder>
+            </div>
+        </div>
+        <br>
+        <div class="container-fluid footer">
+            <p class="text-center text-muted footer">Copyright &copy 2015 INLEN Company | All rights reserved</p>
+        </div>
+    </form>
+</body>
+</html>
