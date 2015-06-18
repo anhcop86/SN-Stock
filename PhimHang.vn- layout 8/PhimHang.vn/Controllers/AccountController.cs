@@ -72,9 +72,15 @@ namespace PhimHang.Controllers
                 if (user != null)
                 {
                     await SignInAsync(user, model.RememberMe);
-                    return RedirectToLocal(returnUrl); // Returun URL
-                    //eturn RedirectToAction(""); // Hieu
-
+                    if (string.IsNullOrEmpty(returnUrl) || returnUrl == "/")
+                    {
+                        return RedirectToAction("", "myprofile"); // Returun URL
+                    }
+                    else
+                    {
+                        return RedirectToLocal(returnUrl); // Returun URL
+                        //eturn RedirectToAction(""); // Hieu
+                    }                    
                 }
                 else
                 {
