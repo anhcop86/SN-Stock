@@ -150,6 +150,7 @@ public interface IKho
     IList<VaiTro> LayDanhSachVaiTro(string ten);
     IList<VaiTro> LayDanhSachVaiTro(int maDV);
     IList<VaiTro> DanhSachVaiTro { get; }
+    IList<ChuKyDanhGia> DanhSachChuKy { get; }
     VaiTro TimVaiTro(int ma);
     bool ThemVaiTro(VaiTro vt);
     bool SuaVaiTro(VaiTro vt);

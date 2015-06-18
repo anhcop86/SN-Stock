@@ -45,6 +45,9 @@ public class RepositoryReport
                               TenCK = ckdg.TenCK,
                               FromDate = ckdg.BatDau,
                               ToDate = ckdg.KetThuc,
+                              TongTieuChi = (from tctbm in db.TieuChiTheoBieuMaus
+                                             where ckdg.MaCK == ckdg.MaCK
+                                                  select tctbm.MaBM ).Sum()
 
                           }).ToList();
 

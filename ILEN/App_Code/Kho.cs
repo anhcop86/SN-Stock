@@ -1422,6 +1422,13 @@ public class Kho : IKho
     #endregion
 
     #region chu ky danh gia
+    public IList<ChuKyDanhGia> DanhSachChuKy
+    {
+        get
+        {
+            return dc.ChuKyDanhGias.ToList();
+        }
+    }
     public IList<ChuKyDanhGia> LayDanhSachChuKyDanhGiaTheoDV(int maDV)
     {
         return dc.ChuKyDanhGias.Where(c => c.MaDV.Equals(maDV)).ToList();
