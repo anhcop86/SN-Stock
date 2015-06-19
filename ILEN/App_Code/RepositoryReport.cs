@@ -32,13 +32,14 @@ public class RepositoryReport
     //    }
     //}
 
-    public static List<ChuKyDanhGiaReport> GetChuKyDanhGiaReport()
+    public static List<ChuKyDanhGiaReport> GetChuKyDanhGiaReport(int ckid)
     {
         using (db = new DBDataContext(MyUtility.ChuoiKetNoi))
         {
             var result = (from ckdg in db.ChuKyDanhGias
                           from bmdg in db.BieuMauDanhGias
                           where ckdg.MaCK == bmdg.MaCK
+                          && (ckdg.MaCK == ckid || ckid == -1) // filter by chu kỳ
                           select new ChuKyDanhGiaReport
                           {
                               TenBieuMau = bmdg.TenBM,
@@ -46,8 +47,8 @@ public class RepositoryReport
                               FromDate = ckdg.BatDau,
                               ToDate = ckdg.KetThuc,
                               TongTieuChi = (from tctbm in db.TieuChiTheoBieuMaus
-                                             where ckdg.MaCK == ckdg.MaCK
-                                                  select tctbm.MaBM ).Sum()
+                                             where tctbm.MaBM == bmdg.MaBM
+                                                  select 1).Sum()
 
                           }).ToList();
 
@@ -104,7 +105,7 @@ public class ChuKyDanhGiaReport
 
     public string TenBieuMau { get; set; }
 
-    public int TongTieuChi { get; set; }
+    public int? TongTieuChi { get; set; }
 
 }
 
@@ -133,4 +134,9 @@ public class NhanVienReport
     public string BoPhan { get; set; }
 
 
+}
+
+public class DetailBieuMauDanhGia
+{
+    public int MyProperty { get; set; }
 }

@@ -13,7 +13,7 @@ public partial class Report_ChuKyDanhGia : TrangKho
         if (!this.IsPostBack)
         {
             LoadListChuKy();
-            ReportRender();
+            ReportRender(-1);
         }
     }
     //static DBDataContext db;
@@ -32,12 +32,12 @@ public partial class Report_ChuKyDanhGia : TrangKho
             ListDanhMucCKSelect.DataBind();
         
     }
-    public void ReportRender()
+    public void ReportRender(int ckid)
     {
         ReportDataSource ds = new ReportDataSource()
         {
             Name = "ChuKyDanhGia",
-            Value = RepositoryReport.GetChuKyDanhGiaReport()
+            Value = RepositoryReport.GetChuKyDanhGiaReport(ckid)
         };
         ReportViewer1.LocalReport.DataSources.Clear();
         ReportViewer1.LocalReport.DataSources.Add(ds);
@@ -46,6 +46,7 @@ public partial class Report_ChuKyDanhGia : TrangKho
 
     protected void ListDanhMucCKSelect_SelectedIndexChanged(object sender, EventArgs e)
     {
+        ReportRender(int.Parse(ListDanhMucCKSelect.SelectedValue));
 
     }
 }
