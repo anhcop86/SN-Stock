@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ILENDB" Class="DBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=VULONG\LONGSQLSERVER;Initial Catalog=ILENDB;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ILENDBConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=ANHCOP\MSSQLSERVER2012;Initial Catalog=ILENDB;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ILENDBConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.AdminDV" Member="AdminDVs">
     <Type Name="AdminDV">
       <Column Name="MaDV" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -45,6 +45,7 @@
       <Column Name="MaDV" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="MaCK" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="BieuMauDanhGia_KetQuaDanhGia" Member="KetQuaDanhGias" ThisKey="MaBM" OtherKey="MaBM" Type="KetQuaDanhGia" />
+      <Association Name="BieuMauDanhGia_NhomTCTheoBM" Member="NhomTCTheoBMs" ThisKey="MaBM" OtherKey="MaBM" Type="NhomTCTheoBM" />
       <Association Name="BieuMauDanhGia_ThangDo" Member="ThangDo" ThisKey="MaBM" OtherKey="MaBM" Type="ThangDo" Cardinality="One" />
       <Association Name="BieuMauDanhGia_TieuChiTheoBieuMau" Member="TieuChiTheoBieuMaus" ThisKey="MaBM" OtherKey="MaBM" Type="TieuChiTheoBieuMau" />
       <Association Name="ViTriCongViec_BieuMauDanhGia" Member="ViTriCongViec" ThisKey="MaVTCV" OtherKey="MaVTCV" Type="ViTriCongViec" IsForeignKey="true" />
@@ -93,14 +94,11 @@
     <Type Name="ChiTietDanhGia">
       <Column Name="MaCTDG" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="MaTCTheoBM" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="MaCD" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MaCDTheoTC" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MaKQDG" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="TongDiem" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="MaTC" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="MaTCCha" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MaNhomTC" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="KetQuaDanhGia_ChiTietDanhGia" Member="KetQuaDanhGia" ThisKey="MaKQDG" OtherKey="MaKQDG" Type="KetQuaDanhGia" IsForeignKey="true" />
-      <Association Name="TieuChi_ChiTietDanhGia" Member="TieuChi" ThisKey="MaTCTheoBM" OtherKey="MaTC" Type="TieuChi" IsForeignKey="true" />
+      <Association Name="TieuChiTheoBieuMau_ChiTietDanhGia" Member="TieuChiTheoBieuMau" ThisKey="MaTCTheoBM" OtherKey="Ma" Type="TieuChiTheoBieuMau" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.ChuKyDanhGia" Member="ChuKyDanhGias">
@@ -176,14 +174,14 @@
   </Table>
   <Table Name="dbo.KetQuaDanhGia" Member="KetQuaDanhGias">
     <Type Name="KetQuaDanhGia">
-      <Column Name="MaKQDG" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaKQDG" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="NgayDG" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="NguoiDG" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="NguoiDuocDG" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="CoHieuLuc" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="GhiChu" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="HienThi" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="MaBM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MaBM" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="KetLuan" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="KetLuanEN" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Association Name="KetQuaDanhGia_ChiTietDanhGia" Member="ChiTietDanhGias" ThisKey="MaKQDG" OtherKey="MaKQDG" Type="ChiTietDanhGia" />
@@ -236,6 +234,16 @@
       <Association Name="VaiTro_NhanVien" Member="VaiTro" ThisKey="MaVT" OtherKey="MaVT" Type="VaiTro" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.NhomTCTheoBM" Member="NhomTCTheoBMs">
+    <Type Name="NhomTCTheoBM">
+      <Column Name="MaNTC" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaBM" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TrongSo" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Chon" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="BieuMauDanhGia_NhomTCTheoBM" Member="BieuMauDanhGia" ThisKey="MaBM" OtherKey="MaBM" Type="BieuMauDanhGia" IsForeignKey="true" />
+      <Association Name="NhomTieuChi_NhomTCTheoBM" Member="NhomTieuChi" ThisKey="MaNTC" OtherKey="MaNTC" Type="NhomTieuChi" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.NhomTieuChi" Member="NhomTieuChis">
     <Type Name="NhomTieuChi">
       <Column Name="MaNTC" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -245,6 +253,7 @@
       <Column Name="TrongSo" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="MoTa" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="Chon" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="NhomTieuChi_NhomTCTheoBM" Member="NhomTCTheoBMs" ThisKey="MaNTC" OtherKey="MaNTC" Type="NhomTCTheoBM" />
       <Association Name="NhomTieuChi_TieuChi" Member="TieuChis" ThisKey="MaNTC" OtherKey="MaNTC" Type="TieuChi" />
       <Association Name="DonVi_NhomTieuChi" Member="DonVi" ThisKey="MaDV" OtherKey="MaDV" Type="DonVi" IsForeignKey="true" />
     </Type>
@@ -290,7 +299,6 @@
     <Type Name="TieuChi">
       <Column Name="MaTC" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="MaNTC" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="MaDTTC" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TenTC" Type="System.String" DbType="NVarChar(1000) NOT NULL" CanBeNull="false" />
       <Column Name="TenTCEN" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
       <Column Name="TrongSo" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
@@ -298,7 +306,6 @@
       <Column Name="MaTCCha" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Chon" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="TieuChi_CapDoTheoTieuChi" Member="CapDoTheoTieuChis" ThisKey="MaTC" OtherKey="MaTC" Type="CapDoTheoTieuChi" />
-      <Association Name="TieuChi_ChiTietDanhGia" Member="ChiTietDanhGias" ThisKey="MaTC" OtherKey="MaTCTheoBM" Type="ChiTietDanhGia" />
       <Association Name="TieuChi_TieuChi" Member="TieuChis" ThisKey="MaTC" OtherKey="MaTCCha" Type="TieuChi" />
       <Association Name="TieuChi_TieuChiTheoBieuMau" Member="TieuChiTheoBieuMaus" ThisKey="MaTC" OtherKey="MaTC" Type="TieuChiTheoBieuMau" />
       <Association Name="NhomTieuChi_TieuChi" Member="NhomTieuChi" ThisKey="MaNTC" OtherKey="MaNTC" Type="NhomTieuChi" IsForeignKey="true" />
@@ -312,6 +319,7 @@
       <Column Name="MaTC" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="TrongSo" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="Chon" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="TieuChiTheoBieuMau_ChiTietDanhGia" Member="ChiTietDanhGias" ThisKey="Ma" OtherKey="MaTCTheoBM" Type="ChiTietDanhGia" />
       <Association Name="BieuMauDanhGia_TieuChiTheoBieuMau" Member="BieuMauDanhGia" ThisKey="MaBM" OtherKey="MaBM" Type="BieuMauDanhGia" IsForeignKey="true" />
       <Association Name="TieuChi_TieuChiTheoBieuMau" Member="TieuChi" ThisKey="MaTC" OtherKey="MaTC" Type="TieuChi" IsForeignKey="true" />
     </Type>

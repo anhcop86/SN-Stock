@@ -138,5 +138,8 @@ public class NhanVienReport
 
 public class DetailBieuMauDanhGia
 {
-    public int MyProperty { get; set; }
+    public int STT { get; set; }
+    public string NhomTieuChi { get; set; }
+    public string TenTieuChi { get; set; }
+    //public int MyProperty { get; set; }
 }

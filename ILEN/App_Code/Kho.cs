@@ -348,7 +348,7 @@ public class Kho : IKho
             if (kq == default(TieuChi)) return false;
 
             //kiem tra rang buoc:
-            if (tc.ChiTietDanhGias.Count > 0) throw new Exception();
+            if (tc.TieuChiTheoBieuMaus.Count > 0) throw new Exception();
             if (tc.CapDoTheoTieuChis.Count > 0) throw new Exception();
 
             dc.TieuChis.DeleteOnSubmit(tc);
@@ -691,7 +691,7 @@ public class Kho : IKho
             if (kq == null) throw new Exception();
 
             //kq.MaTC = ct.MaTC;
-            kq.MaCD = ct.MaCD;
+            kq.MaCDTheoTC = ct.MaCDTheoTC;
             kq.MaKQDG = ct.MaKQDG;
 
             return true;

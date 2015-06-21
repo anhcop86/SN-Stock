@@ -165,7 +165,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -486,7 +485,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Thông tin nhân viên</Value>
+                <Value>Chu kỳ nhân viên</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontSize>16pt</FontSize>
