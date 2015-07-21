@@ -9,14 +9,14 @@
     <div class="contentCenter">   
         <table class="tableFilter">
             <tr>
-                <td>Chu kỳ đánh giá:</td>
+                <td>Chọn chu kỳ đánh giá:</td>
                 <td>
                     <asp:DropDownList runat="server" ID ="ListChukySelect" AutoPostBack="true" >                   
                     </asp:DropDownList>
                 </td>
             </tr>
              <tr>
-                <td>Biểu mẫu đánh giá:</td>
+                <td>Chọn biểu mẫu đánh giá:</td>
                 <td>
                     <asp:DropDownList runat="server" ID ="ListBieuMauSelect" AutoPostBack="true" >                   
                     </asp:DropDownList>
@@ -24,9 +24,6 @@
             </tr>
             </table>    
         </div>
-    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Height="700px" Width="1200px">
-        <LocalReport ReportPath="Report\ChuKyDanhGia.rdlc">
-        </LocalReport>
-</rsweb:ReportViewer>
+    
 </asp:Content>
 

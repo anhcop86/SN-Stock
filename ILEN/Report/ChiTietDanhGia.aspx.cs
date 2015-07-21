@@ -32,6 +32,9 @@ public partial class Report_ChuKyDanhGia : TrangKho
             ListBieuMauSelect.DataBind();
         
     }
+    protected void LoadListBieuMau()
+    {
+    }
     public void ReportRender(int ckid)
     {
         ReportDataSource ds = new ReportDataSource()
@@ -39,9 +42,9 @@ public partial class Report_ChuKyDanhGia : TrangKho
             Name = "ChuKyDanhGia",
             Value = RepositoryReport.GetChuKyDanhGiaReport(ckid)
         };
-        ReportViewer1.LocalReport.DataSources.Clear();
-        ReportViewer1.LocalReport.DataSources.Add(ds);
-        ReportViewer1.LocalReport.Refresh();
+    //    ReportViewer1.LocalReport.DataSources.Clear();
+    //    ReportViewer1.LocalReport.DataSources.Add(ds);
+    //    ReportViewer1.LocalReport.Refresh();
     }
 
     protected void ListDanhMucCKSelect_SelectedIndexChanged(object sender, EventArgs e)
