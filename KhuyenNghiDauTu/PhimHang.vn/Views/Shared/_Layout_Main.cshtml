@@ -33,11 +33,9 @@
 
     <link href="~/Content/content.css" rel="stylesheet" />
     @*<script src="~/DetailTheme/js/tiny-mce/plugins/table/js/table.js"></script>*@
-    <script src="/DetailTheme/js/setup.js" type="text/javascript"></script>
+    <script src="/DetailTheme/js/setup.js" type="text/javascript"></script>  
+
    
-
-    @*<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
-
     <script src="~/Scripts/action.js"></script>
     
     <!-- END: Datetime picker -->
@@ -51,6 +49,11 @@
     <!-- extention-->
     <link href="~/Content/Recommend.css" rel="stylesheet" />
     <!---->
+    @* validate - phai có 2 key trong webconfig <add key="ClientValidationEnabled" value="true" />
+        <add key="UnobtrusiveJavaScriptEnabled" value="true"/> *@
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    @*end validate  *@
 </head>
  <body>     
      @using Microsoft.AspNet.Identity
