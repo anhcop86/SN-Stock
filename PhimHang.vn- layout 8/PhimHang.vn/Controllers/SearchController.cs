@@ -87,7 +87,8 @@ namespace PhimHang.Controllers
                 }
                 else if (searchUser.Count == 1) // 
                 {
-                    return RedirectToAction("/" + searchUser[0].UserName);
+                    //return RedirectToAction("/" + searchUser[0].UserName);
+                    return Redirect("/" + searchUser[0].UserName);
                 }
                 else
                 {
