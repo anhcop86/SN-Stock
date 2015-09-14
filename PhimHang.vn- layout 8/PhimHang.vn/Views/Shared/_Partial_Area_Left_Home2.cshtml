@@ -1,10 +1,10 @@
 ﻿@*@using PhimHang.Models;*@
-
+@model IList<PhimHang.Models.StockRealTime>
 <div class="banner-right-first" @*style=" margin-top: 5px;"*@>
     <div class="banner-header-white">CỔ PHIẾU NGẪU NHIÊN</div>
     @{
 
-        foreach (var item in ViewBag.listStockRandom as List<PhimHang.Models.StockRealTime>)
+        foreach (var item in @Model)
         {
             <div class="banner-item1">
                 <div class="item-left">

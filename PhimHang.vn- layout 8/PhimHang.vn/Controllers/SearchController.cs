@@ -61,7 +61,7 @@ namespace PhimHang.Controllers
             if (string.IsNullOrEmpty(q))
             {
                 ViewBag.listStockPriceFind = new List<StockRealTime>();
-                ViewBag.UserFindList = new List<UserFollowView>(); ;
+                ViewBag.UserFindList = new List<UserFollowView>();
                 return View();
             }
             else

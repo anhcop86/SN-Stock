@@ -71,9 +71,9 @@ namespace PhimHang.Controllers
              * */
             #endregion
 
-            #region co phieu ngau ben trái
-            ViewBag.listStockRandom = _stockRealtime.RandomStocksList().Result;
-            #endregion
+            //#region co phieu ngau ben trái
+            //ViewBag.listStockRandom = _stockRealtime.RandomStocksList().Result;
+            //#endregion
             #region random dan phim chuyen nghiem
             var DanPhimRandom = await (from u in db.UserLogins
                                        orderby Guid.NewGuid()
@@ -94,7 +94,16 @@ namespace PhimHang.Controllers
             #endregion
             return View();
         }
+        /// <summary>
+        ///  tra ve co phieu ngau nhien ben trai trang home bang ajax load tuan tu
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult RandomStockList()
+        {
+            var result = _stockRealtime.RandomStocksList().Result;
 
+            return PartialView("_Partial_Area_Left_Home2", result);
+        }
         
 
         public ActionResult About()
