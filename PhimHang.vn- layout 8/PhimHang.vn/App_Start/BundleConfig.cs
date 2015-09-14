@@ -34,7 +34,7 @@ namespace PhimHang
                                         "~/Scripts/knockout-3.2.0.js",
                                         "~/Scripts/knockout.mapping-latest.js",                                                    
                                         //<!--For realtime core-->
-                                        "~/Scripts/jquery.signalR-2.1.2.min.js",
+                                        "~/Scripts/jquery.signalR-2.2.0.min.js",
                                         "~/ThemeBlue/js/Extention.js", // notification of top bar
                                         "~/ThemeBlue/js/SignalHubProxy.js"
                                         ));
@@ -84,7 +84,7 @@ namespace PhimHang
                              "~/ThemeBlue/js/Home.js"));
             #endregion
 
-            //BundleTable.EnableOptimizations = true;
+            BundleTable.EnableOptimizations = true;
         }
     }
 }
