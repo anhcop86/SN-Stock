@@ -1,0 +1,333 @@
+body
+{
+	margin: 0 auto;
+	font-family: verdana;
+}
+.wrapper
+{
+	width: 1024px;
+	height: auto;
+	text-align: center;	
+	margin: 0 auto;
+}
+/**************************** Header Section Starts ***************************/
+.header
+{
+	width: 1024px;
+	height: 146px;
+    background: url(../images/header.jpg);
+    background-repeat: no-repeat;
+
+}
+/**************************** Second Section Ends *****************************/
+
+/**************************** Menu Section Starts *****************************/
+.menu
+{
+	width: 1024px;
+	height: 44px;
+    background: url(../images/menu.jpg);
+    background-repeat: no-repeat;
+}
+
+.menu-text
+{
+font-family: verdana;
+font-size: 14px;
+color: #ffffff;
+padding: 12px 45px 10px 10px;
+float: left;
+font-stretch: condensed;
+cursor: pointer;
+}
+
+
+/**************************** Menu Section Ends *******************************/
+
+/**************************** First Section Starts ****************************/
+.first-section
+{
+  width: 1024px;
+  height: auto;
+  border: solid 2px #ffffff;
+  margin-top: 5px;
+}
+.right-image
+{
+  width: 230px;
+  height: 235px;
+  float: right;
+  background-image: url(../images/right-image.jpg);
+  background-repeat: repeat-x;
+  border-left: solid 1px #ffffff;
+  text-align: left;
+}
+.mid-image
+{
+  width: 668px;
+  height: 235px;
+  float: left;
+  background-image: url(../images/mid-image.gif);
+  background-repeat: no-repeat;
+}
+.left-image
+{
+  width: 900px;
+  
+  float: left;
+  /*background-image: url(../images/left-image.jpg); */
+  background-repeat: repeat-x;
+  border-right: solid 1px #ffffff;
+  text-align: center;
+  margin-left:40px;
+}
+
+/**************************** First Section Ends ******************************/
+
+/**************************** Second Section Starts ***************************/
+
+.second-section
+{
+  width: 675px;
+  height: 139px;
+  border-bottom: solid 1px #dbdbdb;
+  float: right;
+}
+.pack-box3
+{
+  width: 230px;
+  height: 139px;
+  float: right;
+  background-image: url(../images/pack-image.jpg);
+  background-repeat: repeat-x;
+  border-left: solid 1px #ffffff;
+  text-align: left;
+}
+
+.pack-box2
+{
+  width: 221px;
+  height: 139px;
+  float: right;
+  background-image: url(../images/pack-image.jpg);
+  background-repeat: repeat-x;
+  border-left: solid 1px #ffffff;
+  text-align: left;
+}
+.pack-box1
+{
+  width: 221px;
+  height: 139px;
+  float: right;
+  background-image: url(../images/pack-image.jpg);
+  background-repeat: repeat-x;
+  border-left: solid 1px #ffffff;
+  text-align: left;
+}
+
+/**************************** Second Section Ends *****************************/
+
+/**************************** Third Section Starts ****************************/
+
+.third-section
+{
+  width: 675px;
+  height: 170px;
+  float: right;
+}
+.down-box2
+{
+  width: 230px;
+  height: 170px;
+  float: right;
+  background-image: url(../images/down-image2.jpg);
+  background-repeat: repeat-x;
+  text-align: left;
+}
+.down-box1
+{
+  width: 444px;
+  height: 170px;
+  float: right;
+  background-image: url(../images/down-image1.jpg);
+  background-repeat: repeat-x;
+  text-align: left;
+}
+
+
+
+/**************************** Third Section Ends ******************************/
+
+/**************************** Left Section Starts *****************************/
+
+.left-section
+{
+  width: 238px;
+  height: 309px;
+  float: right;
+}
+.left-box2
+{
+  width: 217px;
+  height: 309px;
+  float: right;
+  background-image: url(../images/left-image1.jpg);
+  background-repeat: repeat-x;
+  text-align: left;
+}
+.left-box1
+{
+  width: 21px;
+  height: 309px;
+  float: right;
+  background-image: url(../images/left-image2.jpg);
+  background-repeat: repeat-x;
+}
+
+
+
+/**************************** Left Section Ends *******************************/
+
+/**************************** Footer Section Starts ***************************/
+.footer
+{
+  float: right;
+  width: 900px;
+  font-family: Tahoma;
+  font-size: 8pt;
+  font-weight: normal;
+  color: #616161;
+  text-align: left;
+  margin-top: 18px;
+  clear: both;
+  margin-bottom: 10px;
+}
+/**************************** Footer Section Ends *****************************/
+
+/**************************** General Section Starts **************************/
+.title1
+{
+  font-family: Tahoma;
+  font-size: 14pt;
+  font-weight: normal;
+  color: #8f8383;
+  margin-top: 10px;
+  margin-left: 12px;
+}
+.title2
+{
+  font-family: Tahoma;
+  font-size: 14pt;
+  font-weight: bold;
+  color: #535353;
+}
+.title3
+{
+  font-family: Tahoma;
+  font-size: 14pt;
+  font-weight: normal;
+  color: #616161;
+  margin-top: 10px;
+  margin-left: 12px;
+}
+.sub-title
+{
+  font-family: Tahoma;
+  font-size: 8pt;
+  font-weight: normal;
+  color: #3f3a3a;
+  margin-left: 12px;
+}
+.description
+{
+  font-family: Tahoma;
+  font-size: 8pt;
+  font-weight: normal;
+  color: #616161;
+  text-align: justify;
+  width: 195px;
+  line-height: 18px;
+  margin-left: 12px;
+  margin-top: 2px;
+}
+
+.description1
+{
+  font-family: Tahoma;
+  font-size: 8pt;
+  font-weight: normal;
+  color: #616161;
+  text-align: justify;
+  width: 400px;
+  line-height: 18px;
+  margin-left: 12px;
+  margin-top: 2px;
+}
+
+.date-text{
+  font-family: Tahoma;
+  font-size: 8pt;
+  color: #a4e3ff;
+  font-weight: bold;
+  margin-left: 12px;
+  margin-top: 2px;
+}
+
+
+hr{
+  background-color: #00deff;
+  width: 200px;
+  color: #00deff;
+  border: solid 1px #00deff;
+
+}
+a.nav:link {color: #ffffff; text-decoration: none; }
+a.nav:visited {color: #ffffff; text-decoration: none; }
+a.nav:hover {color: #ffff99; text-decoration: underline; }
+a.nav:active {color: blue; }
+
+.linespec{
+	color: #ffffff;
+    border-bottom: solid 1px #00deff;
+    width: 325px;
+    padding-bottom: 7px;
+}
+
+.payed_ticket{
+    background: white;
+    width: 100%;
+    float: left;
+    margin: 20px 0 0 0;
+}
+
+.cast2 {
+    height: 500px;    
+}
+.payed_ticket table {
+    width: 98%;
+    margin: 10px;
+    border: 1px solid black;
+	text-align:center;
+}
+.payed_ticket tr {
+    border-top: 1px solid #C7CFDC;
+    width: 900px;
+    background: rgb(255,255,255);
+    background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(229,229,229,1)));
+    background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%);
+    background: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%);
+    background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%);
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 );
+}
+
+.payed_ticket th {
+    background: rgb(57, 83, 153);
+    color: white;
+}
+
+
+
+
+/**************************** General Section Ends ****************************/
