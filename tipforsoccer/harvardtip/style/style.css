@@ -190,18 +190,21 @@ cursor: pointer;
 
 /**************************** Footer Section Starts ***************************/
 .footer
-{
-  float: right;
-  width: 900px;
-  font-family: Tahoma;
-  font-size: 8pt;
-  font-weight: normal;
-  color: #616161;
-  text-align: left;
+{  
+  width: 1000px;;  
+  height: 200px;
+  
+  color: #616161;  
   margin-top: 18px;
   clear: both;
   margin-bottom: 10px;
+  padding:2px;
 }
+.footer div{
+	float: left;
+
+}
+
 /**************************** Footer Section Ends *****************************/
 
 /**************************** General Section Starts **************************/
@@ -297,11 +300,11 @@ a.nav:active {color: blue; }
     background: white;
     width: 100%;
     float: left;
-    margin: 20px 0 0 0;
+    margin: 20px 0 10 0;
 }
 
 .cast2 {
-    height: 500px;    
+  
 }
 .payed_ticket table {
     width: 98%;
