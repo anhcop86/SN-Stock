@@ -191,18 +191,17 @@ cursor: pointer;
 /**************************** Footer Section Starts ***************************/
 .footer
 {  
-  width: 1000px;;  
-  height: 200px;
-  
-  color: #616161;  
-  margin-top: 18px;
-  clear: both;
-  margin-bottom: 10px;
+  width: 800px;
+  height: 100px;
+  border: solid 1px #616161;
+  color: #616161;    
+  clear: both;  
   padding:2px;
+  margin:18px auto 10px auto;
 }
 .footer div{
-	float: left;
-
+	float: right;
+	padding: 0px 2px 0px 2px;
 }
 
 /**************************** Footer Section Ends *****************************/
@@ -328,6 +327,10 @@ a.nav:active {color: blue; }
 .payed_ticket th {
     background: rgb(57, 83, 153);
     color: white;
+}
+
+.footer_paypal {
+	width: 800px;
 }
 
 
