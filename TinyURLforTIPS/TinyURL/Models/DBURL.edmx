@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="URLName" Type="nvarchar(max)" Nullable="false" />
           <Property Name="PostedDate" Type="datetime2" Precision="7" Nullable="false" />
         </EntityType>
@@ -27,7 +27,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="URLName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PostedDate" Type="DateTime" Nullable="false" Precision="7" />
         </EntityType>

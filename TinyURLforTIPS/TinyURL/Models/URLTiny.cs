@@ -14,7 +14,7 @@ namespace TinyURL.Models
     
     public partial class URLTiny
     {
-        public long Id { get; set; }
+        public string Id { get; set; }
         public string URLName { get; set; }
         public System.DateTime PostedDate { get; set; }
     }
