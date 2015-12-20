@@ -5,7 +5,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head runat="server" profile="http://gmpg.org/xfn/11">
     <link rel="shortcut icon" href="~/pics/blogengine.ico" type="image/x-icon"/>
-    <link rel="stylesheet" href="style-min.css" type="text/css" /> 
+    <link rel="stylesheet" href="style-min.css" type="text/css" />
+    
+    <meta property="og:url"           content="http://localhost:61924/post/2015/12/11/That-bai-e-che-va-Tinh-ban-vo-gia.aspx" />
+	<meta property="og:type"          content="website" />
+	<meta property="og:title"         content="cùng chúng tôi bắt đầu việc tiếp tục gây dựng Hãng" />
+	<meta property="og:description"   content="cùng chúng tôi bắt đầu việc tiếp tục gây dựng Hãng" />
+	<meta property="og:image"         content="http://www.your-domain.com/path/image.jpg" /> 
 </head>
 
 <body>

@@ -118,3 +118,957 @@ App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: 
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 Date: 12/15/2015 4:44:19 PM
 App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:14:11 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x0C, is an invalid character. Line 231, position 347.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:14:12 AM
+App_Code.Controls.Blogroll.ProcessRequest: The underlying connection was closed: The connection was closed unexpectedly.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:14:13 AM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:14:13 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:14:14 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:14:14 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:14:28 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:14:30 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:25:34 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x0C, is an invalid character. Line 231, position 347.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:25:35 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:25:35 AM
+App_Code.Controls.Blogroll.ProcessRequest: The underlying connection was closed: The connection was closed unexpectedly.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:25:37 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:25:37 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:25:37 AM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:25:51 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:25:53 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:38:34 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x0C, is an invalid character. Line 231, position 347.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:38:34 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:38:35 AM
+App_Code.Controls.Blogroll.ProcessRequest: The underlying connection was closed: The connection was closed unexpectedly.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:38:35 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:38:36 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:38:37 AM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:38:50 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:38:51 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:45:50 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x0C, is an invalid character. Line 231, position 347.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:45:51 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:45:51 AM
+App_Code.Controls.Blogroll.ProcessRequest: The underlying connection was closed: The connection was closed unexpectedly.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:45:52 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:45:52 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:45:54 AM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:46:07 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:46:08 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:52:02 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:52:02 AM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:52:03 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:52:03 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:52:04 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:52:12 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x0C, is an invalid character. Line 231, position 347.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:52:18 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:52:21 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:54:45 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x0C, is an invalid character. Line 231, position 347.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:54:45 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:54:45 AM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:54:45 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:54:46 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:54:47 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:55:01 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:55:02 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:56:55 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x0C, is an invalid character. Line 231, position 347.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:56:55 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:56:55 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:56:55 AM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:56:56 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:56:57 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:57:11 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:57:17 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:57:40 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x0C, is an invalid character. Line 231, position 347.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:57:40 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:57:40 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:57:41 AM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:57:41 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:57:42 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:57:56 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 9:57:57 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:01:17 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x0C, is an invalid character. Line 231, position 347.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:01:17 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:01:17 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:01:18 AM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:01:18 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:01:19 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:01:33 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:01:34 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:05:32 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x0C, is an invalid character. Line 231, position 347.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:05:32 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:05:33 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:05:33 AM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:05:33 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:05:36 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:06:17 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:06:17 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:18:27 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:18:27 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:18:27 AM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:18:28 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:18:28 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:18:34 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x0C, is an invalid character. Line 231, position 347.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:18:43 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:18:44 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:27:18 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:27:18 AM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:27:18 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:27:19 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:27:20 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:27:29 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x0C, is an invalid character. Line 231, position 347.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:27:34 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:27:35 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:34:44 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x0C, is an invalid character. Line 231, position 347.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:34:45 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:34:45 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:34:45 AM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:34:46 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:34:47 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:35:02 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:35:03 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:37:25 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x0C, is an invalid character. Line 231, position 347.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:37:29 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:37:30 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:37:30 AM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:37:30 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:37:31 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:37:45 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:37:47 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:51:54 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x0C, is an invalid character. Line 231, position 347.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:51:55 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:51:56 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:51:56 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:51:57 AM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:52:01 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:52:12 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:52:13 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:52:45 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x0C, is an invalid character. Line 231, position 347.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:52:45 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:52:45 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:52:45 AM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:52:45 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:52:46 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:53:01 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:53:01 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:53:06 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (504) Gateway Timeout.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:53:06 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (504) Gateway Timeout.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 10:53:06 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (504) Gateway Timeout.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 11:00:16 AM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 11:00:16 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 11:00:16 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 11:00:16 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 11:00:19 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 11:00:26 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x0C, is an invalid character. Line 231, position 347.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 11:00:31 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 11:00:33 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 11:19:33 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 11:19:33 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 11:19:34 AM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 11:19:35 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 11:19:36 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 11:19:43 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x0C, is an invalid character. Line 231, position 347.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 11:19:49 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 11:19:51 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 1:46:12 PM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x0C, is an invalid character. Line 251, position 347.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 1:46:12 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 1:46:13 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 1:46:14 PM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 1:46:14 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 1:46:18 PM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 1:46:29 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 1:46:31 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 1:56:40 PM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x0C, is an invalid character. Line 251, position 347.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 1:56:40 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 1:56:41 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 1:56:42 PM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 1:56:43 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 1:56:46 PM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 1:56:56 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/16/2015 1:56:57 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 10:09:42 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x0C, is an invalid character. Line 335, position 347.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 10:09:43 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 10:09:43 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 10:09:44 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 10:09:45 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 10:09:45 AM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 10:09:59 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 10:10:02 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 10:58:01 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x0C, is an invalid character. Line 335, position 347.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 10:58:05 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 10:58:05 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 10:58:06 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 10:58:07 AM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 10:58:07 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 10:58:21 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 10:58:22 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 11:08:48 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x0C, is an invalid character. Line 335, position 347.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 11:08:49 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 11:08:49 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 11:08:49 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 11:08:51 AM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 11:08:51 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 11:09:06 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 11:09:07 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 11:16:46 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 11:16:46 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 11:16:47 AM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 11:16:48 AM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 11:16:48 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 11:16:54 AM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x0C, is an invalid character. Line 335, position 347.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 11:17:01 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 11:17:02 AM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 1:10:11 PM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x0C, is an invalid character. Line 359, position 347.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 1:10:12 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 1:10:12 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 1:10:12 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 1:10:14 PM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 1:10:15 PM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 1:10:29 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 1:10:30 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:10:54 PM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x0C, is an invalid character. Line 359, position 347.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:10:55 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:10:55 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:10:55 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:10:57 PM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:10:57 PM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:11:11 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:11:13 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:13:10 PM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x0C, is an invalid character. Line 359, position 347.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:13:11 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:13:11 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:13:11 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:13:11 PM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:13:12 PM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:13:27 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:13:28 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:22:03 PM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x0C, is an invalid character. Line 359, position 347.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:22:04 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:22:04 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:22:04 PM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:22:06 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:22:06 PM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:22:20 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:22:21 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:44:59 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:44:59 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:45:00 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:45:01 PM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:45:09 PM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:45:18 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:45:18 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:47:47 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:47:47 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:47:47 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:47:49 PM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:47:50 PM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:48:03 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 2:48:04 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:04:55 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:04:55 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:04:55 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:04:55 PM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:04:57 PM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:05:11 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:05:14 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:09:10 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:09:10 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:09:10 PM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:09:11 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:09:12 PM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:09:26 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:09:27 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:15:21 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:15:21 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:15:21 PM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:15:22 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:15:23 PM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:15:37 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:15:38 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:18:15 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:18:15 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:18:15 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:18:15 PM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:18:17 PM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:18:31 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:18:32 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:21:15 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:21:15 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:21:16 PM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:21:16 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:21:17 PM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:21:31 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:21:33 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:22:50 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:22:50 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:22:50 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:22:51 PM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:22:52 PM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:23:06 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:23:48 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:25:13 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:25:13 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:25:14 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:25:16 PM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:25:16 PM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:25:30 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:25:30 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:27:04 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:27:04 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:27:04 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:27:04 PM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:27:05 PM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:27:19 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:27:20 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:29:24 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:29:24 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:29:24 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:29:25 PM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:29:25 PM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:29:40 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:29:41 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:32:07 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:32:07 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:32:08 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:32:08 PM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:32:09 PM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:32:23 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/17/2015 3:32:25 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/18/2015 3:38:27 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/18/2015 3:38:28 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 28, position 74.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/18/2015 3:38:28 PM
+App_Code.Controls.Blogroll.ProcessRequest: '', hexadecimal value 0x10, is an invalid character. Line 1183, position 402.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/18/2015 3:38:29 PM
+App_Code.Controls.Blogroll.ProcessRequest: 'doctype' is an unexpected token. The expected token is 'DOCTYPE'. Line 1, position 3.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/18/2015 3:38:29 PM
+App_Code.Controls.Blogroll.ProcessRequest: Reference to undeclared entity 'raquo'. Line 13, position 77.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/18/2015 3:38:43 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+Date: 12/18/2015 3:38:45 PM
+App_Code.Controls.Blogroll.ProcessRequest: The remote server returned an error: (500) Internal Server Error.
