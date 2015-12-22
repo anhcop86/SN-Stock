@@ -8,6 +8,8 @@ using System.Web.UI.HtmlControls;
 using BlogEngine.Core;
 using BlogEngine.Core.Web.Controls;
 using System.Collections.Generic;
+using System.Xml;
+using System.Text.RegularExpressions;
 
 #endregion
 
@@ -84,6 +86,7 @@ public partial class post : BlogEngine.Core.Web.Controls.BlogBasePage
                     Page.Title = encodedPostTitle;
                     AddMetaKeywords();
                     AddMetaDescription();
+                    AddMetaDescriptionFacebook(post); // hieu edit new
                     base.AddMetaTag("author", Server.HtmlEncode(Post.AuthorProfile == null ? Post.Author : Post.AuthorProfile.FullName));
 
                     List<Post> visiblePosts = Post.Posts.FindAll(delegate(Post p) { return p.IsVisible; });
@@ -196,9 +199,51 @@ public partial class post : BlogEngine.Core.Web.Controls.BlogBasePage
 	/// </summary>
 	private void AddMetaDescription()
 	{
-		base.AddMetaTag("description", Server.HtmlEncode(Post.Description));
+		base.AddMetaTag("description", Server.HtmlEncode(Post.Description));        
 	}
 
+    private void AddMetaDescriptionFacebook(Post post)
+    {
+        HtmlMeta tagUrl = new HtmlMeta();
+        tagUrl.Attributes.Add("property", "og:url");
+        tagUrl.Content = post.AbsoluteLink.ToString();
+        Page.Header.Controls.Add(tagUrl);
+
+        HtmlMeta tagType = new HtmlMeta();
+        tagType.Attributes.Add("property", "og:type");
+        tagType.Content = "article";
+        Page.Header.Controls.Add(tagType);
+
+        HtmlMeta tagurl = new HtmlMeta();
+        tagurl.Attributes.Add("property", "og:title");
+        tagurl.Content = post.Title;
+        Page.Header.Controls.Add(tagurl);
+
+        HtmlMeta tagDes = new HtmlMeta();
+        tagDes.Attributes.Add("property", "og:description");
+        tagDes.Content = post.Title;
+        Page.Header.Controls.Add(tagDes);
+
+        HtmlMeta tagimg = new HtmlMeta();
+        tagimg.Attributes.Add("property", "og:image");
+        tagimg.Content = BlogEngine.Core.Utils.AbsoluteWebRoot.ToString().TrimEnd('/') + GetImageFromHtmlString(post.Content);
+        Page.Header.Controls.Add(tagimg);
+
+
+    }
+    public static string GetImageFromHtmlString(string htmlString)
+    {
+        string source = htmlString;
+        var reg = new Regex("src=(?:\"|\')?(?<imgSrc>[^>]*[^/].(?:jpg|bmp|gif|png))(?:\"|\')?");
+        var match = reg.Match(source);
+        string encod = string.Empty;
+        if (match.Success)
+        {
+            encod = match.Groups["imgSrc"].Value;
+        }
+
+        return encod;
+    }
 	/// <summary>
 	/// Adds the post's tags as meta keywords.
 	/// </summary>
