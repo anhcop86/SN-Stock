@@ -1728,6 +1728,16 @@
     <Content Include="images\sign-in-vflchypbO.png" />
     <Content Include="images\ui-icons_72a7cf_256x240.png" />
     <Content Include="images\Untitled.png" />
+    <Content Include="img\1.jpg" />
+    <Content Include="img\10.jpg" />
+    <Content Include="img\2.jpg" />
+    <Content Include="img\3.jpg" />
+    <Content Include="img\4.png" />
+    <Content Include="img\5.jpg" />
+    <Content Include="img\6.jpg" />
+    <Content Include="img\7.jpg" />
+    <Content Include="img\8.jpg" />
+    <Content Include="img\9.jpg" />
     <Content Include="img\avata3.jpg" />
     <Content Include="img\avatar.jpg" />
     <Content Include="img\avatar_default.jpg" />
