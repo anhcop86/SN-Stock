@@ -38,6 +38,10 @@ namespace PhimHang.Controllers
         private testEntities db = new testEntities();
         public async Task<ActionResult> Index()
         {
+            if (User.Identity.IsAuthenticated)// neu dang nhap thi cho ve thẳng myprofile
+            {
+                return RedirectToAction("", "myprofile");
+            }
             // get user info
             ViewBag.AbsolutePathHostName = AbsolutePathHostName;
             if (User.Identity.IsAuthenticated)
