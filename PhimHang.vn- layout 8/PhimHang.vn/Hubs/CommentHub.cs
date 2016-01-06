@@ -52,7 +52,7 @@ namespace PhimHang.Hubs
                     {
                         if (item.IndexOf("$", 0, 1) != -1) // tag ma co phieu
                         {
-                            string ticker = item.Replace("$", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToUpper();
+                            string ticker = item.RemoveSpecialString().ToUpper(); //item.Replace("$", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToUpper();
                             messageFromatHTML += "<b><a onclick=selectMe(event,\"#\") target='_blank' href='/ticker/" + ticker + "'>" + item + "</a></b>" + " ";
                             stockTag += ticker + "|";
                         }

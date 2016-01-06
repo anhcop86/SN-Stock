@@ -293,6 +293,7 @@
     <Compile Include="Models\C__MigrationHistory.cs">
       <DependentUpon>PhimHangADO.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ExtensionMethods.cs" />
     <Compile Include="Models\FilterKeyWord.cs">
       <DependentUpon>PhimHangADO.tt</DependentUpon>
     </Compile>
