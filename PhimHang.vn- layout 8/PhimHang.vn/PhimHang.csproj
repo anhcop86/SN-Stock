@@ -277,10 +277,22 @@
     <Compile Include="Hubs\RealTimePriceHub.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AppHelper.cs" />
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>PhimHangADO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AspNetUser.cs">
       <DependentUpon>PhimHangADO.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>PhimHangADO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogin.cs">
+      <DependentUpon>PhimHangADO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CommentProfileModels.cs" />
+    <Compile Include="Models\C__MigrationHistory.cs">
+      <DependentUpon>PhimHangADO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\FilterKeyWord.cs">
       <DependentUpon>PhimHangADO.tt</DependentUpon>
     </Compile>
@@ -331,6 +343,9 @@
       <DependentUpon>PhimHangADO.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StockCode.cs">
+      <DependentUpon>PhimHangADO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StockPrice.cs">
       <DependentUpon>PhimHangADO.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StockRealTime.cs" />
@@ -1957,6 +1972,7 @@
     <Content Include="ThemeBlue\js\Home.js" />
     <Content Include="ThemeBlue\js\MyProfile.js" />
     <Content Include="ThemeBlue\js\PostDetail.js" />
+    <Content Include="ThemeBlue\js\RandomImage.js" />
     <Content Include="ThemeBlue\js\SignalHubProxy.js" />
     <Content Include="ThemeBlue\js\Ticker.js" />
     <Content Include="ThemeBlue\plugins\bootstrapvalidator\bootstrapValidator.css" />

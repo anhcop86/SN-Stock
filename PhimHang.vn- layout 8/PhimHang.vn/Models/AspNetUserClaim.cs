@@ -12,15 +12,13 @@ namespace PhimHang.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class PostComment
+    public partial class AspNetUserClaim
     {
-        public long PostCommentsId { get; set; }
-        public string Message { get; set; }
-        public long PostedBy { get; set; }
-        public int CommentBy { get; set; }
-        public System.DateTime PostedDate { get; set; }
+        public int Id { get; set; }
+        public string ClaimType { get; set; }
+        public string ClaimValue { get; set; }
+        public string User_Id { get; set; }
     
-        public virtual Post Post { get; set; }
-        public virtual UserLogin UserLogin { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

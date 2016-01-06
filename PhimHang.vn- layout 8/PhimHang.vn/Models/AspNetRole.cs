@@ -12,15 +12,16 @@ namespace PhimHang.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class PostComment
+    public partial class AspNetRole
     {
-        public long PostCommentsId { get; set; }
-        public string Message { get; set; }
-        public long PostedBy { get; set; }
-        public int CommentBy { get; set; }
-        public System.DateTime PostedDate { get; set; }
+        public AspNetRole()
+        {
+            this.AspNetUsers = new HashSet<AspNetUser>();
+        }
     
-        public virtual Post Post { get; set; }
-        public virtual UserLogin UserLogin { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
+    
+        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
     }
 }

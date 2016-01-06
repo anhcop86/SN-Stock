@@ -12,15 +12,11 @@ namespace PhimHang.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class PostComment
+    public partial class C__MigrationHistory
     {
-        public long PostCommentsId { get; set; }
-        public string Message { get; set; }
-        public long PostedBy { get; set; }
-        public int CommentBy { get; set; }
-        public System.DateTime PostedDate { get; set; }
-    
-        public virtual Post Post { get; set; }
-        public virtual UserLogin UserLogin { get; set; }
+        public string MigrationId { get; set; }
+        public string ContextKey { get; set; }
+        public byte[] Model { get; set; }
+        public string ProductVersion { get; set; }
     }
 }

@@ -14,6 +14,13 @@ namespace PhimHang.Models
     
     public partial class AspNetUser
     {
+        public AspNetUser()
+        {
+            this.AspNetUserClaims = new HashSet<AspNetUserClaim>();
+            this.AspNetUserLogins = new HashSet<AspNetUserLogin>();
+            this.AspNetRoles = new HashSet<AspNetRole>();
+        }
+    
         public string Id { get; set; }
         public string UserName { get; set; }
         public string PasswordHash { get; set; }
@@ -21,6 +28,9 @@ namespace PhimHang.Models
         public string Discriminator { get; set; }
         public Nullable<int> UserExtentLogin_Id { get; set; }
     
+        public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual UserLogin UserLogin { get; set; }
+        public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
     }
 }
