@@ -23,8 +23,8 @@ namespace PhimHang.Models
         public System.DateTime CreateDate { get; set; }
         public Nullable<bool> XemYN { get; set; }
     
+        public virtual Post Post { get; set; }
         public virtual UserLogin UserLogin { get; set; }
         public virtual UserLogin UserLogin1 { get; set; }
-        public virtual Post Post { get; set; }
     }
 }

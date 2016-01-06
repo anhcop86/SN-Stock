@@ -17,8 +17,8 @@ namespace PhimHang.Models
         public long ID { get; set; }
         public string StockCodePin { get; set; }
         public long PostId { get; set; }
-        public System.DateTime CreatedDate { get; set; }
         public Nullable<int> WhoPost { get; set; }
+        public System.DateTime CreatedDate { get; set; }
     
         public virtual Post Post { get; set; }
     }

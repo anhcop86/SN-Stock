@@ -25,8 +25,14 @@
     <%}
        else
        { %>
+    <div style="top:5px;left:-25px" class="fb-like" data-href="<%=BlogEngine.Core.Utils.AbsoluteWebRoot.ToString().TrimEnd('/') + Post.RelativeOrAbsoluteLink %>" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
     <a rel="bookmark" href="<%=Post.PermaLink %>" title="<%=Server.HtmlEncode(Post.Title) %>">Permalink</a> |
     <a rel="nofollow" href="<%=Post.RelativeOrAbsoluteLink %>#comment"><%=Resources.labels.comments %> (<%=Post.ApprovedComments.Count %>)</a>   
     <%} %>
     </div>
+
+   <%-- <head>
+   
+    </head>--%>
 </div>
+

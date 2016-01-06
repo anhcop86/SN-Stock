@@ -17,9 +17,10 @@
                     }
             },
 
-            //stop: function (event, ui) {
-            //    $('input.cover-position').val(ui.position.top);
-            //}
+            stop: function (event, ui) {
+                //$('input.cover-position').val(ui.position.top);
+                $('#SavePositionCover').fadeIn(200);
+            }
         });
     
     

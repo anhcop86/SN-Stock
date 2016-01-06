@@ -59,7 +59,7 @@ namespace Widgets.TextBox
             {
                 return;
             }
-
+           
             var text = new LiteralControl(settings["content"]);
             this.Controls.Add(text);
         }

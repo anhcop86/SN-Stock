@@ -2,7 +2,7 @@
     function parseJsonDateToTimeStamp(value) {
         return parseInt(value.substr(6), 10) + 25200000;  //The 6 is for trimming '/Date(' 25200000 là GTM + 7 cộng thêm 1 ngày
         }    
-    $.getJSON('https://congdongchungkhoan.com/TickerPrice/GetStockPriChart?chart=' + $('#stockHidenPage').val(), function (data) {
+    $.getJSON('https://cungphim.com/TickerPrice/GetStockPriChart?chart=' + $('#stockHidenPage').val(), function (data) {
         // split the data set into ohlc and volume
         var ohlc = [],
             volume = [],

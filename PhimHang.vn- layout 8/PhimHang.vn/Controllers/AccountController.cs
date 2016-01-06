@@ -95,8 +95,9 @@ namespace PhimHang.Controllers
         //
         // GET: /Account/Register
         [AllowAnonymous]
-        public ActionResult Register()
+        public ActionResult Register(string returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl;
             //var testEmail = AppHelper.sendEmail("AnhCOpne", "hieu.nguyen@vfs.com.vn", "mylove@07", "tomtruong@cungphim.com", AppHelper.ResetPasswordEmailTemplatePath);
             return View();
         }        

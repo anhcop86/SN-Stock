@@ -156,7 +156,7 @@ namespace PhimHang.Models
             message.From = sender;
             message.Sender = sender;
             message.To.Add(receiver);
-            message.Subject = "Đăng ký thành công | cungphim.com";
+            message.Subject = "Đăng ký thành công | phochungkhoan.com";
             message.IsBodyHtml = true;
             message.BodyEncoding = System.Text.Encoding.UTF8;
             message.Body = GetContentTemplate(fileTemplateName);

@@ -58,3 +58,6 @@ F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\SynStockHistory\obj\Debug\S
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\SynStockHistory\obj\Debug\SynStockHistory.exe
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\SynStockHistory\obj\Debug\SynStockHistory.pdb
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\SynStockHistory\obj\Debug\SynStockHistory.csprojResolveAssemblyReference.cache
+F:\Working\SN-Stock\WebAPIStockRealTime\SynStockHistory\bin\Debug\SynStockHistory.exe.config
+F:\Working\SN-Stock\WebAPIStockRealTime\SynStockHistory\obj\Debug\SynStockHistory.exe
+F:\Working\SN-Stock\WebAPIStockRealTime\SynStockHistory\obj\Debug\SynStockHistory.pdb

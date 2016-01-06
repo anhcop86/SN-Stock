@@ -87,7 +87,10 @@ namespace App_Code.Controls
                 var ws = new WidgetSettings(this.WidgetId.ToString());
                 Blog.CurrentInstance.Cache[cacheId] = ws.GetSettings();
             }
-
+            if (this.WidgetId.ToString() == "000dedbe-1801-466e-96b7-bda022750886")
+            {
+                
+            }
             return (StringDictionary)Blog.CurrentInstance.Cache[cacheId];
         }
 

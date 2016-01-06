@@ -22,12 +22,12 @@ namespace PhimHang.Models
             this.FollowUsers1 = new HashSet<FollowUser>();
             this.NotificationMesseges = new HashSet<NotificationMessege>();
             this.NotificationMesseges1 = new HashSet<NotificationMessege>();
+            this.PostComments = new HashSet<PostComment>();
+            this.Posts = new HashSet<Post>();
             this.StockViewLastests = new HashSet<StockViewLastest>();
             this.UserRelates = new HashSet<UserRelate>();
             this.UserViewLastests = new HashSet<UserViewLastest>();
             this.UserViewLastests1 = new HashSet<UserViewLastest>();
-            this.PostComments = new HashSet<PostComment>();
-            this.Posts = new HashSet<Post>();
         }
     
         public int Id { get; set; }
@@ -58,15 +58,15 @@ namespace PhimHang.Models
         public virtual ICollection<FollowStock> FollowStocks { get; set; }
         public virtual ICollection<FollowUser> FollowUsers { get; set; }
         public virtual ICollection<FollowUser> FollowUsers1 { get; set; }
+        public virtual JobTitile JobTitile { get; set; }
         public virtual ICollection<NotificationMessege> NotificationMesseges { get; set; }
         public virtual ICollection<NotificationMessege> NotificationMesseges1 { get; set; }
+        public virtual Philosophy Philosophy { get; set; }
+        public virtual ICollection<PostComment> PostComments { get; set; }
+        public virtual ICollection<Post> Posts { get; set; }
         public virtual ICollection<StockViewLastest> StockViewLastests { get; set; }
         public virtual ICollection<UserRelate> UserRelates { get; set; }
         public virtual ICollection<UserViewLastest> UserViewLastests { get; set; }
         public virtual ICollection<UserViewLastest> UserViewLastests1 { get; set; }
-        public virtual JobTitile JobTitile { get; set; }
-        public virtual Philosophy Philosophy { get; set; }
-        public virtual ICollection<PostComment> PostComments { get; set; }
-        public virtual ICollection<Post> Posts { get; set; }
     }
 }

@@ -39,6 +39,7 @@ namespace PhimHang.Hubs
                     return;
                 }
                 #endregion
+
                 #region format message
                 string messagedefault = "";
                 string stockTag = ""; // dinh dang stock|stock|stock de tim co phieu lien quan
@@ -47,40 +48,52 @@ namespace PhimHang.Hubs
                 string messageFromatHTML = "";
                 foreach (var item in listMessege)
                 {
-                    if (item.Contains("$"))
+                    if (item.Length > 0 && item.Length < 2000)
                     {
-                        string ticker = item.Replace("$", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToUpper();
-                        messageFromatHTML += "<b><a onclick=selectMe(event,\"#\") target='_blank' href='/ticker/" + ticker + "'>" + item + "</a></b>" + " ";
-                        stockTag += ticker + "|";
-                    }
-                    else if (item.Contains("@"))
-                    {
-                        string user = item.Replace("@", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToLower();
-                        messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='/" + user + "'>" + item + "</a>" + " ";
-                    }
-                    else if (item.Contains("http") || item.Contains("www."))
-                    {
-                        URLTiny tu = new URLTiny();
-                        tu.URLName = item;
-                        tu.PostedDate = DateTime.Now;
-                        dbtinyURL.URLTinies.Add(tu);
-                        try
+                        if (item.IndexOf("$", 0, 1) != -1) // tag ma co phieu
                         {
-                            await dbtinyURL.SaveChangesAsync();
+                            string ticker = item.Replace("$", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToUpper();
+                            messageFromatHTML += "<b><a onclick=selectMe(event,\"#\") target='_blank' href='/ticker/" + ticker + "'>" + item + "</a></b>" + " ";
+                            stockTag += ticker + "|";
                         }
-                        catch (Exception)
+                        else if (item.IndexOf("@", 0, 1) != -1) // tag nguoi dung
                         {
-                            // log                    
+                            string user = item.Replace("@", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToLower();
+                            messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='/" + user + "'>" + item + "</a>" + " ";
                         }
-                        messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='" + hostURL + "/" + tu.Id + "'>" + AppHelper.GetDomain(item) + "...</a>" + " ";
-                    }
-                    else
-                    {
-                        messageFromatHTML += item + " ";
+                        else if ((item.Contains("http") || item.Contains("www.")) && item.Length >= 4)
+                        {
+                            if (item.IndexOf("http", 0, 4) != -1 || item.IndexOf("www.", 0, 4) != -1)
+                            {
+                                URLTiny tu = new URLTiny();
+                                tu.URLName = item;
+                                tu.PostedDate = DateTime.Now;
+                                dbtinyURL.URLTinies.Add(tu);
+                                try
+                                {
+                                    await dbtinyURL.SaveChangesAsync();
+                                }
+                                catch (Exception)
+                                {
+                                    // log                    
+                                }
+                                messageFromatHTML += "Nguồn tại <a onclick=selectMe(event,\"#\") target='_blank' href='" + hostURL + "/" + tu.Id + "'>" + AppHelper.GetDomain(item) + "...</a>" + " ";
+                            }
+                            else
+                            {
+                                messageFromatHTML += item + " ";
+                            }
+                        }
+                        else
+                        {
+                            messageFromatHTML += item + " ";
+                        }
                     }
                 }
 
                 #endregion
+                
+                #region explan this passing messege to stockcode and username list
                 //messageFromatHTML += "</a>";
                 post.Message = AppHelper.FilteringWord(messageFromatHTML);
                 post.PostedBy = userlogin.Id;
@@ -97,18 +110,18 @@ namespace PhimHang.Hubs
                 var listStock = new List<string>();
                 var listUsersendMessege = new List<string>();
 
-                #region explan this passing messege to stockcode and username list
+                
 
                 List<string> listMessegeSplit = messagedefault.Split(' ').ToList().FindAll(p => p.Contains("$") || p.Contains("@"));
 
                 #endregion
 
-
+                #region gui message co phieu lien quan
                 db.Posts.Add(post);
                 foreach (var item in listMessegeSplit)
                 {
                     string stockcode = item.Replace("$", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToUpper();
-                    if (item.Contains("$") && !listStock.Contains(stockcode)) // find the stock with $
+                    if (item.IndexOf("$",0,1) != -1 && !listStock.Contains(stockcode)) // find the stock with $
                     {
                         StockRelate stockRelateLasts = new StockRelate();
                         stockRelateLasts.PostId = post.PostId;
@@ -116,7 +129,7 @@ namespace PhimHang.Hubs
                         db.StockRelates.Add(stockRelateLasts); // add to database
                         listStock.Add(stockcode); // group of hub for client 
                     }
-                    else if (item.Contains("@")) //find the user with @
+                    else if (item.IndexOf("@", 0 ,1) !=-1) //find the user with @
                     {
                         string user = item.Replace("@", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToLower();
                         var finduser = db.UserLogins.FirstOrDefault(ul => ul.UserNameCopy == user);
@@ -128,7 +141,9 @@ namespace PhimHang.Hubs
                         }
                     }
                 }
+                #endregion
 
+                #region luu vao db
                 /* add stockrelate */
                 try
                 {
@@ -155,12 +170,18 @@ namespace PhimHang.Hubs
                     SumReply = 0
                 };
 
+                #endregion
+                
+                #region gui message
+
                 await Clients.Groups(listStock).addPost(ret); // ad group co phieu lien quan
                 await Clients.All.addPostGlobal(ret); // add vào profile va home
                 if (listUsersendMessege.Count > 0)
                 {
                     await Clients.Users(listUsersendMessege).MessegeOfUserPost(1); // gui tin bao cho user nao có @
                 }
+
+                #endregion
             }
         }
         [Authorize]
@@ -175,10 +196,11 @@ namespace PhimHang.Hubs
                 {
                     return;
                 }
-                #endregion
+                
                 reply.CommentBy = userlogin.Id;
                 reply.PostedDate = DateTime.Now;
-
+                #endregion
+                
                 #region format message
                 string messagedefault = "";
                 messagedefault = reply.Message;
@@ -186,39 +208,49 @@ namespace PhimHang.Hubs
                 string messageFromatHTML = "";
                 foreach (var item in listMessege)
                 {
-                    if (item.Contains("$"))
+                    if (item.Length > 0 && item.Length < 2000)
                     {
-                        string ticker = item.Replace("$", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToUpper();
-                        messageFromatHTML += "<b><a onclick=selectMe(event,\"#\") target='_blank' href='/ticker/" + ticker + "'>" + item + "</a></b>" + " ";
-                    }
-                    else if (item.Contains("@"))
-                    {
-                        string user = item.Replace("@", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToLower();
-                        messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='/" + user + "'>" + item + "</a>" + " ";
-                    }
-                    else if (item.Contains("http") || item.Contains("www."))
-                    {
-                        URLTiny tu = new URLTiny();
-                        tu.URLName = item;
-                        tu.PostedDate = DateTime.Now;
-                        dbtinyURL.URLTinies.Add(tu);
-                        try
+                        if (item.IndexOf("$", 0, 1) != -1)
                         {
-                            await dbtinyURL.SaveChangesAsync();
+                            string ticker = item.Replace("$", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToUpper();
+                            messageFromatHTML += "<b><a onclick=selectMe(event,\"#\") target='_blank' href='/ticker/" + ticker + "'>" + item + "</a></b>" + " ";
                         }
-                        catch (Exception)
+                        else if (item.IndexOf("@", 0, 1) != -1)
                         {
-                            // log                    
+                            string user = item.Replace("@", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToLower();
+                            messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='/" + user + "'>" + item + "</a>" + " ";
                         }
-                        messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='" + hostURL + "/" + tu.Id + "'>" + AppHelper.GetDomain(item) + "...</a>" + " ";
-                    }
-                    else
-                    {
-                        messageFromatHTML += item + " ";
+                        else if ((item.Contains("http") || item.Contains("www.")) && item.Length >= 4)
+                        {
+                            if (item.IndexOf("http", 0, 4) != -1 || item.IndexOf("www.", 0, 4) != -1)
+                            {
+                                URLTiny tu = new URLTiny();
+                                tu.URLName = item;
+                                tu.PostedDate = DateTime.Now;
+                                dbtinyURL.URLTinies.Add(tu);
+                                try
+                                {
+                                    await dbtinyURL.SaveChangesAsync();
+                                }
+                                catch (Exception)
+                                {
+                                    // log                    
+                                }
+                                messageFromatHTML += "Nguồn tại <a onclick=selectMe(event,\"#\") target='_blank' href='" + hostURL + "/" + tu.Id + "'>" + AppHelper.GetDomain(item) + "...</a>" + " ";
+                            }
+                            else
+                            {
+                                messageFromatHTML += item + " ";
+                            }
+                        }
+                        else
+                        {
+                            messageFromatHTML += item + " ";
+                        }
                     }
                 }
 
-                #endregion
+                
                 reply.Message = AppHelper.FilteringWord(messageFromatHTML);
                 //var listStock = new List<string>();
                 //listStock.Add(stockCurrent.ToUpper());
@@ -228,7 +260,8 @@ namespace PhimHang.Hubs
                 var getPost = db.Posts.Find(reply.PostedBy); // lay thong tin cua bài post đó
                 // cap nhat tong so luong reply
                 getPost.SumReply += 1;
-
+                #endregion
+                
                 #region gui tin cho chu da post bài
 
                 if (getPost.PostedBy != userlogin.Id)
@@ -257,7 +290,7 @@ namespace PhimHang.Hubs
                 List<string> listMessegeSplit = messagedefault.Split(' ').ToList().FindAll(p => p.Contains("$") || p.Contains("@"));
                 foreach (var item in listMessegeSplit)
                 {
-                    if (item.Contains("@")) //find the user with @
+                    if (item.IndexOf("@", 0, 1) != -1) //find the user with @
                     {
                         string user = item.Replace("@", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToLower();
                         var finduser = db.UserLogins.FirstOrDefault(ul => ul.UserNameCopy == user);
@@ -282,7 +315,8 @@ namespace PhimHang.Hubs
                     }
                 }
                 #endregion
-
+                
+                #region luu du lieu vao db
                 db.PostComments.Add(reply);
 
                 try
@@ -308,13 +342,16 @@ namespace PhimHang.Hubs
                     PostCommentsId = reply.PostCommentsId
                 };
 
-
+                #endregion
+                
+                #region push message
                 await Clients.Caller.addReply(ret); // chính người đã reply
                 if (listUsersendMessege.Count > 0)
                 {
                     await Clients.Users(listUsersendMessege).MessegeOfUserPost(1);
                 }
                 await Clients.All.newReplyNoti(reply.PostedBy);
+                #endregion
             }
         }
 

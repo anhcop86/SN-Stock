@@ -1,10 +1,10 @@
 ﻿@model PhimHang.Models.LoginViewModel
- @{
+@{
      ViewBag.Title = "Đăng nhập";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script src="~/ThemeBlue/js/RandomImage.js"></script>
     <script type="text/javascript">
-
         window.fbAsyncInit = function () {
             FB.init({
                 appId: '934180333272963',
@@ -82,19 +82,16 @@
                     <div class="login-register-container  standard">
                         <div class="login-register-login-part">
                             <div class="clearfix">
-                                <div class="login-register-header">Sign in</div>
-                                <div class="login-register-switch">
-                                    or
-                                    <a href="/Account/Register" class="login-register-switch-link">create an account</a>
+                                <div class="login-register-header">Đăng nhập</div>
+                                <div class="login-register-switch">                                    
+                                    <a href="/Account/Register/?ReturnUrl=@ViewBag.ReturnUrl" class="login-register-switch-link">Tạo tài khoản</a>
                                 </div>
-
                             </div>
                             <div class="login-form-container  standard">
                                 @*<form action="/" method="post" class="clearfix login-form">*@
                                 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "clearfix login-form" }))
                                 {
                                     @Html.AntiForgeryToken()
-
                                     <div class="text-input login-text-input standard">
                                         <div class="text-input-error-wrapper">@Html.ValidationSummary(true) @Html.ValidationMessageFor(m => m.UserName)</div>
 
