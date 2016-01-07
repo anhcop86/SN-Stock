@@ -40,11 +40,11 @@ namespace PhimHang.Controllers
         private string AbsolutePathHostName = AppHelper.AbsolutePathHostName;
         public async Task<ActionResult> Index()
         {
-            // get user info
+            #region get user info
             ViewBag.AbsolutePathHostName = AbsolutePathHostName;
             var company = new StockCode();
             ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-
+            #endregion
 
             #region Thong tin menu ben trai
             //Thong tin menu ben trai

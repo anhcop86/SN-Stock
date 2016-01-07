@@ -14,7 +14,11 @@ namespace PhimHang.Models
         /// <returns></returns>
         public static string RemoveSpecialString(this string value)
         {
-            return string.Join("", value.Split('$', '!', '@', '#', '%', '^', '&', '*', '(', ')', '-', '+', '[', ']', '?', '<', '>', ':', ';', '|', '/')).ToUpper(); 
+            return string.Join("", value.Split('$', '!', '@', '#', '%', '^', '&', '*', '(', ')', '-', '+', '[', ']', '?', '<', '>', ':', ';', '|', '/','.',',')); 
+        }
+        public static string RemoveHtmlString(this string value)
+        {
+            return string.Join("", value.Split('<', '>'));
         }
     }
 }

@@ -58,7 +58,7 @@ namespace PhimHang.Hubs
                         }
                         else if (item.IndexOf("@", 0, 1) != -1) // tag nguoi dung
                         {
-                            string user = item.Replace("@", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToLower();
+                            string user = item.RemoveSpecialString().ToLower();
                             messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='/" + user + "'>" + item + "</a>" + " ";
                         }
                         else if ((item.Contains("http") || item.Contains("www.")) && item.Length >= 4)
@@ -95,7 +95,7 @@ namespace PhimHang.Hubs
                 
                 #region explan this passing messege to stockcode and username list
                 //messageFromatHTML += "</a>";
-                post.Message = AppHelper.FilteringWord(messageFromatHTML);
+                post.Message = AppHelper.FilteringWord(messageFromatHTML); // Filteringword lọc từ khóa bậy
                 post.PostedBy = userlogin.Id;
                 post.PostedDate = DateTime.Now;
                 post.StockPrimary = stockTag;
@@ -109,37 +109,37 @@ namespace PhimHang.Hubs
 
                 var listStock = new List<string>();
                 var listUsersendMessege = new List<string>();
-
-                
-
                 List<string> listMessegeSplit = messagedefault.Split(' ').ToList().FindAll(p => p.Contains("$") || p.Contains("@"));
 
                 #endregion
 
-                #region gui message co phieu lien quan
+                #region gui message co phieu và user lien quan
                 db.Posts.Add(post);
                 foreach (var item in listMessegeSplit)
                 {
-                    string stockcode = item.Replace("$", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToUpper();
-                    if (item.IndexOf("$",0,1) != -1 && !listStock.Contains(stockcode)) // find the stock with $
+                    if (item.Length > 0)
                     {
-                        StockRelate stockRelateLasts = new StockRelate();
-                        stockRelateLasts.PostId = post.PostId;
-                        stockRelateLasts.StockCodeRelate = stockcode;
-                        db.StockRelates.Add(stockRelateLasts); // add to database
-                        listStock.Add(stockcode); // group of hub for client 
-                    }
-                    else if (item.IndexOf("@", 0 ,1) !=-1) //find the user with @
-                    {
-                        string user = item.Replace("@", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToLower();
-                        var finduser = db.UserLogins.FirstOrDefault(ul => ul.UserNameCopy == user);
-                        if (finduser != null)
+                        string stockcode = item.RemoveSpecialString().ToUpper();
+                        if (item.IndexOf("$", 0, 1) != -1 && !listStock.Contains(stockcode)) // find the stock with $
                         {
-                            NotificationMessege nM = new NotificationMessege { UserPost = userlogin.Id, UserReciver = finduser.Id, PostId = post.PostId, NumNoti = 1, TypeNoti = "U", CreateDate = DateTime.Now, XemYN = true };
-                            db.NotificationMesseges.Add(nM);
-                            listUsersendMessege.Add(user);
+                            StockRelate stockRelateLasts = new StockRelate();
+                            stockRelateLasts.PostId = post.PostId;
+                            stockRelateLasts.StockCodeRelate = stockcode;
+                            db.StockRelates.Add(stockRelateLasts); // add to database
+                            listStock.Add(stockcode); // group of hub for client 
                         }
-                    }
+                        else if (item.IndexOf("@", 0, 1) != -1) //find the user with @
+                        {
+                            string user = item.RemoveSpecialString().ToLower();
+                            var finduser = db.UserLogins.FirstOrDefault(ul => ul.UserNameCopy == user);
+                            if (finduser != null)
+                            {
+                                NotificationMessege nM = new NotificationMessege { UserPost = userlogin.Id, UserReciver = finduser.Id, PostId = post.PostId, NumNoti = 1, TypeNoti = "U", CreateDate = DateTime.Now, XemYN = true };
+                                db.NotificationMesseges.Add(nM);
+                                listUsersendMessege.Add(user);
+                            }
+                        }
+                    }                 
                 }
                 #endregion
 
@@ -175,7 +175,7 @@ namespace PhimHang.Hubs
                 #region gui message
 
                 await Clients.Groups(listStock).addPost(ret); // ad group co phieu lien quan
-                await Clients.All.addPostGlobal(ret); // add vào profile va home
+                await Clients.All.addPostGlobal(ret); // add message vào profile va home
                 if (listUsersendMessege.Count > 0)
                 {
                     await Clients.Users(listUsersendMessege).MessegeOfUserPost(1); // gui tin bao cho user nao có @
@@ -212,12 +212,12 @@ namespace PhimHang.Hubs
                     {
                         if (item.IndexOf("$", 0, 1) != -1)
                         {
-                            string ticker = item.Replace("$", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToUpper();
+                            string ticker = item.RemoveSpecialString().ToUpper();
                             messageFromatHTML += "<b><a onclick=selectMe(event,\"#\") target='_blank' href='/ticker/" + ticker + "'>" + item + "</a></b>" + " ";
                         }
                         else if (item.IndexOf("@", 0, 1) != -1)
                         {
-                            string user = item.Replace("@", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToLower();
+                            string user = item.RemoveSpecialString().ToLower();
                             messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='/" + user + "'>" + item + "</a>" + " ";
                         }
                         else if ((item.Contains("http") || item.Contains("www.")) && item.Length >= 4)
@@ -251,9 +251,7 @@ namespace PhimHang.Hubs
                 }
 
                 
-                reply.Message = AppHelper.FilteringWord(messageFromatHTML);
-                //var listStock = new List<string>();
-                //listStock.Add(stockCurrent.ToUpper());
+                reply.Message = AppHelper.FilteringWord(messageFromatHTML); // lọc từ khóa                
 
                 var listUsersendMessege = new List<string>();
                 ///////////////////////////////////////////
@@ -287,12 +285,12 @@ namespace PhimHang.Hubs
 
 
                 #region reply có đề cập đến user nào không ??
-                List<string> listMessegeSplit = messagedefault.Split(' ').ToList().FindAll(p => p.Contains("$") || p.Contains("@"));
+                List<string> listMessegeSplit = messagedefault.Split(' ').ToList().FindAll(p => p.Contains("@"));
                 foreach (var item in listMessegeSplit)
                 {
                     if (item.IndexOf("@", 0, 1) != -1) //find the user with @
                     {
-                        string user = item.Replace("@", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToLower();
+                        string user = item.RemoveSpecialString().ToLower();
                         var finduser = db.UserLogins.FirstOrDefault(ul => ul.UserNameCopy == user);
                         if (finduser != null)
                         {
@@ -326,10 +324,9 @@ namespace PhimHang.Hubs
                 }
                 catch (Exception)
                 {
-                    // chay tiep
+                    // erro thi van chay tiep
 
                 }
-
 
                 var ret = new
                 {
@@ -345,12 +342,12 @@ namespace PhimHang.Hubs
                 #endregion
                 
                 #region push message
-                await Clients.Caller.addReply(ret); // chính người đã reply
+                await Clients.Caller.addReply(ret); // gửi cho chính người đã reply (tạo trả lời bên dưới)
                 if (listUsersendMessege.Count > 0)
                 {
-                    await Clients.Users(listUsersendMessege).MessegeOfUserPost(1);
+                    await Clients.Users(listUsersendMessege).MessegeOfUserPost(1); // gửi thông báo (1) liên quan những người trong list post đã có người comment
                 }
-                await Clients.All.newReplyNoti(reply.PostedBy);
+                await Clients.All.newReplyNoti(reply.PostedBy); // +1 cho ai đang mở bài post đó
                 #endregion
             }
         }
