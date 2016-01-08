@@ -1312,6 +1312,10 @@ a.category-tab:hover{
     font-size: 2rem;
     padding-left: 50px;
 }
+.user-name2 a {
+    font-size: 1.5rem;
+    top:2px;
+}
 .user-name2 i{
     color:#FFBD00;
 }

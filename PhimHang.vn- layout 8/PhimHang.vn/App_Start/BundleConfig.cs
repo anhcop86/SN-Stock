@@ -84,7 +84,7 @@ namespace PhimHang
                              "~/ThemeBlue/js/Home.js"));
             #endregion
 
-            BundleTable.EnableOptimizations = true;
+            //BundleTable.EnableOptimizations = true;
         }
     }
 }

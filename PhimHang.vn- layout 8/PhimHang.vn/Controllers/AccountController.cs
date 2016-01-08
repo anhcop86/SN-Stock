@@ -710,11 +710,19 @@ namespace PhimHang.Controllers
         // POST: /Account/LogOff
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult LogOff()
+        public ActionResult LogOff(string returnUrl)
         {
             AuthenticationManager.SignOut();
             AppHelper.ReleaseCookieOfFace();
-            return RedirectToAction("Index", "Home");
+            if (returnUrl.Equals("/myprofile"))
+            {
+                return RedirectToAction("Index", "Home"); 
+            }
+            else
+            {
+                return RedirectToLocal(returnUrl); // Returun URL
+            }
+            
         }
 
         //
