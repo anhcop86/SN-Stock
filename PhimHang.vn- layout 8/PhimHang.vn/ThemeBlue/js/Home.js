@@ -10,12 +10,14 @@ function CreateDropListBoxMore(postid) {
     var dropboxHtml = '<div id="jq-dropdown-2" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative" style="left: -5px; z-index:999">'
                                + '<ul class="dropdown-menu">'
                                + '<li><a href="#" title="Xóa bài viết">Xóa bài viết</a></li>'
-                               + '<li><a href="#" title="Báo cáo Vi phạm">Báo cáo vi phạm</a></li>'
+                               + '<li><a href="javascript:;" onclick="LoadBaoCaoViPham();" title="Báo cáo Vi phạm">Báo cáo vi phạm</a></li>'
                                + '</ul>'
                                + '</div>';
     $("#loadToolMoreId" + postid).append(dropboxHtml);
 }
-
+function LoadBaoCaoViPham() {    
+    $("#dialog-confirm").dialog("open");
+}
 function uploadPreview(files) {
     file = files[0];
     if (file.size > 3000000) {
