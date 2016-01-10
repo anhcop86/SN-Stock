@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Mạng xã hội chứng khoán | cùng phím ®";
+    ViewBag.Title = "PhốChứngKhoán.com | Mạng Xã Hội Chứng Khoán ®";
     Layout = "~/Views/Shared/_Layout_Home.cshtml";
 }
 @section scripts{
@@ -24,7 +24,7 @@
             <div class="input-status">
                 <form id="frmStatus" name="frmStatus" method="GET">
                     <div id="input-status-text" class="input-status-text">
-                        <textarea onfocus=" {  location.href='/myprofile' }" data-bind="    value : newMessage, valueUpdate : 'afterkeydown' , limitCharacters : 140" class="status-cm" name="status" rows="5" placeholder="$Cổ phiếu | &#64;Username" id="status" title="Search" autocomplete="off" rows="5"></textarea>
+                        <textarea onfocus=" {  location.href='/myprofile' }" data-bind="value : newMessage, valueUpdate : 'afterkeydown' , limitCharacters : 140" class="status-cm" name="status" rows="5" placeholder="$Cổ phiếu | &#64;Username" id="status" title="Search" autocomplete="off" rows="5"></textarea>
                     </div>
                     <div class="status-control">
                         <div class="choose_file f-left">
@@ -85,8 +85,14 @@
                             <div class="list-item-status-content" data-bind="html : Message"></div>
                             <div class="list-item-control">
                                 <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
-                                <a class="button btn-answer" target="_self" onclick="window.open(this.href, 'chia sẽ lên facebook', 'left=100,top=100,width=600,height=400,toolbar=1,resizable=0'); selectMe(event, '#'); return false;" data-bind="attr : { href : 'https://www.facebook.com/sharer/sharer.php?u=@ViewBag.AbsolutePathHostName/PostDetail?postid='+ PostId +'&display=popup&ref=plugin' }" title="Trả lời">Chia sẻ</a>
-                                <a class="button" href="#" style="cursor:text" data-bind="visible: SumReply() > 0"><i class="fa fa-comments" data-bind=" text : SumReply"></i></a>
+                                <a class="button btn-answer" target="_self" onclick="window.open(this.href, 'chia sẻ lên facebook', 'left=100,top=100,width=600,height=400,toolbar=1,resizable=0'); selectMe(event, '#'); return false;" data-bind="attr : { href : 'https://www.facebook.com/sharer/sharer.php?u=@ViewBag.AbsolutePathHostName/PostDetail?postid='+ PostId +'&display=popup&ref=plugin' }" title="Chia sẻ lên facebook">Chia sẻ</a>
+                           
+                           <!--Load more tool: delete post & report -->
+
+                                <a class="button" onclick='selectMe(event,"#")' href="javascript:;" title="more" data-bind=" click: function(data, event) { $parent.loadToolMore(data, event); } ,attr : { id : 'loadToolMoreId' + PostId   },"><i class="fa fa-caret-down"></i></a>                                
+                                
+                            <!--End load more tool-->
+                                <a class="button" href="#" style="cursor:text" data-bind="visible: SumReply() > 0"><i class="fa fa-comments" data-bind=" text : SumReply"></i></a>                                
                                 <span class="likeAndPin">
                                     <span data-bind="text : SumLike, visible : SumLike() > 0 "></span>
                                     <button class="fa fa-thumbs-o-up" data-bind=" click : function(data, event) { $parent.AddLike(data, event) ;   } , attr : {id : 'PostId' + PostId} , enable : DiableLike"></button>
@@ -181,6 +187,15 @@
             </div>
         </div>
     </div>
+
+    @*<div id="toolMore">
+        <div id="jq-dropdown-2" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative" style="left: 95px;top: 20px;">
+            <ul class="dropdown-menu">
+                <li><a href="#" title="Xóa bài viết">Xóa bài viết</a></li>
+                <li><a href="#" title="Vi phạm">Báo cáo vi phạm</a></li>
+            </ul>
+        </div>
+    </div>*@
 </div>
 
 <!-- gia co phieu real time-->

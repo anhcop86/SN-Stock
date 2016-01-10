@@ -112,3 +112,7 @@
 .dropdown .copy A { background-image: url(icons/document-copy.png); }
 .dropdown .paste A { background-image: url(icons/clipboard.png); }
 .dropdown .delete A { background-image: url(icons/cross-script.png); }
+
+#jq-dropdown-2 a:hover{
+    color:white;
+}

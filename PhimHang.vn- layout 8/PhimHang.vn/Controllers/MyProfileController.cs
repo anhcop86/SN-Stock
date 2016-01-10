@@ -45,7 +45,6 @@ namespace PhimHang.Controllers
             var company = new StockCode();
             ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             #endregion
-
             #region Thong tin menu ben trai
             //Thong tin menu ben trai
             var post = await db.Posts.CountAsync(p => p.PostedBy == currentUser.UserExtentLogin.Id);

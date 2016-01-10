@@ -184,5 +184,10 @@ $(document).ready(function () {
     //    return false;
     //}
     
-    
+   
+    $("html").click(function () {
+        if ($("#jq-dropdown-2").length > 0) {
+            $("#jq-dropdown-2").remove();
+        }
+    });
 });
