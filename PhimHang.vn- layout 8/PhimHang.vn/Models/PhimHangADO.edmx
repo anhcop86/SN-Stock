@@ -130,7 +130,7 @@
             <PropertyRef Name="PostCommentsId" />
           </Key>
           <Property Name="PostCommentsId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="Message" Type="nvarchar" MaxLength="1024" Nullable="false" />
           <Property Name="PostedBy" Type="bigint" Nullable="false" />
           <Property Name="CommentBy" Type="int" Nullable="false" />
           <Property Name="PostedDate" Type="datetime2" Precision="7" Nullable="false" />
@@ -140,7 +140,7 @@
             <PropertyRef Name="PostId" />
           </Key>
           <Property Name="PostId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="Message" Type="nvarchar" MaxLength="2048" />
           <Property Name="PostedBy" Type="int" Nullable="false" />
           <Property Name="PostedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="ChartImageURL" Type="nvarchar" MaxLength="128" />
@@ -909,7 +909,7 @@
             <PropertyRef Name="PostCommentsId" />
           </Key>
           <Property Name="PostCommentsId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="true" />
           <Property Name="PostedBy" Type="Int64" Nullable="false" />
           <Property Name="CommentBy" Type="Int32" Nullable="false" />
           <Property Name="PostedDate" Type="DateTime" Nullable="false" Precision="7" />
@@ -921,7 +921,7 @@
             <PropertyRef Name="PostId" />
           </Key>
           <Property Name="PostId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
           <Property Name="PostedBy" Type="Int32" Nullable="false" />
           <Property Name="PostedDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="ChartImageURL" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />

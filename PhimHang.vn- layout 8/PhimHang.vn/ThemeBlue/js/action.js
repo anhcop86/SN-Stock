@@ -1,4 +1,4 @@
-/* 
+﻿/* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -12,7 +12,7 @@ $(document).ready(function () {
         open: function (event, ui) {
             $('body').css('overflow', 'hidden');
             //$(window).scrollTop(0);
-            $('.avata-genaral-size').focus(); // trang profile focus c�i n�y
+            $('.avata-genaral-size').focus(); // trang profile focus cái này
             if ($('#bg_dialog').length == 0) {
                 $("<div id='bg_dialog'></div>").appendTo("body");                
                 $(".ui-dialog").appendTo('#bg_dialog');
@@ -26,8 +26,8 @@ $(document).ready(function () {
         },
         close: function (event, ui) {
             $('#close_dialog').hide();
-            $('#bg_dialog').hide();
-            document.body.style.overflow = 'auto';
+            $('#bg_dialog').hide();            
+            $('body').css('overflow', 'auto');
         }
     });
 
@@ -190,5 +190,31 @@ $(document).ready(function () {
             $("#jq-dropdown-2").remove();
         }
     });
-        
+    $("body").append('<div id="dialog-confirm" title="Báo cáo vi phạm"><p>'
+                        + '<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>'
+                        + 'These items will be permanently deleted and cannot be recovered. Are you sure?</p>'
+                    +'</div>');
+    $("#dialog-confirm").dialog({
+        resizable: false,
+        height: 180,
+        modal: true,
+        autoOpen: false,        
+        create: function (event) { $(event.target).parent().css('position', 'fixed'); },
+        open: function (event, ui) {
+            //$('#bg_dialog').show();
+            $('body').css('overflow', 'hidden');            
+        },
+        close: function (event, ui) {
+            //$('#bg_dialog').hide();
+            $('body').css('overflow', 'auto');            
+        },
+        buttons: {
+            "Delete all items": function () {
+                $(this).dialog("close");
+            },
+            Cancel: function () {
+                $(this).dialog("close");
+            }
+        }
+    });
 });

@@ -6,28 +6,28 @@
     <edmx:Diagrams>
       <Diagram DiagramId="f01d127b6e904164b5d80ea8b0d06166" Name="Diagram1" ZoomLevel="94">
         <EntityTypeShape EntityType="PHDBContext.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="PHDBContext.AspNetRole" Width="1.5" PointX="3" PointY="23.25" />
-        <EntityTypeShape EntityType="PHDBContext.AspNetUserClaim" Width="1.5" PointX="7.5" PointY="17.75" />
-        <EntityTypeShape EntityType="PHDBContext.AspNetUserLogin" Width="1.5" PointX="7.5" PointY="20.5" />
-        <EntityTypeShape EntityType="PHDBContext.AspNetUser" Width="1.5" PointX="5.25" PointY="18.5" />
+        <EntityTypeShape EntityType="PHDBContext.AspNetRole" Width="1.5" PointX="6" PointY="12.25" />
+        <EntityTypeShape EntityType="PHDBContext.AspNetUserClaim" Width="1.5" PointX="10.5" PointY="15.75" />
+        <EntityTypeShape EntityType="PHDBContext.AspNetUserLogin" Width="1.5" PointX="10.5" PointY="18.5" />
+        <EntityTypeShape EntityType="PHDBContext.AspNetUser" Width="1.5" PointX="8.25" PointY="16.5" />
         <EntityTypeShape EntityType="PHDBContext.FilterKeyWord" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="PHDBContext.FollowStock" Width="1.5" PointX="5.25" PointY="9.875" />
-        <EntityTypeShape EntityType="PHDBContext.FollowUser" Width="1.5" PointX="5.25" PointY="15.5" />
+        <EntityTypeShape EntityType="PHDBContext.FollowStock" Width="1.5" PointX="5.25" PointY="18.125" />
+        <EntityTypeShape EntityType="PHDBContext.FollowUser" Width="1.5" PointX="5.25" PointY="20.75" />
         <EntityTypeShape EntityType="PHDBContext.JobTitile" Width="1.5" PointX="0.75" PointY="17.125" />
         <EntityTypeShape EntityType="PHDBContext.NotificationMessege" Width="1.5" PointX="10.5" PointY="24.375" />
         <EntityTypeShape EntityType="PHDBContext.Philosophy" Width="1.5" PointX="0.75" PointY="14.125" />
-        <EntityTypeShape EntityType="PHDBContext.PinStock" Width="1.5" PointX="7.5" PointY="36.125" />
+        <EntityTypeShape EntityType="PHDBContext.PinStock" Width="1.5" PointX="7.5" PointY="38.875" />
         <EntityTypeShape EntityType="PHDBContext.PostComment" Width="1.5" PointX="7.5" PointY="24.75" />
         <EntityTypeShape EntityType="PHDBContext.Post" Width="1.5" PointX="5.25" PointY="33.75" />
         <EntityTypeShape EntityType="PHDBContext.Setting" Width="1.5" PointX="0.75" PointY="3.75" />
         <EntityTypeShape EntityType="PHDBContext.StockCode" Width="1.5" PointX="2.75" PointY="3.75" />
         <EntityTypeShape EntityType="PHDBContext.StockPrice" Width="1.5" PointX="4.75" PointY="0.75" />
-        <EntityTypeShape EntityType="PHDBContext.StockRelate" Width="1.5" PointX="7.5" PointY="39.125" />
-        <EntityTypeShape EntityType="PHDBContext.StockViewLastest" Width="1.5" PointX="5.25" PointY="23.75" />
+        <EntityTypeShape EntityType="PHDBContext.StockRelate" Width="1.5" PointX="7.5" PointY="36.125" />
+        <EntityTypeShape EntityType="PHDBContext.StockViewLastest" Width="1.5" PointX="5.25" PointY="30.75" />
         <EntityTypeShape EntityType="PHDBContext.TickerHot" Width="1.5" PointX="4.75" PointY="4.75" />
         <EntityTypeShape EntityType="PHDBContext.UserLogin" Width="1.5" PointX="3" PointY="13.875" />
         <EntityTypeShape EntityType="PHDBContext.UserRelate" Width="1.5" PointX="7.5" PointY="28" />
-        <EntityTypeShape EntityType="PHDBContext.UserViewLastest" Width="1.5" PointX="5.25" PointY="12.625" />
+        <EntityTypeShape EntityType="PHDBContext.UserViewLastest" Width="1.5" PointX="5.25" PointY="15.125" />
         <AssociationConnector Association="PHDBContext.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" />
         <AssociationConnector Association="PHDBContext.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="PHDBContext.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" />

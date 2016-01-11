@@ -124,10 +124,6 @@ function viewModel() {
     var checkLoadFirst = 0;
     var filterhere = "";
 
-
-
-
-
     self.init = function () {
         self.error(null);
         // lay danh muc thuong
