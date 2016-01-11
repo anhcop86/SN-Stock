@@ -1763,3 +1763,10 @@ a.avatar img:hover{
     height:20px;
     font-size:xx-large;
 }
+
+/*.dialog-confirm {
+    background-color: white;
+    top:200px;
+    left:200px;
+    position:fixed;
+}*/

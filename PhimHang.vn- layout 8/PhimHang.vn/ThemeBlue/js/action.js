@@ -15,7 +15,7 @@ $(document).ready(function () {
             $('.avata-genaral-size').focus(); // trang profile focus cái này
             if ($('#bg_dialog').length == 0) {
                 $("<div id='bg_dialog'></div>").appendTo("body");                
-                $(".ui-dialog").appendTo('#bg_dialog');
+                $(".ui-dialog").first().appendTo('#bg_dialog');
                 $('#bg_dialog').show();
             }
             if ($('#close_dialog').length == 0) {
@@ -185,19 +185,24 @@ $(document).ready(function () {
     //}
     
    
-    $("html").click(function () {
+    $("html").click(function () { // for dropdown menu
         if ($("#jq-dropdown-2").length > 0) {
             $("#jq-dropdown-2").remove();
         }
     });
+
+// báo cáo vi phạm
     $("body").append('<div id="dialog-confirm" title="Báo cáo vi phạm"><p>'
                         + '<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>'
-                        + 'These items will be permanently deleted and cannot be recovered. Are you sure?</p>'
-                    +'</div>');
+                        + 'Nội dung này không phù hợp?. </br>Chúng tôi sẽ xem xét bản tin này</p>'
+                    + '</div>');
+       
+
     $("#dialog-confirm").dialog({
         resizable: false,
-        height: 180,
-        modal: true,
+        draggable: false,
+        height: 180,        
+        modal: true,        
         autoOpen: false,        
         create: function (event) { $(event.target).parent().css('position', 'fixed'); },
         open: function (event, ui) {
@@ -209,7 +214,64 @@ $(document).ready(function () {
             $('body').css('overflow', 'auto');            
         },
         buttons: {
-            "Delete all items": function () {
+            "Báo cáo": function () {
+                var postid = $(this).data('postid');
+                // post data on server
+                reportPostUpServer(postid);
+                $(this).dialog("close");
+            },
+            Cancel: function () {
+                $(this).dialog("close");
+            }
+        }
+    });
+
+    function reportPostUpServer(postid) {
+        $.ajax({
+            url: '/Post/ReportError',
+            type: 'POST',
+            data: { postid: postid },
+            cache: false,            
+        }).done(function (data) {
+            if (data === "Y") {
+                showNotification('Báo cáo vi phạm thành công, chúng tôi sẽ phản hồi sớm nhất');
+                return
+            }
+            else {
+                showNotification('Có lỗi');
+            }
+        }).fail(function () {
+            showNotification('Có lỗi fail');
+        })
+    }
+    
+   
+    /// xóa bài viết
+    $("body").append('<div id="dialog-delete" title="Xóa bài viết"><p>'
+                       + '<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>'
+                       + 'Bạn có chắc muốn xóa bài này?</p>'
+                   + '</div>');
+
+    $("#dialog-delete").dialog({
+        resizable: false,
+        draggable: false,
+        height: 180,
+        modal: true,
+        autoOpen: false,
+        create: function (event) { $(event.target).parent().css('position', 'fixed'); },
+        open: function (event, ui) {
+            //$('#bg_dialog').show();
+            $('body').css('overflow', 'hidden');
+        },
+        close: function (event, ui) {
+            //$('#bg_dialog').hide();
+            $('body').css('overflow', 'auto');
+        },
+        buttons: {
+            "Xóa": function () {
+                var postid = $(this).data('postid');
+                // post data on server
+                //reportPostUpServer(postid);
                 $(this).dialog("close");
             },
             Cancel: function () {

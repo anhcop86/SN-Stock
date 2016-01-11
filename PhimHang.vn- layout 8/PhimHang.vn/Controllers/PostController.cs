@@ -333,6 +333,17 @@ namespace PhimHang.Controllers
                 return "error"; // return name file error
             }
         }
+
+        [HttpPost]
+        public async Task<string> ReportError(long postid)
+        {
+            return "Y";
+        }
+
+        public async Task<string> CheckButtonDelete(long postid)
+        {
+            return "Y";
+        }
         [AllowAnonymous]
         public async Task UpdateLike(long postid)
         {

@@ -9,14 +9,14 @@ function removeFileChart() {
 function CreateDropListBoxMore(postid) {
     var dropboxHtml = '<div id="jq-dropdown-2" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative" style="left: -5px; z-index:999">'
                                + '<ul class="dropdown-menu">'
-                               + '<li><a href="#" title="Xóa bài viết">Xóa bài viết</a></li>'
-                               + '<li><a href="javascript:;" onclick="LoadBaoCaoViPham();" title="Báo cáo Vi phạm">Báo cáo vi phạm</a></li>'
+                               //+ '<li><a href="#" title="Xóa bài viết">Xóa bài viết</a></li>'
+                               + '<li><a href="javascript:;" onclick="LoadBaoCaoViPham(' + postid + ');" title="Báo cáo Vi phạm">Báo cáo vi phạm</a></li>'
                                + '</ul>'
                                + '</div>';
     $("#loadToolMoreId" + postid).append(dropboxHtml);
 }
-function LoadBaoCaoViPham() {    
-    $("#dialog-confirm").dialog("open");
+function LoadBaoCaoViPham(postid) {    
+    $("#dialog-confirm").data('postid', postid).dialog("open");
 }
 function uploadPreview(files) {
     file = files[0];
@@ -40,8 +40,8 @@ function uploadPreview(files) {
             type: 'POST',
             data: formData,
             cache: false,
-            contentType: false,
-            processData: false
+            contentType: false, // truong hop dung form
+            processData: false // truong hop dung form
         }).done(function (data) {
             if (data === "error") {
                 showNotification('Có lỗi khi upload ảnh, vui lòng thử lại');
@@ -258,9 +258,7 @@ function viewModel() {
             $("#jq-dropdown-2").remove();            
             CreateDropListBoxMore(data.PostId);
             $("#jq-dropdown-2").show();            
-        }
-     
-       
+        }     
     }
     self.detailPost = function (data, e) { // chi tiet post bao gom tra loi
         self.newReply('');

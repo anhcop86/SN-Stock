@@ -6,6 +6,46 @@ function removeFileChart() {
     }
 }
 
+function CreateDropListBoxMore(postid) {
+    var dropboxHtml = '<div id="jq-dropdown-2" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative" style="left: -5px; z-index:999">'
+                               + '<ul class="dropdown-menu">';
+    
+    if (checkDeleteButton(postid) == "Y") {
+        dropboxHtml = dropboxHtml + '<li><a href="#" title="Xóa bài viết">Xóa bài viết</a></li>';
+    }
+                               
+    dropboxHtml = dropboxHtml + '<li><a href="javascript:;" onclick="LoadBaoCaoViPham(' + postid + ');" title="Báo cáo Vi phạm">Báo cáo vi phạm</a></li>'
+                               + '</ul>'
+                               + '</div>';
+    $("#loadToolMoreId" + postid).append(dropboxHtml);
+}
+function LoadBaoCaoViPham(postid) {
+    $("#dialog-confirm").data('postid', postid).dialog("open");
+}
+
+function checkDeleteButton(postid) {
+    
+    $.ajax({
+        url: '/Post/CheckButtonDelete',
+        type: 'POST',
+        data: { postid: postid },
+        cache: false,
+    }).success(function (data) {
+        //alert(data);
+        if (data == "Y") {
+            //alert(data);
+            return data;
+        }
+        else {
+            result = "N121";
+        }
+    }).fail(function () {
+        result = "NN";
+    })
+
+    
+}
+
 function uploadPreview(files) {
     file = files[0];
     if (file.size > 3000000) {
@@ -351,6 +391,34 @@ commenthub.client.addNewLike = function (postid) {
         return;
     }
 
+}
+
+var tempcheck = 0;
+self.loadToolMore = function (data, e) {
+    var resulttemp = false;
+    if (tempcheck != data.PostId) {
+        tempcheck = data.PostId;
+        resulttemp = true; // true la cllick sang artical khác
+    }
+    if (resulttemp == false) { // truong hop click lai action 
+        if ($("#jq-dropdown-2").length > 0) { // neu ton tai thi hien len 
+            if ($("#jq-dropdown-2").is(':visible')) {
+                $("#jq-dropdown-2").hide();
+            }
+            else {
+                $("#jq-dropdown-2").show();
+            }
+        }
+        else {
+            CreateDropListBoxMore(data.PostId);
+            $("#jq-dropdown-2").show();
+        }
+    }
+    else {
+        $("#jq-dropdown-2").remove();
+        CreateDropListBoxMore(data.PostId);
+        $("#jq-dropdown-2").show();
+    }
 }
 self.detailPost = function (data, e) { // chi tiet post bao gom tra loi
 

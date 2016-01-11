@@ -97,7 +97,12 @@
                             <div class="list-item-status-content" data-bind="html : Message"></div>
                             <div class="list-item-control">                                
                                 <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
-                                <a class="button btn-answer" target="_self" onclick="window.open(this.href, 'chia sẽ lên facebook', 'left=100,top=100,width=600,height=400,toolbar=1,resizable=0'); selectMe(event, '#'); return false;" data-bind="attr : { href : 'https://www.facebook.com/sharer/sharer.php?u=@ViewBag.AbsolutePathHostName/PostDetail?postid='+ PostId +'&display=popup&ref=plugin' }" title="Trả lời">Chia sẻ</a>
+                                <a class="button btn-answer" target="_self" onclick="window.open(this.href, 'chia sẻ lên facebook', 'left=100,top=100,width=600,height=400,toolbar=1,resizable=0'); selectMe(event, '#'); return false;" data-bind="attr : { href : 'https://www.facebook.com/sharer/sharer.php?u=@ViewBag.AbsolutePathHostName/PostDetail?postid='+ PostId +'&display=popup&ref=plugin' }" title="Trả lời">Chia sẻ</a>
+                                <!--Load more tool: delete post & report -->
+
+                                <a class="button" onclick='selectMe(event,"#")' href="javascript:;" title="more" data-bind=" click: function(data, event) { $parent.loadToolMore(data, event); } ,attr : { id : 'loadToolMoreId' + PostId   },"><i class="fa fa-caret-down"></i></a>
+
+                                <!--End load more tool-->
                                 <a class="button" href="#" style="cursor:text" data-bind="visible: SumReply() > 0"><i class="fa fa-comments" data-bind=" text : SumReply"></i></a>                                
                                 <span class="likeAndPin">
                                     <span data-bind="text : SumLike, visible : SumLike() > 0 "></span>
