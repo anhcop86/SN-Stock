@@ -16,7 +16,7 @@ function CreateDropListBoxMore(postid) {
     $("#loadToolMoreId" + postid).append(dropboxHtml);
 }
 function LoadBaoCaoViPham(postid) {    
-    $("#dialog-confirm").data('postid', postid).dialog("open");
+    $("#dialog-delete").data('postid', postid).dialog("open");
 }
 function uploadPreview(files) {
     file = files[0];

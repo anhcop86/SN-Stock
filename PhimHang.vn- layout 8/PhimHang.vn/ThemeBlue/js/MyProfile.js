@@ -6,43 +6,57 @@ function removeFileChart() {
     }
 }
 
-function CreateDropListBoxMore(postid) {
-    var dropboxHtml = '<div id="jq-dropdown-2" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative" style="left: -5px; z-index:999">'
+function CreateDropListBoxMore(postid) {    
+    checkStatusDeleteButton(postid, function (d) {
+        var dropboxHtml = '<div id="jq-dropdown-2" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative" style="left: -5px; z-index:999">'
                                + '<ul class="dropdown-menu">';
-    
-    if (checkDeleteButton(postid) == "Y") {
-        dropboxHtml = dropboxHtml + '<li><a href="#" title="Xóa bài viết">Xóa bài viết</a></li>';
-    }
-                               
-    dropboxHtml = dropboxHtml + '<li><a href="javascript:;" onclick="LoadBaoCaoViPham(' + postid + ');" title="Báo cáo Vi phạm">Báo cáo vi phạm</a></li>'
+        if (d === true) {            
+            dropboxHtml = dropboxHtml + '<li><a href="javascript:;"  data-bind=" click:  $parent.deletePost(data, event); " title="Xóa bài viết">Xóa bài viết</a></li>';
+        }
+        dropboxHtml = dropboxHtml + '<li><a href="javascript:;" onclick="LoadBaoCaoViPham(' + postid + ');" title="Báo cáo Vi phạm">Báo cáo vi phạm</a></li>'
                                + '</ul>'
-                               + '</div>';
-    $("#loadToolMoreId" + postid).append(dropboxHtml);
+                               + '</div>';        
+        $("#loadToolMoreId" + postid).append(dropboxHtml);
+        $("#jq-dropdown-2").show(); // hiện droplistbox tool with delete
+    });        
 }
-function LoadBaoCaoViPham(postid) {
-    $("#dialog-confirm").data('postid', postid).dialog("open");
+//function LoadDeletePost(postid) {
+//    //$("#dialog-delete").data('postid', postid).dialog("open");
+//}
+
+function LoadDeletTest() {
+    console.log(0);
 }
 
-function checkDeleteButton(postid) {
-    
+//function LoadBaoCaoViPham(postid) {
+//    $("#dialog-confirm").data('postid', postid).dialog("open");
+//}
+function LoadDeleteHtml(check) {
+    if (check) {
+        return '<li><a href="javascript:;" onclick="LoadDeletePost(' + postid + ');" title="Xóa bài viết">Xóa bài viết</a></li>';
+    }
+    else {
+        return '';
+    }
+}
+function checkStatusDeleteButton(postid, callback) {    
     $.ajax({
         url: '/Post/CheckButtonDelete',
         type: 'POST',
-        data: { postid: postid },
+        data: { postid: postid, userid: $('#HiddentShortUserId').val() },
         cache: false,
-    }).success(function (data) {
-        //alert(data);
-        if (data == "Y") {
-            //alert(data);
-            return data;
+    }).success(function (data) {        
+        if (data === 'True') {            
+            callback(true);            
         }
         else {
-            result = "N121";
+            callback(false);
         }
-    }).fail(function () {
-        result = "NN";
+    }).error(function () {
+        callback(false);
     })
 
+    
     
 }
 
@@ -354,6 +368,10 @@ commenthub.client.addReply = function (reply) {
     self.replys.unshift(new Reply(reply));
     //self.replys.splice(0, 0, new Reply(reply));
 }
+    ///////////////////////////////////////////// delete post
+self.deletePost = function (data, e) {
+    console.log('delete post');
+}
 
 /////////////////////
 
@@ -410,14 +428,12 @@ self.loadToolMore = function (data, e) {
             }
         }
         else {
-            CreateDropListBoxMore(data.PostId);
-            $("#jq-dropdown-2").show();
+            CreateDropListBoxMore(data.PostId);                        
         }
     }
     else {
         $("#jq-dropdown-2").remove();
-        CreateDropListBoxMore(data.PostId);
-        $("#jq-dropdown-2").show();
+        CreateDropListBoxMore(data.PostId);        
     }
 }
 self.detailPost = function (data, e) { // chi tiet post bao gom tra loi

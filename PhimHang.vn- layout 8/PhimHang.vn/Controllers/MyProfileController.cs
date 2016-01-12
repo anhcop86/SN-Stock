@@ -55,7 +55,7 @@ namespace PhimHang.Controllers
             ViewBag.Follow = follow;
             ViewBag.Follower = follower;
 
-            ViewBag.CureentUserId = currentUser.Id;
+            ViewBag.CureentUserId = currentUser.UserExtentLogin.Id;
             ViewBag.UserName = currentUser.UserName;
 
             ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;

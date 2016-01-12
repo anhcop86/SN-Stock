@@ -205,12 +205,10 @@ $(document).ready(function () {
         modal: true,        
         autoOpen: false,        
         create: function (event) { $(event.target).parent().css('position', 'fixed'); },
-        open: function (event, ui) {
-            //$('#bg_dialog').show();
+        open: function (event, ui) {            
             $('body').css('overflow', 'hidden');            
         },
-        close: function (event, ui) {
-            //$('#bg_dialog').hide();
+        close: function (event, ui) {            
             $('body').css('overflow', 'auto');            
         },
         buttons: {
@@ -232,7 +230,7 @@ $(document).ready(function () {
             type: 'POST',
             data: { postid: postid },
             cache: false,            
-        }).done(function (data) {
+        }).success(function (data) {
             if (data === "Y") {
                 showNotification('Báo cáo vi phạm thành công, chúng tôi sẽ phản hồi sớm nhất');
                 return
@@ -247,36 +245,37 @@ $(document).ready(function () {
     
    
     /// xóa bài viết
-    $("body").append('<div id="dialog-delete" title="Xóa bài viết"><p>'
-                       + '<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>'
-                       + 'Bạn có chắc muốn xóa bài này?</p>'
-                   + '</div>');
+    //$("#CommentForKoLoad").append('<div id="dialog-delete" title="Xóa bài viết"><p>'
+    //                   + '<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>'
+    //                   + 'Bạn có chắc muốn xóa bài này?</p></br></br>'
+    //                   + '<button id="btAddPost" style="cursor:pointer" class="button-phim" data-bind="click : $root.deletePost ">delete</button>'
+    //               + '</div>');
 
-    $("#dialog-delete").dialog({
-        resizable: false,
-        draggable: false,
-        height: 180,
-        modal: true,
-        autoOpen: false,
-        create: function (event) { $(event.target).parent().css('position', 'fixed'); },
-        open: function (event, ui) {
-            //$('#bg_dialog').show();
-            $('body').css('overflow', 'hidden');
-        },
-        close: function (event, ui) {
-            //$('#bg_dialog').hide();
-            $('body').css('overflow', 'auto');
-        },
-        buttons: {
-            "Xóa": function () {
-                var postid = $(this).data('postid');
-                // post data on server
-                //reportPostUpServer(postid);
-                $(this).dialog("close");
-            },
-            Cancel: function () {
-                $(this).dialog("close");
-            }
-        }
-    });
+    //$("#dialog-delete").dialog({
+    //    resizable: false,
+    //    draggable: false,
+    //    height: 180,
+    //    modal: true,
+    //    autoOpen: false,
+    //    create: function (event) { $(event.target).parent().css('position', 'fixed'); },
+    //    open: function (event, ui) {
+    //        //$('#bg_dialog').show();
+    //        $('body').css('overflow', 'hidden');
+    //    },
+    //    //close: function (event, ui) {
+    //    //    //$('#bg_dialog').hide();
+    //    //    $('body').css('overflow', 'auto');
+    //    //},
+    //    //buttons: {
+    //    //    "Xóa": function () {
+    //    //        var postid = $(this).data('postid');
+    //    //        // post data on server
+    //    //        //reportPostUpServer(postid);
+    //    //        $(this).dialog("close");
+    //    //    },
+    //    //    Cancel: function () {
+    //    //        $(this).dialog("close");
+    //    //    }
+    //    //}
+    //});
 });

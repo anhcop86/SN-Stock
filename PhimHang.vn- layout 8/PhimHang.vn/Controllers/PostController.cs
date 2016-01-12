@@ -340,9 +340,52 @@ namespace PhimHang.Controllers
             return "Y";
         }
 
-        public async Task<string> CheckButtonDelete(long postid)
+        public async Task<bool> CheckButtonDelete(long postid, int userid)
         {
-            return "Y";
+            try
+            {
+                var post = await db.Posts.CountAsync(p => p.PostId == postid && p.PostedBy == userid);
+                if (post > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                return false;                
+            }            
+            
+        }
+
+        [Authorize]
+        public async Task<bool> DeletePostFromClientRequest(long postid)
+        {
+            try
+            {
+                ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                Post post = await db.Posts.FirstOrDefaultAsync(p => p.PostId == postid && p.PostedBy == currentUser.UserExtentLogin.Id);
+                if (post!= null)
+                {
+                    db.Posts.Remove(post);
+                    await db.SaveChangesAsync();
+                    return true;    
+                }
+                else
+                {
+                    return false;
+                }
+                
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            
         }
         [AllowAnonymous]
         public async Task UpdateLike(long postid)
