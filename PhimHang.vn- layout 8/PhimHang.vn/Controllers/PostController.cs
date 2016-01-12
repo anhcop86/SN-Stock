@@ -362,14 +362,20 @@ namespace PhimHang.Controllers
         }
 
         [Authorize]
+        [HttpPost]
         public async Task<bool> DeletePostFromClientRequest(long postid)
         {
             try
             {
                 ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                var stockRelate = await db.StockRelates.Where(st => st.PostId == postid).ToListAsync();
+                var postComments = await db.PostComments.Where(pc => pc.PostedBy == postid).ToListAsync();
+                
                 Post post = await db.Posts.FirstOrDefaultAsync(p => p.PostId == postid && p.PostedBy == currentUser.UserExtentLogin.Id);
                 if (post!= null)
                 {
+                    db.StockRelates.RemoveRange(stockRelate);
+                    db.PostComments.RemoveRange(postComments);
                     db.Posts.Remove(post);
                     await db.SaveChangesAsync();
                     return true;    

@@ -11,12 +11,13 @@ function CreateDropListBoxMore(postid) {
         var dropboxHtml = '<div id="jq-dropdown-2" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative" style="left: -5px; z-index:999">'
                                + '<ul class="dropdown-menu">';
         if (d === true) {            
-            dropboxHtml = dropboxHtml + '<li><a href="javascript:;"  data-bind=" click:  $parent.deletePost(data, event); " title="Xóa bài viết">Xóa bài viết</a></li>';
+            dropboxHtml = dropboxHtml + '<li><a href="javascript:;" data-bind=" click: function(data, event) { deletePost(' + postid + ', event);} "  title="Xóa bài viết">Xóa bài viết</a></li>';//
         }
         dropboxHtml = dropboxHtml + '<li><a href="javascript:;" onclick="LoadBaoCaoViPham(' + postid + ');" title="Báo cáo Vi phạm">Báo cáo vi phạm</a></li>'
                                + '</ul>'
                                + '</div>';        
         $("#loadToolMoreId" + postid).append(dropboxHtml);
+        ko.applyBindings(vmPost, document.getElementById("jq-dropdown-2"));
         $("#jq-dropdown-2").show(); // hiện droplistbox tool with delete
     });        
 }
@@ -24,13 +25,9 @@ function CreateDropListBoxMore(postid) {
 //    //$("#dialog-delete").data('postid', postid).dialog("open");
 //}
 
-function LoadDeletTest() {
-    console.log(0);
+function LoadBaoCaoViPham(postid) {
+    $("#dialog-confirm").data('postid', postid).dialog("open");
 }
-
-//function LoadBaoCaoViPham(postid) {
-//    $("#dialog-confirm").data('postid', postid).dialog("open");
-//}
 function LoadDeleteHtml(check) {
     if (check) {
         return '<li><a href="javascript:;" onclick="LoadDeletePost(' + postid + ');" title="Xóa bài viết">Xóa bài viết</a></li>';
@@ -369,8 +366,57 @@ commenthub.client.addReply = function (reply) {
     //self.replys.splice(0, 0, new Reply(reply));
 }
     ///////////////////////////////////////////// delete post
-self.deletePost = function (data, e) {
-    console.log('delete post');
+self.deletePost = function (postid, e) {
+    $('<div></div>').appendTo('body')
+    .html('<div><h6>Are you sure?</h6></div>')
+    .dialog({
+        modal: true,
+        title: 'Delete message',
+        zIndex: 10000,
+        autoOpen: true,
+        width: 'auto',
+        resizable: false,
+        buttons: {
+            Yes: function () {
+                $.ajax({
+                    cache: false,
+                    type: "POST",
+                    url: '/Post/DeletePostFromClientRequest',
+                    data: { postid: postid },
+                    beforeSend: function (xhr) {
+                        //Add your image loader here
+                        //showNotification('Loading');                        
+                    },
+                    success: function (data) {                        
+                        showNotification('Xóa bài viết thành công');
+                        if (data === "True") {
+                            // remove UI
+                            var postfind = ko.utils.arrayFirst(self.posts(), function (item) {
+                                return item.PostId === postid;
+                            });
+                            if (postfind != null) {
+                                self.posts.remove(postfind);                                
+                            }
+                            // 
+                            return;
+                        }
+                        else {
+                            showNotification('Xóa thất bại');
+                        }
+                        
+                    }
+                });
+
+                $(this).dialog("close");
+            },
+            No: function () {
+                $(this).dialog("close");
+            }
+        },
+        close: function (event, ui) {
+            $(this).remove();
+        }
+    });
 }
 
 /////////////////////
