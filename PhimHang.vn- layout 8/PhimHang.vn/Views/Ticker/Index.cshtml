@@ -1,17 +1,14 @@
 ﻿@{
-    ViewBag.Title = ViewBag.StockCode + ": " + ViewBag.StockName + " https://cungphim.com";
+    ViewBag.Title = ViewBag.StockCode + ": " + ViewBag.StockName + " https://phochungkhoan.com";
     Layout = "~/Views/Shared/_Layout_Ticker.cshtml";
 }
 @section scripts{        
     <script src="~/Scripts/jquery.timeago.js"></script>   
 }
 
-<input type="hidden" id="titleHidenPage" value='@ViewBag.StockCode @ViewBag.StockName https://cungphim.com' />
+<input type="hidden" id="titleHidenPage" value='@ViewBag.StockCode @ViewBag.StockName https://phochungkhoan.com' />
 <input type="hidden" id="stockHidenPage" value='@ViewBag.StockCode' />
-
-@*<input type="hidden" id="HiddentCureentUserId" value='@ViewBag.CureentUserId' />*@
-@*<input type="hidden" id="HiddentUserName" value='@ViewBag.UserName' />
-    <input type="hidden" id="HiddentAvataEmage" value='@ViewBag.AvataEmage' />*@
+<input type="hidden" id="HiddentShortUserId" value='@ViewBag.CureentUserId' />
 <div id="CommentForKoLoad">
     <div class="area-center">
         <div id="top-status-box" class="bg-white status-box">
@@ -55,8 +52,8 @@
                                 // must login
                                    
                                     <div id="btnPhim" class="f-right">                                        
-                                        <a class="logoutbutton" href="/Account/Register?ReturnUrl=/Ticker/@ViewBag.StockCode">Đăng nhập</a>
-                                        <a class="logoutbutton" href="/Account/Login?ReturnUrl=/Ticker/@ViewBag.StockCode">Đăng ký</a>
+                                        <a class="logoutbutton" href="/Account/Register?ReturnUrl=/Ticker/@ViewBag.StockCode">Đăng ký</a>
+                                        <a class="logoutbutton" href="/Account/Login?ReturnUrl=/Ticker/@ViewBag.StockCode">Đăng nhập</a>
                                     </div>
                             }
                         }
@@ -70,7 +67,7 @@
                 <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('ALL')" href="#" class="active">TẤT CẢ</a> </div>
                 <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('CHA')" href="#">BIỂU ĐỒ</a> </div>
                 <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('STM')" href="#">TĂNG/GIẢM</a></div>
-                <div id="linklikeFacebook" style="float: right; overflow: hidden; " class="fb-like" data-href="https://cungphim.com/Ticker/@ViewBag.StockCode" data-layout='button_count' data-action='like' data-show-faces='true' data-share='true'></div>
+                <div id="linklikeFacebook" style="float: right; overflow: hidden; " class="fb-like" data-href="https://phochungkhoan.com/Ticker/@ViewBag.StockCode" data-layout='button_count' data-action='like' data-show-faces='true' data-share='true'></div>
                 @*<div class="fb-like"
                      data-share="true"
                      data-width="450"
@@ -115,7 +112,7 @@
                             <div class="list-item-control">
                                 @*<a style="border-color:transparent; background-color:transparent" class="button" href="#"><i data-bind="text :notification, visible: notification() > 0" class="fa fa-comments"></i></a>*@
                                 <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
-                                <a class="button btn-answer" target="_self" onclick="window.open(this.href, 'chia sẻ lên facebook', 'left=100,top=100,width=600,height=400,toolbar=1,resizable=0'); selectMe(event, '#'); return false;" data-bind="attr : { href : 'https://www.facebook.com/sharer/sharer.php?u=@ViewBag.AbsolutePathHostName/PostDetail?postid='+ PostId +'&display=popup&ref=plugin' }" title="Chia sẻ lên facebook">Chia sẻ</a>
+                                <a class="button btn-answer" target="_self" onclick="window.open(this.href, 'chia sẻ lên facebook', 'left=100,top=100,width=600,height=400,toolbar=1,resizable=0'); selectMe(event, '#'); return false;" data-bind="attr : { href : 'https://www.facebook.com/sharer/sharer.php?u=@ViewBag.AbsolutePathHostName/PostDetail?postid='+ PostId +'&display=popup&ref=plugin' }" title="Chia sẻ lên facebook">Chia sẻ</a>                                
                                 <a class="button" href="#" style="cursor:text" data-bind="visible: SumReply() > 0"><i class="fa fa-comments" data-bind=" text : SumReply"></i></a>                                
                                 <span class="likeAndPin">
                                     <a class="button" href="#" title="Pin"><img src="/images/pintab.png" /></a> 
@@ -137,7 +134,7 @@
                 <div class="filer-new-status">
                     <div class="filer-new-status-button-bar">
                         <div class="text-label">
-                            <a href="#" style="font-size: 14px; color: #CF000F" data-bind=" click : loadNewPosts"> <strong data-bind="text: newPosts().length"></strong> bài phím mới </a>
+                            <a href="#" data-bind=" click : loadNewPosts"> <strong data-bind="text: newPosts().length"></strong> bài phím mới </a>
                         </div>
                     </div>
                 </div>
@@ -163,15 +160,11 @@
                                 <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
                                 <!--share popup of facebook-->
                                 <a class="button btn-answer" target="_self" onclick="window.open(this.href, 'chia sẻ lên facebook', 'left=100,top=100,width=600,height=400,toolbar=1,resizable=0'); selectMe(event, '#'); return false;" data-bind="attr : { href : 'https://www.facebook.com/sharer/sharer.php?u=@ViewBag.AbsolutePathHostName/PostDetail?postid='+ PostId +'&display=popup&ref=plugin' }" title="Chia sẻ lên facebook">Chia sẻ</a>
-                                <a class="button" href="#" style="cursor:text" data-bind="visible: SumReply() > 0"><i class="fa fa-comments" data-bind=" text : SumReply"></i></a>
-                                <div id="cm-3" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#" title="Chia sẻ">Chia sẻ</a></li>
-                                        <li><a href="#" title="Vi phạm">Vi phạm</a></li>
-                                    </ul>
-                                </div>
+                                <!--Load more tool: delete post & report -->
+                                <a class="button" onclick='selectMe(event,"#")' href="javascript:;" title="more" data-bind=" click: function(data, event) { $parent.loadToolMore(data, event); } ,attr : { id : 'loadToolMoreId' + PostId   },"><i class="fa fa-caret-down"></i></a>
+                                <!--End load more tool-->
+                                <a class="button" href="#" style="cursor:text" data-bind="visible: SumReply() > 0"><i class="fa fa-comments" data-bind=" text : SumReply"></i></a>                                
                                 <span class="likeAndPin" style="">
-
                                     <span data-bind="text : SumLike, visible : SumLike() > 0 "></span>
                                     <button class="fa fa-thumbs-o-up" data-bind=" click : function(data, event) { $parent.AddLike(data, event) ;   } , attr : {id : 'PostId' + PostId} , enable : DiableLike"></button>
                                     <!--click like thi doi class thanh fa fa-thumbs-o-up-->

@@ -1,7 +1,5 @@
 ﻿<input type="hidden" id="HiddentUserId" value='@ViewBag.UserId' />
-@*<input type="hidden" id="HiddentCureentUserId" value='@ViewBag.CureentUserId' />*@
-@*<input type="hidden" id="HiddentUserName" value='@ViewBag.UserName' />
-<input type="hidden" id="HiddentAvataEmage" value='@ViewBag.AvataEmage' />*@
+<input type="hidden" id="HiddentShortUserId" value='@ViewBag.CureentUserId' />
 <div id="CommentForKoLoad">
     <div class="area-center-user">
         <div class="bg-white" style="padding-top: 10px; padding-bottom: 3px;">
@@ -48,8 +46,10 @@
                                 @*<a style="border-color:transparent; background-color:transparent" class="button" href="#"><i data-bind="text :notification, visible: notification() > 0" class="fa fa-comments"></i></a>*@
                                 <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
                                 <a class="button btn-answer" target="_self" onclick="window.open(this.href, 'chia sẻ lên facebook', 'left=100,top=100,width=600,height=400,toolbar=1,resizable=0'); selectMe(event, '#'); return false;" data-bind="attr : { href : 'https://www.facebook.com/sharer/sharer.php?u=@ViewBag.AbsolutePathHostName/PostDetail?postid='+ PostId +'&display=popup&ref=plugin' }" title="Chia sẻ lên facebook">Chia sẻ</a>
-                                <a class="button" href="#" style="cursor:text" data-bind="visible: SumReply() > 0" title="Tổng số trả lời"><i title="Tổng số trả lời" class="fa fa-comments" data-bind=" text : SumReply"></i></a>                                                            
-   
+                                <!--Load more tool: delete post & report -->
+                                <a class="button" onclick='selectMe(event,"#")' href="javascript:;" title="more" data-bind=" click: function(data, event) { $parent.loadToolMore(data, event); } ,attr : { id : 'loadToolMoreId' + PostId   },"><i class="fa fa-caret-down"></i></a>
+                                <!--End load more tool-->
+                                <a class="button" href="#" style="cursor:text" data-bind="visible: SumReply() > 0" title="Tổng số trả lời"><i title="Tổng số trả lời" class="fa fa-comments" data-bind=" text : SumReply"></i></a>                                                               
                                 <span class="likeAndPin">
                                     <span data-bind="text : SumLike, visible : SumLike() > 0 "></span>
                                     <button class="fa fa-thumbs-o-up" data-bind=" click : function(data, event) { $parent.AddLike(data, event) ;   } , attr : {id : 'PostId' + PostId} , enable : DiableLike"></button>
@@ -111,8 +111,8 @@
                                     else
                                     {
                                         <div id="btnPhim" class="f-right">
-                                            <a class="logoutbutton" href="/Account/Register?ReturnUrl=/@ViewBag.UserName">Đăng nhập</a>
-                                            <a class="logoutbutton" href="/Account/Login?ReturnUrl=/@ViewBag.UserName">Đăng ký</a>
+                                            <a class="logoutbutton" href="/Account/Register?ReturnUrl=/@ViewBag.UserName">Đăng ký</a>
+                                            <a class="logoutbutton" href="/Account/Login?ReturnUrl=/@ViewBag.UserName">Đăng nhập</a>
                                         </div>
                                     }
                                 }

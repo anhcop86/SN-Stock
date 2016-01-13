@@ -214,7 +214,8 @@ textarea {
     z-index: 10000;
     TOP: 0px;
 }
-ul.top-panel-left2 > li:not(:first-child):hover{
+/*ul.top-panel-left2 > li:not(:first-child):hover{*/
+ul.top-panel-left2 > li:hover{
     background-color: #F5F5F5;
     border:1px solid #ddd;
     border-top:none;
@@ -683,7 +684,7 @@ input[name=BullBear]{
     padding: 2px 3px 2px 3px;
 }
 .filer-new-status{
-    border: 1px solid #aaa;
+    border: 1px solid #CF000F;
     /*background-color: #f5f5f5;*/
     margin: 1px;
     /*min-height: 105px;*/
@@ -704,6 +705,10 @@ input[name=BullBear]{
     margin-right: 10px;
     font-weight:bold;
 }
+    .filer-new-status-button-bar > div.text-label a {
+        font-size: 14px;
+        color: #CF000F;
+    }
 .filer-bar-dropdown{
     margin-top: 10px;    
     margin-left: 227px;  
@@ -952,7 +957,7 @@ input[name=BullBear]{
     width: 100%;    
 }
 .comment-loadmore{
-    padding: 15px 0px 15px 0px;
+    padding: 10px 0px 2px 0px;
     text-align:center;    
 }
 #IdLoadMoreConversation{
@@ -1273,12 +1278,13 @@ a.category-tab:hover{
     /*right:35%;*/
 }
 .button-flow{
-    padding: 5px 10px;
+    padding: 10px 15px;
     border: 1px solid #ddd;
     color:#000;
     background-color: #F5F5F5;
     /*border-radius: 5px;*/
     font-size: 1.2rem;
+    font-weight:bold;
 }
 .button-flow i{
     color: #53b544;
@@ -1762,6 +1768,10 @@ a.avatar img:hover{
     width:20px;
     height:20px;
     font-size:xx-large;
+}
+
+#dropdown-1{
+    text-align:center;
 }
 
 /*.dialog-confirm {

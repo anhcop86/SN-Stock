@@ -5,7 +5,44 @@ function removeFileChart() {
             $('.chartImage').hide();
             $('.mb3-chart-thumb').removeAttr("src");
         }
-    }
+}
+
+function CreateDropListBoxMore(postid) {
+    checkStatusDeleteButton(postid, function (d) {
+        var dropboxHtml = '<div id="jq-dropdown-2" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative" style="left: -5px; z-index:999">'
+                               + '<ul class="dropdown-menu">';
+        if (d === true) {
+            dropboxHtml = dropboxHtml + '<li><a href="javascript:;" data-bind=" click: function(data, event) { deletePost(' + postid + ', event);} "  title="Xóa bài viết">Xóa bài viết</a></li>';//
+        }
+        dropboxHtml = dropboxHtml + '<li><a href="javascript:;" onclick="LoadBaoCaoViPham(' + postid + ');" title="Báo cáo Vi phạm">Báo cáo vi phạm</a></li>'
+                               + '</ul>'
+                               + '</div>';
+        $("#loadToolMoreId" + postid).append(dropboxHtml);
+        ko.applyBindings(vmPost, document.getElementById("jq-dropdown-2")); // phải binding lại vì nằm ngoài binding chính
+        $("#jq-dropdown-2").show(); // hiện nut delete ra. 
+    });
+}
+function LoadBaoCaoViPham(postid) {
+    $("#dialog-confirm").data('postid', postid).dialog("open");
+}
+
+function checkStatusDeleteButton(postid, callback) {
+    $.ajax({
+        url: '/Post/CheckButtonDelete',
+        type: 'POST',
+        data: { postid: postid, userid: $('#HiddentShortUserId').val() },
+        cache: false,
+    }).success(function (data) {
+        if (data === 'True') {
+            callback(true);
+        }
+        else {
+            callback(false);
+        }
+    }).error(function () {
+        callback(false);
+    })
+}
 
 function uploadPreview(files) {
     file = files[0];
@@ -141,7 +178,7 @@ function viewModel() {
         // lay danh muc thuong
         $.ajax({
             cache: false,
-            type: "GET",            
+            type: "GET",
             url: '/Post/GetMorePostsByStock',
             data: { stockCurrent: $('#stockHidenPage').val(), skipposition: 0, filter: "ALL" },
             beforeSend: function (xhr) {
@@ -216,7 +253,7 @@ function viewModel() {
             self.newPosts([]);
             $.ajax({
                 cache: false,
-                type: "GET",                
+                type: "GET",
 
                 url: '/Post/GetMorePostsByStock',
                 data: { stockCurrent: $('#stockHidenPage').val(), skipposition: 0, filter: filterhere },
@@ -338,9 +375,93 @@ function viewModel() {
             return;
         }
 
-
-
     }
+    var tempcheck = 0;
+    self.loadToolMore = function (data, e) {
+        var resulttemp = false;
+        if (tempcheck != data.PostId) {
+            tempcheck = data.PostId;
+            resulttemp = true; // true la cllick sang artical khác
+        }
+        if (resulttemp == false) { // truong hop click lai action 
+            if ($("#jq-dropdown-2").length > 0) { // neu ton tai thi hien len 
+                if ($("#jq-dropdown-2").is(':visible')) {
+                    $("#jq-dropdown-2").hide();
+                }
+                else {
+                    $("#jq-dropdown-2").show();
+                }
+            }
+            else {
+                CreateDropListBoxMore(data.PostId);
+            }
+        }
+        else {
+            $("#jq-dropdown-2").remove();
+            CreateDropListBoxMore(data.PostId);
+        }
+    }
+    ///////////////////////////////////////////// delete post
+    self.deletePost = function (postid, e) {
+        $('<div></div>').appendTo('body')
+        .html('<div><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Bạn có chắc chắn muốn xóa toàn bộ bài viết này?</div>')
+        .dialog({
+            modal: true,
+            title: 'Xóa bài viết',
+            zIndex: 10000,
+            autoOpen: true,
+            width: 'auto',
+            resizable: false,
+            draggable: false,
+            create: function (event) { $(event.target).parent().css('position', 'fixed'); },
+            buttons: {
+                Yes: function () {
+                    $.ajax({
+                        cache: false,
+                        type: "POST",
+                        url: '/Post/DeletePostFromClientRequest',
+                        data: { postid: postid },
+                        beforeSend: function (xhr) {
+                            //Add your image loader here
+                            //showNotification('Loading');                        
+                        },
+                        success: function (data) {
+                            showNotification('Xóa bài viết thành công');
+                            if (data === "True") {
+                                // remove UI
+                                var postfind = ko.utils.arrayFirst(self.posts(), function (item) {
+                                    return item.PostId === postid;
+                                });
+                                if (postfind != null) {
+                                    self.posts.remove(postfind);
+                                }
+                                // 
+                                return;
+                            }
+                            else {
+                                showNotification('Xóa thất bại');
+                            }
+
+                        }
+                    });
+
+                    $(this).dialog("close");
+                },
+                No: function () {
+                    $(this).dialog("close");
+                }
+            },
+            open: function (event, ui) {
+                $('body').css('overflow', 'hidden');
+            },
+            close: function (event, ui) {
+                $('body').css('overflow', 'auto');
+                $(this).remove();
+            }
+        });
+    }
+
+    ////////////////////////
     self.detailPost = function (data, e) { // chi tiet post bao gom tra loi
 
         self.newReply('');
@@ -387,23 +508,23 @@ function viewModel() {
     }
     /////////////////////////////////////////
 
-    self.enablePhimHang = ko.computed(function () {        
+    self.enablePhimHang = ko.computed(function () {
         return 200 - self.messageCount() <= 200 && 200 - self.messageCount() > 6 && self.newMessage().indexOf('<', 0) == -1;
-    });    
-    
-    
-    self.count = ko.computed(function () {        
-        var countNum = 200;        
+    });
+
+
+    self.count = ko.computed(function () {
+        var countNum = 200;
         var arrayMessage = self.newMessage().split(' ');
         arrayMessage.forEach(function (item) {
-            if (item.indexOf('http') != -1 ) { // tim thay http link
+            if (item.indexOf('http') != -1) { // tim thay http link
                 countNum = countNum - 12;
             }
             else { // khong thay http link
                 countNum = countNum - item.length - 1;
-            }            
+            }
         });
-        self.messageCount(countNum);       
+        self.messageCount(countNum);
         return countNum;
     });
     self.enablePhimHangReply = ko.computed(function () {
@@ -423,36 +544,36 @@ function viewModel() {
         self.replyCount(countNum);
         return countNum;
 
-        
+
     });
 
     // notification of reply
-    
+
     commenthub.client.newReplyNoti = function (postid) {
         // post chinh
-            var replysfind = ko.utils.arrayFirst(self.posts(), function (item) {
-                return item.PostId === postid;
-            });
-            if (replysfind != null) {
-                replysfind.SumReply(replysfind.SumReply() + 1);
-                return;
-            }
+        var replysfind = ko.utils.arrayFirst(self.posts(), function (item) {
+            return item.PostId === postid;
+        });
+        if (replysfind != null) {
+            replysfind.SumReply(replysfind.SumReply() + 1);
+            return;
+        }
         // post pin
-            var replysfindPin = ko.utils.arrayFirst(self.postPins(), function (item) {
-                return item.PostId === postid;
-            });
-            if (replysfindPin != null) {
-                replysfindPin.SumReply(replysfindPin.SumReply() + 1);
-                return;
-            }
+        var replysfindPin = ko.utils.arrayFirst(self.postPins(), function (item) {
+            return item.PostId === postid;
+        });
+        if (replysfindPin != null) {
+            replysfindPin.SumReply(replysfindPin.SumReply() + 1);
+            return;
+        }
         // post nam tren local chua dc load
-            var replysfindNewPost = ko.utils.arrayFirst(self.newPosts(), function (item) {
-                return item.PostId === postid;
-            });
-            if (replysfindNewPost != null) {
-                replysfindNewPost.SumReply(replysfindNewPost.SumReply() + 1);
-                return;
-            }
+        var replysfindNewPost = ko.utils.arrayFirst(self.newPosts(), function (item) {
+            return item.PostId === postid;
+        });
+        if (replysfindNewPost != null) {
+            replysfindNewPost.SumReply(replysfindNewPost.SumReply() + 1);
+            return;
+        }
 
 
         //alert(self.notification());
@@ -496,7 +617,7 @@ function viewModel() {
     //        });
     //    })
     //};*@
-    }
+}
 
 ko.bindingHandlers.limitCharacters = {
     update: function (element, valueAccessor, allBindingsAccessor, viewModel) {

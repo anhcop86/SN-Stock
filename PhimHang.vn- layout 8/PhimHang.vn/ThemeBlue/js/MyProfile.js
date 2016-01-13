@@ -1,4 +1,4 @@
-﻿//reatime sum reply:cap nhat controller them sumreply, them self.SumReply, copy bieu tuong , sua lai ham nhan reply
+﻿//realtime sum reply:cap nhat controller them sumreply, them self.SumReply, copy bieu tuong , sua lai ham nhan reply
 function removeFileChart() {
     if (confirm("Bạn muốn xóa file hình này?")) {
         $('.chartImage').hide();
@@ -17,25 +17,15 @@ function CreateDropListBoxMore(postid) {
                                + '</ul>'
                                + '</div>';        
         $("#loadToolMoreId" + postid).append(dropboxHtml);
-        ko.applyBindings(vmPost, document.getElementById("jq-dropdown-2"));
-        $("#jq-dropdown-2").show(); // hiện droplistbox tool with delete
+        ko.applyBindings(vmPost, document.getElementById("jq-dropdown-2")); // phải binding lại vì nằm ngoài binding chính
+        $("#jq-dropdown-2").show(); // hiện nut delete ra. 
     });        
 }
-//function LoadDeletePost(postid) {
-//    //$("#dialog-delete").data('postid', postid).dialog("open");
-//}
 
 function LoadBaoCaoViPham(postid) {
     $("#dialog-confirm").data('postid', postid).dialog("open");
 }
-function LoadDeleteHtml(check) {
-    if (check) {
-        return '<li><a href="javascript:;" onclick="LoadDeletePost(' + postid + ');" title="Xóa bài viết">Xóa bài viết</a></li>';
-    }
-    else {
-        return '';
-    }
-}
+
 function checkStatusDeleteButton(postid, callback) {    
     $.ajax({
         url: '/Post/CheckButtonDelete',
@@ -52,9 +42,6 @@ function checkStatusDeleteButton(postid, callback) {
     }).error(function () {
         callback(false);
     })
-
-    
-    
 }
 
 function uploadPreview(files) {
@@ -368,14 +355,16 @@ commenthub.client.addReply = function (reply) {
     ///////////////////////////////////////////// delete post
 self.deletePost = function (postid, e) {
     $('<div></div>').appendTo('body')
-    .html('<div><h6>Are you sure?</h6></div>')
+    .html('<div><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Bạn có chắc chắn muốn xóa toàn bộ bài viết này?</div>')
     .dialog({
         modal: true,
-        title: 'Delete message',
+        title: 'Xóa bài viết',
         zIndex: 10000,
         autoOpen: true,
         width: 'auto',
         resizable: false,
+        draggable: false,
+        create: function (event) { $(event.target).parent().css('position', 'fixed'); },
         buttons: {
             Yes: function () {
                 $.ajax({
@@ -413,7 +402,11 @@ self.deletePost = function (postid, e) {
                 $(this).dialog("close");
             }
         },
+        open: function (event, ui) {
+            $('body').css('overflow', 'hidden');
+        },
         close: function (event, ui) {
+            $('body').css('overflow', 'auto');
             $(this).remove();
         }
     });

@@ -4,6 +4,43 @@ function selectMe(e, data) {        // khi nguoi dung click vao link trong knock
     e.stopPropagation();
 }
 
+function CreateDropListBoxMore(postid) {
+    checkStatusDeleteButton(postid, function (d) {
+        var dropboxHtml = '<div id="jq-dropdown-2" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative" style="left: -5px; z-index:999">'
+                               + '<ul class="dropdown-menu">';
+        if (d === true) {
+            dropboxHtml = dropboxHtml + '<li><a href="javascript:;" data-bind=" click: function(data, event) { deletePost(' + postid + ', event);} "  title="Xóa bài viết">Xóa bài viết</a></li>';//
+        }
+        dropboxHtml = dropboxHtml + '<li><a href="javascript:;" onclick="LoadBaoCaoViPham(' + postid + ');" title="Báo cáo Vi phạm">Báo cáo vi phạm</a></li>'
+                               + '</ul>'
+                               + '</div>';
+        $("#loadToolMoreId" + postid).append(dropboxHtml);
+        ko.applyBindings(vmPost, document.getElementById("jq-dropdown-2")); // phải binding lại vì nằm ngoài binding chính
+        $("#jq-dropdown-2").show(); // hiện nut delete ra. 
+    });
+}
+function LoadBaoCaoViPham(postid) {
+    $("#dialog-confirm").data('postid', postid).dialog("open");
+}
+
+function checkStatusDeleteButton(postid, callback) {
+    $.ajax({
+        url: '/Post/CheckButtonDelete',
+        type: 'POST',
+        data: { postid: postid, userid: $('#HiddentShortUserId').val() },
+        cache: false,
+    }).success(function (data) {
+        if (data === 'True') {
+            callback(true);
+        }
+        else {
+            callback(false);
+        }
+    }).error(function () {
+        callback(false);
+    })
+}
+
 function setDefaultAfterPost() {
     $('.divBull, .divBear').parent().children('.switch3button-select').removeClass('switch3button-select'); // remove style of all radio button
     $('input[type=radio]').prop('checked', false); // remove checked of radio button
@@ -221,7 +258,93 @@ function viewModel() {
         }
 
     }
+    //////////////////////////// load bao cao vi pham va nut delete
+    var tempcheck = 0;
+    self.loadToolMore = function (data, e) {
+        var resulttemp = false;
+        if (tempcheck != data.PostId) {
+            tempcheck = data.PostId;
+            resulttemp = true; // true la cllick sang artical khác
+        }
+        if (resulttemp == false) { // truong hop click lai action 
+            if ($("#jq-dropdown-2").length > 0) { // neu ton tai thi hien len 
+                if ($("#jq-dropdown-2").is(':visible')) {
+                    $("#jq-dropdown-2").hide();
+                }
+                else {
+                    $("#jq-dropdown-2").show();
+                }
+            }
+            else {
+                CreateDropListBoxMore(data.PostId);
+            }
+        }
+        else {
+            $("#jq-dropdown-2").remove();
+            CreateDropListBoxMore(data.PostId);
+        }
+    }
+    ///////////////////////////////////////////// delete post
+    self.deletePost = function (postid, e) {
+        $('<div></div>').appendTo('body')
+        .html('<div><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Bạn có chắc chắn muốn xóa toàn bộ bài viết này?</div>')
+        .dialog({
+            modal: true,
+            title: 'Xóa bài viết',
+            zIndex: 10000,
+            autoOpen: true,
+            width: 'auto',
+            resizable: false,
+            draggable: false,
+            create: function (event) { $(event.target).parent().css('position', 'fixed'); },
+            buttons: {
+                Yes: function () {
+                    $.ajax({
+                        cache: false,
+                        type: "POST",
+                        url: '/Post/DeletePostFromClientRequest',
+                        data: { postid: postid },
+                        beforeSend: function (xhr) {
+                            //Add your image loader here
+                            //showNotification('Loading');                        
+                        },
+                        success: function (data) {
+                            showNotification('Xóa bài viết thành công');
+                            if (data === "True") {
+                                // remove UI
+                                var postfind = ko.utils.arrayFirst(self.posts(), function (item) {
+                                    return item.PostId === postid;
+                                });
+                                if (postfind != null) {
+                                    self.posts.remove(postfind);
+                                }
+                                // 
+                                return;
+                            }
+                            else {
+                                showNotification('Xóa thất bại');
+                            }
 
+                        }
+                    });
+
+                    $(this).dialog("close");
+                },
+                No: function () {
+                    $(this).dialog("close");
+                }
+            },
+            open: function (event, ui) {
+                $('body').css('overflow', 'hidden');
+            },
+            close: function (event, ui) {
+                $('body').css('overflow', 'auto');
+                $(this).remove();
+            }
+        });
+    }
+
+    ////////////////////////
     self.detailPost = function (data, e) { // chi tiet post bao gom tra loi
 
         self.newReply('');

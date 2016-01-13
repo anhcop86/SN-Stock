@@ -368,12 +368,14 @@ namespace PhimHang.Controllers
             try
             {
                 ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                var notifications = await db.NotificationMesseges.Where(nm => nm.PostId == postid).ToListAsync();
                 var stockRelate = await db.StockRelates.Where(st => st.PostId == postid).ToListAsync();
                 var postComments = await db.PostComments.Where(pc => pc.PostedBy == postid).ToListAsync();
                 
                 Post post = await db.Posts.FirstOrDefaultAsync(p => p.PostId == postid && p.PostedBy == currentUser.UserExtentLogin.Id);
                 if (post!= null)
                 {
+                    db.NotificationMesseges.RemoveRange(notifications);
                     db.StockRelates.RemoveRange(stockRelate);
                     db.PostComments.RemoveRange(postComments);
                     db.Posts.Remove(post);

@@ -87,8 +87,9 @@
 <div id="dropdown-1" class="dropdown dropdown-tip dropdown-anchor-right dropdown-relative">
     
     <ul class="dropdown-menu">
-        @*<li><a href="/myprofile">Profile</a></li>*@
-        <li><a href="/account/profile">Cài đặt</a></li>
+        <li><a href="/">Trang chủ</a></li>
+        <li class="dropdown-divider"></li>
+        <li><a href="/account/profile">Tùy chỉnh</a></li>
         <li class="dropdown-divider"></li>
         @{
             if (User.Identity.IsAuthenticated)
@@ -100,24 +101,24 @@
                     {
                         if (Request.Cookies["FacebookLogin"].Value == "F")
                         {
-                            <li><a onclick=" logoutAll();">Thoát</a></li>    
+                            <li><a onclick=" logoutAll();">Đăng xuất</a></li>    
                         }
                         else
                         {
-                            <li><a onclick=" logoutSite();">Thoát</a></li>    
+                            <li><a onclick=" logoutSite();">Đăng xuất</a></li>    
                         }
                     }
                     else
                     {
-                        <li><a onclick=" logoutSite();">Thoát</a></li>    
+                        <li><a onclick=" logoutSite();">Đăng xuất</a></li>    
                     } 
                     <input type="hidden" name="returnUrl" value="@Request.Url.AbsolutePath" />
                 }
             }
             else
             {
-                <li><a href="/Account/Login?ReturnUrl=@Request.Url.AbsolutePath">Đăng nhập</a></li>
                 <li><a href="/Account/Register?ReturnUrl=@Request.Url.AbsolutePath">Đăng ký</a></li>
+                <li><a href="/Account/Login?ReturnUrl=@Request.Url.AbsolutePath">Đăng nhập</a></li>                
             }
 
             

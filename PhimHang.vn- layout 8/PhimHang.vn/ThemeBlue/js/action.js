@@ -233,7 +233,7 @@ $(document).ready(function () {
         }).success(function (data) {
             if (data === "Y") {
                 showNotification('Báo cáo vi phạm thành công, chúng tôi sẽ phản hồi sớm nhất');
-                return
+                return;
             }
             else {
                 showNotification('Có lỗi');

@@ -580,8 +580,8 @@ namespace PhimHang.Controllers
             }
             else
             {
-               
-                return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { UserName = AppHelper.ConvertToNonUnicode(nameonFb.Replace(" ","")), Token = token });
+
+                return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { UserName = AppHelper.ConvertToNonUnicode(nameonFb.RemoveSpecialString().Replace(" ","")), Token = token });
             }
             
             //return View();
