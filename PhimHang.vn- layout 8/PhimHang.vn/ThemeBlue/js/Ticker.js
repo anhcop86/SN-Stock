@@ -208,7 +208,7 @@ function viewModel() {
             charImage = "";
         }
 
-        commenthub.server.addPost({ "Message": self.newMessage() }, nhanDinh, charImage)
+        commenthub.server.addPost({ "Message": self.newMessage() }, nhanDinh, charImage, $('#HiddentShortUserId').val())
             .done(function () {
                 showNotification('Bạn đã đăng bài thành công!');
             })

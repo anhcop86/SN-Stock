@@ -28,7 +28,7 @@ namespace PhimHang.Hubs
         testEntities db = new testEntities();
         TinyURLEntities dbtinyURL = new TinyURLEntities();
         [Authorize]
-        public async Task AddPost(Post post,  byte nhanDinh, string chartImage)
+        public async Task AddPost(Post post,  byte nhanDinh, string chartImage, long? userpageid)
         {
             using (testEntities db = new testEntities())
             {
@@ -173,7 +173,10 @@ namespace PhimHang.Hubs
                 #endregion
                 
                 #region gui message
-
+                if (userpageid > 0)
+                {
+                    listStock.Add(userpageid.ToString());
+                }
                 await Clients.Groups(listStock).addPost(ret); // ad group co phieu lien quan
                 await Clients.All.addPostGlobal(ret); // add message vào profile va home
                 if (listUsersendMessege.Count > 0)

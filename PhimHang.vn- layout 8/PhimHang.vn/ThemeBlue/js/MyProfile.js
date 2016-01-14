@@ -81,8 +81,6 @@ function uploadPreview(files) {
             showNotification('Có lỗi khi upload ảnh, vui lòng thử lại');
         })
     }
-
-
 }
 function selectMe(e, data) {        // khi nguoi dung click vao link trong knockout js click event
     e.stopPropagation();
@@ -104,6 +102,7 @@ function getTimeAgo(varDate) {
         return '';
     }
 }
+
 function Reply(data) {
     var self = this;
     data = data || {};
@@ -122,8 +121,7 @@ function Post(data) {
     self.PostedByName = data.PostedByName || "";
     self.PostedByAvatar = data.PostedByAvatar + '?width=50&height=50&mode=crop' || "";
     self.PostedDate = getTimeAgo(data.PostedDate);
-    self.StockPrimary = data.StockPrimary;
-    //self.notification = ko.observable(0);
+    self.StockPrimary = data.StockPrimary;    
     self.Stm = (data.Stm === 1 ? "<span class='divBear-cm'>Giảm</span>" : data.Stm === 2 ? "<span class='divBull-cm'>Tăng</span>" : "") || "";
     self.ChartYN = data.ChartYN || 0;
     self.PostBy = data.PostBy;
@@ -142,7 +140,7 @@ function viewModel() {
     self.error = ko.observable();
     self.newPosts = ko.observableArray(); // biến tạm để luu post moi, sau khi click thi moi bung ra
     self.postDetail = ko.observableArray();
-    self.messageCount = ko.observable(0);
+    self.messageCount = ko.observable(0); // đếm số lượng ký tự user nhập vào textarea
     self.replyCount = ko.observable(0);
     // SignalR related
 
@@ -153,11 +151,9 @@ function viewModel() {
     var filterhere = "";
     
 
-
-
-
 self.init = function () {
     self.error(null);
+    // khong cần join room
     // lay danh muc thuong
     $.ajax({
         cache: false,
@@ -191,7 +187,7 @@ self.addPost = function () { // them post
         charImage = "";
     }
 
-    commenthub.server.addPost({ "Message": self.newMessage() }, nhanDinh, charImage)
+    commenthub.server.addPost({ "Message": self.newMessage() }, nhanDinh, charImage, $('#HiddentShortUserId').val())// Gửi về trang userpage chính nó
         .done(function () {
             showNotification('Bạn đã đăng bài thành công!');
         })
@@ -347,7 +343,7 @@ commenthub.client.addPostGlobal = function (post) {
     }
     checkpost = 'N';
 }
-
+    // thêm reply cho chính mình reply
 commenthub.client.addReply = function (reply) {
     self.replys.unshift(new Reply(reply));
     //self.replys.splice(0, 0, new Reply(reply));
@@ -412,9 +408,9 @@ self.deletePost = function (postid, e) {
     });
 }
 
-/////////////////////
+///////////////////// khi click vao số post mới để hiện các post mới
 
-self.loadNewPosts = function () {
+self.loadNewPosts = function () { 
     self.posts(self.newPosts().concat(self.posts()));
     self.newPosts([]);
     document.title = "Nhà của tôi";
@@ -524,7 +520,6 @@ self.detailPost = function (data, e) { // chi tiet post bao gom tra loi
         return 200 - self.messageCount() <= 200 && 200 - self.messageCount() > 6 && self.newMessage().indexOf('<', 0) == -1;
     });
 
-
     self.count = ko.computed(function () {
         var countNum = 200;
         var arrayMessage = self.newMessage().split(' ');
@@ -558,7 +553,7 @@ self.detailPost = function (data, e) { // chi tiet post bao gom tra loi
 
 
     });
-// notification of reply
+// notification of reply: thong bao khi co reply moi
 
 commenthub.client.newReplyNoti = function (postid) {
     //
@@ -581,7 +576,7 @@ commenthub.client.newReplyNoti = function (postid) {
     //alert(self.notification());
 } 
 // end
-var loadSlow = 'Y';
+var loadSlow = 'Y'; // load nhanh qua bi trung
 $(window).scroll(function () { // scroll endpage load more
     if (document.documentElement.clientHeight + $(document).scrollTop() >= document.body.offsetHeight && checkLoadFirst == 1 && loadSlow == 'Y') {
         loadSlow = 'N';

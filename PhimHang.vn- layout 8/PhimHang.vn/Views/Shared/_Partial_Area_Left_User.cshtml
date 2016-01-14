@@ -5,10 +5,9 @@
         <div class="user-img-2">
             <img id="AvataImage" src="@ViewBag.AvataImageUrlCurrent?w=190&h=190&mode=crop" alt="cover">
             @{
-                if (User.Identity.IsAuthenticated)
+                if (User.Identity.IsAuthenticated && ViewBag.CheckUserExist == "E")
                 {
-                    if (ViewBag.CheckUserExist == "E")
-                    {
+                    
                         <div class="covertEditAvata">
                             <div class="uploadFile">
                                 <input id="idchartFileUpload" name="Select File" accept="image/*" type="file" onchange="uploadAvata(files)" />
@@ -67,7 +66,7 @@
                                 }
                             }
                         </script>
-                    }
+                    
                 }
             }
             

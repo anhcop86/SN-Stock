@@ -1,33 +1,70 @@
-﻿<input type="hidden" id="HiddentUserId" value='@ViewBag.UserId' />
+﻿<input type="hidden" id="titleHidenPage" value="@ViewBag.UserName home page | https://phochungkhoan.com " />
+<input type="hidden" id="HiddentUserId" value='@ViewBag.UserId' />
 <input type="hidden" id="HiddentShortUserId" value='@ViewBag.CureentUserId' />
 <div id="CommentForKoLoad">
     <div class="area-center-user">
+        @{
+            if (User.Identity.IsAuthenticated && ViewBag.CheckUserExist == "E")
+            {
+            <div id="top-status-box" class="bg-white status-box">
+                <div class="avata-comment">
+                    <img src="@ViewBag.AvataEmage?width=35&height=35&mode=crop" class="img-rounded" alt="avatar">
+                </div>
+            
+                <div class="input-status">
+                    <form id="frmStatus" name="frmStatus" method="GET">
+                        <div id="input-status-text" class="input-status-text">
+                            <textarea data-bind="value : newMessage, valueUpdate : 'afterkeydown' , limitCharacters : 140" class="status-cm" name="status" rows="5" placeholder="$Cổ phiếu | &#64;Username" id="status" title="Search" autocomplete="off" rows="5"></textarea>
+                        </div>
+                        <div class="status-control">
+                            <div class="choose_file f-left">
+                                <i class="fa fa-camera"></i>
+                                <input id="idchartFileUpload" name="Select File" accept="image/*" type="file" onchange="uploadPreview(files)" />
+                                <div class="chartImage">
+                                    <a class="mb3-close chart-close" onclick="removeFileChart()" href="javascript:;">x</a>
+                                    <img class="mb3-chart-thumb" src="">
+                                </div>
+                            </div>
+                            <div id="radio" class="switch3button f-left">
+                                <input type="radio" id="radio1" name="BullBear" value="2">
+                                <label for="radio1" class="divBull ">Tăng</label>
+                                <input type="radio" id="radio3" name="BullBear" value="1">
+                                <label for="radio3" class="divBear">Giảm</label>
+                            </div>
+                            <div id="btnPhim" class="f-right">
+                                <span data-bind="text : count"></span>
+                                <button id="btAddPost" style="cursor:pointer" class="button-phim" data-bind="click : addPost,  enable: enablePhimHang ">PHÍM</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+              
+            </div>
+            }
+        }
         <div class="bg-white" style="padding-top: 10px; padding-bottom: 3px;">
             <div class="filer-bar">
                 @*<div class="toSpan filer-bar-label">Hiển thị theo: </div>*@
                 <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('ALL')" href="#" class="active">TẤT CẢ</a> </div>
                 <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('CHA')" href="#">BIỂU ĐỒ</a> </div>
-                <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('STM')" href="#">TĂNG/GIẢM</a></div>
-                @*<div class="toSpan filer-bar-item">
-                        <a id="btn-option-more" href="#" data-dropdown="#dropdown-2">
-                            Tùy chọn khác
-                            <i class="fa fa-caret-down"></i>
-                        </a>
-                        <div id="dropdown-2" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative">
-                            <ul class="dropdown-menu">
-                                <li><a href="#4">Item 4</a></li>
-                                <li><a href="#5">Item 5</a></li>
-                                <li><a href="#5">Item 6</a></li>
-                            </ul>
-                        </div>
-                    </div>*@
+                <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('STM')" href="#">TĂNG/GIẢM</a></div>                
             </div>
             <div class="ajaxLoadingInit" style="text-align:center"><img src="~/images/ajax-loader_cungphim.gif" /></div>
         </div>
 
         <div class="list-status">
             <!--pin ma co phieu o day-->
-
+            <!--So bai phim moi-->
+            <div class="bg-white-custom" data-bind="visible :newPosts().length > 0 ">
+                <div class="filer-new-status">
+                    <div class="filer-new-status-button-bar">
+                        <div class="text-label">
+                            <a href="#" data-bind=" click : loadNewPosts"> <strong data-bind="text: newPosts().length"></strong> bài phím mới </a>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+            
             <div data-bind="foreach : posts">
                 <div class="bg-white">
                     <div class="list-item-status" tabindex="-1" data-bind=" click: function(data, event) { $parent.detailPost(data, event); }">

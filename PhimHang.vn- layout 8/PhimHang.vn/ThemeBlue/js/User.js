@@ -4,6 +4,13 @@ function selectMe(e, data) {        // khi nguoi dung click vao link trong knock
     e.stopPropagation();
 }
 
+function removeFileChart() {
+    if (confirm("Bạn muốn xóa file hình này?")) {
+        $('.chartImage').hide();
+        $('.mb3-chart-thumb').removeAttr("src");
+    }
+}
+
 function CreateDropListBoxMore(postid) {
     checkStatusDeleteButton(postid, function (d) {
         var dropboxHtml = '<div id="jq-dropdown-2" class="dropdown dropdown-tip dropdown-anchor-left dropdown-relative" style="left: -5px; z-index:999">'
@@ -41,6 +48,45 @@ function checkStatusDeleteButton(postid, callback) {
     })
 }
 
+function uploadPreview(files) {
+    file = files[0];
+    if (file.size > 3000000) {
+        showNotification('File hình quá lớn, xin vui lòng chọn hình khác?');
+        return;
+    }
+    var ext = file.name.split('.').pop().toLowerCase();
+    if ($.inArray(ext, ['png', 'jpg', 'jpeg']) == -1) {
+        showNotification('File hình không đúng định dạng!. Chỉ hỗ trợ file hình png, jpg, jpeg');
+        return;
+    }
+    // Add the uploaded image content to the form data collection
+    if (files.length > 0) {
+        var formData = new FormData();
+        formData.append("UploadedImage", file);
+
+        //upload via ajax
+        $.ajax({
+            url: '/Post/UploadFileChart',
+            type: 'POST',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false
+        }).done(function (data) {
+            if (data === "error") {
+                showNotification('Có lỗi khi upload ảnh, vui lòng thử lại');
+                return
+            }
+            else {
+                $('.chartImage').show();
+                $('.mb3-chart-thumb').attr("src", data);
+            }
+        }).fail(function () {
+            showNotification('Có lỗi khi upload ảnh, vui lòng thử lại');
+        })
+    }
+}
+
 function setDefaultAfterPost() {
     $('.divBull, .divBear').parent().children('.switch3button-select').removeClass('switch3button-select'); // remove style of all radio button
     $('input[type=radio]').prop('checked', false); // remove checked of radio button
@@ -75,10 +121,10 @@ function Post(data) {
     self.PostedByName = data.PostedByName || "";
     self.PostedByAvatar = data.PostedByAvatar + '?width=50&height=50&mode=crop' || "";
     self.PostedDate = getTimeAgo(data.PostedDate);
-    self.StockPrimary = data.StockPrimary;
-    //self.notification = ko.observable(0);
+    self.StockPrimary = data.StockPrimary;    
     self.Stm = (data.Stm === 1 ? "<span class='divBear-cm'>Giảm</span>" : data.Stm === 2 ? "<span class='divBull-cm'>Tăng</span>" : "") || "";
     self.ChartYN = data.ChartYN || 0;
+    //self.PostBy = data.PostBy;
     self.SumLike = ko.observable(data.SumLike);
     self.DiableLike = ko.observable(true);
     self.Chart = data.Chart || '';
@@ -89,12 +135,13 @@ function viewModel() {
     var self = this;
     self.posts = ko.observableArray(); // danh muc post
     self.replys = ko.observableArray(); // danh mục reply
-    //self.postPins = ko.observableArray(); // danh muc cac bai post dc pin len dau
-    //self.newMessage = ko.observable('$@ViewBag.StockCode '); // noi dung tin post
+    //self.postPins = ko.observableArray(); // danh muc cac bai post dc pin len dau    
+    self.newMessage = ko.observable(''); // noi dung tin post
     self.newReply = ko.observable(''); // noi dung tin reply
     self.error = ko.observable();
     self.newPosts = ko.observableArray(); // biến tạm để luu post moi, sau khi click thi moi bung ra
     self.postDetail = ko.observableArray();
+    self.messageCount = ko.observable(0); // đếm số lượng ký tự user nhập vào textarea
     self.replyCount = ko.observable(0);
     // SignalR related
 
@@ -105,8 +152,9 @@ function viewModel() {
     var filterhere = "";
 
     self.init = function () {
-        self.error(null);        
+        self.error(null);
         self.posts([]);
+        commenthub.server.joinRoom($('#HiddentUserId').val()); // join room user va co phieu
         // lay danh muc thuong
         $.ajax({
             cache: false,
@@ -127,14 +175,39 @@ function viewModel() {
             }
         });
     }
+    /////////////////////////////////////////////////////
+    self.addPost = function () { // them post
+        self.error(null);
+        $('#btAddPost').attr("disabled", true); // disble ngay khong de click them
+        var nhanDinh = $("input:radio[name='BullBear']:checked").val();
+        if (nhanDinh == null) {
+            nhanDinh = 0;
+        }
+        var charImage = $('.mb3-chart-thumb').attr("src");
+        if (charImage == null || charImage == '') {
+            charImage = "";
+        }
+
+        commenthub.server.addPost({ "Message": self.newMessage() }, nhanDinh, charImage, $('#HiddentUserId').val())
+            .done(function () {
+                showNotification('Bạn đã đăng bài thành công!');
+            })
+            .fail(function (err) {
+                self
+                    .error(err);
+            });
+        checkpost = 'Y';
+        self.newMessage('');//
+        setDefaultAfterPost();
+    }
     /////////////////////////////////////////////////////        
 
     self.addReply = function () { // them tra loi
         $('#btAddReply').attr("disabled", true); // disble ngay khong de click them
         commenthub.server.addReply({ "Message": self.newReply(), "PostedBy": postidCurrent })
-               .done(function () {
-                   showNotification('Bạn đã trả lời thành công!');
-               })
+                .done(function () {
+                    showNotification('Bạn đã trả lời thành công!');
+                })
             .fail(function (err) {
                 self.error(err);
             });
@@ -167,26 +240,25 @@ function viewModel() {
                 }
             });
         }
-
-
     }
 
     /////////////////////////////////////////////////////////////
     // recieve the post from server
     commenthub.client.addPost = function (post) {
+        console.log('da nhan post moi');
         if (checkpost == 'Y') {
             //filter here
             if (filterhere == "" || filterhere == "ALL") {
-                self.posts.splice(0, 0, new Post(post));
+                self.posts.splice(0, 0, new Post(post));             
             }
             if (filterhere == "CHA") {
                 if (post.ChartYN) {
-                    self.posts.splice(0, 0, new Post(post));
+                    self.posts.splice(0, 0, new Post(post));                    
                 }
             }
             if (filterhere == "STM") {
                 if (post.Stm > 0) {
-                    self.posts.splice(0, 0, new Post(post));
+                    self.posts.splice(0, 0, new Post(post));                    
                 }
             }
 
@@ -213,10 +285,9 @@ function viewModel() {
         }
         checkpost = 'N';
     }
-
+    // thêm reply cho chính mình
     commenthub.client.addReply = function (reply) {
-        self.replys.unshift(new Reply(reply));
-        //self.replys.splice(0, 0, new Reply(reply));
+        self.replys.unshift(new Reply(reply));        
     }
     // nhan dc notification tu user khac
     commenthub.client.MessegeOfUserPost = function (number) {
@@ -229,7 +300,7 @@ function viewModel() {
         }
     }
 
-    /////////////////////
+    ///////////////////// load bai tin moi khi click vao
 
     self.loadNewPosts = function () {
         self.posts(self.newPosts().concat(self.posts()));
@@ -238,8 +309,7 @@ function viewModel() {
     }
 
     self.AddLike = function (data, e) {
-        // ajax update  like with 
-
+        // ajax update  like with
         data.DiableLike(false);
         e.stopPropagation(); // stop popup
         commenthub.server.addNewLike(data.PostId)
@@ -254,6 +324,15 @@ function viewModel() {
         });
         if (Postfind != null) {
             Postfind.SumLike(Postfind.SumLike() + 1);
+            return;
+        }
+
+        // post nam tren local chua dc load
+        var PostNewPost = ko.utils.arrayFirst(self.newPosts(), function (item) {
+            return item.PostId === postid;
+        });
+        if (PostNewPost != null) {
+            PostNewPost.SumLike(PostNewPost.SumLike() + 1);
             return;
         }
 
@@ -389,7 +468,25 @@ function viewModel() {
         }
     }
 
-   
+    // kiem tra user nhap du lieu vao post va reply
+    self.enablePhimHang = ko.computed(function () {
+        return 200 - self.messageCount() <= 200 && 200 - self.messageCount() > 6 && self.newMessage().indexOf('<', 0) == -1;
+    });
+
+    self.count = ko.computed(function () {
+        var countNum = 200;
+        var arrayMessage = self.newMessage().split(' ');
+        arrayMessage.forEach(function (item) {
+            if (item.indexOf('http') != -1) { // tim thay http link
+                countNum = countNum - 12;
+            }
+            else { // khong thay http link
+                countNum = countNum - item.length - 1;
+            }
+        });
+        self.messageCount(countNum);
+        return countNum;
+    });
     self.enablePhimHangReply = ko.computed(function () {
         return 140 - self.replyCount() <= 140 && 140 - self.replyCount() > 6 && self.newReply().indexOf('<', 0) == -1;
     });
@@ -406,29 +503,34 @@ function viewModel() {
         });
         self.replyCount(countNum);
         return countNum;
+
+
     });
 
     // notification of reply
-    
+
     commenthub.client.newReplyNoti = function (postid) {
         //
-            var replysfind = ko.utils.arrayFirst(self.posts(), function (item) {
-                return item.PostId === postid;
-            });
-            if (replysfind != null) {
-                replysfind.SumReply(replysfind.SumReply() + 1);
-                return;
-            }
-        //
-            
+        var replysfind = ko.utils.arrayFirst(self.posts(), function (item) {
+            return item.PostId === postid;
+        });
+        if (replysfind != null) {
+            replysfind.SumReply(replysfind.SumReply() + 1);
+            return;
+        }
 
-
-        //alert(self.notification());
+        var replysfindNewPost = ko.utils.arrayFirst(self.newPosts(), function (item) {
+            return item.PostId === postid;
+        });
+        if (replysfindNewPost != null) {
+            replysfindNewPost.SumReply(replysfindNewPost.SumReply() + 1);
+            return;
+        }
     }
     // end
-    var loadSlow = 'Y';
+    var loadSlow = 'Y'; // load nhanh qua bi trung
     $(window).scroll(function () { // scroll endpage load more       
-        if (document.documentElement.clientHeight + $(document).scrollTop() >= $( document ).height() - 100 && checkLoadFirst == 1 && loadSlow == 'Y') {
+        if (document.documentElement.clientHeight + $(document).scrollTop() >= $(document).height() - 100 && checkLoadFirst == 1 && loadSlow == 'Y') {
             loadSlow = 'N';
             $('.ajaxLoadingImage').html('<img src="/images/ajax-loader_cungphim.gif" />');
             $.ajax({
