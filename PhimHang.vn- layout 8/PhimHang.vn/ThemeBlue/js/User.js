@@ -217,10 +217,12 @@ function viewModel() {
 
     //////////////// load lại filter nè
     var filterhere = "";
-    self.FilterAll = function (stringFilter) {
+    self.FilterAll = function (stringFilter) {                
         if (checkLoadFirst == 1) {
             filterhere = stringFilter;
             self.posts([]);
+            self.newPosts([]);            
+            document.title = $('#titleHidenPage').val();
             $.ajax({
                 cache: false,
                 type: "GET",

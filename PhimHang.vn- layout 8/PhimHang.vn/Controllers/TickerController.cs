@@ -38,7 +38,7 @@ namespace PhimHang.Controllers
             //ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             ViewBag.AbsolutePathHostName = AbsolutePathHostName;
             #region danh muc co phieu dang follow
-            var postNumber = await db.StockRelates.CountAsync(s => s.StockCodeRelate == symbolName); // so luong bai viet cua cổ phiếu này
+            var postNumber = await db.Posts.CountAsync(s => s.StockPrimary.Contains(symbolName)); // so luong bai viet cua cổ phiếu này
             var stockFollowNumber = await db.FollowStocks.CountAsync(sf => sf.StockFollowed == symbolName); // bao nhieu nguoi da theo doi co phieu nay
             ViewBag.PostNumber = postNumber;
             ViewBag.StockFollowNumber = stockFollowNumber;

@@ -19,7 +19,7 @@ namespace PhimHang.Models
     {
         // Singleton instance
         private readonly static Lazy<StockRealTimeTicker> _instance = new Lazy<StockRealTimeTicker>(() => new StockRealTimeTicker());//=> new StockRealTimeTicker(GlobalHost.ConnectionManager.GetHubContext<RealTimePriceHub>().Clients));
-        private readonly List<StockRealTime> _stocks = new List<StockRealTime>();
+        private readonly static List<StockRealTime> _stocks = new List<StockRealTime>();
         //private string _stockSymbol = "";
 
         private readonly object _updateStockPricesLock = new object();
@@ -83,6 +83,11 @@ namespace PhimHang.Models
             return Task.FromResult(stockListResult.ToList());
         }
 
+        public static bool CheckExistStock(string stock)
+        {
+            return Task.FromResult(_stocks.Count(st => st.CompanyID == stock) == 1).Result;
+        }
+
 
         public async void GetStockPriceFromApi()
         {
@@ -98,10 +103,7 @@ namespace PhimHang.Models
                 client.BaseAddress = uri;
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                var parameter = new { PI_tickerList = "KEYSECRET" };
-
-                
+                var parameter = new { PI_tickerList = "KEYSECRET" };                
                 try
                 {
                     var response = client.PostAsJsonAsync("/api/StockRealTime", parameter).Result;

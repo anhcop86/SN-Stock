@@ -53,8 +53,7 @@ namespace PhimHang.Hubs
                         if (item.IndexOf("$", 0, 1) != -1) // tag ma co phieu
                         {
                             string ticker = item.RemoveSpecialString().ToUpper(); //item.Replace("$", "").Replace(",", "").Replace(".", "").Replace("!", "").Replace("?", "").Trim().ToUpper();
-                            messageFromatHTML += "<b><a onclick=selectMe(event,\"#\") target='_blank' href='/ticker/" + ticker + "'>" + item + "</a></b>" + " ";
-                            stockTag += ticker + "|";
+                            messageFromatHTML += "<b><a onclick=selectMe(event,\"#\") target='_blank' href='/ticker/" + ticker + "'>" + item + "</a></b>" + " ";                            
                         }
                         else if (item.IndexOf("@", 0, 1) != -1) // tag nguoi dung
                         {
@@ -92,21 +91,10 @@ namespace PhimHang.Hubs
                 }
 
                 #endregion
-                
+
                 #region explan this passing messege to stockcode and username list
                 //messageFromatHTML += "</a>";
-                post.Message = AppHelper.FilteringWord(messageFromatHTML); // Filteringword lọc từ khóa bậy
-                post.PostedBy = userlogin.Id;
-                post.PostedDate = DateTime.Now;
-                post.StockPrimary = stockTag;
-                post.NhanDinh = nhanDinh;
-                post.SumLike = 0;
-                if (!string.IsNullOrWhiteSpace(chartImage))
-                {
-                    post.ChartYN = true;
-                    post.ChartImageURL = chartImage.Replace("?width=50&height=50&mode=crop", "");
-                }
-
+            
                 var listStock = new List<string>();
                 var listUsersendMessege = new List<string>();
                 List<string> listMessegeSplit = messagedefault.Split(' ').ToList().FindAll(p => p.Contains("$") || p.Contains("@"));
@@ -114,18 +102,19 @@ namespace PhimHang.Hubs
                 #endregion
 
                 #region gui message co phieu và user lien quan
-                db.Posts.Add(post);
+                
                 foreach (var item in listMessegeSplit)
                 {
                     if (item.Length > 0)
                     {
                         string stockcode = item.RemoveSpecialString().ToUpper();
-                        if (item.IndexOf("$", 0, 1) != -1 && !listStock.Contains(stockcode)) // find the stock with $
+                        if (item.IndexOf("$", 0, 1) != -1 && !listStock.Contains(stockcode) && StockRealTimeTicker.CheckExistStock(stockcode)) // find the stock with $
                         {
-                            StockRelate stockRelateLasts = new StockRelate();
-                            stockRelateLasts.PostId = post.PostId;
-                            stockRelateLasts.StockCodeRelate = stockcode;
-                            db.StockRelates.Add(stockRelateLasts); // add to database
+                            //StockRelate stockRelateLasts = new StockRelate();
+                            //stockRelateLasts.PostId = post.PostId;
+                            //stockRelateLasts.StockCodeRelate = stockcode;
+                            //db.StockRelates.Add(stockRelateLasts); // add to database chieu nay xu
+                            stockTag += stockcode + "|";
                             listStock.Add(stockcode); // group of hub for client 
                         }
                         else if (item.IndexOf("@", 0, 1) != -1) //find the user with @
@@ -139,14 +128,26 @@ namespace PhimHang.Hubs
                                 listUsersendMessege.Add(user);
                             }
                         }
-                    }                 
+                    }
                 }
                 #endregion
 
                 #region luu vao db
                 /* add stockrelate */
+                post.Message = AppHelper.FilteringWord(messageFromatHTML); // Filteringword lọc từ khóa bậy
+                post.PostedBy = userlogin.Id;
+                post.PostedDate = DateTime.Now;
+                post.NhanDinh = nhanDinh;
+                post.SumLike = 0;
+                if (!string.IsNullOrWhiteSpace(chartImage))
+                {
+                    post.ChartYN = true;
+                    post.ChartImageURL = chartImage.Replace("?width=50&height=50&mode=crop", "");
+                }
+                post.StockPrimary = stockTag; // lấy các stock #tag cuối GAS!PAS
                 try
                 {
+                    db.Posts.Add(post);
                     await db.SaveChangesAsync();
                 }
                 catch (Exception)
@@ -171,14 +172,18 @@ namespace PhimHang.Hubs
                 };
 
                 #endregion
-                
+
                 #region gui message
-                if (userpageid > 0)
+                if (listStock.Count > 0)
+                {
+                    await Clients.All.addPostGlobal(ret); // add message vào profile va home    
+                }
+
+                if (userpageid > 0) // gửi cho cùng 1 nhóm có cùng user page
                 {
                     listStock.Add(userpageid.ToString());
                 }
-                await Clients.Groups(listStock).addPost(ret); // ad group co phieu lien quan
-                await Clients.All.addPostGlobal(ret); // add message vào profile va home
+                await Clients.Groups(listStock).addPost(ret); // ad group co phieu lien quan                
                 if (listUsersendMessege.Count > 0)
                 {
                     await Clients.Users(listUsersendMessege).MessegeOfUserPost(1); // gui tin bao cho user nao có @

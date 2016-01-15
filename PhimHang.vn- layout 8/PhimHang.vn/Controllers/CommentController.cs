@@ -35,26 +35,6 @@ namespace PhimHang.Controllers
         private const string ImageURLAvata = "images/avatar/";
 
 
-       /* public async Task<dynamic> Get(string stockCurrent)
-        {
-
-            var ret = (from stockRelate in await db.StockRelates.ToListAsync()
-                       where stockRelate.StockCodeRelate == stockCurrent
-                       orderby stockRelate.Post.PostedDate descending
-                       select new
-                       {
-                           Message = stockRelate.Post.Message,
-                           PostedBy = stockRelate.Post.PostedDate,
-                           PostedByName = stockRelate.Post.UserLogin.FullName,
-                           PostedByAvatar = string.IsNullOrEmpty(stockRelate.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + stockRelate.Post.UserLogin.AvataImage,
-                           PostedDate = stockRelate.Post.PostedDate,
-                           PostId = stockRelate.PostId
-                       }).AsEnumerable();
-
-            return ret;
-        }
-        * */
-
         // GET api/comment/5
         public string Get(int id)
         {

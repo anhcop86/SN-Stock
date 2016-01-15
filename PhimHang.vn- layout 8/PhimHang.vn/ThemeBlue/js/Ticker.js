@@ -251,6 +251,7 @@ function viewModel() {
             filterhere = stringFilter;
             self.posts([]);
             self.newPosts([]);
+            document.title = $('#titleHidenPage').val();
             $.ajax({
                 cache: false,
                 type: "GET",
