@@ -5,6 +5,14 @@
 
 <div class="banner-right-first">
     <div class="banner-header-white">CỔ PHIẾU ĐANG THEO DÕI</div>
+    <div class="banner-header-add" style="">
+        <div>
+            <input id="addStock" type="text" name="addStockTextbox" value=" " />
+            <a href="#"><i class="fa fa-plus"></i></a>
+        </div>        
+        
+       
+    </div>
     @{
         List<StockRealTime> liststockRT = ViewBag.listStockPriceFollow as List<StockRealTime>;
         if (liststockRT.Count == 0)
@@ -57,7 +65,8 @@
                             </span>
                         </span>
                         </div>
-                    }                
+                    }  
+                    <div><a href="javascript:;">x</a></div>
                  </div>
             }
             <div class="loadmore"><a href="#"><i class="fa  fa-angle-double-down"></i></a></div>

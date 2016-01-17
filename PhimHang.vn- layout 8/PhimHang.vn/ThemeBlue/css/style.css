@@ -461,6 +461,9 @@ ul.top-panel-left2 > li:hover{
     overflow: hidden;
     border-bottom: 1px solid #ddd;
 }
+.banner-item1:hover {
+    background-color: #ECF2F5;
+}
 .item-left{
     float: left;
     width: 49%;
@@ -477,9 +480,17 @@ ul.top-panel-left2 > li:hover{
 }
 .item-right{
     float: right;
-    width: 49%;
+    width: 45%;
     text-align: center;
 }
+.banner-item1 .item-right{
+    float: left !important;
+}
+
+.banner-item1 div a{
+    color:#ddd;
+}
+
 .banner-item-user-detail
 {
     background-color: #fff;
@@ -583,6 +594,9 @@ a.follow-button-mini:hover{
     width: 99%;
     max-width: 99%;
 }
+
+.input-status-text > textarea::-webkit-input-placeholder {  color: #CF000F;}
+.input-status-text > textarea:focus::-webkit-input-placeholder {  color: #ddd;}
 /*status controler*/
 .status-control{
     float:left;
@@ -980,6 +994,31 @@ input[name=BullBear]{
     border: 1px solid #ddd;
     /*border-top-left-radius: 5px;*/
     /*border-top-right-radius: 5px;*/
+}
+.banner-header-add{
+    background-color: #fff;
+    color: #000;
+    padding: 5px;    
+    text-align: left;
+    font-size: 13px;
+    font-weight: bold;
+    border: none;
+    width:100%;
+}
+.banner-header-add div a{
+    padding: 3px 8px 4px 8px;
+    background-color: #CF000F;
+    color: white;
+    float: right;
+    right: -4px;
+}
+.banner-header-add #addStock {
+    width:228px;
+    height:23px;
+    left:-4px;
+    padding-left:7px;
+   /*text-align:left;*/
+
 }
 .loadmore,.loadmore > a{
     margin-top: 5px;
@@ -1384,6 +1423,9 @@ a.category-tab:hover{
     background-color: #F8F8F8;
     border-bottom: 1px solid #ddd;
 
+}
+.follower-item:hover {
+    background-color:#ECF2F5;
 }
 .list-item-custom{
     width: 470px;

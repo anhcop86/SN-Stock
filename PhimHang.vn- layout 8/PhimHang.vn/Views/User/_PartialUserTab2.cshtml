@@ -2,6 +2,19 @@
 <div id="page3-tab2" class="banner-right-first">
     <div class="banner-header-white banner-header-white-page3">Danh mục đầu tư</div>
     @{
+        var checkMyself = false;
+        if (User.Identity.IsAuthenticated && ViewBag.CheckUserExist == "E")
+        {
+            checkMyself = true;
+            <div class="banner-header-add">
+                <div>
+                    <input style="width:520px" id="addStock" type="text" name="addStockTextbox" value=" " />
+                    <a href="#"><i class="fa fa-plus"></i></a>
+                </div>
+            </div>
+        }
+    }
+    @{
         foreach (var item in ViewBag.listStockPriceFollow as List<StockRealTime>)
         {
              <div class="banner-item1">
@@ -44,6 +57,10 @@
                             </span>
                         </div>
                      }
+                 @if (checkMyself)
+                 {
+                      <div><a href="javascript:;">x</a></div>
+                 }
                 
 
             </div>

@@ -12,11 +12,19 @@
     }
 </div>
 <div class="toSpan top-banner-icon f-right">
-    <a href="/@User.Identity.Name"><i id="fahome" class="fa fa-home"></i></a>
+    <a href="/myprofile"><i id="fahome" class="fa fa-home"></i></a>
 </div>
 
 <div class="toSpan top-banner-icon2 f-right">
-    <a href="/myprofile" class="avatar">
+    @*<span>
+        <a href="#" class="avatar" data-dropdown="#dropdown-3">
+            <img src="@ViewBag.AvataEmage?width=40&height=40&mode=crop" alt="Cùng Phím">
+        </a>
+    </span>*@
+    <span>
+        <a href="/@User.Identity.Name" class="avatar">
         <img src="@ViewBag.AvataEmage?width=40&height=40&mode=crop" alt="Cùng Phím">
-    </a>
+        </a>
+    </span>
+    @*<div style="width:200%; height:200px;background-color:aqua"></div>*@
 </div>
