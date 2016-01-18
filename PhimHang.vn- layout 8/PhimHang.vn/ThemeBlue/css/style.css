@@ -490,6 +490,9 @@ ul.top-panel-left2 > li:hover{
 .banner-item1 div a{
     color:#ddd;
 }
+.banner-item1 div{
+    float:left;
+}
 
 .banner-item-user-detail
 {
@@ -595,7 +598,7 @@ a.follow-button-mini:hover{
     max-width: 99%;
 }
 
-.input-status-text > textarea::-webkit-input-placeholder {  color: #CF000F;}
+.input-status-text > textarea::-webkit-input-placeholder {  color: #328AC5;}
 .input-status-text > textarea:focus::-webkit-input-placeholder {  color: #ddd;}
 /*status controler*/
 .status-control{
@@ -831,8 +834,8 @@ input[name=BullBear]{
     background-color: #ECF2F5;
         
 }
-.list-status .bg-white:hover .list-item-control a{    
-    color:#328ac5;
+.list-status .bg-white:hover .list-item-control a,.list-status .bg-white:hover .list-item-control a i{    
+    color:#328ac5 !important;
 }
 .list-status .bg-white a:hover{    
     text-decoration : underline;  
@@ -898,6 +901,7 @@ input[name=BullBear]{
     border: 1px solid #ddd;
     font-size: 1.2rem;
 }
+
 .list-item-control a:first-child{
     padding:2px 3px 2px 5px;
 }
@@ -1016,7 +1020,7 @@ input[name=BullBear]{
     width:228px;
     height:23px;
     left:-4px;
-    padding-left:7px;
+    padding-left:15px;
    /*text-align:left;*/
 
 }
@@ -1822,3 +1826,17 @@ a.avatar img:hover{
     left:200px;
     position:fixed;
 }*/
+
+.fa-caret-down{
+    color:#ddd !important;
+}
+
+#MenuReposive {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    z-index: 10010;
+    position: fixed;
+    top: 0;
+    display:none;
+}

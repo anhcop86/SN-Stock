@@ -76,7 +76,7 @@ namespace PhimHang.Controllers
                                    where followStock.UserId == currentUser.UserExtentLogin.Id
                                    select followStock.StockFollowed).ToListAsync();
 
-            ViewBag.listStockFollow = listStock as List<string>; // client
+            ViewBag.listStockFollow = listStock as List<string>; // load o cliet
             // End thong tin menu ben trai
             //so luong tin cua User
             var numberMessegeNew = db.NotificationMesseges.Where(nm => nm.UserReciver == currentUser.UserExtentLogin.Id && nm.NumNoti > 0).Sum(mn => mn.NumNoti);
@@ -173,9 +173,9 @@ namespace PhimHang.Controllers
             }
         }
         [HttpPost]
-        public async Task ChangeStatusMessege(string    userid)
+        public async Task ChangeStatusMessege(string userid)
         {
-            var listUpdate = await db.NotificationMesseges.Where(nm => nm.UserLogin1.KeyLogin == userid && nm.XemYN == true).ToListAsync();            
+            var listUpdate = await db.NotificationMesseges.Where(nm => nm.UserLogin1.KeyLogin == userid && nm.XemYN == true).ToListAsync();
             if (listUpdate.Count > 0)
             {
                 foreach (var item in listUpdate)
@@ -186,9 +186,8 @@ namespace PhimHang.Controllers
                 }
                 await db.SaveChangesAsync();
             }
-
-
         }
+
         #endregion
 
         [HttpGet]

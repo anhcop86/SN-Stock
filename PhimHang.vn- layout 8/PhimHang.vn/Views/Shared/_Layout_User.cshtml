@@ -30,9 +30,9 @@
     <meta property="fb:app_id" content="934180333272963" />
     <meta property="og:type" content="business.business" />
     <meta property="og:url" content="@Request.Url.AbsoluteUri" />
-    <meta property="og:title" content="Trang nhà tại cùng phím của @ViewBag.UserName" />
+    <meta property="og:title" content="Trang nhà tại phố chứng khoán | @ViewBag.UserName" />
     <meta property="og:image" content="@ViewBag.AbsolutePathHostName@ViewBag.AvataImageUrlCurrent?width=98&height=98&mode=crop" />
-    <meta property="og:description" content="Trang nhà tại cùng phím" />
+    <meta property="og:description" content="Trang nhà tại phochungkhoan.com" />
     <meta property="business:contact_data:street_address" content="117 nguyễn Du" />
     <meta property="business:contact_data:locality" content="Bến Thành" />
     <meta property="business:contact_data:postal_code" content="Quận 1" />
@@ -106,32 +106,30 @@
         @Html.Partial("_Partial_Area_Cover_User")
     </div>    
     <!---->
-    <div>
-        @*<div style="margin-top:0px;">*@
-            <div class="menu-top-bar2">
-                <div class="top-menu-2">
-                    @Html.Partial("_Partial_Area_MenuBar_User")
-                </div>
-            </div>
-            <div class="content-main" style="margin-top: 0px;">
-                <div class="area-left">
-                    @Html.Partial("_Partial_Area_Left_User")
-                </div>
-                <div class="area-center">
-                    @RenderBody()
-                </div>
-                <div id="areaRandomProBrokerId" class="area-right">
-                    @*@Html.Partial("_Partial_Area_Right_User1", ViewData["DanPhimRandom"])*@
-                    <img src="/img/uploading.gif" /> Loading ... 
-                </div>
-                <script>                   
-                    $(document).ready(function () {                        
-                        $("#areaRandomProBrokerId").load('/user/RandomProBroker');
-                    })
-                </script>
+    <div>        
+        <div class="menu-top-bar2">
+            <div class="top-menu-2">
+                @Html.Partial("_Partial_Area_MenuBar_User")
             </div>
         </div>
-    @*</div>*@
+        <div class="content-main" style="margin-top: 0px;">
+            <div class="area-left">
+                @Html.Partial("_Partial_Area_Left_User")
+            </div>
+            <div class="area-center">
+                @RenderBody()
+            </div>
+            <div id="areaRandomProBrokerId" class="area-right">                    
+                <img src="/img/uploading.gif" /> Loading ... 
+            </div>
+            <script>                   
+                $(document).ready(function () {                        
+                    $("#areaRandomProBrokerId").load('/user/RandomProBroker');
+                })
+            </script>
+        </div>
+    </div>
+    
     
     @RenderSection("scripts", required: false)
     <!--facebook plugin-->

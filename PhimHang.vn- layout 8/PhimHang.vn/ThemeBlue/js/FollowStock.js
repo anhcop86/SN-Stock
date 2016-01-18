@@ -7,10 +7,6 @@
             url: '/FollowStock/Create',
             data: { stock: stock },
             beforeSend: function (xhr) {
-                //Add your image loader here
-
-            },
-            beforeSend: function (xhr) {
                 $(".button-flow").hide();
             },
             success: function (data) {

@@ -8,64 +8,64 @@
             checkMyself = true;
             <div class="banner-header-add">
                 <div>
-                    <input style="width:520px" id="addStock" type="text" name="addStockTextbox" value=" " />
-                    <a href="#"><i class="fa fa-plus"></i></a>
+                    <input style="width:520px" id="addStock" type="text" name="addStockTextbox" value="" />
+                    <a href="javascript:;" onclick="addStock($('#addStock'))"><i class="fa fa-plus"></i></a>
                 </div>
             </div>
         }
     }
     @{
-        foreach (var item in ViewBag.listStockPriceFollow as List<StockRealTime>)
-        {
-             <div class="banner-item1">
-                <div class="item-left">
-                    <a href="/Ticker/@item.CompanyID">$@item.CompanyID<br></a>
-                </div>
-                 @if (item.Diff == 0)
-                    {
-                        <div class="item-right item-right-trang3-tab2 NoChangeIndex">
-                            <strong>@item.FinishPrice</strong>
-                            <span class="">
-                                <i></i><br>
-                                <span class="top-menu-point">
-                                    @item.Diff (@item.DiffRate %)
-                                </span>
-                            </span>
-                        </div>
-                    }
-                     else if (item.Diff > 0)
-                     {
-                        <div class="item-right item-right-trang3-tab2 bullishIndex">
-                            <strong>@item.FinishPrice</strong>
-                            <span class="">
-                                <i class="fa fa-sort-up"></i><br>
-                                <span class="top-menu-point">
-                                    @item.Diff (@item.DiffRate %)
-                                </span>
-                            </span>
-                        </div>
-                     }
-                     else
-                     {
-                        <div class="item-right item-right-trang3-tab2 bearishIndex">
-                            <strong>@item.FinishPrice</strong>
-                            <span class="">
-                                <i class="fa fa-sort-down"></i><br>
-                                <span class="top-menu-point">
-                                    @item.Diff (@item.DiffRate %)
-                                </span>
-                            </span>
-                        </div>
-                     }
-                 @if (checkMyself)
-                 {
-                      <div><a href="javascript:;">x</a></div>
-                 }
-                
-
+    foreach (var item in ViewBag.listStockPriceFollow as List<StockRealTime>)
+    {
+        <div id='banner-item-@item.CompanyID' class="banner-item1">
+            <div class="item-left">
+                <a href="/Ticker/@item.CompanyID">$@item.CompanyID<br></a>
             </div>
-        }
+            @if (item.Diff == 0)
+            {
+                <div class="item-right item-right-trang3-tab2 NoChangeIndex">
+                    <strong>@item.FinishPrice</strong>
+                    <span class="">
+                        <i></i><br>
+                        <span class="top-menu-point">
+                            @item.Diff (@item.DiffRate %)
+                        </span>
+                    </span>
+                </div>
+            }
+            else if (item.Diff > 0)
+            {
+                <div class="item-right item-right-trang3-tab2 bullishIndex">
+                    <strong>@item.FinishPrice</strong>
+                    <span class="">
+                        <i class="fa fa-sort-up"></i><br>
+                        <span class="top-menu-point">
+                            @item.Diff (@item.DiffRate %)
+                        </span>
+                    </span>
+                </div>
+            }
+            else
+            {
+                <div class="item-right item-right-trang3-tab2 bearishIndex">
+                    <strong>@item.FinishPrice</strong>
+                    <span class="">
+                        <i class="fa fa-sort-down"></i><br>
+                        <span class="top-menu-point">
+                            @item.Diff (@item.DiffRate %)
+                        </span>
+                    </span>
+                </div>
+            }
+            @if (checkMyself)
+            {
+                <div><a href="javascript:;" onclick="deleteStock('@item.CompanyID')">x</a></div>
+            }
+
+
+        </div>
     }
+}
    
     
     

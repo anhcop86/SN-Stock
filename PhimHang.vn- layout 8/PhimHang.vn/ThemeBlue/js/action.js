@@ -243,39 +243,56 @@ $(document).ready(function () {
         })
     }
     
-   
-    /// xóa bài viết
-    //$("#CommentForKoLoad").append('<div id="dialog-delete" title="Xóa bài viết"><p>'
-    //                   + '<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>'
-    //                   + 'Bạn có chắc muốn xóa bài này?</p></br></br>'
-    //                   + '<button id="btAddPost" style="cursor:pointer" class="button-phim" data-bind="click : $root.deletePost ">delete</button>'
-    //               + '</div>');
+    // xóa cổ phiếu đang theo dõi
+    addStock = function (stockOject) {
+        var stock = stockOject.val().toUpperCase();
+        if (stock == '' || stock.length < 3) {
+            stockOject.focus();
+            return;
+        }
+        if (confirm("Bạn muốn theo dõi cổ phiếu " + stock + '?')) {
+            addorDelete(stock);
+        }
+    }
+    // thêm cổ phiếu đang theo doi
 
-    //$("#dialog-delete").dialog({
-    //    resizable: false,
-    //    draggable: false,
-    //    height: 180,
-    //    modal: true,
-    //    autoOpen: false,
-    //    create: function (event) { $(event.target).parent().css('position', 'fixed'); },
-    //    open: function (event, ui) {
-    //        //$('#bg_dialog').show();
-    //        $('body').css('overflow', 'hidden');
-    //    },
-    //    //close: function (event, ui) {
-    //    //    //$('#bg_dialog').hide();
-    //    //    $('body').css('overflow', 'auto');
-    //    //},
-    //    //buttons: {
-    //    //    "Xóa": function () {
-    //    //        var postid = $(this).data('postid');
-    //    //        // post data on server
-    //    //        //reportPostUpServer(postid);
-    //    //        $(this).dialog("close");
-    //    //    },
-    //    //    Cancel: function () {
-    //    //        $(this).dialog("close");
-    //    //    }
-    //    //}
-    //});
+    deleteStock = function (stock) {
+        if (confirm("Bạn muốn loại khỏi danh mục theo dõi?")) {
+            addorDelete(stock.toUpperCase());
+        }
+    }
+
+    function addorDelete(stock) {
+        $.ajax({
+            cache: false,
+            type: "POST",
+            url: '/FollowStock/Create',
+            data: { stock: stock },
+            beforeSend: function (xhr) {
+                //Add your image loader here
+
+            },
+            beforeSend: function (xhr) {
+                //$(".button-flow").hide();
+            },
+            success: function (data) {
+                if (data == "A") {
+                    showNotification('Đã thêm vào danh mục theo dõi');
+                    location.reload();
+                    //$.wait(function () { $(".button-flow").html("<i class='fa fa-minus'></i>Đang theo dõi").fadeIn('slow'); }, 2);
+                }
+                else if (data == "R") {
+                    showNotification('Đã loại khỏi danh mục theo dõi');
+                    $("#banner-item-" + stock).remove();
+                } else {
+                    showNotification('Lỗi hoặc cổ phiếu không tồn tại.');
+                }
+            }
+        })
+    }
+
+    // menu hide
+
+    $("body").append('<div id="MenuReposive" ><div>');
+   
 });

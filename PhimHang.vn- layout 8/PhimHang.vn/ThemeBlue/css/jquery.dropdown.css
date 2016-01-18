@@ -114,5 +114,5 @@
 .dropdown .delete A { background-image: url(icons/cross-script.png); }
 
 #jq-dropdown-2 a:hover{
-    color:white;
+    color:white !important;
 }

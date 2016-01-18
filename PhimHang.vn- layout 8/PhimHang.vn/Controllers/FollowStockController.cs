@@ -73,38 +73,38 @@ namespace PhimHang.Controllers
         // POST: /FollowStock/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]        
+        [HttpPost]
         public async Task<string> Create(string stock)
         {
-            
+
             using (db = new testEntities())
             {
-                ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-                
-                //var countStockFollowr = await db.FollowStocks.CountAsync(f => f.UserId == currentUser.UserExtentLogin.Id );
-                var followrStockByUser = await db.FollowStocks.FirstOrDefaultAsync(f => f.UserId == currentUser.UserExtentLogin.Id && f.StockFollowed == stock);
-                //if (countStockFollowr >= 10 && followrStockByUser == null)
-                //{
-                //    return "M";
-                //}
-                
-                if (followrStockByUser == null)
+
+                if (StockRealTimeTicker.CheckExistStock(stock))
                 {
-                    var stockfollow = new FollowStock { UserId = currentUser.UserExtentLogin.Id, StockFollowed = stock , CreatedDate = DateTime.Now};
-                    db.FollowStocks.Add(stockfollow);
-                    await db.SaveChangesAsync();
-                    return "A";
+                    ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                    var followrStockByUser = await db.FollowStocks.FirstOrDefaultAsync(f => f.UserId == currentUser.UserExtentLogin.Id && f.StockFollowed == stock);
+                    if (followrStockByUser == null)
+                    {
+                        var stockfollow = new FollowStock { UserId = currentUser.UserExtentLogin.Id, StockFollowed = stock, CreatedDate = DateTime.Now };
+                        db.FollowStocks.Add(stockfollow);
+                        await db.SaveChangesAsync();
+                        return "A";
+                    }
+                    else
+                    {
+                        db.FollowStocks.Remove(followrStockByUser);
+                        await db.SaveChangesAsync();
+                        return "R";
+                    }
                 }
-                else 
+                else
                 {
-                    db.FollowStocks.Remove(followrStockByUser);
-                    await db.SaveChangesAsync();
-                    return "R";
+                    return "E";
                 }
 
-                
             }
-                    
+
         }
 
         [HttpPost]

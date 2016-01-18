@@ -98,7 +98,7 @@ namespace PhimHang.Controllers
         public ActionResult Register(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            //var testEmail = AppHelper.sendEmail("AnhCOpne", "hieu.nguyen@vfs.com.vn", "mylove@07", "tomtruong@cungphim.com", AppHelper.ResetPasswordEmailTemplatePath);
+            //var testEmail = AppHelper.sendEmail("AnhCOpne", "hieu.nguyen@vfs.com.vn", "mylove@07", "tomtruong@phochungkhoan.com", AppHelper.ResetPasswordEmailTemplatePath);
             return View();
         }        
         
@@ -573,7 +573,7 @@ namespace PhimHang.Controllers
                     await AppHelper.AvatarSyn(getUserFacebook.IdFacebook);
                 }
                 // login\
-                var user = await UserManager.FindAsync(getUserFacebook.UserNameCopy, "cungphim.com@9999");
+                var user = await UserManager.FindAsync(getUserFacebook.UserNameCopy, "phochungkhoan.com@9999");
                 await SignInAsync(user, false);
                 AppHelper.SetCookieOfFace();
                 return RedirectToAction("","myprofile"); // Returun URL
@@ -670,7 +670,7 @@ namespace PhimHang.Controllers
                 var user = new ApplicationUser()
                 {
                     UserName = model.UserName,
-                    PasswordHash = "cungphim.com@9999",                   
+                    PasswordHash = "phochungkhoan.com@9999",                   
                 };
                 user.UserExtentLogin = new UserExtentLogin { Email = email, KeyLogin = user.Id, CreatedDate = DateTime.Now, FullName = name, Verify = Verify.NO, UserNameCopy = model.UserName, IdFacebook = id, AvatarSyn = true };
 

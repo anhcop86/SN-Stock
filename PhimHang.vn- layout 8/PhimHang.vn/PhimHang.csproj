@@ -1266,9 +1266,9 @@
     <Content Include="Views\Shared\_Layout_MyProfile.cshtml" />
     <Content Include="Views\MyProfile\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Shared\_Partial_Area_Left_Profile.cshtml" />
+    <Content Include="Views\MyProfile\_Partial_Area_Left_Profile.cshtml" />
     <Content Include="Views\Shared\_Layout_MyProfile_Setting.cshtml" />
-    <Content Include="Views\Shared\_Partial_Area_Right_Profile.cshtml" />
+    <Content Include="Views\MyProfile\_Partial_Area_Right_Profile.cshtml" />
     <Content Include="Views\Symbol\Index.cshtml" />
     <Content Include="Views\Symbol\_Partial_stock-detail.cshtml" />
     <Content Include="Views\Shared\_Partial_Area_Search_Profile.cshtml" />
@@ -1278,10 +1278,10 @@
     <Content Include="Views\Shared\_Partial_Area_Right_Ad.cshtml" />
     <Content Include="Views\PostDetail\Index.cshtml" />
     <Content Include="Views\Shared\_Layout_User.cshtml" />
-    <Content Include="Views\Shared\_Partial_Area_Left_User.cshtml" />
-    <Content Include="Views\Shared\_Partial_Area_Right_User1.cshtml" />
+    <Content Include="Views\User\_Partial_Area_Left_User.cshtml" />
+    <Content Include="Views\User\_Partial_Area_Right_User1.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
-    <Content Include="Views\Shared\_Partial_Area_MenuBar_User.cshtml" />
+    <Content Include="Views\User\_Partial_Area_MenuBar_User.cshtml" />
     <Content Include="Views\User\_PartialUserTab1.cshtml" />
     <Content Include="Views\Shared\_Layout_Reply_Ad.cshtml" />
     <Content Include="Views\Shared\_Layout_Ticker.cshtml" />
@@ -1408,7 +1408,7 @@
     <Content Include="Views\Shared\_Layout_ThiTruong.cshtml" />
     <Content Include="Views\ThiTruong\Index.cshtml" />
     <Content Include="Views\Shared\_Partial_Area_Right_User_Info.cshtml" />
-    <Content Include="Views\Shared\_Partial_Area_Cover_User.cshtml" />
+    <Content Include="Views\User\_Partial_Area_Cover_User.cshtml" />
     <Content Include="Views\Shared\_Partial_Area_Logo.cshtml" />
     <Content Include="Views\User\Tickers.cshtml" />
     <Content Include="Views\User\Followers.cshtml" />
