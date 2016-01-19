@@ -58,7 +58,12 @@
         right:0;
         margin-right:0px;
     }
-
+    .f-right-userInfo {
+        display:none;
+    }
+    .f-right-moreInfo{
+        display:block;
+    }
     #search_box_top {
     }
 
@@ -165,6 +170,9 @@
     #top-center {
         width: 50px;
         margin-left: 5px;
+    }    
+    #btnPhim{
+        display:none;
     }
 }
 @media only screen and (min-width: 641px) and (max-width: 999px) {

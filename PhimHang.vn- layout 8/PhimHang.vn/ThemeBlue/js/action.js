@@ -291,8 +291,18 @@ $(document).ready(function () {
         })
     }
 
-    // menu hide
-
-    $("body").append('<div id="MenuReposive" ><div>');
+    // add menu hide
+    $(".toSpan top-banner-icon2 f-right").append('<span><i class="fa fa-plus-square"></i></span>');
    
+   
+    closeMenu = function () {
+        $('body').css('overflow', 'auto');
+        $("#MenuReposive").fadeOut();        
+    }
+
+    openMenu = function () {
+        $('body').css('overflow', 'hidden');
+        $("#MenuReposive").fadeIn();
+        
+    }
 });

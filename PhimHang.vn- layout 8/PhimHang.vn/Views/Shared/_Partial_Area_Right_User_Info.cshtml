@@ -15,16 +15,15 @@
     <a href="/myprofile"><i id="fahome" class="fa fa-home"></i></a>
 </div>
 
-<div class="toSpan top-banner-icon2 f-right">
-    @*<span>
-        <a href="#" class="avatar" data-dropdown="#dropdown-3">
+<div class="toSpan top-banner-icon2 f-right">   
+    <span class="f-right-userInfo">
+        <a href="/@User.Identity.Name" class="avatar">
             <img src="@ViewBag.AvataEmage?width=40&height=40&mode=crop" alt="Phố chứng khoán">
         </a>
-    </span>*@
-    <span>
-        <a href="/@User.Identity.Name" class="avatar">
-        <img src="@ViewBag.AvataEmage?width=40&height=40&mode=crop" alt="Phố chứng khoán">
-        </a>
+    </span>        
+    <span class="f-right-moreInfo">
+        <a href="#" onclick="openMenu();"><i class="fa fa-plus-square"></i></a>
     </span>
-    @*<div style="width:200%; height:200px;background-color:aqua"></div>*@
+    
 </div>
+

@@ -1698,6 +1698,17 @@ button
     background-color : transparent !important; 
     color: #B7DCEA !important; 
 } 
+.f-right-userInfo{
+    display:block;
+}
+.f-right-moreInfo{
+    top:-3px;
+    display:none;
+    font-size:28px;    
+}
+.f-right-moreInfo a {
+    color:#fff;
+}
 
  /* style 2 
 .likeAndPin button {
@@ -1728,6 +1739,10 @@ button
 
 .top-banner-icon2 {
   padding: 2px 17px 0px;
+}
+
+.top-banner-icon2:last-child {
+    color:white;
 }
 
 .avatar img {
@@ -1831,12 +1846,67 @@ a.avatar img:hover{
     color:#ddd !important;
 }
 
+/*menu reposive of iphone*/
 #MenuReposive {
     height: 100%;
     width: 100%;
-    background-color: black;
+    background-color: #104B77;
     z-index: 10010;
     position: fixed;
     top: 0;
     display:none;
+    margin:auto;
+}
+
+#MenuReposive .MenuR-UserInfo{
+    width:85%;
+    margin:auto;
+    padding-left:20px;
+}
+
+#MenuReposive .MenuR-UserInfo img {
+    top:10px;
+}
+
+.MenuR-top{
+    background-color:#146195;
+    height:50px;
+    width:100%;
+    margin:auto;
+    top:0;
+}
+
+.MenuR-top i {
+    color:#FFF;
+    font-size:28px;
+}
+
+.MenuR-top div {
+    width:28px;
+    right:13px;
+    float:right;
+    font-family:'tahoma,verdana,arial,sans-serif';
+    overflow:hidden;  
+    top:12px;
+    color: #fff;  
+}
+
+.MenuR-Main{
+    background-color:#104B77;
+    min-height:200px;
+    width:85%;
+    margin:auto;
+    font-size:18px;    
+    margin-top:60px;
+}
+.MenuR-Main .more a{
+    color:#FFF;
+}
+.MenuR-Main ul{
+    list-style-type:none;    
+
+}
+.MenuR-Main ul li{
+    padding: 8px 0px;
+
 }

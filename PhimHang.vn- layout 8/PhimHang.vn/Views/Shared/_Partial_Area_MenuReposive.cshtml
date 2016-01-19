@@ -1,0 +1,49 @@
+﻿<div id="MenuReposive">
+    <div class="MenuR-top"><div><a onclick="closeMenu();" href="#"><i class="fa fa-minus-square"></i></a></div></div>
+    <div class="MenuR-UserInfo">
+        <div style="width:45px;height:40px;float:left">
+            <a href="/@User.Identity.Name" class="avatar">
+                <img src="@ViewBag.AvataEmage?width=40&height=40&mode=crop" alt="Phố chứng khoán">
+            </a>            
+        </div>
+        <div style="width:60px;height:40px;float:left;top:20px;color:#fff">
+            <h3>@User.Identity.Name</h3>
+        </div>
+    </div>
+    <div class="MenuR-Main">
+        <ul class="MenuR-Main more">
+            <li><a href="/">Trang chủ</a></li>
+            <li><a href="/account/profile">Tùy chỉnh</a></li>
+            @{
+                if (User.Identity.IsAuthenticated)
+                {
+                    @: @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        if (Request.Cookies["FacebookLogin"] != null)
+                        {
+                            if (Request.Cookies["FacebookLogin"].Value == "F")
+                            {
+                                <li><a onclick=" logoutAll();">Đăng xuất</a></li>
+                            }
+                            else
+                            {
+                                <li><a onclick=" logoutSite();">Đăng xuất</a></li>
+                            }
+                        }
+                        else
+                        {
+                            <li><a onclick=" logoutSite();">Đăng xuất</a></li>
+                        }                        
+                    }
+                }
+                else
+                {
+                    <li><a href="/Account/Register?ReturnUrl=@Request.Url.AbsolutePath">Đăng ký</a></li>                    
+                    <li><a href="/Account/Login?ReturnUrl=@Request.Url.AbsolutePath">Đăng nhập</a></li>
+                }
+            }
+        </ul>
+    </div>
+</div>
+

@@ -76,10 +76,7 @@
                 }
                 else
                 {
-                    <div id="btnPhim" class="f-right" style="border-radius:1px">
-                        <a class="logoutbutton" href="/Account/Register?ReturnUrl=@Request.Url.AbsolutePath">Đăng ký</a>
-                        <a class="logoutbutton" href="/Account/Login?ReturnUrl=@Request.Url.AbsolutePath">Đăng nhập</a>
-                    </div>
+                    @Html.Partial("_Partial_Area_Menu_Reposive")
                 }
             </div>
         </div>
@@ -130,7 +127,7 @@
         </div>
     </div>
     
-    
+    @Html.Partial("_Partial_Area_MenuReposive")
     @RenderSection("scripts", required: false)
     <!--facebook plugin-->
     @*<script>
