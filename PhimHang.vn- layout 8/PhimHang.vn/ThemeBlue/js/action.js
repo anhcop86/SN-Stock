@@ -292,7 +292,7 @@ $(document).ready(function () {
     }
 
     // add menu hide
-    $(".toSpan top-banner-icon2 f-right").append('<span><i class="fa fa-plus-square"></i></span>');
+    //$(".toSpan top-banner-icon2 f-right").append('<span><i class="fa fa-plus-square"></i></span>');
    
    
     closeMenu = function () {

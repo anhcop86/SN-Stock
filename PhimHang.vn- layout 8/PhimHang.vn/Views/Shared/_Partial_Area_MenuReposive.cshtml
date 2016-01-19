@@ -1,13 +1,13 @@
 ﻿<div id="MenuReposive">
-    <div class="MenuR-top"><div><a onclick="closeMenu();" href="#"><i class="fa fa-minus-square"></i></a></div></div>
+    <div class="MenuR-top"><div><a onclick="closeMenu();" href="#"><i class="fa fa-times"></i></a></div></div>
     <div class="MenuR-UserInfo">
         <div style="width:45px;height:40px;float:left">
             <a href="/@User.Identity.Name" class="avatar">
                 <img src="@ViewBag.AvataEmage?width=40&height=40&mode=crop" alt="Phố chứng khoán">
             </a>            
         </div>
-        <div style="width:60px;height:40px;float:left;top:20px;color:#fff">
-            <h3>@User.Identity.Name</h3>
+        <div style="width:60px;height:40px;float:left;top:20px">
+            <h3><a style="color:#fff" href="/@User.Identity.Name" class="avatar">@User.Identity.Name</a></h3>
         </div>
     </div>
     <div class="MenuR-Main">

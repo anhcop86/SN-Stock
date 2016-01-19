@@ -135,45 +135,50 @@ function viewModel() {
 
 
     self.detailPost = function (data, e) { // chi tiet post bao gom tra loi
+        if (document.documentElement.clientWidth < 640) { // kiem tra do phan giai man hinh de ko nhay popup khi man hinh qua nho
+            window.location.href = "/PostDetail?postid=" + data.PostId;
+            return;
+        }
+        else {
+            self.newReply('');
+            self.replys([]);
+            $("#idPostedDateDetail").html(data.PostedDate);
+            $("#idPostNameDetail").html('<a style="cursor:pointer" href="/' + data.PostedByName + '">' + data.PostedByName + '</a>');
+            $("#idImgPostDetail").attr('src', data.PostedByAvatar);
+            $("#idPostMessenge").html(data.ChartYN == 1 ? data.Message.replace('<br/><img src=' + data.Chart + '?width=215&height=120&mode=crop>', '') + '<br/><br/><a target="_blank" href=' + data.Chart + '><img class="imageChartDetail" src=' + data.Chart + "?maxwidth=475></a>" : data.Message);//=200&s.grayscale=true|"
+            $("#idStmDetail").html(data.Stm);
+            postidCurrent = data.PostId;
+            $("#IdLoadMoreConversation").attr('href', '/PostDetail?postid=' + postidCurrent);
+            //data.notification(0);
+            // load 10 reply gan nhat
+            $.ajax({
+                cache: false,
+                type: "GET",
+                url: '/Post/GetReplyByPostId',
+                data: { replyid: data.PostId },
+                beforeSend: function (xhr) {
+                    //Add your image loader here
 
-        self.newReply('');
-        self.replys([]);
-        $("#idPostedDateDetail").html(data.PostedDate);
-        $("#idPostNameDetail").html('<a style="cursor:pointer" href="/' + data.PostedByName + '">' + data.PostedByName + '</a>');
-        $("#idImgPostDetail").attr('src', data.PostedByAvatar);
-        $("#idPostMessenge").html(data.ChartYN == 1 ? data.Message.replace('<br/><img src=' + data.Chart + '?width=215&height=120&mode=crop>', '') + '<br/><br/><a target="_blank" href=' + data.Chart + '><img class="imageChartDetail" src=' + data.Chart + "?maxwidth=475></a>" : data.Message);//=200&s.grayscale=true|"
-        $("#idStmDetail").html(data.Stm);
-        postidCurrent = data.PostId;
-        $("#IdLoadMoreConversation").attr('href', '/PostDetail?postid=' + postidCurrent);
-        //data.notification(0);
-        // load 10 reply gan nhat
-        $.ajax({
-            cache: false,
-            type: "GET",
-            url: '/Post/GetReplyByPostId',
-            data: { replyid: data.PostId },
-            beforeSend: function (xhr) {
-                //Add your image loader here
-
-            },
-            success: function (data) {
-                var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Reply(item); });
-                $(mappedPosts).each(function (index, element) {
-                    self.replys.push(element);
-                });
-            }
-
-        });
-
-        if (!$(e.target).hasClass('btnMore')) {
-            $('#bg_dialog').show();
-            $('#close_dialog').show();
-            dialog.dialog("open");
-            $(".ui-widget-overlay, #bg_dialog, #close_dialog").click(function (e) {
-                if ($(e.target).parents('#bg_dialog').length == 0) {
-                    dialog.dialog('close');
+                },
+                success: function (data) {
+                    var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Reply(item); });
+                    $(mappedPosts).each(function (index, element) {
+                        self.replys.push(element);
+                    });
                 }
-            })
+
+            });
+
+            if (!$(e.target).hasClass('btnMore')) {
+                $('#bg_dialog').show();
+                $('#close_dialog').show();
+                dialog.dialog("open");
+                $(".ui-widget-overlay, #bg_dialog, #close_dialog").click(function (e) {
+                    if ($(e.target).parents('#bg_dialog').length == 0) {
+                        dialog.dialog('close');
+                    }
+                })
+            }
         }
     }
     self.AddLike = function (data, e) {
