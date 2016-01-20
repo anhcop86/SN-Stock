@@ -115,8 +115,8 @@ textarea {
 .logo img {
     margin-top: 5px;
     max-height: 40px;
-    border-radius: 50%;
-    border: 1px solid #fff;
+    /*border-radius: 50%;*/
+    /*border: 1px solid #fff;*/
 }
 .top-banner-icon {
       padding: 5px 17px 0px 17px;

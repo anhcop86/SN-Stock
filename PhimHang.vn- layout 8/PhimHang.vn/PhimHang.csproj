@@ -582,6 +582,7 @@
     <Content Include="img\default_cover_user7.jpg" />
     <Content Include="img\kindo-logo.jpg" />
     <Content Include="img\login_Facebook.jpeg" />
+    <Content Include="img\Logo_v2.png" />
     <Content Include="img\uploading.gif" />
     <Content Include="img\whitecam.png" />
     <Content Include="Resources\EmailTemplates\ResetPasswordEmail.html" />
