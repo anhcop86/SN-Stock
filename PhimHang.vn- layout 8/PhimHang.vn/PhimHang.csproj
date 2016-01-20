@@ -261,10 +261,14 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\FollowStockController.cs" />
+    <Compile Include="Controllers\GioiThieuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HuongdansudungController.cs" />
+    <Compile Include="Controllers\LienheController.cs" />
     <Compile Include="Controllers\MyProfileController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\PostDetailController.cs" />
+    <Compile Include="Controllers\QuydinhController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\SymbolController.cs" />
     <Compile Include="Controllers\ThiTruongController.cs" />
@@ -529,6 +533,7 @@
     <Content Include="images\indicator.white.gif" />
     <Content Include="images\likecp.png" />
     <Content Include="images\Login_Image.jpg" />
+    <Content Include="images\NutTraLoi.png" />
     <Content Include="images\pintab.png" />
     <Content Include="images\sign-in-vflchypbO.png" />
     <Content Include="images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
@@ -546,6 +551,9 @@
     <Content Include="images\ui-icons_72a7cf_256x240.png" />
     <Content Include="images\ui-icons_ffffff_256x240.png" />
     <Content Include="images\Untitled.png" />
+    <Content Include="images\userguild_image1.jpg" />
+    <Content Include="images\userguild_image2.png" />
+    <Content Include="images\userguild_image3.png" />
     <Content Include="img\1.jpg" />
     <Content Include="img\10.jpg" />
     <Content Include="img\2.jpg" />
@@ -646,6 +654,8 @@
       <DependentUpon>TinyURLDB.edmx</DependentUpon>
       <LastGenOutput>TinyURLDB.cs</LastGenOutput>
     </Content>
+    <Content Include="documents\Huongdan_PhoChungKhoan.pdf" />
+    <Content Include="documents\ThoathuanCungcapDichvu.pdf" />
     <None Include="Properties\PublishProfiles\phimhang o nha.pubxml" />
     <None Include="Properties\PublishProfiles\phimhang.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -745,6 +755,7 @@
     <Content Include="ThemeBlue\css\Notification.css" />
     <Content Include="ThemeBlue\css\Responsive.css" />
     <Content Include="ThemeBlue\css\style.css" />
+    <Content Include="ThemeBlue\css\SumIntro.css" />
     <Content Include="ThemeBlue\css\walt_disney\license.txt" />
     <Content Include="ThemeBlue\css\walt_disney\waltograph.txt" />
     <Content Include="ThemeBlue\img\avata3.jpg" />
@@ -1415,6 +1426,10 @@
     <Content Include="Views\User\Following.cshtml" />
     <Content Include="Views\Shared\_Partial_Area_MenuReposive.cshtml" />
     <Content Include="Views\Shared\_Partial_Area_Menu_Reposive.cshtml" />
+    <Content Include="Views\GioiThieu\Index.cshtml" />
+    <Content Include="Views\Lienhe\Index.cshtml" />
+    <Content Include="Views\Quydinh\Index.cshtml" />
+    <Content Include="Views\Huongdansudung\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

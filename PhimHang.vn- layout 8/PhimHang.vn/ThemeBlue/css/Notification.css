@@ -30,3 +30,34 @@ font-family: arial;
     color: #FF7171;
     font-size: 16px;
 }
+#Are-dev{
+    display:none;
+}
+
+
+
+@media only screen and (min-width: 150px) and (max-width: 640px) {
+    .tabs-left>.nav-tabs {
+        float:none !important; 
+        border:none;       
+        text-align:center;
+    }
+    .nav-tabs{
+       
+    }
+
+    #profileli a,#manageli a{
+
+        border:none;
+    }
+    .user-profile .nav-tabs li.active a {
+        color: #fff;
+        background-color: #328AC5;
+    }
+    .form-horizontal .controls textarea {
+        width:95% !important;
+    }
+    #Are-dev{
+    display:block;
+}
+}

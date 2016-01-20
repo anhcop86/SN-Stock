@@ -80,24 +80,19 @@
 
     <!---->
     <div class="content-main content-main2">
-        <div class="area-left" id="areaRandomStockList">
-            @*@Html.Partial("_Partial_Area_Left_Home")*@
-            @*@Html.Partial("_Partial_Area_Left_Home2")*@
+        <div class="area-left" id="areaRandomStockList">            
             <img src="/img/uploading.gif" /> Loading ... 
         </div>
-      
-
-        @RenderBody()
-       
+        @RenderBody()       
         <div id="areaRandomProBrokerId" class="area-right">
             <img src="/img/uploading.gif" /> Loading ... 
         </div>
-            <script>
-                $(document).ready(function () {
-                    $("#areaRandomProBrokerId").load('/user/RandomProBroker');
-                    $("#areaRandomStockList").load('/home/RandomStockList');
-                })
-            </script>
+        <script>
+            $(document).ready(function () {
+                $("#areaRandomProBrokerId").load('/user/RandomProBroker');
+                $("#areaRandomStockList").load('/home/RandomStockList');
+            })
+        </script>
 
     </div>
 

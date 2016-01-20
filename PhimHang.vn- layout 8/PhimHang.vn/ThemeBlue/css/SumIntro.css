@@ -1,0 +1,74 @@
+﻿  .MenuTrai {
+        width: 180px;
+        float: left;
+        
+    }
+
+    .MenuTrai p {
+        font-family: Tahoma, Geneva, sans-serif, Arial;
+        color: #666;
+        font-weight: bold;
+        padding: 5px 0px 14px 10px;
+        cursor:pointer;
+    }
+    .MenuTrai p a {
+        z-index: 1;
+        padding: 6px 0px 12px 0px;
+        color: #666;
+        color: #666;
+    }
+  
+    .MenuTrai p:hover {        
+        color: #666;        
+        border-left: solid 3px #39F;
+    }
+
+
+    .Div_main {
+        font-family: Tahoma, Geneva, sans-serif, Arial;
+        width: 900px;
+    }
+
+    .Div_NoiDung {
+        font-family: Tahoma, Geneva, sans-serif, Arial;
+        font-size: 16px;
+        float: left;
+        width: 720px;
+    }
+
+    .Div_NoiDung p, ul, li {
+        padding-bottom: 5px;
+    }
+    .Div_NoiDung p, ul, li, strong {
+        padding-bottom: 5px;
+    }
+     .Font1 {
+        font-family: Tahoma, Geneva, sans-serif, Arial;
+        color: #39F;
+        text-align:center;
+        margin-bottom: 20px;
+    }
+
+    .Border_left {
+        border-left: solid 3px #39F;
+        font-style: inherit;
+    }
+
+    .Div_introMain {
+        width: 1000px;
+        margin: auto;
+        background-color: #fff;
+        overflow: hidden;
+    }
+
+    .Font2 {
+	font-family: Tahoma, Geneva, sans-serif, Arial;
+	color: #F90;
+}
+    .Font_2 {
+	font-family: Tahoma, Geneva, sans-serif, Arial;
+	color: #F90;
+}
+.top-menu-2-custom {
+    max-height: 31px !important ;
+}
