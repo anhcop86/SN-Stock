@@ -727,6 +727,7 @@
     <Content Include="ThemeBlue\css\font-awesome\css\font-awesome.css" />
     <Content Include="ThemeBlue\css\font-awesome\css\font-awesome.min.css" />
     <Content Include="ThemeBlue\css\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="ThemeBlue\css\font-awesome\HELP-US-OUT.txt" />
     <Content Include="ThemeBlue\css\HomeLoginReponesive.css" />
     <Content Include="ThemeBlue\css\jquery-ui\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
     <Content Include="ThemeBlue\css\jquery-ui\images\ui-bg_flat_15_cd0a0a_40x100.png" />
@@ -1431,6 +1432,9 @@
     <Content Include="Views\Lienhe\Index.cshtml" />
     <Content Include="Views\Quydinh\Index.cshtml" />
     <Content Include="Views\Huongdansudung\Index.cshtml" />
+    <Content Include="ThemeBlue\css\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="ThemeBlue\css\font-awesome\less\animated.less" />
+    <Content Include="ThemeBlue\css\font-awesome\scss\_animated.scss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

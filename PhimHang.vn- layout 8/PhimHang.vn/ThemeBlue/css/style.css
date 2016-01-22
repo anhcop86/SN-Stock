@@ -925,6 +925,11 @@ input[name=BullBear]{
 }
 .danphim{
     margin-bottom: 10px!important;
+    color:#ffbd00;
+}
+.danphim i{   
+    color:#ffbd00;
+    margin-left:4px;
 }
 /*List comment*/
 .list-comment{
@@ -1918,4 +1923,15 @@ a.avatar img:hover{
 .MenuR-Main ul li{
     padding: 8px 0px;
 
+}
+.borkerVipStyle {
+    font-size: 1.4rem;
+    color: #328AC5 !important;
+    text-decoration: none;
+    font-weight: normal;
+    
+}
+
+.banner-info-userpage{
+    color:#328AC5 !important;
 }

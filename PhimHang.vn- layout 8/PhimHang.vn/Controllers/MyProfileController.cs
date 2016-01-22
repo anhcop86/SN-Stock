@@ -84,7 +84,7 @@ namespace PhimHang.Controllers
 
 
             #endregion
-             #region danh muc co phieu dang follow
+            #region danh muc co phieu dang follow
             ViewBag.listStockPriceFollow = _stockRealtime.GetAllStocksList(listStock as List<string>).Result;
             #endregion
             #region gia chi so index va hnxindex

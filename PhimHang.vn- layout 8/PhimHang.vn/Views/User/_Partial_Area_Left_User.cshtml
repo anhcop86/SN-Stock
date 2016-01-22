@@ -65,19 +65,29 @@
 
                                 }
                             }
-                        </script>
-                    
+                        </script>                    
                 }
             }
             
         </div>
     </div>
 
-    <div class="user-name2">
-        @Model.FullName <br />
-
-        <a href="/@Model.UserNameCopy">@Html.Raw("@")@Model.UserNameCopy</a>    
-        
+    <div class="user-name2">@Model.FullName
+       
+        @{
+            if (@Model.BrokerVIP == true)
+            {
+                <i title="Xác thực đây là dân phím chuyên ngiệp" class="fa fa-check-circle"></i>
+            }          
+        }
+        <br />
+        <a href="/@Model.UserNameCopy">@Html.Raw("@")@Model.UserNameCopy</a><br />
+      @{
+            if (User.Identity.IsAuthenticated && ViewBag.CheckUserExist == "E")
+            {
+                <a href="/account/profile"><i title="Chỉnh sửa trang cá nhân" style="color: rgb(163, 163, 163);" class="fa fa-pencil"></i></a>
+            }
+        }
     </div>
     
     <div class="user-info-detail">
@@ -95,20 +105,20 @@
             }
         </div>       
         <div>
-            <i class="fa fa-map-marker"></i>&nbsp;Trường phái:
+            <i class="fa fa-area-chart"></i>Trường phái:
             @{
                 if (Model.PhilosophyMarket != null)
                 {
                     @: @Model.Philosophy.PhilosophyName
-            }
+                }
                 else
                 {
                     @: ...
-            }
+                }
             }
         </div>
         <div>
-            <i class="fa fa-map-marker"></i>&nbsp;Nghề nghiệp:
+            <i class="fa fa-black-tie"></i> Nghề nghiệp:
             @{
                 if (Model.JobTitle != null)
                 {
@@ -121,7 +131,7 @@
             }
         </div>
         <div>
-            <i class="fa fa-unlink"></i> Kinh nghiệm:
+            <i class="fa fa-coffee"></i> Kinh nghiệm:
             @{
 
                 if (Model.NumberExMarketYear != null)
@@ -134,7 +144,7 @@
                 }
             }
         </div>
-        <div><i class="fa fa-info"></i>&nbsp;&nbsp;Giới thiệu:       
+        <div><i class="fa fa-user"></i> Giới thiệu:       
             @{
                 if (string.IsNullOrEmpty(Model.CVInfo))
                 {
@@ -147,7 +157,7 @@
             }
      </div>
         <div class="user-info-mypage">
-            <p><i class="fa fa-home"></i> Trang nhà trên facebook:</p>
+            <p><i class="fa fa-facebook-official"></i> Trang nhà trên facebook:</p>
             @{
                 if (!string.IsNullOrEmpty(Model.URLFacebook))
                 {
@@ -155,7 +165,7 @@
                 }
                 else
                 {
-                    @:...
+                    @: ...
                 }
                 
             }
