@@ -40,19 +40,18 @@ namespace PhimHang.Models
         [StringLength(20, ErrorMessage = "Tên đăng nhập từ 6 đến 20 ký tự", MinimumLength = 6)]
         public string UserName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vui lòng nhập mật khẩu")]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
-
-        [Display(Name = "Remember me?")]
+                
+        [Display(Name = "Nhớ tài khoản")]
         public bool RememberMe { get; set; }
     }
 
     public class RegisterViewModel
     {
         
-
         [Required(ErrorMessage = "Vui lòng nhập tên đăng nhập")]
         [System.Web.Mvc.AllowHtml]
         [RegularExpression("^[a-zA-Z][A-Za-z0-9_]*$", ErrorMessage = "Bạn nhập sai định dạng hoặc có ký tự đặc biệt")]
@@ -76,10 +75,17 @@ namespace PhimHang.Models
         [Display(Name = "Password")]
         public string Password { get; set; }
 
+        [Required(ErrorMessage = "Vui lòng nhập lại mật khẩu")]
         [DataType(DataType.Password)]
         [Display(Name = "ConfirmPassword")]
         [Compare("Password", ErrorMessage = "2 mật khẩu không khớp với nhau")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Thỏa thuận cung cấp dịch vụ xem ")]
+        [MustBeTrue(ErrorMessage = "Bạn chưa chấp nhận")]
+        public bool TermsAndConditions { get; set; }	
+
     }
 
     public class ProfileUserViewModel

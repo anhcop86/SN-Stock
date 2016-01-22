@@ -313,6 +313,7 @@
       <DependentUpon>PhimHangADO.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelHelpers.cs" />
+    <Compile Include="Models\MustBeTrueAttribute.cs" />
     <Compile Include="Models\NotificationMessege.cs">
       <DependentUpon>PhimHangADO.tt</DependentUpon>
     </Compile>
@@ -655,8 +656,6 @@
       <DependentUpon>TinyURLDB.edmx</DependentUpon>
       <LastGenOutput>TinyURLDB.cs</LastGenOutput>
     </Content>
-    <Content Include="documents\Huongdan_PhoChungKhoan.pdf" />
-    <Content Include="documents\ThoathuanCungcapDichvu.pdf" />
     <None Include="Properties\PublishProfiles\phimhang o nha.pubxml" />
     <None Include="Properties\PublishProfiles\phimhang.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -767,6 +766,7 @@
     <Content Include="ThemeBlue\img\cover.jpg" />
     <Content Include="ThemeBlue\img\kindo-logo.jpg" />
     <Content Include="ThemeBlue\img\logo.png" />
+    <Content Include="ThemeBlue\js\AccountJs.js" />
     <Content Include="ThemeBlue\js\action.js" />
     <Content Include="ThemeBlue\js\action2.js" />
     <Content Include="ThemeBlue\js\allfacebook.js" />
@@ -1435,6 +1435,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Chart\" />
+    <Folder Include="documents\" />
     <Folder Include="images\chart\" />
     <Folder Include="images\LOGO\" />
   </ItemGroup>

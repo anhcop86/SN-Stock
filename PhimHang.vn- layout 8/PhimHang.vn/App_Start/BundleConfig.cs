@@ -84,7 +84,20 @@ namespace PhimHang
                              "~/ThemeBlue/js/Home.js"));
             #endregion
 
-            //BundleTable.EnableOptimizations = true;
+            #region JqueryAndUnobtrusive
+            bundles.Add(new ScriptBundle("~/bundles/JqueryAndUnobtrusive").Include(
+                             "~/Scripts/jquery-2.1.1.min.js",
+                             "~/Scripts/jquery.validate.min.js",
+                             "~/Scripts/jquery.validate.unobtrusive.min.js"));
+            #endregion
+
+            #region LoginAndRegister
+            bundles.Add(new ScriptBundle("~/bundles/LoginReg").Include(
+                             "~/ThemeBlue/js/RandomImage.js",
+                             "~/ThemeBlue/js/AccountJs.js"));
+            #endregion
+
+            BundleTable.EnableOptimizations = true;
         }
     }
 }

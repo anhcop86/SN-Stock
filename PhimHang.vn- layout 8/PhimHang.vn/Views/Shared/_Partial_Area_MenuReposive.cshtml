@@ -3,7 +3,14 @@
         <div>
             <a onclick="closeMenu();" href="#"><i class="fa fa-times"></i></a>
         </div>
-        <div>search here</div>
+        <div>
+            <form id="frmSearch" action="@Url.Action("","Search")" method="get">
+                <span id="search_box_top">
+                    <input style="height:30px" name="q" id="kq" placeholder="MÃ CỔ PHIẾU | TÊN ĐĂNG NHẬP" title="tìm kiếm" autocomplete="off" type="text">
+                    <i class="fa fa-search"></i>
+                </span>
+            </form>
+        </div>
     </div>
     <div class="MenuR-UserInfo">
         <div style="width:45px;height:40px;float:left">

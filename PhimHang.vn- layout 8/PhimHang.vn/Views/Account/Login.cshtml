@@ -3,7 +3,8 @@
      ViewBag.Title = "Đăng nhập";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<script src="~/ThemeBlue/js/RandomImage.js"></script>
+
+
     <script type="text/javascript">
         window.fbAsyncInit = function () {
             FB.init({
@@ -111,17 +112,14 @@
                                         <div class="sso-description"></div>
                                         <div class="checkbox checkbox-inline standard remember-me">
                                             <div class="text-input-error-wrapper"></div>
-                                            @Html.CheckBoxFor(m => m.RememberMe)
-                                            @*<input checked="checked" type="checkbox" name="remember_me" id="pyxl1186533921719020216">*@
+                                            @Html.CheckBoxFor(m => m.RememberMe)                                            
                                             <label>Remember me</label>
                                         </div>
                                         <button type="submit" class="login-button button-primary">
                                             <div class="sign-in-text">Đăng nhập</div>
                                         </button>
-
-                                        
                                     </div>
-                                    <div class="login-need-help"><a href="/forgot">Forgot your password?</a><a style="float:right" href="/">Trang chủ</a></div>
+                                    <div class="login-need-help"><a href="/Account/forgot">Quên mật khẩu</a><a style="float:right" href="/">Trang chủ</a></div>
                                     
                                 }
                                 @Html.Partial("_ExternalLoginsListPartial", new { Action = "ExternalLogin", ReturnUrl = ViewBag.ReturnUrl })

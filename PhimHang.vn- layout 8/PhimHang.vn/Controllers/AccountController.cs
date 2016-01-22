@@ -14,6 +14,7 @@ using System.Drawing;
 using System.Data.Entity;
 using System.Net;
 using Newtonsoft.Json.Linq;
+using System.Threading;
 
 namespace PhimHang.Controllers
 {
@@ -74,17 +75,16 @@ namespace PhimHang.Controllers
                     await SignInAsync(user, model.RememberMe);
                     if (string.IsNullOrEmpty(returnUrl) || returnUrl == "/")
                     {
-                        return RedirectToAction("", "myprofile"); // Returun URL
+                        return RedirectToAction("", "myprofile"); 
                     }
                     else
                     {
-                        return RedirectToLocal(returnUrl); // Returun URL
-                        //eturn RedirectToAction(""); // Hieu
+                        return RedirectToLocal(returnUrl); 
                     }                    
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Invalid username or password.");
+                    ModelState.AddModelError("", "Sai tài khoản hoặc mật khẩu");
                 }
             }
 
@@ -108,7 +108,7 @@ namespace PhimHang.Controllers
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
-        {
+        {            
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser()

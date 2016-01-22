@@ -169,6 +169,11 @@ vertical-align: middle;
 float: right;
 }
 
+.login-form-container .login-button:disabled {
+    background:#ADD9FF;
+    border: none;
+}
+
 .freshbutton, .freshbutton-red, .freshbutton-blue, .freshbutton-lightblue, .freshbutton-blue-on-gray, .freshbutton-gray, .freshbutton-silver, .freshbutton-green, .freshbutton-no-hover, .button-primary, .button-secondary, .button-tertiary {
     display: inline-block;
     text-align: center;

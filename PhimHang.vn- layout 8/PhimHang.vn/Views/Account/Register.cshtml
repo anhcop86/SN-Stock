@@ -1,26 +1,11 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <title>Đăng nhập</title>
+﻿@model PhimHang.Models.RegisterViewModel
+   
     @{
-        Layout = null;
-    }
-    @model PhimHang.Models.RegisterViewModel
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
-    <link href="~/ThemeBlue/css/login.css" rel="stylesheet" />
-    <link href="~/ThemeBlue/css/HomeLoginReponesive.css" rel="stylesheet" />
-    @* validate - phai có 2 key trong webconfig <add key="ClientValidationEnabled" value="true" />
-        <add key="UnobtrusiveJavaScriptEnabled" value="true"/> *@
-    <script src="~/Scripts/jquery-2.1.1.min.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-    @*end validate  *@
+        ViewBag.Title = "Đăng ký tài khoản mớ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
-    <!--Random image load-->
-    <script src="~/ThemeBlue/js/RandomImage.js"></script>
-</head>
-<body>
+
     <div id="outer-frame">
         <div id="page-content">
             <div id="login-or-register-page-content">                
@@ -36,7 +21,7 @@
                             </div>
                             <div class="login-form-container  standard">
                                 @*<form action="/" method="post" class="clearfix login-form">*@
-                                @using (Html.BeginForm("Register", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "clearfix login-form" }))
+                                @using (Html.BeginForm("Register", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "clearfix login-form" , id ="registerFormSubmit"}))
                                 {
                                     @Html.AntiForgeryToken()
 
@@ -68,8 +53,14 @@
                                     <div class="text-input login-password login-text-input standard">
                                         <div class="text-input-error-wrapper">@Html.ValidationMessageFor(m => m.ConfirmPassword)</div>
                                         <div class="text-input-wrapper">
-                                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "password-input text-input-input", placeholder = "Nhập lại mật khẩu" })
-                                            
+                                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "password-input text-input-input", placeholder = "Nhập lại mật khẩu" })                                            
+                                        </div>
+                                    </div>
+                                     <div class="text-input login-text-input standard">
+                                        <div class="text-input-error-wrapper">@Html.ValidationMessageFor(m => m.TermsAndConditions)</div>
+                                        <div class="">
+                                            @Html.CheckBoxFor(m => m.TermsAndConditions)
+                                            @Html.LabelFor(m => m.TermsAndConditions)<a target="_blank" href="/documents/ThoathuanCungcapDichvu.pdf">tại đây</a>
                                         </div>
                                     </div>
                                     <div class="clearfix">
@@ -77,7 +68,7 @@
                                         <div class="checkbox checkbox-inline standard remember-me">
                                             <div class="text-input-error-wrapper"></div>                                            
                                         </div>
-                                        <button type="submit" class="login-button button-primary">
+                                        <button id="registerSumbit" type="submit" class="login-button button-primary">
                                             <div class="sign-in-text">Đăng ký</div>
                                         </button>
                                     </div>
@@ -90,5 +81,3 @@
             </div>
         </div>
     </div>
-</body>
-</html>

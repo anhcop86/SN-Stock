@@ -79,6 +79,7 @@
         position: fixed;
         left: 45px;
         width:240px;
+        display:none;
     }
 
     .status-box {
@@ -174,9 +175,9 @@
     #LayoutLogin{
         display:none;
     }
-    .toSpan {
+    /*.toSpan {
         display: none;
-    }
+    }*/
 }
 @media only screen and (min-width: 641px) and (max-width: 999px) {
     .cover-div {
