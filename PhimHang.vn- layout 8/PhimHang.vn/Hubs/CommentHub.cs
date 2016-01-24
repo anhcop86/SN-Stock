@@ -179,11 +179,13 @@ namespace PhimHang.Hubs
                     await Clients.All.addPostGlobal(ret); // add message vào profile va home    
                 }
 
-                if (userpageid > 0) // gửi cho cùng 1 nhóm có cùng user page
+                if (userpageid > 0) // gửi cho cùng 1 nhóm đag mở cùng 1 user page
                 {
                     listStock.Add(userpageid.ToString());
                 }
-                await Clients.Groups(listStock).addPost(ret); // ad group co phieu lien quan                
+                
+                await Clients.Groups(listStock).addPost(ret); // ad group co phieu lien quan
+
                 if (listUsersendMessege.Count > 0)
                 {
                     await Clients.Users(listUsersendMessege).MessegeOfUserPost(1); // gui tin bao cho user nao có @

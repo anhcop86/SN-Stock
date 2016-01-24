@@ -36,7 +36,7 @@ namespace PhimHang.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 ApplicationUser currentUser = new ApplicationUser();
-                currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());               
+                currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
                 ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
                 var numberMessegeNew = await db.NotificationMesseges.Where(nm => nm.UserReciver == currentUser.UserExtentLogin.Id && nm.NumNoti > 0).SumAsync(mn => mn.NumNoti);
                 ViewBag.NewMessege = numberMessegeNew;
@@ -67,7 +67,7 @@ namespace PhimHang.Controllers
             else
             {
                 //var search = db.StockCodes.FirstOrDefault(s => s.Code.StartsWith(q.Replace("$", ""))).Code;
-                var searstring = q.Replace("$", "").Replace("@", "").Trim();
+                var searstring = q.RemoveSpecialString();
                 var searchStockList = await (from sc in db.StockCodes
                                              where sc.Code.Contains(searstring)
                                        && (sc.MarketType == 0 || sc.MarketType == 1)
@@ -81,36 +81,23 @@ namespace PhimHang.Controllers
                                             Status = us.Status,
                                             Avata = string.IsNullOrEmpty(us.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + us.AvataImage
                                         }).ToListAsync();
-                if (searchStockList.Count == 1) // đủ 3 ký tự và tìm thấy
-                {
-                    return RedirectToAction("/" + searchStockList[0], "Ticker");
-                }
-                else if (searchUser.Count == 1) // 
-                {
-                    //return RedirectToAction("/" + searchUser[0].UserName);
-                    return Redirect("/" + searchUser[0].UserName);
-                }
-                else
-                {
-                    //load gia co phieu tim duoc
-                    #region gia cổ phieu cua cac ma tim duoc
-                    ViewBag.listStockPriceFind = _stockRealtime.GetAllStocksList(searchStockList as List<string>).Result;
-                    #endregion
-                    // Nguoi dung tim dc                
-                    #region gia cổ phieu cua cac ma tim duoc
-                    ViewBag.UserFindList = searchUser;
-                    #endregion
-                    #region thong bao cho nguoi dung biet la khong tim thay
 
-                    ViewBag.NoStockFind = ": " + searchStockList.Count + " Cổ phiếu";
+                //load gia co phieu tim duoc
+                #region gia cổ phieu cua cac ma tim duoc
+                ViewBag.listStockPriceFind = _stockRealtime.GetAllStocksList(searchStockList as List<string>).Result;
+                #endregion
+                // Nguoi dung tim dc                
+                #region gia cổ phieu cua cac ma tim duoc
+                ViewBag.UserFindList = searchUser;
+                #endregion
+                #region thong bao cho nguoi dung biet la khong tim thay
 
-                    ViewBag.NoUserFind = ": " + searchUser.Count + " Người dùng";
-                    
-                    #endregion
-                    return View();
+                ViewBag.NoStockFind = ": " + searchStockList.Count + " Cổ phiếu";
 
-                }
+                ViewBag.NoUserFind = ": " + searchUser.Count + " Người dùng";
 
+                #endregion
+                return View();
 
             }
 

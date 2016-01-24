@@ -229,7 +229,7 @@ self.FilterAll = function (stringFilter) {
         filterhere = stringFilter;
         self.newPosts([]);
         self.posts([]);
-        document.title = "Nhà của tôi!";
+        document.title = $('#titleHidenPage').val();
         $.ajax({
             cache: false,
             type: "GET",              
@@ -299,18 +299,18 @@ commenthub.client.addPostGlobal = function (post) {
         //filter here
         if (filterhere == "" || filterhere == "ALL") {
             self.newPosts.splice(0, 0, new Post(post));
-            document.title = '(' + self.newPosts().length + ') ' + "Nhà của tôi";
+            document.title = '(' + self.newPosts().length + ') ' + $('#titleHidenPage').val();
         }
         if (filterhere == "CHA") {
             if (post.ChartYN) {
                 self.newPosts.splice(0, 0, new Post(post));
-                document.title = '(' + self.newPosts().length + ') ' + "Nhà của tôi";
+                document.title = '(' + self.newPosts().length + ') ' + $('#titleHidenPage').val();
             }
         }
         if (filterhere == "STM") {
             if (post.Stm > 0) {
                 self.newPosts.splice(0, 0, new Post(post));
-                document.title = '(' + self.newPosts().length + ') ' + "Nhà của tôi";
+                document.title = '(' + self.newPosts().length + ') ' + $('#titleHidenPage').val();
             }
         }
         
@@ -322,7 +322,7 @@ commenthub.client.addPostGlobal = function (post) {
         if (filterhere == "PEF") {
             if ($.inArray(post.PostBy, listFollow) != -1) {
                 self.newPosts.splice(0, 0, new Post(post));
-                document.title = '(' + self.newPosts().length + ') ' + "Nhà của tôi";
+                document.title = '(' + self.newPosts().length + ') ' + $('#titleHidenPage').val();
             }
         }
 
@@ -334,7 +334,7 @@ commenthub.client.addPostGlobal = function (post) {
             $.each(listStockFollow, function (index, value) {
                 if (post.StockPrimary.indexOf(value) != -1) {
                     self.newPosts.splice(0, 0, new Post(post));
-                    document.title = '(' + self.newPosts().length + ') ' + "Nhà của tôi";
+                    document.title = '(' + self.newPosts().length + ') ' + $('#titleHidenPage').val();
                     return false;
                 }
             })
@@ -413,7 +413,7 @@ self.deletePost = function (postid, e) {
 self.loadNewPosts = function () { 
     self.posts(self.newPosts().concat(self.posts()));
     self.newPosts([]);
-    document.title = "Nhà của tôi";
+    document.title = $('#titleHidenPage').val();
 }
 self.AddLike = function (data, e) {
     // ajax update  like with 

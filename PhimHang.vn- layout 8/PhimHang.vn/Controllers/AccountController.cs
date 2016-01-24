@@ -573,7 +573,7 @@ namespace PhimHang.Controllers
                     await AppHelper.AvatarSyn(getUserFacebook.IdFacebook);
                 }
                 // login\
-                var user = await UserManager.FindAsync(getUserFacebook.UserNameCopy, "phochungkhoan.com@9999");
+                var user = await UserManager.FindAsync(getUserFacebook.UserNameCopy, "cungphim.com@9999");
                 await SignInAsync(user, false);
                 AppHelper.SetCookieOfFace();
                 return RedirectToAction("","myprofile"); // Returun URL
