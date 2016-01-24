@@ -4,7 +4,12 @@
     <title>@ViewBag.Title</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
-
+    <meta property="fb:app_id" content="934180333272963" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content="@Request.Url.AbsoluteUri" />
+    <meta property="og:title" content="Tìm kiếm mã chứng khoán" />
+    <meta property="og:image" content="@ViewBag.AbsolutePathHostName/img/avatar2.jpg" />
+    <meta property="og:description" content="Tìm kiếm mã chứng khoán hoặc người sử dụng" />
    @Scripts.Render("~/bundles/standardCoreRT")
 
     <!--For desgin layout-->
@@ -20,6 +25,7 @@
     <script src="~/ThemeBlue/js/action2.js"></script>
     <!-- End For desgin-->
     <link href="~/ThemeBlue/css/Notification.css" rel="stylesheet" />
+    <link href="~/ThemeBlue/css/chart.css" rel="stylesheet" />
 </head>
 <body style="background: url('/img/bg.png');">
    

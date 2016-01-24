@@ -335,7 +335,7 @@ namespace PhimHang.Controllers
             return "Y";
         }
 
-        public async Task<bool> CheckButtonDelete(long postid, int userid)
+        public async Task<bool> CheckButtonDelete(long postid, int? userid)
         {
             try
             {

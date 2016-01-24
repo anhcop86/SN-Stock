@@ -8,16 +8,12 @@
     <!--Jquery-->
    
     <!---->   
-    <!--Knockout for refesh ui-->    
-    
+    <!--Knockout for refesh ui-->
     @Scripts.Render("~/bundles/standardCoreRT") @*mã hóa làm cho khó đoc*@
     @*<script src="~/signalr/hubs"></script> đã có trong standardCoreRT
         Neu sau nay them ham trong proxy phai cap nhat lai SignalHubproxy*@ 
     <!---->
-
     <!--For desgin layout-->
-
-    
     <!--for chart-->
     <link href="~/ThemeBlue/css/chart.css" rel="stylesheet" type="text/css">
     <!--End-->
@@ -32,21 +28,15 @@
     <link href="~/ThemeBlue/css/Notification.css" rel="stylesheet" />
     <!-- Objects of facebook-->
     <meta property="fb:app_id" content="934180333272963" />
-    <meta property="og:type" content="business.business" />    
+    <meta property="og:type" content="article" />    
     <meta property="og:url" content="@Request.Url.AbsoluteUri" />  
-    <meta property="og:title" content="Các bài viết về @ViewBag.StockCode tại phochungkhoan.com" />
+    <meta property="og:title" content="Các bài viết mới nhất về mã cổ phiếu @ViewBag.StockCode tại phochungkhoan.com" />
     <meta property="og:image" content="@ViewBag.AbsolutePathHostName/images/LOGO/Ticker_@ViewBag.StockCode@ViewBag.ImgEx" />
     <meta property="og:description" content="@ViewBag.StockCode @ViewBag.StockName" />
-    <meta property="business:contact_data:street_address" content="117 nguyễn Du" />
-    <meta property="business:contact_data:locality" content="Bến Thành" />
-    <meta property="business:contact_data:postal_code" content="Quận 1" />
-    <meta property="business:contact_data:country_name" content="Việt Nam" />
- 
+   
     <!-- Objects of facebook-->
 </head>
 <body style="background: url('/img/bg.png');">
-    
-
     <div class="NotificationCenter">
         <span id="textNoti"></span>
     </div>

@@ -14,7 +14,7 @@
                 <div class="input-status">
                     <form id="frmStatus" name="frmStatus" method="GET">
                         <div id="input-status-text" class="input-status-text">
-                            <textarea data-bind="value : newMessage, valueUpdate : 'afterkeydown' , limitCharacters : 140" class="status-cm" name="status" rows="5" placeholder="$Cổ phiếu | &#64;Username" id="status" title="Search" autocomplete="off" rows="5"></textarea>
+                            <textarea data-bind="value : newMessage, valueUpdate : 'afterkeydown' , limitCharacters : 140" class="status-cm" name="status" rows="5" placeholder="$Cổ phiếu | &#64;Username" id="status" title="Viết bài ở đây, chú ý: thêm $MãChứngKhoán để bài viết được đưa lên toàn thị trường hoặc &#64;TênĐăngNhập để gửi tin nhắn cho người sử dụng khác" autocomplete="off" rows="5"></textarea>
                         </div>
                         <div class="status-control">
                             <div class="choose_file f-left">
@@ -45,9 +45,9 @@
         <div class="bg-white" style="padding-top: 10px; padding-bottom: 3px;">
             <div class="filer-bar">
                 @*<div class="toSpan filer-bar-label">Hiển thị theo: </div>*@
-                <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('ALL')" href="#" class="active">TẤT CẢ</a> </div>
-                <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('CHA')" href="#">BIỂU ĐỒ</a> </div>
-                <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('STM')" href="#">TĂNG/GIẢM</a></div>                
+                <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('ALL')" href="#" class="active" title="Tất cả các bài viết">TẤT CẢ</a> </div>
+                <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('CHA')" href="#" title="Tìm kiếm bài viết có biểu đồ">BIỂU ĐỒ</a> </div>
+                <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('STM')" href="#" title="Tìm kiếm bài viết có nhận định tăng hoặc giảm">TĂNG/GIẢM</a></div>                
             </div>
             <div class="ajaxLoadingInit" style="text-align:center"><img src="~/images/ajax-loader_cungphim.gif" /></div>
         </div>

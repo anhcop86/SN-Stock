@@ -16,7 +16,7 @@ namespace StockPriceSynEverydate
             {
                 try
                 {
-                    if (DateTime.Now.Hour == 7)
+                    if (DateTime.Now.Hour == AppHelper.TimeStart)
                     {
 
                         var maxdate = new DateTime?();
@@ -26,19 +26,19 @@ namespace StockPriceSynEverydate
                         }
                         if (maxdate != new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day - 1))
                         {
-                            SyncPrice(new DateTime(((DateTime)maxdate).Year, ((DateTime)maxdate).Month, ((DateTime)maxdate).Day + 1), new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day - 1));
+                            SyncPrice(new DateTime(((DateTime)maxdate).Year, ((DateTime)maxdate).Month, ((DateTime)maxdate).Day).AddDays(1), new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day).AddDays(-1));
                             Console.WriteLine("updated {0}", DateTime.Now.ToString());
                         }
                         else
                         {
                             Console.WriteLine("no update {0}", DateTime.Now.ToString());
                         }
-                        Thread.Sleep(30 * 1000 * 60);
+                        Thread.Sleep(AppHelper.IntervalMinutes * 1000 * 60);
                     }
                     else
                     {
                         Console.WriteLine("start khong dung gio {0}", DateTime.Now.ToString());
-                        Thread.Sleep(30 * 1000 * 60);
+                        Thread.Sleep(AppHelper.IntervalMinutes * 1000 * 60);
                     }
                 }
                 catch (Exception ex)

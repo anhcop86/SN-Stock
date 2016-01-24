@@ -29,8 +29,10 @@ namespace PhimHang.Controllers
         public UserManager<ApplicationUser> UserManager { get; private set; }
         private const string ImageURLAvataDefault = "/img/avatar2.jpg";
         private const string ImageURLAvata = "/images/avatar/";
+        private string AbsolutePathHostName = AppHelper.AbsolutePathHostName;
         public async Task<ActionResult> Index(string g)
         {
+            ViewBag.AbsolutePathHostName = AbsolutePathHostName;
             #region thong tin user dang nnhap
             if (User.Identity.IsAuthenticated)
             {

@@ -24,7 +24,7 @@
             <div class="input-status">
                 <form id="frmStatus" name="frmStatus" method="GET">
                     <div id="input-status-text" class="input-status-text">
-                        <textarea onfocus=" {  location.href='/myprofile' }" data-bind="value : newMessage, valueUpdate : 'afterkeydown' , limitCharacters : 140" class="status-cm" name="status" rows="5" placeholder="$Cổ phiếu | &#64;Username" id="status" title="Search" autocomplete="off" rows="5"></textarea>
+                        <textarea onfocus=" {  location.href='/myprofile' }" data-bind="value : newMessage, valueUpdate : 'afterkeydown' , limitCharacters : 140" class="status-cm" name="status" rows="5" placeholder="$Cổ phiếu | &#64;Username" id="status" title="Viết bài ở đây, chú ý: thêm $MãChứngKhoán để bài viết được đưa lên toàn thị trường hoặc &#64;TênĐăngNhập để gửi tin nhắn cho người sử dụng khác." autocomplete="off" rows="5"></textarea>
                     </div>
                     <div class="status-control">
                         <div class="choose_file f-left">
@@ -54,13 +54,11 @@
         <div class="bg-white" style="padding-top: 10px; padding-bottom: 3px;">
             <div class="filer-bar">
                 @*<div class="toSpan filer-bar-label">Hiển thị theo: </div>*@
-                <div class="toSpan filer-bar-item"> <a href="#" class="active">Toàn thị trường</a> </div>               
-                        <div class="toSpan filer-bar-item-home"> <a href="/myprofile">Biểu đồ</a> </div>
-                        <div class="toSpan filer-bar-item-home"> <a href="/myprofile">Tăng/Giảm</a></div>                     
-                        <div class="toSpan filer-bar-item-home"> <a href="/myprofile">Người theo dõi</a></div>
-                        <div class="toSpan filer-bar-item-home"> <a href="/myprofile">CP theo dõi</a></div>
-                                   
-                
+                <div class="toSpan filer-bar-item"> <a href="#" class="active" title="Xem tất cả các bài viết có đề cập đến cổ phiếu">Toàn thị trường</a> </div>               
+                        <div class="toSpan filer-bar-item-home"> <a href="/myprofile" title="Tìm kiếm bài viết có biểu đồ">Biểu đồ</a> </div>
+                        <div class="toSpan filer-bar-item-home"> <a href="/myprofile" title="Tìm kiếm bài viết có nhận định tăng hoặc giảm">Tăng/Giảm</a></div>                     
+                        <div class="toSpan filer-bar-item-home"> <a href="/myprofile" title="Tìm kiếm bài viết của người mà mình đã theo dõi">Người theo dõi</a></div>
+                        <div class="toSpan filer-bar-item-home"> <a href="/myprofile" title="Tìm kiếm bài viết của mã chứng khoán mà mình đã theo dõi">CP theo dõi</a></div>                       
             </div>
             <div class="ajaxLoadingInit" style="text-align:center"><img src="~/images/ajax-loader_cungphim.gif" /></div>
         </div>
