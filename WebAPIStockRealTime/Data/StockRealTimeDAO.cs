@@ -99,9 +99,40 @@ namespace Data
                 throw;
             }
 
+            #region region get stock of UPCOM
+            try
+            {
+                Database database2 = DatabaseFactory.CreateDatabase("DatabasePriceHNX");
+                DbCommand dbCommand2 = database2.GetStoredProcCommand("VFS_UPcom_GETALLStockRealTime_IncludeIndex");
+
+                //Parameter if have                
+
+                using (IDataReader reader = database2.ExecuteReader(dbCommand2))
+                {
+                    while (reader.Read())
+                    {
+                        StockRealTime item = CreateShareTypeFromReader(reader);
+                        listItem.Add(item);
+                    }
+                    reader.Close();
+                }
+                //totalRecords = (int)database.GetParameterValue(dbCommand, "@TotalRecords");
+
+            }
+            catch (Exception ex)
+            {
+                // log this exception
+                log4net.Util.LogLog.Error(ex.Message, ex);
+                // wrap it and rethrow
+                throw;
+            }
+            #endregion
+
 
             #endregion
             return listItem;
         }
+
+        
     }
 }

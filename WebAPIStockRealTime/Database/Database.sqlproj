@@ -65,6 +65,7 @@
     <Folder Include="Script\StockPriceHSX" />
     <Folder Include="Script\StockPriceHNX" />
     <Folder Include="Script\IPProxy" />
+    <Folder Include="Script\Upcom" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Create Database Script\AllTables.sql" />
@@ -103,5 +104,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Script\StockPriceHNX\APIPhimhangvnGetPriceRealTime_HNX.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Script\Upcom\VFS_UPcom_GETALLStockRealTime_IncludeIndex.sql" />
   </ItemGroup>
 </Project>

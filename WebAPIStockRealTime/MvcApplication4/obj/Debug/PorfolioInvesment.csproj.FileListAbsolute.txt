@@ -300,7 +300,6 @@ E:\Working\SN-Stock\WebAPIStockRealTime\MvcApplication4\bin\zh-Hant\System.Spati
 E:\Working\SN-Stock\WebAPIStockRealTime\MvcApplication4\obj\Debug\PorfolioInvesment.dll
 E:\Working\SN-Stock\WebAPIStockRealTime\MvcApplication4\obj\Debug\PorfolioInvesment.pdb
 E:\Working\SN-Stock\WebAPIStockRealTime\MvcApplication4\obj\Debug\PorfolioInvesment.csprojResolveAssemblyReference.cache
-F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\MvcApplication4\obj\Debug\PorfolioInvesment.csprojResolveAssemblyReference.cache
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\MvcApplication4\bin\PorfolioInvesment.dll.config
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\MvcApplication4\bin\PorfolioInvesment.dll
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\MvcApplication4\bin\PorfolioInvesment.pdb

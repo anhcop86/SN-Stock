@@ -76,7 +76,7 @@ namespace PhimHang.Controllers
                  }
                  else
                  {
-                     dbcungphim.StockCodes.Add(new StockCode { Code = stockcode.Code.ToUpper(), IndexName});
+                     dbcungphim.StockCodes.Add(new StockCode { Code = stockcode.Code.ToUpper(), IndexName = stockcode .IndexName, LongName = stockcode.LongName, MarketType = stockcode.MarketType, ShortName = stockcode.ShortName});
                      await dbcungphim.SaveChangesAsync();
                      return RedirectToAction("Index");
                  }

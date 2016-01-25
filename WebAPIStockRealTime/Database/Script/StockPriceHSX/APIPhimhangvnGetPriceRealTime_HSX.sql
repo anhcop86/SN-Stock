@@ -4,8 +4,6 @@ BEGIN
 END
 GO
 
-
-
 CREATE PROCEDURE dbo.VFS_HSX_GETALLStockRealTime_IncludeIndex
 	
 AS
@@ -15,8 +13,7 @@ SET TRANSACTION ISOLATION LEVEL READ COMMITTED
 
 SELECT CompanyID     
 	,CASE WHEN FinishPrice = 0 THEN RefPrice ELSE FinishPrice END AS FinishPrice
-      ,Diff
-       
+      ,Diff       
       ,CASE WHEN FinishPrice = 0 THEN 0 ELSE CAST(((FinishPrice - RefPrice)/ FinishPrice) *100 AS DECIMAL(18,2) ) END AS DiffRate 
       
 FROM  dbo.dnn_AGStock_SessionCompany

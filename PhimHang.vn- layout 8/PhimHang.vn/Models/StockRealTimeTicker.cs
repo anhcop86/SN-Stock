@@ -97,7 +97,7 @@ namespace PhimHang.Models
             //var client = new RestClient("http://www.vfs.com.vn:6789/api/");
             Uri uri = new Uri("https://cungphim.com/api");
             //Uri uri = new Uri("http://localhost:9999/api");
-            //Uri uri = new Uri("http://125.234.253.11:6789/api");
+            //Uri uri = new Uri("http://localhost:9999/api");
             using (var client = new HttpClient())
             {
                 client.BaseAddress = uri;

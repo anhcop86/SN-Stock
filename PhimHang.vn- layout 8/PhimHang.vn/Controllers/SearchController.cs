@@ -70,7 +70,7 @@ namespace PhimHang.Controllers
                 var searstring = q.RemoveSpecialString();
                 var searchStockList = await (from sc in db.StockCodes
                                              where sc.Code.Contains(searstring)
-                                       && (sc.MarketType == 0 || sc.MarketType == 1)
+                                       && (sc.MarketType == 0 || sc.MarketType == 1 || sc.MarketType == 3)
                                              select sc.Code).ToListAsync();
                 var searchUser = await (from us in db.UserLogins
                                         where us.UserNameCopy.Contains(searstring)
