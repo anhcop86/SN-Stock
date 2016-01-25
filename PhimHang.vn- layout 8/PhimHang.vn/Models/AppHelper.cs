@@ -148,28 +148,28 @@ namespace PhimHang.Models
                 return false;
             }
         }
-        public static bool sendEmail(string username, string fromEmail,string fromEmailPass, String toEmail , string fileTemplateName)
+        public static bool sendEmail(string subject, String toEmail , string fileTemplateName)
         {
             MailMessage message = new MailMessage();
-            MailAddress sender = new MailAddress(fromEmail);
+            MailAddress sender = new MailAddress(ApplicationEmailAddress, DisplayEmailReset);
             MailAddress receiver = new MailAddress(toEmail);
-            message.From = sender;
+            message.From = sender;            
             message.Sender = sender;
             message.To.Add(receiver);
-            message.Subject = "Đăng ký thành công | phochungkhoan.com";
+            message.Subject = subject;
             message.IsBodyHtml = true;
             message.BodyEncoding = System.Text.Encoding.UTF8;
             message.Body = GetContentTemplate(fileTemplateName);
             message.Priority = MailPriority.High;
-
+            //config email
             System.Net.Mail.SmtpClient smtpClient = new SmtpClient();
-            smtpClient.Port = 25;
-            smtpClient.Host = "mail.vfs.com.vn";
+            smtpClient.Port = SmtpPort;
+            smtpClient.Host = SmtpServer;
             smtpClient.UseDefaultCredentials = true;
-            smtpClient.EnableSsl = false;
+            smtpClient.EnableSsl = EnableSsl;
 
-            smtpClient.Credentials = new NetworkCredential(fromEmail, fromEmailPass);
-
+            smtpClient.Credentials = new NetworkCredential(ApplicationEmailAddress, ApplicationEmailPassword);
+            //
             try
             {
                 smtpClient.Send(message);
@@ -334,6 +334,52 @@ namespace PhimHang.Models
                 HttpContext.Current.Response.Cookies.Add(user);
             }
         }
+
+        public static string ApplicationEmailAddress
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["ApplicationEmailAddress"].ToString();
+            }
+        }
+        public static string ApplicationEmailPassword
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["ApplicationEmailPassword"].ToString();
+            }
+        }
+
+        public static string SmtpServer
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["SmtpServer"].ToString();
+            }
+        }
+        public static int SmtpPort
+        {
+            get
+            {
+                return int.Parse(ConfigurationManager.AppSettings["SmtpPort"].ToString());
+            }
+        }
+        public static bool EnableSsl
+        {
+            get
+            {
+                return bool.Parse(ConfigurationManager.AppSettings["EnableSsl"].ToString());
+            }
+        }
+
+        public static string DisplayEmailReset
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["DisplayEmailReset"].ToString();
+            }
+        }
+
     }
     public class PosistionFilter
     {

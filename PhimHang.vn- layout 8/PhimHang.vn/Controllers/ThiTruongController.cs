@@ -78,7 +78,24 @@ namespace PhimHang.Controllers
                                                  MarketName = sc.IndexName,
                                                  StockCode = sc.Code,                                                 
                                              }).ToListAsync();
-              
+                foreach (var item in searchStockList)
+                {
+                    StockRealTime stp = _stockRealtime.GetStocksByTicker(item.StockCode).Result;
+                    if (stp != null)
+                    {
+                        item.FinishPrice = stp.FinishPrice;
+                        item.Diff = stp.Diff;
+                        item.DiffRate = stp.DiffRate;
+                    }
+                    else
+                    {
+                        item.FinishPrice = 0;
+                        item.Diff = 0;
+                        item.DiffRate = 0;
+                    }
+
+                }
+
                 ViewBag.listStockGroup = searchStockList;
 
                 return View();

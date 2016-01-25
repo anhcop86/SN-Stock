@@ -100,6 +100,8 @@
                 @: @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
                 {
                     @Html.AntiForgeryToken()
+                    <li><a href="/account/manage">Đổi mật khẩu</a></li>  
+                    <li class="dropdown-divider"></li>
                     if (Request.Cookies["FacebookLogin"] != null)
                     {
                         if (Request.Cookies["FacebookLogin"].Value == "F")

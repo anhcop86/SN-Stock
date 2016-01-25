@@ -152,14 +152,18 @@
         display:none;
     }
     .cover-div{
-        display:none;
+        display:block;
+        height:0px !important;
         /*height:100% !important;*/
         
         /*min-width:640px;*/
-    
+    }
+    #tab-TheoDoi{
+        display:none;
     }
     #CoverImageId{
         top:0px !important;
+        display:none;
     }
     .cover-div img{
         max-width: 100%;
@@ -167,6 +171,9 @@
     }
    #close_dialog{
        opacity:1;
+   }
+   .banner-header-add #addStock{
+       width:85% !important;
    }
     #top-center {
         width: 50px;

@@ -383,6 +383,9 @@
     <Compile Include="Models\URLTiny.cs">
       <DependentUpon>TinyURLDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserLogExtent.cs">
+      <DependentUpon>PhimHangADO.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserLogin.cs">
       <DependentUpon>PhimHangADO.tt</DependentUpon>
     </Compile>
@@ -1449,6 +1452,8 @@
     <Content Include="ThemeBlue\css\font-awesome\fonts\fontawesome-webfont.woff2" />
     <Content Include="ThemeBlue\css\font-awesome\less\animated.less" />
     <Content Include="ThemeBlue\css\font-awesome\scss\_animated.scss" />
+    <Content Include="Views\Account\request_password_reset.cshtml" />
+    <Content Include="Views\Account\confirm_password_reset.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -2,6 +2,30 @@
 
 namespace PhimHang.Models
 {
+    public class ResetPasswordModel
+    {
+        [Required(ErrorMessage = "Vui lòng nhập Email")]
+        [Display(Name = "Email")]
+        [StringLength(100, ErrorMessage = "Email từ 6 đến 100 ký tự", MinimumLength = 6)]
+        public string Email { get; set; }
+    }
+    public class ResetPassConfirm
+    {
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "New password")]
+        public string NewPassword { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm new password")]
+        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
+
+        [Required]
+        public string Token { get; set; }
+
+    }
     public class ExternalLoginConfirmationViewModel
     {
         [Required(ErrorMessage = "Vui lòng nhập tên đăng nhập")]

@@ -50,6 +50,7 @@
         <AssociationConnector Association="PHDBContext.FK_UserViewLastest_UserLogins" />
         <AssociationConnector Association="PHDBContext.FK_UserViewLastest_UserLogins1" />
         <AssociationConnector Association="PHDBContext.AspNetUserRoles" />
+        <EntityTypeShape EntityType="PHDBContext.UserLogExtent" Width="1.5" PointX="0.75" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

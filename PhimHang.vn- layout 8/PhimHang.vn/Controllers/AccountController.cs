@@ -100,8 +100,100 @@ namespace PhimHang.Controllers
             ViewBag.ReturnUrl = returnUrl;
             //var testEmail = AppHelper.sendEmail("AnhCOpne", "hieu.nguyen@vfs.com.vn", "mylove@07", "tomtruong@phochungkhoan.com", AppHelper.ResetPasswordEmailTemplatePath);
             return View();
-        }        
+        }
+
+        [AllowAnonymous]
+        public bool SendEmail(string returnUrl)
+        {
+            var testEmail = AppHelper.sendEmail("Link thay đổi mật khẩu | Phochungkhoan.com", "n.hieu86@gmail.com", AppHelper.ResetPasswordEmailTemplatePath);
+            return testEmail;
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> request_password_reset(ResetPasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                using (db = new testEntities())
+                {
+                    var user = await db.UserLogins.FirstOrDefaultAsync(ul => ul.Email == model.Email);
+                    if (user !=null)
+                    {
+                        // send email reset pass
+                        ViewBag.Info = 1;
+                        ViewBag.Status = "Email được gửi thành công, vui lòng đăng nhập hộp mail để nhận được link đổi mật khẩu";
+
+                        var checkReset = await db.UserLogExtents.FirstOrDefaultAsync(ule => ule.Username == user.UserNameCopy);
+                        if (checkReset != null)
+                        {
+                            // udpate
+                            checkReset.TokenResetPass = Guid.NewGuid().ToString();
+                            checkReset.TimeResetExpire = DateTime.Now.AddHours(3);
+                            db.Entry(checkReset).State = EntityState.Modified;
+                        }
+                        else
+                        {
+                            // insert
+                            var userExtent = new UserLogExtent { Username = user.UserNameCopy, TokenResetPass = Guid.NewGuid().ToString(), TimeResetExpire = DateTime.Now.AddHours(3) };
+                            db.UserLogExtents.Add(userExtent);
+                        }
+
+                        try
+                        {
+                            await db.SaveChangesAsync();
+                        }
+                        catch (Exception)
+                        {
+                            
+                            // bug
+                        }
+                        
+                    }
+                    else
+                    {
+                        ViewBag.Info = 1;
+                        ViewBag.Status = "Không tồn tại email trong hệ thống";
+                        //return View("request_password_reset", new ResetPasswordModel { Email = model.Email });
+                    }
+                }
+            }
+            //return View("request_password_reset", new ResetPasswordModel { Email = model.Email });
+
+            return View();
+        }
+
+        [AllowAnonymous]
         
+        public ActionResult request_password_reset(string info)
+        {
+            ViewBag.Info = 0;
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> confirm_password_reset(ResetPassConfirm model)
+        {
+            if (ModelState.IsValid)
+            {                
+                using (db = new testEntities())
+                {
+                    
+                }
+            }
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult confirm_password_reset(string token)
+        {
+            ViewBag.Token = token;
+            return View();
+        }
+
         //
         // POST: /Account/Register
         [HttpPost]
