@@ -102,12 +102,12 @@ namespace PhimHang.Controllers
             return View();
         }
 
-        [AllowAnonymous]
-        public bool SendEmail(string returnUrl)
-        {
-            var testEmail = AppHelper.sendEmail("Link thay đổi mật khẩu | Phochungkhoan.com", "n.hieu86@gmail.com", AppHelper.ResetPasswordEmailTemplatePath);
-            return testEmail;
-        }
+        //[AllowAnonymous]
+        //public bool SendEmail(string returnUrl)
+        //{
+        //    var testEmail = AppHelper.sendEmail("Link thay đổi mật khẩu | Phochungkhoan.com", "n.hieu86@gmail.com", AppHelper.ResetPasswordEmailTemplatePath);
+        //    return testEmail;
+        //}
 
         [HttpPost]
         [AllowAnonymous]
@@ -121,7 +121,7 @@ namespace PhimHang.Controllers
                     var user = await db.UserLogins.FirstOrDefaultAsync(ul => ul.Email == model.Email);
                     if (user !=null)
                     {
-                        // send email reset pass
+                        
                         ViewBag.Info = 1;
                         ViewBag.Status = "Email được gửi thành công, vui lòng đăng nhập hộp mail để nhận được link đổi mật khẩu";
 
@@ -131,31 +131,51 @@ namespace PhimHang.Controllers
                             // udpate
                             checkReset.TokenResetPass = Guid.NewGuid().ToString();
                             checkReset.TimeResetExpire = DateTime.Now.AddHours(3);
+                            checkReset.IsReset = false;
                             db.Entry(checkReset).State = EntityState.Modified;
+                            // send email
+
+                            try
+                            {
+                                await db.SaveChangesAsync();
+                                // send link email reset pass
+                                String contentEmail = AppHelper.GetContentTemplate(AppHelper.ResetPasswordEmailTemplatePath, checkReset.TokenResetPass, checkReset.Username);
+                                AppHelper.sendEmail("Link thay đổi mật khẩu | Phochungkhoan.com", checkReset.EmailReset, contentEmail);
+                            }
+                            catch (Exception)
+                            {
+
+                                // bug
+                            }
                         }
                         else
                         {
                             // insert
-                            var userExtent = new UserLogExtent { Username = user.UserNameCopy, TokenResetPass = Guid.NewGuid().ToString(), TimeResetExpire = DateTime.Now.AddHours(3) };
+                            var userExtent = new UserLogExtent { Username = user.UserNameCopy, TokenResetPass = Guid.NewGuid().ToString(), TimeResetExpire = DateTime.Now.AddHours(3), EmailReset = user.Email, UserId = user.KeyLogin };
                             db.UserLogExtents.Add(userExtent);
+                            //send email
+                            try
+                            {
+
+                                await db.SaveChangesAsync();
+                                // send link email reset pass
+                                String contentEmail = AppHelper.GetContentTemplate(AppHelper.ResetPasswordEmailTemplatePath, userExtent.TokenResetPass, userExtent.Username);
+                                AppHelper.sendEmail("Link thay đổi mật khẩu | Phochungkhoan.com", userExtent.EmailReset, contentEmail);
+
+                            }
+                            catch (Exception)
+                            {
+
+                                // bug
+                            }
                         }
 
-                        try
-                        {
-                            await db.SaveChangesAsync();
-                        }
-                        catch (Exception)
-                        {
-                            
-                            // bug
-                        }
-                        
                     }
                     else
                     {
-                        ViewBag.Info = 1;
-                        ViewBag.Status = "Không tồn tại email trong hệ thống";
-                        //return View("request_password_reset", new ResetPasswordModel { Email = model.Email });
+                        //ViewBag.Info = 1;
+                        //ViewBag.Status = "Không tồn tại email trong hệ thống";
+                        return RedirectToAction("password_reset_result", new { Message = ManageMessageId.NotExist });
                     }
                 }
             }
@@ -166,7 +186,7 @@ namespace PhimHang.Controllers
 
         [AllowAnonymous]
         
-        public ActionResult request_password_reset(string info)
+        public ActionResult request_password_reset()
         {
             ViewBag.Info = 0;
             return View();
@@ -178,19 +198,69 @@ namespace PhimHang.Controllers
         public async Task<ActionResult> confirm_password_reset(ResetPassConfirm model)
         {
             if (ModelState.IsValid)
-            {                
+            {
                 using (db = new testEntities())
                 {
-                    
+                    var userReset = await db.UserLogExtents.FirstOrDefaultAsync(ul => ul.TokenResetPass == model.Token && ul.TimeResetExpire > DateTime.Now && ul.IsReset == false);
+                    if (userReset != null)
+                    {
+                        // reset password
+                        ApplicationDbContext context = new ApplicationDbContext();
+                        UserStore<ApplicationUser> store = new UserStore<ApplicationUser>(context);
+                        String hashedNewPassword = UserManager.PasswordHasher.HashPassword(model.NewPassword);
+                        ApplicationUser cUser = await store.FindByIdAsync(userReset.UserId);
+                        
+                        // update token
+                        userReset.TimeResetExpire = DateTime.Now;
+                        userReset.IsReset = true;
+                        userReset.TokenResetPass = "";
+                        try
+                        { // reset success
+                            await store.SetPasswordHashAsync(cUser, hashedNewPassword);
+                            await store.UpdateAsync(cUser);
+                            db.Entry(userReset).State = EntityState.Modified;
+                            await db.SaveChangesAsync();
+                            return RedirectToAction("password_reset_result", new { Message = ManageMessageId.SetPasswordSuccess });
+                        }
+                        catch (Exception)
+                        {
+                            // error log
+                            return RedirectToAction("password_reset_result", new { Message = ManageMessageId.Error });
+                        }                        
+                    }
+                    else
+                    {
+                        // thong bao, token expire
+                        return RedirectToAction("password_reset_result", new { Message = ManageMessageId.Error });
+                    }
                 }
             }
             return View();
         }
 
         [AllowAnonymous]
-        public ActionResult confirm_password_reset(string token)
+        public async Task<ActionResult> confirm_password_reset(string token)
         {
+            var userReset = await db.UserLogExtents.CountAsync(ul => ul.TokenResetPass == token);
+            if (userReset == 0)
+            {
+                return RedirectToAction("password_reset_result", new { Message = ManageMessageId.Error });
+            }
+            ViewBag.Info = 0;
             ViewBag.Token = token;
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult password_reset_result(ManageMessageId? message)
+        {
+            ViewBag.StatusMessage =
+              message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
+              : message == ManageMessageId.SetPasswordSuccess ? "<div style='color:green'>Thay đổi mật khẩu thành công</div>"
+              : message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
+              : message == ManageMessageId.Error ? "<div style='color:red'>Lỗi hoặc link thay đổi hết hạn</div>"
+              : message == ManageMessageId.NotExist ? "<div style='color:red'>Email không tồn tại trong hệ thống</div>"
+              : "";
             return View();
         }
 
@@ -890,7 +960,8 @@ namespace PhimHang.Controllers
             SetPasswordSuccess,
             RemoveLoginSuccess,
             Error,
-            UpdateSucess
+            UpdateSucess,
+            NotExist
         }
 
         private ActionResult RedirectToLocal(string returnUrl)

@@ -1454,6 +1454,7 @@
     <Content Include="ThemeBlue\css\font-awesome\scss\_animated.scss" />
     <Content Include="Views\Account\request_password_reset.cshtml" />
     <Content Include="Views\Account\confirm_password_reset.cshtml" />
+    <Content Include="Views\Account\password_reset_result.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

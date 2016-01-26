@@ -130,7 +130,7 @@
             <PropertyRef Name="PostCommentsId" />
           </Key>
           <Property Name="PostCommentsId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Message" Type="nvarchar" MaxLength="2048" />
+          <Property Name="Message" Type="nvarchar" MaxLength="1024" Nullable="false" />
           <Property Name="PostedBy" Type="bigint" Nullable="false" />
           <Property Name="CommentBy" Type="int" Nullable="false" />
           <Property Name="PostedDate" Type="datetime2" Precision="7" Nullable="false" />
@@ -212,15 +212,17 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="THName" Type="varchar" MaxLength="16" />
         </EntityType>
-        <EntityType Name="UserLogExtent">
+        <EntityType Name="UserLogExtents">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Username" Type="nvarchar" MaxLength="256" />
           <Property Name="TokenResetPass" Type="nvarchar(max)" />
-          <Property Name="TimeResetExpire" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="TimeResetExpire" Type="datetime" Nullable="false" />
           <Property Name="IsReset" Type="bit" Nullable="false" />
+          <Property Name="EmailReset" Type="nvarchar" MaxLength="256" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" />
         </EntityType>
         <EntityType Name="UserLogins">
           <Key>
@@ -573,7 +575,7 @@
           <EntitySet Name="StockRelate" EntityType="Self.StockRelate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StockViewLastest" EntityType="Self.StockViewLastest" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TickerHot" EntityType="Self.TickerHot" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UserLogExtent" EntityType="Self.UserLogExtent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserLogExtents" EntityType="Self.UserLogExtents" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserLogins" EntityType="Self.UserLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRelate" EntityType="Self.UserRelate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserViewLastest" EntityType="Self.UserViewLastest" Schema="dbo" store:Type="Tables" />
@@ -921,7 +923,7 @@
             <PropertyRef Name="PostCommentsId" />
           </Key>
           <Property Name="PostCommentsId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Message" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PostedBy" Type="Int64" Nullable="false" />
           <Property Name="CommentBy" Type="Int32" Nullable="false" />
           <Property Name="PostedDate" Type="DateTime" Nullable="false" Precision="7" />
@@ -1343,8 +1345,10 @@
           <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Username" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="TokenResetPass" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="TimeResetExpire" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="TimeResetExpire" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsReset" Type="Boolean" Nullable="false" />
+          <Property Name="EmailReset" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1626,7 +1630,9 @@
           </AssociationSetMapping>
           <EntitySetMapping Name="UserLogExtents">
             <EntityTypeMapping TypeName="PHDBContext.UserLogExtent">
-              <MappingFragment StoreEntitySet="UserLogExtent">
+              <MappingFragment StoreEntitySet="UserLogExtents">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="EmailReset" ColumnName="EmailReset" />
                 <ScalarProperty Name="IsReset" ColumnName="IsReset" />
                 <ScalarProperty Name="TimeResetExpire" ColumnName="TimeResetExpire" />
                 <ScalarProperty Name="TokenResetPass" ColumnName="TokenResetPass" />

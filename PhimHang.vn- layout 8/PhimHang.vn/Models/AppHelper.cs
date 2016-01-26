@@ -148,7 +148,7 @@ namespace PhimHang.Models
                 return false;
             }
         }
-        public static bool sendEmail(string subject, String toEmail , string fileTemplateName)
+        public static bool sendEmail(string subject, String toEmail , string BodyContent)
         {
             MailMessage message = new MailMessage();
             MailAddress sender = new MailAddress(ApplicationEmailAddress, DisplayEmailReset);
@@ -159,7 +159,7 @@ namespace PhimHang.Models
             message.Subject = subject;
             message.IsBodyHtml = true;
             message.BodyEncoding = System.Text.Encoding.UTF8;
-            message.Body = GetContentTemplate(fileTemplateName);
+            message.Body = BodyContent;
             message.Priority = MailPriority.High;
             //config email
             System.Net.Mail.SmtpClient smtpClient = new SmtpClient();
@@ -182,7 +182,7 @@ namespace PhimHang.Models
             }
             
         }
-        private static string GetContentTemplate(string fileName)
+        public static string GetContentTemplate(string fileName, string token, string userName)
         {
             NameValueCollection parameters = new NameValueCollection();
             StreamReader reader = null;
@@ -191,8 +191,9 @@ namespace PhimHang.Models
             string bodyText = reader.ReadToEnd();
             reader.Close();
 
-            parameters.Add("Password", "123456789");
-            parameters.Add("UserName", "ToiLaAi");
+            parameters.Add("tokenReset", token);
+            parameters.Add("username", userName);
+            parameters.Add("AbsolutePathHostName", AppHelper.AbsolutePathHostName);
 
             for (int i = 0; i < parameters.Keys.Count; i++)
             {

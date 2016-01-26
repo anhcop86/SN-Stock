@@ -19,5 +19,7 @@ namespace PhimHang.Models
         public string TokenResetPass { get; set; }
         public System.DateTime TimeResetExpire { get; set; }
         public bool IsReset { get; set; }
+        public string EmailReset { get; set; }
+        public string UserId { get; set; }
     }
 }
