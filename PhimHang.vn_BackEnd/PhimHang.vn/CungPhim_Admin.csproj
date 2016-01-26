@@ -258,6 +258,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BrokerController.cs" />
+    <Compile Include="Controllers\FrontAccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PinController.cs" />
@@ -270,6 +271,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AppHelper.cs" />
     <Compile Include="Models\AspNetUser.cs">
       <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
     </Compile>
@@ -379,6 +381,7 @@
     <Compile Include="Models\URLTiny.cs">
       <DependentUpon>ShortenLinkModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserCustom.cs" />
     <Compile Include="Models\UserLogin.cs">
       <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
     </Compile>
@@ -1536,6 +1539,7 @@
     <Folder Include="Chart\" />
     <Folder Include="DetailTheme\js\tiny-mce\plugins\spellchecker\classes\utils\" />
     <Folder Include="DetailTheme\js\tiny-mce\plugins\spellchecker\includes\" />
+    <Folder Include="Views\FrontAccount\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
