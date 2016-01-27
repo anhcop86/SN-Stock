@@ -37,7 +37,7 @@ namespace PhimHang.Controllers
                                    where  (r.Code.Contains(stockCode) || "ALL"  == stockCode)
                                    && (r.MarketType == marketType || -1 == marketType)
                                    select r;
-             int pageSize = 20;
+             int pageSize = AppHelper.PageSize; ;
              int pageNumber = (page ?? 1);
 
              return View(Task.FromResult(tickers.ToPagedList(pageNumber, pageSize)).Result); 
@@ -57,7 +57,7 @@ namespace PhimHang.Controllers
 
          }
 
-         public async Task<ActionResult> Add() // Tạo mã nóng
+         public async Task<ActionResult> Add() // Tạo mã co phieu
          {
              LoadInit();
              return View();
@@ -65,8 +65,9 @@ namespace PhimHang.Controllers
 
          [HttpPost]
          [ValidateAntiForgeryToken]
-         public async Task<ActionResult> Add(StockCodeModel stockcode) // Tạo mã nóng
+         public async Task<ActionResult> Add(StockCodeModel stockcode) // Tạo mã co phieu
          {
+             LoadInit();
              if (ModelState.IsValid)
              {
 
@@ -78,42 +79,57 @@ namespace PhimHang.Controllers
                  {
                      dbcungphim.StockCodes.Add(new StockCode { Code = stockcode.Code.ToUpper(), IndexName = stockcode .IndexName, LongName = stockcode.LongName, MarketType = stockcode.MarketType, ShortName = stockcode.ShortName});
                      await dbcungphim.SaveChangesAsync();
-                     return RedirectToAction("Index");
+                     return View(stockcode);
+                     
                  }
 
-
+                 return RedirectToAction("Index");
              }
-             return View(stockcode);
+             else
+             {
+                 return View();
+             }
+             
          }
 
-         public async Task<ActionResult> Detail(int tickerid) // list user
+         public async Task<ActionResult> Detail(int stockid) // list user
          {
-             var hotTicker = await dbcungphim.TickerHots.FindAsync(tickerid);
-             return View(hotTicker);
+             LoadInit();
+             var stockCode = await dbcungphim.StockCodes.FindAsync(stockid);
+             return View(stockCode);
          }
+
          [HttpPost, ActionName("Detail")]
          [ValidateAntiForgeryToken]
-         public async Task<ActionResult> Detail(int tickerid, string stockCode) // list user
+         public async Task<ActionResult> Detail(StockCodeModel stockcode) // list user
          {
-             var hotTicker = await dbcungphim.TickerHots.FindAsync(tickerid);
-             if (hotTicker != null)
+             LoadInit();
+             if (ModelState.IsValid)
              {
-                 if (hotTicker.THName.ToUpper() != stockCode.ToUpper())
+                 //var url = Request.Url.Query.Replace("?stockid=" + userid + "&returnUrl=", "");
+                 var stockCode = await dbcungphim.StockCodes.FindAsync(stockcode.Id);
+                 stockCode.Code = stockcode.Code;
+                 stockCode.ShortName = stockcode.ShortName;
+                 stockCode.LongName = stockcode.LongName;
+                 stockCode.MarketType  = stockcode.MarketType;
+                 stockCode.IndexName = stockcode.IndexName;
+                 try
                  {
-                     hotTicker.THName = stockCode;
-                     try
-                     {
-                         dbcungphim.Entry(hotTicker).State = EntityState.Modified;
-                         await dbcungphim.SaveChangesAsync();
-                     }
-                     catch (Exception)
-                     {
-
-                         //throw;
-                     }
+                     dbcungphim.Entry(stockCode).State = EntityState.Modified;
+                     await dbcungphim.SaveChangesAsync();
+                     return RedirectToAction("");
+                 }
+                 catch (Exception)
+                 {
+                     return View();
                  }
              }
-             return RedirectToAction("");
+             else
+             {
+                 return View();
+             }
+             
+             
          }
 
          public async Task<ActionResult> Delete(int? tickerid) // list user

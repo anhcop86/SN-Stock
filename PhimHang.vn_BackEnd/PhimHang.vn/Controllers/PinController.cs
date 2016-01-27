@@ -41,7 +41,7 @@ namespace PhimHang.Controllers
                         };
 
 
-            int pageSize = 20;
+            int pageSize = AppHelper.PageSize; ;
             int pageNumber = (page ?? 1);
 
             return View(Task.FromResult(pins.ToPagedList(pageNumber, pageSize)).Result);

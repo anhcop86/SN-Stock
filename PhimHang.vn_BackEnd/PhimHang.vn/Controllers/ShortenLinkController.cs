@@ -27,12 +27,12 @@ namespace PhimHang.Controllers
               }
               ViewBag.searchContain = searchContain;
               var users = from u in dbshortLink.URLTinies
-                          orderby u.Id ascending
+                          orderby u.PostedDate descending
                           where (u.URLName.Contains(searchContain) || "ALL" == searchContain)
                           select u;
 
 
-              int pageSize = 20;
+              int pageSize = AppHelper.PageSize;
               int pageNumber = (page ?? 1);
 
               return View(Task.FromResult(users.ToPagedList(pageNumber, pageSize)).Result);

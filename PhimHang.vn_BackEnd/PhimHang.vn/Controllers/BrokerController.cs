@@ -38,7 +38,7 @@ namespace PhimHang.Controllers
                                    && (r.CreatedDate.Month == monthReport || 0 == monthReport)
                                    && (r.CreatedDate.Year == DateTime.Now.Year)
                                   select r;
-            int pageSize = 10;
+            int pageSize = AppHelper.PageSize; ;
             int pageNumber = (page ?? 1);
 
             return View(recommendstocks.ToPagedList(pageNumber, pageSize));

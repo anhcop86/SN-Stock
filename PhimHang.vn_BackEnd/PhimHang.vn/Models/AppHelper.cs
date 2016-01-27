@@ -41,5 +41,12 @@ namespace PhimHang.Models
                 return ConfigurationManager.AppSettings["PasswordAdmin"].ToString();
             }
         }
+        public static int PageSize
+        {
+            get
+            {
+                return int.Parse(ConfigurationManager.AppSettings["PageSize"].ToString());
+            }
+        }
     }
 }

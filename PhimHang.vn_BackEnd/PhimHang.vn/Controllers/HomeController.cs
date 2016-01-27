@@ -33,14 +33,10 @@ namespace PhimHang.Controllers
             var datetimeFilterTo = new DateTime();
             if (string.IsNullOrWhiteSpace(dateFilter) || dateFilter == "ALL")
             {
-                dateFilter = "ALL";
-                
-            }
-            else
-            {
-                datetimeFilter = new DateTime(int.Parse(dateFilter.Substring(6, 4)), int.Parse(dateFilter.Substring(3, 2)), int.Parse(dateFilter.Substring(0, 2)));
-                datetimeFilterTo = datetimeFilter.AddDays(1);
-            }
+                dateFilter = DateTime.Now.ToString("dd/MM/yyyy");                
+            }            
+            datetimeFilter = new DateTime(int.Parse(dateFilter.Substring(6, 4)), int.Parse(dateFilter.Substring(3, 2)), int.Parse(dateFilter.Substring(0, 2)));
+            datetimeFilterTo = datetimeFilter.AddDays(1);
             
 
             ViewBag.postBy = postBy;            
@@ -54,7 +50,7 @@ namespace PhimHang.Controllers
                                   && ((p.PostedDate >= datetimeFilter && p.PostedDate < datetimeFilterTo) || new DateTime() == datetimeFilter)
                                    && (p.StockPrimary.Contains(stockCode) || "ALL" == stockCode)
                                   select p;
-            int pageSize = 20;
+            int pageSize = AppHelper.PageSize;
             int pageNumber = (page ?? 1);
 
             return View(Task.FromResult(posts.ToPagedList(pageNumber, pageSize)).Result); 
@@ -105,7 +101,7 @@ namespace PhimHang.Controllers
                                   && (r.StockCode.Contains(stockCode) || "ALL" == stockCode)
                                   && (r.CreatedDate == datetimeFilter || new DateTime() == datetimeFilter)
                                   select r;
-            int pageSize = 10;
+            int pageSize = AppHelper.PageSize; ;
             int pageNumber = (page ?? 1);
 
             return View(recommendstocks.ToPagedList(pageNumber, pageSize));

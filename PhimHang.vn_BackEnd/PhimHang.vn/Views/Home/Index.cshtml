@@ -52,13 +52,13 @@
                                 @item.PostedDate.ToString("dd/MM/yyyy HH:mm:ss")
                             </td>
                             <td style="font-weight: bold; color: #328AC5">                                
-                                <a href="/Post/detail?postid=@item.PostId">@item.PostId</a>
+                                <a target="_blank" href="https://phochungkhoan.com/PostDetail?postid=@item.PostId">@item.PostId</a>
                             </td>
                             <td>
                                 
                                 <a href="/Broker?postBy=@item.UserLogin.Id">@item.UserLogin.UserNameCopy</a>
                             </td>
-                            <td>
+                            <td style="max-width:150px">
                                 @Html.DisplayFor(modelItem => item.StockPrimary)
                             </td>
                             <td>

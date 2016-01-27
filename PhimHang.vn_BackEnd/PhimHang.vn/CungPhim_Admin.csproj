@@ -29,6 +29,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>0</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -1429,6 +1430,7 @@
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery-ui\external\jquery\jquery.js" />
     <Content Include="Scripts\jquery-ui\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
     <Content Include="Scripts\jquery-ui\images\ui-bg_flat_15_cd0a0a_40x100.png" />
     <Content Include="Scripts\jquery-ui\images\ui-bg_glass_100_e4f1fb_1x400.png" />
@@ -1441,10 +1443,18 @@
     <Content Include="Scripts\jquery-ui\images\ui-icons_2694e8_256x240.png" />
     <Content Include="Scripts\jquery-ui\images\ui-icons_2e83ff_256x240.png" />
     <Content Include="Scripts\jquery-ui\images\ui-icons_3d80b3_256x240.png" />
+    <Content Include="Scripts\jquery-ui\images\ui-icons_444444_256x240.png" />
+    <Content Include="Scripts\jquery-ui\images\ui-icons_555555_256x240.png" />
     <Content Include="Scripts\jquery-ui\images\ui-icons_72a7cf_256x240.png" />
+    <Content Include="Scripts\jquery-ui\images\ui-icons_777620_256x240.png" />
+    <Content Include="Scripts\jquery-ui\images\ui-icons_777777_256x240.png" />
+    <Content Include="Scripts\jquery-ui\images\ui-icons_cc0000_256x240.png" />
     <Content Include="Scripts\jquery-ui\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Scripts\jquery-ui\index.html" />
     <Content Include="Scripts\jquery-ui\jquery-ui.css" />
+    <Content Include="Scripts\jquery-ui\jquery-ui.js" />
     <Content Include="Scripts\jquery-ui\jquery-ui.min.css" />
+    <Content Include="Scripts\jquery-ui\jquery-ui.min.js" />
     <Content Include="Scripts\jquery-ui\jquery-ui.structure.css" />
     <Content Include="Scripts\jquery-ui\jquery-ui.structure.min.css" />
     <Content Include="Scripts\jquery-ui\jquery-ui.theme.css" />
@@ -1533,6 +1543,7 @@
     <Content Include="Views\TickerHot\Add.cshtml" />
     <Content Include="Views\Pin\Add.cshtml" />
     <Content Include="Views\Ticker\Add.cshtml" />
+    <Content Include="Views\Ticker\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

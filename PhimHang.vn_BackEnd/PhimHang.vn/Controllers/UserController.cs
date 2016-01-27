@@ -28,7 +28,7 @@ namespace PhimHang.Controllers
             }
             ViewBag.userName = username;
             var users = from u in dbcungphim.UserLogins
-                        orderby u.UserNameCopy ascending
+                        orderby u.CreatedDate descending, u.UserNameCopy ascending
                         where (u.UserNameCopy.Contains(username) || "ALL" == username)
                         select new UserModel
                         {
@@ -39,9 +39,9 @@ namespace PhimHang.Controllers
                             BrokerType = (u.BrokerVIP == true ? "YES" : "NO"),
                             LockAccount = (u.LockAccount == 1 ? "YES" : "NO")
                         };
-                        
 
-            int pageSize = 20;
+
+            int pageSize = AppHelper.PageSize; ;
             int pageNumber = (page ?? 1);
 
             return View(Task.FromResult(users.ToPagedList(pageNumber, pageSize)).Result); 

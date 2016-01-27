@@ -1,27 +1,31 @@
-﻿@model PhimHang.Models.StockCodeModel
+﻿@model PhimHang.Models.StockCode
 @{
-    ViewBag.Title = "Thêm cổ phiếu";
+    ViewBag.Title = "Sửa cổ phiếu";
     Layout = "~/Views/Shared/_Layout_Main.cshtml";
 }
 
-<h2>Thêm cổ phiếu</h2>
 
 <div id="example_length" class="dataTables_length1">
     <table class="form">
 
 
-        @using (Html.BeginForm("Add", "Ticker", FormMethod.Post))
+        @using (Html.BeginForm("Detail", "Ticker", FormMethod.Post))
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true)
+            <tr>
+                <td class="col1"><label> Id:</label></td>
+                <td class="col2">
+                    @Html.TextBoxFor(model => model.Id, new { placeholder = "Id" })
+                </td>
+                <td>@Html.ValidationMessageFor(model => model.Id)</td>
+            </tr>
             <tr>
                 <td class="col1"><label> Mã cổ phiếu:</label></td>
                 <td class="col2">
                     @Html.TextBoxFor(model => model.Code, new { placeholder = "Mã cổ phiếu" })
                 </td>
                 <td>@Html.ValidationMessageFor(model => model.Code)</td>
-
-
             </tr>
             <tr>
                 <td class="col1"><label> Tên ngắn:</label></td>
@@ -32,22 +36,22 @@
 
 
             </tr>
-            <tr>
+            <tr>    
                 <td class="col1"><label>Tên dài:</label></td>
                 <td class="col2">
-                    @Html.TextBoxFor(model => model.LongName, new { placeholder = "Tên dài" })
+                    @Html.TextBoxFor(model => model.LongName, new { placeholder = "Tên dài", style="width:400px" })
                 </td>
                 <td>@Html.ValidationMessageFor(model => model.LongName)</td>
 
 
             </tr>
             <tr>
-                <td class="col1"><label> Sàn cổ phiếu:</label></td>                
+                <td class="col1"><label> Sàn cổ phiếu:</label></td>
                 <td>@Html.DropDownListFor(model => model.MarketType, @ViewBag.marketTypeList as SelectList, new { @name = "marketType" })</td>
                 <td>@Html.ValidationMessageFor(model => model.MarketType)</td>
 
             </tr>
-                 <tr>
+             <tr>    
                 <td class="col1"><label>IndexName:</label></td>
                 <td class="col2">
                     @Html.TextBoxFor(model => model.IndexName, new { placeholder = "Tên dài" })
@@ -73,7 +77,3 @@
         </div>*@
 
 </div>
-<br />
-<script>
-
-</script>
