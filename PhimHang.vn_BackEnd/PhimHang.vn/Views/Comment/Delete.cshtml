@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Xóa comment tào lao";
+    Layout = "~/Views/Shared/_Layout_Main.cshtml";
+}
+@model PhimHang.Models.PostComment
+<h2>
+    Chi tiết bài comment @Model.PostCommentsId
+</h2>
+
+<div id="example_length" class="dataTables_length1">
+    <table class="form">
+        <tr>
+            <td class="col1"><label> Người commnet:</label></td>
+            <td class="col2">
+                <input type="text" id="grumble" name="StockCode" value="@Model.UserLogin.UserNameCopy" disabled />
+                <label>Ngày:  @Model.PostedDate.ToString("dd/MM/yyyy HH:mm:ss")</label>
+            </td>
+
+        </tr>
+        
+        <tr>
+            <td class="col1" style="vertical-align: top;"><label>Chi tiết:</label></td>
+            <td class="col2">
+                @Html.Raw(@Model.Message)
+            </td>
+        </tr>
+        
+    </table>
+    @using (Html.BeginForm("Delete","Comment",FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+    <input type="hidden" name="commentid" value="@Model.PostCommentsId" />
+        <div class="form-actions no-color">
+            <input onclick="return confirm('Bạn muốn xóa bài phím này?');" type="submit" value="Delete" class="btn btn-default" /> |
+            <a style="color: #328AC5" href="@ViewBag.linkAbsolutePath">Back to list</a>
+        </div>
+    }
+</div>
+

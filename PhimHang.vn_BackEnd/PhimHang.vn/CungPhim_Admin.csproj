@@ -259,6 +259,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BrokerController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\FrontAccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -273,13 +274,25 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AppHelper.cs" />
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogin.cs">
       <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Comment.cs">
       <DependentUpon>Local.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CommentProfileModels.cs" />
+    <Compile Include="Models\C__MigrationHistory.cs">
+      <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DB_cungphim_frontend.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -383,6 +396,9 @@
       <DependentUpon>ShortenLinkModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserCustom.cs" />
+    <Compile Include="Models\UserLogExtent.cs">
+      <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserLogin.cs">
       <DependentUpon>DB_cungphim_frontend.tt</DependentUpon>
     </Compile>
@@ -1544,6 +1560,9 @@
     <Content Include="Views\Pin\Add.cshtml" />
     <Content Include="Views\Ticker\Add.cshtml" />
     <Content Include="Views\Ticker\Detail.cshtml" />
+    <Content Include="Views\Comment\Index.cshtml" />
+    <Content Include="Views\Comment\Delete.cshtml" />
+    <Content Include="Views\ShortenLink\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

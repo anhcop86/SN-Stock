@@ -37,16 +37,18 @@ namespace PhimHang.Controllers
         {
             if (ModelState.IsValid)
             {
-                
-                if (dbcungphim.TickerHots.Any(t=>t.THName.ToUpper() == tickerHot.THName.ToUpper()))
+                using (dbcungphim = new db_cungphim_FrontEnd())
                 {
-                    ModelState.AddModelError("", "Đã tồn tại mã cổ phiếu này trong thệ thống");
-                }
-                else
-                {
-                    dbcungphim.TickerHots.Add(new TickerHot { THName = tickerHot.THName.ToUpper() });
-                    await dbcungphim.SaveChangesAsync();
-                    return RedirectToAction("Index");
+                    if (dbcungphim.TickerHots.Any(t => t.THName.ToUpper() == tickerHot.THName.ToUpper()))
+                    {
+                        ModelState.AddModelError("", "Đã tồn tại mã cổ phiếu này trong thệ thống");
+                    }
+                    else
+                    {
+                        dbcungphim.TickerHots.Add(new TickerHot { THName = tickerHot.THName.ToUpper() });
+                        await dbcungphim.SaveChangesAsync();
+                        return RedirectToAction("Index");
+                    }
                 }
                 
 
@@ -63,21 +65,24 @@ namespace PhimHang.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Detail(int tickerid, string stockCode) // list user
         {
-            var hotTicker = await dbcungphim.TickerHots.FindAsync(tickerid);
-            if (hotTicker !=null)
+            using (dbcungphim = new db_cungphim_FrontEnd())
             {
-                if (hotTicker.THName.ToUpper() != stockCode.ToUpper())
+                var hotTicker = await dbcungphim.TickerHots.FindAsync(tickerid);
+                if (hotTicker != null)
                 {
-                    hotTicker.THName = stockCode;
-                    try
+                    if (hotTicker.THName.ToUpper() != stockCode.ToUpper())
                     {
-                        dbcungphim.Entry(hotTicker).State = EntityState.Modified;
-                        await dbcungphim.SaveChangesAsync();
-                    }
-                    catch (Exception)
-                    {
+                        hotTicker.THName = stockCode;
+                        try
+                        {
+                            dbcungphim.Entry(hotTicker).State = EntityState.Modified;
+                            await dbcungphim.SaveChangesAsync();
+                        }
+                        catch (Exception)
+                        {
 
-                        //throw;
+                            //throw;
+                        }
                     }
                 }
             }
@@ -93,9 +98,11 @@ namespace PhimHang.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Delete(int tickerid) // list user
         {
-            var hotTicker = await dbcungphim.TickerHots.FindAsync(tickerid);
-            if (hotTicker != null)
-            {              
+            using (dbcungphim = new db_cungphim_FrontEnd())
+            {
+                var hotTicker = await dbcungphim.TickerHots.FindAsync(tickerid);
+                if (hotTicker != null)
+                {
                     try
                     {
                         dbcungphim.TickerHots.Remove(hotTicker);
@@ -106,7 +113,8 @@ namespace PhimHang.Controllers
 
                         //throw;
                     }
-               
+
+                }
             }
             return RedirectToAction("");
         }

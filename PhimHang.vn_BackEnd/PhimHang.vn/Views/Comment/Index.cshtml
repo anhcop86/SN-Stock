@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "Comment list";
+    Layout = "~/Views/Shared/_Layout_Main.cshtml";
+}
+
+@model PagedList.IPagedList<PhimHang.Models.PostComment>
+@using PagedList.Mvc;
+
+
+
+<h2>
+    Danh mục comment
+</h2>
+<div id="example_length" class="dataTables_length1">
+    <table class="form">
+        @using (Html.BeginForm("", "Comment", FormMethod.Get))
+        {
+            <tr>
+                <td><b>Ngày:</b></td>
+                <td><input type="text" value="@ViewBag.datefilter" id="datetimepicker" name="dateFilter" /></td>                
+                <td></td>
+                <td><input type="submit" value="Tìm kiếm" class="btn btn-blue"></td>
+
+            </tr>
+        }
+    </table>
+</div>
+<div id="mainContent">
+    <fieldset>
+        <div class="Table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ngày</th>
+                        <th>ID</th>                        
+                        <th>Người comment</th>    
+                        <th>Detail</th>                    
+                        <th>Delete</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.PostedDate.ToString("dd/MM/yyyy HH:mm:ss")
+                            </td>
+                            <td style="font-weight: bold; color: #328AC5">
+                                <a target="_blank" href="https://phochungkhoan.com/PostDetail?postid=@item.PostedBy">@item.PostedBy</a>
+                            </td>
+                            <td>
+                                <a href="/Broker?postBy=@item.UserLogin.Id">@item.UserLogin.UserNameCopy</a>
+                            </td>                         
+                            <td style="text-align:left">
+                                @Html.Raw(@item.Message)
+                            </td>
+                            
+                            <td><a style="color: #328AC5" href="/Comment/delete?commentid=@item.PostCommentsId&returnUrl=@ViewBag.linkAbsolutePath">delete</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <br />
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+            @Html.PagedListPager(Model,
+                                page => Url.Action("Index", new { page, postBy = ViewBag.postBy, recommentType = ViewBag.recommentType, stockCode = ViewBag.stockCode, dateFilter = ViewBag.datefilter }))
+
+
+        </div>
+    </fieldset>
+</div>
+
+<script type="text/javascript">
+            $().ready(function () {
+                $('#datetimepicker').datepicker({
+                    dateFormat: 'dd/mm/yy',
+                    buttonImage: '@Url.Content("~/Content/themes/calendar.gif")',
+                    buttonImageOnly: true,
+                    showOn: 'both',
+                    //minDate: "0"
+
+
+                });
+            });
+</script>
+
+
+
+
+

@@ -12,13 +12,13 @@ namespace PhimHang.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class StockCode
+    public partial class AspNetUserClaim
     {
         public int Id { get; set; }
-        public string Code { get; set; }
-        public string ShortName { get; set; }
-        public string LongName { get; set; }
-        public Nullable<short> MarketType { get; set; }
-        public string IndexName { get; set; }
+        public string ClaimType { get; set; }
+        public string ClaimValue { get; set; }
+        public string User_Id { get; set; }
+    
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

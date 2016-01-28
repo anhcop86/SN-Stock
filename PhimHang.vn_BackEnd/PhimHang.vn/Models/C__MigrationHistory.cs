@@ -12,13 +12,11 @@ namespace PhimHang.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class StockCode
+    public partial class C__MigrationHistory
     {
-        public int Id { get; set; }
-        public string Code { get; set; }
-        public string ShortName { get; set; }
-        public string LongName { get; set; }
-        public Nullable<short> MarketType { get; set; }
-        public string IndexName { get; set; }
+        public string MigrationId { get; set; }
+        public string ContextKey { get; set; }
+        public byte[] Model { get; set; }
+        public string ProductVersion { get; set; }
     }
 }

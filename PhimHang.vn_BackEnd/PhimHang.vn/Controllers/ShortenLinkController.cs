@@ -37,6 +37,37 @@ namespace PhimHang.Controllers
 
               return View(Task.FromResult(users.ToPagedList(pageNumber, pageSize)).Result);
           }
+          public async Task<ActionResult> Delete(long linkid)
+          {
+              ViewBag.linkAbsolutePath = Request.Url.Query.Replace("?postid=" + linkid + "&returnUrl=", "");
+              if (linkid == null)
+              {
+                  return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+              }
+              URLTiny post = await dbshortLink.URLTinies.FindAsync(linkid);
+              if (post == null)
+              {
+                  return HttpNotFound();
+              }
+              return View(post);
+          }
 
+          [HttpPost, ActionName("Delete")] // xóa phuong thuc post, tạm thời để ten la detail
+          [ValidateAntiForgeryToken]
+          public async Task<ActionResult> DeleteConfirmed(long linkid)
+          {
+              using (dbshortLink = new ShortenLinkEntities())
+              {
+                  var url = Request.Url.Query.Replace("?linkid=" + linkid + "&returnUrl=", "");
+
+
+                  URLTiny post = await dbshortLink.URLTinies.FindAsync(linkid);
+                  dbshortLink.URLTinies.Remove(post);
+                  await dbshortLink.SaveChangesAsync();
+                  return RedirectToAction("");
+              }
+
+
+          }
 	}
 }

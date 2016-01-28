@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Delete link xấu";
+    Layout = "~/Views/Shared/_Layout_Main.cshtml";
+}
+@model PhimHang.Models.URLTiny
+<h2>
+    Chi tiết bài link @Model.Id
+</h2>
+
+<div id="example_length" class="dataTables_length1">
+    <table class="form">
+        <tr>
+            <td class="col1"><label> link:</label></td>
+            
+            
+            <td class="col2">
+                @Html.Raw(@Model.URLName)
+            </td>
+        </tr>
+
+    </table>
+    @using (Html.BeginForm("Delete", "ShortenLink", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="linkid" value="@Model.Id" />
+        <div class="form-actions no-color">
+            <input onclick="return confirm('Bạn muốn xóa bài phím này?');" type="submit" value="Delete" class="btn btn-default" /> |
+            <a style="color: #328AC5" href="@ViewBag.linkAbsolutePath">Back to list</a>
+        </div>
+    }
+</div>
+

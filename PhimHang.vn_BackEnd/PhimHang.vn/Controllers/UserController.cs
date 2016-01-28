@@ -63,26 +63,28 @@ namespace PhimHang.Controllers
         public async Task<ActionResult> Edit(Boolean? typeBroker, int userid)
         {
             var url = Request.Url.Query.Replace("?userid=" + userid + "&returnUrl=", "");
-
-            var user = await dbcungphim.UserLogins.FindAsync(userid);
-            if (user != null)
+            using (dbcungphim = new db_cungphim_FrontEnd())
             {
-                if (user.BrokerVIP != typeBroker)
+                var user = await dbcungphim.UserLogins.FindAsync(userid);
+                if (user != null)
                 {
-                    user.BrokerVIP = typeBroker;
-                    try
+                    if (user.BrokerVIP != typeBroker)
                     {
-                        dbcungphim.Entry(user).State = EntityState.Modified;
-                        await dbcungphim.SaveChangesAsync();
-                    }
-                    catch (Exception)
-                    {
-                        
-                        //throw;
-                    }
-                    
-                }
+                        user.BrokerVIP = typeBroker;
+                        try
+                        {
+                            dbcungphim.Entry(user).State = EntityState.Modified;
+                            await dbcungphim.SaveChangesAsync();
+                        }
+                        catch (Exception)
+                        {
 
+                            //throw;
+                        }
+
+                    }
+
+                }
             }
 
 

@@ -58,19 +58,20 @@ namespace PhimHang.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                if (dbcungphim.PinStocks.Any(t => t.StockCodePin == pinModel.StockName && t.PostId == pinModel.PostId))
+                using (dbcungphim = new db_cungphim_FrontEnd())
                 {
-                    ModelState.AddModelError("", "Đã tồn tại PIN này trong thệ thống");
-                }
-                else
-                {
-                    dbcungphim.PinStocks.Add(new PinStock { StockCodePin = pinModel.StockName.ToUpper(), PostId = pinModel.PostId, CreatedDate = DateTime.Now });
-                    await dbcungphim.SaveChangesAsync();
-                    return RedirectToAction("Index");
-                }
+                    if (dbcungphim.PinStocks.Any(t => t.StockCodePin == pinModel.StockName && t.PostId == pinModel.PostId))
+                    {
+                        ModelState.AddModelError("", "Đã tồn tại PIN này trong thệ thống");
+                    }
+                    else
+                    {
+                        dbcungphim.PinStocks.Add(new PinStock { StockCodePin = pinModel.StockName.ToUpper(), PostId = pinModel.PostId, CreatedDate = DateTime.Now });
+                        await dbcungphim.SaveChangesAsync();
+                        return RedirectToAction("Index");
+                    }
 
-
+                }
             }
             return View(pinModel);
         }
@@ -84,21 +85,24 @@ namespace PhimHang.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Detail(long pinid, string stockCode) // list user
         {
-            var pin = await dbcungphim.PinStocks.FindAsync(pinid);
-            if (pin != null)
+            using (dbcungphim = new db_cungphim_FrontEnd())
             {
-                if (pin.StockCodePin.ToUpper() != stockCode.ToUpper())
+                var pin = await dbcungphim.PinStocks.FindAsync(pinid);
+                if (pin != null)
                 {
-                    pin.StockCodePin = stockCode;
-                    try
+                    if (pin.StockCodePin.ToUpper() != stockCode.ToUpper())
                     {
-                        dbcungphim.Entry(pin).State = EntityState.Modified;
-                        await dbcungphim.SaveChangesAsync();
-                    }
-                    catch (Exception)
-                    {
+                        pin.StockCodePin = stockCode;
+                        try
+                        {
+                            dbcungphim.Entry(pin).State = EntityState.Modified;
+                            await dbcungphim.SaveChangesAsync();
+                        }
+                        catch (Exception)
+                        {
 
-                        //throw;
+                            //throw;
+                        }
                     }
                 }
             }
@@ -113,20 +117,23 @@ namespace PhimHang.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Delete(long pinid) // list user
         {
-            var pin = await dbcungphim.PinStocks.FindAsync(pinid);
-            if (pin != null)
+            using (dbcungphim = new db_cungphim_FrontEnd())
             {
-                try
+                var pin = await dbcungphim.PinStocks.FindAsync(pinid);
+                if (pin != null)
                 {
-                    dbcungphim.PinStocks.Remove(pin);
-                    await dbcungphim.SaveChangesAsync();
-                }
-                catch (Exception)
-                {
+                    try
+                    {
+                        dbcungphim.PinStocks.Remove(pin);
+                        await dbcungphim.SaveChangesAsync();
+                    }
+                    catch (Exception)
+                    {
 
-                    //throw;
-                }
+                        //throw;
+                    }
 
+                }
             }
             return RedirectToAction("");
         }

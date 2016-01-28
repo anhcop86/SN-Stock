@@ -25,6 +25,10 @@ namespace PhimHang.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<FilterKeyWord> FilterKeyWords { get; set; }
         public virtual DbSet<FollowStock> FollowStocks { get; set; }
@@ -32,6 +36,7 @@ namespace PhimHang.Models
         public virtual DbSet<JobTitile> JobTitiles { get; set; }
         public virtual DbSet<NotificationMessege> NotificationMesseges { get; set; }
         public virtual DbSet<Philosophy> Philosophies { get; set; }
+        public virtual DbSet<PinStock> PinStocks { get; set; }
         public virtual DbSet<PostComment> PostComments { get; set; }
         public virtual DbSet<Post> Posts { get; set; }
         public virtual DbSet<Setting> Settings { get; set; }
@@ -40,9 +45,9 @@ namespace PhimHang.Models
         public virtual DbSet<StockRelate> StockRelates { get; set; }
         public virtual DbSet<StockViewLastest> StockViewLastests { get; set; }
         public virtual DbSet<TickerHot> TickerHots { get; set; }
+        public virtual DbSet<UserLogExtent> UserLogExtents { get; set; }
         public virtual DbSet<UserLogin> UserLogins { get; set; }
         public virtual DbSet<UserRelate> UserRelates { get; set; }
         public virtual DbSet<UserViewLastest> UserViewLastests { get; set; }
-        public virtual DbSet<PinStock> PinStocks { get; set; }
     }
 }

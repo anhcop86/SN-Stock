@@ -70,20 +70,22 @@ namespace PhimHang.Controllers
              LoadInit();
              if (ModelState.IsValid)
              {
-
-                 if (dbcungphim.StockCodes.Any(t => t.Code == stockcode.Code))
+                 using (dbcungphim = new db_cungphim_FrontEnd())
                  {
-                     ModelState.AddModelError("", "Đã tồn tại mã cổ phiếu này trong thệ thống");
-                 }
-                 else
-                 {
-                     dbcungphim.StockCodes.Add(new StockCode { Code = stockcode.Code.ToUpper(), IndexName = stockcode .IndexName, LongName = stockcode.LongName, MarketType = stockcode.MarketType, ShortName = stockcode.ShortName});
-                     await dbcungphim.SaveChangesAsync();
-                     return View(stockcode);
-                     
-                 }
+                     if (dbcungphim.StockCodes.Any(t => t.Code == stockcode.Code))
+                     {
+                         ModelState.AddModelError("", "Đã tồn tại mã cổ phiếu này trong thệ thống");
+                     }
+                     else
+                     {
+                         dbcungphim.StockCodes.Add(new StockCode { Code = stockcode.Code.ToUpper(), IndexName = stockcode.IndexName, LongName = stockcode.LongName, MarketType = stockcode.MarketType, ShortName = stockcode.ShortName });
+                         await dbcungphim.SaveChangesAsync();
+                         return View(stockcode);
 
-                 return RedirectToAction("Index");
+                     }
+
+                     return RedirectToAction("Index");
+                 }
              }
              else
              {
@@ -106,22 +108,25 @@ namespace PhimHang.Controllers
              LoadInit();
              if (ModelState.IsValid)
              {
-                 //var url = Request.Url.Query.Replace("?stockid=" + userid + "&returnUrl=", "");
-                 var stockCode = await dbcungphim.StockCodes.FindAsync(stockcode.Id);
-                 stockCode.Code = stockcode.Code;
-                 stockCode.ShortName = stockcode.ShortName;
-                 stockCode.LongName = stockcode.LongName;
-                 stockCode.MarketType  = stockcode.MarketType;
-                 stockCode.IndexName = stockcode.IndexName;
-                 try
+                 using (dbcungphim = new db_cungphim_FrontEnd())
                  {
-                     dbcungphim.Entry(stockCode).State = EntityState.Modified;
-                     await dbcungphim.SaveChangesAsync();
-                     return RedirectToAction("");
-                 }
-                 catch (Exception)
-                 {
-                     return View();
+                     //var url = Request.Url.Query.Replace("?stockid=" + userid + "&returnUrl=", "");
+                     var stockCode = await dbcungphim.StockCodes.FindAsync(stockcode.Id);
+                     stockCode.Code = stockcode.Code;
+                     stockCode.ShortName = stockcode.ShortName;
+                     stockCode.LongName = stockcode.LongName;
+                     stockCode.MarketType = stockcode.MarketType;
+                     stockCode.IndexName = stockcode.IndexName;
+                     try
+                     {
+                         dbcungphim.Entry(stockCode).State = EntityState.Modified;
+                         await dbcungphim.SaveChangesAsync();
+                         return RedirectToAction("");
+                     }
+                     catch (Exception)
+                     {
+                         return View();
+                     }
                  }
              }
              else
@@ -141,22 +146,25 @@ namespace PhimHang.Controllers
          [ValidateAntiForgeryToken]
          public async Task<ActionResult> Delete(int tickerid) // list user
          {
-             var hotTicker = await dbcungphim.TickerHots.FindAsync(tickerid);
-             if (hotTicker != null)
+             using (dbcungphim = new db_cungphim_FrontEnd())
              {
-                 try
+                 var hotTicker = await dbcungphim.TickerHots.FindAsync(tickerid);
+                 if (hotTicker != null)
                  {
-                     dbcungphim.TickerHots.Remove(hotTicker);
-                     await dbcungphim.SaveChangesAsync();
-                 }
-                 catch (Exception)
-                 {
+                     try
+                     {
+                         dbcungphim.TickerHots.Remove(hotTicker);
+                         await dbcungphim.SaveChangesAsync();
+                     }
+                     catch (Exception)
+                     {
 
-                     //throw;
-                 }
+                         //throw;
+                     }
 
+                 }
+                 return RedirectToAction("");
              }
-             return RedirectToAction("");
          }
 	}
 }

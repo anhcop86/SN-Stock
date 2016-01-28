@@ -43,29 +43,33 @@ namespace PhimHang.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(long postid)
         {
-            var url = Request.Url.Query.Replace("?postid=" + postid + "&returnUrl=", "");
-            // remove notification 
-            var notifications = await dbcungphim.NotificationMesseges.Where(n => n.PostId == postid).ToListAsync();
-            dbcungphim.NotificationMesseges.RemoveRange(notifications);
-            //
-            // remove  stockRelate
-            var stockRelates = await dbcungphim.StockRelates.Where(n => n.PostId == postid).ToListAsync();
-            dbcungphim.StockRelates.RemoveRange(stockRelates);
-            //
-            // remove  stockRelate
-            var comments = await dbcungphim.PostComments.Where(n => n.PostedBy == postid).ToListAsync();
-            dbcungphim.PostComments.RemoveRange(comments);
-            //
+            using (dbcungphim = new db_cungphim_FrontEnd())
+            {
+                var url = Request.Url.Query.Replace("?postid=" + postid + "&returnUrl=", "");
+                // remove notification 
+                var notifications = await dbcungphim.NotificationMesseges.Where(n => n.PostId == postid).ToListAsync();
+                dbcungphim.NotificationMesseges.RemoveRange(notifications);
+                //
+                // remove  stockRelate
+                var stockRelates = await dbcungphim.StockRelates.Where(n => n.PostId == postid).ToListAsync();
+                dbcungphim.StockRelates.RemoveRange(stockRelates);
+                //
+                // remove  stockRelate
+                var comments = await dbcungphim.PostComments.Where(n => n.PostedBy == postid).ToListAsync();
+                dbcungphim.PostComments.RemoveRange(comments);
+                //
 
-            Post post = await dbcungphim.Posts.FindAsync(postid);
-            dbcungphim.Posts.Remove(post);
-            await dbcungphim.SaveChangesAsync();
-            return RedirectToLocal(url);
+                Post post = await dbcungphim.Posts.FindAsync(postid);
+                dbcungphim.Posts.Remove(post);
+                await dbcungphim.SaveChangesAsync();
+                return RedirectToLocal(url);
+            }
+            
             
         }
-        public async Task<ActionResult> Update(long? postid)
+        public async Task<ActionResult> Update(long? postid, string returnUrl)
         {
-            ViewBag.linkAbsolutePath = Request.Url.Query.Replace("?postid=" + postid + "&returnUrl=", "");
+            ViewBag.linkAbsolutePath = returnUrl;//Request.Url.Query.Replace("?postid=" + postid + "&returnUrl=", "");
             if (postid == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -80,24 +84,28 @@ namespace PhimHang.Controllers
 
         [HttpPost, ActionName("Update")] // cap nhat like
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Update(long postid, int? sumLike)
+        public async Task<ActionResult> Update(long postid, int? sumLike, string StockCode)
         {
             var url = Request.Url.Query.Replace("?postid=" + postid + "&returnUrl=", "");
-            Post post = await dbcungphim.Posts.FindAsync(postid);
-            if (post != null)
-            {
-                if (post.SumLike != sumLike)
+            using (dbcungphim = new db_cungphim_FrontEnd())
+            {                
+                Post post = await dbcungphim.Posts.FindAsync(postid);
+                if (post != null)
                 {
-                    post.SumLike = (sumLike == null ? 0 : sumLike);
-                    try
+                    if (post.SumLike != sumLike || !post.StockPrimary.Equals(StockCode))
                     {
-                        dbcungphim.Entry(post).State = EntityState.Modified;
-                        await dbcungphim.SaveChangesAsync();
-                    }
-                    catch (Exception)
-                    {
-
-                        //throw;
+                        try
+                        {
+                            //post.StockPrimary = StockCode;
+                            post.SumLike = (sumLike == null ? 0 : (int)sumLike);
+                            post.StockPrimary = (string.IsNullOrEmpty(StockCode) ? "" : StockCode);
+                            dbcungphim.Entry(post).State = EntityState.Modified;
+                            await dbcungphim.SaveChangesAsync();
+                        }
+                        catch (Exception)
+                        {
+                            //throw;
+                        }
                     }
                 }
             }
