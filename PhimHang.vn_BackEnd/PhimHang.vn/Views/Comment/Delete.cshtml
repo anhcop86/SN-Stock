@@ -16,7 +16,6 @@
                 <input type="text" id="grumble" name="StockCode" value="@Model.UserLogin.UserNameCopy" disabled />
                 <label>Ngày:  @Model.PostedDate.ToString("dd/MM/yyyy HH:mm:ss")</label>
             </td>
-
         </tr>
         
         <tr>
@@ -31,6 +30,7 @@
     {
         @Html.AntiForgeryToken()
     <input type="hidden" name="commentid" value="@Model.PostCommentsId" />
+        <input type="hidden" name="postid" value="@Model.PostedBy" />
         <div class="form-actions no-color">
             <input onclick="return confirm('Bạn muốn xóa bài phím này?');" type="submit" value="Delete" class="btn btn-default" /> |
             <a style="color: #328AC5" href="@ViewBag.linkAbsolutePath">Back to list</a>

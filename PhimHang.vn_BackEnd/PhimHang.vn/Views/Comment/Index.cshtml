@@ -57,7 +57,7 @@
                                 @Html.Raw(@item.Message)
                             </td>
                             
-                            <td><a style="color: #328AC5" href="/Comment/delete?commentid=@item.PostCommentsId&returnUrl=@ViewBag.linkAbsolutePath">delete</a></td>
+                            <td><a style="color: #328AC5" href="/Comment/delete?commentid=@item.PostCommentsId&postid=@item.PostedBy&returnUrl=@ViewBag.linkAbsolutePath">delete</a></td>
                         </tr>
                     }
                 </tbody>

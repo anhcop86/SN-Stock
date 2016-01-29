@@ -46,7 +46,7 @@ namespace PhimHang.Controllers
             return View(Task.FromResult(posts.ToPagedList(pageNumber, pageSize)).Result);
 
         }
-        public async Task<ActionResult> Delete(long commentid)
+        public async Task<ActionResult> Delete(long commentid, long postid)
         {
             ViewBag.linkAbsolutePath = Request.Url.Query.Replace("?commentid=" + commentid + "&returnUrl=", "");
             if (commentid == null)
@@ -63,16 +63,29 @@ namespace PhimHang.Controllers
 
         [HttpPost, ActionName("Delete")] // xóa phuong thuc post, tạm thời để ten la detail
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(long commentid)
+        public async Task<ActionResult> DeleteConfirmed(long commentid, long postid)
         {
             using (dbcungphim = new db_cungphim_FrontEnd())
-            {
-                var url = Request.Url.Query.Replace("?commentid=" + commentid + "&returnUrl=", "");
+            {                
                 // remove notification                 
-
-                PostComment post = await dbcungphim.PostComments.FindAsync(commentid);
-                dbcungphim.PostComments.Remove(post);
-                await dbcungphim.SaveChangesAsync();
+                try
+                {                    
+                    PostComment postComment = await dbcungphim.PostComments.FindAsync(commentid);
+                    Post post = await dbcungphim.Posts.FindAsync(postid);
+                    if (post.SumReply > 0)
+                    {
+                        post.SumReply -= 1;
+                        dbcungphim.Entry(post).State = EntityState.Modified;
+                    }
+                    dbcungphim.PostComments.Remove(postComment);
+                    await dbcungphim.SaveChangesAsync();
+                }
+                catch (Exception)
+                {
+                    
+                    //
+                }
+                
                 return RedirectToAction("");
             }
 
