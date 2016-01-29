@@ -1,10 +1,9 @@
 ﻿@model PhimHang.Models.RegisterViewModel
    
     @{
-        ViewBag.Title = "Đăng ký tài khoản mớ";
+        ViewBag.Title = "Đăng ký tài khoản mới";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 
     <div id="outer-frame">
         <div id="page-content">
@@ -17,7 +16,6 @@
                                 <div class="login-register-switch">
                                     <a href="/Account/Login/?ReturnUrl=@ViewBag.ReturnUrl" class="login-register-switch-link">Đăng nhập</a>
                                 </div>
-
                             </div>
                             <div class="login-form-container  standard">
                                 @*<form action="/" method="post" class="clearfix login-form">*@
@@ -60,8 +58,8 @@
                                         <div class="text-input-error-wrapper">@Html.ValidationMessageFor(m => m.TermsAndConditions)</div>
                                         <div class="">
                                             @Html.CheckBoxFor(m => m.TermsAndConditions)
-                                            @Html.LabelFor(m => m.TermsAndConditions)<a target="_blank" href="/documents/ThoathuanCungcapDichvu.pdf">tại đây</a>
-                                        </div>
+                                            <strong>@Html.LabelFor(m => m.TermsAndConditions)<a target="_blank" href="/documents/ThoathuanCungcapDichvu.pdf">tại đây</a></strong>
+</div>
                                     </div>
                                     <div class="clearfix">
                                         <div class="sso-description"></div>

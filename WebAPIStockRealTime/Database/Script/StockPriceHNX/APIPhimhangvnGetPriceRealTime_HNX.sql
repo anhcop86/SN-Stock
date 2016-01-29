@@ -25,6 +25,14 @@ SELECT TOP 1
 		 Diff3 AS Diff,
 		DiffRate3 as DiffRate 
 FROM  dbo.dnn_AGStock_HASTC_Session
+
+UNION ALL 
+
+SELECT 
+		'MACRO',
+		 99.9,
+		 100,
+		100 
 order by CompanyID
 GO
 

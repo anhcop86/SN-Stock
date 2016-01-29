@@ -177,7 +177,6 @@ namespace PhimHang.Models
             }
             catch (Exception)
             {
-
                 return false;
             }
             
@@ -192,6 +191,26 @@ namespace PhimHang.Models
             reader.Close();
 
             parameters.Add("tokenReset", token);
+            parameters.Add("username", userName);
+            parameters.Add("AbsolutePathHostName", AppHelper.AbsolutePathHostName);
+
+            for (int i = 0; i < parameters.Keys.Count; i++)
+            {
+                string replaceKey = "${" + parameters.GetKey(i) + "}$";
+                bodyText = bodyText.Replace(replaceKey, String.Concat(parameters.GetValues(i)));
+            }
+            return bodyText;
+
+        }
+        public static string GetContentTemplate(string fileName, string userName)
+        {
+            NameValueCollection parameters = new NameValueCollection();
+            StreamReader reader = null;
+
+            reader = new StreamReader(fileName, System.Text.UTF8Encoding.UTF8);
+            string bodyText = reader.ReadToEnd();
+            reader.Close();
+            
             parameters.Add("username", userName);
             parameters.Add("AbsolutePathHostName", AppHelper.AbsolutePathHostName);
 
@@ -378,6 +397,14 @@ namespace PhimHang.Models
             get
             {
                 return ConfigurationManager.AppSettings["DisplayEmailReset"].ToString();
+            }
+        }
+        public static string RegisterEmailTemplatePath
+        {
+            get
+            {                
+                string rootPath = HttpContext.Current.Server.MapPath("~");
+                return rootPath.Substring(0, rootPath.LastIndexOf(@"\")) + ConfigurationManager.AppSettings["RegisterEmailTemplatePath"];            
             }
         }
 

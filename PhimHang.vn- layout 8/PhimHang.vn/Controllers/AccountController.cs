@@ -297,9 +297,10 @@ namespace PhimHang.Controllers
                     {
                         await SignInAsync(user, isPersistent: false);
                         //send mail
-
+                        String contentEmail = AppHelper.GetContentTemplate(AppHelper.RegisterEmailTemplatePath, user.UserName);
+                        AppHelper.sendEmail("Thư đăng ký tài khoản | Phochungkhoan.com", user.UserExtentLogin.Email, contentEmail);
                         //
-                        return RedirectToAction("Index", "MyProfile");
+                        return RedirectToAction("Index", "myprofile");
                     }
                     else
                     {

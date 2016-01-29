@@ -106,7 +106,7 @@ namespace PhimHang.Models
         public string ConfirmPassword { get; set; }
 
         [Required]
-        [Display(Name = "Thỏa thuận cung cấp dịch vụ xem ")]
+        [Display(Name = "Đồng ý với Thỏa thuận cung cấp dịch vụ xem tại đây ")]
         [MustBeTrue(ErrorMessage = "Bạn chưa chấp nhận")]
         public bool TermsAndConditions { get; set; }	
 
