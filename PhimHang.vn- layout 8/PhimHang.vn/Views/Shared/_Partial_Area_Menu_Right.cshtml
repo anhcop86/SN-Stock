@@ -81,11 +81,11 @@
 
 <!--facebook plugin-->
 @{
-   if (User.Identity.IsAuthenticated)
-   {
-    <a id="btn-config" href="#" data-dropdown="#dropdown-1">
-        <span style="padding-right: 5px;"><i class="fa fa-cog"></i></span>
-    </a>
+    if (User.Identity.IsAuthenticated)
+    {
+        <a id="btn-config" href="#" data-dropdown="#dropdown-1">
+            <span style="padding-right: 5px;"><i class="fa fa-cog"></i></span>
+        </a>
     }
 }
 <div id="dropdown-1" class="dropdown dropdown-tip dropdown-anchor-right dropdown-relative">    

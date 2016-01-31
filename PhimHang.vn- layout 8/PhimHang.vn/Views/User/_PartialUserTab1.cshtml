@@ -19,7 +19,7 @@
                         <div class="status-control">
                             <div class="choose_file f-left">
                                 <i class="fa fa-camera"></i>
-                                <input id="idchartFileUpload" name="Select File" accept="image/*" type="file" onchange="uploadPreview(files)" />
+                                <input title="Chọn ảnh biều đồ kỹ thuật" id="idchartFileUpload" name="Select File" accept="image/*" type="file" onchange="uploadPreview(files)" />
                                 <div class="chartImage">
                                     <a class="mb3-close chart-close" onclick="removeFileChart()" href="javascript:;">x</a>
                                     <img class="mb3-chart-thumb" src="">
@@ -27,13 +27,13 @@
                             </div>
                             <div id="radio" class="switch3button f-left">
                                 <input type="radio" id="radio1" name="BullBear" value="2">
-                                <label for="radio1" class="divBull ">Tăng</label>
+                                <label title="Nhận định thị trường TĂNG" for="radio1" class="divBull ">Tăng</label>
                                 <input type="radio" id="radio3" name="BullBear" value="1">
-                                <label for="radio3" class="divBear">Giảm</label>
+                                <label title="Nhận định thị trường GIẢM" for="radio3" class="divBear">Giảm</label>
                             </div>
                             <div id="btnPhim" class="f-right">
                                 <span data-bind="text : count"></span>
-                                <button id="btAddPost" style="cursor:pointer" class="button-phim" data-bind="click : addPost,  enable: enablePhimHang ">PHÍM</button>
+                                <button title="Nhập trên 6 ký tự để được tạo bài viết" id="btAddPost" style="cursor:pointer" class="button-phim" data-bind="click : addPost,  enable: enablePhimHang ">PHÍM</button>
                             </div>
                         </div>
                     </form>

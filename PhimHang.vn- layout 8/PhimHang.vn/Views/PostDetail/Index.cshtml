@@ -14,6 +14,7 @@
     <input type="hidden" id="HiddentPostedDate" value='@ViewBag.PostedDate' />
     <input type="hidden" id="HiddentPostedByName" value='@ViewBag.PostedByName' />
     <input type="hidden" id="HiddentPostedByAvatar" value='@ViewBag.PostedByAvatar' />
+    <input type="hidden" id="HiddentsumLike" value="@ViewBag.SumLike" />  
     <div class="area-center">
         <div class="bg-white open">
             <div class="list-item-status" tabindex="-1">
@@ -47,12 +48,18 @@
                     </div>
                     <div class="list-item-control">
                         @{
-                            if (ViewBag.SumReply > 0)
+                            if (ViewBag.SumReply > 0) // tong relpy
                             {
                                 <a class="button" href="#"><i class="fa fa-comments">@ViewBag.SumReply</i></a>
                             }
                         }
-                        <a class="button" href="#"><i class="fa fa-comments">@ViewBag.SumReply</i></a>  
+                        <!--tổng like and like-->                        
+                        
+                        <span class="likeAndPin" style="float:none">
+                            <span data-bind="text : SumLike, visible : SumLike() > 0 "></span>
+                            <button class="fa fa-thumbs-o-up" data-bind=" click : AddLike  , enable : DiableLike"></button>
+                        </span>
+                        <!--end function-->
                         <div style="float: right; overflow: hidden; " class="fb-like" data-href="/PostDetail?postid=@ViewBag.PostId" data-layout='button_count' data-action='like' data-show-faces='true' data-share='true'></div>                        
                     </div>
                 </div>

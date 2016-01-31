@@ -1,5 +1,5 @@
 ﻿<div class="toSpan top-banner-icon f-right">
-    <a href="/myprofile/MessagesCenter"><i class="fa fa-comments-o"></i></a>
+    <a data-title="Hộp thư tin nhắn" href="/myprofile/MessagesCenter"><i class="fa fa-comments-o"></i></a>
     @if (ViewBag.NewMessege > 0)
     {
         <span id="CreateMesseger">
@@ -12,12 +12,12 @@
     }
 </div>
 <div class="toSpan top-banner-icon f-right">
-    <a href="/myprofile"><i id="fahome" class="fa fa-home"></i></a>
+    <a data-title="Toàn thị trường" href="/myprofile"><i id="fahome" class="fa fa-home"></i></a>
 </div>
 
 <div class="toSpan top-banner-icon2 f-right">   
     <span class="f-right-userInfo">
-        <a href="/@User.Identity.Name" class="avatar">
+        <a data-title="Trang cá nhân" href="/@User.Identity.Name" class="avatar">
             <img src="@ViewBag.AvataEmage?width=40&height=40&mode=crop" alt="Phố chứng khoán">
         </a>
     </span>        

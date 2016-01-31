@@ -7,70 +7,69 @@
         <div>
             <input id="addStock" type="text" name="addStockTextbox" value="" maxlength="10" />
             <a href="javascript:;" onclick="addStock($('#addStock'))"><i class="fa fa-plus"></i></a>
-        </div>        
-        
-       
+        </div>
     </div>
-    @{
-        List<StockRealTime> liststockRT = ViewBag.listStockPriceFollow as List<StockRealTime>;
-        if (liststockRT.Count == 0)
-        {
-            <div style="text-align:center;top:5px">
-                <span>Bạn chưa theo dõi cổ phiếu nào</span>
-            </div>
-            <div class="loadmore"><a href="#"><i class="fa  fa-angle-double-down"></i></a></div>
-        }
-        else
-        {
-            foreach (var item in liststockRT)
+    <div id="stockDetailFollow">
+        @{
+            List<StockRealTime> liststockRT = ViewBag.listStockPriceFollow as List<StockRealTime>;
+            if (liststockRT.Count == 0)
             {
-                <div id='banner-item-@item.CompanyID' class="banner-item1">
-                    <div class="item-left">
-                        <a href="/Ticker/@item.CompanyID">$@item.CompanyID<br></a>
-                    </div>
-                    @if (item.Diff == 0)
-                    {
-                        <div class="item-right NoChangeIndex">
-                            <strong>@item.FinishPrice</strong>
-                            <span>
-                                <i></i><br>
-                                <span class="top-menu-point">
-                                    @item.Diff (@item.DiffRate %)
-                                </span>
-                            </span>
-                        </div>
-                    }
-                    else if (item.Diff > 0)
-                    {
-                        <div class="item-right bullishIndex">
-                            <strong>@item.FinishPrice</strong>
-                            <span>
-                                <i class="fa fa-sort-up"></i><br>
-                                <span class="top-menu-point">
-                                    @item.Diff (@item.DiffRate %)
-                                </span>
-                            </span>
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="item-right bearishIndex">
-                            <strong>@item.FinishPrice</strong>
-                            <span>
-                                <i class="fa fa-sort-down"></i><br>
-                                <span class="top-menu-point">
-                                    @item.Diff (@item.DiffRate %)
-                                </span>
-                            </span>
-                        </div>
-                    }
-                    <div><a href="javascript:;" onclick="deleteStock('@item.CompanyID')">x</a></div>
+                <div style="text-align:center;top:5px">
+                    <span>Bạn chưa theo dõi cổ phiếu nào</span>
                 </div>
+                <div class="loadmore"><a href="#"><i class="fa  fa-angle-double-down"></i></a></div>
             }
-            <div class="loadmore"><a href="#"><i class="fa  fa-angle-double-down"></i></a></div>
+            else
+            {
+                foreach (var item in liststockRT)
+                {
+                    <div id='banner-item-@item.CompanyID' class="banner-item1">
+                        <div class="item-left">
+                            <a href="/Ticker/@item.CompanyID">$@item.CompanyID<br></a>
+                        </div>
+                        @if (item.Diff == 0)
+                        {
+                            <div class="item-right NoChangeIndex">
+                                <strong>@item.FinishPrice</strong>
+                                <span>
+                                    <i></i><br>
+                                    <span class="top-menu-point">
+                                        @item.Diff (@item.DiffRate %)
+                                    </span>
+                                </span>
+                            </div>
+                        }
+                        else if (item.Diff > 0)
+                        {
+                            <div class="item-right bullishIndex">
+                                <strong>@item.FinishPrice</strong>
+                                <span>
+                                    <i class="fa fa-sort-up"></i><br>
+                                    <span class="top-menu-point">
+                                        @item.Diff (@item.DiffRate %)
+                                    </span>
+                                </span>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="item-right bearishIndex">
+                                <strong>@item.FinishPrice</strong>
+                                <span>
+                                    <i class="fa fa-sort-down"></i><br>
+                                    <span class="top-menu-point">
+                                        @item.Diff (@item.DiffRate %)
+                                    </span>
+                                </span>
+                            </div>
+                        }
+                        <div><a href="javascript:;" onclick="deleteStock('@item.CompanyID')">x</a></div>
+                    </div>
+                }
+                <div class="loadmore"><a href="#"><i class="fa  fa-angle-double-down"></i></a></div>
+            }
+
         }
-        
-}
-   
+    </div>
     
 </div>

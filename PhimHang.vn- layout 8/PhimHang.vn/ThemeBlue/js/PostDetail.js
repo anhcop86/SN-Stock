@@ -37,7 +37,7 @@ function Post(data) {
     self.PostedByName = data.PostedByName || "";
     self.PostedByAvatar = data.PostedByAvatar + '?width=50&height=50&mode=crop' || "";
     self.PostedDate = getTimeAgo(data.PostedDate);
-    self.StockPrimary = data.StockPrimary;
+    self.StockPrimary = data.StockPrimary;    
     //self.notification = ko.observable(0);
     self.Stm = (data.Stm === 1 ? "<span class='divBear-cm'>Giảm</span>" : data.Stm === 2 ? "<span class='divBull-cm'>Tăng</span>" : "") || "";
     self.ChartYN = data.ChartYN || 0;
@@ -54,6 +54,8 @@ function viewModel() {
     self.newPosts = ko.observableArray(); // biến tạm để luu post moi, sau khi click thi moi bung ra
     self.postDetail = ko.observableArray();
     self.replyCount = ko.observable(0);
+    self.SumLike = ko.observable($('#HiddentsumLike').val());
+    self.DiableLike = ko.observable(true);
     // SignalR related
 
     var checkpost = '';
@@ -81,7 +83,7 @@ function viewModel() {
                 $("#idPostedDateDetail").html(getTimeAgo($('#HiddentPostedDate').val()));
                 $("#idPostNameDetail").html('<a style="cursor:pointer" href="/' + $('#HiddentPostedByName').val() + '">' + $('#HiddentPostedByName').val() + '</a>');
                 $("#idImgPostDetail").attr('src', $('#HiddentPostedByAvatar').val() + '?width=50&height=50&mode=crop');
-                $("#idStmDetail").html(data.Stm);
+                //$("#idStmDetail").html(data.Stm);
             }
         });
     }        
@@ -130,6 +132,19 @@ function viewModel() {
         self.newPosts([]);
         document.title = $('#titleHidenPage').val();
     }
+    self.AddLike = function () {
+        // ajax update  like with 
+        self.DiableLike(false);
+        commenthub.server.addNewLike($('#hiddenPostId').val())
+            .done(function () {
+                // like thành cong. tang like
+                self.SumLike(parseInt($('#HiddentsumLike').val()) + 1);
+            })
+            .fail(function (err) {
+                self.error(err);
+            });
+
+    };
 
     self.afterAdd = function (elem) {
         if (checkLoadFirst == 1) {

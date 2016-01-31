@@ -833,7 +833,7 @@ namespace PhimHang.Controllers
                 var user = new ApplicationUser()
                 {
                     UserName = model.UserName,
-                    PasswordHash = "phochungkhoan.com@9999",                   
+                    PasswordHash = "cungphim.com@9999",                   
                 };
                 user.UserExtentLogin = new UserExtentLogin { Email = email, KeyLogin = user.Id, CreatedDate = DateTime.Now, FullName = name, Verify = Verify.NO, UserNameCopy = model.UserName, IdFacebook = id, AvatarSyn = true };
 

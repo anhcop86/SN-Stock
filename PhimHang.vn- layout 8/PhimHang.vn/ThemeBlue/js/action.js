@@ -246,14 +246,23 @@ $(document).ready(function () {
     // xóa cổ phiếu đang theo dõi
     addStock = function (stockOject) {
         var stock = stockOject.val().toUpperCase();
-        if (stock == '' || stock.length < 3) {
+        if (stock == '' || stock.length < 3 || stock.length > 10) {
             stockOject.focus();
+            stockOject.addClass("forcusAddAlertStock");
             return;
         }
         if (confirm("Bạn muốn theo dõi cổ phiếu " + stock + '?')) {
             addorDelete(stock);
+            stockOject.removeClass("forcusAddAlertStock");
         }
     }
+
+    $("#addStock").keyup(function (e) {
+        if (e.keyCode == 13) {
+            // Do something
+            addStock($(this));
+        }
+    });
     // thêm cổ phiếu đang theo doi
 
     deleteStock = function (stock) {

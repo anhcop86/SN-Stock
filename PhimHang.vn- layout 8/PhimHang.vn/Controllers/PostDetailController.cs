@@ -55,6 +55,8 @@ namespace PhimHang.Controllers
 
                 var post = await db.Posts.FirstOrDefaultAsync(p => p.PostId == postid);
 
+                #region thong tin chi tiet bai viet o client bang viewbag
+
                 ViewBag.Message =  post.Message;
                 ViewBag.MessageNonHtml = AppHelper.StripTagsCharArray(post.Message);
                 ViewBag.PostedByName = post.UserLogin.UserNameCopy;
@@ -67,7 +69,10 @@ namespace PhimHang.Controllers
                 ViewBag.PostBy = post.PostedBy;
                 ViewBag.Chart = post.ChartImageURL;
                 ViewBag.SumReply = post.SumReply;
+                ViewBag.SumLike = post.SumLike;
                 ViewBag.AbsolutePathHostName = AbsolutePathHostName;
+
+                #endregion
                 #region gia chi so index va hnxindex
                 var listIndex = new List<string>();
                 listIndex.Add("VNINDEX");
