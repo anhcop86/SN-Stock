@@ -23,8 +23,12 @@
                 </div>
                 <div class="list-item-detail">
                     <div class="list-item-date" id="idPostedDateDetail"></div>
-                    <div onclick='selectMe(event,"#")' class="list-item-username" style="width:0%">
-                        <div id="idPostNameDetail"></div>
+                    <div onclick='selectMe(event,"#")' class="list-item-username">
+                        <div id="idPostNameDetail" style="float:left"></div>
+                        @if (ViewBag.BrkVip == true)
+                        {
+                            <span class="itemVerify"><i title="Đã xác thực - môi giới chuyên nghiệp" class="fa  fa-check-circle"></i></span>
+                        }
                     </div>
                     <span id="idStmDetail">                        
                         @{
@@ -106,6 +110,7 @@
                                 <div class="list-item-date" data-bind="text : ReplyDate"></div>
                                 <div class="list-item-username">
                                     <a style="cursor:pointer" data-bind="attr : { href : '/' + ReplyByName  }, text : ReplyByName"></a>
+                                    <span class="itemVerify" data-bind="html: ReplyBrkVip"></span>
                                 </div>
                                 <div class="list-item-status-content" data-bind="html: ReplyMessage"></div>
                                 <div class="list-item-control-cm">

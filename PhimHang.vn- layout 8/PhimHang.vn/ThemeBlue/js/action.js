@@ -251,7 +251,7 @@ $(document).ready(function () {
             stockOject.addClass("forcusAddAlertStock");
             return;
         }
-        if (confirm("Bạn muốn theo dõi cổ phiếu " + stock + '?')) {
+        else{
             addorDelete(stock);
             stockOject.removeClass("forcusAddAlertStock");
         }

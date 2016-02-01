@@ -112,6 +112,7 @@ function Reply(data) {
     self.ReplyByAvatar = data.ReplyByAvatar + '?width=46&height=46&mode=crop' || "";
     self.ReplyDate = getTimeAgo(data.ReplyDate);
     self.PostCommentsId = data.PostCommentsId;
+    self.ReplyBrkVip = (data.BrkVip == 1 ? '<i title="Đã xác thực - môi giới chuyên nghiệp" class="fa  fa-check-circle"></i>' : "") || "";
 }
 function Post(data) {
     var self = this;
@@ -129,6 +130,7 @@ function Post(data) {
     self.DiableLike = ko.observable(true);
     self.Chart = data.Chart || '';
     self.SumReply = ko.observable(data.SumReply);
+    self.BrkVip = (data.BrkVip == 1 ? '<i title="Đã xác thực - môi giới chuyên nghiệp" class="fa  fa-check-circle"></i>' : "") || "";
 }
 var commenthub = $.connection.CommentHub;
 function viewModel() {
@@ -435,7 +437,7 @@ function viewModel() {
             self.newReply('');
             self.replys([]);
             $("#idPostedDateDetail").html(data.PostedDate);
-            $("#idPostNameDetail").html('<a style="cursor:pointer" href="/' + data.PostedByName + '">' + data.PostedByName + '</a>');
+            $("#idPostNameDetail").html('<a style="cursor:pointer" href="/' + data.PostedByName + '">' + data.PostedByName + '</a>' + '<span class="itemVerify">' + data.BrkVip + '</span>');
             $("#idImgPostDetail").attr('src', data.PostedByAvatar);
             $("#idPostMessenge").html(data.ChartYN == 1 ? data.Message.replace('<br/><img src=' + data.Chart + '?width=215&height=120&mode=crop>', '') + '<br/><br/><a target="_blank" href=' + data.Chart + '><img class="imageChartDetail" src=' + data.Chart + "?maxwidth=475></a>" : data.Message);//=200&s.grayscale=true|"
             $("#idStmDetail").html(data.Stm);

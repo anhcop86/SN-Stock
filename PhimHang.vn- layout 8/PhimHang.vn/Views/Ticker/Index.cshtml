@@ -101,12 +101,12 @@
                         </div>
                         <div class="list-item-detail">
                             <div class="list-item-date" data-bind="text : PostedDate"></div>
-                            <div class="list-item-username" style="width:0%">
+                            <div class="list-item-username">
                                 <a style="cursor:pointer" onclick='selectMe(event,"#")' data-bind="attr : { href : '/' + PostedByName }, text : PostedByName"></a>
+                                <span class="itemVerify" data-bind="html: BrkVip"></span>
                             </div>
                             <span>
-                                <span data-bind="html : Stm"></span>
-                                
+                                <span data-bind="html : Stm"></span>                                
                             </span>
                             <div class="list-item-status-content" data-bind="html : Message"></div>
                             <div class="list-item-control">
@@ -150,8 +150,9 @@
                         </div>
                         <div class="list-item-detail">
                             <div class="list-item-date" data-bind="text : PostedDate"></div>
-                            <div class="list-item-username" style="width:0%">
+                            <div class="list-item-username">
                                 <a style="cursor:pointer" onclick='selectMe(event,"#")' data-bind="attr : { href : '/' + PostedByName  }, text : PostedByName"></a>
+                                <span class="itemVerify" data-bind="html: BrkVip"></span>
                             </div>
                             <span data-bind="html : Stm"></span>
                             <div class="list-item-status-content" data-bind="html : Message"></div>
@@ -243,6 +244,7 @@
                                 <div class="list-item-date" data-bind="text : ReplyDate"></div>
                                 <div class="list-item-username">
                                     <a style="cursor:pointer" data-bind="attr : { href : '/' + ReplyByName  }, text : ReplyByName"></a>
+                                    <span class="itemVerify" data-bind="html: ReplyBrkVip"></span>
                                 </div>
                                 <div class="list-item-status-content" data-bind="html: ReplyMessage"></div>
                                 <div class="list-item-control-cm">

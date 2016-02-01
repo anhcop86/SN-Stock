@@ -70,6 +70,7 @@ namespace PhimHang.Controllers
                 ViewBag.Chart = post.ChartImageURL;
                 ViewBag.SumReply = post.SumReply;
                 ViewBag.SumLike = post.SumLike;
+                ViewBag.BrkVip = post.UserLogin.BrokerVIP;
                 ViewBag.AbsolutePathHostName = AbsolutePathHostName;
 
                 #endregion
@@ -105,7 +106,8 @@ namespace PhimHang.Controllers
                                ReplyByAvatar = string.IsNullOrEmpty(reply.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + reply.UserLogin.AvataImage,
                                ReplyDate = reply.PostedDate,
                                ReplyId = reply.PostCommentsId,
-                               PostCommentsId = reply.PostCommentsId
+                               PostCommentsId = reply.PostCommentsId,
+                               BrkVip = reply.UserLogin.BrokerVIP
                            }).ToArrayAsync();               
 
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);

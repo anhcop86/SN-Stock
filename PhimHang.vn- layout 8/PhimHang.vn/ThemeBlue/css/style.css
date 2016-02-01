@@ -539,6 +539,7 @@ ul.top-panel-left2 > li:hover{
 }
 .list-item-username a{
     color:#000;
+   
 }
 .banner-item-user-detail > .list-item-detail > .list-item-control a{
     color:#989597;
@@ -895,6 +896,7 @@ input[name=BullBear]{
     margin-top: 2px;
     margin-bottom: 5px;
     font-weight: bold;
+    display:table;
 }
 .list-item-date{
     font-size: 11px;
@@ -1983,4 +1985,12 @@ a.avatar img:hover{
 #stockDetailFollow::-webkit-scrollbar-thumb {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+.itemVerify{
+    left:4px;
+}
+
+.itemVerify i{
+    color: #ffbd00;
 }

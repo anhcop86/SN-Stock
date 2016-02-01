@@ -211,7 +211,8 @@ namespace PhimHang.Controllers
                                      Stm = posts.NhanDinh,
                                      ChartYN = posts.ChartYN,
                                      SumLike = posts.SumLike,
-                                     SumReply = posts.SumReply
+                                     SumReply = posts.SumReply,
+                                     BrkVip = posts.UserLogin.BrokerVIP
                                  }).Skip(skipposition).Take(10).ToArrayAsync();
                 //var listStock = new List<string>();              
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
@@ -234,7 +235,8 @@ namespace PhimHang.Controllers
                                Stm = posts.NhanDinh,
                                ChartYN = posts.ChartYN,
                                SumLike = posts.SumLike,
-                               SumReply = posts.SumReply
+                               SumReply = posts.SumReply,
+                               BrkVip = posts.UserLogin.BrokerVIP
                            }).Skip(skipposition).Take(10).ToArrayAsync();
                 //var listStock = new List<string>();              
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
@@ -257,35 +259,39 @@ namespace PhimHang.Controllers
                                Stm = posts.NhanDinh,
                                ChartYN = posts.ChartYN,
                                SumLike = posts.SumLike,
-                               SumReply = posts.SumReply
+                               SumReply = posts.SumReply,
+                               BrkVip = posts.UserLogin.BrokerVIP
                            }).Skip(skipposition).Take(10).ToArrayAsync();
                 //var listStock = new List<string>();              
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
                 return result;
             }
-            if (filter == "VIP")
-            {
-                var ret = await (from pinStocks in db.PinStocks
-                                 where pinStocks.Post.StockPrimary != ""
-                                 orderby pinStocks.Post.PostedDate descending
-                                 select new
-                                 {
-                                     Message = pinStocks.Post.Message,
-                                     Chart = pinStocks.Post.ChartImageURL,
-                                     PostedByName = pinStocks.Post.UserLogin.UserNameCopy,
-                                     PostedByAvatar = string.IsNullOrEmpty(pinStocks.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + pinStocks.Post.UserLogin.AvataImage,
-                                     PostedDate = pinStocks.Post.PostedDate,
-                                     PostId = pinStocks.PostId,
-                                     StockPrimary = pinStocks.Post.StockPrimary,
-                                     Stm = pinStocks.Post.NhanDinh,
-                                     ChartYN = pinStocks.Post.ChartYN,
-                                     SumLike = pinStocks.Post.SumLike,
-                                     SumReply = pinStocks.Post.SumReply
-                                 }).Skip(skipposition).Take(10).ToArrayAsync();
-                //var listStock = new List<string>();              
-                var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
-                return result;
-            }
+            #region khong su dung
+            //if (filter == "VIP")
+            //{
+            //    var ret = await (from pinStocks in db.PinStocks
+            //                     where pinStocks.Post.StockPrimary != ""
+            //                     orderby pinStocks.Post.PostedDate descending
+            //                     select new
+            //                     {
+            //                         Message = pinStocks.Post.Message,
+            //                         Chart = pinStocks.Post.ChartImageURL,
+            //                         PostedByName = pinStocks.Post.UserLogin.UserNameCopy,
+            //                         PostedByAvatar = string.IsNullOrEmpty(pinStocks.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + pinStocks.Post.UserLogin.AvataImage,
+            //                         PostedDate = pinStocks.Post.PostedDate,
+            //                         PostId = pinStocks.PostId,
+            //                         StockPrimary = pinStocks.Post.StockPrimary,
+            //                         Stm = pinStocks.Post.NhanDinh,
+            //                         ChartYN = pinStocks.Post.ChartYN,
+            //                         SumLike = pinStocks.Post.SumLike,
+            //                         SumReply = pinStocks.Post.SumReply,
+            //                         //BrkVip = pinStocks.UserLogin.BrokerVIP
+            //                     }).Skip(skipposition).Take(10).ToArrayAsync();
+            //    //var listStock = new List<string>();              
+            //    var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
+            //    return result;
+            //}
+            #endregion
             if (filter == "PEF")
             {
                 ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
@@ -309,7 +315,8 @@ namespace PhimHang.Controllers
                                Stm = posts.NhanDinh,
                                ChartYN = posts.ChartYN,
                                SumLike = posts.SumLike,
-                               SumReply = posts.SumReply
+                               SumReply = posts.SumReply,
+                               BrkVip = posts.UserLogin.BrokerVIP
                            }).Skip(skipposition).Take(10).ToArrayAsync();
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
                 return result;
@@ -337,7 +344,8 @@ namespace PhimHang.Controllers
                                Stm = posts.NhanDinh,
                                ChartYN = posts.ChartYN,
                                SumLike = posts.SumLike,
-                               SumReply = posts.SumReply
+                               SumReply = posts.SumReply,
+                               BrkVip = posts.UserLogin.BrokerVIP
                            }).Skip(skipposition).Take(10).ToListAsync();
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
                 return result;

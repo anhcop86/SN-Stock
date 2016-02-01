@@ -396,7 +396,8 @@ namespace PhimHang.Controllers
                                Stm = posts.NhanDinh,
                                ChartYN = posts.ChartYN,
                                SumLike = posts.SumLike,
-                               SumReply = posts.SumReply
+                               SumReply = posts.SumReply,
+                               BrkVip = posts.UserLogin.BrokerVIP
                            }).Skip(skipposition).Take(10).ToArrayAsync();
                 //var listStock = new List<string>();              
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
@@ -419,7 +420,8 @@ namespace PhimHang.Controllers
                                Stm = posts.NhanDinh,
                                ChartYN = posts.ChartYN,
                                SumLike = posts.SumLike,
-                               SumReply = posts.SumReply
+                               SumReply = posts.SumReply,
+                               BrkVip = posts.UserLogin.BrokerVIP
                            }).Skip(skipposition).Take(10).ToArrayAsync();
                 //var listStock = new List<string>();              
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
@@ -442,7 +444,8 @@ namespace PhimHang.Controllers
                                Stm = posts.NhanDinh,
                                ChartYN = posts.ChartYN,
                                SumLike = posts.SumLike,
-                               SumReply = posts.SumReply
+                               SumReply = posts.SumReply,
+                               BrkVip = posts.UserLogin.BrokerVIP
                            }).Skip(skipposition).Take(10).ToArrayAsync();
                 //var listStock = new List<string>();              
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);

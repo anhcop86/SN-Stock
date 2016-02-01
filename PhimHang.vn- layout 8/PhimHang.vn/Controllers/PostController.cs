@@ -171,7 +171,8 @@ namespace PhimHang.Controllers
                                ReplyByAvatar = string.IsNullOrEmpty(reply.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + reply.UserLogin.AvataImage,
                                ReplyDate = reply.PostedDate,
                                ReplyId = reply.PostCommentsId,
-                               PostCommentsId = reply.PostCommentsId
+                               PostCommentsId = reply.PostCommentsId,
+                               BrkVip = reply.UserLogin.BrokerVIP
                            }).Take(10).ToArrayAsync();
                 //return await Task.FromResult(ret);
 
@@ -200,7 +201,8 @@ namespace PhimHang.Controllers
                                Stm = pinStocks.Post.NhanDinh,
                                ChartYN = pinStocks.Post.ChartYN,
                                SumLike = pinStocks.Post.SumLike,
-                               SumReply = pinStocks.Post.SumReply
+                               SumReply = pinStocks.Post.SumReply,
+                               BrkVip = pinStocks.Post.UserLogin.BrokerVIP
                            }).Take(5).ToArrayAsync();                
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
                 return result;
@@ -227,7 +229,8 @@ namespace PhimHang.Controllers
                                Stm = posts.NhanDinh,
                                ChartYN = posts.ChartYN,
                                SumLike = posts.SumLike,
-                               SumReply = posts.SumReply
+                               SumReply = posts.SumReply,
+                               BrkVip = posts.UserLogin.BrokerVIP
                            }).Skip(skipposition).Take(10).ToArrayAsync();
                 return Newtonsoft.Json.JsonConvert.SerializeObject(ret);
             }
@@ -247,7 +250,8 @@ namespace PhimHang.Controllers
                                Stm = posts.NhanDinh,
                                ChartYN = posts.ChartYN,
                                SumLike = posts.SumLike,
-                               SumReply = posts.SumReply
+                               SumReply = posts.SumReply,
+                               BrkVip = posts.UserLogin.BrokerVIP
                            }).Skip(skipposition).Take(10).ToArrayAsync();
                 return Newtonsoft.Json.JsonConvert.SerializeObject(ret);
             }
@@ -267,7 +271,8 @@ namespace PhimHang.Controllers
                                Stm = posts.NhanDinh,
                                ChartYN = posts.ChartYN,
                                SumLike = posts.SumLike,
-                               SumReply = posts.SumReply
+                               SumReply = posts.SumReply,
+                               BrkVip = posts.UserLogin.BrokerVIP
                            }).Skip(skipposition).Take(10).ToArrayAsync();
                 return Newtonsoft.Json.JsonConvert.SerializeObject(ret);
             }

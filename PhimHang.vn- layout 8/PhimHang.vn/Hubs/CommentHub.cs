@@ -33,7 +33,10 @@ namespace PhimHang.Hubs
             using (testEntities db = new testEntities())
             {
                 #region user login
-                var userlogin = db.UserLogins.FirstOrDefault(ul => ul.UserNameCopy == Context.User.Identity.Name);
+                //var userlogin = db.UserLogins.FirstOrDefault(ul => ul.UserNameCopy == Context.User.Identity.Name);
+                var userlogin = await (from ul in db.UserLogins
+                                 where ul.UserNameCopy == Context.User.Identity.Name
+                                 select new { ul.Id, ul.BrokerVIP, ul.UserNameCopy, ul.AvataImage }).FirstOrDefaultAsync();
                 if (userlogin == null)
                 {
                     return;
@@ -168,7 +171,8 @@ namespace PhimHang.Hubs
                     ChartYN = post.ChartYN,
                     PostBy = post.PostedBy,
                     SumLike = 0,
-                    SumReply = 0
+                    SumReply = 0,
+                    BrkVip = userlogin.BrokerVIP
                 };
 
                 #endregion
@@ -201,7 +205,10 @@ namespace PhimHang.Hubs
             using (testEntities db = new testEntities())
             {
                 #region user login
-                var userlogin = db.UserLogins.FirstOrDefault(ul => ul.UserNameCopy == Context.User.Identity.Name);
+                //var userlogin = db.UserLogins.FirstOrDefault(ul => ul.UserNameCopy == Context.User.Identity.Name);
+                var userlogin = await (from ul in db.UserLogins
+                                       where ul.UserNameCopy == Context.User.Identity.Name
+                                       select new { ul.Id, ul.BrokerVIP, ul.UserNameCopy, ul.AvataImage }).FirstOrDefaultAsync();
                 if (userlogin == null)
                 {
                     return;
