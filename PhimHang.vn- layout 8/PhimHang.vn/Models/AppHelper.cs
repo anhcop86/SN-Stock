@@ -139,7 +139,7 @@ namespace PhimHang.Models
         }
         public static bool CheckTimeUpdatePrice()
         {
-            if (DateTime.Now.Hour >= 9 && DateTime.Now.Hour <= 14 && DateTime.Now.Minute < 50  && DateTime.Now.DayOfWeek != DayOfWeek.Saturday && DateTime.Now.DayOfWeek != DayOfWeek.Sunday)
+            if (DateTime.Now.Hour >= 9 && DateTime.Now.Hour <= 15  && DateTime.Now.DayOfWeek != DayOfWeek.Saturday && DateTime.Now.DayOfWeek != DayOfWeek.Sunday)
             {
                 return true;
             }

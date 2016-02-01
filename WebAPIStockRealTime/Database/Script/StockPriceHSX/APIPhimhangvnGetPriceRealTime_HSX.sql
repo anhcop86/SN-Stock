@@ -48,7 +48,7 @@ SET @Exist = (SELECT count([Index]) FROM  dbo.dnn_AGStock_Session)
 		Diff,
 		DiffRate 	
 		FROM  dbo.dnn_AGStock_Session
-		WHERE cast(LastUpdate as date) = cast(getdate() as date)		
+		--WHERE cast(LastUpdate as date) = cast(getdate() as date)			
 		order by CompanyID
 	END
 
