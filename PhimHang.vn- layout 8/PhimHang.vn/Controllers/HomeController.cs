@@ -108,7 +108,11 @@ namespace PhimHang.Controllers
 
             return PartialView("_Partial_Area_Left_Home2", result);
         }
-        
+
+        public ActionResult LoadFacebokSDK()
+        {
+            return PartialView("_Partial_Facebook_SDK");
+        }
 
         public ActionResult About()
         {
