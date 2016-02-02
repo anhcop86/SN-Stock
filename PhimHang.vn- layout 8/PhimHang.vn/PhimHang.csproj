@@ -433,6 +433,10 @@
     <Content Include="Content\Site.css" />
     <Content Include="images\ajax-loader_cungphim.gif" />
     <Content Include="images\avatar\default_avatar_medium.jpg" />
+    <Content Include="images\boloc.PNG" />
+    <Content Include="images\Buttontheodoi.png" />
+    <Content Include="images\chenanh.PNG" />
+    <Content Include="images\comment.png" />
     <Content Include="images\company_logo.jpg" />
     <Content Include="images\cover\6f389083-9ac7-4449-b7ec-0963d76effb3205815_cover.jpg" />
     <Content Include="images\cover\7d1d425b-b859-4d51-9f3d-bb286d493627084735_cover.jpg" />
@@ -446,12 +450,21 @@
     <Content Include="images\cover\b0d76aea-3765-4145-baee-8c98c0ad6d5f145649_cover.jpg" />
     <Content Include="images\cover\cover-defaut.jpg" />
     <Content Include="images\cover\e0a4765c-47d1-46f6-b668-17c427eed556195405_cover.jpg" />
+    <Content Include="images\dangky.PNG" />
+    <Content Include="images\dangnhap.PNG" />
     <Content Include="images\indicator.white.gif" />
     <Content Include="images\likecp.png" />
     <Content Include="images\Login_Image.jpg" />
+    <Content Include="images\nutphim.PNG" />
+    <Content Include="images\nuttanggiam.PNG" />
     <Content Include="images\NutTraLoi.png" />
+    <Content Include="images\nutTuychinh.PNG" />
     <Content Include="images\pintab.png" />
+    <Content Include="images\postbai.PNG" />
     <Content Include="images\sign-in-vflchypbO.png" />
+    <Content Include="images\theodoi.png" />
+    <Content Include="images\TuyChinh.png" />
+    <Content Include="images\tuychinh_bentrong.PNG" />
     <Content Include="images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
     <Content Include="images\ui-bg_flat_15_cd0a0a_40x100.png" />
     <Content Include="images\ui-bg_glass_100_e4f1fb_1x400.png" />
@@ -1344,6 +1357,7 @@
     <Content Include="Views\Account\request_password_reset.cshtml" />
     <Content Include="Views\Account\confirm_password_reset.cshtml" />
     <Content Include="Views\Account\password_reset_result.cshtml" />
+    <Content Include="Views\Shared\_Partial_Facebook_SDK.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

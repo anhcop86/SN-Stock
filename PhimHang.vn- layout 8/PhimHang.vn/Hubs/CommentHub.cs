@@ -353,7 +353,8 @@ namespace PhimHang.Hubs
                     ReplyByAvatar = string.IsNullOrEmpty(userlogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + userlogin.AvataImage,
                     ReplyDate = reply.PostedDate,
                     ReplyId = reply.PostCommentsId,
-                    PostCommentsId = reply.PostCommentsId
+                    PostCommentsId = reply.PostCommentsId,
+                    BrkVip = userlogin.BrokerVIP
                 };
 
                 #endregion
