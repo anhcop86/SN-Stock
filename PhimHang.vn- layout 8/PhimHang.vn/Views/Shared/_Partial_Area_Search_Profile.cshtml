@@ -21,7 +21,7 @@
 
  <form id="frmSearch" action="@Url.Action("","Search")" method="get">
     <span id="search_box_top">
-        <input name="q" id="kq" placeholder="MÃ CỔ PHIẾU | TÊN ĐĂNG NHẬP" title="tìm kiếm" autocomplete="off" type="text">
+        <input name="q" id="kq" placeholder="MÃ CỔ PHIẾU | TÊN ĐĂNG NHẬP" title="Tìm kiếm mã cổ phiếu và tên đăng nhập. Ví dụ: hag" autocomplete="off" type="text" value="@ViewBag.SearchString">
         <i class="fa fa-search"></i>
     </span>
 </form>

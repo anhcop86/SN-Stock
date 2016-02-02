@@ -37,7 +37,7 @@ a{
     color: #328AC5;
     text-decoration: none;
 }
-a[data-title]:hover:after {
+*[data-title]:hover:after {
   content: attr(data-title);
   padding: 4px 8px;
   color: #333;

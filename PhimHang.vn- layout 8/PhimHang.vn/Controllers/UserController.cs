@@ -260,12 +260,14 @@ namespace PhimHang.Controllers
             // load danh muc theo doi            
             var followList = await (from fl in db.FollowUsers
                                     where fl.UserId == currentUser.Id
+                                    orderby fl.UserLogin1.UserNameCopy ascending
                                     select new UserFollowView
                                       {
                                           UserId = fl.UserLogin1.Id,
                                           UserName = fl.UserLogin1.UserNameCopy,
                                           Avata = string.IsNullOrEmpty(fl.UserLogin1.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + fl.UserLogin1.AvataImage,
-                                          Status = fl.UserLogin1.Status
+                                          Status = fl.UserLogin1.Status,
+                                          BrkVip = fl.UserLogin1.BrokerVIP
                                       }).ToListAsync();
 
             ViewBag.FollowList = followList;
@@ -349,12 +351,14 @@ namespace PhimHang.Controllers
             #region dang theo doi
             var followerList = await (from fl in db.FollowUsers
                                       where fl.UserIdFollowed == currentUser.Id
+                                      orderby fl.UserLogin.UserNameCopy
                                       select new UserFollowView
                                       {
                                           UserId = fl.UserLogin.Id,
                                           UserName = fl.UserLogin.UserNameCopy,
                                           Status = fl.UserLogin.Status,
-                                          Avata = string.IsNullOrEmpty(fl.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + fl.UserLogin.AvataImage
+                                          Avata = string.IsNullOrEmpty(fl.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + fl.UserLogin.AvataImage,
+                                          BrkVip = fl.UserLogin.BrokerVIP
                                       }).ToListAsync();
 
             ViewBag.FollowerList = followerList;
@@ -560,6 +564,8 @@ namespace PhimHang.Controllers
         public string UserName { get; set; }
         public string Avata { get; set; }
         public string Status { get; set; }
+
+        public bool? BrkVip { get; set; }
     }
 
     public class UserRandom

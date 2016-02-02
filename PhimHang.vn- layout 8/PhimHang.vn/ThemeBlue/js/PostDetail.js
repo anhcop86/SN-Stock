@@ -28,7 +28,7 @@ function Reply(data) {
     self.ReplyByAvatar = data.ReplyByAvatar + '?width=46&height=46&mode=crop' || "";
     self.ReplyDate = getTimeAgo(data.ReplyDate);
     self.PostCommentsId = data.PostCommentsId;
-    self.ReplyBrkVip = (data.BrkVip == 1 ? '<i title="Đã xác thực - môi giới chuyên nghiệp" class="fa  fa-check-circle"></i>' : "") || "";
+    self.ReplyBrkVip = (data.BrkVip == 1 ? '<i title="Đã xác thực - dân phím chuyên nghiệp" class="fa  fa-check-circle"></i>' : "") || "";
 }
 function Post(data) {
     var self = this;

@@ -33,6 +33,7 @@ namespace PhimHang.Controllers
         public async Task<ActionResult> Index(string q)
         {
             #region thong tin user dang nnhap
+            ViewBag.SearchString = q;
             if (User.Identity.IsAuthenticated)
             {
                 ApplicationUser currentUser = new ApplicationUser();
@@ -79,7 +80,8 @@ namespace PhimHang.Controllers
                                             UserId = us.Id,
                                             UserName = us.UserNameCopy,
                                             Status = us.Status,
-                                            Avata = string.IsNullOrEmpty(us.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + us.AvataImage
+                                            Avata = string.IsNullOrEmpty(us.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + us.AvataImage,
+                                            BrkVip = us.BrokerVIP
                                         }).ToListAsync();
 
                 //load gia co phieu tim duoc

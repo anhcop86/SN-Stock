@@ -59,7 +59,8 @@ namespace PhimHang.Models
             //stopwatch.Start();
             //stopwatch.Stop();
             //var dsafd = stopwatch.Elapsed;
-            var CompanyResult = (from s in _stocks                                 
+            var CompanyResult = (from s in _stocks    
+                                 orderby s.CompanyID ascending
                                  where stock.Contains(s.CompanyID)
                                  select s);
 
@@ -78,7 +79,7 @@ namespace PhimHang.Models
         public Task<List<StockRealTime>> RandomStocksList()
         {
             var stockListResult = (from s in _stocks
-                                   orderby Guid.NewGuid()                                   
+                                   orderby Guid.NewGuid()                             
                                    select s).Take(10);
             return Task.FromResult(stockListResult.ToList());
         }

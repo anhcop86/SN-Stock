@@ -63,7 +63,13 @@
                 </div>
                 <div class="list-item-detail list-item-custom">
                     @*<div class="list-item-date button-follow-page3"><a href="#" class="button"><i class="fa fa-plus"></i>Theo dõi</a></div>*@
-                    <div class="list-item-username"><a target="_blank" href="/@item.UserName">@item.UserName</a></div>
+                    <div class="list-item-username">
+                        <a target="_blank" href="/@item.UserName">@item.UserName</a>
+                        @if (@item.BrkVip == true)
+                        {
+                            <span class="itemVerify"><i title="Đã xác thực - dân phím chuyên nghiệp" class="fa  fa-check-circle"></i></span>
+                        }
+                    </div>
                     <div class="list-item-status-content">@item.Status</div>
                 </div>
             </div>
