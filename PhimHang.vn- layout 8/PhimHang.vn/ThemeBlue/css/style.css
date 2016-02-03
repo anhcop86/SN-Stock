@@ -385,6 +385,26 @@ ul.top-panel-left2 > li:hover{
     width: 280px; 
     margin-top: 10px;
 }
+
+.area-left .area-user-guide {
+    margin-top: 5px;
+    color: #328ac5;
+}
+.area-left .area-user-guide .item-left{
+    width:100% !important;
+}
+.area-left .area-user-guide a {    
+    color: #328ac5;
+}
+
+.area-left .area-user-guide .item-left span {
+    float:left;
+    border: 1px solid #ffbd00;
+    background-color:ActiveBorder;
+    padding:3px 5px;
+    margin:2px;
+}
+
 .area-center{
     width: 580px;    
     margin: 10px 16px 0px 16px;

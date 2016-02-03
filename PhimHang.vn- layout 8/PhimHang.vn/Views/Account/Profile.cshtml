@@ -81,7 +81,7 @@
                                     <label class="control-label" for="username">Status:</label>
                                     <div class="controls">
                                         @*<textarea id="statusInput" name="statustextArea" class="form-control" placeholder="Chia sẽ cảm nghĩ về thị trường?" rows="3" style="width:500px"></textarea>*@
-                                        @Html.TextAreaFor(m => m.Status, new { @class="form-control" ,@placeholder="Chia sẽ cảm nghĩ về thị trường?", @rows="3" ,@style="width:500px" })
+                                        @Html.TextAreaFor(m => m.Status, new { @class="form-control" ,@placeholder="Chia sẻ cảm nghĩ về thị trường?", @rows="3" ,@style="width:500px" })
                                         @Html.ValidationMessageFor(m => m.Status , "", new { @style = "color: #D81D35;" })
                                     </div>
                                 </div>
