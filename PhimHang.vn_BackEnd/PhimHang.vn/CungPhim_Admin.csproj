@@ -258,6 +258,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BadWordController.cs" />
     <Compile Include="Controllers\BrokerController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\FrontAccountController.cs" />
@@ -1569,6 +1570,7 @@
     <Folder Include="Chart\" />
     <Folder Include="DetailTheme\js\tiny-mce\plugins\spellchecker\classes\utils\" />
     <Folder Include="DetailTheme\js\tiny-mce\plugins\spellchecker\includes\" />
+    <Folder Include="Views\BadWord\" />
     <Folder Include="Views\FrontAccount\" />
   </ItemGroup>
   <ItemGroup>
