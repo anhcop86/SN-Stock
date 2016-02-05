@@ -157,11 +157,12 @@
             }
      </div>
         <div class="user-info-mypage">
-            <p><i class="fa fa-facebook-official"></i> Trang nhà trên facebook:</p>
+            <p><i class="fa fa-facebook-official"></i> Trang cá nhân:</p>
             @{
                 if (!string.IsNullOrEmpty(Model.URLFacebook))
                 {
                     @: <a target="_blank" href="https://@Model.URLFacebook.Replace("https://", "").Replace("http://", "").Replace("www.", "")">@Model.URLFacebook</a>    
+                    @*@: <a target="_blank" href="/../@Url.Action(@Model.URLFacebook)">@Html.Raw(@Model.URLFacebook)</a>*@
                 }
                 else
                 {
