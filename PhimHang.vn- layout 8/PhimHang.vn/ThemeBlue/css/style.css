@@ -1434,17 +1434,15 @@ a.category-tab:hover{
     text-align:justify;
 }
 .user-info-detail i{        
-    font-size: 1.6rem;    
+    font-size: 1.6rem;
+    width:19px;
 }
 .user-info-intro{
-    margin: 5px 10px;
-    
-    /*background-color: #78c6f9;*/
+    margin: 5px 10px;    
     color: #8E8E8E;
     font-style:italic;
     text-align:center;
     font-weight:bold;
-    /*border: 1px solid #78c6f9;*/
 }
 .user-info-intro div{
   text-align:center;
