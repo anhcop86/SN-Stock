@@ -535,6 +535,9 @@ ul.top-panel-left2 > li:hover{
     float:left;
 }
 
+.banner-item1 .item-left{
+    top:8px;
+}
 .banner-item-user-detail
 {
     background-color: #fff;

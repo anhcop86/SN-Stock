@@ -708,6 +708,7 @@
     <Content Include="ThemeBlue\js\MyProfile.js" />
     <Content Include="ThemeBlue\js\PostDetail.js" />
     <Content Include="ThemeBlue\js\RandomImage.js" />
+    <Content Include="ThemeBlue\js\settingAccount.js" />
     <Content Include="ThemeBlue\js\SignalHubProxy.js" />
     <Content Include="ThemeBlue\js\Ticker.js" />
     <Content Include="ThemeBlue\plugins\bootstrapvalidator\bootstrapValidator.css" />

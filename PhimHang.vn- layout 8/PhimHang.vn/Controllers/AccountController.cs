@@ -380,44 +380,56 @@ namespace PhimHang.Controllers
         public async Task<ActionResult> Profile(ProfileUserViewModel model)
         {
             ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+            loadInfoUser(user);
             if (ModelState.IsValid)
-            {                
-                if (user != null)
+            {
+                using (db = new testEntities())
                 {
-                    //if (model.Email != user.UserExtentLogin.Email)
-                    //{
-                    //    // kiem tra ton tai email trong he thong
-                    //    OutputErrors("Email đã tồn tại trong hệ thống, Vui lòng chọn Email khác");
-                    //    //return View(model);
-                    //}
-                    user.UserExtentLogin.FullName = model.FullName;
-                    user.UserExtentLogin.Mobile = model.Mobile;
-                    user.UserExtentLogin.Email = model.Email;
-                    user.UserExtentLogin.BirthDate = model.BirthDay;
-                    user.UserExtentLogin.Status = model.Status;
-                    user.UserExtentLogin.JobTitle = model.JobTitle;
-                    user.UserExtentLogin.URLFacebook = model.URLFacebook;
-                    user.UserExtentLogin.CVInfo = model.CVInfo;
-                    user.UserExtentLogin.NumberExMarketYear = model.NumberExMarketYear;
-                    user.UserExtentLogin.PhilosophyMarket = model.PhilosophyMarket;
-                    user.UserExtentLogin.AvatarSyn = model.AvatarSyn;
-                }
-                else
-                {
-                    return RedirectToAction("Login");
-                }
-                
-                IdentityResult result = await UserManager.UpdateAsync(user);
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("Profile", new { Message = ManageMessageId.UpdateSucess });
-                }
-                else
-                {
-                    AddErrors(result);
+                    if (user != null)
+                    {
+                        if (model.Email != user.UserExtentLogin.Email)
+                        {
+                            // kiem tra ton tai email trong he thong
+                            //checkemail exists
+                            int checkemail = await db.UserLogins.CountAsync(ue => ue.Email == model.Email && ue.UserNameCopy != user.UserName);
+                            if (checkemail > 0)
+                            {                                
+                                ModelState.AddModelError("Email", "Email đã tồn tại trong hệ thống, Vui lòng chọn Email khác");
+                                return View(model);
+                            }
+                            else
+                            {
+                                user.UserExtentLogin.Email = model.Email;
+                            }
+                        }
+                        user.UserExtentLogin.FullName = model.FullName;
+                        user.UserExtentLogin.Mobile = model.Mobile;                        
+                        user.UserExtentLogin.BirthDate = model.BirthDay;
+                        user.UserExtentLogin.Status = model.Status;
+                        user.UserExtentLogin.JobTitle = model.JobTitle;
+                        user.UserExtentLogin.URLFacebook = string.IsNullOrEmpty(model.URLFacebook) ? "" : "http://" + model.URLFacebook.Replace("http://", "").Replace("https://", "").Replace("www.", "");
+                        user.UserExtentLogin.CVInfo = model.CVInfo;
+                        user.UserExtentLogin.NumberExMarketYear = model.NumberExMarketYear;
+                        user.UserExtentLogin.PhilosophyMarket = model.PhilosophyMarket;
+                        user.UserExtentLogin.AvatarSyn = model.AvatarSyn;
+                    }
+                    else
+                    {
+                        return RedirectToAction("Login");
+                    }
+
+                    IdentityResult result = await UserManager.UpdateAsync(user);
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction("Profile", new { Message = ManageMessageId.UpdateSucess });
+                    }
+                    else
+                    {
+                        AddErrors(result);
+                    }
                 }
             }
-            loadInfoUser(user);
+            
             return View(model);
         }
         private void loadInfoUser(ApplicationUser user)

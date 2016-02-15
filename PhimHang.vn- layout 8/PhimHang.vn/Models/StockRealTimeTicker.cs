@@ -104,19 +104,15 @@ namespace PhimHang.Models
                 client.BaseAddress = uri;
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                var parameter = new { PI_tickerList = "KEYSECRET" };                
+                var parameter = new { PI_tickerList = "KEYSECRET" };
                 try
                 {
                     var response = client.PostAsJsonAsync("/api/StockRealTime", parameter).Result;
                     if (response.IsSuccessStatusCode)
                     {
                         var list = await response.Content.ReadAsAsync<List<StockRealTime>>();
-                        if (_stocks.Count == 0 || (list.Count > 600 && AppHelper.CheckTimeUpdatePrice()))
-                        {
-                            _stocks.Clear();
-                            list.ForEach(stock => _stocks.Add(stock));
-                        }                       
-                        
+                        _stocks.Clear();
+                        list.ForEach(stock => _stocks.Add(stock));
                     }
                     else
                     {
@@ -125,10 +121,8 @@ namespace PhimHang.Models
                 }
                 catch (Exception)
                 {
-                    
-                    
+                    // contine
                 }
-                
             }
         }
 
