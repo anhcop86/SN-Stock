@@ -484,7 +484,7 @@ self.detailPost = function (data, e) { // chi tiet post bao gom tra loi
         $("#idPostedDateDetail").html(data.PostedDate);
         $("#idPostNameDetail").html('<a style="cursor:pointer" href="/' + data.PostedByName + '">' + data.PostedByName + '</a>' + '<span class="itemVerify">' + data.BrkVip + '</span>');
         $("#idImgPostDetail").attr('src', data.PostedByAvatar);
-        $("#idPostMessenge").html(data.ChartYN == 1 ? data.Message.replace('<br/><img src=' + data.Chart + '?width=215&height=120&mode=crop>', '') + '<br/><br/><a target="_blank" href=' + data.Chart + '><img class="imageChartDetail" src=' + data.Chart + "?maxwidth=475></a>" : data.Message);//=200&s.grayscale=true|"
+        $("#idPostMessenge").html(data.ChartYN == 1 ? data.Message.replace('<br/><img src=' + data.Chart + '?width=215&height=120&mode=crop>', '') + '<br/><br/><a target="_blank" href=' + data.Chart + '><img class="imageChartDetail" src=' + data.Chart + "?maxwidth=475></a>" : data.Message);//&s.grayscale=true|"
         $("#idStmDetail").html(data.Stm);
         postidCurrent = data.PostId;
         $("#IdLoadMoreConversation").attr('href', '/PostDetail?postid=' + postidCurrent);
@@ -522,13 +522,14 @@ self.detailPost = function (data, e) { // chi tiet post bao gom tra loi
     }
 }
 
-// kiem tra user nhap du lieu vao post va reply
+    // kiem tra user nhap du lieu vao post va reply
+var limitedChar =  $("#HiddentCharacterLimit").val();
     self.enablePhimHang = ko.computed(function () {
-        return 200 - self.messageCount() <= 200 && 200 - self.messageCount() > 6 && self.newMessage().indexOf('<', 0) == -1;
+        return limitedChar - self.messageCount() <= limitedChar && limitedChar - self.messageCount() > 6 && self.newMessage().indexOf('<', 0) == -1;
     });
 
     self.count = ko.computed(function () {
-        var countNum = 200;
+        var countNum = limitedChar;
         var arrayMessage = self.newMessage().split(' ');
         arrayMessage.forEach(function (item) {
             if (item.indexOf('http') != -1) { // tim thay http link

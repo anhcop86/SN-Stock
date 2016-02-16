@@ -68,7 +68,8 @@ namespace PhimHang.Controllers
                 ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
                 ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
                 ViewBag.CureentUserId = currentUser.UserExtentLogin.Id;
-                ViewBag.UserName = currentUser.UserName;                
+                ViewBag.UserName = currentUser.UserName;
+                ViewBag.CharacterLimit = currentUser.UserExtentLogin.CharacterLimit;
             }
             else
             {

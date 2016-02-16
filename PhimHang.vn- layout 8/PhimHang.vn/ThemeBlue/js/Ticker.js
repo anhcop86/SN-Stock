@@ -515,14 +515,14 @@ function viewModel() {
         }
     }
     /////////////////////////////////////////
-
+    var limitedChar = $("#HiddentCharacterLimit").val();
     self.enablePhimHang = ko.computed(function () {
-        return 200 - self.messageCount() <= 200 && 200 - self.messageCount() > 6 && self.newMessage().indexOf('<', 0) == -1;
+        return limitedChar - self.messageCount() <= limitedChar && limitedChar - self.messageCount() > 6 && self.newMessage().indexOf('<', 0) == -1;
     });
 
 
     self.count = ko.computed(function () {
-        var countNum = 200;
+        var countNum = limitedChar;
         var arrayMessage = self.newMessage().split(' ');
         arrayMessage.forEach(function (item) {
             if (item.indexOf('http') != -1) { // tim thay http link

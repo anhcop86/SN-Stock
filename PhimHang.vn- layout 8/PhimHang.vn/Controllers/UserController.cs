@@ -52,7 +52,7 @@ namespace PhimHang.Controllers
                 ViewBag.CureentUserId = userLogin.UserExtentLogin.Id;
                 ViewBag.UserName = userLogin.UserName;
                 ViewBag.AvataImageUrl = string.IsNullOrEmpty(userLogin.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + userLogin.UserExtentLogin.AvataImage;
-
+                ViewBag.CharacterLimit = currentUser.CharacterLimit;
                 #region follow user
                 if (userLogin.UserExtentLogin.Id == currentUser.Id)
                 {
