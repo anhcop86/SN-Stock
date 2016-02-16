@@ -488,7 +488,7 @@ namespace PhimHang.Controllers
                 return "Please choose either a GIF, JPG or PNG image.";
             }
 
-            if (uploadfileid_avata.ContentLength > 3000000) // check file size
+            if (uploadfileid_avata.ContentLength > 4000000) // check file size
             {
                 return "File's very larg: File must be less than 700KB";
             }

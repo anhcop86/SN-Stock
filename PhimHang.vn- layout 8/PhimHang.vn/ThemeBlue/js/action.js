@@ -314,4 +314,106 @@ $(document).ready(function () {
         $("#MenuReposive").fadeIn();
         
     }
+
+    // thay doi hinh cover va avata tai trang user
+
+    uploadCoverUser = function (files) {
+        file = files[0];
+        if (file == null) {
+            return;
+        }
+        if (file.size > 5000000) {
+            showNotification('Hình quá lớn, vui lòng chọn hình khác nhỏ hơn 5MB');
+            return;
+        }
+        var ext = file.name.split('.').pop().toLowerCase();
+        if ($.inArray(ext, ['png', 'jpg', 'jpeg']) == -1) {
+            showNotification('File hình không đúng định dạng!. Chỉ hỗ trợ file hình png, jpg, jpeg');
+            return;
+        }
+        // Add the uploaded image content to the form data collection
+        if (files.length > 0) {
+            var formData = new FormData();
+            formData.append("UploadedImage", file);
+            //upload via ajax
+            $.ajax({
+                url: '/Account/CoverUpload',
+                type: 'POST',
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                crossDomain: false,
+                beforeSend: function (xhr) {
+                    $('.uploadStatus').html('<img src="/img/uploading.gif" />');
+                },
+                success: function (data) {
+                    if (data === "error") {
+                        showNotification('Có lỗi khi upload ảnh, vui lòng thử lại');
+                        return
+                    }
+                    else {
+                        showNotification('Cập nhật hình cover thành công, có thể kéo ảnh để thay đổi góc nhìn');
+                        $('#CoverImageId').attr("src", data.replace("YES|", "") + "?w=1366&mode=crop");
+                    }
+                    $('.uploadStatus').html('');
+
+                },
+                fail: function () {
+                    showNotification('Có lỗi khi upload ảnh, vui lòng thử lại');
+                    $('.uploadStatus').html('');
+                }
+            })
+        }
+    }
+    uploadAvata = function (files) {
+        file = files[0];
+        if (file == null) {
+            return;
+        }
+        if (file.size > 4000000) {
+            showNotification('Hình quá lớn, vui lòng chọn hình khác nhỏ hơn 4MB');
+            return;
+        }
+        var ext = file.name.split('.').pop().toLowerCase();
+        if ($.inArray(ext, ['png', 'jpg', 'jpeg']) == -1) {
+            showNotification('File hình không đúng định dạng!. Chỉ hỗ trợ file hình png, jpg, jpeg');
+            return;
+        }
+        // Add the uploaded image content to the form data collection
+        if (files.length > 0) {
+            var formData = new FormData();
+            formData.append("UploadedImage", file);
+            //upload via ajax
+            $.ajax({
+                url: '/Account/AvataUpload',
+                type: 'POST',
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                crossDomain: false,
+                beforeSend: function (xhr) {
+                    $('.uploadStatus').html('<img src="/img/uploading.gif" />');
+                },
+                success: function (data) {
+                    if (data === "error") {
+                        showNotification('Có lỗi khi upload ảnh, vui lòng thử lại');
+                        $('#avataInput').val('');
+                        return
+                    }
+                    else {
+                        $('#AvataImage').attr("src", "../" + data.replace("YES|", "") + "?w=190&h=190&mode=crop");
+                        showNotification('Cập nhật avata thành công');
+                        $('#avataInput').val('');
+                    }
+                    $('.uploadStatus').html('');
+                },
+                fail: function () {
+                    showNotification('Có lỗi khi upload ảnh, vui lòng thử lại:');
+                    $('#avataInput').val('');
+                }
+            })
+        }
+    }
 });

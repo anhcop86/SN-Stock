@@ -36,7 +36,10 @@ namespace PhimHang
                                         //<!--For realtime core-->
                                         "~/Scripts/jquery.signalR-2.2.0.min.js",
                                         "~/ThemeBlue/js/Extention.js", // notification of top bar
-                                        "~/ThemeBlue/js/SignalHubProxy.js"
+                                        "~/ThemeBlue/js/SignalHubProxy.js",
+                                        // action js
+                                        "~/ThemeBlue/js/action.js",
+                                        "~/ThemeBlue/js/action2.js"
                                         ));
 
             bundles.Add(new StyleBundle("~/bundles/StyleStandard").Include(
