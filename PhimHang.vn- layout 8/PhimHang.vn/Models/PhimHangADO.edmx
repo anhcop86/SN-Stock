@@ -140,7 +140,7 @@
             <PropertyRef Name="PostId" />
           </Key>
           <Property Name="PostId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Message" Type="nvarchar" MaxLength="2048" />
+          <Property Name="Message" Type="nvarchar(max)" />
           <Property Name="PostedBy" Type="int" Nullable="false" />
           <Property Name="PostedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="ChartImageURL" Type="nvarchar" MaxLength="128" />
@@ -251,6 +251,7 @@
           <Property Name="CoverPosition" Type="varchar" MaxLength="8" />
           <Property Name="IdFacebook" Type="varchar" MaxLength="32" />
           <Property Name="AvatarSyn" Type="bit" />
+          <Property Name="CharacterLimit" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="UserRelate">
           <Key>
@@ -697,6 +698,7 @@
           <EntitySet Name="StockRelates" EntityType="PHDBContext.StockRelate" />
           <EntitySet Name="StockViewLastests" EntityType="PHDBContext.StockViewLastest" />
           <EntitySet Name="TickerHots" EntityType="PHDBContext.TickerHot" />
+          <EntitySet Name="UserLogExtents" EntityType="PHDBContext.UserLogExtent" />
           <EntitySet Name="UserLogins" EntityType="PHDBContext.UserLogin" />
           <EntitySet Name="UserRelates" EntityType="PHDBContext.UserRelate" />
           <EntitySet Name="UserViewLastests" EntityType="PHDBContext.UserViewLastest" />
@@ -788,7 +790,6 @@
             <End Role="AspNetRole" EntitySet="AspNetRoles" />
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
           </AssociationSet>
-          <EntitySet Name="UserLogExtents" EntityType="PHDBContext.UserLogExtent" />
         </EntityContainer>
         <EntityType Name="C__MigrationHistory">
           <Key>
@@ -923,7 +924,7 @@
             <PropertyRef Name="PostCommentsId" />
           </Key>
           <Property Name="PostCommentsId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Message" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="true" />
           <Property Name="PostedBy" Type="Int64" Nullable="false" />
           <Property Name="CommentBy" Type="Int32" Nullable="false" />
           <Property Name="PostedDate" Type="DateTime" Nullable="false" Precision="7" />
@@ -935,7 +936,7 @@
             <PropertyRef Name="PostId" />
           </Key>
           <Property Name="PostId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Message" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PostedBy" Type="Int32" Nullable="false" />
           <Property Name="PostedDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="ChartImageURL" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
@@ -1015,6 +1016,18 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="THName" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="UserLogExtent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="TokenResetPass" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TimeResetExpire" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsReset" Type="Boolean" Nullable="false" />
+          <Property Name="EmailReset" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="UserLogin">
           <Key>
             <PropertyRef Name="Id" />
@@ -1042,6 +1055,7 @@
           <Property Name="CoverPosition" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
           <Property Name="IdFacebook" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
           <Property Name="AvatarSyn" Type="Boolean" />
+          <Property Name="CharacterLimit" Type="Int32" Nullable="false" />
           <NavigationProperty Name="AspNetUsers" Relationship="PHDBContext.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" FromRole="UserLogin" ToRole="AspNetUser" />
           <NavigationProperty Name="FollowStocks" Relationship="PHDBContext.FK_FollowStock_UserLogins" FromRole="UserLogin" ToRole="FollowStock" />
           <NavigationProperty Name="FollowUsers" Relationship="PHDBContext.FK_FollowUser_UserLogins" FromRole="UserLogin" ToRole="FollowUser" />
@@ -1338,18 +1352,6 @@
           <End Type="PHDBContext.AspNetRole" Role="AspNetRole" Multiplicity="*" />
           <End Type="PHDBContext.AspNetUser" Role="AspNetUser" Multiplicity="*" />
         </Association>
-        <EntityType Name="UserLogExtent">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Username" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="TokenResetPass" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="TimeResetExpire" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="IsReset" Type="Boolean" Nullable="false" />
-          <Property Name="EmailReset" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1572,9 +1574,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="UserLogExtents">
+            <EntityTypeMapping TypeName="PHDBContext.UserLogExtent">
+              <MappingFragment StoreEntitySet="UserLogExtents">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="EmailReset" ColumnName="EmailReset" />
+                <ScalarProperty Name="IsReset" ColumnName="IsReset" />
+                <ScalarProperty Name="TimeResetExpire" ColumnName="TimeResetExpire" />
+                <ScalarProperty Name="TokenResetPass" ColumnName="TokenResetPass" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="UserLogins">
             <EntityTypeMapping TypeName="PHDBContext.UserLogin">
               <MappingFragment StoreEntitySet="UserLogins">
+                <ScalarProperty Name="CharacterLimit" ColumnName="CharacterLimit" />
                 <ScalarProperty Name="AvatarSyn" ColumnName="AvatarSyn" />
                 <ScalarProperty Name="IdFacebook" ColumnName="IdFacebook" />
                 <ScalarProperty Name="CoverPosition" ColumnName="CoverPosition" />
@@ -1628,19 +1644,6 @@
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="UserLogExtents">
-            <EntityTypeMapping TypeName="PHDBContext.UserLogExtent">
-              <MappingFragment StoreEntitySet="UserLogExtents">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="EmailReset" ColumnName="EmailReset" />
-                <ScalarProperty Name="IsReset" ColumnName="IsReset" />
-                <ScalarProperty Name="TimeResetExpire" ColumnName="TimeResetExpire" />
-                <ScalarProperty Name="TokenResetPass" ColumnName="TokenResetPass" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

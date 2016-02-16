@@ -45,9 +45,9 @@ namespace PhimHang.Models
         public virtual DbSet<StockRelate> StockRelates { get; set; }
         public virtual DbSet<StockViewLastest> StockViewLastests { get; set; }
         public virtual DbSet<TickerHot> TickerHots { get; set; }
+        public virtual DbSet<UserLogExtent> UserLogExtents { get; set; }
         public virtual DbSet<UserLogin> UserLogins { get; set; }
         public virtual DbSet<UserRelate> UserRelates { get; set; }
         public virtual DbSet<UserViewLastest> UserViewLastests { get; set; }
-        public virtual DbSet<UserLogExtent> UserLogExtents { get; set; }
     }
 }
