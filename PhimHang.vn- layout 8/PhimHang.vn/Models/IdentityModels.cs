@@ -70,6 +70,8 @@ namespace PhimHang.Models
         public string IdFacebook { get; set; }
 
         public Nullable<bool> AvatarSyn { get; set; }
+
+        public int CharacterLimit { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
