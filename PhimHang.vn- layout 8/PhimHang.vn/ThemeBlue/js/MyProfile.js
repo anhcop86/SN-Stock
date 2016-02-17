@@ -118,7 +118,8 @@ function Post(data) {
     var self = this;
     data = data || {};
     self.PostId = data.PostId;
-    self.Message = (data.ChartYN == 1 ? data.Message + '<br/><img src=' + data.Chart + '?width=215&height=120&mode=crop>' : data.Message) || "";
+    //self.Message = (data.ChartYN == 1 ? data.Message + '<br/><img src=' + data.Chart + '?width=215&height=120&mode=crop>' : data.Message) || ""; // original
+    self.Message = (data.BrkVip == 1 ? loadNextText(data.PostId,data.ChartYN, data.Chart, data.Message) : loadNormalText(data.ChartYN, data.Chart, data.Message)) || "";
     self.PostedByName = data.PostedByName || "";
     self.PostedByAvatar = data.PostedByAvatar + '?width=50&height=50&mode=crop' || "";
     self.PostedDate = getTimeAgo(data.PostedDate);

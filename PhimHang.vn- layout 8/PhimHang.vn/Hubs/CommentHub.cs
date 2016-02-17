@@ -137,7 +137,7 @@ namespace PhimHang.Hubs
 
                 #region luu vao db
                 /* add stockrelate */
-                post.Message = AppHelper.FilteringWord(messageFromatHTML); // Filteringword lọc từ khóa bậy
+                post.Message = AppHelper.FilteringWord(messageFromatHTML).Replace("\n", "<br>"); // Filteringword lọc từ khóa bậy
                 post.PostedBy = userlogin.Id;
                 post.PostedDate = DateTime.Now;
                 post.NhanDinh = nhanDinh;

@@ -2015,3 +2015,26 @@ a.avatar img:hover{
 .itemVerify i{
     color: #ffbd00;
 }
+
+/* scrol bar for follow stock
+    bai lon qua thi thu nho gon lai: xuat hien nut xem them"xem them"
+*/
+
+.less{
+    word-wrap: break-word;    
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height:55px;
+}
+
+.more{
+    white-space: normal;
+}
+
+.text-size{
+     display: block;
+    text-align: left;
+    padding-top: 10px;
+    color: blue !important;
+    cursor: pointer;
+}

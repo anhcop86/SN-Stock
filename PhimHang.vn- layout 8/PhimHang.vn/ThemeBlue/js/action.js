@@ -416,4 +416,13 @@ $(document).ready(function () {
             })
         }
     }
+    
+    loadNormalText = function (chartYN, chartUrl, message) {
+        return chartYN == 1 ? message + '<br/><img src=' + chartUrl + '?width=215&height=120&mode=crop>' : message;
+    }
+    loadNextText = function (postid, chartYN, chartUrl, message) {
+        var controlLoadNext = '<div class="text-size">Xem thêm</div>';
+        $('#loadNext' + postid).append(controlLoadNext);        
+        return chartYN == 1 ? message + '<br/><img src=' + chartUrl + '?width=215&height=120&mode=crop>' : message;
+    }
 });
