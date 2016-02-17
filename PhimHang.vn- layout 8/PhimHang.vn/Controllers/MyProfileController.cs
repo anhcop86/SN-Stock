@@ -43,29 +43,40 @@ namespace PhimHang.Controllers
             #region get user info
             ViewBag.AbsolutePathHostName = AbsolutePathHostName;
             var company = new StockCode();
-            ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            //ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            UserLoginDTO currentUser = await (from userlog in db.UserLogins
+                                           where userlog.UserNameCopy == User.Identity.Name
+                                           select new UserLoginDTO 
+                                           {
+                                               Id = userlog.Id,
+                                               CharacterLimit = userlog.CharacterLimit,
+                                               FullName = userlog.FullName,
+                                               AvataImage = userlog.AvataImage,
+                                               AvataCover = userlog.AvataCover,
+                                               BrokerVIP = userlog.BrokerVIP
+                                           }).FirstOrDefaultAsync();
             #endregion
             #region Thong tin menu ben trai
             //Thong tin menu ben trai
-            var post = await db.Posts.CountAsync(p => p.PostedBy == currentUser.UserExtentLogin.Id);
-            var follow = await db.FollowUsers.CountAsync(f => f.UserId == currentUser.UserExtentLogin.Id);
-            var follower = await db.FollowUsers.CountAsync(f => f.UserIdFollowed == currentUser.UserExtentLogin.Id);
+            var post = await db.Posts.CountAsync(p => p.PostedBy == currentUser.Id);
+            var follow = await db.FollowUsers.CountAsync(f => f.UserId == currentUser.Id);
+            var follower = await db.FollowUsers.CountAsync(f => f.UserIdFollowed == currentUser.Id);
 
             ViewBag.TotalPost = post;
             ViewBag.Follow = follow;
             ViewBag.Follower = follower;
 
-            ViewBag.CureentUserId = currentUser.UserExtentLogin.Id;
-            ViewBag.CharacterLimit = currentUser.UserExtentLogin.CharacterLimit;
-            ViewBag.UserName = currentUser.UserName;
-
-            ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
-            ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataCover) == true ? ImageURLCoverDefault : ImageURLCover + currentUser.UserExtentLogin.AvataCover;
+            ViewBag.CureentUserId = currentUser.Id;
+            ViewBag.CharacterLimit = currentUser.CharacterLimit;
+            ViewBag.UserName = User.Identity.Name;
+            ViewBag.FullName = currentUser.FullName;
+            ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.AvataImage;
+            ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.AvataCover) == true ? ImageURLCoverDefault : ImageURLCover + currentUser.AvataCover;
             
 
             // cac post duoc loc tu danh muc nguoi theo doi => dc load o duoi client san
             var listPersonFollow = await (from userFollow in db.FollowUsers
-                                    where userFollow.UserId == currentUser.UserExtentLogin.Id
+                                    where userFollow.UserId == currentUser.Id
                                     select userFollow.UserIdFollowed
                                  ).ToArrayAsync();
 
@@ -74,13 +85,13 @@ namespace PhimHang.Controllers
             // cac post dc loc tu danh muc dau tu => dc load o duoc client san
             var listStock = await (from followStock in db.FollowStocks
                                    orderby followStock.StockFollowed ascending
-                                   where followStock.UserId == currentUser.UserExtentLogin.Id
+                                   where followStock.UserId == currentUser.Id
                                    select followStock.StockFollowed).ToListAsync();
 
             ViewBag.listStockFollow = listStock as List<string>; // load o cliet
             // End thong tin menu ben trai
             //so luong tin cua User
-            var numberMessegeNew = db.NotificationMesseges.Where(nm => nm.UserReciver == currentUser.UserExtentLogin.Id && nm.NumNoti > 0).Sum(mn => mn.NumNoti);
+            var numberMessegeNew = db.NotificationMesseges.Where(nm => nm.UserReciver == currentUser.Id && nm.NumNoti > 0).Sum(mn => mn.NumNoti);
             ViewBag.NewMessege = numberMessegeNew;
 
 
@@ -101,6 +112,7 @@ namespace PhimHang.Controllers
             return View(currentUser);
 
         }
+     
 
         public async Task<ActionResult> MessagesCenter()
         {
@@ -379,4 +391,13 @@ namespace PhimHang.Controllers
         public string ShortName { get; set; }
     }
 #endregion
+    public class UserLoginDTO
+    {
+        public int Id { get; set; }
+        public int CharacterLimit { get; set; }
+        public string FullName { get; set; }
+        public string AvataImage { get; set; }
+        public string AvataCover { get; set; }
+        public Nullable<bool> BrokerVIP { get; set; }
+    }
 }

@@ -1,6 +1,6 @@
 ﻿@using PhimHang.Models;
 
-@model ApplicationUser
+@model PhimHang.Controllers.UserLoginDTO
 <div class="user-info">
     <div class="cover-img">
         <img src="@ViewBag.CoverImage?width=280&height=91&mode=crop" alt="cover">
@@ -10,8 +10,8 @@
             <img src="@ViewBag.AvataEmage?width=62&height=62&mode=crop" alt="cover">
         </div>
         <div class="user-name">
-            <a href="/@ViewBag.UserName"> @Model.UserExtentLogin.FullName.ToUpper() </a>
-            @if (@Model.UserExtentLogin.BrokerVIP == true)
+            <a href="/@ViewBag.UserName">@ViewBag.FullName.ToUpper()</a>
+            @if (Model.BrokerVIP == true)
             {
                 <i class="fa  fa-check-circle"></i> 
             }
