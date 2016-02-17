@@ -281,7 +281,7 @@ namespace PhimHang.Controllers
                     //   CreatedDate = DateTime.Now,
                     //   Verify = Verify.NO
                 };
-                user.UserExtentLogin = new UserExtentLogin { Email = model.Email, KeyLogin = user.Id, CreatedDate = DateTime.Now, FullName = model.FullName, Verify = Verify.NO, UserNameCopy = model.UserName };
+                user.UserExtentLogin = new UserExtentLogin { Email = model.Email, KeyLogin = user.Id, CreatedDate = DateTime.Now, FullName = model.FullName, Verify = Verify.NO, UserNameCopy = model.UserName , CharacterLimit = 200};
 
 
                 // check email

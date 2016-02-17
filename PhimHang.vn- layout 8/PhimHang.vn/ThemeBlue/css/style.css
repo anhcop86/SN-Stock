@@ -2032,9 +2032,10 @@ a.avatar img:hover{
 }
 
 .text-size{
-     display: block;
+    display: block;
     text-align: left;
     padding-top: 10px;
     color: blue !important;
     cursor: pointer;
+    text-decoration:none;
 }

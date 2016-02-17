@@ -417,12 +417,12 @@ $(document).ready(function () {
         }
     }
     
-    loadNormalText = function (chartYN, chartUrl, message) {
-        return chartYN == 1 ? message + '<br/><img src=' + chartUrl + '?width=215&height=120&mode=crop>' : message;
-    }
-    loadNextText = function (postid, chartYN, chartUrl, message) {
-        var controlLoadNext = '<div class="text-size">Xem thêm</div>';
-        $('#loadNext' + postid).append(controlLoadNext);        
-        return chartYN == 1 ? message + '<br/><img src=' + chartUrl + '?width=215&height=120&mode=crop>' : message;
+    //loadNormalText = function (chartYN, chartUrl, message) {
+    //    return chartYN == 1 ? message + '<br/><img src=' + chartUrl + '?width=215&height=120&mode=crop>' : message;
+    //}
+    loadNextText = function (message) {
+        //var controlLoadNext = '<div onclick="function(){ e.stopPropagation();}" class="text-size">Xem thêm</div>';
+        //return chartYN == 1 ? message + controlLoadNext + '<br/><img src=' + chartUrl + '?width=215&height=120&mode=crop>' : message + controlLoadNext;
+        return "Xem thêm";
     }
 });

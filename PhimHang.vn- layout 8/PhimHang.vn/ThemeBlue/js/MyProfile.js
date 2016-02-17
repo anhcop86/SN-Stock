@@ -118,8 +118,8 @@ function Post(data) {
     var self = this;
     data = data || {};
     self.PostId = data.PostId;
-    //self.Message = (data.ChartYN == 1 ? data.Message + '<br/><img src=' + data.Chart + '?width=215&height=120&mode=crop>' : data.Message) || ""; // original
-    self.Message = (data.BrkVip == 1 ? loadNextText(data.PostId,data.ChartYN, data.Chart, data.Message) : loadNormalText(data.ChartYN, data.Chart, data.Message)) || "";
+    self.Message = (data.ChartYN == 1 ? data.Message + '<br/><img src=' + data.Chart + '?width=215&height=120&mode=crop>' : data.Message) || ""; // original
+    //self.Message = (data.BrkVip == 1 ? loadNextText(data.PostId,data.ChartYN, data.Chart, data.Message) : loadNormalText(data.ChartYN, data.Chart, data.Message)) || "";
     self.PostedByName = data.PostedByName || "";
     self.PostedByAvatar = data.PostedByAvatar + '?width=50&height=50&mode=crop' || "";
     self.PostedDate = getTimeAgo(data.PostedDate);
@@ -132,6 +132,7 @@ function Post(data) {
     self.Chart = data.Chart || '';
     self.SumReply = ko.observable(data.SumReply);
     self.BrkVip = (data.BrkVip == 1 ? '<i title="Đã xác thực - dân phím chuyên nghiệp" class="fa  fa-check-circle"></i>' : "") || "";
+    self.LoadTextNext = (data.Message.length > 200 ? "Xem thêm" : "") || "";
 }
 var commenthub = $.connection.CommentHub;
 function viewModel() {
@@ -176,6 +177,15 @@ self.init = function () {
             checkLoadFirst = 1;
         }
     });
+}
+loadCSSless = function (object) {
+    if (object > 50) {
+        return "list-item-status-content less";
+    }
+    else {
+        return "list-item-status-content";
+    }
+    
 }
 /////////////////////////////////////////////////////
 self.addPost = function () { // them post
