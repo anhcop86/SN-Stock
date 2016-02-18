@@ -80,7 +80,10 @@
                                 <span class="itemVerify" data-bind="html: BrkVip"></span>
                             </div>
                             <span data-bind="html : Stm"></span>
-                            <div class="list-item-status-content" data-bind="html : Message"></div>
+                            <div class="list-item-status-content" data-bind="html : Message , attr :{ class:  loadCSSless($element.offsetHeight, $data) , id : 'messageId' + PostId}"></div>
+                            <!--load xem them text dài-->
+                            <div onclick='selectMe(event,"#")' class="text-size" data-bind="html: LoadTextNext"></div>
+                            <!--End load xem them text dài-->
                             <div class="list-item-control">
                                 <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
                                 <a class="button btn-answer" target="_self" onclick="window.open(this.href, 'chia sẻ lên facebook', 'left=100,top=100,width=600,height=400,toolbar=1,resizable=0'); selectMe(event, '#'); return false;" data-bind="attr : { href : 'https://www.facebook.com/sharer/sharer.php?u=@ViewBag.AbsolutePathHostName/PostDetail?postid='+ PostId +'&display=popup&ref=plugin' }" title="Chia sẻ lên facebook">Chia sẻ</a>

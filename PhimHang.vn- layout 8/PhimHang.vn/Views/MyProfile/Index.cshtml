@@ -83,9 +83,10 @@
                                 <span class="itemVerify" data-bind="html: BrkVip"></span>
                             </div>
                             <span data-bind="html : Stm"></span>
-                            <div data-bind="html : Message , attr :{ class: loadCSSless(height) }"></div>
+                            
+                            <div data-bind="html : Message , attr :{ class:  loadCSSless($element.offsetHeight, $data) , id : 'messageId' + PostId}"></div>
                             <!--load xem them text dài-->
-                            <a onclick='selectMe(event,"#")' class="text-size" data-bind="html: LoadTextNext"></a>
+                            <div onclick='selectMe(event,"#")' class="text-size" data-bind="html: LoadTextNext"></div>
                             <!--End load xem them text dài-->
                             <div class="list-item-control">
                                 <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>

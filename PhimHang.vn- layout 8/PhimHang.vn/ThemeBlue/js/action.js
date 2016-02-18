@@ -420,9 +420,18 @@ $(document).ready(function () {
     //loadNormalText = function (chartYN, chartUrl, message) {
     //    return chartYN == 1 ? message + '<br/><img src=' + chartUrl + '?width=215&height=120&mode=crop>' : message;
     //}
-    loadNextText = function (message) {
-        //var controlLoadNext = '<div onclick="function(){ e.stopPropagation();}" class="text-size">Xem thêm</div>';
-        //return chartYN == 1 ? message + controlLoadNext + '<br/><img src=' + chartUrl + '?width=215&height=120&mode=crop>' : message + controlLoadNext;
-        return "Xem thêm";
+    clickloadNextText = function (postid, ojecthtml) {
+        var messageId = '#messageId' + postid;
+        //console.log(messageId);
+        if ($(messageId).hasClass("less")) {
+            $(messageId).removeClass("less");
+            $(ojecthtml).html("Thu nhỏ");            
+        } else {            
+            $(messageId).addClass("less");
+            $(ojecthtml).html("Xem thêm");
+        }
+        //$(messageId).parent().prev().toggle();
+        //$(messageId).prev().toggle();
+        return false;
     }
 });

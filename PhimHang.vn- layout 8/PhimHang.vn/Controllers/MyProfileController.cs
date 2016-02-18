@@ -117,17 +117,29 @@ namespace PhimHang.Controllers
         public async Task<ActionResult> MessagesCenter()
         {
             #region thong tin user
-            ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());           
-            ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : "/images/avatar/" + currentUser.UserExtentLogin.AvataImage;
-            ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataCover) == true ? ImageURLCoverDefault : "/images/cover/" + currentUser.UserExtentLogin.AvataCover;
-            ViewBag.AvataImageUrl = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
+            //ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            UserLoginDTO currentUser = await (from userlog in db.UserLogins
+                                              where userlog.UserNameCopy == User.Identity.Name
+                                              select new UserLoginDTO
+                                              {
+                                                  Id = userlog.Id,
+                                                  CharacterLimit = userlog.CharacterLimit,
+                                                  FullName = userlog.FullName,
+                                                  AvataImage = userlog.AvataImage,
+                                                  AvataCover = userlog.AvataCover,
+                                                  BrokerVIP = userlog.BrokerVIP
+                                              }).FirstOrDefaultAsync();
+            ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.AvataImage) == true ? ImageURLAvataDefault : "/images/avatar/" + currentUser.AvataImage;
+            ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.AvataCover) == true ? ImageURLCoverDefault : "/images/cover/" + currentUser.AvataCover;
+            ViewBag.AvataImageUrl = string.IsNullOrEmpty(currentUser.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.AvataImage;
             ViewBag.CureentUserId = currentUser.Id;
-            ViewBag.UserName = currentUser.UserName;
+            ViewBag.UserName = User.Identity.Name;
+            @ViewBag.FullName = currentUser.FullName;
             #endregion
             #region thong tin co phieu ben phai
             var listStock = await (from followStock in db.FollowStocks
                              orderby followStock.StockFollowed ascending
-                             where followStock.UserId == currentUser.UserExtentLogin.Id
+                             where followStock.UserId == currentUser.Id
                              select followStock.StockFollowed
                                ).ToListAsync();
             //ViewBag.listStockFollow = listStock as List<string>; // client
@@ -161,7 +173,7 @@ namespace PhimHang.Controllers
             {
                 var ret = await (from notiMesseges in db.NotificationMesseges
                            orderby notiMesseges.CreateDate descending, notiMesseges.XemYN descending
-                           where notiMesseges.UserLogin1.KeyLogin == userid
+                           where notiMesseges.UserLogin1.UserNameCopy == User.Identity.Name
                            select new
                            {
                                Message = notiMesseges.Post.Message,
@@ -174,7 +186,8 @@ namespace PhimHang.Controllers
                                ChartYN = notiMesseges.Post.ChartYN,
                                XemYN = notiMesseges.XemYN,
                                SumLike = notiMesseges.Post.SumLike,
-                               SumReply = notiMesseges.Post.SumReply
+                               SumReply = notiMesseges.Post.SumReply,
+                               BrkVip = notiMesseges.Post.UserLogin.BrokerVIP
                            }).Skip(skipposition).Take(10).ToArrayAsync();
                 //var listStock = new List<string>();              
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
@@ -188,7 +201,7 @@ namespace PhimHang.Controllers
         [HttpPost]
         public async Task ChangeStatusMessege(string userid)
         {
-            var listUpdate = await db.NotificationMesseges.Where(nm => nm.UserLogin1.KeyLogin == userid && nm.XemYN == true).ToListAsync();
+            var listUpdate = await db.NotificationMesseges.Where(nm => nm.UserLogin1.UserNameCopy == User.Identity.Name && nm.XemYN == true).ToListAsync();
             if (listUpdate.Count > 0)
             {
                 foreach (var item in listUpdate)

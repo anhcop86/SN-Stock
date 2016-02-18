@@ -140,7 +140,7 @@
             <PropertyRef Name="PostId" />
           </Key>
           <Property Name="PostId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Message" Type="nvarchar" MaxLength="2048" />
+          <Property Name="Message" Type="nvarchar(max)" />
           <Property Name="PostedBy" Type="int" Nullable="false" />
           <Property Name="PostedDate" Type="datetime2" Precision="7" Nullable="false" />
           <Property Name="ChartImageURL" Type="nvarchar" MaxLength="128" />
@@ -251,6 +251,7 @@
           <Property Name="CoverPosition" Type="varchar" MaxLength="8" />
           <Property Name="IdFacebook" Type="varchar" MaxLength="32" />
           <Property Name="AvatarSyn" Type="bit" />
+          <Property Name="CharacterLimit" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="UserRelate">
           <Key>
@@ -935,7 +936,7 @@
             <PropertyRef Name="PostId" />
           </Key>
           <Property Name="PostId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Message" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PostedBy" Type="Int32" Nullable="false" />
           <Property Name="PostedDate" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="ChartImageURL" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
@@ -1054,6 +1055,7 @@
           <Property Name="CoverPosition" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
           <Property Name="IdFacebook" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
           <Property Name="AvatarSyn" Type="Boolean" />
+          <Property Name="CharacterLimit" Type="Int32" Nullable="false" />
           <NavigationProperty Name="AspNetUsers" Relationship="db_cungphim_FrontEnd_Model.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" FromRole="UserLogin" ToRole="AspNetUser" />
           <NavigationProperty Name="FollowStocks" Relationship="db_cungphim_FrontEnd_Model.FK_FollowStock_UserLogins" FromRole="UserLogin" ToRole="FollowStock" />
           <NavigationProperty Name="FollowUsers" Relationship="db_cungphim_FrontEnd_Model.FK_FollowUser_UserLogins" FromRole="UserLogin" ToRole="FollowUser" />
@@ -1588,6 +1590,7 @@
           <EntitySetMapping Name="UserLogins">
             <EntityTypeMapping TypeName="db_cungphim_FrontEnd_Model.UserLogin">
               <MappingFragment StoreEntitySet="UserLogins">
+                <ScalarProperty Name="CharacterLimit" ColumnName="CharacterLimit" />
                 <ScalarProperty Name="AvatarSyn" ColumnName="AvatarSyn" />
                 <ScalarProperty Name="IdFacebook" ColumnName="IdFacebook" />
                 <ScalarProperty Name="CoverPosition" ColumnName="CoverPosition" />

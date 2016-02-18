@@ -134,6 +134,7 @@ function Post(data) {
     self.Chart = data.Chart || '';
     self.SumReply = ko.observable(data.SumReply);
     self.BrkVip = (data.BrkVip == 1 ? '<i title="Đã xác thực - dân phím chuyên nghiệp" class="fa  fa-check-circle"></i>' : "") || "";
+    self.LoadTextNext = '';
 }
 var commenthub = $.connection.CommentHub;
 function viewModel() {
@@ -196,6 +197,15 @@ function viewModel() {
                 checkLoadFirst = 1;
             }
         });
+    }
+    loadCSSless = function (heightDiv, data) {
+        if (heightDiv > 200) {
+            data.LoadTextNext = "<a onclick='clickloadNextText(" + data.PostId + ", this)'>Xem thêm</a>";
+            return "list-item-status-content less";
+        }
+        else {
+            return "list-item-status-content";
+        }
     }
     /////////////////////////////////////////////////////
     self.addPost = function () { // them post

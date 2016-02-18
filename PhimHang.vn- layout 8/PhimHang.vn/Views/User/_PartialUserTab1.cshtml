@@ -80,7 +80,8 @@
                                 <span class="itemVerify" data-bind="html: BrkVip"></span>
                             </div>
                             <span data-bind="html : Stm"></span>
-                            <div class="list-item-status-content" data-bind="html : Message"></div>
+                            <div class="list-item-status-content" data-bind="html : Message , attr :{ class:  loadCSSless($element.offsetHeight, $data) , id : 'messageId' + PostId}"></div>
+                            <div onclick='selectMe(event,"#")' class="text-size" data-bind="html: LoadTextNext"></div>
                             <div class="list-item-control">
                                 @*<a style="border-color:transparent; background-color:transparent" class="button" href="#"><i data-bind="text :notification, visible: notification() > 0" class="fa fa-comments"></i></a>*@
                                 <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>

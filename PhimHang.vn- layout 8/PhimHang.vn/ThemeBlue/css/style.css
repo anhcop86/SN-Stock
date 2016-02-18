@@ -2021,10 +2021,11 @@ a.avatar img:hover{
 */
 
 .less{
-    word-wrap: break-word;    
+    word-wrap: break-word;
+    white-space: normal;
     text-overflow: ellipsis;
     overflow: hidden;
-    height:55px;
+    height:106px;
 }
 
 .more{
@@ -2034,7 +2035,7 @@ a.avatar img:hover{
 .text-size{
     display: block;
     text-align: left;
-    padding-top: 10px;
+    top:-7px;    
     color: blue !important;
     cursor: pointer;
     text-decoration:none;

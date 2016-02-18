@@ -60,7 +60,7 @@ namespace PhimHang.Controllers
 
         [HttpPost, ActionName("Update")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(Boolean? typeBroker, int userid)
+        public async Task<ActionResult> Update(Boolean? typeBroker, int userid, int characterLimitInput)
         {
             var url = Request.Url.Query.Replace("?userid=" + userid + "&returnUrl=", "");
             using (dbcungphim = new db_cungphim_FrontEnd())
@@ -71,6 +71,21 @@ namespace PhimHang.Controllers
                     if (user.BrokerVIP != typeBroker)
                     {
                         user.BrokerVIP = typeBroker;
+                        try
+                        {
+                            dbcungphim.Entry(user).State = EntityState.Modified;
+                            await dbcungphim.SaveChangesAsync();
+                        }
+                        catch (Exception)
+                        {
+
+                            //throw;
+                        }
+
+                    }
+                    if (user.CharacterLimit != characterLimitInput)
+                    {
+                        user.CharacterLimit = characterLimitInput > 2000 ? 2000 : characterLimitInput;
                         try
                         {
                             dbcungphim.Entry(user).State = EntityState.Modified;
