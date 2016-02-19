@@ -530,6 +530,7 @@ self.detailPost = function (data, e) { // chi tiet post bao gom tra loi
                     dialog.dialog('close');
                 }
             })
+            window.history.pushState("", "", '/PostDetail?postid=' + postidCurrent);
         }
     }
 }

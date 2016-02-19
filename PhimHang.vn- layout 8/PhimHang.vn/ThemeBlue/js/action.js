@@ -8,7 +8,7 @@ $(document).ready(function () {
         modal: true,
         width: 650,        
         resizable: true,
-        autoOpen: false,
+        autoOpen: false,        
         open: function (event, ui) {
             $('body').css('overflow', 'hidden');
             //$(window).scrollTop(0);
@@ -28,6 +28,7 @@ $(document).ready(function () {
             $('#close_dialog').hide();
             $('#bg_dialog').hide();            
             $('body').css('overflow', 'auto');
+            window.history.pushState("", "", $('#HiddentCurrentURL').val());
         }
     });
 
@@ -416,10 +417,7 @@ $(document).ready(function () {
             })
         }
     }
-    
-    //loadNormalText = function (chartYN, chartUrl, message) {
-    //    return chartYN == 1 ? message + '<br/><img src=' + chartUrl + '?width=215&height=120&mode=crop>' : message;
-    //}
+        
     clickloadNextText = function (postid, ojecthtml) {
         var messageId = '#messageId' + postid;
         //console.log(messageId);
@@ -429,9 +427,7 @@ $(document).ready(function () {
         } else {            
             $(messageId).addClass("less");
             $(ojecthtml).html("Xem thêm");
-        }
-        //$(messageId).parent().prev().toggle();
-        //$(messageId).prev().toggle();
+        }        
         return false;
     }
 });

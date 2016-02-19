@@ -189,12 +189,12 @@ function viewModel() {
         self.posts.unshift(new Post(post));
     }
 
-    self.afterAdd = function (elem) {
-        if (checkLoadFirst == 1) {
-            //$(elem).hide().slideDown('slow');
-            $(elem).hide().slideDown('slow')
-        }
-    };
+    //self.afterAdd = function (elem) {
+    //    if (checkLoadFirst == 1) {
+    //        //$(elem).hide().slideDown('slow');
+    //        $(elem).hide().slideDown('slow')
+    //    }
+    //};
 
     commenthub.client.addReply = function (reply) {
         self.replys.unshift(new Reply(reply));
@@ -315,6 +315,7 @@ function viewModel() {
                         dialog.dialog('close');
                     }
                 })
+                window.history.pushState("", "", '/PostDetail?postid=' + postidCurrent);
             }
         }
     }

@@ -8,9 +8,10 @@
     <script src="~/Scripts/jquery.timeago.js"></script>
 
 }
-@*<input type="hidden" id="HiddentCureentUserId" value='@ViewBag.CureentUserId' />*@
-@*<input type="hidden" id="HiddentUserName" value='@ViewBag.UserName' />
+@*<input type="hidden" id="HiddentCureentUserId" value='@ViewBag.CureentUserId' />
+<input type="hidden" id="HiddentUserName" value='@ViewBag.UserName' />
 <input type="hidden" id="HiddentAvataEmage" value='@ViewBag.AvataEmage' />*@
+<input type="hidden" id="HiddentCurrentURL" value='@Request.Url.AbsoluteUri' />
 
 <div id="CommentForKoLoad">
     <div class="area-center">
@@ -29,7 +30,7 @@
                     <div class="status-control">
                         <div class="choose_file f-left">
                             <i class="fa fa-camera"></i>
-                            <input id="idchartFileUpload" name="Select File" accept="image/*" type="file" onchange="uploadPreview(files)" />
+                            <input id="idchartFileUpload" name="Select File" accept="image/*" type="file" />
                             <div class="chartImage">
                                 <a class="mb3-close chart-close" onclick="removeFileChart()" href="javascript:void(0)">x</a>
                                 <img class="mb3-chart-thumb" src="">
@@ -67,7 +68,7 @@
             <!--So bai phim moi-->
             <!---->
             @*onmouseover="$('.bg-white a:hover > a').css('color', '#328ac5');"*@
-            <div data-bind="foreach : {data: posts, afterAdd: afterAdd }">
+            <div data-bind="foreach : {data: posts }"> <!--foreach : {data: posts, afterAdd: afterAdd }-->
                 <div class="bg-white" >
                     <div class="list-item-status" tabindex="-1" data-bind=" click: function(data, event) { $parent.detailPost(data, event); }">
                         <div class="avata-genaral-size">

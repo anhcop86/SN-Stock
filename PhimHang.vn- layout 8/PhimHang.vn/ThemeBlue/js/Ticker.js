@@ -521,6 +521,7 @@ function viewModel() {
                         dialog.dialog('close');
                     }
                 })
+                window.history.pushState("", "", '/PostDetail?postid=' + postidCurrent);
             }
         }
     }
