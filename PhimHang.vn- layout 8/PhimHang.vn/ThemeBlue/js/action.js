@@ -95,12 +95,25 @@ $(document).ready(function () {
         //$('#top-status-box').addClass('open');
     });
     $('.status-cm').keyup(function () {
+        console.log($(this).height());
         if ($(this).val() != "") {
             $(this).parent().next('.status-control').find('.button-phim').removeClass('disable');
         }
         else
             $(this).parent().next('.status-control').find('.button-phim').addClass('disable');
     });
+    // auto adjust the height of
+    //$('#input-status-text').on('keyup', 'textarea', function (e) {
+        
+    //    if ($(this).height > 75) {
+            
+    //        //$(this).css('height', 'auto');
+    //        //$(this).height(this.scrollHeight);
+    //    }
+        
+    //});
+    //$('#input-status-text').find('textarea').keyup();
+    //
     $(document).click(function (evt) {
         if ($(evt.target).parents('.status-box').length == 0) {
             if ($("#status").val() == "") {
