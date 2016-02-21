@@ -20,12 +20,7 @@
 
         </tr>
      
-        <tr>
-            <td class="col1" style="vertical-align: top;"><label>Chi tiết:</label></td>
-            <td class="col2">
-                @Html.Raw(@Model.Message)
-            </td>
-        </tr>
+      
         <tr>
             <td class="col1"><label> Tổng bình luận:</label></td>
             <td class="col2">
@@ -36,6 +31,12 @@
     @using (Html.BeginForm())
             {
         @Html.AntiForgeryToken()
+          <tr>
+            <td class="col1" style="vertical-align: top;"><label>Chi tiết:</label></td>
+            <td class="col2">                
+                <textarea id="grumble" name="messegeInput">@Html.Raw( @Model.Message)</textarea>
+            </td>
+        </tr>
         <tr>
             <td class="col1"><label> Tổng LIKE:</label></td>
             <td class="col2">

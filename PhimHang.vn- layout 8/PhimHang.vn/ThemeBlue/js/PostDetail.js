@@ -176,12 +176,6 @@ function viewModel() {
         
 }
 
-ko.bindingHandlers.limitCharacters = {
-    update: function (element, valueAccessor, allBindingsAccessor, viewModel) {
-        element.value = element.value.substr(0, valueAccessor());
-        allBindingsAccessor().value(element.value.substr(0, valueAccessor()));
-    }
-};
 var vmPost = new viewModel();
 ko.applyBindings(vmPost, document.getElementById("CommentForKoLoad"));
 $.connection.hub.start({ transport: ['webSockets', 'serverSentEvents', 'longPolling'] })

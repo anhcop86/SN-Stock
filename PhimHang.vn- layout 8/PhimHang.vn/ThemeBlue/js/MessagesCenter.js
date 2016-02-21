@@ -277,12 +277,7 @@ function viewModel() {
     });
 }
 
-ko.bindingHandlers.limitCharacters = {
-    update: function (element, valueAccessor, allBindingsAccessor, viewModel) {
-        element.value = element.value.substr(0, valueAccessor());
-        allBindingsAccessor().value(element.value.substr(0, valueAccessor()));
-    }
-};
+
 //var chromeframe = Request.UserAgent != null && Request.UserAgent.Contains("chromeframe");
 //var transports = chromeframe ? "{ transport: 'longPolling' }" : "";
 var vmPost = new viewModel();

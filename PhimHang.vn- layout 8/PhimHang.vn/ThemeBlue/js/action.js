@@ -89,13 +89,17 @@ $(document).ready(function () {
             $(this).children('.listCP').hide();
         }
     });
-    $('#status, #comment-text').focusin(function () {
-        $(this).css('height', '75');
+    $('#status, #comment-text').focus(function () {
+        //console.log($(this).height());
+        if ($(this).height() < 67) {
+            $(this).css('height', '75');
+        }        
+        
         $(this).parent().next('.status-control').show();
         //$('#top-status-box').addClass('open');
     });
     $('.status-cm').keyup(function () {
-        console.log($(this).height());
+        //console.log($(this).height());
         if ($(this).val() != "") {
             $(this).parent().next('.status-control').find('.button-phim').removeClass('disable');
         }

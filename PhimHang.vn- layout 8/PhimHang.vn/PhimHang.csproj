@@ -700,6 +700,7 @@
     <Content Include="ThemeBlue\js\highstock.js" />
     <Content Include="ThemeBlue\js\jquery.dropdown.js" />
     <Content Include="ThemeBlue\js\CropImageUser.js" />
+    <Content Include="ThemeBlue\js\jquery\autosize.min.js" />
     <Content Include="ThemeBlue\js\jquery\jquery-ui.js" />
     <Content Include="ThemeBlue\js\jquery\jquery-ui.min.js" />
     <Content Include="ThemeBlue\js\jquery\jquery.js" />

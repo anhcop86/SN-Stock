@@ -20,7 +20,7 @@
             <div class="input-status">
                 <form id="frmStatus" name="frmStatus" method="GET">
                     <div id="input-status-text" class="input-status-text">
-                        <textarea data-bind="value : newMessage, valueUpdate : 'afterkeydown' , limitCharacters : 140" class="status-cm" name="status" rows="5" placeholder="$Cổ phiếu | &#64;Username" id="status" title="Viết bài ở đây, chú ý: thêm $MãChứngKhoán để bài viết được đưa lên toàn thị trường hoặc &#64;TênĐăngNhập để gửi tin nhắn cho người sử dụng khác." autocomplete="off" rows="5"></textarea>
+                        <textarea onkeyup="adjustHeight(this,75)" data-bind="value : newMessage, valueUpdate : 'afterkeydown'" class="status-cm" name="status" rows="5" placeholder="$Cổ phiếu | &#64;Username" id="status" title="Viết bài ở đây, chú ý: thêm $MãChứngKhoán để bài viết được đưa lên toàn thị trường hoặc &#64;TênĐăngNhập để gửi tin nhắn cho người sử dụng khác." autocomplete="off" rows="5"></textarea>
                     </div>
                     <div class="status-control">
                         @{
@@ -51,12 +51,12 @@
                                 }
                             else
                             {
-                                // must login
+                                // don't login
                                    
-                                    <div id="btnPhim" class="f-right">                                        
-                                        <a class="logoutbutton" href="/Account/Register?ReturnUrl=/Ticker/@ViewBag.StockCode">Đăng ký</a>
-                                        <a class="logoutbutton" href="/Account/Login?ReturnUrl=/Ticker/@ViewBag.StockCode">Đăng nhập</a>
-                                    </div>
+                                <div id="btnPhim" class="f-right">                                        
+                                    <a class="logoutbutton" href="/Account/Register?ReturnUrl=/Ticker/@ViewBag.StockCode">Đăng ký</a>
+                                    <a class="logoutbutton" href="/Account/Login?ReturnUrl=/Ticker/@ViewBag.StockCode">Đăng nhập</a>
+                                </div>
                             }
                         }
                     </div>
@@ -215,7 +215,7 @@
                     <div id="input-comment" class="input-status">
                         <form name="frmComment">                     
                             <div class="input-status-text">
-                                <textarea data-bind="value : newReply, valueUpdate : 'afterkeydown' , limitCharacters : 140" class="status-cm" id="comment-text" name="comment" rows="5" placeholder="Nhập trả lời ở đây" title="Trả lời bài viết" autocomplete="off"></textarea>
+                                <textarea data-bind="value : newReply, valueUpdate : 'afterkeydown'" class="status-cm" id="comment-text" name="comment" rows="5" placeholder="Nhập trả lời ở đây" title="Trả lời bài viết" autocomplete="off"></textarea>
                             </div>
                             <div class="status-control">
                                 @{

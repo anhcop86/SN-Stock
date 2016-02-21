@@ -641,6 +641,7 @@ a.follow-button-mini:hover{
     padding-top: 5px;
     width: 99%;
     max-width: 99%;
+    overflow:hidden;
 }
 
 .input-status-text > textarea::-webkit-input-placeholder {  color: #328AC5;}
