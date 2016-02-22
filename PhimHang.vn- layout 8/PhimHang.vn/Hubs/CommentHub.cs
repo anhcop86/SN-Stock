@@ -47,7 +47,7 @@ namespace PhimHang.Hubs
                 string messagedefault = "";
                 string stockTag = ""; // dinh dang stock|stock|stock de tim co phieu lien quan
                 messagedefault = post.Message;
-                List<string> listMessege = post.Message.Split(' ').ToList();
+                string[] listMessege = post.Message.Replace("\n", " <br> ").Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                 string messageFromatHTML = "";
                 foreach (var item in listMessege)
                 {
@@ -137,7 +137,7 @@ namespace PhimHang.Hubs
 
                 #region luu vao db
                 /* add stockrelate */
-                post.Message = AppHelper.FilteringWord(messageFromatHTML).Replace("\n", "<br>"); // Filteringword lọc từ khóa bậy
+                post.Message = AppHelper.FilteringWord(messageFromatHTML); // Filteringword lọc từ khóa bậy
                 post.PostedBy = userlogin.Id;
                 post.PostedDate = DateTime.Now;
                 post.NhanDinh = nhanDinh;
@@ -221,7 +221,7 @@ namespace PhimHang.Hubs
                 #region format message
                 string messagedefault = "";
                 messagedefault = reply.Message;
-                List<string> listMessege = reply.Message.Split(' ').ToList();
+                string[] listMessege = reply.Message.Split(new char[] { ' ', '\n' }, StringSplitOptions.RemoveEmptyEntries);
                 string messageFromatHTML = "";
                 foreach (var item in listMessege)
                 {

@@ -320,7 +320,7 @@ function viewModel() {
         }
     }
 
-
+    // khong lam gi vi chua dang nhap, dang nhap roi se vao my profile
     self.enablePhimHang = ko.computed(function () {
         return self.newMessage().length <= 200 && self.newMessage().length >= 6 && self.newMessage().indexOf('<', 0) == -1;
     });
@@ -329,6 +329,8 @@ function viewModel() {
         var countNum = 200 - self.newMessage().length;
         return countNum;
     });
+
+    // khong lam gi vi chua dang nhap, dang nhap roi se vao my profile
     self.enablePhimHangReply = ko.computed(function () {
         return self.newReply().length <= 140 && self.newReply().length >= 6 && self.newReply().indexOf('<', 0) == -1;
     });

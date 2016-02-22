@@ -84,7 +84,8 @@ namespace PhimHang.Controllers
 
         [HttpPost, ActionName("Update")] // cap nhat like
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Update(long postid, int? sumLike, string StockCode)
+        [ValidateInput(false)]
+        public async Task<ActionResult> Update(long postid, int? sumLike, string StockCode, string messegeInput)
         {
             var url = Request.Url.Query.Replace("?postid=" + postid + "&returnUrl=", "");
             using (dbcungphim = new db_cungphim_FrontEnd())
@@ -92,13 +93,39 @@ namespace PhimHang.Controllers
                 Post post = await dbcungphim.Posts.FindAsync(postid);
                 if (post != null)
                 {
-                    if (post.SumLike != sumLike || !post.StockPrimary.Equals(StockCode))
+                    if (post.SumLike != sumLike)
                     {
                         try
                         {
                             //post.StockPrimary = StockCode;
-                            post.SumLike = (sumLike == null ? 0 : (int)sumLike);
+                            post.SumLike = (sumLike == null ? 0 : (int)sumLike);                            
+                            dbcungphim.Entry(post).State = EntityState.Modified;
+                            await dbcungphim.SaveChangesAsync();
+                        }
+                        catch (Exception)
+                        {
+                            //throw;
+                        }
+                    }
+                    if (!post.StockPrimary.Equals(StockCode))
+                    {
+                        try
+                        {
+                            //post.StockPrimary = StockCode;                            
                             post.StockPrimary = (string.IsNullOrEmpty(StockCode) ? "" : StockCode);
+                            dbcungphim.Entry(post).State = EntityState.Modified;
+                            await dbcungphim.SaveChangesAsync();
+                        }
+                        catch (Exception)
+                        {
+                            //throw;
+                        }
+                    }
+                    if (!post.Message.Equals(messegeInput))
+                    {
+                        try
+                        {                            
+                            post.Message = string.IsNullOrEmpty(messegeInput) ? "" : messegeInput;
                             dbcungphim.Entry(post).State = EntityState.Modified;
                             await dbcungphim.SaveChangesAsync();
                         }

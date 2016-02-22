@@ -204,6 +204,7 @@ self.addPost = function () { // them post
     commenthub.server.addPost({ "Message": self.newMessage() }, nhanDinh, charImage, $('#HiddentShortUserId').val())// Gửi về trang userpage chính nó
         .done(function () {
             showNotification('Bạn đã đăng bài thành công!');
+            $('#status').css('height', '75');
         })
         .fail(function (err) {
             self
@@ -555,11 +556,12 @@ var limitedChar =  $("#HiddentCharacterLimit").val();
         self.messageCount(countNum);
         return countNum;
     });
+    var limitedCharReply = 200;
     self.enablePhimHangReply = ko.computed(function () {
-        return 140 - self.replyCount() <= 140 && 140 - self.replyCount() > 6 && self.newReply().indexOf('<', 0) == -1;
+        return limitedCharReply - self.replyCount() <= limitedCharReply && limitedCharReply - self.replyCount() > 6 && self.newReply().indexOf('<', 0) == -1;
     });
     self.countReply = ko.computed(function () {
-        var countNum = 140;
+        var countNum = limitedCharReply;
         var arrayMessage = self.newReply().split(' ');
         arrayMessage.forEach(function (item) {
             if (item.indexOf('http') != -1) { // tim thay http link
