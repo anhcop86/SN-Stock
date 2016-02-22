@@ -39,6 +39,7 @@ namespace PhimHang.Hubs
                                  select new { ul.Id, ul.BrokerVIP, ul.UserNameCopy, ul.AvataImage, ul.DisableUser }).FirstOrDefaultAsync();
                 if (userlogin == null || userlogin.DisableUser == true) // user khong tim thay hoac bi disable
                 {
+                    await Clients.Caller.statusUser(0);//0: lockuser
                     return;
                 }
                 #endregion
@@ -100,7 +101,7 @@ namespace PhimHang.Hubs
             
                 var listStock = new List<string>();
                 var listUsersendMessege = new List<string>();
-                List<string> listMessegeSplit = messagedefault.Split(' ').ToList().FindAll(p => p.Contains("$") || p.Contains("@"));
+                List<string> listMessegeSplit = messagedefault.Replace("\n", " ").Split(' ').ToList().FindAll(p => p.Contains("$") || p.Contains("@"));
 
                 #endregion
 
@@ -112,11 +113,7 @@ namespace PhimHang.Hubs
                     {
                         string stockcode = item.RemoveSpecialString().ToUpper();
                         if (item.IndexOf("$", 0, 1) != -1 && !listStock.Contains(stockcode) && StockRealTimeTicker.CheckExistStock(stockcode)) // find the stock with $
-                        {
-                            //StockRelate stockRelateLasts = new StockRelate();
-                            //stockRelateLasts.PostId = post.PostId;
-                            //stockRelateLasts.StockCodeRelate = stockcode;
-                            //db.StockRelates.Add(stockRelateLasts); // add to database chieu nay xu
+                        {                            
                             stockTag += stockcode + "|";
                             listStock.Add(stockcode); // group of hub for client 
                         }
@@ -182,6 +179,10 @@ namespace PhimHang.Hubs
                 {
                     await Clients.All.addPostGlobal(ret); // add message vào profile va home    
                 }
+                //else
+                //{
+                //    await Clients.Caller.addPostForUser();
+                //}
 
                 if (userpageid > 0) // gửi cho cùng 1 nhóm đag mở cùng 1 user page
                 {
