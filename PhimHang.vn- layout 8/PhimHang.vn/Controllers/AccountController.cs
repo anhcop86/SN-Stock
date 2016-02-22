@@ -123,7 +123,7 @@ namespace PhimHang.Controllers
                     {
                         
                         ViewBag.Info = 1;
-                        ViewBag.Status = "Email được gửi thành công, vui lòng đăng nhập hộp mail để nhận được link đổi mật khẩu";
+                        ViewBag.Status = "Email được gửi thành công, vui lòng đăng nhập Inbox hoặc Spam mail để nhận được link đổi mật khẩu";
 
                         var checkReset = await db.UserLogExtents.FirstOrDefaultAsync(ule => ule.Username == user.UserNameCopy);
                         if (checkReset != null)
