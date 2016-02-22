@@ -36,8 +36,8 @@ namespace PhimHang.Hubs
                 //var userlogin = db.UserLogins.FirstOrDefault(ul => ul.UserNameCopy == Context.User.Identity.Name);
                 var userlogin = await (from ul in db.UserLogins
                                  where ul.UserNameCopy == Context.User.Identity.Name
-                                 select new { ul.Id, ul.BrokerVIP, ul.UserNameCopy, ul.AvataImage }).FirstOrDefaultAsync();
-                if (userlogin == null)
+                                 select new { ul.Id, ul.BrokerVIP, ul.UserNameCopy, ul.AvataImage, ul.DisableUser }).FirstOrDefaultAsync();
+                if (userlogin == null || userlogin.DisableUser == true) // user khong tim thay hoac bi disable
                 {
                     return;
                 }

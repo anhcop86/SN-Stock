@@ -252,6 +252,7 @@
           <Property Name="IdFacebook" Type="varchar" MaxLength="32" />
           <Property Name="AvatarSyn" Type="bit" />
           <Property Name="CharacterLimit" Type="int" Nullable="false" />
+          <Property Name="DisableUser" Type="bit" />
         </EntityType>
         <EntityType Name="UserRelate">
           <Key>
@@ -1070,6 +1071,7 @@
           <NavigationProperty Name="UserRelates" Relationship="PHDBContext.FK_UserRelate_UserLogins" FromRole="UserLogin" ToRole="UserRelate" />
           <NavigationProperty Name="UserViewLastests" Relationship="PHDBContext.FK_UserViewLastest_UserLogins" FromRole="UserLogin" ToRole="UserViewLastest" />
           <NavigationProperty Name="UserViewLastests1" Relationship="PHDBContext.FK_UserViewLastest_UserLogins1" FromRole="UserLogin" ToRole="UserViewLastest" />
+          <Property Name="DisableUser" Type="Boolean" />
         </EntityType>
         <EntityType Name="UserRelate">
           <Key>
@@ -1590,6 +1592,7 @@
           <EntitySetMapping Name="UserLogins">
             <EntityTypeMapping TypeName="PHDBContext.UserLogin">
               <MappingFragment StoreEntitySet="UserLogins">
+                <ScalarProperty Name="DisableUser" ColumnName="DisableUser" />
                 <ScalarProperty Name="CharacterLimit" ColumnName="CharacterLimit" />
                 <ScalarProperty Name="AvatarSyn" ColumnName="AvatarSyn" />
                 <ScalarProperty Name="IdFacebook" ColumnName="IdFacebook" />

@@ -54,6 +54,7 @@ namespace PhimHang.Models
         public string IdFacebook { get; set; }
         public Nullable<bool> AvatarSyn { get; set; }
         public int CharacterLimit { get; set; }
+        public Nullable<bool> DisableUser { get; set; }
     
         public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
         public virtual ICollection<FollowStock> FollowStocks { get; set; }

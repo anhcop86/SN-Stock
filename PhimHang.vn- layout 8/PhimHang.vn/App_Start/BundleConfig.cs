@@ -100,7 +100,7 @@ namespace PhimHang
                              "~/ThemeBlue/js/AccountJs.js"));
             #endregion
 
-            //BundleTable.EnableOptimizations = true;
+            BundleTable.EnableOptimizations = true;
         }
     }
 }

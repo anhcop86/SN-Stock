@@ -72,6 +72,8 @@ namespace PhimHang.Models
         public Nullable<bool> AvatarSyn { get; set; }
 
         public int CharacterLimit { get; set; }
+
+        public Nullable<bool> DisableUser { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
