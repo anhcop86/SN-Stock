@@ -202,12 +202,20 @@ self.addPost = function () { // them post
     }
 
     commenthub.server.addPost({ "Message": self.newMessage() }, nhanDinh, charImage, $('#HiddentShortUserId').val())// Gửi về trang userpage chính nó
-        .done(function () {
-            showNotification('Bạn đã đăng bài thành công!');
+        .done(function (status) {
+            if (status == "L") {
+                showNotification("<b style='color:red'>User tạm thời đang bị khóa</b>");
+            }
+            else if (status == "O") {
+                showNotification('Bạn chưa thêm $MãCổPhiếu, bài viết này chỉ nằm ở trang cá nhân.');
+            }
+            else {
+                showNotification('Bạn đã đăng bài thành công!');
+            }
             $('#status').css('height', '75');
         })
-        .fail(function () {
-            alert(0);
+        .fail(function (exception) {
+            //alert(exception);
             //self.error(0);
         });
     checkpost = 'Y';
@@ -218,9 +226,14 @@ self.addPost = function () { // them post
 self.addReply = function () { // them tra loi
     $('#btAddReply').attr("disabled", true); // disble ngay khong de click them
     commenthub.server.addReply({ "Message": self.newReply(), "PostedBy": postidCurrent })
-        .done(function () {
-            showNotification('Bạn đã trả lời thành công!');
-        })
+        .done(function (status) {
+                if (status == "L") {
+                    showNotification("<b style='color:red'>User tạm thời đang bị khóa</b>");
+                }
+                else {
+                    showNotification('Trả lời bài viết thành công!');
+                }
+            })
         .fail(function (err) {
             self.error(err);
         });

@@ -201,8 +201,16 @@ function viewModel() {
         }
 
         commenthub.server.addPost({ "Message": self.newMessage() }, nhanDinh, charImage, $('#HiddentUserId').val())
-            .done(function () {
-                showNotification('Bạn đã đăng bài thành công!');
+            .done(function (status) {
+                if (status == "L") {
+                    showNotification("<b style='color:red'>User tạm thời đang bị khóa</b>");
+                }
+                else if (status == "O") {
+                    showNotification('Bạn chưa thêm $MãCổPhiếu, bài viết này chỉ nằm ở trang cá nhân.');
+                }
+                else {
+                    showNotification('Bạn đã đăng bài thành công!');
+                }
                 $('#status').css('height', '75');
             })
             .fail(function (err) {
@@ -218,8 +226,13 @@ function viewModel() {
     self.addReply = function () { // them tra loi
         $('#btAddReply').attr("disabled", true); // disble ngay khong de click them
         commenthub.server.addReply({ "Message": self.newReply(), "PostedBy": postidCurrent })
-                .done(function () {
-                    showNotification('Bạn đã trả lời thành công!');
+                .done(function (status) {
+                    if (status == "L") {
+                        showNotification("<b style='color:red'>User tạm thời đang bị khóa</b>");
+                    }
+                    else {
+                        showNotification('Trả lời bài viết thành công!');
+                    }
                 })
             .fail(function (err) {
                 self.error(err);

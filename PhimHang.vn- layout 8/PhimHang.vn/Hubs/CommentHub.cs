@@ -28,11 +28,12 @@ namespace PhimHang.Hubs
         testEntities db = new testEntities();
         TinyURLEntities dbtinyURL = new TinyURLEntities();
         [Authorize]
-        public async Task AddPost(Post post,  byte nhanDinh, string chartImage, long? userpageid)
+        public async Task<string> AddPost(Post post,  byte nhanDinh, string chartImage, long? userpageid)
         {
             using (testEntities db = new testEntities())
             {
                 #region user login
+                string resultString = string.Empty;
                 //var userlogin = db.UserLogins.FirstOrDefault(ul => ul.UserNameCopy == Context.User.Identity.Name);
                 var userlogin = await (from ul in db.UserLogins
                                  where ul.UserNameCopy == Context.User.Identity.Name
@@ -40,7 +41,7 @@ namespace PhimHang.Hubs
                 if (userlogin == null || userlogin.DisableUser == true) // user khong tim thay hoac bi disable
                 {
                     //await Clients.Caller.statusUser(0);//0: lockuser
-                    throw new ApplicationException("false");                    
+                    return resultString = "L"; // user is disable
                 }
                 #endregion
 
@@ -178,11 +179,12 @@ namespace PhimHang.Hubs
                 if (listStock.Count > 0)
                 {
                     await Clients.All.addPostGlobal(ret); // add message vào profile va home    
+                    resultString = "S"; // post thanh cong len trang home va profile
                 }
-                //else
-                //{
-                //    await Clients.Caller.addPostForUser();
-                //}
+                else
+                {
+                    resultString = "O"; // chi post o trang ca nhan
+                }
 
                 if (userpageid > 0) // gửi cho cùng 1 nhóm đag mở cùng 1 user page
                 {
@@ -195,24 +197,25 @@ namespace PhimHang.Hubs
                 {
                     await Clients.Users(listUsersendMessege).MessegeOfUserPost(1); // gui tin bao cho user nao có @
                 }
-
+                return resultString;
                 #endregion
             }
         }
         [Authorize]
-        public async Task AddReply(PostComment reply)
+        public async Task<string> AddReply(PostComment reply)
         {
 
             using (testEntities db = new testEntities())
             {
                 #region user login
+                //string resultString = string.Empty;
                 //var userlogin = db.UserLogins.FirstOrDefault(ul => ul.UserNameCopy == Context.User.Identity.Name);
                 var userlogin = await (from ul in db.UserLogins
                                        where ul.UserNameCopy == Context.User.Identity.Name
                                        select new { ul.Id, ul.BrokerVIP, ul.UserNameCopy, ul.AvataImage, ul.DisableUser }).FirstOrDefaultAsync();
                 if (userlogin == null || userlogin.DisableUser == true)
                 {
-                    return;
+                    return "L"; // user is disable
                 }
                 
                 reply.CommentBy = userlogin.Id;
@@ -368,6 +371,7 @@ namespace PhimHang.Hubs
                 }
                 await Clients.All.newReplyNoti(reply.PostedBy); // +1 cho ai đang mở bài post đó
                 #endregion
+                return "S";
             }
         }
 
