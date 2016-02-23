@@ -71,7 +71,7 @@
         <tr>
             <td class="col1"><label> Môi giới VIP:</label></td>
             <td class="col2">
-                @Html.DropDownList("typeBroker", @ViewBag.listTypeBroker as SelectList, new { @name = "typeBroker" })
+                @Html.DropDownList("BrokerVIP", @ViewBag.listTypeBroker as SelectList, new { @name = "brokerVIP" })
             </td>
 
         </tr>
@@ -79,6 +79,13 @@
             <td class="col1"><label> Giới hạn ký tự:</label></td>
             <td class="col2">
                 <input type="text" name="characterLimitInput" value="@Model.CharacterLimit" maxlength="4" />
+            </td>
+
+        </tr>
+         <tr>
+            <td class="col1"><label> Khóa user:</label></td>
+            <td class="col2">
+                @Html.DropDownList("DisableUser", @ViewBag.setLockUser as SelectList, new { @name = "disableUser" })
             </td>
 
         </tr>

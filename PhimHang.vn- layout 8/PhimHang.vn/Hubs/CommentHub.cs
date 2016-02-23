@@ -39,8 +39,8 @@ namespace PhimHang.Hubs
                                  select new { ul.Id, ul.BrokerVIP, ul.UserNameCopy, ul.AvataImage, ul.DisableUser }).FirstOrDefaultAsync();
                 if (userlogin == null || userlogin.DisableUser == true) // user khong tim thay hoac bi disable
                 {
-                    await Clients.Caller.statusUser(0);//0: lockuser
-                    return;
+                    //await Clients.Caller.statusUser(0);//0: lockuser
+                    throw new ApplicationException("false");                    
                 }
                 #endregion
 
@@ -52,7 +52,7 @@ namespace PhimHang.Hubs
                 string messageFromatHTML = "";
                 foreach (var item in listMessege)
                 {
-                    if (item.Length > 0 && item.Length < 2000)
+                    if (item.Length > 0 && item.Length < 20)
                     {
                         if (item.IndexOf("$", 0, 1) != -1) // tag ma co phieu
                         {
@@ -209,8 +209,8 @@ namespace PhimHang.Hubs
                 //var userlogin = db.UserLogins.FirstOrDefault(ul => ul.UserNameCopy == Context.User.Identity.Name);
                 var userlogin = await (from ul in db.UserLogins
                                        where ul.UserNameCopy == Context.User.Identity.Name
-                                       select new { ul.Id, ul.BrokerVIP, ul.UserNameCopy, ul.AvataImage }).FirstOrDefaultAsync();
-                if (userlogin == null)
+                                       select new { ul.Id, ul.BrokerVIP, ul.UserNameCopy, ul.AvataImage, ul.DisableUser }).FirstOrDefaultAsync();
+                if (userlogin == null || userlogin.DisableUser == true)
                 {
                     return;
                 }
@@ -226,7 +226,7 @@ namespace PhimHang.Hubs
                 string messageFromatHTML = "";
                 foreach (var item in listMessege)
                 {
-                    if (item.Length > 0 && item.Length < 2000)
+                    if (item.Length > 0 && item.Length < 20)
                     {
                         if (item.IndexOf("$", 0, 1) != -1)
                         {

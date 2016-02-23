@@ -36,6 +36,7 @@
                         <th>Tên</th>
                         <th>DP Chuyên nghiệp?</th>
                         <th>Ngày tạo</th>
+                        <th>Disable</th>
                         <th>Update</th>                        
                         <th></th>
                     </tr>
@@ -56,6 +57,9 @@
                             
                             <td>
                                 @item.CreatedDate.ToString("dd/MM/yyyy HH:mm:ss")
+                            </td>
+                            <td>
+                                @item.LockAccount
                             </td>
                             <td style="font-weight: bold; color: #328AC5">
                                 <a href="/User/update?userid=@item.Id&returnUrl=@ViewBag.linkAbsolutePath">update</a>

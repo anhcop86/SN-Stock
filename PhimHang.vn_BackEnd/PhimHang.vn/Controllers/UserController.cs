@@ -37,7 +37,7 @@ namespace PhimHang.Controllers
                             CreatedDate = u.CreatedDate,
                             Name = u.FullName,
                             BrokerType = (u.BrokerVIP == true ? "YES" : "NO"),
-                            LockAccount = (u.LockAccount == 1 ? "YES" : "NO")
+                            LockAccount = (u.DisableUser == true ? "YES" : "NO")
                         };
 
 
@@ -60,7 +60,7 @@ namespace PhimHang.Controllers
 
         [HttpPost, ActionName("Update")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Update(Boolean? typeBroker, int userid, int characterLimitInput)
+        public async Task<ActionResult> Update(Boolean? brokerVIP, int userid, int characterLimitInput, bool? disableUser)
         {
             var url = Request.Url.Query.Replace("?userid=" + userid + "&returnUrl=", "");
             using (dbcungphim = new db_cungphim_FrontEnd())
@@ -68,9 +68,9 @@ namespace PhimHang.Controllers
                 var user = await dbcungphim.UserLogins.FindAsync(userid);
                 if (user != null)
                 {
-                    if (user.BrokerVIP != typeBroker)
+                    if (user.BrokerVIP != brokerVIP)
                     {
-                        user.BrokerVIP = typeBroker;
+                        user.BrokerVIP = brokerVIP;
                         try
                         {
                             dbcungphim.Entry(user).State = EntityState.Modified;
@@ -86,6 +86,21 @@ namespace PhimHang.Controllers
                     if (user.CharacterLimit != characterLimitInput)
                     {
                         user.CharacterLimit = characterLimitInput > 6000 ? 6000 : characterLimitInput;
+                        try
+                        {
+                            dbcungphim.Entry(user).State = EntityState.Modified;
+                            await dbcungphim.SaveChangesAsync();
+                        }
+                        catch (Exception)
+                        {
+
+                            //throw;
+                        }
+
+                    }
+                    if (user.DisableUser != disableUser)
+                    {
+                        user.DisableUser = disableUser;
                         try
                         {
                             dbcungphim.Entry(user).State = EntityState.Modified;
@@ -121,7 +136,9 @@ namespace PhimHang.Controllers
                 new {Id = true , Name = "True"}
             };
 
-            ViewBag.listTypeBroker = new SelectList(setLockUser, "Id", "Name", user.BrokerVIP);
+
+            ViewBag.listTypeBroker = new SelectList(setBrokerPro, "Id", "Name", user.BrokerVIP);
+            ViewBag.setLockUser = new SelectList(setLockUser, "Id", "Name", user.DisableUser);
         }
     }
 

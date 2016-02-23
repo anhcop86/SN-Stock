@@ -206,9 +206,9 @@ self.addPost = function () { // them post
             showNotification('Bạn đã đăng bài thành công!');
             $('#status').css('height', '75');
         })
-        .fail(function (err) {
-            self
-                .error(err);
+        .fail(function () {
+            alert(0);
+            //self.error(0);
         });
     checkpost = 'Y';
     self.newMessage('');//
