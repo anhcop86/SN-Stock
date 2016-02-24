@@ -94,14 +94,6 @@ function setDefaultAfterPost() {
     $('.chartImage').hide();
     $('.mb3-chart-thumb').removeAttr("src");
 }
-function getTimeAgo(varDate) {
-    if (varDate) {
-        return $.timeago(varDate);
-    }
-    else {
-        return '';
-    }
-}
 
 function Reply(data) {
     var self = this;
@@ -123,6 +115,7 @@ function Post(data) {
     self.PostedByName = data.PostedByName || "";
     self.PostedByAvatar = data.PostedByAvatar + '?width=50&height=50&mode=crop' || "";
     self.PostedDate = getTimeAgo(data.PostedDate);
+    self.PostedDateOri = convertDateFormat(data.PostedDate);
     self.StockPrimary = data.StockPrimary;    
     self.Stm = (data.Stm === 1 ? "<span class='divBear-cm'>Giảm</span>" : data.Stm === 2 ? "<span class='divBull-cm'>Tăng</span>" : "") || "";
     self.ChartYN = data.ChartYN || 0;
@@ -133,6 +126,7 @@ function Post(data) {
     self.SumReply = ko.observable(data.SumReply);
     self.BrkVip = (data.BrkVip == 1 ? '<i title="Đã xác thực - dân phím chuyên nghiệp" class="fa  fa-check-circle"></i>' : "") || "";
     self.LoadTextNext = '';
+    self.Pri = (data.Pri > 0 ? '<img src="/images/pintab.png" />' : "") || "";
 }
 var commenthub = $.connection.CommentHub;
 function viewModel() {
@@ -141,7 +135,7 @@ function viewModel() {
     self.replys = ko.observableArray(); // danh mục reply        
     self.newMessage = ko.observable(''); // noi dung tin post
     self.newReply = ko.observable(''); // noi dung tin reply
-    self.error = ko.observable();
+    //self.error = ko.observable();
     self.newPosts = ko.observableArray(); // biến tạm để luu post moi, sau khi click thi moi bung ra
     self.postDetail = ko.observableArray();
     self.messageCount = ko.observable(0); // đếm số lượng ký tự user nhập vào textarea
@@ -156,7 +150,7 @@ function viewModel() {
     
 
 self.init = function () {
-    self.error(null);
+    //self.error(null);
     // khong cần join room
     // lay danh muc thuong
     $.ajax({
@@ -190,7 +184,7 @@ loadCSSless = function (heightDiv, data) {
 
 /////////////////////////////////////////////////////
 self.addPost = function () { // them post
-    self.error(null);
+    //self.error(null);
     $('#btAddPost').attr("disabled", true); // disble ngay khong de click them
     var nhanDinh = $("input:radio[name='BullBear']:checked").val();
     if (nhanDinh == null) {
@@ -235,7 +229,7 @@ self.addReply = function () { // them tra loi
                 }
             })
         .fail(function (err) {
-            self.error(err);
+            //self.error(err);
         });
     checkreply = 'Y';
     self.newReply('');
@@ -450,7 +444,7 @@ self.AddLike = function (data, e) {
     e.stopPropagation(); // stop popup
     commenthub.server.addNewLike(data.PostId)
         .fail(function (err) {
-            self.error(err);
+            //self.error(err);
         });
 
 };

@@ -11,14 +11,7 @@ function setDefaultAfterPost() {
     $('.chartImage').hide();
     $('.mb3-chart-thumb').removeAttr("src");
 }
-function getTimeAgo(varDate) {
-    if (varDate) {
-        return $.timeago(varDate);
-    }
-    else {
-        return '';
-    }
-}
+
 function Reply(data) {
     var self = this;
     data = data || {};
@@ -81,7 +74,7 @@ function viewModel() {
                     self.replys.push(element);
                 });
                 // load post
-                $("#idPostedDateDetail").html(getTimeAgo($('#HiddentPostedDate').val()));
+                $("#idPostedDateDetail").html(getTimeAgo($('#HiddentPostedDate').val())).attr('data-title', $('#HiddentPostedDate').val());
                 $("#idPostNameDetail").html('<a style="cursor:pointer" href="/' + $('#HiddentPostedByName').val() + '">' + $('#HiddentPostedByName').val() + '</a>' );
                 $("#idImgPostDetail").attr('src', $('#HiddentPostedByAvatar').val() + '?width=50&height=50&mode=crop');
                 //$("#idStmDetail").html(data.Stm);

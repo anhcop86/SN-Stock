@@ -95,14 +95,7 @@ function setDefaultAfterPost() {
     $('.chartImage').hide();
     $('.mb3-chart-thumb').removeAttr("src");
 }
-function getTimeAgo(varDate) {
-    if (varDate) {
-        return $.timeago(varDate);
-    }
-    else {
-        return '';
-    }
-}
+
 function Reply(data) {
     var self = this;
     data = data || {};
@@ -122,6 +115,7 @@ function Post(data) {
     self.PostedByName = data.PostedByName || "";
     self.PostedByAvatar = data.PostedByAvatar + '?width=50&height=50&mode=crop' || "";
     self.PostedDate = getTimeAgo(data.PostedDate);
+    self.PostedDateOri = convertDateFormat(data.PostedDate);
     self.StockPrimary = data.StockPrimary;    
     self.Stm = (data.Stm === 1 ? "<span class='divBear-cm'>Giảm</span>" : data.Stm === 2 ? "<span class='divBull-cm'>Tăng</span>" : "") || "";
     self.ChartYN = data.ChartYN || 0;

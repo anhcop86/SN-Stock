@@ -102,7 +102,7 @@
                             <img data-bind="attr: { src: PostedByAvatar }" class="img-rounded" alt="avatar">
                         </div>
                         <div class="list-item-detail">
-                            <div class="list-item-date" data-bind="text : PostedDate"></div>
+                            <div class="list-item-date" data-bind="text : PostedDate, attr: { 'data-title' : PostedDateOri}"></div>
                             <div class="list-item-username">
                                 <a style="cursor:pointer" onclick='selectMe(event,"#")' data-bind="attr : { href : '/' + PostedByName }, text : PostedByName"></a>
                                 <span class="itemVerify" data-bind="html: BrkVip"></span>
@@ -120,7 +120,7 @@
                                 <a class="button btn-answer" target="_self" onclick="window.open(this.href, 'chia sẻ lên facebook', 'left=100,top=100,width=600,height=400,toolbar=1,resizable=0'); selectMe(event, '#'); return false;" data-bind="attr : { href : 'https://www.facebook.com/sharer/sharer.php?u=@ViewBag.AbsolutePathHostName/PostDetail?postid='+ PostId +'&display=popup&ref=plugin' }" title="Chia sẻ lên facebook">Chia sẻ</a>
                                 <a class="button" href="#" style="cursor:text" data-bind="visible: SumReply() > 0"><i class="fa fa-comments" data-bind=" text : SumReply"></i></a>                                
                                 <span class="likeAndPin">
-                                    <a class="button" href="#" title="Pin"><img src="/images/pintab.png" /></a> 
+                                        <a class="button" href="#" title="Pin"><img src="/images/pintab.png" /></a> 
                                         <span data-bind="text : SumLike, visible : SumLike() > 0 "></span>
                                         <button class="fa fa-thumbs-o-up" data-bind=" click : function(data, event) { $parent.AddLike(data, event) ;   } , attr : {id : 'PostId' + PostId} , enable : DiableLike"></button>
                                         <!--click like thi doi class thanh fa fa-thumbs-o-up-->
@@ -154,7 +154,7 @@
                             <img data-bind="attr: { src: PostedByAvatar }" class="img-rounded" alt="avatar">
                         </div>
                         <div class="list-item-detail">
-                            <div class="list-item-date" data-bind="text : PostedDate"></div>
+                            <div class="list-item-date" data-bind="text : PostedDate, attr: { 'data-title' : PostedDateOri}"></div>
                             <div class="list-item-username">
                                 <a style="cursor:pointer" onclick='selectMe(event,"#")' data-bind="attr : { href : '/' + PostedByName  }, text : PostedByName"></a>
                                 <span class="itemVerify" data-bind="html: BrkVip"></span>

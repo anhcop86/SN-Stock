@@ -33,10 +33,11 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Ngày</th>
+                        <th width="100px">Ngày</th>
                         <th>ID</th>
                         <th>PostBy</th>
                         <th>Mã CP</th>
+                        <th>Ưu tiên</th>
                         <th>LIKE</th>
                         <th>Chi Tiết</th>
                         <th>Update</th>
@@ -60,6 +61,9 @@
                             </td>
                             <td style="max-width:150px">
                                 @Html.DisplayFor(modelItem => item.StockPrimary)
+                            </td>
+                            <td >
+                                @item.Priority
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.SumLike)

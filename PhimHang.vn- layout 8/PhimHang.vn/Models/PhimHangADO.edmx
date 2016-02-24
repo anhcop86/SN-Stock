@@ -150,6 +150,7 @@
           <Property Name="ChartYN" Type="bit" />
           <Property Name="SumLike" Type="int" />
           <Property Name="SumReply" Type="int" Nullable="false" />
+          <Property Name="Priority" Type="tinyint" />
         </EntityType>
         <EntityType Name="Settings">
           <Key>
@@ -953,6 +954,7 @@
           <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_Posts_UserLogins" FromRole="Post" ToRole="UserLogin" />
           <NavigationProperty Name="StockRelates" Relationship="PHDBContext.FK_StockRelate_Posts" FromRole="Post" ToRole="StockRelate" />
           <NavigationProperty Name="UserRelates" Relationship="PHDBContext.FK_UserRelate_Posts" FromRole="Post" ToRole="UserRelate" />
+          <Property Name="Priority" Type="Byte" />
         </EntityType>
         <EntityType Name="Setting">
           <Key>
@@ -1495,6 +1497,7 @@
           <EntitySetMapping Name="Posts">
             <EntityTypeMapping TypeName="PHDBContext.Post">
               <MappingFragment StoreEntitySet="Posts">
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
                 <ScalarProperty Name="SumReply" ColumnName="SumReply" />
                 <ScalarProperty Name="SumLike" ColumnName="SumLike" />
                 <ScalarProperty Name="ChartYN" ColumnName="ChartYN" />

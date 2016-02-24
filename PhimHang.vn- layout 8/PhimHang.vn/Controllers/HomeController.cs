@@ -135,7 +135,7 @@ namespace PhimHang.Controllers
             {
                 var ret = await (from posts in db.Posts
                                  where posts.StockPrimary != ""
-                                 orderby posts.PostedDate descending
+                                 orderby posts.Priority descending, posts.PostedDate descending
                                  select new
                                  {
                                      Message = posts.Message,
@@ -149,7 +149,8 @@ namespace PhimHang.Controllers
                                      ChartYN = posts.ChartYN,
                                      SumLike = posts.SumLike,
                                      SumReply = posts.SumReply,
-                                     BrkVip = posts.UserLogin.BrokerVIP
+                                     BrkVip = posts.UserLogin.BrokerVIP,
+                                     Pri = posts.Priority
                                  }).Skip(skipposition).Take(10).ToArrayAsync();
                 //var listStock = new List<string>();              
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);

@@ -53,7 +53,7 @@ namespace PhimHang.Hubs
                 string messageFromatHTML = "";
                 foreach (var item in listMessege)
                 {
-                    if (item.Length > 0 && item.Length < 20)
+                    if (item.Length > 0 && item.Length < 2000)
                     {
                         if (item.IndexOf("$", 0, 1) != -1) // tag ma co phieu
                         {
@@ -229,7 +229,7 @@ namespace PhimHang.Hubs
                 string messageFromatHTML = "";
                 foreach (var item in listMessege)
                 {
-                    if (item.Length > 0 && item.Length < 20)
+                    if (item.Length > 0 && item.Length < 2000)
                     {
                         if (item.IndexOf("$", 0, 1) != -1)
                         {

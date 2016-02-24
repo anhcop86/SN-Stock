@@ -224,7 +224,7 @@ namespace PhimHang.Controllers
             {
                 var ret = await (from posts in db.Posts
                                  where posts.StockPrimary != ""
-                                 orderby posts.PostedDate descending
+                                 orderby posts.Priority descending, posts.PostedDate descending
                                  select new
                                  {
                                      Message = posts.Message,
@@ -238,7 +238,8 @@ namespace PhimHang.Controllers
                                      ChartYN = posts.ChartYN,
                                      SumLike = posts.SumLike,
                                      SumReply = posts.SumReply,
-                                     BrkVip = posts.UserLogin.BrokerVIP
+                                     BrkVip = posts.UserLogin.BrokerVIP,
+                                     Pri = posts.Priority
                                  }).Skip(skipposition).Take(10).ToArrayAsync();
                 //var listStock = new List<string>();              
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
@@ -248,7 +249,7 @@ namespace PhimHang.Controllers
             {
                 var ret = await (from posts in db.Posts
                            where posts.ChartYN == true && posts.StockPrimary != ""
-                           orderby posts.PostedDate descending
+                                 orderby posts.Priority descending, posts.PostedDate descending
                            select new
                            {
                                Message = posts.Message,
@@ -262,7 +263,8 @@ namespace PhimHang.Controllers
                                ChartYN = posts.ChartYN,
                                SumLike = posts.SumLike,
                                SumReply = posts.SumReply,
-                               BrkVip = posts.UserLogin.BrokerVIP
+                               BrkVip = posts.UserLogin.BrokerVIP,
+                               Pri = posts.Priority
                            }).Skip(skipposition).Take(10).ToArrayAsync();
                 //var listStock = new List<string>();              
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
@@ -272,7 +274,7 @@ namespace PhimHang.Controllers
             {
                 var ret = await (from posts in db.Posts
                                  where posts.NhanDinh > 0 && posts.StockPrimary != ""
-                           orderby posts.PostedDate descending
+                                 orderby posts.Priority descending, posts.PostedDate descending
                            select new
                            {
                                Message =  posts.Message,
@@ -286,7 +288,8 @@ namespace PhimHang.Controllers
                                ChartYN = posts.ChartYN,
                                SumLike = posts.SumLike,
                                SumReply = posts.SumReply,
-                               BrkVip = posts.UserLogin.BrokerVIP
+                               BrkVip = posts.UserLogin.BrokerVIP,
+                               Pri = posts.Priority
                            }).Skip(skipposition).Take(10).ToArrayAsync();
                 //var listStock = new List<string>();              
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
@@ -327,8 +330,8 @@ namespace PhimHang.Controllers
 
 
                 var ret = await (from posts in db.Posts
-                                 where listPersonFollow.Contains(posts.PostedBy) && posts.StockPrimary != ""               
-                           orderby posts.PostedDate descending
+                                 where listPersonFollow.Contains(posts.PostedBy) && posts.StockPrimary != ""
+                                 orderby posts.Priority descending, posts.PostedDate descending
                            select new
                            {
                                Message =  posts.Message,
@@ -342,7 +345,8 @@ namespace PhimHang.Controllers
                                ChartYN = posts.ChartYN,
                                SumLike = posts.SumLike,
                                SumReply = posts.SumReply,
-                               BrkVip = posts.UserLogin.BrokerVIP
+                               BrkVip = posts.UserLogin.BrokerVIP,
+                               Pri = posts.Priority
                            }).Skip(skipposition).Take(10).ToArrayAsync();
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
                 return result;
@@ -356,8 +360,8 @@ namespace PhimHang.Controllers
 
 
                 var ret = await (from posts in db.Posts
-                           where listStock.Any(ls => posts.StockPrimary.IndexOf(ls) > -1) 
-                           orderby posts.PostedDate descending
+                           where listStock.Any(ls => posts.StockPrimary.IndexOf(ls) > -1)
+                                 orderby posts.Priority descending, posts.PostedDate descending
                            select new
                            {
                                Message =  posts.Message,
@@ -371,7 +375,8 @@ namespace PhimHang.Controllers
                                ChartYN = posts.ChartYN,
                                SumLike = posts.SumLike,
                                SumReply = posts.SumReply,
-                               BrkVip = posts.UserLogin.BrokerVIP
+                               BrkVip = posts.UserLogin.BrokerVIP,
+                               Pri = posts.Priority
                            }).Skip(skipposition).Take(10).ToListAsync();
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
                 return result;

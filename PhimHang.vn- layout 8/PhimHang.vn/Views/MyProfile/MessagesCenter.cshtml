@@ -31,7 +31,7 @@
                             <img data-bind="attr: { src: PostedByAvatar }" class="img-rounded" alt="avatar">
                         </div>
                         <div class="list-item-detail">
-                            <div class="list-item-date" data-bind="text : PostedDate"></div>
+                            <div class="list-item-date" data-bind="text : PostedDate, attr: { 'data-title' : PostedDateOri}"></div>
                             <div class="list-item-username" style="width:0%">
                                 <a style="cursor:pointer" onclick='selectMe(event,"#")' data-bind="attr : { href : '/' + PostedByName }, text : PostedByName"></a>
                                 <span class="itemVerify" data-bind="html: BrkVip"></span>

@@ -66,8 +66,7 @@
 
         <div class="list-status">
             <!--So bai phim moi-->
-            <!---->
-            @*onmouseover="$('.bg-white a:hover > a').css('color', '#328ac5');"*@
+            <!---->            
             <div data-bind="foreach : {data: posts }"> <!--foreach : {data: posts, afterAdd: afterAdd }-->
                 <div class="bg-white" >
                     <div class="list-item-status" tabindex="-1" data-bind=" click: function(data, event) { $parent.detailPost(data, event); }">
@@ -75,7 +74,7 @@
                             <img data-bind="attr: { src: PostedByAvatar }" class="img-rounded" alt="avatar">
                         </div>
                         <div class="list-item-detail">
-                            <div class="list-item-date" data-bind="text : PostedDate"></div>
+                            <div class="list-item-date" data-bind="text : PostedDate, attr: { 'data-title' : PostedDateOri}"></div>
                             <div class="list-item-username">
                                 <a style="cursor:pointer" onclick='selectMe(event,"#")' data-bind="attr : { href : '/' + PostedByName  }, text : PostedByName"></a>
                                 <span class="itemVerify" data-bind="html: BrkVip"></span>
@@ -94,8 +93,9 @@
                                 <a class="button" onclick='selectMe(event,"#")' href="javascript:;" title="more" data-bind=" click: function(data, event) { $parent.loadToolMore(data, event); } ,attr : { id : 'loadToolMoreId' + PostId   },"><i class="fa fa-caret-down"></i></a>                                
                                 
                             <!--End load more tool-->
-                                <a class="button" href="#" style="cursor:text" data-bind="visible: SumReply() > 0"><i class="fa fa-comments" data-bind=" text : SumReply"></i></a>                                
+                                <a class="button" href="#" style="cursor:text" data-bind="visible: SumReply() > 0"><i class="fa fa-comments" data-bind=" text : SumReply"></i></a>
                                 <span class="likeAndPin">
+                                    <a class="button" href="#" title="Pin" data-bind="html:Pri"></a>
                                     <span data-bind="text : SumLike, visible : SumLike() > 0 "></span>
                                     <button class="fa fa-thumbs-o-up" data-bind=" click : function(data, event) { $parent.AddLike(data, event) ;   } , attr : {id : 'PostId' + PostId} , enable : DiableLike"></button>
                                 </span>

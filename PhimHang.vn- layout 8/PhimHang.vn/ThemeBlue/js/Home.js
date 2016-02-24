@@ -69,14 +69,7 @@ function setDefaultAfterPost() {
     $('.chartImage').hide();
     $('.mb3-chart-thumb').removeAttr("src");
 }
-function getTimeAgo(varDate) {
-    if (varDate) {
-        return $.timeago(varDate);
-    }
-    else {
-        return '';
-    }
-}
+
 function Reply(data) {
     var self = this;
     data = data || {};
@@ -96,6 +89,7 @@ function Post(data) {
     self.PostedByName = data.PostedByName || "";
     self.PostedByAvatar = data.PostedByAvatar + '?width=50&height=50&mode=crop' || "";
     self.PostedDate = getTimeAgo(data.PostedDate);
+    self.PostedDateOri = convertDateFormat(data.PostedDate);
     self.StockPrimary = data.StockPrimary;
     //self.notification = ko.observable(0);
     self.Stm = (data.Stm === 1 ? "<span class='divBear-cm'>Giảm</span>" : data.Stm === 2 ? "<span class='divBull-cm'>Tăng</span>" : "") || "";
@@ -107,6 +101,7 @@ function Post(data) {
     self.SumReply = ko.observable(data.SumReply);
     self.BrkVip = (data.BrkVip == 1 ? '<i title="Đã xác thực - dân phím chuyên nghiệp" class="fa  fa-check-circle"></i>' : "") || "";
     self.LoadTextNext = '';
+    self.Pri = (data.Pri > 0 ? '<img src="/images/pintab.png" />' : "") || "";
 }
 var commenthub = $.connection.CommentHub;
 function viewModel() {

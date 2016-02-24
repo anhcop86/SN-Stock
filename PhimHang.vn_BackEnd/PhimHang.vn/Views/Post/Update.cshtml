@@ -52,9 +52,17 @@
 
         </tr>
         <tr>
+            <td class="col1"><label>PIN ưu tiên trên toàn<br /> thị trường và trang chủ:</label></td>
+            <td class="col2">
+                <input type="text" id="grumble" name="priority" maxlength="1" value="@Model.Priority" />
+                <article>Chú ý: số càng lớn thứ tự ưu tiên được xếp cao nhất</article>
+            </td>
+
+        </tr>
+        <tr>
             <td></td>
             <td>
-                <input onclick="return confirm('Cập nhật cổ phiếu nóng?, chú ý không để cổ phiếu trống');" type="submit" value="Cập nhật" class="btn btn-default" /> |
+                <input onclick="return confirm('Cập nhật?');" type="submit" value="Cập nhật" class="btn btn-default" /> |
                 <a style="color: #328AC5" href="/TickerHot">Back/Cancel</a>
             </td>
         </tr>

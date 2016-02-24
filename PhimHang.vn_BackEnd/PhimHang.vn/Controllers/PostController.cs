@@ -85,7 +85,7 @@ namespace PhimHang.Controllers
         [HttpPost, ActionName("Update")] // cap nhat like
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public async Task<ActionResult> Update(long postid, int? sumLike, string StockCode, string messegeInput)
+        public async Task<ActionResult> Update(long postid, int? sumLike, string StockCode, string messegeInput, byte? priority)
         {
             var url = Request.Url.Query.Replace("?postid=" + postid + "&returnUrl=", "");
             using (dbcungphim = new db_cungphim_FrontEnd())
@@ -126,6 +126,19 @@ namespace PhimHang.Controllers
                         try
                         {                            
                             post.Message = string.IsNullOrEmpty(messegeInput) ? "" : messegeInput;
+                            dbcungphim.Entry(post).State = EntityState.Modified;
+                            await dbcungphim.SaveChangesAsync();
+                        }
+                        catch (Exception)
+                        {
+                            //throw;
+                        }
+                    }
+                    if (!post.Priority.Equals(priority))
+                    {
+                        try
+                        {
+                            post.Priority = priority;
                             dbcungphim.Entry(post).State = EntityState.Modified;
                             await dbcungphim.SaveChangesAsync();
                         }
