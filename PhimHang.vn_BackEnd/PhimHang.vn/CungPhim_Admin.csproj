@@ -263,6 +263,7 @@
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\FrontAccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageCatalogController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PinController.cs" />
     <Compile Include="Controllers\PostController.cs" />
@@ -1572,6 +1573,7 @@
     <Folder Include="DetailTheme\js\tiny-mce\plugins\spellchecker\includes\" />
     <Folder Include="Views\BadWord\" />
     <Folder Include="Views\FrontAccount\" />
+    <Folder Include="Views\ImageCatalog\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -1597,7 +1599,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>1848</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
