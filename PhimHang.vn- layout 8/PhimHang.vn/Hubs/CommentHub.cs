@@ -234,12 +234,12 @@ namespace PhimHang.Hubs
                         if (item.IndexOf("$", 0, 1) != -1)
                         {
                             string ticker = item.RemoveSpecialString().ToUpper();
-                            messageFromatHTML += "<b><a onclick=selectMe(event,\"#\") target='_blank' href='/ticker/" + ticker + "'>" + item + "</a></b>" + " ";
+                            messageFromatHTML += "<b><a target='_blank' href='/ticker/" + ticker + "'>" + item + "</a></b>" + " ";
                         }
                         else if (item.IndexOf("@", 0, 1) != -1)
                         {
                             string user = item.RemoveSpecialString().ToLower();
-                            messageFromatHTML += "<a onclick=selectMe(event,\"#\") target='_blank' href='/" + user + "'>" + item + "</a>" + " ";
+                            messageFromatHTML += "<a target='_blank' href='/" + user + "'>" + item + "</a>" + " ";
                         }
                         else if ((item.Contains("http") || item.Contains("www.")) && item.Length >= 4)
                         {
