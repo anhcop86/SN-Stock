@@ -46,13 +46,14 @@
                         else
                         {
                             <li><a onclick=" logoutSite();">Đăng xuất</a></li>
-                        }                        
+                        }          
+                        <input type="hidden" name="returnUrl" value="@Request.Url.PathAndQuery" />              
                     }
                 }
                 else
                 {
-                    <li><a href="/Account/Register?ReturnUrl=@Request.Url.AbsolutePath">Đăng ký</a></li>                    
-                    <li><a href="/Account/Login?ReturnUrl=@Request.Url.AbsolutePath">Đăng nhập</a></li>
+                    <li><a href="/Account/Register?ReturnUrl=@Request.Url.PathAndQuery">Đăng ký</a></li>                    
+                    <li><a href="/Account/Login?ReturnUrl=@Request.Url.PathAndQuery">Đăng nhập</a></li>
                 }
             }
         </ul>

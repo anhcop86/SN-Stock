@@ -159,7 +159,12 @@ function viewModel() {
             $("#idPostMessenge").html(data.ChartYN == 1 ? data.Message.replace('<br/><img src=' + data.Chart + '?width=215&height=120&mode=crop>', '') + '<br/><br/><a target="_blank" href=' + data.Chart + '><img class="imageChartDetail" src=' + data.Chart + "?maxwidth=475></a>" : data.Message);//=200&s.grayscale=true|"
             $("#idStmDetail").html(data.Stm);
             postidCurrent = data.PostId;
-            $("#IdLoadMoreConversation").attr('href', '/PostDetail?postid=' + postidCurrent);
+            if (data.SumReply() > 10) {
+                $("#IdLoadMoreConversation").html('Còn (' + (data.SumReply() - 10) + ') trả lời').attr('href', '/PostDetail?postid=' + postidCurrent);
+            }
+            else {
+                $("#IdLoadMoreConversation").html('Xem thêm').attr('href', '/PostDetail?postid=' + postidCurrent);
+            }
             //data.notification(0);
             // load 10 reply gan nhat
             $.ajax({

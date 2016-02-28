@@ -48,5 +48,28 @@ namespace PhimHang.Models
                 return int.Parse(ConfigurationManager.AppSettings["PageSize"].ToString());
             }
         }
+
+        public static int DirectoryAvataList
+        {
+            get
+            {
+                return int.Parse(ConfigurationManager.AppSettings["DirectoryAvataList"].ToString());
+            }
+        }
+        public static int DirectoryCoverList
+        {
+            get
+            {
+                return int.Parse(ConfigurationManager.AppSettings["DirectoryCoverList"].ToString());
+            }
+        }
+        public static int DirectoryChartList
+        {
+            get
+            {
+                return int.Parse(ConfigurationManager.AppSettings["DirectoryChartList"].ToString());
+            }
+        }
+
     }
 }

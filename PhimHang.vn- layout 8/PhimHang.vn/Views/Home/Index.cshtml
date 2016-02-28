@@ -3,14 +3,10 @@
     ViewBag.Title = "PhốChứngKhoán.com | Mạng Xã Hội Chứng Khoán ®";
     Layout = "~/Views/Shared/_Layout_Home.cshtml";
 }
-@section scripts{
-    @*<link href="~/Content/StockPrice.css" rel="stylesheet" />*@
+@section scripts{    
     <script src="~/Scripts/jquery.timeago.js"></script>
-
 }
-@*<input type="hidden" id="HiddentCureentUserId" value='@ViewBag.CureentUserId' />
-<input type="hidden" id="HiddentUserName" value='@ViewBag.UserName' />
-<input type="hidden" id="HiddentAvataEmage" value='@ViewBag.AvataEmage' />*@
+
 <input type="hidden" id="HiddentCurrentURL" value='@Request.Url.AbsoluteUri' />
 
 <div id="CommentForKoLoad">
@@ -185,7 +181,7 @@
                     </div>
                 </div>
                 <div class="comment-loadmore">
-                    <a id="IdLoadMoreConversation" href="#" target="_blank">Xem thêm</a>
+                    <a id="IdLoadMoreConversation" href="#" target="_blank"></a>
                 </div>
             </div>
         </div>
