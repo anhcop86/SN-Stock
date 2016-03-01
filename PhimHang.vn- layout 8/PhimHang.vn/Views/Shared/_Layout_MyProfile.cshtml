@@ -82,14 +82,14 @@
 
         <div class="area-right">
             @Html.Partial("_Partial_Area_Right_Profile")
-            <div style="margin-top:10px" id="areaRandomProBrokerId">
+            <div style="margin-top:10px;border-bottom:none" id="areaRandomProBrokerId">
                 <img src="/img/uploading.gif" /> Loading ...
             </div>
         </div>
         
         <script>
             $(document).ready(function () {
-                $("#areaRandomProBrokerId").load('/user/RandomProBroker');
+                $("#areaRandomProBrokerId").load('/user/RandomProBroker?numberBroker=2');
             })
         </script>
     </div>

@@ -462,7 +462,7 @@ namespace PhimHang.Controllers
 
 
         }
-        public async Task<ActionResult> RandomProBroker()
+        public async Task<ActionResult> RandomProBroker(int numberBroker)
         {
             //Thread.Sleep(2000);
             #region random dan phim chuyen nghiem
@@ -474,8 +474,7 @@ namespace PhimHang.Controllers
                                            Avata = string.IsNullOrEmpty(u.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + u.AvataImage,
                                            UserName = u.UserNameCopy,
                                            FullName = u.FullName
-                                       }).Take(5).ToListAsync();
-            //ViewBag.DanPhimRandom = DanPhimRandom;
+                                       }).Take(numberBroker).ToListAsync();            
             #endregion
             return PartialView("_Partial_Area_Right_User1", DanPhimRandom);
         }

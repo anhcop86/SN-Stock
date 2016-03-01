@@ -1077,7 +1077,7 @@ input[name=BullBear]{
 
 }
 .banner-right-first #stockDetailFollow {
-    max-height:425px; overflow:auto;
+    max-height:312px; overflow:auto;
 }
 .loadmore,.loadmore > a{
     margin-top: 5px;
@@ -2040,4 +2040,8 @@ a.avatar img:hover{
     color: blue !important;
     cursor: pointer;
     text-decoration:none;
+}
+
+#areaRandomProBrokerId .banner-item-user-detail{
+    border-bottom:none !important;
 }
