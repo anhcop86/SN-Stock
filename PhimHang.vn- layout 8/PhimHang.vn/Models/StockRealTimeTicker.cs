@@ -96,18 +96,18 @@ namespace PhimHang.Models
             //http://www.vfs.com.vn:6789/api/stocks
             //{PI_tickerList:'KLS|OGC|KBC'}
             //var client = new RestClient("http://www.vfs.com.vn:6789/api/");
-            Uri uri = new Uri("https://cungphim.com/api");
-            //Uri uri = new Uri("http://localhost:9999/api");
-            //Uri uri = new Uri("http://localhost:9999/api");
+            Uri uri = new Uri("https://cungphim.com/");
+            string uriAlternate = "http://stockboard.sbsc.com.vn/HO.ashx?FileName=0";
             using (var client = new HttpClient())
             {
                 client.BaseAddress = uri;
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 var parameter = new { PI_tickerList = "KEYSECRET" };
+                var response = client.PostAsJsonAsync("/api/StockRealTime", parameter).Result;
                 try
                 {
-                    var response = client.PostAsJsonAsync("/api/StockRealTime", parameter).Result;
+                    
                     if (response.IsSuccessStatusCode)
                     {
                         var list = await response.Content.ReadAsAsync<List<StockRealTime>>();
@@ -116,13 +116,16 @@ namespace PhimHang.Models
                     }
                     else
                     {
-                        //return new List<StockPrice>();
+                        // contine backup URL
+                        var s = client.GetStringAsync("http://stockboard.sbsc.com.vn/HO.ashx?FileName=0");
+                        var arrayS = s.Result.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
                     }
                 }
                 catch (Exception)
                 {
-                    // contine
+                    
                 }
+
             }
         }
 
