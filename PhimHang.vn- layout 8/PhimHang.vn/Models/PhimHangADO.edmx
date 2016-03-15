@@ -151,6 +151,7 @@
           <Property Name="SumLike" Type="int" />
           <Property Name="SumReply" Type="int" Nullable="false" />
           <Property Name="Priority" Type="tinyint" />
+          <Property Name="ReplyRelated" Type="varchar" MaxLength="1024" />
         </EntityType>
         <EntityType Name="Settings">
           <Key>
@@ -955,6 +956,7 @@
           <NavigationProperty Name="StockRelates" Relationship="PHDBContext.FK_StockRelate_Posts" FromRole="Post" ToRole="StockRelate" />
           <NavigationProperty Name="UserRelates" Relationship="PHDBContext.FK_UserRelate_Posts" FromRole="Post" ToRole="UserRelate" />
           <Property Name="Priority" Type="Byte" />
+          <Property Name="ReplyRelated" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Setting">
           <Key>
@@ -1497,6 +1499,7 @@
           <EntitySetMapping Name="Posts">
             <EntityTypeMapping TypeName="PHDBContext.Post">
               <MappingFragment StoreEntitySet="Posts">
+                <ScalarProperty Name="ReplyRelated" ColumnName="ReplyRelated" />
                 <ScalarProperty Name="Priority" ColumnName="Priority" />
                 <ScalarProperty Name="SumReply" ColumnName="SumReply" />
                 <ScalarProperty Name="SumLike" ColumnName="SumLike" />

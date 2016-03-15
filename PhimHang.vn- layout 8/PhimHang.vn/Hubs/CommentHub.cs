@@ -140,6 +140,7 @@ namespace PhimHang.Hubs
                 post.PostedDate = DateTime.Now;
                 post.NhanDinh = nhanDinh;
                 post.SumLike = 0;
+                post.ReplyRelated = userlogin.UserNameCopy +"|"; // thong bao cho toan user voi tag user|user|user
                 if (!string.IsNullOrWhiteSpace(chartImage))
                 {
                     post.ChartYN = true;
@@ -153,7 +154,7 @@ namespace PhimHang.Hubs
                 }
                 catch (Exception)
                 {
-                    // log                    
+                    // log
                 }
 
                 var ret = new
@@ -279,6 +280,11 @@ namespace PhimHang.Hubs
                 var getPost = db.Posts.Find(reply.PostedBy); // lay thong tin cua bài post đó
                 // cap nhat tong so luong reply
                 getPost.SumReply += 1;
+                
+                if (!getPost.ReplyRelated.Contains(userlogin.UserNameCopy))
+                {
+                    getPost.ReplyRelated += userlogin.UserNameCopy + "|";
+                }
                 #endregion
                 
                 #region gui tin cho chu da post bài
