@@ -117,8 +117,8 @@ namespace PhimHang.Models
                     else
                     {
                         // contine backup URL
-                        var s = client.GetStringAsync("http://stockboard.sbsc.com.vn/HO.ashx?FileName=0");
-                        var arrayS = s.Result.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
+                        //var s = client.GetStringAsync("http://stockboard.sbsc.com.vn/HO.ashx?FileName=0");
+                        //var arrayS = s.Result.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
                     }
                 }
                 catch (Exception)
