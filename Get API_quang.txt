@@ -1,0 +1,20 @@
+ class Program
+    {
+        static void Main(string[] args)
+        {
+            using (WebClient client = new WebClient())
+            {
+                string s = client.DownloadString("http://stockboard.sbsc.com.vn/HO.ashx?FileName=0");
+                string[] arrayS = s.Split(new char []{'|','@'},StringSplitOptions.RemoveEmptyEntries);                
+                foreach (var item in arrayS)
+                {
+                    string[] contentItem = item.Split(';');
+                    if (contentItem.Length > 30)
+                    {
+                        Console.WriteLine(contentItem[0] + contentItem[30]);    
+                    }
+                }
+                Console.ReadLine();
+            }
+        }
+    }
