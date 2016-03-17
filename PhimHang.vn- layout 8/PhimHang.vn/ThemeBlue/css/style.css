@@ -2034,7 +2034,7 @@ a.avatar img:hover{
 }
 
 .text-size{
-    display: block;
+    display: table;
     text-align: left;
     top:-7px;    
     color: blue !important;

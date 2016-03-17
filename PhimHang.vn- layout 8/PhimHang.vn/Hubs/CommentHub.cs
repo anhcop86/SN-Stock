@@ -25,7 +25,7 @@ namespace PhimHang.Hubs
         private const string ImageURLAvataDefault = "/img/avatar2.jpg";
         private const string ImageURLAvata = "/images/avatar/";
         private string hostURL = AppHelper.TinyURL;
-        testEntities db = new testEntities();
+        testEntities db;
         TinyURLEntities dbtinyURL = new TinyURLEntities();
         [Authorize]
         public async Task<string> AddPost(Post post,  byte nhanDinh, string chartImage, long? userpageid)
@@ -39,8 +39,7 @@ namespace PhimHang.Hubs
                                  where ul.UserNameCopy == Context.User.Identity.Name
                                  select new { ul.Id, ul.BrokerVIP, ul.UserNameCopy, ul.AvataImage, ul.DisableUser }).FirstOrDefaultAsync();
                 if (userlogin == null || userlogin.DisableUser == true) // user khong tim thay hoac bi disable
-                {
-                    //await Clients.Caller.statusUser(0);//0: lockuser
+                {                    
                     return resultString = "L"; // user is disable
                 }
                 #endregion
@@ -121,7 +120,7 @@ namespace PhimHang.Hubs
                         else if (item.IndexOf("@", 0, 1) != -1) //find the user with @
                         {
                             string user = item.RemoveSpecialString().ToLower();
-                            var finduser = db.UserLogins.FirstOrDefault(ul => ul.UserNameCopy == user);
+                            var finduser = await db.UserLogins.FirstOrDefaultAsync(ul => ul.UserNameCopy == user);
                             if (finduser != null)
                             {
                                 NotificationMessege nM = new NotificationMessege { UserPost = userlogin.Id, UserReciver = finduser.Id, PostId = post.PostId, NumNoti = 1, TypeNoti = "U", CreateDate = DateTime.Now, XemYN = true };
@@ -277,7 +276,7 @@ namespace PhimHang.Hubs
 
                 var listUsersendMessege = new List<string>();
                 ///////////////////////////////////////////
-                var getPost = db.Posts.Find(reply.PostedBy); // lay thong tin cua bài post đó
+                var getPost = await db.Posts.FindAsync(reply.PostedBy); // lay thong tin cua bài post đó
                 // cap nhat tong so luong reply
                 getPost.SumReply += 1;
                 
@@ -291,7 +290,7 @@ namespace PhimHang.Hubs
 
                 if (getPost.PostedBy != userlogin.Id)
                 {
-                    var nMRecive = db.NotificationMesseges.FirstOrDefault(nm => nm.UserReciver == getPost.UserLogin.Id && nm.PostId == reply.PostedBy);
+                    var nMRecive = await db.NotificationMesseges.FirstOrDefaultAsync(nm => nm.UserReciver == getPost.UserLogin.Id && nm.PostId == reply.PostedBy);
                     if (nMRecive == null)
                     {
                         NotificationMessege nM = new NotificationMessege { UserPost = userlogin.Id, UserReciver = getPost.UserLogin.Id, PostId = reply.PostedBy, NumNoti = 1, TypeNoti = "R", CreateDate = DateTime.Now, XemYN = true };
@@ -318,10 +317,10 @@ namespace PhimHang.Hubs
                     if (item.IndexOf("@", 0, 1) != -1) //find the user with @
                     {
                         string user = item.RemoveSpecialString().ToLower();
-                        var finduser = db.UserLogins.FirstOrDefault(ul => ul.UserNameCopy == user);
+                        var finduser = await db.UserLogins.FirstOrDefaultAsync(ul => ul.UserNameCopy == user);
                         if (finduser != null)
                         {
-                            var nMuser = db.NotificationMesseges.FirstOrDefault(nm => nm.UserReciver == finduser.Id && nm.PostId == reply.PostedBy);
+                            var nMuser = await db.NotificationMesseges.FirstOrDefaultAsync(nm => nm.UserReciver == finduser.Id && nm.PostId == reply.PostedBy);
                             if (nMuser == null)
                             {
                                 NotificationMessege nM = new NotificationMessege { UserPost = userlogin.Id, UserReciver = finduser.Id, PostId = reply.PostedBy, NumNoti = 1, TypeNoti = "R", CreateDate = DateTime.Now, XemYN = true };

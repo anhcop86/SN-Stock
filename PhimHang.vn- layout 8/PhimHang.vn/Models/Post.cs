@@ -36,6 +36,7 @@ namespace PhimHang.Models
         public int SumReply { get; set; }
         public Nullable<byte> Priority { get; set; }
         public string ReplyRelated { get; set; }
+        public string ReplyRelatedUser { get; set; }
     
         public virtual ICollection<NotificationMessege> NotificationMesseges { get; set; }
         public virtual ICollection<PinStock> PinStocks { get; set; }
