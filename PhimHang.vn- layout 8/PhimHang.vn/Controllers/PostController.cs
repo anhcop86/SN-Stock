@@ -149,8 +149,8 @@ namespace PhimHang.Controllers
             }
             base.Dispose(disposing);
         }
-        private const string ImageURLAvataDefault = "/img/avatar2.jpg";
-        private const string ImageURLAvata = "/images/avatar/";
+        //private const string ImageURLAvataDefault = "/img/avatar2.jpg";
+        //private const string ImageURLAvata = "/images/avatar/";
 
 
         [AllowAnonymous]
@@ -168,7 +168,7 @@ namespace PhimHang.Controllers
                            {
                                ReplyMessage = reply.Message,
                                ReplyByName = reply.UserLogin.UserNameCopy,
-                               ReplyByAvatar = string.IsNullOrEmpty(reply.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + reply.UserLogin.AvataImage,
+                               ReplyByAvatar = string.IsNullOrEmpty(reply.UserLogin.AvataImage) ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + reply.UserLogin.AvataImage,
                                ReplyDate = reply.PostedDate,
                                ReplyId = reply.PostCommentsId,
                                PostCommentsId = reply.PostCommentsId,
@@ -195,7 +195,7 @@ namespace PhimHang.Controllers
                                Message = pinStocks.Post.Message,
                                Chart = pinStocks.Post.ChartImageURL,                               
                                PostedByName = pinStocks.Post.UserLogin.UserNameCopy,
-                               PostedByAvatar = string.IsNullOrEmpty(pinStocks.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + pinStocks.Post.UserLogin.AvataImage,
+                               PostedByAvatar = string.IsNullOrEmpty(pinStocks.Post.UserLogin.AvataImage) ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + pinStocks.Post.UserLogin.AvataImage,
                                PostedDate = pinStocks.Post.PostedDate,
                                PostId = pinStocks.PostId,                               
                                Stm = pinStocks.Post.NhanDinh,
@@ -223,7 +223,7 @@ namespace PhimHang.Controllers
                                Message = posts.Message,
                                Chart = posts.ChartImageURL,
                                PostedByName = posts.UserLogin.UserNameCopy,
-                               PostedByAvatar = string.IsNullOrEmpty(posts.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + posts.UserLogin.AvataImage,
+                               PostedByAvatar = string.IsNullOrEmpty(posts.UserLogin.AvataImage) ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + posts.UserLogin.AvataImage,
                                PostedDate = posts.PostedDate,
                                PostId = posts.PostId,                               
                                Stm = posts.NhanDinh,
@@ -244,7 +244,7 @@ namespace PhimHang.Controllers
                                Message = posts.Message,
                                Chart = posts.ChartImageURL,
                                PostedByName = posts.UserLogin.UserNameCopy,
-                               PostedByAvatar = string.IsNullOrEmpty(posts.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + posts.UserLogin.AvataImage,
+                               PostedByAvatar = string.IsNullOrEmpty(posts.UserLogin.AvataImage) ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + posts.UserLogin.AvataImage,
                                PostedDate = posts.PostedDate,
                                PostId = posts.PostId,                               
                                Stm = posts.NhanDinh,
@@ -265,7 +265,7 @@ namespace PhimHang.Controllers
                                Message = posts.Message,
                                Chart = posts.ChartImageURL,
                                PostedByName = posts.UserLogin.UserNameCopy,
-                               PostedByAvatar = string.IsNullOrEmpty(posts.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + posts.UserLogin.AvataImage,
+                               PostedByAvatar = string.IsNullOrEmpty(posts.UserLogin.AvataImage) ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + posts.UserLogin.AvataImage,
                                PostedDate = posts.PostedDate,
                                PostId = posts.PostId,                               
                                Stm = posts.NhanDinh,

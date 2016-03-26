@@ -20,12 +20,7 @@ namespace PhimHang.Controllers
 {
     [Authorize]
     public class AccountController : Controller
-    {
-        private const string ImageURLAvataDefault = "/img/avatar2.jpg";
-        private const string ImageURLCoverDefault = "/img/cover_default.jpg";
-        private const string ImageURLAvata = "/images/avatar/";
-        private const string ImageURLCover = "/images/cover/";
-       
+    {     
          
          public AccountController()
              : this(new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
@@ -92,8 +87,11 @@ namespace PhimHang.Controllers
             return View(model);
         }
 
-        //
-        // GET: /Account/Register
+        /// <summary>
+        /// Form register An Account
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         public ActionResult Register(string returnUrl)
         {
@@ -102,12 +100,6 @@ namespace PhimHang.Controllers
             return View();
         }
 
-        //[AllowAnonymous]
-        //public bool SendEmail(string returnUrl)
-        //{
-        //    var testEmail = AppHelper.sendEmail("Link thay đổi mật khẩu | Phochungkhoan.com", "n.hieu86@gmail.com", AppHelper.ResetPasswordEmailTemplatePath);
-        //    return testEmail;
-        //}
 
         [HttpPost]
         [AllowAnonymous]
@@ -362,7 +354,7 @@ namespace PhimHang.Controllers
                 profile.CreatedDate = user.UserExtentLogin.CreatedDate.ToString("dd/MM/yyyy");
                 profile.Verify = user.UserExtentLogin.Verify;//== null? Verify.NO: Verify.YES;
                 profile.Status = user.UserExtentLogin.Status;
-                profile.Avata= string.IsNullOrEmpty(user.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + user.UserExtentLogin.AvataImage;
+                profile.Avata = string.IsNullOrEmpty(user.UserExtentLogin.AvataImage) == true ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + user.UserExtentLogin.AvataImage;
                 profile.JobTitle = user.UserExtentLogin.JobTitle;
                 profile.URLFacebook = user.UserExtentLogin.URLFacebook;
                 profile.CVInfo = user.UserExtentLogin.CVInfo;
@@ -370,7 +362,7 @@ namespace PhimHang.Controllers
                 profile.NumberExMarketYear = user.UserExtentLogin.NumberExMarketYear;
                 profile.AvatarSyn = user.UserExtentLogin.AvatarSyn;
             }
-            ViewBag.AvataEmage = string.IsNullOrEmpty(user.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + user.UserExtentLogin.AvataImage;
+            ViewBag.AvataEmage = string.IsNullOrEmpty(user.UserExtentLogin.AvataImage) == true ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + user.UserExtentLogin.AvataImage;
             //ViewBag.ImageUrlCover = ImageURLCover + user.UserExtentLogin.AvataCover;
             return View(profile);
         }
@@ -500,10 +492,10 @@ namespace PhimHang.Controllers
                 #region get directory
 
                 ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
-                var uploadDir = "~/" + ImageURLAvata;
+                var uploadDir = "~/" + AppHelper.ImageURLAvata;
                 string NameFiletimeupload = user.Id + DateTime.Now.ToString("HHmmss") + "_avata";
                 var imagePath = Path.Combine(Server.MapPath(uploadDir), NameFiletimeupload + Path.GetExtension(uploadfileid_avata.FileName));
-                var imageUrl = ImageURLAvata + NameFiletimeupload + Path.GetExtension(uploadfileid_avata.FileName);
+                var imageUrl = AppHelper.ImageURLAvata + NameFiletimeupload + Path.GetExtension(uploadfileid_avata.FileName);
                 uploadfileid_avata.SaveAs(imagePath);
 
                 
@@ -584,10 +576,10 @@ namespace PhimHang.Controllers
                 #region get directory
 
                 ApplicationUser user = UserManager.FindById(User.Identity.GetUserId()); // get user's logging
-                var uploadDir = "~" + ImageURLCover;
+                var uploadDir = "~" + AppHelper.ImageURLCover;
                 string NameFiletimeupload = user.Id + DateTime.Now.ToString("HHmmss") + "_cover";
                 var imagePath = Path.Combine(Server.MapPath(uploadDir), NameFiletimeupload + Path.GetExtension(uploadfileid_cover.FileName));
-                var imageUrl = ImageURLCover + NameFiletimeupload + Path.GetExtension(uploadfileid_cover.FileName);
+                var imageUrl = AppHelper.ImageURLCover + NameFiletimeupload + Path.GetExtension(uploadfileid_cover.FileName);
                 uploadfileid_cover.SaveAs(imagePath);
 
 

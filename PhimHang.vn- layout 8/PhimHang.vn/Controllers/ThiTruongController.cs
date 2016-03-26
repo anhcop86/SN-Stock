@@ -26,25 +26,22 @@ namespace PhimHang.Controllers
             _stockRealtime = stockTicker;
             UserManager = userManager;
         }
-        public UserManager<ApplicationUser> UserManager { get; private set; }
-        private const string ImageURLAvataDefault = "/img/avatar2.jpg";
-        private const string ImageURLAvata = "/images/avatar/";
-        private string AbsolutePathHostName = AppHelper.AbsolutePathHostName;
+        public UserManager<ApplicationUser> UserManager { get; private set; }       
         public async Task<ActionResult> Index(string g)
         {
-            ViewBag.AbsolutePathHostName = AbsolutePathHostName;
+            ViewBag.AbsolutePathHostName = AppHelper.AbsolutePathHostName;
             #region thong tin user dang nnhap
             if (User.Identity.IsAuthenticated)
             {
                 ApplicationUser currentUser = new ApplicationUser();
                 currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-                ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
+                ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
                 var numberMessegeNew = await db.NotificationMesseges.Where(nm => nm.UserReciver == currentUser.UserExtentLogin.Id && nm.NumNoti > 0).SumAsync(mn => mn.NumNoti);
                 ViewBag.NewMessege = numberMessegeNew;
             }
             else
             {
-                ViewBag.AvataEmage = ImageURLAvataDefault;
+                ViewBag.AvataEmage = AppHelper.ImageURLAvataDefault;
             }
 
             #endregion

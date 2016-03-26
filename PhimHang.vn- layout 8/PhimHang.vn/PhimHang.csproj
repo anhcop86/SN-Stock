@@ -270,7 +270,6 @@
     <Compile Include="Controllers\PostDetailController.cs" />
     <Compile Include="Controllers\QuydinhController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
-    <Compile Include="Controllers\SymbolController.cs" />
     <Compile Include="Controllers\ThiTruongController.cs" />
     <Compile Include="Controllers\TickerController.cs" />
     <Compile Include="Controllers\UserController.cs" />

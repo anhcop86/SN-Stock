@@ -30,28 +30,24 @@ namespace PhimHang.Controllers
        
         public UserManager<ApplicationUser> UserManager { get; private set; }
         private testEntities db = new testEntities();
-        private const string ImageURLAvataDefault = "/img/avatar2.jpg";        
-        private const string ImageURLAvata = "/images/avatar/";
-        private const string ImageURLCoverDefault = "/img/cover_default.jpg";
-        private const string ImageURLCover = "/images/cover/";
-        private string AbsolutePathHostName = AppHelper.AbsolutePathHostName;
         public async Task<ActionResult> Index(string username)
         {
-            ViewBag.AbsolutePathHostName = AbsolutePathHostName;
+            #region thong tin user
+            ViewBag.AbsolutePathHostName = AppHelper.AbsolutePathHostName;
             var currentUser = await db.UserLogins.FirstOrDefaultAsync(u => u.UserNameCopy == username); //db.UserLogins.FirstOrDefaultAsync(u => u.UserNameCopy == username);
 
             if (currentUser == null || string.IsNullOrEmpty(username))
             {
                 return RedirectToAction("", "Search", new { q = username });
             }
-            #region thong tin user
+            
             if (User.Identity.IsAuthenticated)
             {
                 ApplicationUser userLogin = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-                ViewBag.AvataEmage = string.IsNullOrEmpty(userLogin.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + userLogin.UserExtentLogin.AvataImage;
+                ViewBag.AvataEmage = string.IsNullOrEmpty(userLogin.UserExtentLogin.AvataImage) == true ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + userLogin.UserExtentLogin.AvataImage;
                 ViewBag.CureentUserId = userLogin.UserExtentLogin.Id;
                 ViewBag.UserName = userLogin.UserName;
-                ViewBag.AvataImageUrl = string.IsNullOrEmpty(userLogin.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + userLogin.UserExtentLogin.AvataImage;
+                ViewBag.AvataImageUrl = string.IsNullOrEmpty(userLogin.UserExtentLogin.AvataImage) == true ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + userLogin.UserExtentLogin.AvataImage;
                 ViewBag.CharacterLimit = currentUser.CharacterLimit;
                 #region follow user
                 if (userLogin.UserExtentLogin.Id == currentUser.Id)
@@ -78,12 +74,12 @@ namespace PhimHang.Controllers
             }
             else
             {
-                ViewBag.AvataEmage = ImageURLAvataDefault;
+                ViewBag.AvataEmage = AppHelper.ImageURLAvataDefault;
             }
             ViewBag.CurrentPositionImage = currentUser.CoverPosition;
             ViewBag.UserName = username;
-            ViewBag.AvataImageUrlCurrent = string.IsNullOrEmpty(currentUser.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.AvataImage;
-            ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.AvataCover) == true ? ImageURLCoverDefault : ImageURLCover + currentUser.AvataCover;
+            ViewBag.AvataImageUrlCurrent = string.IsNullOrEmpty(currentUser.AvataImage) == true ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + currentUser.AvataImage;
+            ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.AvataCover) == true ? AppHelper.ImageURLCoverDefault : AppHelper.ImageURLCover + currentUser.AvataCover;
             ViewBag.StatusShare = currentUser.Status;
             ViewBag.UserId = currentUser.Id;
             var post = await db.Posts.CountAsync(p => p.PostedBy == currentUser.Id);
@@ -108,12 +104,13 @@ namespace PhimHang.Controllers
             var listHotStock = await AppHelper.GetListHotStock();
             ViewBag.ListStockHot = listHotStock;
             #endregion
+            
             return View(currentUser);
 
         }
         public async Task<ActionResult> Tickers(string username)
         {
-            ViewBag.AbsolutePathHostName = AbsolutePathHostName;
+            ViewBag.AbsolutePathHostName = AppHelper.AbsolutePathHostName;
             var currentUser = await db.UserLogins.FirstOrDefaultAsync(u => u.UserNameCopy == username); //db.UserLogins.FirstOrDefaultAsync(u => u.UserNameCopy == username);
 
             if (currentUser == null || string.IsNullOrEmpty(username))
@@ -124,10 +121,10 @@ namespace PhimHang.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 ApplicationUser userLogin = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-                ViewBag.AvataEmage = string.IsNullOrEmpty(userLogin.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + userLogin.UserExtentLogin.AvataImage;
+                ViewBag.AvataEmage = string.IsNullOrEmpty(userLogin.UserExtentLogin.AvataImage) == true ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + userLogin.UserExtentLogin.AvataImage;
                 ViewBag.CureentUserId = userLogin.Id;
                 ViewBag.UserName = userLogin.UserName;
-                ViewBag.AvataImageUrl = string.IsNullOrEmpty(userLogin.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + userLogin.UserExtentLogin.AvataImage;
+                ViewBag.AvataImageUrl = string.IsNullOrEmpty(userLogin.UserExtentLogin.AvataImage) == true ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + userLogin.UserExtentLogin.AvataImage;
 
                 #region follow user
                 if (userLogin.UserExtentLogin.Id == currentUser.Id)
@@ -154,12 +151,12 @@ namespace PhimHang.Controllers
             }
             else
             {
-                ViewBag.AvataEmage = ImageURLAvataDefault;
+                ViewBag.AvataEmage = AppHelper.ImageURLAvataDefault;
             }
             ViewBag.CurrentPositionImage = currentUser.CoverPosition;
             ViewBag.UserName = username;
-            ViewBag.AvataImageUrlCurrent = string.IsNullOrEmpty(currentUser.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.AvataImage;
-            ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.AvataCover) == true ? ImageURLCoverDefault : ImageURLCover + currentUser.AvataCover;
+            ViewBag.AvataImageUrlCurrent = string.IsNullOrEmpty(currentUser.AvataImage) == true ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + currentUser.AvataImage;
+            ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.AvataCover) == true ? AppHelper.ImageURLCoverDefault : AppHelper.ImageURLCover + currentUser.AvataCover;
             ViewBag.UserId = currentUser.Id;
             var post = await db.Posts.CountAsync(p => p.PostedBy == currentUser.Id);
             var follow = await db.FollowUsers.CountAsync(f => f.UserId == currentUser.Id);
@@ -198,7 +195,7 @@ namespace PhimHang.Controllers
         }
         public async Task<ActionResult> Followers(string username)
         {
-            ViewBag.AbsolutePathHostName = AbsolutePathHostName;
+            ViewBag.AbsolutePathHostName = AppHelper.AbsolutePathHostName;
             var currentUser = await db.UserLogins.FirstOrDefaultAsync(u => u.UserNameCopy == username); //db.UserLogins.FirstOrDefaultAsync(u => u.UserNameCopy == username);
 
             if (currentUser == null || string.IsNullOrEmpty(username))
@@ -209,10 +206,10 @@ namespace PhimHang.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 ApplicationUser userLogin = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-                ViewBag.AvataEmage = string.IsNullOrEmpty(userLogin.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + userLogin.UserExtentLogin.AvataImage;
+                ViewBag.AvataEmage = string.IsNullOrEmpty(userLogin.UserExtentLogin.AvataImage) == true ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + userLogin.UserExtentLogin.AvataImage;
                 ViewBag.CureentUserId = userLogin.Id;
                 ViewBag.UserName = userLogin.UserName;
-                ViewBag.AvataImageUrl = string.IsNullOrEmpty(userLogin.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + userLogin.UserExtentLogin.AvataImage;
+                ViewBag.AvataImageUrl = string.IsNullOrEmpty(userLogin.UserExtentLogin.AvataImage) == true ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + userLogin.UserExtentLogin.AvataImage;
 
                 #region follow user
                 if (userLogin.UserExtentLogin.Id == currentUser.Id)
@@ -239,12 +236,12 @@ namespace PhimHang.Controllers
             }
             else
             {
-                ViewBag.AvataEmage = ImageURLAvataDefault;
+                ViewBag.AvataEmage = AppHelper.ImageURLAvataDefault;
             }
             ViewBag.CurrentPositionImage = currentUser.CoverPosition;
             ViewBag.UserName = username;
-            ViewBag.AvataImageUrlCurrent = string.IsNullOrEmpty(currentUser.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.AvataImage;
-            ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.AvataCover) == true ? ImageURLCoverDefault : ImageURLCover + currentUser.AvataCover;
+            ViewBag.AvataImageUrlCurrent = string.IsNullOrEmpty(currentUser.AvataImage) == true ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + currentUser.AvataImage;
+            ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.AvataCover) == true ? AppHelper.ImageURLCoverDefault : AppHelper.ImageURLCover + currentUser.AvataCover;
             ViewBag.UserId = currentUser.Id;
             var post = await db.Posts.CountAsync(p => p.PostedBy == currentUser.Id);
             var follow = await db.FollowUsers.CountAsync(f => f.UserId == currentUser.Id);
@@ -265,7 +262,7 @@ namespace PhimHang.Controllers
                                       {
                                           UserId = fl.UserLogin1.Id,
                                           UserName = fl.UserLogin1.UserNameCopy,
-                                          Avata = string.IsNullOrEmpty(fl.UserLogin1.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + fl.UserLogin1.AvataImage,
+                                          Avata = string.IsNullOrEmpty(fl.UserLogin1.AvataImage) ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + fl.UserLogin1.AvataImage,
                                           Status = fl.UserLogin1.Status,
                                           BrkVip = fl.UserLogin1.BrokerVIP
                                       }).ToListAsync();
@@ -289,7 +286,7 @@ namespace PhimHang.Controllers
         }
         public async Task<ActionResult> Following(string username)
         {
-            ViewBag.AbsolutePathHostName = AbsolutePathHostName;
+            ViewBag.AbsolutePathHostName = AppHelper.AbsolutePathHostName;
             var currentUser = await db.UserLogins.FirstOrDefaultAsync(u => u.UserNameCopy == username); //db.UserLogins.FirstOrDefaultAsync(u => u.UserNameCopy == username);
 
             if (currentUser == null || string.IsNullOrEmpty(username))
@@ -300,10 +297,10 @@ namespace PhimHang.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 ApplicationUser userLogin = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-                ViewBag.AvataEmage = string.IsNullOrEmpty(userLogin.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + userLogin.UserExtentLogin.AvataImage;
+                ViewBag.AvataEmage = string.IsNullOrEmpty(userLogin.UserExtentLogin.AvataImage) == true ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + userLogin.UserExtentLogin.AvataImage;
                 ViewBag.CureentUserId = userLogin.Id;
                 ViewBag.UserName = userLogin.UserName;
-                ViewBag.AvataImageUrl = string.IsNullOrEmpty(userLogin.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + userLogin.UserExtentLogin.AvataImage;
+                ViewBag.AvataImageUrl = string.IsNullOrEmpty(userLogin.UserExtentLogin.AvataImage) == true ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + userLogin.UserExtentLogin.AvataImage;
 
                 #region follow user
                 if (userLogin.UserExtentLogin.Id == currentUser.Id)
@@ -330,12 +327,12 @@ namespace PhimHang.Controllers
             }
             else
             {
-                ViewBag.AvataEmage = ImageURLAvataDefault;
+                ViewBag.AvataEmage = AppHelper.ImageURLAvataDefault;
             }
             ViewBag.CurrentPositionImage = currentUser.CoverPosition;
             ViewBag.UserName = username;
-            ViewBag.AvataImageUrlCurrent = string.IsNullOrEmpty(currentUser.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.AvataImage;
-            ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.AvataCover) == true ? ImageURLCoverDefault : ImageURLCover + currentUser.AvataCover;
+            ViewBag.AvataImageUrlCurrent = string.IsNullOrEmpty(currentUser.AvataImage) == true ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + currentUser.AvataImage;
+            ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.AvataCover) == true ? AppHelper.ImageURLCoverDefault : AppHelper.ImageURLCover + currentUser.AvataCover;
             ViewBag.UserId = currentUser.Id;
             var post = await db.Posts.CountAsync(p => p.PostedBy == currentUser.Id);
             var follow = await db.FollowUsers.CountAsync(f => f.UserId == currentUser.Id);
@@ -357,7 +354,7 @@ namespace PhimHang.Controllers
                                           UserId = fl.UserLogin.Id,
                                           UserName = fl.UserLogin.UserNameCopy,
                                           Status = fl.UserLogin.Status,
-                                          Avata = string.IsNullOrEmpty(fl.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + fl.UserLogin.AvataImage,
+                                          Avata = string.IsNullOrEmpty(fl.UserLogin.AvataImage) ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + fl.UserLogin.AvataImage,
                                           BrkVip = fl.UserLogin.BrokerVIP
                                       }).ToListAsync();
 
@@ -393,7 +390,7 @@ namespace PhimHang.Controllers
                                Message = posts.Message,
                                Chart = posts.ChartImageURL,               
                                PostedByName = posts.UserLogin.UserNameCopy,
-                               PostedByAvatar = string.IsNullOrEmpty(posts.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + posts.UserLogin.AvataImage ,
+                               PostedByAvatar = string.IsNullOrEmpty(posts.UserLogin.AvataImage) ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + posts.UserLogin.AvataImage,
                                PostedDate = posts.PostedDate,
                                PostId = posts.PostId,
                                StockPrimary = posts.StockPrimary,
@@ -417,7 +414,7 @@ namespace PhimHang.Controllers
                                Message = posts.Message,
                                Chart = posts.ChartImageURL,               
                                PostedByName = posts.UserLogin.UserNameCopy,
-                               PostedByAvatar = string.IsNullOrEmpty(posts.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + posts.UserLogin.AvataImage,
+                               PostedByAvatar = string.IsNullOrEmpty(posts.UserLogin.AvataImage) ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + posts.UserLogin.AvataImage,
                                PostedDate = posts.PostedDate,
                                PostId = posts.PostId,
                                StockPrimary = posts.StockPrimary,
@@ -441,7 +438,7 @@ namespace PhimHang.Controllers
                                Message =  posts.Message,
                                Chart = posts.ChartImageURL,               
                                PostedByName = posts.UserLogin.UserNameCopy,
-                               PostedByAvatar = string.IsNullOrEmpty(posts.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + posts.UserLogin.AvataImage,
+                               PostedByAvatar = string.IsNullOrEmpty(posts.UserLogin.AvataImage) ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + posts.UserLogin.AvataImage,
                                PostedDate = posts.PostedDate,
                                PostId = posts.PostId,
                                StockPrimary = posts.StockPrimary,
@@ -471,7 +468,7 @@ namespace PhimHang.Controllers
                                        where u.BrokerVIP == true
                                        select new UserRandom
                                        {
-                                           Avata = string.IsNullOrEmpty(u.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + u.AvataImage,
+                                           Avata = string.IsNullOrEmpty(u.AvataImage) ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + u.AvataImage,
                                            UserName = u.UserNameCopy,
                                            FullName = u.FullName
                                        }).Take(numberBroker).ToListAsync();            

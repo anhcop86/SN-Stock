@@ -29,12 +29,7 @@ namespace PhimHang.Controllers
         }
 
         public UserManager<ApplicationUser> UserManager { get; private set; }
-        // GET: /Post/
-        
-        private const string ImageURLAvataDefault = "img/avatar_default.jpg";
-        private const string ImageURLAvata = "images/avatar/";
-
-
+     
         // GET api/comment/5
         public string Get(int id)
         {

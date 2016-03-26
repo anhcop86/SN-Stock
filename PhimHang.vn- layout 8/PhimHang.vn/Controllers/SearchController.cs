@@ -28,8 +28,8 @@ namespace PhimHang.Controllers
         public UserManager<ApplicationUser> UserManager { get; private set; }
         //
         // GET: /Search/
-        private const string ImageURLAvataDefault = "/img/avatar2.jpg";
-        private const string ImageURLAvata = "/images/avatar/";
+        //private const string ImageURLAvataDefault = "/img/avatar2.jpg";
+        //private const string ImageURLAvata = "/images/avatar/";
         public async Task<ActionResult> Index(string q)
         {
             #region thong tin user dang nnhap
@@ -38,13 +38,13 @@ namespace PhimHang.Controllers
             {
                 ApplicationUser currentUser = new ApplicationUser();
                 currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-                ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
+                ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
                 var numberMessegeNew = await db.NotificationMesseges.Where(nm => nm.UserReciver == currentUser.UserExtentLogin.Id && nm.NumNoti > 0).SumAsync(mn => mn.NumNoti);
                 ViewBag.NewMessege = numberMessegeNew;
             }
             else
             {
-                ViewBag.AvataEmage = ImageURLAvataDefault;
+                ViewBag.AvataEmage = AppHelper.ImageURLAvataDefault;
             }
 
             #endregion
@@ -80,7 +80,7 @@ namespace PhimHang.Controllers
                                             UserId = us.Id,
                                             UserName = us.UserNameCopy,
                                             Status = us.Status,
-                                            Avata = string.IsNullOrEmpty(us.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + us.AvataImage,
+                                            Avata = string.IsNullOrEmpty(us.AvataImage) ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + us.AvataImage,
                                             BrkVip = us.BrokerVIP
                                         }).ToListAsync();
 

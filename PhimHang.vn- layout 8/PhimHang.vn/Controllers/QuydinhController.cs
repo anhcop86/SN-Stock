@@ -30,9 +30,9 @@ namespace PhimHang.Controllers
         public UserManager<ApplicationUser> UserManager { get; private set; }
 
         private testEntities db = new testEntities();
-        private const string ImageURLAvataDefault = "/img/avatar2.jpg";
-        private const string ImageURLAvata = "/images/avatar/";
-        private string AbsolutePathHostName = AppHelper.AbsolutePathHostName;
+        //private const string ImageURLAvataDefault = "/img/avatar2.jpg";
+        //private const string ImageURLAvata = "/images/avatar/";
+        //private string AbsolutePathHostName = AppHelper.AbsolutePathHostName;
         public async Task<ActionResult> Index()
         {
             using (db = new testEntities())
@@ -44,16 +44,16 @@ namespace PhimHang.Controllers
                     currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
                     ViewBag.CureentUserId = currentUser.Id;
                     ViewBag.UserName = currentUser.UserName;
-                    ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
+                    ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
                     var numberMessegeNew = await db.NotificationMesseges.Where(nm => nm.UserReciver == currentUser.UserExtentLogin.Id && nm.NumNoti > 0).SumAsync(mn => mn.NumNoti);
                     ViewBag.NewMessege = numberMessegeNew;
                 }
                 else
                 {
-                    ViewBag.AvataEmage = ImageURLAvataDefault;
+                    ViewBag.AvataEmage = AppHelper.ImageURLAvataDefault;
                 }
-                
-                ViewBag.AbsolutePathHostName = AbsolutePathHostName;
+
+                ViewBag.AbsolutePathHostName = AppHelper.AbsolutePathHostName;
                 #region gia chi so index va hnxindex
                 var listIndex = new List<string>();
                 listIndex.Add("VNINDEX");

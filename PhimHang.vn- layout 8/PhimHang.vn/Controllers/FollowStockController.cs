@@ -24,13 +24,9 @@ namespace PhimHang.Controllers
         public FollowStockController(UserManager<ApplicationUser> userManager)
         {            
             UserManager = userManager;
-        }
-       
+        }       
         public UserManager<ApplicationUser> UserManager { get; private set; }
-
-        private const string ImageURLAvataDefault = "/img/avatar_default.jpg";
-        private const string ImageURLAvata = "/images/avatar/";
-
+       
         // GET: /FollowStock/
         public async Task<ActionResult> Index()
         {

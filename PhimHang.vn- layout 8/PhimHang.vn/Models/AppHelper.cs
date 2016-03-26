@@ -20,8 +20,16 @@ namespace PhimHang.Models
 {
     public static class AppHelper
     {
-        private static testEntities db = new testEntities();
-        
+        private static testEntities db;
+        private const string _imageURLAvataDefault = "/img/avatar2.jpg";
+        private const string _imageURLAvata = "/images/avatar/";
+        private const string _imageURLCoverDefault = "/img/cover_default.jpg";
+        private const string _imageURLCover = "/images/cover/";
+        /// <summary>
+        /// Lọc từ khóa bậy được lưu trong db
+        /// </summary>
+        /// <param name="messege"></param>
+        /// <returns></returns> String with clean messege
         public static string FilteringWord(string messege)
         {
             //get list keyword
@@ -47,6 +55,11 @@ namespace PhimHang.Models
 
             return  stringOriginal.ToString();
         }
+        /// <summary>
+        /// Convert a string Unicode to Non Unicode
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public static string ConvertToNonUnicode(string str)
         {
             for (int i = 1; i < VietNamChar.Length; i++)
@@ -77,7 +90,9 @@ namespace PhimHang.Models
             "ýỳỵỷỹ",
             "ÝỲỴỶỸ"
         };
-
+        /// <summary>
+        /// Get domain name from Web.config
+        /// </summary>
         public static string AbsolutePathHostName
         {
             get
@@ -106,6 +121,12 @@ namespace PhimHang.Models
                                        select hoststock.THName).ToListAsync();
             }            
         }
+
+        /// <summary>
+        /// relace a string HTML to non HTML
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
         public static string StripTagsCharArray(string source)
         {
             char[] array = new char[source.Length];
@@ -275,7 +296,11 @@ namespace PhimHang.Models
                 throw new Exception("Error cropping image, the error was: " + ex.Message);
             }
         }
-        private const string ImageURLAvata = "/images/avatar/";
+        /// <summary>
+        /// Syn avata from facebook site to phochungkhoan site
+        /// </summary>
+        /// <param name="idFacebook"></param>
+        /// <returns></returns>
         public async static Task<bool> AvatarSyn(string idFacebook)
         {
             using (db = new testEntities())
@@ -326,7 +351,9 @@ namespace PhimHang.Models
             }
             
         }
-
+        /// <summary>
+        /// set cookie when login by facebook
+        /// </summary>
         public static void SetCookieOfFace()
         {
             var FacebookLogin = new HttpCookie("FacebookLogin", "F");
@@ -341,7 +368,9 @@ namespace PhimHang.Models
             }           
             
         }
-
+        /// <summary>
+        /// release cookie when logout facebook
+        /// </summary>
         public static void ReleaseCookieOfFace()
         {
             if (HttpContext.Current.Request.Cookies["FacebookLogin"] != null)
@@ -407,6 +436,49 @@ namespace PhimHang.Models
                 return rootPath.Substring(0, rootPath.LastIndexOf(@"\")) + ConfigurationManager.AppSettings["RegisterEmailTemplatePath"];            
             }
         }
+
+        /// <summary>
+        /// ten avatar mac dinh
+        /// </summary>
+        public static string ImageURLAvataDefault
+        {
+            get
+            {
+                return _imageURLAvataDefault;  
+            }
+        }
+
+        /// <summary>
+        /// URL Avata mac dinh
+        /// </summary>
+        public static string ImageURLAvata
+        {
+            get
+            {
+                return _imageURLAvata;
+            }
+        }
+        /// <summary>
+        /// URL Conver mac dinh
+        /// </summary>
+        public static string ImageURLCoverDefault
+        {
+            get
+            {
+                return _imageURLCoverDefault;
+            }
+        }
+        /// <summary>
+        /// Tên Cover mac dinh
+        /// </summary>
+        public static string ImageURLCover
+        {
+            get
+            {
+                return _imageURLCover;
+            }
+        }
+
 
     }
     public class PosistionFilter

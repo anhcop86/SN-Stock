@@ -27,16 +27,12 @@ namespace PhimHang.Controllers
         }
 
         public UserManager<ApplicationUser> UserManager { get; private set; }
-
-        private testEntities db = new testEntities();
-        private const string ImageURLAvataDefault = "/img/avatar2.jpg";
-        private const string ImageURLAvata = "/images/avatar/";
-        private string AbsolutePathHostName = AppHelper.AbsolutePathHostName;
+        private testEntities db = new testEntities();       
         
         public async Task<ViewResult> Index(string symbolName)
         {            
             //ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-            ViewBag.AbsolutePathHostName = AbsolutePathHostName;
+            ViewBag.AbsolutePathHostName = AppHelper.AbsolutePathHostName;
             #region danh muc co phieu dang follow
             var postNumber = await db.Posts.CountAsync(s => s.StockPrimary.Contains(symbolName)); // so luong bai viet cua cổ phiếu này
             var stockFollowNumber = await db.FollowStocks.CountAsync(sf => sf.StockFollowed == symbolName); // bao nhieu nguoi da theo doi co phieu nay
@@ -66,14 +62,14 @@ namespace PhimHang.Controllers
             if (User.Identity.IsAuthenticated) // thong tin user dang nhap
             {
                 ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
-                ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
+                ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
                 ViewBag.CureentUserId = currentUser.UserExtentLogin.Id;
                 ViewBag.UserName = currentUser.UserName;
                 ViewBag.CharacterLimit = currentUser.UserExtentLogin.CharacterLimit;
             }
             else
             {
-                ViewBag.AvataEmage = ImageURLAvataDefault;
+                ViewBag.AvataEmage = AppHelper.ImageURLAvataDefault;
             }
 
 

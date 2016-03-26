@@ -17,7 +17,7 @@ namespace PhimHang.Controllers
     {
         //
         // GET: /MyProfile/
-        
+
         private readonly StockRealTimeTicker _stockRealtime;
         public MyProfileController()
             : this(StockRealTimeTicker.Instance, new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
@@ -33,28 +33,23 @@ namespace PhimHang.Controllers
         public UserManager<ApplicationUser> UserManager { get; private set; }
 
         private testEntities db = new testEntities();
-        private const string ImageURLAvataDefault = "/img/avatar2.jpg";         
-        private const string ImageURLAvata = "/images/avatar/";
-        private const string ImageURLCoverDefault = "/img/cover_default.jpg";
-        private const string ImageURLCover = "/images/cover/";
-        private string AbsolutePathHostName = AppHelper.AbsolutePathHostName;
         public async Task<ActionResult> Index()
         {
             #region get user info
-            ViewBag.AbsolutePathHostName = AbsolutePathHostName;
+            ViewBag.AbsolutePathHostName = AppHelper.AbsolutePathHostName;
             var company = new StockCode();
             //ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             UserLoginDTO currentUser = await (from userlog in db.UserLogins
-                                           where userlog.UserNameCopy == User.Identity.Name
-                                           select new UserLoginDTO 
-                                           {
-                                               Id = userlog.Id,
-                                               CharacterLimit = userlog.CharacterLimit,
-                                               FullName = userlog.FullName,
-                                               AvataImage = userlog.AvataImage,
-                                               AvataCover = userlog.AvataCover,
-                                               BrokerVIP = userlog.BrokerVIP
-                                           }).FirstOrDefaultAsync();
+                                              where userlog.UserNameCopy == User.Identity.Name
+                                              select new UserLoginDTO
+                                              {
+                                                  Id = userlog.Id,
+                                                  CharacterLimit = userlog.CharacterLimit,
+                                                  FullName = userlog.FullName,
+                                                  AvataImage = userlog.AvataImage,
+                                                  AvataCover = userlog.AvataCover,
+                                                  BrokerVIP = userlog.BrokerVIP
+                                              }).FirstOrDefaultAsync();
             #endregion
             #region Thong tin menu ben trai
             //Thong tin menu ben trai
@@ -70,14 +65,14 @@ namespace PhimHang.Controllers
             ViewBag.CharacterLimit = currentUser.CharacterLimit;
             ViewBag.UserName = User.Identity.Name;
             ViewBag.FullName = currentUser.FullName;
-            ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.AvataImage;
-            ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.AvataCover) == true ? ImageURLCoverDefault : ImageURLCover + currentUser.AvataCover;
-            
+            ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.AvataImage) == true ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + currentUser.AvataImage;
+            ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.AvataCover) == true ? AppHelper.ImageURLCoverDefault : AppHelper.ImageURLCover + currentUser.AvataCover;
+
 
             // cac post duoc loc tu danh muc nguoi theo doi => dc load o duoi client san
             var listPersonFollow = await (from userFollow in db.FollowUsers
-                                    where userFollow.UserId == currentUser.Id
-                                    select userFollow.UserIdFollowed
+                                          where userFollow.UserId == currentUser.Id
+                                          select userFollow.UserIdFollowed
                                  ).ToArrayAsync();
 
             ViewBag.ListFollow = listPersonFollow as int[]; //client
@@ -112,7 +107,7 @@ namespace PhimHang.Controllers
             return View(currentUser);
 
         }
-     
+
 
         public async Task<ActionResult> MessagesCenter()
         {
@@ -129,18 +124,18 @@ namespace PhimHang.Controllers
                                                   AvataCover = userlog.AvataCover,
                                                   BrokerVIP = userlog.BrokerVIP
                                               }).FirstOrDefaultAsync();
-            ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.AvataImage) == true ? ImageURLAvataDefault : "/images/avatar/" + currentUser.AvataImage;
-            ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.AvataCover) == true ? ImageURLCoverDefault : "/images/cover/" + currentUser.AvataCover;
-            ViewBag.AvataImageUrl = string.IsNullOrEmpty(currentUser.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.AvataImage;
+            ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.AvataImage) == true ? AppHelper.ImageURLAvataDefault : "/images/avatar/" + currentUser.AvataImage;
+            ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.AvataCover) == true ? AppHelper.ImageURLCoverDefault : "/images/cover/" + currentUser.AvataCover;
+            ViewBag.AvataImageUrl = string.IsNullOrEmpty(currentUser.AvataImage) == true ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + currentUser.AvataImage;
             ViewBag.CureentUserId = currentUser.Id;
             ViewBag.UserName = User.Identity.Name;
             @ViewBag.FullName = currentUser.FullName;
             #endregion
             #region thong tin co phieu ben phai
             var listStock = await (from followStock in db.FollowStocks
-                             orderby followStock.StockFollowed ascending
-                             where followStock.UserId == currentUser.Id
-                             select followStock.StockFollowed
+                                   orderby followStock.StockFollowed ascending
+                                   where followStock.UserId == currentUser.Id
+                                   select followStock.StockFollowed
                                ).ToListAsync();
             //ViewBag.listStockFollow = listStock as List<string>; // client
             #region gia cổ phieu cua cac ma dang theo doi
@@ -155,7 +150,7 @@ namespace PhimHang.Controllers
             #region reset lai so luong tin nhan
             ViewBag.NewMessege = 0;
             // luu database
-           
+
             //
             #endregion
 
@@ -172,23 +167,23 @@ namespace PhimHang.Controllers
             if (filter == "" || filter == "ALL")
             {
                 var ret = await (from notiMesseges in db.NotificationMesseges
-                           orderby notiMesseges.CreateDate descending, notiMesseges.XemYN descending
-                           where notiMesseges.UserLogin1.UserNameCopy == User.Identity.Name
-                           select new
-                           {
-                               Message = notiMesseges.Post.Message,
-                               Chart = notiMesseges.Post.ChartImageURL,                               
-                               PostedByName = notiMesseges.Post.UserLogin.UserNameCopy,
-                               PostedByAvatar = string.IsNullOrEmpty(notiMesseges.Post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + notiMesseges.Post.UserLogin.AvataImage,
-                               PostedDate = notiMesseges.Post.PostedDate,
-                               PostId = notiMesseges.Post.PostId,                               
-                               Stm = notiMesseges.Post.NhanDinh,
-                               ChartYN = notiMesseges.Post.ChartYN,
-                               XemYN = notiMesseges.XemYN,
-                               SumLike = notiMesseges.Post.SumLike,
-                               SumReply = notiMesseges.Post.SumReply,
-                               BrkVip = notiMesseges.Post.UserLogin.BrokerVIP
-                           }).Skip(skipposition).Take(10).ToArrayAsync();
+                                 orderby notiMesseges.CreateDate descending, notiMesseges.XemYN descending
+                                 where notiMesseges.UserLogin1.UserNameCopy == User.Identity.Name
+                                 select new
+                                 {
+                                     Message = notiMesseges.Post.Message,
+                                     Chart = notiMesseges.Post.ChartImageURL,
+                                     PostedByName = notiMesseges.Post.UserLogin.UserNameCopy,
+                                     PostedByAvatar = string.IsNullOrEmpty(notiMesseges.Post.UserLogin.AvataImage) ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + notiMesseges.Post.UserLogin.AvataImage,
+                                     PostedDate = notiMesseges.Post.PostedDate,
+                                     PostId = notiMesseges.Post.PostId,
+                                     Stm = notiMesseges.Post.NhanDinh,
+                                     ChartYN = notiMesseges.Post.ChartYN,
+                                     XemYN = notiMesseges.XemYN,
+                                     SumLike = notiMesseges.Post.SumLike,
+                                     SumReply = notiMesseges.Post.SumReply,
+                                     BrkVip = notiMesseges.Post.UserLogin.BrokerVIP
+                                 }).Skip(skipposition).Take(10).ToArrayAsync();
                 //var listStock = new List<string>();              
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
                 return result;
@@ -230,7 +225,7 @@ namespace PhimHang.Controllers
                                      Message = posts.Message,
                                      Chart = posts.ChartImageURL,
                                      PostedByName = posts.UserLogin.UserNameCopy,
-                                     PostedByAvatar = string.IsNullOrEmpty(posts.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + posts.UserLogin.AvataImage,
+                                     PostedByAvatar = string.IsNullOrEmpty(posts.UserLogin.AvataImage) ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + posts.UserLogin.AvataImage,
                                      PostedDate = posts.PostedDate,
                                      PostId = posts.PostId,
                                      StockPrimary = posts.StockPrimary,
@@ -248,24 +243,24 @@ namespace PhimHang.Controllers
             if (filter == "CHA")
             {
                 var ret = await (from posts in db.Posts
-                           where posts.ChartYN == true && posts.StockPrimary != ""
+                                 where posts.ChartYN == true && posts.StockPrimary != ""
                                  orderby posts.Priority descending, posts.PostedDate descending
-                           select new
-                           {
-                               Message = posts.Message,
-                               Chart = posts.ChartImageURL,
-                               PostedByName = posts.UserLogin.UserNameCopy,
-                               PostedByAvatar = string.IsNullOrEmpty(posts.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + posts.UserLogin.AvataImage,
-                               PostedDate = posts.PostedDate,
-                               PostId = posts.PostId,
-                               StockPrimary = posts.StockPrimary,
-                               Stm = posts.NhanDinh,
-                               ChartYN = posts.ChartYN,
-                               SumLike = posts.SumLike,
-                               SumReply = posts.SumReply,
-                               BrkVip = posts.UserLogin.BrokerVIP,
-                               Pri = posts.Priority
-                           }).Skip(skipposition).Take(10).ToArrayAsync();
+                                 select new
+                                 {
+                                     Message = posts.Message,
+                                     Chart = posts.ChartImageURL,
+                                     PostedByName = posts.UserLogin.UserNameCopy,
+                                     PostedByAvatar = string.IsNullOrEmpty(posts.UserLogin.AvataImage) ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + posts.UserLogin.AvataImage,
+                                     PostedDate = posts.PostedDate,
+                                     PostId = posts.PostId,
+                                     StockPrimary = posts.StockPrimary,
+                                     Stm = posts.NhanDinh,
+                                     ChartYN = posts.ChartYN,
+                                     SumLike = posts.SumLike,
+                                     SumReply = posts.SumReply,
+                                     BrkVip = posts.UserLogin.BrokerVIP,
+                                     Pri = posts.Priority
+                                 }).Skip(skipposition).Take(10).ToArrayAsync();
                 //var listStock = new List<string>();              
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
                 return result;
@@ -275,22 +270,22 @@ namespace PhimHang.Controllers
                 var ret = await (from posts in db.Posts
                                  where posts.NhanDinh > 0 && posts.StockPrimary != ""
                                  orderby posts.Priority descending, posts.PostedDate descending
-                           select new
-                           {
-                               Message =  posts.Message,
-                               Chart = posts.ChartImageURL,
-                               PostedByName = posts.UserLogin.UserNameCopy,
-                               PostedByAvatar = string.IsNullOrEmpty(posts.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + posts.UserLogin.AvataImage,
-                               PostedDate = posts.PostedDate,
-                               PostId = posts.PostId,
-                               StockPrimary = posts.StockPrimary,
-                               Stm = posts.NhanDinh,
-                               ChartYN = posts.ChartYN,
-                               SumLike = posts.SumLike,
-                               SumReply = posts.SumReply,
-                               BrkVip = posts.UserLogin.BrokerVIP,
-                               Pri = posts.Priority
-                           }).Skip(skipposition).Take(10).ToArrayAsync();
+                                 select new
+                                 {
+                                     Message = posts.Message,
+                                     Chart = posts.ChartImageURL,
+                                     PostedByName = posts.UserLogin.UserNameCopy,
+                                     PostedByAvatar = string.IsNullOrEmpty(posts.UserLogin.AvataImage) ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + posts.UserLogin.AvataImage,
+                                     PostedDate = posts.PostedDate,
+                                     PostId = posts.PostId,
+                                     StockPrimary = posts.StockPrimary,
+                                     Stm = posts.NhanDinh,
+                                     ChartYN = posts.ChartYN,
+                                     SumLike = posts.SumLike,
+                                     SumReply = posts.SumReply,
+                                     BrkVip = posts.UserLogin.BrokerVIP,
+                                     Pri = posts.Priority
+                                 }).Skip(skipposition).Take(10).ToArrayAsync();
                 //var listStock = new List<string>();              
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
                 return result;
@@ -325,29 +320,29 @@ namespace PhimHang.Controllers
             {
                 ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
                 var listPersonFollow = await (from userFollow in db.FollowUsers
-                                        where userFollow.UserId == currentUser.UserExtentLogin.Id
-                                        select userFollow.UserIdFollowed).ToListAsync();
+                                              where userFollow.UserId == currentUser.UserExtentLogin.Id
+                                              select userFollow.UserIdFollowed).ToListAsync();
 
 
                 var ret = await (from posts in db.Posts
                                  where listPersonFollow.Contains(posts.PostedBy) && posts.StockPrimary != ""
                                  orderby posts.Priority descending, posts.PostedDate descending
-                           select new
-                           {
-                               Message =  posts.Message,
-                               Chart = posts.ChartImageURL,
-                               PostedByName = posts.UserLogin.UserNameCopy,
-                               PostedByAvatar = string.IsNullOrEmpty(posts.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + posts.UserLogin.AvataImage,
-                               PostedDate = posts.PostedDate,
-                               PostId = posts.PostId,
-                               StockPrimary = posts.StockPrimary,
-                               Stm = posts.NhanDinh,
-                               ChartYN = posts.ChartYN,
-                               SumLike = posts.SumLike,
-                               SumReply = posts.SumReply,
-                               BrkVip = posts.UserLogin.BrokerVIP,
-                               Pri = posts.Priority
-                           }).Skip(skipposition).Take(10).ToArrayAsync();
+                                 select new
+                                 {
+                                     Message = posts.Message,
+                                     Chart = posts.ChartImageURL,
+                                     PostedByName = posts.UserLogin.UserNameCopy,
+                                     PostedByAvatar = string.IsNullOrEmpty(posts.UserLogin.AvataImage) ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + posts.UserLogin.AvataImage,
+                                     PostedDate = posts.PostedDate,
+                                     PostId = posts.PostId,
+                                     StockPrimary = posts.StockPrimary,
+                                     Stm = posts.NhanDinh,
+                                     ChartYN = posts.ChartYN,
+                                     SumLike = posts.SumLike,
+                                     SumReply = posts.SumReply,
+                                     BrkVip = posts.UserLogin.BrokerVIP,
+                                     Pri = posts.Priority
+                                 }).Skip(skipposition).Take(10).ToArrayAsync();
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
                 return result;
             }
@@ -355,29 +350,29 @@ namespace PhimHang.Controllers
             {
                 ApplicationUser currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
                 var listStock = await (from followStock in db.FollowStocks
-                                 where followStock.UserId == currentUser.UserExtentLogin.Id
-                                 select followStock.StockFollowed).ToListAsync();
+                                       where followStock.UserId == currentUser.UserExtentLogin.Id
+                                       select followStock.StockFollowed).ToListAsync();
 
 
                 var ret = await (from posts in db.Posts
-                           where listStock.Any(ls => posts.StockPrimary.IndexOf(ls) > -1)
+                                 where listStock.Any(ls => posts.StockPrimary.IndexOf(ls) > -1)
                                  orderby posts.Priority descending, posts.PostedDate descending
-                           select new
-                           {
-                               Message =  posts.Message,
-                               Chart = posts.ChartImageURL,
-                               PostedByName = posts.UserLogin.UserNameCopy,
-                               PostedByAvatar = string.IsNullOrEmpty(posts.UserLogin.AvataImage) ? ImageURLAvataDefault  : ImageURLAvata + posts.UserLogin.AvataImage ,
-                               PostedDate = posts.PostedDate,
-                               PostId = posts.PostId,
-                               StockPrimary = posts.StockPrimary,
-                               Stm = posts.NhanDinh,
-                               ChartYN = posts.ChartYN,
-                               SumLike = posts.SumLike,
-                               SumReply = posts.SumReply,
-                               BrkVip = posts.UserLogin.BrokerVIP,
-                               Pri = posts.Priority
-                           }).Skip(skipposition).Take(10).ToListAsync();
+                                 select new
+                                 {
+                                     Message = posts.Message,
+                                     Chart = posts.ChartImageURL,
+                                     PostedByName = posts.UserLogin.UserNameCopy,
+                                     PostedByAvatar = string.IsNullOrEmpty(posts.UserLogin.AvataImage) ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + posts.UserLogin.AvataImage,
+                                     PostedDate = posts.PostedDate,
+                                     PostId = posts.PostId,
+                                     StockPrimary = posts.StockPrimary,
+                                     Stm = posts.NhanDinh,
+                                     ChartYN = posts.ChartYN,
+                                     SumLike = posts.SumLike,
+                                     SumReply = posts.SumReply,
+                                     BrkVip = posts.UserLogin.BrokerVIP,
+                                     Pri = posts.Priority
+                                 }).Skip(skipposition).Take(10).ToListAsync();
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
                 return result;
             }
@@ -408,7 +403,7 @@ namespace PhimHang.Controllers
         public string Stock { get; set; }
         public string ShortName { get; set; }
     }
-#endregion
+        #endregion
     public class UserLoginDTO
     {
         public int Id { get; set; }

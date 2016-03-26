@@ -28,11 +28,7 @@ namespace PhimHang.Controllers
        
         public UserManager<ApplicationUser> UserManager { get; private set; }
 
-        private testEntities db = new testEntities();
-        private const string ImageURLAvataDefault = "/img/avatar2.jpg";
-        private const string ImageURLAvata = "/images/avatar/";
-        private string AbsolutePathHostName = AppHelper.AbsolutePathHostName;
-
+        private testEntities db = new testEntities();       
         public async Task<ActionResult> Index(long postid)
         {
             using (db = new testEntities())
@@ -44,13 +40,13 @@ namespace PhimHang.Controllers
                     currentUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());                    
                     ViewBag.CureentUserId = currentUser.Id;
                     ViewBag.UserName = currentUser.UserName;
-                    ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
+                    ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
                     var numberMessegeNew = await db.NotificationMesseges.Where(nm => nm.UserReciver == currentUser.UserExtentLogin.Id && nm.NumNoti > 0).SumAsync(mn => mn.NumNoti);
                     ViewBag.NewMessege = numberMessegeNew;
                 }
                 else
                 {
-                    ViewBag.AvataEmage = ImageURLAvataDefault;
+                    ViewBag.AvataEmage = AppHelper.ImageURLAvataDefault;
                 }
 
                 var post = await db.Posts.FirstOrDefaultAsync(p => p.PostId == postid);
@@ -60,7 +56,7 @@ namespace PhimHang.Controllers
                 ViewBag.Message =  post.Message;
                 ViewBag.MessageNonHtml = AppHelper.StripTagsCharArray(post.Message);
                 ViewBag.PostedByName = post.UserLogin.UserNameCopy;
-                ViewBag.PostedByAvatar = string.IsNullOrEmpty(post.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + post.UserLogin.AvataImage;
+                ViewBag.PostedByAvatar = string.IsNullOrEmpty(post.UserLogin.AvataImage) ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + post.UserLogin.AvataImage;
                 ViewBag.PostedDate = post.PostedDate;
                 ViewBag.PostId = post.PostId;
                 ViewBag.StockPrimary = post.StockPrimary;
@@ -71,7 +67,7 @@ namespace PhimHang.Controllers
                 ViewBag.SumReply = post.SumReply;
                 ViewBag.SumLike = post.SumLike;
                 ViewBag.BrkVip = post.UserLogin.BrokerVIP;
-                ViewBag.AbsolutePathHostName = AbsolutePathHostName;
+                ViewBag.AbsolutePathHostName = AppHelper.AbsolutePathHostName;
 
                 #endregion
                 #region gia chi so index va hnxindex
@@ -103,7 +99,7 @@ namespace PhimHang.Controllers
                            {
                                ReplyMessage = reply.Message,
                                ReplyByName = reply.UserLogin.UserNameCopy,
-                               ReplyByAvatar = string.IsNullOrEmpty(reply.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + reply.UserLogin.AvataImage,
+                               ReplyByAvatar = string.IsNullOrEmpty(reply.UserLogin.AvataImage) ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + reply.UserLogin.AvataImage,
                                ReplyDate = reply.PostedDate,
                                ReplyId = reply.PostCommentsId,
                                PostCommentsId = reply.PostCommentsId,

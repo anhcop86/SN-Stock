@@ -28,13 +28,7 @@ namespace PhimHang.Controllers
             UserManager = userManager;
         }
 
-
-        public UserManager<ApplicationUser> UserManager { get; private set; }
-        private const string ImageURLAvataDefault = "/img/avatar2.jpg";
-        private const string ImageURLCoverDefault = "/img/cover_default.jpg";
-        private const string ImageURLAvata = "/images/avatar/";
-        private const string ImageURLCover = "images/cover/";
-        private string AbsolutePathHostName = AppHelper.AbsolutePathHostName;
+        public UserManager<ApplicationUser> UserManager { get; private set; }       
         private testEntities db = new testEntities();
         public async Task<ActionResult> Index()
         {
@@ -43,7 +37,7 @@ namespace PhimHang.Controllers
                 return RedirectToAction("", "myprofile");
             }
             // get user info
-            ViewBag.AbsolutePathHostName = AbsolutePathHostName;
+            ViewBag.AbsolutePathHostName = AppHelper.AbsolutePathHostName;
             if (User.Identity.IsAuthenticated)
             {
 
@@ -52,8 +46,8 @@ namespace PhimHang.Controllers
                 ViewBag.CureentUserId = currentUser.Id;
                 ViewBag.UserName = currentUser.UserName;
 
-                ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
-                ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataCover) == true ? ImageURLCoverDefault : ImageURLCover + currentUser.UserExtentLogin.AvataCover;
+                ViewBag.AvataEmage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataImage) == true ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + currentUser.UserExtentLogin.AvataImage;
+                ViewBag.CoverImage = string.IsNullOrEmpty(currentUser.UserExtentLogin.AvataCover) == true ? AppHelper.ImageURLCoverDefault : AppHelper.ImageURLCover + currentUser.UserExtentLogin.AvataCover;
 
                 // End thong tin menu ben trai
                 //so luong tin cua User
@@ -62,7 +56,7 @@ namespace PhimHang.Controllers
             }
             else
             {
-                ViewBag.AvataEmage = ImageURLAvataDefault;
+                ViewBag.AvataEmage = AppHelper.ImageURLAvataDefault;
             }
 
           
@@ -84,7 +78,7 @@ namespace PhimHang.Controllers
                                        where u.BrokerVIP == true
                                        select new UserRandom
                                        {
-                                           Avata = string.IsNullOrEmpty(u.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + u.AvataImage,
+                                           Avata = string.IsNullOrEmpty(u.AvataImage) ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + u.AvataImage,
                                            UserName = u.UserNameCopy,
                                            FullName = u.FullName
                                        }).Take(5).ToListAsync();
@@ -141,7 +135,7 @@ namespace PhimHang.Controllers
                                      Message = posts.Message,
                                      Chart = posts.ChartImageURL,
                                      PostedByName = posts.UserLogin.UserNameCopy,
-                                     PostedByAvatar = string.IsNullOrEmpty(posts.UserLogin.AvataImage) ? ImageURLAvataDefault : ImageURLAvata + posts.UserLogin.AvataImage,
+                                     PostedByAvatar = string.IsNullOrEmpty(posts.UserLogin.AvataImage) ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + posts.UserLogin.AvataImage,
                                      PostedDate = posts.PostedDate,
                                      PostId = posts.PostId,
                                      //StockPrimary = posts.StockPrimary,
