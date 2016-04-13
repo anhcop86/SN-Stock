@@ -12,29 +12,36 @@ using Microsoft.AspNet.SignalR.Hubs;
 using System.Text.RegularExpressions;
 using System.Data.Entity;
 
-
-
 namespace PhimHang.Hubs
 {
+    /// <summary>
+    /// Hub to connect these majob client to create a global group (Tạo hub để kết nối các client thành 1 nhóm)
+    /// </summary>
     [HubName("CommentHub")]    
     public class CommentHub : Hub
-    {
-         
+    {         
         // GET: /Post/
-
-        private const string ImageURLAvataDefault = "/img/avatar2.jpg";
-        private const string ImageURLAvata = "/images/avatar/";
+        //private const string ImageURLAvataDefault = "/img/avatar2.jpg";
+        //private const string ImageURLAvata = "/images/avatar/";
         private string hostURL = AppHelper.TinyURL;
         testEntities db;
         TinyURLEntities dbtinyURL = new TinyURLEntities();
+        /// <summary>
+        /// Create A new post from the user
+        /// </summary>
+        /// <param name="post"></param>
+        /// <param name="nhanDinh"></param>
+        /// <param name="chartImage"></param>
+        /// <param name="userpageid"></param>
+        /// <returns></returns>
         [Authorize]
         public async Task<string> AddPost(Post post,  byte nhanDinh, string chartImage, long? userpageid)
         {
-            using (testEntities db = new testEntities())
+            using (db = new testEntities())
             {
                 #region user login
                 string resultString = string.Empty;
-                //var userlogin = db.UserLogins.FirstOrDefault(ul => ul.UserNameCopy == Context.User.Identity.Name);
+                // get info login (Lấy thông tin đăng nhập)
                 var userlogin = await (from ul in db.UserLogins
                                  where ul.UserNameCopy == Context.User.Identity.Name
                                  select new { ul.Id, ul.BrokerVIP, ul.UserNameCopy, ul.AvataImage, ul.DisableUser }).FirstOrDefaultAsync();
@@ -101,6 +108,8 @@ namespace PhimHang.Hubs
             
                 var listStock = new List<string>();
                 var listUsersendMessege = new List<string>();
+                string replyRelated = string.Empty;
+                string replyRelatedUser = string.Empty; 
                 List<string> listMessegeSplit = messagedefault.Replace("\n", " ").Split(' ').ToList().FindAll(p => p.Contains("$") || p.Contains("@"));
 
                 #endregion
@@ -122,10 +131,12 @@ namespace PhimHang.Hubs
                             string user = item.RemoveSpecialString().ToLower();
                             var finduser = await db.UserLogins.FirstOrDefaultAsync(ul => ul.UserNameCopy == user);
                             if (finduser != null)
-                            {
+                            {                                
                                 NotificationMessege nM = new NotificationMessege { UserPost = userlogin.Id, UserReciver = finduser.Id, PostId = post.PostId, NumNoti = 1, TypeNoti = "U", CreateDate = DateTime.Now, XemYN = true };
                                 db.NotificationMesseges.Add(nM);
-                                listUsersendMessege.Add(user);
+                                listUsersendMessege.Add(user); // add user to send notification
+                                replyRelated += user + "|";
+                                replyRelatedUser += finduser.Id + "|";
                             }
                         }
                     }
@@ -139,7 +150,8 @@ namespace PhimHang.Hubs
                 post.PostedDate = DateTime.Now;
                 post.NhanDinh = nhanDinh;
                 post.SumLike = 0;
-                post.ReplyRelated = userlogin.UserNameCopy +"|"; // thong bao cho toan user voi tag user|user|user
+                post.ReplyRelated = replyRelated; // thong bao cho toan user voi tag user|user|user
+                post.ReplyRelatedUser = replyRelatedUser; // thong bao cho toan user voi tag id|id|id
                 if (!string.IsNullOrWhiteSpace(chartImage))
                 {
                     post.ChartYN = true;
@@ -161,7 +173,7 @@ namespace PhimHang.Hubs
                     Message = post.Message,
                     Chart = post.ChartImageURL,
                     PostedByName = userlogin.UserNameCopy,
-                    PostedByAvatar = string.IsNullOrEmpty(userlogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + userlogin.AvataImage,
+                    PostedByAvatar = string.IsNullOrEmpty(userlogin.AvataImage) == true ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + userlogin.AvataImage,
                     PostedDate = post.PostedDate,
                     PostId = post.PostId,
                     StockPrimary = post.StockPrimary,
@@ -201,11 +213,16 @@ namespace PhimHang.Hubs
                 #endregion
             }
         }
+        /// <summary>
+        /// Reply a post
+        /// </summary>
+        /// <param name="reply"></param>
+        /// <returns></returns>
         [Authorize]
         public async Task<string> AddReply(PostComment reply)
         {
 
-            using (testEntities db = new testEntities())
+            using (db = new testEntities())
             {
                 #region user login
                 //string resultString = string.Empty;
@@ -217,11 +234,11 @@ namespace PhimHang.Hubs
                 {
                     return "L"; // user is disable
                 }
-                
+
                 reply.CommentBy = userlogin.Id;
                 reply.PostedDate = DateTime.Now;
                 #endregion
-                
+
                 #region format message
                 string messagedefault = "";
                 messagedefault = reply.Message;
@@ -238,6 +255,7 @@ namespace PhimHang.Hubs
                         }
                         else if (item.IndexOf("@", 0, 1) != -1)
                         {
+                            // đề cập đến user
                             string user = item.RemoveSpecialString().ToLower();
                             messageFromatHTML += "<a target='_blank' href='/" + user + "'>" + item + "</a>" + " ";
                         }
@@ -271,73 +289,67 @@ namespace PhimHang.Hubs
                     }
                 }
 
-                
+
                 reply.Message = AppHelper.FilteringWord(messageFromatHTML); // lọc từ khóa                
-
-                var listUsersendMessege = new List<string>();
-                ///////////////////////////////////////////
-                var getPost = await db.Posts.FindAsync(reply.PostedBy); // lay thong tin cua bài post đó
-                // cap nhat tong so luong reply
-                getPost.SumReply += 1;
-                
-                if (!getPost.ReplyRelated.Contains(userlogin.UserNameCopy))
-                {
-                    getPost.ReplyRelated += userlogin.UserNameCopy + "|";
-                }
                 #endregion
-                
-                #region gui tin cho chu da post bài
-
-                if (getPost.PostedBy != userlogin.Id)
-                {
-                    var nMRecive = await db.NotificationMesseges.FirstOrDefaultAsync(nm => nm.UserReciver == getPost.UserLogin.Id && nm.PostId == reply.PostedBy);
-                    if (nMRecive == null)
-                    {
-                        NotificationMessege nM = new NotificationMessege { UserPost = userlogin.Id, UserReciver = getPost.UserLogin.Id, PostId = reply.PostedBy, NumNoti = 1, TypeNoti = "R", CreateDate = DateTime.Now, XemYN = true };
-                        db.NotificationMesseges.Add(nM);
-                    }
-                    else
-                    {
-                        // get messge and update 
-                        nMRecive.NumNoti += 1;
-                        nMRecive.XemYN = true;
-                        nMRecive.CreateDate = DateTime.Now;
-                        db.Entry(nMRecive).State = EntityState.Modified;
-                    }
-                    listUsersendMessege.Add(getPost.UserLogin.UserNameCopy);
-                }
-                ///////////////////////////////////////////
-                #endregion
-
 
                 #region reply có đề cập đến user nào không ??
+                var getPost = await db.Posts.FindAsync(reply.PostedBy); // get post (Lấy bài post)
+                // cap nhat tong so luong reply
+                getPost.SumReply += 1;
+                // Tao Array for split user (Tạo mảng để xử lý User)
+                string[] userReplyRelated = new string[2];
+                userReplyRelated[0] = getPost.ReplyRelated;
+                userReplyRelated[1] = getPost.ReplyRelatedUser;
+
+                List<string> listUsersendMessege = new List<string>();
                 List<string> listMessegeSplit = messagedefault.Split(' ').ToList().FindAll(p => p.Contains("@"));
                 foreach (var item in listMessegeSplit)
                 {
                     if (item.IndexOf("@", 0, 1) != -1) //find the user with @
                     {
-                        string user = item.RemoveSpecialString().ToLower();
-                        var finduser = await db.UserLogins.FirstOrDefaultAsync(ul => ul.UserNameCopy == user);
+                        string user = item.RemoveSpecialString().ToLower(); // remove special character (Loại những ký tự đặc biệt)
+                        var finduser = await db.UserLogins.FirstOrDefaultAsync(ul => ul.UserNameCopy == user);// check user exist
                         if (finduser != null)
                         {
-                            var nMuser = await db.NotificationMesseges.FirstOrDefaultAsync(nm => nm.UserReciver == finduser.Id && nm.PostId == reply.PostedBy);
-                            if (nMuser == null)
-                            {
-                                NotificationMessege nM = new NotificationMessege { UserPost = userlogin.Id, UserReciver = finduser.Id, PostId = reply.PostedBy, NumNoti = 1, TypeNoti = "R", CreateDate = DateTime.Now, XemYN = true };
-                                db.NotificationMesseges.Add(nM);
-                            }
-                            else
-                            {
-                                // get messge and update 
-                                nMuser.NumNoti += 1;
-                                nMuser.XemYN = true;
-                                nMuser.CreateDate = DateTime.Now;
-                                db.Entry(nMuser).State = EntityState.Modified;
-                            }
-                            listUsersendMessege.Add(user);
+                            userReplyRelated = AppHelper.StringUserSlipt(userReplyRelated, user, finduser.Id.ToString());
                         }
                     }
                 }
+                #endregion
+
+                #region gui tin cho những người đã đề cập trong bài post
+
+                // replace chính người post để không tạo thêm notification
+                string[] replyRelated = userReplyRelated[0].Replace(userlogin.UserNameCopy + "|", "").Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
+                string[] replyRelatedIdUser = userReplyRelated[1].Replace(userlogin.Id + "|", "").Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
+                for (int i = 0; i < replyRelatedIdUser.Length; i++)
+                {
+                    try
+                    {
+                        int replyRelatedIdUserItem = int.Parse(replyRelatedIdUser[i]);
+                        var nMRecive = await db.NotificationMesseges.FirstOrDefaultAsync(nm => nm.UserReciver == replyRelatedIdUserItem && nm.PostId == reply.PostedBy);
+                        if (nMRecive == null)
+                        {
+                            NotificationMessegeModels.Create(userlogin.Id, int.Parse(replyRelatedIdUser[i]), reply.PostedBy);
+                            listUsersendMessege.Add(replyRelated[i]); // add usser to send (1) notify
+                        }
+                        else
+                        {
+                            if (nMRecive.NumNoti <= 0 || nMRecive.NumNoti == null)
+                            {
+                                NotificationMessegeModels.Update(nMRecive);
+                                listUsersendMessege.Add(replyRelated[i]); // add usser to send (1) notify
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        //throw log;
+                    }
+                }
+
+                ///////////////////////////////////////////
                 #endregion
                 
                 #region luu du lieu vao db
@@ -345,12 +357,15 @@ namespace PhimHang.Hubs
 
                 try
                 {
+                    //AppHelper.StringUserSlipt(userReplyRelated, userlogin.UserNameCopy, userlogin.Id.ToString())[0];
+                    getPost.ReplyRelated = AppHelper.StringUserSlipt(userReplyRelated, userlogin.UserNameCopy, userlogin.Id.ToString())[0];
+                    getPost.ReplyRelatedUser = AppHelper.StringUserSlipt(userReplyRelated, userlogin.UserNameCopy, userlogin.Id.ToString())[1];
                     db.Entry(getPost).State = EntityState.Modified;
                     await db.SaveChangesAsync();
                 }
                 catch (Exception)
                 {
-                    // erro thi van chay tiep
+                    // error thi van chay tiep
 
                 }
 
@@ -359,7 +374,7 @@ namespace PhimHang.Hubs
                     ReplyMessage = reply.Message,
                     //PostedBy = post.PostedBy,
                     ReplyByName = userlogin.UserNameCopy,
-                    ReplyByAvatar = string.IsNullOrEmpty(userlogin.AvataImage) == true ? ImageURLAvataDefault : ImageURLAvata + userlogin.AvataImage,
+                    ReplyByAvatar = string.IsNullOrEmpty(userlogin.AvataImage) == true ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + userlogin.AvataImage,
                     ReplyDate = reply.PostedDate,
                     ReplyId = reply.PostCommentsId,
                     PostCommentsId = reply.PostCommentsId,
@@ -367,7 +382,7 @@ namespace PhimHang.Hubs
                 };
 
                 #endregion
-                
+
                 #region push message
                 await Clients.Caller.addReply(ret); // gửi cho chính người đã reply (tạo trả lời bên dưới)
                 if (listUsersendMessege.Count > 0)
@@ -375,8 +390,9 @@ namespace PhimHang.Hubs
                     await Clients.Users(listUsersendMessege).MessegeOfUserPost(1); // gửi thông báo (1) liên quan những người trong list post đã có người comment
                 }
                 await Clients.All.newReplyNoti(reply.PostedBy); // +1 cho ai đang mở bài post đó
-                #endregion
                 return "S";
+                #endregion
+
             }
         }
 
