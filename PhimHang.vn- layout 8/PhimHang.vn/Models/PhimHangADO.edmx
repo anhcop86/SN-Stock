@@ -151,8 +151,8 @@
           <Property Name="SumLike" Type="int" />
           <Property Name="SumReply" Type="int" Nullable="false" />
           <Property Name="Priority" Type="tinyint" />
-          <Property Name="ReplyRelated" Type="varchar" MaxLength="1024" />
-          <Property Name="ReplyRelatedUser" Type="varchar" MaxLength="512" />
+          <Property Name="ReplyRelated" Type="varchar" MaxLength="2048" />
+          <Property Name="ReplyRelatedUser" Type="varchar" MaxLength="1024" />
         </EntityType>
         <EntityType Name="Settings">
           <Key>
@@ -950,15 +950,15 @@
           <Property Name="ChartYN" Type="Boolean" />
           <Property Name="SumLike" Type="Int32" />
           <Property Name="SumReply" Type="Int32" Nullable="false" />
+          <Property Name="Priority" Type="Byte" />
+          <Property Name="ReplyRelated" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" />
+          <Property Name="ReplyRelatedUser" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="NotificationMesseges" Relationship="PHDBContext.FK_Posts_User" FromRole="Post" ToRole="NotificationMessege" />
           <NavigationProperty Name="PinStocks" Relationship="PHDBContext.FK_Posts_PinStock" FromRole="Post" ToRole="PinStock" />
           <NavigationProperty Name="PostComments" Relationship="PHDBContext.FK_PostComments_Posts" FromRole="Post" ToRole="PostComment" />
           <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_Posts_UserLogins" FromRole="Post" ToRole="UserLogin" />
           <NavigationProperty Name="StockRelates" Relationship="PHDBContext.FK_StockRelate_Posts" FromRole="Post" ToRole="StockRelate" />
           <NavigationProperty Name="UserRelates" Relationship="PHDBContext.FK_UserRelate_Posts" FromRole="Post" ToRole="UserRelate" />
-          <Property Name="Priority" Type="Byte" />
-          <Property Name="ReplyRelated" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
-          <Property Name="ReplyRelatedUser" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Setting">
           <Key>
@@ -1063,6 +1063,7 @@
           <Property Name="IdFacebook" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
           <Property Name="AvatarSyn" Type="Boolean" />
           <Property Name="CharacterLimit" Type="Int32" Nullable="false" />
+          <Property Name="DisableUser" Type="Boolean" />
           <NavigationProperty Name="AspNetUsers" Relationship="PHDBContext.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" FromRole="UserLogin" ToRole="AspNetUser" />
           <NavigationProperty Name="FollowStocks" Relationship="PHDBContext.FK_FollowStock_UserLogins" FromRole="UserLogin" ToRole="FollowStock" />
           <NavigationProperty Name="FollowUsers" Relationship="PHDBContext.FK_FollowUser_UserLogins" FromRole="UserLogin" ToRole="FollowUser" />
@@ -1077,7 +1078,6 @@
           <NavigationProperty Name="UserRelates" Relationship="PHDBContext.FK_UserRelate_UserLogins" FromRole="UserLogin" ToRole="UserRelate" />
           <NavigationProperty Name="UserViewLastests" Relationship="PHDBContext.FK_UserViewLastest_UserLogins" FromRole="UserLogin" ToRole="UserViewLastest" />
           <NavigationProperty Name="UserViewLastests1" Relationship="PHDBContext.FK_UserViewLastest_UserLogins1" FromRole="UserLogin" ToRole="UserViewLastest" />
-          <Property Name="DisableUser" Type="Boolean" />
         </EntityType>
         <EntityType Name="UserRelate">
           <Key>

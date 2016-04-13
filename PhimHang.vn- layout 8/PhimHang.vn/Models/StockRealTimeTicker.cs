@@ -96,8 +96,8 @@ namespace PhimHang.Models
             //http://www.vfs.com.vn:6789/api/stocks
             //{PI_tickerList:'KLS|OGC|KBC'}
             //var client = new RestClient("http://www.vfs.com.vn:6789/api/");
-            Uri uri = new Uri("https://cungphim.com/");
-            string uriAlternate = "http://stockboard.sbsc.com.vn/HO.ashx?FileName=0";
+            Uri uri = new Uri(AppHelper.GetPriceAPIUrl);
+            //string uriAlternate = "http://stockboard.sbsc.com.vn/HO.ashx?FileName=0"; chua su dung
             using (var client = new HttpClient())
             {
                 client.BaseAddress = uri;

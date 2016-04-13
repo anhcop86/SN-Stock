@@ -316,6 +316,7 @@
     <Compile Include="Models\NotificationMessege.cs">
       <DependentUpon>PhimHangADO.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\NotificationMessegeModels.cs" />
     <Compile Include="Models\Philosophy.cs">
       <DependentUpon>PhimHangADO.tt</DependentUpon>
     </Compile>

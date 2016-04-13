@@ -478,8 +478,31 @@ namespace PhimHang.Models
                 return _imageURLCover;
             }
         }
-
-
+        /// <summary>
+        /// Check string into User list<string> with | tag
+        /// </summary>
+        /// <param name="manUserName"></param>
+        /// <param name="userName"></param>
+        /// <param name="idUserName"></param>
+        public static string[] StringUserSlipt(string[] manUserName, string userName, string idUserName)
+        {
+            if (!manUserName[0].Contains(userName + "|"))
+            {
+                manUserName[0] += userName + "|"; // list user     
+                manUserName[1] += idUserName + "|"; // list id                
+            }          
+            return manUserName;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public static string GetPriceAPIUrl
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["GetPriceAPIUrl"].ToString();
+            }
+        }
     }
     public class PosistionFilter
     {

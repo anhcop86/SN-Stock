@@ -1,4 +1,0 @@
-//private const string ImageURLAvataDefault = "/img/avatar2.jpg";        
-        //private const string ImageURLAvata = "/images/avatar/";
-        //private const string ImageURLCoverDefault = "/img/cover_default.jpg";
-        //private const string ImageURLCover = "/images/cover/";
