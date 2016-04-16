@@ -115,7 +115,10 @@ namespace PhimHang.Hubs
                 #endregion
 
                 #region gui message co phieu và user lien quan
-                
+                string[] userReplyRelated = new string[2];
+                userReplyRelated[0] = string.Empty;
+                userReplyRelated[1] = string.Empty ;
+
                 foreach (var item in listMessegeSplit)
                 {
                     if (item.Length > 0)
@@ -135,8 +138,7 @@ namespace PhimHang.Hubs
                                 NotificationMessege nM = new NotificationMessege { UserPost = userlogin.Id, UserReciver = finduser.Id, PostId = post.PostId, NumNoti = 1, TypeNoti = "U", CreateDate = DateTime.Now, XemYN = true };
                                 db.NotificationMesseges.Add(nM);
                                 listUsersendMessege.Add(user); // add user to send notification
-                                replyRelated += user + "|";
-                                replyRelatedUser += finduser.Id + "|";
+                                userReplyRelated = AppHelper.StringUserSlipt(userReplyRelated, user, finduser.Id.ToString());                                
                             }
                         }
                     }
@@ -150,8 +152,8 @@ namespace PhimHang.Hubs
                 post.PostedDate = DateTime.Now;
                 post.NhanDinh = nhanDinh;
                 post.SumLike = 0;
-                post.ReplyRelated = replyRelated; // thong bao cho toan user voi tag user|user|user
-                post.ReplyRelatedUser = replyRelatedUser; // thong bao cho toan user voi tag id|id|id
+                post.ReplyRelated = AppHelper.StringUserSlipt(userReplyRelated, userlogin.UserNameCopy, userlogin.Id.ToString())[0]; // thong bao cho toan user voi tag user|user|user
+                post.ReplyRelatedUser = AppHelper.StringUserSlipt(userReplyRelated, userlogin.UserNameCopy, userlogin.Id.ToString())[1]; ; // thong bao cho toan user voi tag id|id|id
                 if (!string.IsNullOrWhiteSpace(chartImage))
                 {
                     post.ChartYN = true;
@@ -356,8 +358,7 @@ namespace PhimHang.Hubs
                 db.PostComments.Add(reply);
 
                 try
-                {
-                    //AppHelper.StringUserSlipt(userReplyRelated, userlogin.UserNameCopy, userlogin.Id.ToString())[0];
+                {                    
                     getPost.ReplyRelated = AppHelper.StringUserSlipt(userReplyRelated, userlogin.UserNameCopy, userlogin.Id.ToString())[0];
                     getPost.ReplyRelatedUser = AppHelper.StringUserSlipt(userReplyRelated, userlogin.UserNameCopy, userlogin.Id.ToString())[1];
                     db.Entry(getPost).State = EntityState.Modified;
@@ -427,25 +428,27 @@ namespace PhimHang.Hubs
             return base.OnDisconnected(stopCall);
         }
 
-        
         public async Task AddNewLike(long postid)
-        {            
-            var postFind = await db.Posts.FirstOrDefaultAsync(p => p.PostId == postid);
-            if (postFind != null)
+        {
+            using (db = new testEntities())
             {
-                postFind.SumLike = postFind.SumLike + 1;
-                try
+                var postFind = await db.Posts.FirstOrDefaultAsync(p => p.PostId == postid);
+                if (postFind != null)
                 {
-                    db.Entry(postFind).State = EntityState.Modified;
-                    await db.SaveChangesAsync();
-                }
-                catch (Exception)
-                {
+                    postFind.SumLike = postFind.SumLike + 1;
+                    try
+                    {
+                        db.Entry(postFind).State = EntityState.Modified;
+                        await db.SaveChangesAsync();
+                    }
+                    catch (Exception)
+                    {
 
-                    //throw;
-                }
-                await Clients.All.addNewLike(postid);
+                        //throw;
+                    }
+                    await Clients.All.addNewLike(postid);
 
+                }
             }
         }
 

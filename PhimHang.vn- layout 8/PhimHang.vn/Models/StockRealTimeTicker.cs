@@ -104,10 +104,10 @@ namespace PhimHang.Models
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 var parameter = new { PI_tickerList = "KEYSECRET" };
-                var response = client.PostAsJsonAsync("/api/StockRealTime", parameter).Result;
+                
                 try
                 {
-                    
+                    var response = client.PostAsJsonAsync("/api/StockRealTime", parameter).Result;
                     if (response.IsSuccessStatusCode)
                     {
                         var list = await response.Content.ReadAsAsync<List<StockRealTime>>();
