@@ -335,7 +335,7 @@ namespace PhimHang.Controllers
         }
 
         [HttpPost]
-        public async Task<string> ReportError(long postid)
+        public string ReportError(long postid)
         {
             return "Y";
         }

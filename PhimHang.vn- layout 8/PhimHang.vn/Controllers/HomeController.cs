@@ -32,11 +32,12 @@ namespace PhimHang.Controllers
         private testEntities db = new testEntities();
         public async Task<ActionResult> Index()
         {
+            #region [Login User]
             if (User.Identity.IsAuthenticated)// neu dang nhap thi cho ve thẳng myprofile
             {
                 return RedirectToAction("", "myprofile");
             }
-            // get user info
+            
             ViewBag.AbsolutePathHostName = AppHelper.AbsolutePathHostName;
             if (User.Identity.IsAuthenticated)
             {
@@ -58,20 +59,15 @@ namespace PhimHang.Controllers
             {
                 ViewBag.AvataEmage = AppHelper.ImageURLAvataDefault;
             }
-
-          
-            #region gia cổ phieu cua cac co phieu nong
-            
-            var listStock = await AppHelper.GetListHotStock();            
-            ViewBag.ListStockHot = listStock;
-            /*
-            ViewBag.listStockPriceHot = _stockRealtime.GetAllStocksList(listStock as List<string>).Result;
-             * */
             #endregion
 
-            //#region co phieu ngau ben trái
-            //ViewBag.listStockRandom = _stockRealtime.RandomStocksList().Result;
-            //#endregion
+            #region Giá cổ phiếu nóng
+
+            var listStock = await AppHelper.GetListHotStock();            
+            ViewBag.ListStockHot = listStock;
+            
+            #endregion
+                        
             #region random dan phim chuyen nghiem
             var DanPhimRandom = await (from u in db.UserLogins
                                        orderby Guid.NewGuid()
@@ -84,22 +80,23 @@ namespace PhimHang.Controllers
                                        }).Take(5).ToListAsync();
             ViewBag.DanPhimRandom = DanPhimRandom;
             #endregion
+
             #region gia chi so index va hnxindex
             var listIndex = new List<string>();
             listIndex.Add("VNINDEX");
             listIndex.Add("HNXINDEX");
             ViewBag.ListIndex = _stockRealtime.GetAllStocksList(listIndex).Result;
             #endregion
+
             return View();
         }
         /// <summary>
-        ///  tra ve co phieu ngau nhien ben trai trang home bang ajax load tuan tu
+        ///  Tra ve co phieu ngau nhien ben trai trang home bang ajax load tuan tu
         /// </summary>
         /// <returns></returns>
         public ActionResult RandomStockList()
         {
             var result = _stockRealtime.RandomStocksList().Result;
-
             return PartialView("_Partial_Area_Left_Home2", result);
         }
 
@@ -124,7 +121,6 @@ namespace PhimHang.Controllers
         [HttpGet]
         public async Task<dynamic> GetMorePostsGlobal(int skipposition, string filter)
         {
-            //var fjdsf = WebSecurity.CurrentUserId;
             if (filter == "" || filter == "ALL")
             {
                 var ret = await (from posts in db.Posts
@@ -137,16 +133,14 @@ namespace PhimHang.Controllers
                                      PostedByName = posts.UserLogin.UserNameCopy,
                                      PostedByAvatar = string.IsNullOrEmpty(posts.UserLogin.AvataImage) ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + posts.UserLogin.AvataImage,
                                      PostedDate = posts.PostedDate,
-                                     PostId = posts.PostId,
-                                     //StockPrimary = posts.StockPrimary,
+                                     PostId = posts.PostId,                                     
                                      Stm = posts.NhanDinh,
                                      ChartYN = posts.ChartYN,
                                      SumLike = posts.SumLike,
                                      SumReply = posts.SumReply,
                                      BrkVip = posts.UserLogin.BrokerVIP,
                                      Pri = posts.Priority
-                                 }).Skip(skipposition).Take(10).ToArrayAsync();
-                //var listStock = new List<string>();              
+                                 }).Skip(skipposition).Take(10).ToArrayAsync();                         
                 var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
                 return result;
             }
