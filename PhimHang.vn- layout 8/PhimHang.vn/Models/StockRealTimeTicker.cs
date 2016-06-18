@@ -107,7 +107,7 @@ namespace PhimHang.Models
                 
                 try
                 {
-                    var response = client.PostAsJsonAsync("/api/StockRealTime", parameter).Result;
+                    var response = client.PostAsJsonAsync("/api/StockRealTime", "").Result;
                     if (response.IsSuccessStatusCode)
                     {
                         var list = await response.Content.ReadAsAsync<List<StockRealTime>>();

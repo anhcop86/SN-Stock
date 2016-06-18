@@ -35,3 +35,8 @@ F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Component\Data.pdb
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Data\obj\Debug\Data.dll
 F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\Data\obj\Debug\Data.pdb
+E:\Working New\SN-Stock\WebAPIStockRealTime\Component\Data.dll
+E:\Working New\SN-Stock\WebAPIStockRealTime\Component\Data.pdb
+E:\Working New\SN-Stock\WebAPIStockRealTime\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
+E:\Working New\SN-Stock\WebAPIStockRealTime\Data\obj\Debug\Data.dll
+E:\Working New\SN-Stock\WebAPIStockRealTime\Data\obj\Debug\Data.pdb

@@ -61,3 +61,23 @@ F:\Working\StockProject\SN-Stock\WebAPIStockRealTime\SynStockHistory\obj\Debug\S
 F:\Working\SN-Stock\WebAPIStockRealTime\SynStockHistory\bin\Debug\SynStockHistory.exe.config
 F:\Working\SN-Stock\WebAPIStockRealTime\SynStockHistory\obj\Debug\SynStockHistory.exe
 F:\Working\SN-Stock\WebAPIStockRealTime\SynStockHistory\obj\Debug\SynStockHistory.pdb
+E:\Working New\SN-Stock\WebAPIStockRealTime\SynStockHistory\bin\Debug\SynStockHistory.exe.config
+E:\Working New\SN-Stock\WebAPIStockRealTime\SynStockHistory\bin\Debug\SynStockHistory.exe
+E:\Working New\SN-Stock\WebAPIStockRealTime\SynStockHistory\bin\Debug\SynStockHistory.pdb
+E:\Working New\SN-Stock\WebAPIStockRealTime\SynStockHistory\bin\Debug\EntityFramework.dll
+E:\Working New\SN-Stock\WebAPIStockRealTime\SynStockHistory\bin\Debug\EntityFramework.SqlServer.dll
+E:\Working New\SN-Stock\WebAPIStockRealTime\SynStockHistory\bin\Debug\Newtonsoft.Json.dll
+E:\Working New\SN-Stock\WebAPIStockRealTime\SynStockHistory\bin\Debug\System.Net.Http.Extensions.dll
+E:\Working New\SN-Stock\WebAPIStockRealTime\SynStockHistory\bin\Debug\System.Net.Http.Primitives.dll
+E:\Working New\SN-Stock\WebAPIStockRealTime\SynStockHistory\bin\Debug\EntityFramework.xml
+E:\Working New\SN-Stock\WebAPIStockRealTime\SynStockHistory\bin\Debug\EntityFramework.SqlServer.xml
+E:\Working New\SN-Stock\WebAPIStockRealTime\SynStockHistory\bin\Debug\Newtonsoft.Json.xml
+E:\Working New\SN-Stock\WebAPIStockRealTime\SynStockHistory\bin\Debug\System.Net.Http.Extensions.xml
+E:\Working New\SN-Stock\WebAPIStockRealTime\SynStockHistory\bin\Debug\System.Net.Http.Primitives.xml
+E:\Working New\SN-Stock\WebAPIStockRealTime\SynStockHistory\obj\Debug\SynStockHistory.csproj.App.config
+E:\Working New\SN-Stock\WebAPIStockRealTime\SynStockHistory\obj\Debug\SynStockHistory.csprojResolveAssemblyReference.cache
+E:\Working New\SN-Stock\WebAPIStockRealTime\SynStockHistory\obj\Debug\SynStockHistory.Form1.resources
+E:\Working New\SN-Stock\WebAPIStockRealTime\SynStockHistory\obj\Debug\SynStockHistory.Properties.Resources.resources
+E:\Working New\SN-Stock\WebAPIStockRealTime\SynStockHistory\obj\Debug\SynStockHistory.csproj.GenerateResource.Cache
+E:\Working New\SN-Stock\WebAPIStockRealTime\SynStockHistory\obj\Debug\SynStockHistory.exe
+E:\Working New\SN-Stock\WebAPIStockRealTime\SynStockHistory\obj\Debug\SynStockHistory.pdb

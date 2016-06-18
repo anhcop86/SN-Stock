@@ -7,9 +7,12 @@ namespace WebApiStockPriceFromURL.Models
 {
     public struct StockResult
     {
-        public string Name { get; set; }
-        public decimal Finish { get; set; }
+        public string CompanyID { get; set; }
+
+        public decimal FinishPrice { get; set; }
+
         public decimal Diff { get; set; }
-        public decimal Rate { get; set; }
+
+        public decimal DiffRate { get; set; }
     }
 }
