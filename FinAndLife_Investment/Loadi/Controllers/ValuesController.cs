@@ -13,6 +13,7 @@ namespace Loadi.Controllers
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
+            //nguyen chi hieu test
         }
 
         // GET api/values/5
