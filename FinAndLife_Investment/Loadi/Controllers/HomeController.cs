@@ -8,6 +8,7 @@ namespace Loadi.Controllers
 {
     public class HomeController : Controller
     {
+        // nguyen chi hieu
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
