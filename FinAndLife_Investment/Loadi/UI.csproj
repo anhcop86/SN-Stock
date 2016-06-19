@@ -173,6 +173,7 @@
     <Content Include="images\0062307673_b.jpg" />
     <Content Include="images\1250065941_b.jpg" />
     <Content Include="images\Autographed.5.22.jpg" />
+    <Content Include="images\Logo.png" />
     <Content Include="images\holiday-logo-header.png" />
     <Content Include="images\logo.jpg" />
     <Content Include="images\paris.jpg" />
@@ -199,6 +200,9 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Views\Shared\_Menu.cshtml" />
+    <Content Include="Views\Shared\_Slide.cshtml" />
+    <Content Include="Views\Shared\_Logo.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

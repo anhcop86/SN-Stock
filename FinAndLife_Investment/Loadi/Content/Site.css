@@ -2,30 +2,42 @@
     padding-top: 0;
     padding-bottom: 20px;
 }
-.blue-theme{
-    background-color:#4db5e7;
-    color:#fff;
-}
-.container-fluid, .navbar,.container{
-    border-radius:0;
+
+.menu {
     /*border:none;*/
+}
+
+.blue-theme {
+    background-color: #4db5e7;
+    color: #fff;
+}
+.btn-info:active:hover,.btn-info:active:focus{
+    background-color: #d81920;
+}
+.container-fluid, .navbar, .container {
+    border-radius: 0;
+    border: none;
 }
 /* Note: Try to remove the following lines to see the effect of CSS positioning */
 .affix {
     top: 0;
     width: 100%;
 }
-.carousel{
-    margin:0px 0 10px 0;
+
+.carousel {
+    margin: 0px 0 10px 0;
 }
-.catalogy-title{
-    color:#4db5e7;
-    font-weight:bold;
+
+.catalogy-title {
+    color: #4db5e7;
+    font-weight: bold;
     padding-top: 3px;
 }
-.carousel-inner img{
+
+.carousel-inner img {
     height: 347px;
 }
+
 .affix + .container-fluid {
     padding-top: 70px;
 }
@@ -84,101 +96,143 @@ input[type="checkbox"].input-validation-error {
     border-radius: 0;
 }
 
-.thumbnail p {
-    margin-top: 8px;
-    color: #000;
-}
+    .thumbnail p {
+        margin-top: 8px;
+        color: #000;
+    }
 /* Black buttons with extra padding and without rounded borders */
 .btn {
     /*padding: 8px 20px;
-    background-color: #333;
-    color: #f1f1f1;*/
+background-color: #333;
+color: #f1f1f1;*/
     border-radius: 0;
     transition: 0s;
 }
 
+.logo {
+    height: 115px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
 /* On hover, the color of .btn will transition to white with black text */
 /*.btn:hover, .btn:focus {
-    border: 1px solid #5bc0de;
-    background-color: #fff;
-    color: #000;
+border: 1px solid #5bc0de;
+background-color: #fff;
+color: #000;
 }*/
 
-/* Add a dark background color with a little bit see-through */ 
+/* Add a dark background color with a little bit see-through */
 .navbar-collapse {
-		position: relative;
-		padding-top: 30px !important;
-		max-height: 270px;
-	}
-	.navbar-collapse form[role="search"] {
-		position: absolute;
-		top: 0px;
-		right: 0px;
-		width: 100%;
-		padding: 0px;
-		margin: 0px;
-		z-index: 0;
-	}
-	.navbar-collapse form[role="search"] button,
-	.navbar-collapse form[role="search"] input {
-		padding: 8px 12px;
-		border-radius: 0px;
-		border-width: 0px;
-		color: rgb(119, 119, 119);
-		background-color: rgb(248, 248, 248);
-		border-color: rgb(231, 231, 231);
-		box-shadow: none;
-		outline: none;
-	}
-	.navbar-collapse form[role="search"] input {
-		padding: 16px 12px;
-		font-size: 14pt;
-		font-style: italic;
-		color: rgb(160, 160, 160);
-		box-shadow: none;
-	}
-	.navbar-collapse form[role="search"] button[type="reset"] {
-		display: none;
-	}
+    position: relative;
+    /*padding-top: 30px !important;*/
+    max-height: 270px;
+}
 
-    .button-search{
-        float:left;
-        margin-top:10px;
-        display: inline-flex;
+    .navbar-collapse form[role="search"] {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+        z-index: 0;
     }
+
+        .navbar-collapse form[role="search"] button,
+        .navbar-collapse form[role="search"] input {
+            padding: 8px 12px;
+            border-radius: 0px;
+            border-width: 0px;
+            color: rgb(119, 119, 119);
+            background-color: rgb(248, 248, 248);
+            border-color: rgb(231, 231, 231);
+            box-shadow: none;
+            outline: none;
+        }
+
+        .navbar-collapse form[role="search"] input {
+            padding: 16px 12px;
+            font-size: 14pt;
+            font-style: italic;
+            color: rgb(160, 160, 160);
+            box-shadow: none;
+        }
+
+        .navbar-collapse form[role="search"] button[type="reset"] {
+            display: none;
+        }
+
+.button-search {
+    float: right;
+    margin-top: 10px;
+    display: inline-flex;
+}
+
     .button-search #searchInput {
-        border-radius:0px;
-        border-right:0px;
+        border-radius: 0px;
+        border-right: 0px;
     }
-	@media (min-width: 768px) {
-		.navbar-collapse {
-			padding-top: 0px !important;
-			padding-right: 38px !important;
-		}
-		.navbar-collapse form[role="search"] {
-			width: 38px;
-		}
-		.navbar-collapse form[role="search"] button,
-		.navbar-collapse form[role="search"] input {
-			padding: 15px 12px;
-		}
-		.navbar-collapse form[role="search"] input {
-			padding: 25px 12px;
-			font-size: 18pt;
-			opacity: 0;
-			display: none;
-		}
-		.navbar-collapse form[role="search"].active {
-			width: 100%;
-		}
-		.navbar-collapse form[role="search"].active button,
-		.navbar-collapse form[role="search"].active input {
-			display: table-cell;
-			opacity: 1;
-		}
-    	.navbar-collapse form[role="search"].active input {
-			width: 100%;
-		}
-	}
 
+    .button-search button {
+        background-color: #d81920;
+        border-color: #d81920;
+    }
 
+        .button-search button:hover {
+            background-color: #d81920;
+            border-color: #d81920;
+        }
+
+#myNavbar {
+    font-weight: bold;
+}
+#myNavbar ul li:hover{
+    background-color:#e7e7e7;
+}
+#navbar-title {
+    display: none;
+}
+@media (max-width: 768px) {
+      #navbar-title {
+        display: block;
+    }
+}
+@media (min-width: 768px) {
+    .navbar-collapse {
+        padding-top: 0px !important;
+        /*padding-right: 38px !important;*/
+    }
+
+  
+
+    .navbar-collapse form[role="search"] {
+        width: 38px;
+    }
+
+        .navbar-collapse form[role="search"] button,
+        .navbar-collapse form[role="search"] input {
+            padding: 15px 12px;
+        }
+
+        .navbar-collapse form[role="search"] input {
+            padding: 25px 12px;
+            font-size: 18pt;
+            opacity: 0;
+            display: none;
+        }
+
+        .navbar-collapse form[role="search"].active {
+            width: 100%;
+        }
+
+            .navbar-collapse form[role="search"].active button,
+            .navbar-collapse form[role="search"].active input {
+                display: table-cell;
+                opacity: 1;
+            }
+
+            .navbar-collapse form[role="search"].active input {
+                width: 100%;
+            }
+}

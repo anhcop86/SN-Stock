@@ -195,6 +195,10 @@
       <Project>{2ad599ee-a54e-47e2-9217-efb107582c5c}</Project>
       <Name>Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GetDataFromMetaStock\GetDataFromMetaStock.csproj">
+      <Project>{7608efd5-4600-428d-a3c8-76983b4ca80c}</Project>
+      <Name>GetDataFromMetaStock</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
