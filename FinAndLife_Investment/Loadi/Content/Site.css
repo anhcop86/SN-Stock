@@ -11,9 +11,11 @@
     background-color: #4db5e7;
     color: #fff;
 }
-.btn-info:active:hover,.btn-info:active:focus{
-    background-color: #d81920;
+
+.dropdown-menu li a:hover {
+    background-color: #e7e7e7;
 }
+
 .container-fluid, .navbar, .container {
     border-radius: 0;
     border: none;
@@ -24,6 +26,22 @@
     width: 100%;
 }
 
+.navbar-custom-menu > .navbar-nav > li {
+    position: relative;
+}
+
+.skin-yellow .main-header .navbar .nav > li > a {
+    color: #fff;
+}
+
+
+.input-group {
+    position: relative;
+    display: block;
+    border-collapse: separate;
+    /*float:right;*/
+}
+
 .carousel {
     margin: 0px 0 10px 0;
 }
@@ -32,6 +50,10 @@
     color: #4db5e7;
     font-weight: bold;
     padding-top: 3px;
+}
+
+img {
+    border: none !important;
 }
 
 .carousel-inner img {
@@ -109,8 +131,16 @@ color: #f1f1f1;*/
     transition: 0s;
 }
 
+.form-control {
+    border-radius: 0;
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.35);
+}
+
 .logo {
-    height: 115px;
+    /*height: 115px;*/
     margin-top: 5px;
     margin-bottom: 10px;
 }
@@ -187,52 +217,56 @@ color: #000;
 #myNavbar {
     font-weight: bold;
 }
-#myNavbar ul li:hover{
-    background-color:#e7e7e7;
-}
+
+    #myNavbar ul li:hover {
+        background-color: #e7e7e7;
+    }
+
 #navbar-title {
     display: none;
 }
+
 @media (max-width: 768px) {
-      #navbar-title {
+    #navbar-title {
         display: block;
     }
 }
+
 @media (min-width: 768px) {
     .navbar-collapse {
         padding-top: 0px !important;
         /*padding-right: 38px !important;*/
     }
 
-  
 
-    .navbar-collapse form[role="search"] {
-        width: 38px;
-    }
 
-        .navbar-collapse form[role="search"] button,
-        .navbar-collapse form[role="search"] input {
-            padding: 15px 12px;
+        .navbar-collapse form[role="search"] {
+            width: 38px;
         }
 
-        .navbar-collapse form[role="search"] input {
-            padding: 25px 12px;
-            font-size: 18pt;
-            opacity: 0;
-            display: none;
-        }
-
-        .navbar-collapse form[role="search"].active {
-            width: 100%;
-        }
-
-            .navbar-collapse form[role="search"].active button,
-            .navbar-collapse form[role="search"].active input {
-                display: table-cell;
-                opacity: 1;
+            .navbar-collapse form[role="search"] button,
+            .navbar-collapse form[role="search"] input {
+                padding: 15px 12px;
             }
 
-            .navbar-collapse form[role="search"].active input {
+            .navbar-collapse form[role="search"] input {
+                padding: 25px 12px;
+                font-size: 18pt;
+                opacity: 0;
+                display: none;
+            }
+
+            .navbar-collapse form[role="search"].active {
                 width: 100%;
             }
+
+                .navbar-collapse form[role="search"].active button,
+                .navbar-collapse form[role="search"].active input {
+                    display: table-cell;
+                    opacity: 1;
+                }
+
+                .navbar-collapse form[role="search"].active input {
+                    width: 100%;
+                }
 }

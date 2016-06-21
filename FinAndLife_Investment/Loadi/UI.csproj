@@ -169,6 +169,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <None Include="Properties\PublishProfiles\FinAndLife_NEW.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="images\0062307673_b.jpg" />
     <Content Include="images\1250065941_b.jpg" />
@@ -177,6 +178,9 @@
     <Content Include="images\holiday-logo-header.png" />
     <Content Include="images\logo.jpg" />
     <Content Include="images\paris.jpg" />
+    <Content Include="images\Slide1.png" />
+    <Content Include="images\slide2.png" />
+    <Content Include="images\user2-160x160.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />

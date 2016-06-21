@@ -4,15 +4,22 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")    
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/Content/css")
     @*<script src="https://use.fontawesome.com/c2b80c7ec6.js"></script>*@
 </head>
 <body>
-    
+    <!--Logo-->
+    @Html.Partial("~/Views/Shared/_Logo.cshtml")
+    <!--End logo-->
+    @Html.Partial("~/Views/Shared/_Menu.cshtml")
+
+    <!--End Menu-->
+    <!--Slide Show-->
     @RenderBody()
-       
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+
+    
     @RenderSection("scripts", required: false)
 </body>
 </html>
