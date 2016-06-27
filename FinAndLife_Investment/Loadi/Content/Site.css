@@ -16,9 +16,49 @@
     background-color: #e7e7e7;
 }
 
+.dropdown-menu {
+    /*min-width: 48px;
+    text-align: center;*/
+}
+
+.glyphicon {
+    color: #969696;
+}
+.panal-new .panel-heading{
+    border:none;
+    background-color: #e7e7e7;
+    color:#606060;
+    text-align:center;
+    font-weight:bold;
+}
+.panel-warning .panel-body span {
+    padding-right:10px;
+}
+.panel-warning .panel-body .row {
+    margin-bottom:5px;
+}
+.panel-warning {
+    border-color: #e7e7e7;
+}
+/*.dropdown:hover .dropdown-menu {
+    display: block;
+}*/
+
+.menu-format li {
+    padding-top: 6px;
+}
+
+    .menu-format li:last-child {
+        padding-bottom: 6px;
+    }
+
 .container-fluid, .navbar, .container {
     border-radius: 0;
     border: none;
+}
+.container-fluid{
+    margin:0;
+    padding:0;
 }
 /* Note: Try to remove the following lines to see the effect of CSS positioning */
 .affix {
