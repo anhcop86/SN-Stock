@@ -7,6 +7,10 @@
     /*border:none;*/
 }
 
+* {
+    border-radius: 0 !important;
+}
+
 .blue-theme {
     background-color: #4db5e7;
     color: #fff;
@@ -24,19 +28,23 @@
 .glyphicon {
     color: #969696;
 }
-.panal-new .panel-heading{
-    border:none;
+
+.panal-new .panel-heading {
+    border: none;
     background-color: #e7e7e7;
-    color:#606060;
-    text-align:center;
-    font-weight:bold;
+    color: #606060;
+    text-align: center;
+    font-weight: bold;
 }
+
 .panel-warning .panel-body span {
-    padding-right:10px;
+    padding-right: 10px;
 }
+
 .panel-warning .panel-body .row {
-    margin-bottom:5px;
+    margin-bottom: 5px;
 }
+
 .panel-warning {
     border-color: #e7e7e7;
 }
@@ -45,7 +53,8 @@
 }*/
 
 .menu-format li {
-    padding-top: 6px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
     .menu-format li:last-child {
@@ -53,12 +62,13 @@
     }
 
 .container-fluid, .navbar, .container {
-    border-radius: 0;
+    /*border-radius: 0;*/
     border: none;
 }
-.container-fluid{
-    margin:0;
-    padding:0;
+
+.container-fluid {
+    margin: 0;
+    padding: 0;
 }
 /* Note: Try to remove the following lines to see the effect of CSS positioning */
 .affix {
@@ -155,7 +165,7 @@ input[type="checkbox"].input-validation-error {
 .thumbnail {
     padding: 0 0 10px 0;
     border: none;
-    border-radius: 0;
+    /*border-radius: 0;*/
 }
 
     .thumbnail p {
@@ -167,12 +177,12 @@ input[type="checkbox"].input-validation-error {
     /*padding: 8px 20px;
 background-color: #333;
 color: #f1f1f1;*/
-    border-radius: 0;
+    /*border-radius: 0;*/
     transition: 0s;
 }
 
 .form-control {
-    border-radius: 0;
+    /*border-radius: 0;*/
 }
 
 .carousel-caption {
@@ -212,8 +222,6 @@ color: #000;
         .navbar-collapse form[role="search"] button,
         .navbar-collapse form[role="search"] input {
             padding: 8px 12px;
-            border-radius: 0px;
-            border-width: 0px;
             color: rgb(119, 119, 119);
             background-color: rgb(248, 248, 248);
             border-color: rgb(231, 231, 231);
@@ -240,7 +248,6 @@ color: #000;
 }
 
     .button-search #searchInput {
-        border-radius: 0px;
         border-right: 0px;
     }
 

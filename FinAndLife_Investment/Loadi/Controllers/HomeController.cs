@@ -11,7 +11,7 @@ namespace Loadi.Controllers
         // nguyen chi hieu
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Finance And Life";
 
             return View();
         }

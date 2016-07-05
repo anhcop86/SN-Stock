@@ -134,7 +134,10 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\FUJI_RECOREDController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Quan_ly_dau_tuController.cs" />
+    <Compile Include="Controllers\TOP_UPGRADEController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -174,10 +177,15 @@
     <Content Include="images\0062307673_b.jpg" />
     <Content Include="images\1250065941_b.jpg" />
     <Content Include="images\Autographed.5.22.jpg" />
+    <Content Include="images\chiaseruiro001.jpg" />
+    <Content Include="images\chiaseruiro002.jpg" />
+    <Content Include="images\hieuquadautu001.png" />
+    <Content Include="images\image001.jpg" />
     <Content Include="images\Logo.png" />
     <Content Include="images\holiday-logo-header.png" />
     <Content Include="images\logo.jpg" />
     <Content Include="images\paris.jpg" />
+    <Content Include="images\Pic_Tab_Quanlydautulagi.jpg" />
     <Content Include="images\Slide1.png" />
     <Content Include="images\slide2.png" />
     <Content Include="images\user2-160x160.jpg" />
@@ -207,6 +215,19 @@
     <Content Include="Views\Shared\_Menu.cshtml" />
     <Content Include="Views\Shared\_Slide.cshtml" />
     <Content Include="Views\Shared\_Logo.cshtml" />
+    <Content Include="Views\Chia_Se_Loi_Nhuan\Index.cshtml" />
+    <Content Include="Views\Shared\_BoxNews.cshtml" />
+    <Content Include="Views\Shared\_HitReport.cshtml" />
+    <Content Include="Views\Shared\_BoxRegister.cshtml" />
+    <Content Include="Views\TOP_UPGRADE\danh_muc_top_upgrape.cshtml" />
+    <Content Include="Views\TOP_UPGRADE\co_che_hop_tac.cshtml" />
+    <Content Include="Views\Shared\_BoxRight.cshtml" />
+    <Content Include="Views\TOP_UPGRADE\hieu_qua_dau_tu.cshtml" />
+    <Content Include="Views\TOP_UPGRADE\uu_diem.cshtml" />
+    <Content Include="Views\Quan_ly_dau_tu\quan_ly_dau_tu_la_gi.cshtml" />
+    <Content Include="Views\FUJI_RECORED\chia_se_20_phan_tram_loi_nhuan.cshtml" />
+    <Content Include="Views\FUJI_RECORED\ty_suat_loi_nhuan_hon_10.cshtml" />
+    <Content Include="Views\FUJI_RECORED\chia_se_rui_ro_voi_khach.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
