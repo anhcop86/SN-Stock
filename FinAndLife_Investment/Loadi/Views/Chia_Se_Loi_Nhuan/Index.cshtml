@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = string.Format("{0}-{1}", "Chia sẻ lợi nhuận", "FinAndLife");
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container menu">
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li class="active">Chia sẻ lợi nhuận</li>
+    </ul>
+    <div>
+        <div class="row enigma_blog_wrapper">
+            <div class="col-md-8">
+                <div class="enigma_blog_full">
+                    <div class="enigma_blog_post_content">
+                        <!-- AddThis Sharing Buttons above --><p style="text-align: justify;"><b>Chia sẻ lợi nhuận</b> là hình thức hợp tác đầu tư dành cho các khách hàng đặt mục tiêu lợi nhuận vượt trội và sẵn sàng chấp nhận rủi ro. Với hình thức này, nhà đầu tư sẽ cùng chia sẻ với Passion Investment cả lợi nhuận và rủi ro.</p>
+                        <p style="text-align: justify;"><span style="color: #3366ff; font-size: 16px;"><strong>CƠ CHẾ HOẠT ĐỘNG</strong></span></p>
+                        <p style="text-align: justify;"><strong>Lợi nhuận cơ sở:</strong> hay còn gọi là mức lợi nhuận tối thiểu cam kết cho khách hàng được tính bằng lãi suất tiền gửi VND kỳ hạn một năm tại Ngân hàng tại thời điểm ký hợp đồng, hiện tại là 6%/năm</p>
+                        <p style="text-align: justify;"><strong>Phí thưởng hiệu quả</strong>: 20% phần lợi nhuận vượt mức Lợi nhuận mục tiêu. Nếu lãi vượt 6% thì khách hàng sẽ nhận thêm 80% của phần lãi vượt 6% này, phần 20% còn lại sẽ trả phí thưởng cho công ty Passion Investment</p>
+                        <p style="text-align: justify;"><strong>Thời hạn hợp tác đầu tư:</strong> Tối thiểu một (01) năm.</p>
+                        <p style="text-align: justify;"><span style="font-size: 16px; color: #3366ff;"><strong>MINH HỌA HÌNH THỨC HỢP TÁC</strong></span></p>
+                        <p style="text-align: justify;">Khách hàng A quyết định hợp tác đầu tư với Passion Investment. Sau thời hạn hợp tác đầu tư cam kết, 2 bên sẽ cùng tính toán hiệu quả đầu tư và xảy ra các tình huống sau:</p>
+                        <ul style="text-align: justify;">
+                            <li title="" data-original-title=""><em><strong>Tình huống 1</strong>: Nếu lợi nhuận đạt từ 0% đến 6% thì toàn bộ lợi nhuận sẽ do khách hàng A thu về</em></li>
+                            <li title="" data-original-title=""><em><strong>Tình huống 2</strong>: Nếu lợi nhuận đạt 20%, thì 6% thuộc về khách hàng, phần còn lại 14% sẽ chia khách hàng 80% tương đương 11.2% và Passion Investment thu 20% phí thưởng tương đương 2.8%. Kết quả: khách hàng A thu về lợi nhuận 17.2%</em></li>
+                            <li title="" data-original-title=""><em><strong>Tình huống 3</strong>: Nếu khoản đầu tư ghi nhận lỗ, khách hàng A chịu toàn bộ phần lỗ.</em></li>
+                        </ul>
+                        <p>&nbsp;</p>
+                        <p><a href="http://passioninvestment.vn/wp-content/uploads/2016/04/chia-se-loi-nhuan1.jpg"><img class="alignnone wp-image-2707 img-thumbnail" src="http://passioninvestment.vn/wp-content/uploads/2016/04/chia-se-loi-nhuan1.jpg" alt="" width="960" height="300" /></a></p>
+                        <p style="text-align: justify;">
+                            <!-- AddThis Sharing Buttons below -->
+                            <div class="addthis_toolbox addthis_default_style " addthis:url='http://passioninvestment.vn/chia-se-loi-nhuan/' addthis:title='Chia sẻ lợi nhuận'>
+                                <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                                <a class="addthis_button_tweet"></a>
+                                <a class="addthis_button_pinterest_pinit"></a>
+                                <a class="addthis_counter addthis_pill_style"></a>
+                            </div>
+                    </div>
+                </div>
+                <div class="push-right">
+                    <hr class="blog-sep header-sep">
+                </div>
+            </div>
+            <div class="col-md-4">
+                @Html.Partial("~/Views/Shared/_BoxNews.cshtml")
+                @Html.Partial("~/Views/Shared/_HitReport.cshtml")
+                @Html.Partial("~/Views/Shared/_BoxRegister.cshtml")
+            </div>
+        </div>
+    </div>
+</div>
