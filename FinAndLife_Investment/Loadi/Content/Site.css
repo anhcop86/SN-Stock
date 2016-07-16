@@ -273,6 +273,58 @@ color: #000;
     display: none;
 }
 
+.article {
+    margin-top: 6.0pt;
+    margin-right: 0cm;
+    margin-bottom: 6.0pt;
+    margin-left: 0cm;
+    text-align: justify;
+    line-height: 150%;
+    background: white;
+}
+
+    .article b span {
+        font-size: 13.0pt;
+        line-height: 150%;
+        font-family: "Cambria","serif";
+        color: #262626;
+    }
+
+.breadcrumb {
+    border: solid 1pt #d2d2d2;
+}
+
+.contact h2:first-child span {
+    color: red;
+    border: 2px solid;
+    border-radius: 25px !important;
+    padding: 5px;
+}
+
+.contact h2 span {
+    color: red;
+    padding: 5px;
+}
+
+.BlackButton,.BlackButton:hover, .BlackButton:focus {
+    background-color: black;
+    color: white;
+}
+
+#myModal .modal-body {
+    margin-left: 50px;
+}
+#myModal .modal-title {
+    font-weight:bold;
+}
+#myModal .modal-footer {
+    margin-left: 60px;
+}
+
+    #myModal .modal-body div {
+        margin-left: 8px;
+    }
+
 @media (max-width: 768px) {
     #navbar-title {
         display: block;
@@ -284,8 +336,6 @@ color: #000;
         padding-top: 0px !important;
         /*padding-right: 38px !important;*/
     }
-
-
 
         .navbar-collapse form[role="search"] {
             width: 38px;

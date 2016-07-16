@@ -10,6 +10,10 @@ namespace Loadi.Controllers
     {
         //
         // GET: /Quan_ly_dau_tu/
+        public RedirectToRouteResult Index()
+        {
+            return RedirectToAction("quan_ly_dau_tu_la_gi");
+        }
         public ActionResult quan_ly_dau_tu_la_gi()
         {
             ViewBag.Title = "Quản lý đầu tư là gì?";

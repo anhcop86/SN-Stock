@@ -113,7 +113,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -134,6 +133,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\dang_ky_truc_tuyenController.cs" />
     <Compile Include="Controllers\FUJI_RECOREDController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Quan_ly_dau_tuController.cs" />
@@ -142,6 +142,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\RegisterMobdel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -228,6 +229,8 @@
     <Content Include="Views\FUJI_RECORED\chia_se_20_phan_tram_loi_nhuan.cshtml" />
     <Content Include="Views\FUJI_RECORED\ty_suat_loi_nhuan_hon_10.cshtml" />
     <Content Include="Views\FUJI_RECORED\chia_se_rui_ro_voi_khach.cshtml" />
+    <Content Include="Views\dang_ky_truc_tuyen\Index.cshtml" />
+    <Content Include="Views\dang_ky_truc_tuyen\_SurveyRegister.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

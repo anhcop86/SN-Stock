@@ -8,7 +8,10 @@ namespace Loadi.Controllers
 {
     public class TOP_UPGRADEController : Controller
     {
-        //
+        public RedirectToRouteResult Index()
+        {
+            return RedirectToAction("danh_muc_top_upgrape");
+        }
         // GET: /TOP_UPGRADE/danh_muc_top_upgrape
         public ActionResult danh_muc_top_upgrape()
         {

@@ -1,0 +1,65 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCiWyK9BocKHnz-dI5w3fF3Z_IhmJ7gw5g&callback=initMap"
+        type="text/javascript"></script>
+<div class="container">
+    <div class="row">
+        <div class="col-md-5 contact">
+            <div>
+                <h2 class="text-left"><span class="glyphicon glyphicon-earphone" style="border-radius:25px !important"></span> THÔNG TIN LIÊN HỆ</h2>
+                <div style="margin-left:55px">
+                    <p><span class="glyphicon glyphicon-map-marker"></span> Địa chỉ: 180 Nguyễn Công Trứ, Quận 1, HCM</p>
+                    <p><span class="glyphicon glyphicon-envelope"></span> Email: finandlife@gmail.com</p>
+                    <p><span class="glyphicon glyphicon-phone"></span> Số ĐT: (+84) 90 123 4567 </p>
+                </div>
+            </div>
+            <div>
+                <h2 class="text-left"><span class="glyphicon glyphicon-list-alt"></span> ĐĂNG KÝ TẠI ĐÂY</h2>
+                <div style="margin-left:55px">
+                    <p><input type="text" style="width:80%" class="form-control" placeholder="Họ và tên" name="inputFullName"></p>
+                    <p><input type="text" style="width:80%" class="form-control" placeholder="Email" name="inputEmail"></p>
+                    <p><input type="text" style="width:80%" class="form-control" placeholder="Số điện thoại" name="inputMobile"></p>
+                    <p><button type="submit" class="btn btn-default BlackButton" data-toggle="modal" data-target="#myModal">Tiếp theo</button></p>
+
+                    <p style="width:90%;text-align:justify">
+                        Vui lòng để lại thông tin đăng ký dịch vụ quản lý đầu tư, chúng tôi sẽ liên hệ với quý khách
+                        trong vòng 24h. Xin cảm ơn!
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-6">
+            <div style="height:400px;width:100%;background-color:lavender"></div>
+        </div>
+
+    </div>
+</div>
+
+@Html.Partial("_SurveyRegister")
+<!-- Add Google Maps -->
+
+@*<script>
+    var myCenter = new google.maps.LatLng(41.878114, -87.629798);
+
+    function initialize() {
+        var mapProp = {
+            center: myCenter,
+            zoom: 12,
+            scrollwheel: false,
+            draggable: false,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+        var marker = new google.maps.Marker({
+            position: myCenter,
+        });
+
+        marker.setMap(map);
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>*@
