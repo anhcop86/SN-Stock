@@ -23,19 +23,20 @@ namespace WebApiStockPriceFromURL.Models
         private static string[] StockarrayS;
         private static volatile bool _updatingStockPrices = false;
         private static readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(40000);
-        private static readonly int timeExpireWebCache = 1; // minutes
-        private static bool IsCache { get; set; }
+        private static readonly int timeExpireWebCache = 20; // minutes
         public static List<StockResult> PriceCache
         {
             get
             {
-                //if (IsCache == false) {
-                //    ValidateCache();
-                //}
+                if (WebCache.Get("KeyPrice") == null) // Has expired
+                {
+                    GetStockPriceFromApi();
+
+                }
                 return WebCache.Get("KeyPrice");
             }
             private set { }
-           
+
         }
         public static void ValidateCache()
         {
@@ -49,7 +50,7 @@ namespace WebApiStockPriceFromURL.Models
         //public static List<StockResult> RandomStockPrice()
         //{
         //    if (true) {
-                
+
         //    }
         //}
         //public static StockMarketPrice Instance()
@@ -68,9 +69,6 @@ namespace WebApiStockPriceFromURL.Models
         /// </summary>
         static StockMarketPrice()
         {
-            // get stock
-            //_serviceCache = new Dictionary<Type, object>();
-            IsCache = true;
             GetStockPriceFromApi();
             _timer = new Timer(UpdateStockPrices, null, _updateInterval, _updateInterval);
         }
@@ -78,7 +76,8 @@ namespace WebApiStockPriceFromURL.Models
         {
             try
             {
-                if (StockRealTimes.Count > 0 && Helper.CheckTimeUpdatePrice() == false) {
+                if (StockRealTimes.Count > 0 && Helper.IsWeekendUpdatePrice && WebCache.Get("KeyPrice") != null) // Check weekend update and Stock markets do tradding
+                {
                     return;
                 }
                 using (WebClient client = new WebClient())
@@ -87,18 +86,53 @@ namespace WebApiStockPriceFromURL.Models
                     IndexarrayS = dataFromURL.Split(new char[] { '@' }, StringSplitOptions.RemoveEmptyEntries)[2].Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries); // get Index
                     StockarrayS = dataFromURL.Split(new char[] { '@' }, StringSplitOptions.RemoveEmptyEntries)[3].Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries); // get Stock
                     StockRealTimes.Clear();
+                    // Lấy chỉ số danh muc thường
                     foreach (var item in StockarrayS)
                     {
                         string[] itemContain = item.Split(';');
-                        StockRealTimes.Add(new StockResult {
+                        StockRealTimes.Add(new StockResult
+                        {
+                            Type = "S", //Stock
                             CompanyID = itemContain[0],
+                            // Close price : / Giá đóng cửa
                             FinishPrice = decimal.Parse(itemContain[8]) == 0 ? decimal.Parse(itemContain[1]) : decimal.Parse(itemContain[8]),
+                            // Giá thay đổi: giá tham chiếu - giá đóng cửa
                             Diff = decimal.Parse(itemContain[7]),
-                            DiffRate = decimal.Parse(itemContain[8]) == 0 ? 0 : decimal.Round(((decimal.Parse(itemContain[8]) - decimal.Parse(itemContain[1])) / decimal.Parse(itemContain[8])) * 100, 2)
+                            // DiffRate : Phần trăm thay đổi
+                            DiffRate = (decimal.Parse(itemContain[8]) - decimal.Parse(itemContain[7])) == 0 ? 0 : decimal.Round(((decimal.Parse(itemContain[8]) / (decimal.Parse(itemContain[8]) - decimal.Parse(itemContain[7]))) - 1) * 100, 2)
                         });
                     }
+                    //Index price / Lấy các chỉ số
+                    foreach (var item in IndexarrayS)
+                    {
+                        string[] itemContain = item.Split(';');
+                        StockRealTimes.Add(new StockResult
+                        {
+                            Type = "I", //Index
+                            CompanyID = itemContain[0].ToUpper(),
+                            // Close price : / Giá đóng cửa
+                            FinishPrice = decimal.Parse(itemContain[2]),
+                            // Giá thay đổi: giá tham chiếu - giá đóng cửa
+                            Diff = decimal.Parse(itemContain[3]),
+                            // DiffRate : Phần trăm thay đổi
+                            DiffRate = decimal.Parse(itemContain[4])
+                        });
+                    }
+                    // Price MACRO
+                    StockRealTimes.Add(new StockResult
+                    {
+                        Type = "O", //Orther
+
+                        CompanyID = "MACRO",
+                        // Close price : / Giá đóng cửa
+                        FinishPrice = decimal.Parse("99.99"),
+                        // Giá thay đổi: giá tham chiếu - giá đóng cửa
+                        Diff = 10,
+                        // DiffRate : Phần trăm thay đổi
+                        DiffRate = 100
+                    });
                     WebCache.Set("KeyPrice", StockRealTimes, timeExpireWebCache, true);
-                    
+
                 }
             }
             catch (Exception)
@@ -128,16 +162,18 @@ namespace WebApiStockPriceFromURL.Models
         //    }
         //    return (T)_serviceCache[key];
         //}
-        private static void UpdateStockPrices (object state)
+        private static void UpdateStockPrices(object state)
         {
-            lock (_updateStockPricesLock) {
-                if (!_updatingStockPrices) {
+            lock (_updateStockPricesLock)
+            {
+                if (!_updatingStockPrices)
+                {
                     _updatingStockPrices = true;
                     GetStockPriceFromApi();
                     _updatingStockPrices = false;
                 }
             }
         }
-        
-    }  
+
+    }
 }
