@@ -61,7 +61,7 @@ namespace PhimHang.Controllers
             }
             #endregion
 
-            #region Giá cổ phiếu nóng
+            #region Giá CỔ PHIẾU NÓNG
 
             var listStock = await AppHelper.GetListHotStock();            
             ViewBag.ListStockHot = listStock;

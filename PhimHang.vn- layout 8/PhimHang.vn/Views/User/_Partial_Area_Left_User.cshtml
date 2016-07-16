@@ -15,32 +15,35 @@
                     <!--uploadCoverUser(files): action.js-->
                 }
             }
-            
+
         </div>
     </div>
 
-    <div class="user-name2">@Model.FullName
-       
+    <div class="user-name2">
+        @Model.FullName
+
         @{
             if (@Model.BrokerVIP == true)
             {
                 <i title="Xác thực đây là dân phím chuyên ngiệp" class="fa fa-check-circle"></i>
-            }          
+            }
         }
         <br />
         <a href="/@Model.UserNameCopy">&#64;@Model.UserNameCopy</a><br />
-      @{
+        @{
             if (User.Identity.IsAuthenticated && ViewBag.CheckUserExist == "E")
             {
                 <a href="/account/profile"><i title="Chỉnh sửa trang cá nhân" style="color: rgb(163, 163, 163);" class="fa fa-pencil"></i></a>
             }
         }
     </div>
-    
+
     <div class="user-info-detail">
-        <div class="user-info-intro">@Model.Status            
-        </div>       
-        <div><i class="fa fa-area-chart"></i>Trường phái:
+        <div class="user-info-intro">
+            @Model.Status
+        </div>
+        <div>
+            <i class="fa fa-area-chart"></i>Trường phái:
             @{
                 if (Model.PhilosophyMarket != null)
                 {
@@ -79,15 +82,29 @@
                 }
             }
         </div>
-        <div><i class="fa fa-user"></i>Giới thiệu: @Model.CVInfo
+        <div>
+            <i class="fa fa-user"></i>Giới thiệu: @Model.CVInfo
         </div>
         <div>
             <i class="fa fa-facebook-official"></i>Trang cá nhân: <br />
             <a target="_blank" href="@Model.URLFacebook">@Model.URLFacebook</a>
         </div>
+        @*<div>
+            <script type="text/javascript" src="https://secure.skypeassets.com/i/scom/js/skype-uri.js"></script>
+            <div id="SkypeButton_Call">
+                <script type="text/javascript">
+                    Skype.ui({
+                        "name": "chat",
+                        "element": "SkypeButton_Call",
+                        "participants": ["athena_truong"],
+                        "imageSize": 24
+                    });
+                </script>
+            </div>
+        </div>*@
         <div>
             <div style="float: left; overflow: hidden" class="fb-like" data-href="@Request.Url.AbsoluteUri" data-colorscheme='dark' data-layout='button_count' data-action='like' data-show-faces='true' data-share='true'></div>
+
         </div>
     </div>
 </div>
-          

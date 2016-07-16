@@ -24,7 +24,7 @@ namespace PhimHang.Controllers
             _stockRealtime = stockTicker;
             UserManager = userManager;
         }
-       
+
         public UserManager<ApplicationUser> UserManager { get; private set; }
         //
         // GET: /Search/
@@ -74,7 +74,7 @@ namespace PhimHang.Controllers
                                        && (sc.MarketType == 0 || sc.MarketType == 1 || sc.MarketType == 3)
                                              select sc.Code).ToListAsync();
                 var searchUser = await (from us in db.UserLogins
-                                        where us.UserNameCopy.Contains(searstring)
+                                        where us.UserNameCopy.Contains(searstring) && us.DisableUser != true
                                         select new UserFollowView
                                         {
                                             UserId = us.Id,
@@ -83,7 +83,6 @@ namespace PhimHang.Controllers
                                             Avata = string.IsNullOrEmpty(us.AvataImage) ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + us.AvataImage,
                                             BrkVip = us.BrokerVIP
                                         }).ToListAsync();
-
                 //load gia co phieu tim duoc
                 #region gia cổ phieu cua cac ma tim duoc
                 ViewBag.listStockPriceFind = _stockRealtime.GetAllStocksList(searchStockList as List<string>).Result;
@@ -104,7 +103,7 @@ namespace PhimHang.Controllers
             }
 
         }
-        
+
 
         //[HttpGet]
         //public async Task<dynamic> GetStockPriChart(string chart)
@@ -124,9 +123,9 @@ namespace PhimHang.Controllers
         //    //var result = Newtonsoft.Json.JsonConvert.SerializeObject(ret);
         //    //return result;
         //    return Json(ret, JsonRequestBehavior.AllowGet);
-            
+
         //}
 
 
-	}
+    }
 }

@@ -4,7 +4,7 @@
     foreach (var item in ViewBag.ListIndex as List<PhimHang.Models.StockRealTime>)
     {
         <li class="hidden-xs IndexBar">
-            <a title="Chỉ số INDEX" href="/Ticker/@item.CompanyID">
+            <a title="Mã cổ phiếu @item.CompanyID" href="/Ticker/@item.CompanyID">
                 <strong>@item.CompanyID</strong>
                 @if (item.Diff == 0)
                 {

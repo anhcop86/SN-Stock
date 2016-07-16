@@ -32,16 +32,16 @@ namespace PhimHang.Models
         private readonly Timer _timer;
         private volatile bool _updatingStockPrices = false;
         private StockRealTimeTicker()
-        { 
+        {
             GetStockPriceFromApi();
             _timer = new Timer(UpdateStockPrices, null, _updateInterval, _updateInterval);
 
         }
-              
+
         public static StockRealTimeTicker Instance
         {
             get
-            {                
+            {
                 return _instance.Value;
             }
         }
@@ -51,6 +51,15 @@ namespace PhimHang.Models
             var CompanyResult = Task.FromResult(_stocks.FirstOrDefault(s => s.CompanyID.ToUpper() == stock.ToUpper()));
             return await CompanyResult;
         }
+       
+        public Task<List<StockRealTime>> GetIndexList()
+        {
+            var stockListResult = (from s in _stocks
+                                   orderby s.CompanyID descending
+                                   where s.Type == "I" // 
+                                   select s).Take(10);
+            return Task.FromResult(stockListResult.ToList());
+        }
 
         public Task<List<StockRealTime>> GetAllStocksList(List<string> stock)
         {
@@ -59,27 +68,27 @@ namespace PhimHang.Models
             //stopwatch.Start();
             //stopwatch.Stop();
             //var dsafd = stopwatch.Elapsed;
-            var CompanyResult = (from s in _stocks    
+            var CompanyResult = (from s in _stocks
                                  orderby s.CompanyID ascending
                                  where stock.Contains(s.CompanyID)
                                  select s);
 
             //var CompanyResult = Task.FromResult(_stocks.Where(s => stock.Any(sl => sl == s.CompanyID)).ToList());
-            
+
             return Task.FromResult(CompanyResult.ToList()); ;
         }
         public Task<List<StockRealTime>> RandomStocksList(List<string> stock)
-        {            
+        {
             var stockListResult = (from s in _stocks
-                                  orderby Guid.NewGuid()
-                                  where !stock.Contains(s.CompanyID)
-                                  select s).Take(10);            
+                                   orderby Guid.NewGuid()
+                                   where !stock.Contains(s.CompanyID)
+                                   select s).Take(10);
             return Task.FromResult(stockListResult.ToList());
         }
         public Task<List<StockRealTime>> RandomStocksList()
         {
             var stockListResult = (from s in _stocks
-                                   orderby Guid.NewGuid()                             
+                                   orderby Guid.NewGuid()
                                    select s).Take(10);
             return Task.FromResult(stockListResult.ToList());
         }
@@ -91,28 +100,27 @@ namespace PhimHang.Models
 
 
         public async void GetStockPriceFromApi()
-        {
-            // Returns data from a web service.
-            //http://www.vfs.com.vn:6789/api/stocks
-            //{PI_tickerList:'KLS|OGC|KBC'}
-            //var client = new RestClient("http://www.vfs.com.vn:6789/api/");
+        { 
             Uri uri = new Uri(AppHelper.GetPriceAPIUrl);
-            //string uriAlternate = "http://stockboard.sbsc.com.vn/HO.ashx?FileName=0"; chua su dung
             using (var client = new HttpClient())
             {
                 client.BaseAddress = uri;
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 var parameter = new { PI_tickerList = "KEYSECRET" };
-                
+
                 try
                 {
                     var response = client.PostAsJsonAsync("/api/StockRealTime", "").Result;
                     if (response.IsSuccessStatusCode)
                     {
                         var list = await response.Content.ReadAsAsync<List<StockRealTime>>();
-                        _stocks.Clear();
-                        list.ForEach(stock => _stocks.Add(stock));
+                        if (list.Count > 0)
+                        {
+                            _stocks.Clear();
+                            list.ForEach(stock => _stocks.Add(stock));
+                        }
+
                     }
                     else
                     {
@@ -123,7 +131,7 @@ namespace PhimHang.Models
                 }
                 catch (Exception)
                 {
-                    
+
                 }
 
             }

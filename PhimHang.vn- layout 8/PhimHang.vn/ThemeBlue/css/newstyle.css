@@ -111,6 +111,7 @@ a.avatar img:hover{
 	border-radius:5px;
 }
 .list-company{
+    text-align:center;
 	color:#00A2E8;
 	font-size:2rem;
 	font-weight:bold;

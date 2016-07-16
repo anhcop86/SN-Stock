@@ -2045,3 +2045,7 @@ a.avatar img:hover{
 #areaRandomProBrokerId .banner-item-user-detail{
     border-bottom:none !important;
 }
+#SkypeButton_Call_paraElement img{
+    margin:4px 0 0 0 !important;
+    vertical-align: 0px !important;
+}
