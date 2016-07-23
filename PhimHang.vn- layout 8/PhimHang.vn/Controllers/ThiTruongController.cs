@@ -80,23 +80,7 @@ namespace PhimHang.Controllers
                     await GetNormalStockList(g);
                     break;
             }
-            //if (g == "UPCOM")
-            //{
-
-
-            //}
-            //else if (g == "HOTSTOCK")            
-            //{
-            //    await GetHOTSTOCKList(listHotStock);
-
-            //}
-
-            //else
-            //{
-
-
-
-            //}
+         
             return View();
             #endregion
         }
@@ -112,7 +96,7 @@ namespace PhimHang.Controllers
         /// <param name="source"></param>
         /// <param name="desc"></param>
         /// <returns></returns>
-        private List<StockCodeColunn> AssignList(List<StockRealTime> source)
+        private List<StockCodeColunn> AssignList(IEnumerable<StockRealTime> source)
         {
             var result = new List<StockCodeColunn>();
             //foreach (var item in source)

@@ -51,14 +51,19 @@ namespace PhimHang.Models
             var CompanyResult = Task.FromResult(_stocks.FirstOrDefault(s => s.CompanyID.ToUpper() == stock.ToUpper()));
             return await CompanyResult;
         }
-       
-        public Task<List<StockRealTime>> GetIndexList()
+
+        public Task<IEnumerable<StockRealTime>> GetIndexList()
         {
-            var stockListResult = (from s in _stocks
-                                   orderby s.CompanyID descending
-                                   where s.Type == "I" // 
-                                   select s).Take(10);
-            return Task.FromResult(stockListResult.ToList());
+            var listPriority = new List<string> { "VNINDEX", "VN30", "HNXINDEX", "HNX30" };
+            var listPriorityResult = (from s in _stocks
+                                      where s.Type == "I" && listPriority.Contains(s.CompanyID) // 
+                                      select s);
+
+            var listResult = (from s in _stocks
+                              where s.Type == "I" && !listPriority.Contains(s.CompanyID) // 
+                              select s);
+
+            return Task.FromResult(listPriorityResult.Union(listResult));
         }
 
         public Task<List<StockRealTime>> GetAllStocksList(List<string> stock)
@@ -100,7 +105,7 @@ namespace PhimHang.Models
 
 
         public async void GetStockPriceFromApi()
-        { 
+        {
             Uri uri = new Uri(AppHelper.GetPriceAPIUrl);
             using (var client = new HttpClient())
             {

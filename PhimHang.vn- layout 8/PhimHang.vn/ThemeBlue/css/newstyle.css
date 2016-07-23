@@ -173,7 +173,7 @@ table#CompanylistResults{
 	font-size:13px;
 }
 #CompanylistResults  tr th:nth-child(2){
-	width: 380px;	
+	width: 300px;	
 }
 #CompanylistResults  tr td:nth-child(2){
   padding: 16px 15px 16px 32px;

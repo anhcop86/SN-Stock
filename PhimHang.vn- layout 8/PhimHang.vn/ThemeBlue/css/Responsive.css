@@ -4,10 +4,23 @@
     .area-center {
         width: 100%;
         margin: 10px 0px 0px 0px;
+        /*display:none;*/
     }
 
-    .area-left, .area-right, .filer-bar-item-home, #hotTicker, .avata-comment {
+    .menu-top-bar2 {
+        height: 150px !important;
+    }
+
+    .area-center-cm {
         display: none;
+    }
+
+    .area-right, .filer-bar-item-home, #hotTicker, .avata-comment {
+        display: none;
+    }
+
+    .area-left {
+        width: 100%;
     }
 
     .filer-bar-item a.active {
@@ -55,15 +68,18 @@
         height: 50px;
         margin-left: 0px;
         position: fixed;
-        right:0;
-        margin-right:0px;
+        right: 0;
+        margin-right: 0px;
     }
+
     .f-right-userInfo {
-        display:none;
+        display: none;
     }
-    .f-right-moreInfo{
-        display:block;
+
+    .f-right-moreInfo {
+        display: block;
     }
+
     #search_box_top {
     }
 
@@ -78,8 +94,8 @@
     #top-banner-left {
         position: fixed;
         left: 45px;
-        width:240px;
-        display:none;
+        width: 240px;
+        display: none;
     }
 
     .status-box {
@@ -142,113 +158,139 @@
     .ui-dialog {
         width: 100% !important;
     }
-    .imageChartDetail{
-        width:100%;
-    }    
-    .list-item-detail-post{
+
+    .imageChartDetail {
+        width: 100%;
+    }
+
+    .list-item-detail-post {
         width: 74%;
     }
+
     #search_box_top > i {
-        display:none;
+        display: none;
     }
-    .cover-div{
-        display:block;
-        height:0px !important;
+
+    .cover-div {
+        display: block;
+        height: 0px !important;
         /*height:100% !important;*/
-        
         /*min-width:640px;*/
     }
-    #tab-TheoDoi{
-        display:none;
+
+    #tab-TheoDoi {
+        display: none;
     }
-    #CoverImageId{
-        top:0px !important;
-        display:none;
+
+    #CoverImageId {
+        top: 0px !important;
+        display: none;
     }
-    .cover-div img{
+
+    .cover-div img {
         max-width: 100%;
-        width: 100%; 
+        width: 100%;
     }
-   #close_dialog{
-       opacity:1;
-   }
-   .banner-header-add #addStock{
-       width:85% !important;
-   }
+
+    #close_dialog {
+        opacity: 1;
+    }
+
+    .banner-header-add #addStock {
+        width: 85% !important;
+    }
+
     #top-center {
         width: 50px;
         margin-left: 5px;
-    }    
-    #LayoutLogin{
-        display:none;
+    }
+
+    #LayoutLogin {
+        display: none;
     }
     /*.toSpan {
         display: none;
     }*/
 }
+
 @media only screen and (min-width: 641px) and (max-width: 999px) {
     .cover-div {
         /*height: 100% !important;*/
         min-width: 1170px;
     }
-     .menu-top-bar2{
-        min-width:1170px;
+
+    .menu-top-bar2 {
+        min-width: 1170px;
     }
 }
 
 /*reponesive with @media only screen and (min-width: 150px) and (max-width: 600px) IPAD*/
 
 @media only screen and (min-width: 768px) and (max-width: 1000px) {
-    #top-center{
-	    width:50px;
-	    margin-left:8% !important;
+    #top-center {
+        width: 50px;
+        margin-left: 8% !important;
     }
-    #top-banner-left{
-        width:300px;
+
+    #top-banner-left {
+        width: 300px;
     }
-    #top-banner-right{
+
+    #top-banner-right {
         width: 270px;
     }
-    .cover-div{
-        min-width:1170px;
+
+    .cover-div {
+        min-width: 1170px;
     }
-     .menu-top-bar2{
-        min-width:1170px;
+
+    .menu-top-bar2 {
+        min-width: 1170px;
     }
 }
+
 @media only screen and (min-width: 1001px) and (max-width: 1024px) {
-     #top-center{
-	    width:50px;
-	    margin-left:20%;
+    #top-center {
+        width: 50px;
+        margin-left: 20%;
     }
-    #top-banner-left{
-        width:300px;
+
+    #top-banner-left {
+        width: 300px;
     }
-    #top-banner-right{
+
+    #top-banner-right {
         width: 270px;
     }
-    .cover-div{
-        min-width:1170px;
+
+    .cover-div {
+        min-width: 1170px;
     }
-     .menu-top-bar2{
-        min-width:1170px;
+
+    .menu-top-bar2 {
+        min-width: 1170px;
     }
 }
+
 @media only screen and (min-width: 1025px) and (max-width: 1440px) {
-     #top-center{
-	    width:50px;
-	    margin-left:20%;
+    #top-center {
+        width: 50px;
+        margin-left: 20%;
     }
-    #top-banner-left{
-        width:300px;
+
+    #top-banner-left {
+        width: 300px;
     }
-    #top-banner-right{
+
+    #top-banner-right {
         width: 290px;
     }
-    .cover-div{
-        min-width:1170px;
+
+    .cover-div {
+        min-width: 1170px;
     }
-    .menu-top-bar2{
-        min-width:1170px;
+
+    .menu-top-bar2 {
+        min-width: 1170px;
     }
 }

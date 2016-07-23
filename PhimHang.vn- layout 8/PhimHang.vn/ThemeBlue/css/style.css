@@ -469,6 +469,7 @@ ul.top-panel-left2 > li:hover{
     background-color: #fff;
     clear: both;
     overflow: hidden;
+    text-align:center;
 }
 .user-sumary-info > span{
     position:relative;
@@ -479,7 +480,7 @@ ul.top-panel-left2 > li:hover{
 }
 .user-sumary-info > span:last-child{
     width:130px;
-    float: right;
+    /*float: right;*/
 }
 .user-sumary-info > span > a{
     font-size: 14px;
