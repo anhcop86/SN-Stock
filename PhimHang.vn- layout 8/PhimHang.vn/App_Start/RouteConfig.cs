@@ -70,7 +70,7 @@ namespace PhimHang
     {
         public bool Match(HttpContextBase httpContext, Route route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
         {
-            List<string> userName = new List<string> { "myprofile", "postdetail", "search", "thitruong", "post","gioithieu", "lienhe","huongdansudung","quydinh" };        
+            List<string> userName = new List<string> { "myprofile", "postdetail", "search", "thitruong", "post", "gioithieu", "lienhe", "huongdansudung", "quydinh", "broker" };        
             return !userName.Contains(values[parameterName].ToString().ToLower());
         }
     }

@@ -94,16 +94,18 @@ namespace PhimHang.Controllers
             #region danh muc co phieu dang follow
             ViewBag.listStockPriceFollow = _stockRealtime.GetAllStocksList(listStock as List<string>).Result;
             #endregion
+
             #region gia chi so index va hnxindex
             var listIndex = new List<string>();
             listIndex.Add("VNINDEX");
             listIndex.Add("HNXINDEX");
             ViewBag.ListIndex = _stockRealtime.GetAllStocksList(listIndex).Result;
             #endregion
-            #region danh muc co phieu nong
-            var listHotStock = await AppHelper.GetListHotStock();
-            ViewBag.ListStockHot = listHotStock;
+
+            #region Set Info of hot stock
+            ViewBag.ListStockHot = AppHelper.GetListHotStock();
             #endregion
+
             return View(currentUser);
 
         }
@@ -131,6 +133,7 @@ namespace PhimHang.Controllers
             ViewBag.UserName = User.Identity.Name;
             @ViewBag.FullName = currentUser.FullName;
             #endregion
+
             #region thong tin co phieu ben phai
             var listStock = await (from followStock in db.FollowStocks
                                    orderby followStock.StockFollowed ascending
@@ -155,10 +158,10 @@ namespace PhimHang.Controllers
             #endregion
 
             #endregion
-            #region danh muc co phieu nong
-            var listHotStock = await AppHelper.GetListHotStock();
-            ViewBag.ListStockHot = listHotStock;
+            #region Set Info of hot stock
+            ViewBag.ListStockHot = AppHelper.GetListHotStock();
             #endregion
+
             return View(currentUser);
         }
         #region load messagesCenter

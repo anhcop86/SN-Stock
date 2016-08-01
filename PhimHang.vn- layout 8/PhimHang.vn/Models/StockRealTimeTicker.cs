@@ -98,6 +98,20 @@ namespace PhimHang.Models
             return Task.FromResult(stockListResult.ToList());
         }
 
+        public IEnumerable<StockRealTime> TrenStocksList(List<string> listHotStox)
+        {
+            var listPriority = new List<string> { "VNINDEX", "VN30", "HNXINDEX", "HNX30" };
+            // Get price of Index
+            var listPriorityResult = (from s in _stocks
+                                      where s.Type == "I" && listPriority.Contains(s.CompanyID) // 
+                                      select s);
+            //Get price of hot stox list
+            var ListHotStoxResult = (from s in _stocks
+                                     where listHotStox.Contains(s.CompanyID)
+                                     select s);
+            return ListHotStoxResult.Union(listPriorityResult);
+        }
+
         public static bool CheckExistStock(string stock)
         {
             return Task.FromResult(_stocks.Count(st => st.CompanyID == stock) == 1).Result;

@@ -41,8 +41,8 @@ namespace PhimHang.Models
         public virtual ICollection<NotificationMessege> NotificationMesseges { get; set; }
         public virtual ICollection<PinStock> PinStocks { get; set; }
         public virtual ICollection<PostComment> PostComments { get; set; }
-        public virtual UserLogin UserLogin { get; set; }
         public virtual ICollection<StockRelate> StockRelates { get; set; }
         public virtual ICollection<UserRelate> UserRelates { get; set; }
+        public virtual UserLogin UserLogin { get; set; }
     }
 }

@@ -53,10 +53,11 @@ namespace PhimHang.Controllers
             ViewBag.ListIndex = _stockRealtime.GetAllStocksList(listIndex).Result;
             #endregion
             //Top Menu
-            #region danh muc co phieu nong
-            var listHotStock = await AppHelper.GetListHotStock();
+            #region Set Info of hot stock
+            var listHotStock = AppHelper.GetListHotStock();
             ViewBag.ListStockHot = listHotStock;
             #endregion
+
 
             #region seach ma co phieu
 

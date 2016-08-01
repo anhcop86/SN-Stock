@@ -60,10 +60,10 @@ namespace PhimHang.Controllers
                 listIndex.Add("HNXINDEX");
                 ViewBag.ListIndex = _stockRealtime.GetAllStocksList(listIndex).Result;
                 #endregion
-                #region danh muc co phieu nong
-                var listHotStock = await AppHelper.GetListHotStock();
-                ViewBag.ListStockHot = listHotStock;
+                #region Set Info of hot stock
+                ViewBag.ListStockHot = AppHelper.GetListHotStock();
                 #endregion
+
                 // end
                 return View();
             }

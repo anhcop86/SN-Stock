@@ -18,6 +18,7 @@ namespace PhimHang.Controllers
         //
         // GET: /User/
         private readonly StockRealTimeTicker _stockRealtime;
+        private Dictionary<string, object> _dictionaryViewBag;
         public UserController()
             : this(StockRealTimeTicker.Instance, new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext())))
         {
@@ -32,6 +33,7 @@ namespace PhimHang.Controllers
         private testEntities db = new testEntities();
         public async Task<ActionResult> Index(string username)
         {
+            
             #region thong tin user
             ViewBag.AbsolutePathHostName = AppHelper.AbsolutePathHostName;
             var currentUser = await db.UserLogins.FirstOrDefaultAsync(u => u.UserNameCopy == username); //db.UserLogins.FirstOrDefaultAsync(u => u.UserNameCopy == username);
@@ -92,7 +94,11 @@ namespace PhimHang.Controllers
             ViewBag.Follower = follower;
             ViewBag.followStock = followStock;
             #endregion       
-            
+            #region ViewbagGenerator
+            //_dictionaryViewBag = new Dictionary<string, object>();
+            //_dictionaryViewBag.Add("User", currentUser.UserNameCopy);
+            //ViewbagGenerator();
+            #endregion
             #region gia chi so index va hnxindex
             var listIndex = new List<string>();
             listIndex.Add("VNINDEX");
@@ -100,9 +106,8 @@ namespace PhimHang.Controllers
             ViewBag.ListIndex = _stockRealtime.GetAllStocksList(listIndex).Result;
             #endregion
 
-            #region danh muc co phieu nong
-            var listHotStock = await AppHelper.GetListHotStock();
-            ViewBag.ListStockHot = listHotStock;
+            #region Set Info of hot stock
+            ViewBag.ListStockHot = AppHelper.GetListHotStock();
             #endregion
             
             return View(currentUser);
@@ -186,9 +191,8 @@ namespace PhimHang.Controllers
             ViewBag.ListIndex = _stockRealtime.GetAllStocksList(listIndex).Result;
             #endregion
 
-            #region danh muc co phieu nong
-            var listHotStock = await AppHelper.GetListHotStock();
-            ViewBag.ListStockHot = listHotStock;
+            #region Set Info of hot stock
+            ViewBag.ListStockHot = AppHelper.GetListHotStock();
             #endregion
 
             return View(currentUser);
@@ -277,9 +281,8 @@ namespace PhimHang.Controllers
             ViewBag.ListIndex = _stockRealtime.GetAllStocksList(listIndex).Result;
             #endregion
 
-            #region danh muc co phieu nong
-            var listHotStock = await AppHelper.GetListHotStock();
-            ViewBag.ListStockHot = listHotStock;
+            #region Set Info of hot stock
+            ViewBag.ListStockHot = AppHelper.GetListHotStock();
             #endregion
 
             return View(currentUser);
@@ -370,9 +373,8 @@ namespace PhimHang.Controllers
             #endregion
 
 
-            #region danh muc co phieu nong
-            var listHotStock = await AppHelper.GetListHotStock();
-            ViewBag.ListStockHot = listHotStock;
+            #region Set Info of hot stock
+            ViewBag.ListStockHot = AppHelper.GetListHotStock();
             #endregion
 
             return View(currentUser);
@@ -459,22 +461,22 @@ namespace PhimHang.Controllers
 
 
         }
-        public async Task<ActionResult> RandomProBroker(int numberBroker)
-        {
-            //Thread.Sleep(2000);
-            #region random dan phim chuyen nghiem
-            var DanPhimRandom = await (from u in db.UserLogins
-                                       orderby Guid.NewGuid()
-                                       where u.BrokerVIP == true
-                                       select new UserRandom
-                                       {
-                                           Avata = string.IsNullOrEmpty(u.AvataImage) ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + u.AvataImage,
-                                           UserName = u.UserNameCopy,
-                                           FullName = u.FullName
-                                       }).Take(numberBroker).ToListAsync();            
-            #endregion
-            return PartialView("_Partial_Area_Right_User1", DanPhimRandom);
-        }
+        //public async Task<ActionResult> RandomProBroker(int numberBroker)
+        //{
+        //    //Thread.Sleep(2000);
+        //    #region random dan phim chuyen nghiem
+        //    var DanPhimRandom = await (from u in db.UserLogins
+        //                               orderby Guid.NewGuid()
+        //                               where u.BrokerVIP == true
+        //                               select new UserRandom
+        //                               {
+        //                                   Avata = string.IsNullOrEmpty(u.AvataImage) ? AppHelper.ImageURLAvataDefault : AppHelper.ImageURLAvata + u.AvataImage,
+        //                                   UserName = u.UserNameCopy,
+        //                                   FullName = u.FullName
+        //                               }).Take(numberBroker).ToListAsync();            
+        //    #endregion
+        //    return PartialView("_Partial_Area_Right_User1", DanPhimRandom);
+        //}
         //
         // GET: /User/Details/5
         public ActionResult Details(int id)
@@ -553,6 +555,11 @@ namespace PhimHang.Controllers
                 return View();
             }
         }
+
+        public void ViewbagGenerator()
+        {
+            ViewBag.Generator = System.Web.Helpers.Json.Encode(_dictionaryViewBag);
+        }
     }
     public class UserFollowView
     {
@@ -562,13 +569,5 @@ namespace PhimHang.Controllers
         public string Status { get; set; }
 
         public bool? BrkVip { get; set; }
-    }
-
-    public class UserRandom
-    {
-        public string UserName { get; set; }
-        public string Avata { get; set; }
-
-        public string FullName { get; set; }
     }
 }

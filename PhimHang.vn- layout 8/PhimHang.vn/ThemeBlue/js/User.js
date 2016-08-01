@@ -116,7 +116,7 @@ function Post(data) {
     self.PostedByAvatar = data.PostedByAvatar + '?width=50&height=50&mode=crop' || "";
     self.PostedDate = getTimeAgo(data.PostedDate);
     self.PostedDateOri = convertDateFormat(data.PostedDate);
-    self.StockPrimary = data.StockPrimary;    
+    self.StockPrimary = data.StockPrimary;
     self.Stm = (data.Stm === 1 ? "<span class='divBear-cm'>Giảm</span>" : data.Stm === 2 ? "<span class='divBull-cm'>Tăng</span>" : "") || "";
     self.ChartYN = data.ChartYN || 0;
     //self.PostBy = data.PostBy;
@@ -237,11 +237,11 @@ function viewModel() {
 
     //////////////// load lại filter nè
     var filterhere = "";
-    self.FilterAll = function (stringFilter) {                
+    self.FilterAll = function (stringFilter) {
         if (checkLoadFirst == 1) {
             filterhere = stringFilter;
             self.posts([]);
-            self.newPosts([]);            
+            self.newPosts([]);
             document.title = $('#titleHidenPage').val();
             $.ajax({
                 cache: false,
@@ -271,16 +271,16 @@ function viewModel() {
         if (checkpost == 'Y') {
             //filter here
             if (filterhere == "" || filterhere == "ALL") {
-                self.posts.splice(0, 0, new Post(post));             
+                self.posts.splice(0, 0, new Post(post));
             }
             if (filterhere == "CHA") {
                 if (post.ChartYN) {
-                    self.posts.splice(0, 0, new Post(post));                    
+                    self.posts.splice(0, 0, new Post(post));
                 }
             }
             if (filterhere == "STM") {
                 if (post.Stm > 0) {
-                    self.posts.splice(0, 0, new Post(post));                    
+                    self.posts.splice(0, 0, new Post(post));
                 }
             }
 
@@ -309,7 +309,7 @@ function viewModel() {
     }
     // thêm reply cho chính mình
     commenthub.client.addReply = function (reply) {
-        self.replys.unshift(new Reply(reply));        
+        self.replys.unshift(new Reply(reply));
     }
     // nhan dc notification tu user khac
     commenthub.client.MessegeOfUserPost = function (number) {
@@ -606,7 +606,7 @@ $.connection.hub.start({ transport: ['webSockets', 'serverSentEvents', 'longPoll
                         });
 
 $.connection.hub.disconnected(function () {
-    setTimeout(function () {           
+    setTimeout(function () {
         $.connection.hub.start();
     }, 10000); // Restart connection after 10 seconds.
 });
@@ -621,6 +621,16 @@ window.onbeforeunload = function (e) {
     //    console.log('window.onbeforeunload');
     //};
 };
-
-
 //$.connection.hub.logging = true;
+$(document).ready(function () {
+    //debugger;
+    //var jsonGenerator = viewBag;
+    //var user = jsonGenerator.User;
+    //var skypeId = 'athena_truong';
+    //Skype.ui({
+    //    "name": "chat",
+    //    "element": "SkypeButton_Call",
+    //    "participants": [skypeId],
+    //    "imageSize": 24
+    //});
+});

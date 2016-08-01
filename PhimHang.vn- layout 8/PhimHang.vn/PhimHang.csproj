@@ -259,6 +259,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BrokerController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\FollowStockController.cs" />
     <Compile Include="Controllers\GioiThieuController.cs" />
@@ -1200,7 +1202,7 @@
     <Content Include="Views\PostDetail\Index.cshtml" />
     <Content Include="Views\Shared\_Layout_User.cshtml" />
     <Content Include="Views\User\_Partial_Area_Left_User.cshtml" />
-    <Content Include="Views\User\_Partial_Area_Right_User1.cshtml" />
+    <Content Include="Views\User\_Partial_Area_Right_User1_BK.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\_Partial_Area_MenuBar_User.cshtml" />
     <Content Include="Views\User\_PartialUserTab1.cshtml" />
@@ -1349,6 +1351,7 @@
     <Content Include="Views\Shared\_Partial_Facebook_SDK.cshtml" />
     <Content Include="Views\Shared\_Partial_UserGuide.cshtml" />
     <Content Include="Views\Shared\_Partial_Area_Banner_info.cshtml" />
+    <Content Include="Views\Broker\_Partial_Area_Right_User1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

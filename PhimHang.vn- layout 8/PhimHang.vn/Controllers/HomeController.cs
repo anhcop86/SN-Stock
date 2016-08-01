@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using System.Diagnostics;
+using System.Web.Helpers;
 
 namespace PhimHang.Controllers
 {
@@ -30,6 +31,7 @@ namespace PhimHang.Controllers
 
         public UserManager<ApplicationUser> UserManager { get; private set; }       
         private testEntities db = new testEntities();
+        //public List<string> _listStock { get; set; }
         public async Task<ActionResult> Index()
         {
             #region [Login User]
@@ -61,14 +63,11 @@ namespace PhimHang.Controllers
             }
             #endregion
 
-            #region Giá CỔ PHIẾU NÓNG
-
-            var listStock = await AppHelper.GetListHotStock();            
-            ViewBag.ListStockHot = listStock;
-            
+            #region Set Info of hot stock
+            ViewBag.ListStockHot = AppHelper.GetListHotStock();
             #endregion
-                        
-            #region random dan phim chuyen nghiem
+
+            #region random dan phim chuyen nghiep
             var DanPhimRandom = await (from u in db.UserLogins
                                        orderby Guid.NewGuid()
                                        where u.BrokerVIP == true
@@ -90,13 +89,15 @@ namespace PhimHang.Controllers
 
             return View();
         }
+
+        
         /// <summary>
         ///  Tra ve co phieu ngau nhien ben trai trang home bang ajax load tuan tu
         /// </summary>
         /// <returns></returns>
         public ActionResult RandomStockList()
         {
-            var result = _stockRealtime.RandomStocksList().Result;
+            var result = _stockRealtime.TrenStocksList(AppHelper.GetListHotStock());
             return PartialView("_Partial_Area_Left_Home2", result);
         }
 

@@ -104,12 +104,14 @@
             </div>
             <script>                   
                 $(document).ready(function () {                        
-                    $("#areaRandomProBrokerId").load('/user/RandomProBroker?numberBroker=5');
+                    $("#areaRandomProBrokerId").load('/broker?numberBroker=5');
                 })
             </script>
         </div>
     </div>
-    
+    <script>
+        var viewBag = @Html.Raw(ViewBag.Generator)
+    </script>
     @Html.Partial("_Partial_Area_MenuReposive")
     @RenderSection("scripts", required: false)
    

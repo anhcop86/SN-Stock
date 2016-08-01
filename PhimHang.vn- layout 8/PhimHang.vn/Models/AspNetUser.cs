@@ -30,7 +30,7 @@ namespace PhimHang.Models
     
         public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual ICollection<AspNetUserLogin> AspNetUserLogins { get; set; }
-        public virtual UserLogin UserLogin { get; set; }
         public virtual ICollection<AspNetRole> AspNetRoles { get; set; }
+        public virtual UserLogin UserLogin { get; set; }
     }
 }

@@ -256,6 +256,7 @@
           <Property Name="AvatarSyn" Type="bit" />
           <Property Name="CharacterLimit" Type="int" Nullable="false" />
           <Property Name="DisableUser" Type="bit" />
+          <Property Name="SkypeId" Type="varchar" MaxLength="256" />
         </EntityType>
         <EntityType Name="UserRelate">
           <Key>
@@ -703,7 +704,6 @@
           <EntitySet Name="StockViewLastests" EntityType="PHDBContext.StockViewLastest" />
           <EntitySet Name="TickerHots" EntityType="PHDBContext.TickerHot" />
           <EntitySet Name="UserLogExtents" EntityType="PHDBContext.UserLogExtent" />
-          <EntitySet Name="UserLogins" EntityType="PHDBContext.UserLogin" />
           <EntitySet Name="UserRelates" EntityType="PHDBContext.UserRelate" />
           <EntitySet Name="UserViewLastests" EntityType="PHDBContext.UserViewLastest" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" Association="PHDBContext.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id">
@@ -714,6 +714,31 @@
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
           </AssociationSet>
+          <AssociationSet Name="FK_Posts_User" Association="PHDBContext.FK_Posts_User">
+            <End Role="Post" EntitySet="Posts" />
+            <End Role="NotificationMessege" EntitySet="NotificationMesseges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Posts_PinStock" Association="PHDBContext.FK_Posts_PinStock">
+            <End Role="Post" EntitySet="Posts" />
+            <End Role="PinStock" EntitySet="PinStocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostComments_Posts" Association="PHDBContext.FK_PostComments_Posts">
+            <End Role="Post" EntitySet="Posts" />
+            <End Role="PostComment" EntitySet="PostComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockRelate_Posts" Association="PHDBContext.FK_StockRelate_Posts">
+            <End Role="Post" EntitySet="Posts" />
+            <End Role="StockRelate" EntitySet="StockRelates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRelate_Posts" Association="PHDBContext.FK_UserRelate_Posts">
+            <End Role="Post" EntitySet="Posts" />
+            <End Role="UserRelate" EntitySet="UserRelates" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="PHDBContext.AspNetUserRoles">
+            <End Role="AspNetRole" EntitySet="AspNetRoles" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="UserLogins" EntityType="PHDBContext.UserLogin" />
           <AssociationSet Name="FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" Association="PHDBContext.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id">
             <End Role="UserLogin" EntitySet="UserLogins" />
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
@@ -734,10 +759,6 @@
             <End Role="JobTitile" EntitySet="JobTitiles" />
             <End Role="UserLogin" EntitySet="UserLogins" />
           </AssociationSet>
-          <AssociationSet Name="FK_Posts_User" Association="PHDBContext.FK_Posts_User">
-            <End Role="Post" EntitySet="Posts" />
-            <End Role="NotificationMessege" EntitySet="NotificationMesseges" />
-          </AssociationSet>
           <AssociationSet Name="FK_UserPost_User" Association="PHDBContext.FK_UserPost_User">
             <End Role="UserLogin" EntitySet="UserLogins" />
             <End Role="NotificationMessege" EntitySet="NotificationMesseges" />
@@ -750,14 +771,6 @@
             <End Role="Philosophy" EntitySet="Philosophies" />
             <End Role="UserLogin" EntitySet="UserLogins" />
           </AssociationSet>
-          <AssociationSet Name="FK_Posts_PinStock" Association="PHDBContext.FK_Posts_PinStock">
-            <End Role="Post" EntitySet="Posts" />
-            <End Role="PinStock" EntitySet="PinStocks" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PostComments_Posts" Association="PHDBContext.FK_PostComments_Posts">
-            <End Role="Post" EntitySet="Posts" />
-            <End Role="PostComment" EntitySet="PostComments" />
-          </AssociationSet>
           <AssociationSet Name="FK_PostComments_UserLogins" Association="PHDBContext.FK_PostComments_UserLogins">
             <End Role="UserLogin" EntitySet="UserLogins" />
             <End Role="PostComment" EntitySet="PostComments" />
@@ -765,14 +778,6 @@
           <AssociationSet Name="FK_Posts_UserLogins" Association="PHDBContext.FK_Posts_UserLogins">
             <End Role="UserLogin" EntitySet="UserLogins" />
             <End Role="Post" EntitySet="Posts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StockRelate_Posts" Association="PHDBContext.FK_StockRelate_Posts">
-            <End Role="Post" EntitySet="Posts" />
-            <End Role="StockRelate" EntitySet="StockRelates" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserRelate_Posts" Association="PHDBContext.FK_UserRelate_Posts">
-            <End Role="Post" EntitySet="Posts" />
-            <End Role="UserRelate" EntitySet="UserRelates" />
           </AssociationSet>
           <AssociationSet Name="FK_StockViewLastest_UserLogins" Association="PHDBContext.FK_StockViewLastest_UserLogins">
             <End Role="UserLogin" EntitySet="UserLogins" />
@@ -789,10 +794,6 @@
           <AssociationSet Name="FK_UserViewLastest_UserLogins1" Association="PHDBContext.FK_UserViewLastest_UserLogins1">
             <End Role="UserLogin" EntitySet="UserLogins" />
             <End Role="UserViewLastest" EntitySet="UserViewLastests" />
-          </AssociationSet>
-          <AssociationSet Name="AspNetUserRoles" Association="PHDBContext.AspNetUserRoles">
-            <End Role="AspNetRole" EntitySet="AspNetRoles" />
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="C__MigrationHistory">
@@ -846,8 +847,8 @@
           <Property Name="UserExtentLogin_Id" Type="Int32" />
           <NavigationProperty Name="AspNetUserClaims" Relationship="PHDBContext.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="PHDBContext.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
-          <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" FromRole="AspNetUser" ToRole="UserLogin" />
           <NavigationProperty Name="AspNetRoles" Relationship="PHDBContext.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+          <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" FromRole="AspNetUser" ToRole="UserLogin" />
         </EntityType>
         <EntityType Name="FilterKeyWord">
           <Key>
@@ -877,7 +878,7 @@
           <Property Name="CreatedDate" Type="DateTime" Precision="7" />
           <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_FollowUser_UserLogins" FromRole="FollowUser" ToRole="UserLogin" />
           <NavigationProperty Name="UserLogin1" Relationship="PHDBContext.FK_FollowUser_UserLogins1" FromRole="FollowUser" ToRole="UserLogin" />
-        </EntityType>
+          </EntityType>
         <EntityType Name="JobTitile">
           <Key>
             <PropertyRef Name="IdJob" />
@@ -902,7 +903,7 @@
           <NavigationProperty Name="Post" Relationship="PHDBContext.FK_Posts_User" FromRole="NotificationMessege" ToRole="Post" />
           <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_UserPost_User" FromRole="NotificationMessege" ToRole="UserLogin" />
           <NavigationProperty Name="UserLogin1" Relationship="PHDBContext.FK_UserPost_UserReciver" FromRole="NotificationMessege" ToRole="UserLogin" />
-        </EntityType>
+          </EntityType>
         <EntityType Name="Philosophy">
           <Key>
             <PropertyRef Name="Id" />
@@ -956,9 +957,9 @@
           <NavigationProperty Name="NotificationMesseges" Relationship="PHDBContext.FK_Posts_User" FromRole="Post" ToRole="NotificationMessege" />
           <NavigationProperty Name="PinStocks" Relationship="PHDBContext.FK_Posts_PinStock" FromRole="Post" ToRole="PinStock" />
           <NavigationProperty Name="PostComments" Relationship="PHDBContext.FK_PostComments_Posts" FromRole="Post" ToRole="PostComment" />
-          <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_Posts_UserLogins" FromRole="Post" ToRole="UserLogin" />
           <NavigationProperty Name="StockRelates" Relationship="PHDBContext.FK_StockRelate_Posts" FromRole="Post" ToRole="StockRelate" />
           <NavigationProperty Name="UserRelates" Relationship="PHDBContext.FK_UserRelate_Posts" FromRole="Post" ToRole="UserRelate" />
+          <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_Posts_UserLogins" FromRole="Post" ToRole="UserLogin" />
         </EntityType>
         <EntityType Name="Setting">
           <Key>
@@ -1035,6 +1036,119 @@
           <Property Name="EmailReset" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="UserRelate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="PostId" Type="Int64" />
+          <NavigationProperty Name="Post" Relationship="PHDBContext.FK_UserRelate_Posts" FromRole="UserRelate" ToRole="Post" />
+          <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_UserRelate_UserLogins" FromRole="UserRelate" ToRole="UserLogin" />
+        </EntityType>
+        <EntityType Name="UserViewLastest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="UserIdLastest" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_UserViewLastest_UserLogins" FromRole="UserViewLastest" ToRole="UserLogin" />
+          <NavigationProperty Name="UserLogin1" Relationship="PHDBContext.FK_UserViewLastest_UserLogins1" FromRole="UserViewLastest" ToRole="UserLogin" />
+          </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id">
+          <End Type="PHDBContext.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="PHDBContext.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaim">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="PHDBContext.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="PHDBContext.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogin">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Posts_User">
+          <End Type="PHDBContext.Post" Role="Post" Multiplicity="0..1" />
+          <End Type="PHDBContext.NotificationMessege" Role="NotificationMessege" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="NotificationMessege">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Posts_PinStock">
+          <End Type="PHDBContext.Post" Role="Post" Multiplicity="1" />
+          <End Type="PHDBContext.PinStock" Role="PinStock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="PinStock">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostComments_Posts">
+          <End Type="PHDBContext.Post" Role="Post" Multiplicity="1" />
+          <End Type="PHDBContext.PostComment" Role="PostComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="PostComment">
+              <PropertyRef Name="PostedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockRelate_Posts">
+          <End Type="PHDBContext.Post" Role="Post" Multiplicity="1" />
+          <End Type="PHDBContext.StockRelate" Role="StockRelate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="StockRelate">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRelate_Posts">
+          <End Type="PHDBContext.Post" Role="Post" Multiplicity="0..1" />
+          <End Type="PHDBContext.UserRelate" Role="UserRelate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="UserRelate">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="PHDBContext.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+          <End Type="PHDBContext.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
         <EntityType Name="UserLogin">
           <Key>
             <PropertyRef Name="Id" />
@@ -1064,6 +1178,7 @@
           <Property Name="AvatarSyn" Type="Boolean" />
           <Property Name="CharacterLimit" Type="Int32" Nullable="false" />
           <Property Name="DisableUser" Type="Boolean" />
+          <Property Name="SkypeId" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="AspNetUsers" Relationship="PHDBContext.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" FromRole="UserLogin" ToRole="AspNetUser" />
           <NavigationProperty Name="FollowStocks" Relationship="PHDBContext.FK_FollowStock_UserLogins" FromRole="UserLogin" ToRole="FollowStock" />
           <NavigationProperty Name="FollowUsers" Relationship="PHDBContext.FK_FollowUser_UserLogins" FromRole="UserLogin" ToRole="FollowUser" />
@@ -1079,55 +1194,6 @@
           <NavigationProperty Name="UserViewLastests" Relationship="PHDBContext.FK_UserViewLastest_UserLogins" FromRole="UserLogin" ToRole="UserViewLastest" />
           <NavigationProperty Name="UserViewLastests1" Relationship="PHDBContext.FK_UserViewLastest_UserLogins1" FromRole="UserLogin" ToRole="UserViewLastest" />
         </EntityType>
-        <EntityType Name="UserRelate">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="PostId" Type="Int64" />
-          <NavigationProperty Name="Post" Relationship="PHDBContext.FK_UserRelate_Posts" FromRole="UserRelate" ToRole="Post" />
-          <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_UserRelate_UserLogins" FromRole="UserRelate" ToRole="UserLogin" />
-        </EntityType>
-        <EntityType Name="UserViewLastest">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="UserIdLastest" Type="Int32" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
-          <NavigationProperty Name="UserLogin" Relationship="PHDBContext.FK_UserViewLastest_UserLogins" FromRole="UserViewLastest" ToRole="UserLogin" />
-          <NavigationProperty Name="UserLogin1" Relationship="PHDBContext.FK_UserViewLastest_UserLogins1" FromRole="UserViewLastest" ToRole="UserLogin" />
-        </EntityType>
-        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id">
-          <End Type="PHDBContext.AspNetUser" Role="AspNetUser" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="PHDBContext.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUser">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserClaim">
-              <PropertyRef Name="User_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-          <End Type="PHDBContext.AspNetUser" Role="AspNetUser" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="PHDBContext.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUser">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserLogin">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id">
           <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="0..1" />
           <End Type="PHDBContext.AspNetUser" Role="AspNetUser" Multiplicity="*" />
@@ -1188,18 +1254,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Posts_User">
-          <End Type="PHDBContext.Post" Role="Post" Multiplicity="0..1" />
-          <End Type="PHDBContext.NotificationMessege" Role="NotificationMessege" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Post">
-              <PropertyRef Name="PostId" />
-            </Principal>
-            <Dependent Role="NotificationMessege">
-              <PropertyRef Name="PostId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_UserPost_User">
           <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />
           <End Type="PHDBContext.NotificationMessege" Role="NotificationMessege" Multiplicity="*" />
@@ -1236,30 +1290,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Posts_PinStock">
-          <End Type="PHDBContext.Post" Role="Post" Multiplicity="1" />
-          <End Type="PHDBContext.PinStock" Role="PinStock" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Post">
-              <PropertyRef Name="PostId" />
-            </Principal>
-            <Dependent Role="PinStock">
-              <PropertyRef Name="PostId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PostComments_Posts">
-          <End Type="PHDBContext.Post" Role="Post" Multiplicity="1" />
-          <End Type="PHDBContext.PostComment" Role="PostComment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Post">
-              <PropertyRef Name="PostId" />
-            </Principal>
-            <Dependent Role="PostComment">
-              <PropertyRef Name="PostedBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_PostComments_UserLogins">
           <End Type="PHDBContext.UserLogin" Role="UserLogin" Multiplicity="1" />
           <End Type="PHDBContext.PostComment" Role="PostComment" Multiplicity="*" />
@@ -1281,30 +1311,6 @@
             </Principal>
             <Dependent Role="Post">
               <PropertyRef Name="PostedBy" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_StockRelate_Posts">
-          <End Type="PHDBContext.Post" Role="Post" Multiplicity="1" />
-          <End Type="PHDBContext.StockRelate" Role="StockRelate" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Post">
-              <PropertyRef Name="PostId" />
-            </Principal>
-            <Dependent Role="StockRelate">
-              <PropertyRef Name="PostId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserRelate_Posts">
-          <End Type="PHDBContext.Post" Role="Post" Multiplicity="0..1" />
-          <End Type="PHDBContext.UserRelate" Role="UserRelate" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Post">
-              <PropertyRef Name="PostId" />
-            </Principal>
-            <Dependent Role="UserRelate">
-              <PropertyRef Name="PostId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1355,10 +1361,6 @@
               <PropertyRef Name="UserIdLastest" />
             </Dependent>
           </ReferentialConstraint>
-        </Association>
-        <Association Name="AspNetUserRoles">
-          <End Type="PHDBContext.AspNetRole" Role="AspNetRole" Multiplicity="*" />
-          <End Type="PHDBContext.AspNetUser" Role="AspNetUser" Multiplicity="*" />
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -1598,9 +1600,37 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="UserRelates">
+            <EntityTypeMapping TypeName="PHDBContext.UserRelate">
+              <MappingFragment StoreEntitySet="UserRelate">
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserViewLastests">
+            <EntityTypeMapping TypeName="PHDBContext.UserViewLastest">
+              <MappingFragment StoreEntitySet="UserViewLastest">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UserIdLastest" ColumnName="UserIdLastest" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="PHDBContext.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUser">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
           <EntitySetMapping Name="UserLogins">
             <EntityTypeMapping TypeName="PHDBContext.UserLogin">
               <MappingFragment StoreEntitySet="UserLogins">
+                <ScalarProperty Name="SkypeId" ColumnName="SkypeId" />
                 <ScalarProperty Name="DisableUser" ColumnName="DisableUser" />
                 <ScalarProperty Name="CharacterLimit" ColumnName="CharacterLimit" />
                 <ScalarProperty Name="AvatarSyn" ColumnName="AvatarSyn" />
@@ -1629,33 +1659,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UserRelates">
-            <EntityTypeMapping TypeName="PHDBContext.UserRelate">
-              <MappingFragment StoreEntitySet="UserRelate">
-                <ScalarProperty Name="PostId" ColumnName="PostId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UserViewLastests">
-            <EntityTypeMapping TypeName="PHDBContext.UserViewLastest">
-              <MappingFragment StoreEntitySet="UserViewLastest">
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="UserIdLastest" ColumnName="UserIdLastest" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <AssociationSetMapping Name="AspNetUserRoles" TypeName="PHDBContext.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-            <EndProperty Name="AspNetUser">
-              <ScalarProperty Name="Id" ColumnName="UserId" />
-            </EndProperty>
-            <EndProperty Name="AspNetRole">
-              <ScalarProperty Name="Id" ColumnName="RoleId" />
-            </EndProperty>
-          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -74,6 +74,8 @@ namespace PhimHang.Models
         public int CharacterLimit { get; set; }
 
         public Nullable<bool> DisableUser { get; set; }
+
+        public string SkypeId { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

@@ -26,31 +26,31 @@
         <EntityTypeShape EntityType="PHDBContext.StockViewLastest" Width="1.5" PointX="5.25" PointY="13.75" />
         <EntityTypeShape EntityType="PHDBContext.TickerHot" Width="1.5" PointX="4.75" PointY="4.75" />
         <EntityTypeShape EntityType="PHDBContext.UserLogExtent" Width="1.5" PointX="6.75" PointY="0.75" />
-        <EntityTypeShape EntityType="PHDBContext.UserLogin" Width="1.5" PointX="3" PointY="13.75" />
         <EntityTypeShape EntityType="PHDBContext.UserRelate" Width="1.5" PointX="10.5" PointY="21.125" />
         <EntityTypeShape EntityType="PHDBContext.UserViewLastest" Width="1.5" PointX="5.25" PointY="30.5" />
         <AssociationConnector Association="PHDBContext.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" />
         <AssociationConnector Association="PHDBContext.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="PHDBContext.FK_Posts_User" />
+        <AssociationConnector Association="PHDBContext.FK_Posts_PinStock" />
+        <AssociationConnector Association="PHDBContext.FK_PostComments_Posts" />
+        <AssociationConnector Association="PHDBContext.FK_StockRelate_Posts" />
+        <AssociationConnector Association="PHDBContext.FK_UserRelate_Posts" />
+        <AssociationConnector Association="PHDBContext.AspNetUserRoles" />
+        <EntityTypeShape EntityType="PHDBContext.UserLogin" Width="1.5" PointX="3" PointY="12.125" />
         <AssociationConnector Association="PHDBContext.FK_dbo_AspNetUsers_dbo_UserLogins_UserExtentLogin_Id" />
         <AssociationConnector Association="PHDBContext.FK_FollowStock_UserLogins" />
         <AssociationConnector Association="PHDBContext.FK_FollowUser_UserLogins" />
         <AssociationConnector Association="PHDBContext.FK_FollowUser_UserLogins1" />
         <AssociationConnector Association="PHDBContext.FK_JobTitile_JobTitle" />
-        <AssociationConnector Association="PHDBContext.FK_Posts_User" />
         <AssociationConnector Association="PHDBContext.FK_UserPost_User" />
         <AssociationConnector Association="PHDBContext.FK_UserPost_UserReciver" />
         <AssociationConnector Association="PHDBContext.FK_UserLogins_Philosophy" />
-        <AssociationConnector Association="PHDBContext.FK_Posts_PinStock" />
-        <AssociationConnector Association="PHDBContext.FK_PostComments_Posts" />
         <AssociationConnector Association="PHDBContext.FK_PostComments_UserLogins" />
         <AssociationConnector Association="PHDBContext.FK_Posts_UserLogins" />
-        <AssociationConnector Association="PHDBContext.FK_StockRelate_Posts" />
-        <AssociationConnector Association="PHDBContext.FK_UserRelate_Posts" />
         <AssociationConnector Association="PHDBContext.FK_StockViewLastest_UserLogins" />
         <AssociationConnector Association="PHDBContext.FK_UserRelate_UserLogins" />
         <AssociationConnector Association="PHDBContext.FK_UserViewLastest_UserLogins" />
         <AssociationConnector Association="PHDBContext.FK_UserViewLastest_UserLogins1" />
-        <AssociationConnector Association="PHDBContext.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -53,7 +53,7 @@ namespace PhimHang.Models
                 stringOriginal.Insert(item.Index, "*", item.Posistion);
             }
 
-            return  stringOriginal.ToString();
+            return stringOriginal.ToString();
         }
         /// <summary>
         /// Convert a string Unicode to Non Unicode
@@ -70,7 +70,7 @@ namespace PhimHang.Models
                 }
             }
             return str;
-            
+
         }
         private static readonly string[] VietNamChar = new string[]
         {
@@ -98,7 +98,7 @@ namespace PhimHang.Models
             get
             {
                 return ConfigurationManager.AppSettings["AbsolutePathHostName"].ToString();
-            } 
+            }
         }
         public static string TinyURL
         {
@@ -113,13 +113,25 @@ namespace PhimHang.Models
             return new System.Uri(domainFull).Host;
         }
 
-        public static async Task<List<string>> GetListHotStock()
+        public static List<string> GetListHotStock()
         {
-            using (db = new testEntities())
+            #region WebCache HotPrice
+            List<string> result = WebCache.Get("HotPrice") as List<string>;
+            if (result == null)
             {
-                return await (from hoststock in db.TickerHots // danh sach co phieu nong trong db
+                using (db = new testEntities())
+                {
+                    var resultCache = (from hoststock in db.TickerHots // danh sach co phieu nong trong db
                                        select hoststock.THName).ToListAsync();
-            }            
+                    result = resultCache.Result;
+                    WebCache.Set("HotPrice", result, 30, true);
+                }
+
+            }
+            return result;
+
+            #endregion
+
         }
 
         /// <summary>
@@ -160,7 +172,7 @@ namespace PhimHang.Models
         }
         public static bool CheckTimeUpdatePrice()
         {
-            if (DateTime.Now.Hour >= 9 && DateTime.Now.Hour <= 15  && DateTime.Now.DayOfWeek != DayOfWeek.Saturday && DateTime.Now.DayOfWeek != DayOfWeek.Sunday)
+            if (DateTime.Now.Hour >= 9 && DateTime.Now.Hour <= 15 && DateTime.Now.DayOfWeek != DayOfWeek.Saturday && DateTime.Now.DayOfWeek != DayOfWeek.Sunday)
             {
                 return true;
             }
@@ -169,12 +181,12 @@ namespace PhimHang.Models
                 return false;
             }
         }
-        public static bool sendEmail(string subject, String toEmail , string BodyContent)
+        public static bool sendEmail(string subject, String toEmail, string BodyContent)
         {
             MailMessage message = new MailMessage();
             MailAddress sender = new MailAddress(ApplicationEmailAddress, DisplayEmailReset);
             MailAddress receiver = new MailAddress(toEmail);
-            message.From = sender;            
+            message.From = sender;
             message.Sender = sender;
             message.To.Add(receiver);
             message.Subject = subject;
@@ -200,7 +212,7 @@ namespace PhimHang.Models
             {
                 return false;
             }
-            
+
         }
         public static string GetContentTemplate(string fileName, string token, string userName)
         {
@@ -231,7 +243,7 @@ namespace PhimHang.Models
             reader = new StreamReader(fileName, System.Text.UTF8Encoding.UTF8);
             string bodyText = reader.ReadToEnd();
             reader.Close();
-            
+
             parameters.Add("username", userName);
             parameters.Add("AbsolutePathHostName", AppHelper.AbsolutePathHostName);
 
@@ -332,7 +344,7 @@ namespace PhimHang.Models
                 //var ext = fi.Extension;
 
                 var imagePath = Path.Combine(HttpContext.Current.Server.MapPath(uploadDir), NameFiletimeupload + ".jpg");
-                
+
 
                 try // download and save facebook image of user into database
                 {
@@ -349,7 +361,7 @@ namespace PhimHang.Models
 
                 return true;
             }
-            
+
         }
         /// <summary>
         /// set cookie when login by facebook
@@ -365,8 +377,8 @@ namespace PhimHang.Models
             else
             {
                 HttpContext.Current.Response.SetCookie(FacebookLogin);
-            }           
-            
+            }
+
         }
         /// <summary>
         /// release cookie when logout facebook
@@ -431,9 +443,9 @@ namespace PhimHang.Models
         public static string RegisterEmailTemplatePath
         {
             get
-            {                
+            {
                 string rootPath = HttpContext.Current.Server.MapPath("~");
-                return rootPath.Substring(0, rootPath.LastIndexOf(@"\")) + ConfigurationManager.AppSettings["RegisterEmailTemplatePath"];            
+                return rootPath.Substring(0, rootPath.LastIndexOf(@"\")) + ConfigurationManager.AppSettings["RegisterEmailTemplatePath"];
             }
         }
 
@@ -444,7 +456,7 @@ namespace PhimHang.Models
         {
             get
             {
-                return _imageURLAvataDefault;  
+                return _imageURLAvataDefault;
             }
         }
 
@@ -490,7 +502,7 @@ namespace PhimHang.Models
             {
                 manUserName[0] += userName + "|"; // list user     
                 manUserName[1] += idUserName + "|"; // list id                
-            }          
+            }
             return manUserName;
         }
         /// <summary>
@@ -512,5 +524,5 @@ namespace PhimHang.Models
 
 
 
-    
+
 }
