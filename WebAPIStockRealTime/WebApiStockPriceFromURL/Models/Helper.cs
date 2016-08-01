@@ -18,6 +18,16 @@ namespace WebApiStockPriceFromURL.Models
                 return ConfigurationManager.AppSettings["ApiUrl"].ToString();
             }
         }
+        /// <summary>
+        /// Due time to update function / thời gian cập nhật giá / tính bằng giây
+        /// </summary>
+        public static double DueTime
+        {
+            get
+            {
+                return double.Parse(ConfigurationManager.AppSettings["DueTime"].ToString())*1000;
+            }
+        }
         //public static bool IsWeekendUpdatePrice()
         //{
         //    if (DateTime.Now.Hour >= 9 && DateTime.Now.Hour <= 15 && DateTime.Now.DayOfWeek != DayOfWeek.Saturday && DateTime.Now.DayOfWeek != DayOfWeek.Sunday) {

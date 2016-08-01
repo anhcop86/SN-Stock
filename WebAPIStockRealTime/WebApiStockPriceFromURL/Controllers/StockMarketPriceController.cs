@@ -28,21 +28,21 @@ namespace WebApiStockPriceFromURL.Controllers
         }
 
         // POST api/stockmarketprice
-        public List<StockResult> Post()
-        {
-            try 
-            {
-                return StockMarketPrice.PriceCache;
-            }
-            catch (Exception)
-            {
-                return new List<StockResult>();
-            }
+        //public List<StockResult> Post()
+        //{
+        //    try 
+        //    {
+        //        return StockMarketPrice.PriceCache;
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return new List<StockResult>();
+        //    }
 
 
-            //return StockMarketPrice.Instance().StockRealTimes;
-            //return stockList;
-        }
+        //    //return StockMarketPrice.Instance().StockRealTimes;
+        //    //return stockList;
+        //}
 
         // PUT api/stockmarketprice/5
         public void Put(int id, [FromBody]string value)

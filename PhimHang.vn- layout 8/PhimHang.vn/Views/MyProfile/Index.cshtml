@@ -87,8 +87,13 @@
                             
                             <div data-bind="html : Message , attr :{ class:  loadCSSless($element.offsetHeight, $data) , id : 'messageId' + PostId}"></div>
                             <!--load xem them text dài-->
-                            <div onclick='selectMe(event,"#")' class="text-size" data-bind="html: LoadTextNext"></div>
+                            <div onclick='selectMe(event,"#")' class="text-size loadMore-link" data-bind="html: LoadTextNext"></div>
                             <!--End load xem them text dài-->
+                            <!--Image-->
+                            <div>
+                                <img data-bind="attr: { src: Chart + '?width=215&height=120&mode=crop' }, visible: Chart.length > 0" class="img-rounded" alt="avatar">
+                            </div>
+                            <!--End Image-->
                             <div class="list-item-control">
                                 <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
                                 <a class="button btn-answer" target="_self" onclick="window.open(this.href, 'chia sẻ lên facebook', 'left=100,top=100,width=600,height=400,toolbar=1,resizable=0'); selectMe(event, '#'); return false;" data-bind="attr : { href : 'https://www.facebook.com/sharer/sharer.php?u=@ViewBag.AbsolutePathHostName/PostDetail?postid='+ PostId +'&display=popup&ref=plugin' }" title="Chia sẻ lên facebook">Chia sẻ</a>
@@ -125,8 +130,10 @@
                     </div>
                     <span id="idStmDetail"></span>
                     <div tabindex="-1" class="list-item-status-content" id="idPostMessenge"></div>
-
-
+                    <!--Image-->
+                    <div id="idPostImage">
+                    </div>
+                    <!--End Image-->
                     <div class="list-item-control">
                         <div id="facebookLikeAndShare"></div>
 

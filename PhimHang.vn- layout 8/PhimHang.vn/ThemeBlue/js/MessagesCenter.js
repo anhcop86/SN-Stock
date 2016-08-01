@@ -27,19 +27,17 @@ function Post(data) {
     var self = this;
     data = data || {};
     self.PostId = data.PostId;
-    self.Message = (data.ChartYN == 1 ? data.Message + '<br/><img src=' + data.Chart + '?width=215&height=120&mode=crop>' : data.Message) || "";
+    self.Message = data.Message || "";
     self.PostedByName = data.PostedByName || "";
     self.PostedByAvatar = data.PostedByAvatar + '?width=50&height=50&mode=crop' || "";
     self.PostedDate = getTimeAgo(data.PostedDate);
     self.PostedDateOri = convertDateFormat(data.PostedDate);
-    //self.StockPrimary = data.StockPrimary;
-    //self.notification = ko.observable(0);
     self.Stm = (data.Stm === 1 ? "<span class='divBear-cm'>Giảm</span>" : data.Stm === 2 ? "<span class='divBull-cm'>Tăng</span>" : "") || "";
     self.ChartYN = data.ChartYN || 0;
     self.XemYN = data.XemYN; // == 1 ? "New" : "" || "";
     self.SumLike = ko.observable(data.SumLike);
     self.DiableLike = ko.observable(true);
-    self.Chart = data.Chart || '';
+    self.Chart = data.ChartYN == 1 ? data.Chart : '';
     self.SumReply = ko.observable(data.SumReply);
     self.BrkVip = (data.BrkVip == 1 ? '<i title="Đã xác thực - dân phím chuyên nghiệp" class="fa  fa-check-circle"></i>' : "") || "";
     self.LoadTextNext = '';
@@ -156,7 +154,8 @@ function viewModel() {
             $("#idPostedDateDetail").html(data.PostedDate);
             $("#idPostNameDetail").html('<a style="cursor:pointer" href="/' + data.PostedByName + '">' + data.PostedByName + '</a>');
             $("#idImgPostDetail").attr('src', data.PostedByAvatar);
-            $("#idPostMessenge").html(data.ChartYN == 1 ? data.Message.replace('<br/><img src=' + data.Chart + '?width=215&height=120&mode=crop>', '') + '<br/><br/><a target="_blank" href=' + data.Chart + '><img class="imageChartDetail" src=' + data.Chart + "?maxwidth=475></a>" : data.Message);//=200&s.grayscale=true|"
+            $("#idPostMessenge").html(data.Message);
+            $("#idPostImage").html('<a target="_blank" href=' + data.Chart + '><img class="imageChartDetail" src=' + data.Chart + '?maxwidth=475></a>');
             $("#idStmDetail").html(data.Stm);
             postidCurrent = data.PostId;
             if (data.SumReply() > 10) {

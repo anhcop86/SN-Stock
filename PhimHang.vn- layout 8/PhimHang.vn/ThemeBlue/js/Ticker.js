@@ -114,18 +114,16 @@ function Post(data) {
     var self = this;
     data = data || {};
     self.PostId = data.PostId;
-    self.Message = (data.ChartYN == 1 ? data.Message + '<br/><img src=' + data.Chart + '?width=215&height=120&mode=crop>' : data.Message) || "";
+    self.Message = data.Message || "";
     self.PostedByName = data.PostedByName || "";
     self.PostedByAvatar = data.PostedByAvatar + '?width=50&height=50&mode=crop' || "";
     self.PostedDate = getTimeAgo(data.PostedDate);
-    self.PostedDateOri = convertDateFormat(data.PostedDate);
-    //self.StockPrimary = data.StockPrimary;
-    //self.notification = ko.observable(0);
+    self.PostedDateOri = convertDateFormat(data.PostedDate);    
     self.Stm = (data.Stm === 1 ? "<span class='divBear-cm'>Giảm</span>" : data.Stm === 2 ? "<span class='divBull-cm'>Tăng</span>" : "") || "";
     self.ChartYN = data.ChartYN || 0;
     self.SumLike = ko.observable(data.SumLike);
     self.DiableLike = ko.observable(true);
-    self.Chart = data.Chart || '';
+    self.Chart = data.ChartYN == 1 ? data.Chart : '';
     self.SumReply = ko.observable(data.SumReply);
     self.BrkVip = (data.BrkVip == 1 ? '<i title="Đã xác thực - dân phím chuyên nghiệp" class="fa  fa-check-circle"></i>' : "") || "";
     self.LoadTextNext = '';
@@ -150,8 +148,9 @@ function viewModel() {
     var postidCurrent = 0;
     var checkLoadFirst = 0;
     var filterhere = "";
-
+    var postPinIdArray = [];
     self.init = function () {
+        
         self.error(null);
         commenthub.server.joinRoom($('#stockHidenPage').val());
         // lay danh muc pin bai viet
@@ -169,6 +168,7 @@ function viewModel() {
                 var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item); });
                 $(mappedPosts).each(function (index, element) {
                     self.postPins.push(element);
+                    postPinIdArray.push(element.PostId);
                 });
             }
         });
@@ -186,7 +186,10 @@ function viewModel() {
                 //$('.ajaxLoadingImage').html('');
                 var mappedPosts = $.map(ko.utils.parseJson(data), function (item) { return new Post(item); });
                 $(mappedPosts).each(function (index, element) {
-                    self.posts.push(element);
+                    debugger;
+                    if (postPinIdArray.indexOf(element.PostId) == -1) {
+                        self.posts.push(element);
+                    }
                 });
                 checkLoadFirst = 1;
             }
@@ -277,7 +280,7 @@ function viewModel() {
                 type: "GET",
 
                 url: '/Post/GetMorePostsByStock',
-                data: { stockCurrent: $('#stockHidenPage').val(), skipposition: 0, filter: filterhere },
+                data: { stockCurrent: $('#stockHidenPage').val(), skipposition: 0 + postPinIdArray.length, filter: filterhere },
                 beforeSend: function (xhr) {
                     //Add your image loader here
                     //$('.ajaxLoadingImage').html('<img src="/images/ajax-loader_cungphim.gif" />');
@@ -495,7 +498,8 @@ function viewModel() {
             $("#idPostNameDetail").html('<a style="cursor:pointer" href="/' + data.PostedByName + '">' + data.PostedByName + '</a>' + '<span class="itemVerify">' + data.BrkVip + '</span>');
             $("#idImgPostDetail").attr('src', data.PostedByAvatar);
             // relace hình bỏ. bỏ hình to vào
-            $("#idPostMessenge").html(data.ChartYN == 1 ? data.Message.replace('<br/><img src=' + data.Chart + '?width=215&height=120&mode=crop>', '') + '<br/><br/><a target="_blank" href=' + data.Chart + '><img class="imageChartDetail" src=' + data.Chart + "?maxwidth=475></a>" : data.Message);//=200&s.grayscale=true|"
+            $("#idPostMessenge").html(data.Message);
+            $("#idPostImage").html('<a target="_blank" href=' + data.Chart + '><img class="imageChartDetail" src=' + data.Chart + '?maxwidth=475></a>');
             $("#idStmDetail").html(data.Stm);
             postidCurrent = data.PostId;
             if (data.SumReply() > 10) {
@@ -621,7 +625,7 @@ function viewModel() {
                 cache: false,
                 type: "GET",
                 url: '/Post/GetMorePostsByStock',
-                data: { stockCurrent: $('#stockHidenPage').val(), skipposition: self.posts().length + self.newPosts().length, filter: filterhere },
+                data: { stockCurrent: $('#stockHidenPage').val(), skipposition: self.posts().length + postPinIdArray.length + self.newPosts().length, filter: filterhere },
                 beforeSend: function (xhr) {
                     //Add your image loader here
 

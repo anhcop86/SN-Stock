@@ -8,40 +8,40 @@
         @{
             if (User.Identity.IsAuthenticated && ViewBag.CheckUserExist == "E")
             {
-            <div id="top-status-box" class="bg-white status-box">
-                <div class="avata-comment">
-                    <img src="@ViewBag.AvataEmage?width=35&height=35&mode=crop" class="img-rounded" alt="avatar">
-                </div>
-            
-                <div class="input-status">
-                    <form id="frmStatus" name="frmStatus" method="GET">
-                        <div id="input-status-text" class="input-status-text">
-                            <textarea onkeyup="adjustHeight(this,75)" data-bind="value : newMessage, valueUpdate : 'afterkeydown'" class="status-cm" name="status" rows="5" placeholder="$Cổ phiếu | &#64;Username" id="status" title="Viết bài ở đây, chú ý: thêm $MãChứngKhoán để bài viết được đưa lên toàn thị trường hoặc &#64;TênĐăngNhập để gửi tin nhắn cho người sử dụng khác" autocomplete="off" rows="5"></textarea>
-                        </div>
-                        <div class="status-control">
-                            <div class="choose_file f-left">
-                                <i class="fa fa-camera"></i>
-                                <input title="Chọn ảnh biều đồ kỹ thuật" id="idchartFileUpload" name="Select File" accept="image/*" type="file" onchange="uploadPreview(files)" />
-                                <div class="chartImage">
-                                    <a class="mb3-close chart-close" onclick="removeFileChart()" href="javascript:;">x</a>
-                                    <img class="mb3-chart-thumb" src="">
+                <div id="top-status-box" class="bg-white status-box">
+                    <div class="avata-comment">
+                        <img src="@ViewBag.AvataEmage?width=35&height=35&mode=crop" class="img-rounded" alt="avatar">
+                    </div>
+
+                    <div class="input-status">
+                        <form id="frmStatus" name="frmStatus" method="GET">
+                            <div id="input-status-text" class="input-status-text">
+                                <textarea onkeyup="adjustHeight(this,75)" data-bind="value : newMessage, valueUpdate : 'afterkeydown'" class="status-cm" name="status" rows="5" placeholder="$Cổ phiếu | &#64;Username" id="status" title="Viết bài ở đây, chú ý: thêm $MãChứngKhoán để bài viết được đưa lên toàn thị trường hoặc &#64;TênĐăngNhập để gửi tin nhắn cho người sử dụng khác" autocomplete="off" rows="5"></textarea>
+                            </div>
+                            <div class="status-control">
+                                <div class="choose_file f-left">
+                                    <i class="fa fa-camera"></i>
+                                    <input title="Chọn ảnh biều đồ kỹ thuật" id="idchartFileUpload" name="Select File" accept="image/*" type="file" onchange="uploadPreview(files)" />
+                                    <div class="chartImage">
+                                        <a class="mb3-close chart-close" onclick="removeFileChart()" href="javascript:;">x</a>
+                                        <img class="mb3-chart-thumb" src="">
+                                    </div>
+                                </div>
+                                <div id="radio" class="switch3button f-left">
+                                    <input type="radio" id="radio1" name="BullBear" value="2">
+                                    <label title="Nhận định thị trường TĂNG" for="radio1" class="divBull ">Tăng</label>
+                                    <input type="radio" id="radio3" name="BullBear" value="1">
+                                    <label title="Nhận định thị trường GIẢM" for="radio3" class="divBear">Giảm</label>
+                                </div>
+                                <div id="btnPhim" class="f-right">
+                                    <span data-bind="text : count"></span>
+                                    <button title="Nhập trên 6 ký tự để được tạo bài viết" id="btAddPost" style="cursor:pointer" class="button-phim" data-bind="click : addPost,  enable: enablePhimHang ">PHÍM</button>
                                 </div>
                             </div>
-                            <div id="radio" class="switch3button f-left">
-                                <input type="radio" id="radio1" name="BullBear" value="2">
-                                <label title="Nhận định thị trường TĂNG" for="radio1" class="divBull ">Tăng</label>
-                                <input type="radio" id="radio3" name="BullBear" value="1">
-                                <label title="Nhận định thị trường GIẢM" for="radio3" class="divBear">Giảm</label>
-                            </div>
-                            <div id="btnPhim" class="f-right">
-                                <span data-bind="text : count"></span>
-                                <button title="Nhập trên 6 ký tự để được tạo bài viết" id="btAddPost" style="cursor:pointer" class="button-phim" data-bind="click : addPost,  enable: enablePhimHang ">PHÍM</button>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
+
                 </div>
-              
-            </div>
             }
         }
         <div class="bg-white" style="padding-top: 10px; padding-bottom: 3px;">
@@ -49,7 +49,7 @@
                 @*<div class="toSpan filer-bar-label">Hiển thị theo: </div>*@
                 <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('ALL')" href="#" class="active" title="Tất cả các bài viết">TẤT CẢ</a> </div>
                 <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('CHA')" href="#" title="Tìm kiếm bài viết có biểu đồ">BIỂU ĐỒ</a> </div>
-                <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('STM')" href="#" title="Tìm kiếm bài viết có nhận định tăng hoặc giảm">TĂNG/GIẢM</a></div>                
+                <div class="toSpan filer-bar-item"> <a data-bind="click : FilterAll('STM')" href="#" title="Tìm kiếm bài viết có nhận định tăng hoặc giảm">TĂNG/GIẢM</a></div>
             </div>
             <div class="ajaxLoadingInit" style="text-align:center"><img src="~/images/ajax-loader_cungphim.gif" /></div>
         </div>
@@ -65,8 +65,8 @@
                         </div>
                     </div>
                 </div>
-            </div> 
-            
+            </div>
+
             <div data-bind="foreach : posts">
                 <div class="bg-white">
                     <div class="list-item-status" tabindex="-1" data-bind=" click: function(data, event) { $parent.detailPost(data, event); }">
@@ -82,7 +82,12 @@
                             </div>
                             <span data-bind="html : Stm"></span>
                             <div class="list-item-status-content" data-bind="html : Message , attr :{ class:  loadCSSless($element.offsetHeight, $data) , id : 'messageId' + PostId}"></div>
-                            <div onclick='selectMe(event,"#")' class="text-size" data-bind="html: LoadTextNext"></div>
+                            <div onclick='selectMe(event,"#")' class="text-size loadMore-link" data-bind="html: LoadTextNext"></div>
+                            <!--Image-->
+                            <div>
+                                <img data-bind="attr: { src: Chart + '?width=215&height=120&mode=crop' }, visible: Chart.length > 0" class="img-rounded" alt="Chart">
+                            </div>
+                            <!--End Image-->
                             <div class="list-item-control">
                                 @*<a style="border-color:transparent; background-color:transparent" class="button" href="#"><i data-bind="text :notification, visible: notification() > 0" class="fa fa-comments"></i></a>*@
                                 <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
@@ -90,7 +95,7 @@
                                 <!--Load more tool: delete post & report -->
                                 <a class="button" onclick='selectMe(event,"#")' href="javascript:;" title="more" data-bind=" click: function(data, event) { $parent.loadToolMore(data, event); } ,attr : { id : 'loadToolMoreId' + PostId   },"><i class="fa fa-caret-down"></i></a>
                                 <!--End load more tool-->
-                                <a class="button" href="#" style="cursor:text" data-bind="visible: SumReply() > 0" title="Tổng số trả lời"><i title="Tổng số trả lời" class="fa fa-comments" data-bind=" text : SumReply"></i></a>                                                               
+                                <a class="button" href="#" style="cursor:text" data-bind="visible: SumReply() > 0" title="Tổng số trả lời"><i title="Tổng số trả lời" class="fa fa-comments" data-bind=" text : SumReply"></i></a>
                                 <span class="likeAndPin">
                                     <span data-bind="text : SumLike, visible : SumLike() > 0 "></span>
                                     <button class="fa fa-thumbs-o-up" data-bind=" click : function(data, event) { $parent.AddLike(data, event) ;   } , attr : {id : 'PostId' + PostId} , enable : DiableLike"></button>
@@ -115,15 +120,16 @@
                     <div class="list-item-date" id="idPostedDateDetail"></div>
                     <div onclick='selectMe(event,"#")' class="list-item-username" style="width:0%">
                         <div id="idPostNameDetail"></div>
-
                     </div>
                     <span id="idStmDetail"></span>
                     <div class="list-item-status-content" id="idPostMessenge"></div>
-
-
+                    <!--Image-->
+                    <div id="idPostImage">
+                    </div>
+                    <!--End Image-->
                     <div class="list-item-control">
                         @*<a class="button" href="#"><i class="fa fa-comments"></i></a>
-                        <a class="button btn-answer" href="#" title="Trả lời">Thích</a>*@
+                            <a class="button btn-answer" href="#" title="Trả lời">Thích</a>*@
                         <div id="facebookLikeAndShare"></div>
 
                     </div>
@@ -175,11 +181,11 @@
                                     <a style="cursor:pointer" data-bind="attr : { href : '/' + ReplyByName  }, text : ReplyByName"></a>
                                     <span class="itemVerify" data-bind="html: ReplyBrkVip"></span>
                                 </div>
-                                    <div class="list-item-status-content" data-bind="html: ReplyMessage"></div>
-                                    <div class="list-item-control-cm">
-                                        <a class="button f-right" href="#" title="Vi phạm">Vi phạm</a>
-                                    </div>
+                                <div class="list-item-status-content" data-bind="html: ReplyMessage"></div>
+                                <div class="list-item-control-cm">
+                                    <a class="button f-right" href="#" title="Vi phạm">Vi phạm</a>
                                 </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -195,5 +201,4 @@
 </div>
 <!-- gia co phieu real time-->
 <!-- Comment-->
-
 @Scripts.Render("~/bundles/User")

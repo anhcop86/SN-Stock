@@ -1,9 +1,8 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "PhốChứngKhoán.com | Mạng Xã Hội Chứng Khoán ®";
     Layout = "~/Views/Shared/_Layout_Home.cshtml";
 }
-@section scripts{    
+@section scripts{
     <script src="~/Scripts/jquery.timeago.js"></script>
 }
 
@@ -11,60 +10,61 @@
 
 <div id="CommentForKoLoad">
     <div class="area-center">
-    @{
-        if (!User.Identity.IsAuthenticated)
-        {
-        <div id="top-status-box" class="bg-white status-box">
-            <div class="avata-comment">
-                <img src="@ViewBag.AvataEmage?width=35&height=35&mode=crop" class="img-rounded" alt="avatar">
-            </div>
-            <div class="input-status">
-                <form id="frmStatus" name="frmStatus" method="GET">
-                    <div id="input-status-text" class="input-status-text">
-                        <textarea onfocus=" {  location.href='/myprofile' }" data-bind="value : newMessage, valueUpdate : 'afterkeydown'" class="status-cm" name="status" rows="5" placeholder="$Cổ phiếu | &#64;Username" id="status" title="Viết bài ở đây, chú ý: thêm $MãChứngKhoán để bài viết được đưa lên toàn thị trường hoặc &#64;TênĐăngNhập để gửi tin nhắn cho người sử dụng khác." autocomplete="off" rows="5"></textarea>
+        @{
+            if (!User.Identity.IsAuthenticated)
+            {
+                <div id="top-status-box" class="bg-white status-box">
+                    <div class="avata-comment">
+                        <img src="@ViewBag.AvataEmage?width=35&height=35&mode=crop" class="img-rounded" alt="avatar">
                     </div>
-                    <div class="status-control">
-                        <div class="choose_file f-left">
-                            <i class="fa fa-camera"></i>
-                            <input id="idchartFileUpload" name="Select File" accept="image/*" type="file" />
-                            <div class="chartImage">
-                                <a class="mb3-close chart-close" onclick="removeFileChart()" href="javascript:void(0)">x</a>
-                                <img class="mb3-chart-thumb" src="">
+                    <div class="input-status">
+                        <form id="frmStatus" name="frmStatus" method="GET">
+                            <div id="input-status-text" class="input-status-text">
+                                <textarea onfocus=" {  location.href='/myprofile' }" data-bind="value : newMessage, valueUpdate : 'afterkeydown'" class="status-cm" name="status" rows="5" placeholder="$Cổ phiếu | &#64;Username" id="status" title="Viết bài ở đây, chú ý: thêm $MãChứngKhoán để bài viết được đưa lên toàn thị trường hoặc &#64;TênĐăngNhập để gửi tin nhắn cho người sử dụng khác." autocomplete="off" rows="5"></textarea>
                             </div>
-                        </div>
-                        <div id="radio" class="switch3button f-left">
-                            <input type="radio" id="radio1" name="BullBear" value="2">
-                            <label for="radio1" class="divBull ">Tăng</label>
-                            <input type="radio" id="radio3" name="BullBear" value="1">
-                            <label for="radio3" class="divBear">Giảm</label>
-                        </div>
-                        <div id="btnPhim" class="f-right">
-                            <span data-bind="text : count"></span>
-                            <button id="btAddPost" style="cursor:pointer" class="button-phim" disabled>PHÍM</button>
-                        </div>
+                            <div class="status-control">
+                                <div class="choose_file f-left">
+                                    <i class="fa fa-camera"></i>
+                                    <input id="idchartFileUpload" name="Select File" accept="image/*" type="file" />
+                                    <div class="chartImage">
+                                        <a class="mb3-close chart-close" onclick="removeFileChart()" href="javascript:void(0)">x</a>
+                                        <img class="mb3-chart-thumb" src="">
+                                    </div>
+                                </div>
+                                <div id="radio" class="switch3button f-left">
+                                    <input type="radio" id="radio1" name="BullBear" value="2">
+                                    <label for="radio1" class="divBull ">Tăng</label>
+                                    <input type="radio" id="radio3" name="BullBear" value="1">
+                                    <label for="radio3" class="divBear">Giảm</label>
+                                </div>
+                                <div id="btnPhim" class="f-right">
+                                    <span data-bind="text : count"></span>
+                                    <button id="btAddPost" style="cursor:pointer" class="button-phim" disabled>PHÍM</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                </form>
-            </div>
-        </div>
+                </div>
+            }
         }
-    }
         <div class="bg-white" style="padding-top: 10px; padding-bottom: 3px;">
             <div class="filer-bar">
                 @*<div class="toSpan filer-bar-label">Hiển thị theo: </div>*@
-                <div class="toSpan filer-bar-item"> <a href="#" class="active" title="Xem tất cả các bài viết có đề cập đến cổ phiếu">Toàn thị trường</a> </div>               
-                        <div class="toSpan filer-bar-item-home"> <a href="/myprofile" title="Tìm kiếm bài viết có biểu đồ">Biểu đồ</a> </div>
-                        <div class="toSpan filer-bar-item-home"> <a href="/myprofile" title="Tìm kiếm bài viết có nhận định tăng hoặc giảm">Tăng/Giảm</a></div>                     
-                        <div class="toSpan filer-bar-item-home"> <a href="/myprofile" title="Tìm kiếm bài viết của người mà mình đã theo dõi">Người theo dõi</a></div>
-                        <div class="toSpan filer-bar-item-home"> <a href="/myprofile" title="Tìm kiếm bài viết của mã chứng khoán mà mình đã theo dõi">CP theo dõi</a></div>                       
+                <div class="toSpan filer-bar-item"> <a href="#" class="active" title="Xem tất cả các bài viết có đề cập đến cổ phiếu">Toàn thị trường</a> </div>
+                <div class="toSpan filer-bar-item-home"> <a href="/myprofile" title="Tìm kiếm bài viết có biểu đồ">Biểu đồ</a> </div>
+                <div class="toSpan filer-bar-item-home"> <a href="/myprofile" title="Tìm kiếm bài viết có nhận định tăng hoặc giảm">Tăng/Giảm</a></div>
+                <div class="toSpan filer-bar-item-home"> <a href="/myprofile" title="Tìm kiếm bài viết của người mà mình đã theo dõi">Người theo dõi</a></div>
+                <div class="toSpan filer-bar-item-home"> <a href="/myprofile" title="Tìm kiếm bài viết của mã chứng khoán mà mình đã theo dõi">CP theo dõi</a></div>
             </div>
             <div class="ajaxLoadingInit" style="text-align:center"><img src="~/images/ajax-loader_cungphim.gif" /></div>
         </div>
 
         <div class="list-status">
             <!--So bai phim moi-->
-            <!---->            
-            <div data-bind="foreach : {data: posts }"> <!--foreach : {data: posts, afterAdd: afterAdd }-->
-                <div class="bg-white" >
+            <!---->
+            <div data-bind="foreach : {data: posts }">
+                <!--foreach : {data: posts, afterAdd: afterAdd }-->
+                <div class="bg-white">
                     <div class="list-item-status" tabindex="-1" data-bind=" click: function(data, event) { $parent.detailPost(data, event); }">
                         <div class="avata-genaral-size">
                             <img data-bind="attr: { src: PostedByAvatar }" class="img-rounded" alt="avatar">
@@ -78,17 +78,22 @@
                             <span data-bind="html : Stm"></span>
                             <div class="list-item-status-content" data-bind="html : Message , attr :{ class:  loadCSSless($element.offsetHeight, $data) , id : 'messageId' + PostId}"></div>
                             <!--load xem them text dài-->
-                            <div onclick='selectMe(event,"#")' class="text-size" data-bind="html: LoadTextNext"></div>
+                            <div onclick='selectMe(event,"#")' class="text-size loadMore-link" data-bind="html: LoadTextNext"></div>
                             <!--End load xem them text dài-->
+                            <!--Image-->
+                            <div>
+                                <img data-bind="attr: { src: Chart + '?width=215&height=120&mode=crop' }, visible: Chart.length > 0" class="img-rounded" alt="avatar">
+                            </div>
+                            <!--End Image-->
                             <div class="list-item-control">
                                 <a class="button btn-answer" href="#" title="Trả lời">Trả lời</a>
                                 <a class="button btn-answer" target="_self" onclick="window.open(this.href, 'chia sẻ lên facebook', 'left=100,top=100,width=600,height=400,toolbar=1,resizable=0'); selectMe(event, '#'); return false;" data-bind="attr : { href : 'https://www.facebook.com/sharer/sharer.php?u=@ViewBag.AbsolutePathHostName/PostDetail?postid='+ PostId +'&display=popup&ref=plugin' }" title="Chia sẻ lên facebook">Chia sẻ</a>
-                           
-                           <!--Load more tool: delete post & report -->
 
-                                <a class="button" onclick='selectMe(event,"#")' href="javascript:;" title="more" data-bind=" click: function(data, event) { $parent.loadToolMore(data, event); } ,attr : { id : 'loadToolMoreId' + PostId   },"><i class="fa fa-caret-down"></i></a>                                
-                                
-                            <!--End load more tool-->
+                                <!--Load more tool: delete post & report -->
+
+                                <a class="button" onclick='selectMe(event,"#")' href="javascript:;" title="more" data-bind=" click: function(data, event) { $parent.loadToolMore(data, event); } ,attr : { id : 'loadToolMoreId' + PostId   },"><i class="fa fa-caret-down"></i></a>
+
+                                <!--End load more tool-->
                                 <a class="button" href="#" style="cursor:text" data-bind="visible: SumReply() > 0"><i class="fa fa-comments" data-bind=" text : SumReply"></i></a>
                                 <span class="likeAndPin">
                                     <a class="button" href="#" title="Pin" data-bind="html:Pri"></a>
@@ -96,6 +101,7 @@
                                     <button class="fa fa-thumbs-o-up" data-bind=" click : function(data, event) { $parent.AddLike(data, event) ;   } , attr : {id : 'PostId' + PostId} , enable : DiableLike"></button>
                                 </span>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -115,12 +121,13 @@
                     <div class="list-item-date" id="idPostedDateDetail"></div>
                     <div onclick='selectMe(event,"#")' class="list-item-username" style="width:0%">
                         <div id="idPostNameDetail"></div>
-
                     </div>
                     <span id="idStmDetail"></span>
                     <div tabindex="-1" class="list-item-status-content" id="idPostMessenge"></div>
-
-
+                    <!--Image-->
+                    <div id="idPostImage">
+                    </div>
+                    <!--End Image-->
                     <div class="list-item-control">
                         <div id="facebookLikeAndShare"></div>
 
@@ -187,37 +194,37 @@
         </div>
     </div>
 
-    
+
 </div>
 
 <!-- gia co phieu real time-->
 <!-- Comment-->
 @Scripts.Render("~/bundles/Home")
 @*<script type="text/javascript">
-    function notifyMe() {
-        // Let's check if the browser supports notifications
-        console.log(Notification.permission);
-        if (!("Notification" in window)) {
-            alert("This browser does not support desktop notification");
-        }
+        function notifyMe() {
+            // Let's check if the browser supports notifications
+            console.log(Notification.permission);
+            if (!("Notification" in window)) {
+                alert("This browser does not support desktop notification");
+            }
 
-            // Let's check if the user is okay to get some notification
-        else if (Notification.permission === "granted") {
-            // If it's okay let's create a notification
-            var notification = new Notification("Hi there!");
-        }
+                // Let's check if the user is okay to get some notification
+            else if (Notification.permission === "granted") {
+                // If it's okay let's create a notification
+                var notification = new Notification("Hi there!");
+            }
 
-            // Otherwise, we need to ask the user for permission
-        else if (Notification.permission !== 'denied') {
-            Notification.requestPermission(function (permission) {
-                // If the user is okay, let's create a notification
-                if (permission === "granted") {
-                    var notification = new Notification("Hi there!");
-                }
-            });
-        }
+                // Otherwise, we need to ask the user for permission
+            else if (Notification.permission !== 'denied') {
+                Notification.requestPermission(function (permission) {
+                    // If the user is okay, let's create a notification
+                    if (permission === "granted") {
+                        var notification = new Notification("Hi there!");
+                    }
+                });
+            }
 
-        // At last, if the user already denied any notification, and you 
-        // want to be respectful there is no need to bother them any more.
-    }
-</script>*@
+            // At last, if the user already denied any notification, and you
+            // want to be respectful there is no need to bother them any more.
+        }
+    </script>*@

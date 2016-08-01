@@ -85,7 +85,7 @@ namespace PhimHang.Controllers
                     }
                     if (user.CharacterLimit != characterLimitInput)
                     {
-                        user.CharacterLimit = characterLimitInput > 6000 ? 6000 : characterLimitInput;
+                        user.CharacterLimit = characterLimitInput > 12000 ? 12000 : characterLimitInput;
                         try
                         {
                             dbcungphim.Entry(user).State = EntityState.Modified;
