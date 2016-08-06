@@ -504,7 +504,7 @@ self.detailPost = function (data, e) { // chi tiet post bao gom tra loi
         $("#idPostNameDetail").html('<a style="cursor:pointer" href="/' + data.PostedByName + '">' + data.PostedByName + '</a>' + '<span class="itemVerify">' + data.BrkVip + '</span>');
         $("#idImgPostDetail").attr('src', data.PostedByAvatar);
         $("#idPostMessenge").html(data.Message);
-        $("#idPostImage").html('<a target="_blank" href=' + data.Chart + '><img class="imageChartDetail" src=' + data.Chart + '?maxwidth=475></a>');
+        $("#idPostImage").html(data.ChartYN == 1 ? '<a target="_blank" href=' + data.Chart + '><img class="imageChartDetail" src=' + data.Chart + '?maxwidth=475></a>' : '');
         $("#idStmDetail").html(data.Stm);
         postidCurrent = data.PostId;
         if (data.SumReply() > 10) {
