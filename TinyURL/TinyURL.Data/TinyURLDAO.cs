@@ -7,33 +7,32 @@ using System.Threading.Tasks;
 using TinyURL.Entity;
 using Dapper;
 using System.Data;
+using Core.Data;
 
 namespace TinyURL.Data
 {
-    public class TinyURLDAO
+    public class TinyURLDAO : BaseDAO
     {
-        public static URLTiny GetURLTiny(long id)
-        {
-            using (var sqlConnection = new SqlConnection(Constant.DatabaseConnection))
-            {
-                try
-                {
-                    if (sqlConnection.State != ConnectionState.Open)
-                    {
-                        sqlConnection.Open();
-                    }
-                    var parameter = new DynamicParameters();
-                    parameter.Add("@Id", id);
-                    return (URLTiny)sqlConnection.Query<URLTiny>("URLTinySelect", parameter, commandType: CommandType.StoredProcedure).FirstOrDefault();
+        public long Id { get; set; }
 
-                }
-                catch (Exception)
-                {
-                    return null;
-                    //throw;
-                }
-            }
-            
+        public URLTiny GetURLTiny()
+        {
+            //return DbManager.QuerySingle<URLTiny>("URLTinySelect", new DbQueryOption {
+            //    ConnectionID = DB_Tiny_URL.GetConnectionId(),
+            //    ParameterModel = new DynamicParameters(this)
+            //});
+            return DbManager.QuerySingle<URLTiny>("URLTinySelect", new DbQueryOption {
+                ConnectionID = DB_Tiny_URL.GetConnectionId(),
+                ParameterModel = new DynamicParameters(this)
+            });
         }
+
+        //public URLTiny GetURLTinyFirst()
+        //{
+        //    return DbManager.QuerySingleAsync<URLTiny>("URLTinySelect", new DbQueryOption {
+        //        ConnectionID = DB_Tiny_URL.GetConnectionId(),
+        //        ParameterModel = new DynamicParameters(this)
+        //    });
+        //}
     }
 }

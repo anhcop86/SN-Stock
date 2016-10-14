@@ -106,6 +106,6 @@
     <None Include="Script\StockPriceHNX\APIPhimhangvnGetPriceRealTime_HNX.sql" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Script\Upcom\VFS_UPcom_GETALLStockRealTime_IncludeIndex.sql" />
+    <None Include="Script\Upcom\VFS_UPcom_GETALLStockRealTime_IncludeIndex.sql" />
   </ItemGroup>
 </Project>

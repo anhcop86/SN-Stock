@@ -19,7 +19,7 @@ namespace WebApiStockPriceFromURL.Controllers
         //}
 
         // GET api/<controller>/5
-        private static MarketModel _marketModel = MarketModel.GetInstance;
+        private static GetMarketData _marketModel = GetMarketData.GetInstance;
 
         public MetaStockReader MR { get; set; }
         
@@ -51,7 +51,7 @@ namespace WebApiStockPriceFromURL.Controllers
         ///
         ///Return all stockRealTime
         // POST api/stockRealTime
-        public List<StockResult> Post (ParaStock paraStock)
+        public List<MarketDto> Post (ParaStock paraStock)
         {
             //return StockMarketPrice.StockRealTimes;
             return _marketModel.StockRealTimes; ;

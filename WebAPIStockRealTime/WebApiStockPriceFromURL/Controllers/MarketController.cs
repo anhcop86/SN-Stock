@@ -4,40 +4,56 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Mvc;
 using WebApiStockPriceFromURL.Models;
 
 namespace WebApiStockPriceFromURL.Controllers
 {
+    //[RoutePrefix("api/market")]
+    /// <summary>
+    /// Market stock nè
+    /// </summary>
     public class MarketController : ApiController
     {
         // GET api/market
-        private static MarketModel _marketModel = MarketModel.GetInstance;
-        public List<StockResult> Get()
+        private static GetMarketData _marketModel = GetMarketData.GetInstance;
+
+        /// <summary>
+        /// Get All stock
+        /// </summary>
+        /// <returns></returns>
+        [Route("api/market")]
+        [HttpGet]
+        public List<MarketDto> GetAll()
         {
-            var stockPrice = _marketModel.StockRealTimes;
-            return stockPrice;
+            return _marketModel.StockRealTimes;
         }
 
-        // GET api/market/5
-        public string Get(int id)
+
+        /// <summary>
+        /// Get index list
+        /// /api/market/getindex
+        /// </summary>
+        /// <returns></returns>
+        [ActionName("api/market/getindex")]
+        [HttpGet]
+        public IEnumerable<MarketDto> GetIndex()
         {
-            return "value";
+            return _marketModel.StockRealTimes.Where(m => m.Type == "I");
         }
 
-        // POST api/market
-        public void Post([FromBody]string value)
+        /// <summary>
+        /// Get specify stocks
+        /// api/market/getstock/AAA|HAG
+        /// </summary>
+        /// <param name="stockName"></param>
+        /// <returns></returns>
+        [Route("api/market/filter/{stockNames:length(1,200)}")]
+        [HttpGet]
+        public IEnumerable<MarketDto> GetDetail(string stockNames)
         {
+            string[] filters = stockNames.Split(new char[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
+            return _marketModel.StockRealTimes.Where(m => filters.Contains(m.CompanyID));
         }
 
-        // PUT api/market/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/market/5
-        public void Delete(int id)
-        {
-        }
     }
 }

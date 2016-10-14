@@ -19,6 +19,12 @@ namespace TinyURL
             );
 
             routes.MapRoute(
+               name: "urlAPI",
+               url: "{url}",
+               defaults: new { controller = "Home", action = "Index", url = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

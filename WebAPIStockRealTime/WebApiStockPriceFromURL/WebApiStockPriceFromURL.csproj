@@ -39,6 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -115,6 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Stock\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -137,18 +142,20 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MarketController.cs" />
+    <Compile Include="Controllers\StockController.cs" />
     <Compile Include="Controllers\StockRealTimeController.cs" />
     <Compile Include="Controllers\TextResult.cs" />
+    <Compile Include="Models\GetStockData.cs" />
     <Compile Include="Models\Helper.cs" />
-    <Compile Include="Models\MarketModel.cs" />
+    <Compile Include="Models\GetMarketData.cs" />
     <Compile Include="Models\ParaStock.cs" />
+    <Compile Include="Models\StockDto.cs" />
     <Compile Include="Models\StockMarketPrice.cs" />
     <Compile Include="Controllers\StockMarketPriceController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\StockResult.cs" />
+    <Compile Include="Models\MarketDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

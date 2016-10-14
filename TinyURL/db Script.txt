@@ -3,3 +3,19 @@ CREATE TABLE [dbo].[URLTiny](
 	[URLName] [nvarchar](max) NOT NULL,		
 	[PostedDate] [datetime2](7) NOT NULL default(getdate())
 	)
+
+
+CREATE PROCEDURE [dbo].[URLTinySelect]
+(
+	@Id bigint
+)
+AS
+SET NOCOUNT OFF
+
+-------------------------------------
+SELECT  Id, URLName
+FROM    URLTiny (nolock) 
+Where Id = @Id
+-------------------------------------
+
+SET NOCOUNT ON
