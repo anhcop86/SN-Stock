@@ -18,7 +18,7 @@ namespace TinyURL.Models
             using (var dac = new TinyURLDAO()) {
                 dac.Id = URL;
 
-                return dac.GetURLTiny();
+                return dac.GetURLTinyAsync();
             }
         }
     }

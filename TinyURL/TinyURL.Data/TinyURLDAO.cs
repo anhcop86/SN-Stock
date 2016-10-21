@@ -34,5 +34,18 @@ namespace TinyURL.Data
         //        ParameterModel = new DynamicParameters(this)
         //    });
         //}
+
+
+        public URLTiny GetURLTinyAsync()
+        {
+            //return DbManager.QuerySingle<URLTiny>("URLTinySelect", new DbQueryOption {
+            //    ConnectionID = DB_Tiny_URL.GetConnectionId(),
+            //    ParameterModel = new DynamicParameters(this)
+            //});
+            return DbManager.QuerySingleAsync<URLTiny>("URLTinySelect", new DbQueryOption {
+                ConnectionID = DB_Tiny_URL.GetConnectionId(),
+                ParameterModel = new DynamicParameters(this)
+            }).Result;
+        }
     }
 }

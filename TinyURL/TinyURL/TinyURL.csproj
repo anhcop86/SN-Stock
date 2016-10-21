@@ -163,6 +163,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core.Data\Core.Common.csproj">
+      <Project>{3c418a15-ad4d-4630-add4-66dfd29f1d85}</Project>
+      <Name>Core.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TinyURL.Data\TinyURL.Data.csproj">
       <Project>{ed96d7b5-9321-48f6-8ddc-9c69bc048e5b}</Project>
       <Name>TinyURL.Data</Name>

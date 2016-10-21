@@ -23,7 +23,7 @@ namespace TinyURL.Test
             using (var dac = new TinyURLDAO()) {
                 dac.Id = 1;
 
-                result = dac.GetURLTiny();
+                result = dac.GetURLTinyAsync();
             }
           
         }

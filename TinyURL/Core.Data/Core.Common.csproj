@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="BaseRepository.cs" />
     <Compile Include="DbManager.cs" />
+    <Compile Include="dbManagerTest.cs" />
     <Compile Include="DbQueryOption.cs" />
     <Compile Include="DB_Tiny_URL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

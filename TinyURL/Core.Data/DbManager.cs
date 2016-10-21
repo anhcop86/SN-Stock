@@ -9,7 +9,7 @@ using System.Data;
 
 namespace Core.Data
 {
-    public class DbManager : BaseRepository
+    public class DbManager /*: BaseRepository */
     {
         //public DbManager()
         //    : base(DB_Tiny_URL.GetConnectionId())
@@ -57,12 +57,25 @@ namespace Core.Data
 
         //}
 
-        public static TResult QuerySingle<TResult>(string queryName, DbQueryOption queryOption)
+        public static async Task<TResult> QuerySingleAsync<TResult>(string queryName, DbQueryOption queryOption)
         {
-            return WithConnection(c => 
-                c.QuerySingle<TResult>(queryName, queryOption.ParameterModel, commandType: CommandType.StoredProcedure), 
-                queryOption.ConnectionID
-                 );
+            using (var sqlConnection = new System.Data.SqlClient.SqlConnection(queryOption.ConnectionID)) {
+                try {
+
+                    if (sqlConnection.State != ConnectionState.Open) {
+                        await sqlConnection.OpenAsync();
+                    }
+                    return await (Task<TResult>)sqlConnection.QuerySingleAsync<TResult>(queryName, queryOption.ParameterModel, commandType: CommandType.StoredProcedure);
+
+                }
+                catch (Exception) {
+                    throw;
+                }
+                //finally {
+                //    sqlConnection.Close();
+                //}
+            }
+
         }
 
     }

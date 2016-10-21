@@ -11,30 +11,27 @@ namespace Core.Data
 {
     public class BaseRepository
     {
-        //private readonly string ConnectionString;
+        private readonly string _ConnectionString;
 
-        //public BaseRepository(string connectionString)
-        //{
-        //    ConnectionString = connectionString;
-        //}
+        protected BaseRepository(string connectionString)
+        {
+            _ConnectionString = connectionString;
+        }
 
-        public static T WithConnection<T>(Func<IDbConnection, T> getData, string connectString)
-         
+        protected async Task<T> WithConnection<T>(Func<IDbConnection, Task<T>> getData)
         {
             try {
-                using (var c = new SqlConnection(connectString)) {
-                    c.Open();
-
-                    return getData(c);
+                using (var connection = new SqlConnection(_ConnectionString)) {
+                    await connection.OpenAsync(); // Asynchronously open a connection to the database
+                    return await getData(connection); // Asynchronously execute getData, which has been passed in as a Func<IDBConnection, Task<T>>
                 }
             }
             catch (TimeoutException ex) {
-                throw new Exception(String.Format("{0}.WithConnection() experienced a SQL timeout", 12), ex);
+                throw new Exception(String.Format("{0}.WithConnection() experienced a SQL timeout", GetType().FullName), ex);
             }
             catch (SqlException ex) {
-                throw new Exception(String.Format("{0}.WithConnection() experienced a SQL exception (not a timeout)", 12), ex);
+                throw new Exception(String.Format("{0}.WithConnection() experienced a SQL exception (not a timeout)", GetType().FullName), ex);
             }
         }
-
     }
 }
